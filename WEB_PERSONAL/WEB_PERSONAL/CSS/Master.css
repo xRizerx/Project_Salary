@@ -27,12 +27,39 @@ form {
 }
 
 .master_login {
+    
     background-color: #F0F0F0;
     box-shadow: 0px 0px 32px rgba(0,0,0,0.5);
 }
 
 .master_login_right {
     float: right;
+}
+
+.master_login ul {
+    
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     margin-top: 8px;
+ }
+
+.master_login li {
+    display: inline;
+}
+
+.master_login a {
+    text-decoration: none;
+    display: inline;
+    padding: 10px 20px;
+    margin: 0 20px;
+    width: 60px;
+    color: #c0c0c0;
+    background-color: #000000;
+}
+
+.master_login a:hover {
+    color: #ffffff;
 }
 
 .master_header {
