@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SalarybyID.aspx.cs" Inherits="WEB_PERSONAL.SalarybyID" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SalaryByID.aspx.cs" Inherits="WEB_PERSONAL.SalaryByID" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -240,7 +240,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="คำนวณเงินเดือน" />
+                    <asp:Button ID="Button2" runat="server" Text="คำนวณเงินเดือน" />
                 </td>
                 <td class="auto-style8">
                     <asp:Button ID="Button3" runat="server" Text="บันทึก" />
@@ -253,3 +253,4 @@
 
     </asp:Panel>
 </asp:Content>
+

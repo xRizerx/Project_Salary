@@ -87,6 +87,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SalarybyID.aspx" />
     <Content Include="Script\jquery-1.7.1.min.js" />
     <Content Include="Script\jquery-ui-1.8.20.min.js" />
     <Content Include="Script\JSFunction.js" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryByID.aspx.cs">
+      <DependentUpon>SalarybyID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalaryByID.aspx.designer.cs">
+      <DependentUpon>SalarybyID.aspx</DependentUpon>
     </Compile>
     <Compile Include="SEMINAR-GENERAL.aspx.cs">
       <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
