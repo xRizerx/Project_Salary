@@ -56,23 +56,85 @@
         .auto-style23 {
             width: 303px;
         }
-        .auto-style24 {
-            width: 196px;
-        }
         .auto-style25 {
             text-decoration: underline;
-        }
-        .auto-style26 {
-            width: 196px;
-            height: 25px;
         }
         .auto-style27 {
             height: 25px;
         }
+        .auto-style30 {
+            width: 189px;
+            height: 25px;
+        }
+        .auto-style33 {
+            height: 23px;
+        }
+        .auto-style34 {
+            height: 23px;
+            width: 9px;
+        }
+        .auto-style35 {
+            width: 9px;
+        }
+        .auto-style36 {
+            height: 23px;
+            width: 58px;
+        }
+        .auto-style37 {
+            width: 58px;
+        }
+        .auto-style38 {
+            width: 283px;
+            height: 23px;
+        }
+        .auto-style39 {
+            width: 283px;
+        }
+        .auto-style40 {
+            height: 23px;
+            width: 111px;
+        }
+        .auto-style41 {
+            width: 111px;
+        }
+        .auto-style44 {
+            width: 71px;
+        }
+        .auto-style45 {
+            width: 244px;
+            height: 26px;
+        }
+        .auto-style46 {
+            height: 26px;
+        }
+        .auto-style47 {
+            height: 26px;
+            width: 280px;
+        }
+        .auto-style48 {
+            width: 280px;
+        }
+        .auto-style50 {
+            width: 244px;
+        }
+        .auto-style51 {
+            height: 26px;
+            width: 274px;
+        }
+        .auto-style52 {
+            width: 274px;
+        }
+        .auto-style53 {
+            height: 26px;
+            width: 75px;
+        }
+        .auto-style54 {
+            width: 75px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel6" runat="server" Height="1425px">
+    <asp:Panel ID="Panel6" runat="server" Height="1819px">
         <table style="width:100%;">
             <tr>
                 <td>&nbsp;</td>
@@ -367,7 +429,7 @@
         <br />
         <table style="width:100%;">
             <tr>
-                <td class="auto-style26">
+                <td class="auto-style30">
                     <asp:Label ID="Label42" runat="server" BackColor="Red" ForeColor="White" Text="กรณีขอเป็นครั้งแรก บรรจุเมื่อ"></asp:Label>
                 </td>
                 <td class="auto-style27">
@@ -381,12 +443,137 @@
                     <br />
                     <asp:Label ID="Label44" runat="server" CssClass="auto-style25" Text="จำนวน 2 ระดับ "></asp:Label>
                     <asp:Label ID="Label45" runat="server" Text="(เช่น ระดับ 7 เมื่อวันที่ 14ธีนวาคม 2553 และระดับ 6 เมื่อวันที่ 1 ตุลาคม 2550)"></asp:Label>
+                    <table style="width:100%;">
+                        <tr>
+                            <td class="auto-style34"></td>
+                            <td class="auto-style36">
+                                <asp:Label ID="Label46" runat="server" Text="1. ระดับ"></asp:Label>
+                            </td>
+                            <td class="auto-style38">
+                                <asp:TextBox ID="TextBox23" runat="server" Width="269px"></asp:TextBox>
+                            </td>
+                            <td class="auto-style40">
+                                <asp:Label ID="Label50" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
+                            </td>
+                            <td class="auto-style33">
+                                <asp:TextBox ID="TextBox25" runat="server" Width="269px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style35">&nbsp;</td>
+                            <td class="auto-style37">
+                                <asp:Label ID="Label49" runat="server" Text="2. ระดับ"></asp:Label>
+                            </td>
+                            <td class="auto-style39">
+                                <asp:TextBox ID="TextBox24" runat="server" Width="269px"></asp:TextBox>
+                            </td>
+                            <td class="auto-style41">
+                                <asp:Label ID="Label55" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox26" runat="server" Width="269px"></asp:TextBox>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:100%;">
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label51" runat="server" CssClass="auto-style25" Text="- ประวัติตำแหน่งตามระบบเดิมหมวดฝีมือ (ลูกจ้างประจำ) และตามระบบใหม่ตั้งแต่วันที่ 1 เมษายน 2553"></asp:Label>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
+        </table>
+        <table style="width:100%;">
             <tr>
-                <td class="auto-style24">&nbsp;</td>
+                <td class="auto-style34"></td>
+                <td class="auto-style36">
+                    <asp:Label ID="Label52" runat="server" Text="1. ระดับ"></asp:Label>
+                </td>
+                <td class="auto-style38">
+                    <asp:TextBox ID="TextBox27" runat="server" Width="269px"></asp:TextBox>
+                </td>
+                <td class="auto-style40">&nbsp;</td>
+                <td class="auto-style33">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style35">&nbsp;</td>
+                <td class="auto-style37">
+                    <asp:Label ID="Label54" runat="server" Text="2. ระดับ"></asp:Label>
+                </td>
+                <td class="auto-style39">
+                    <asp:TextBox ID="TextBox29" runat="server" Width="269px"></asp:TextBox>
+                </td>
+                <td class="auto-style41">&nbsp;</td>
                 <td>&nbsp;</td>
+            </tr>
+        </table>
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style44">&nbsp;</td>
+                <td>
+                    <asp:CheckBox ID="CheckBox1" runat="server" Text="กลุ่มงานสนับสนุน" />
+                </td>
                 <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style44">&nbsp;</td>
+                <td>
+                    <asp:CheckBox ID="CheckBox2" runat="server" Text="กลุ่มงานช่าง" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    <asp:Label ID="Label56" runat="server" CssClass="auto-style25" Text="- พนักงานราชการ ให้ระบุชื่อกลุ่มงานด้วย"></asp:Label>
+                </td>
+            </tr>
+        </table>
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style44">&nbsp;</td>
+                <td>
+                    <asp:CheckBox ID="CheckBox3" runat="server" Text="กลุ่มงานบริการ" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style44">&nbsp;</td>
+                <td>
+                    <asp:CheckBox ID="CheckBox4" runat="server" Text="กลุ่มงานเทคนิค" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style44">&nbsp;</td>
+                <td>
+                    <asp:CheckBox ID="CheckBox5" runat="server" Text="กลุ่มงานบริหารทั่วไป" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style45">
+                    <asp:Label ID="Label57" runat="server" Text="เครื่องราชอิสริยาภรณ์ชั้นล่าสุดที่ได้รับ"></asp:Label>
+                </td>
+                <td class="auto-style47">
+                    <asp:TextBox ID="TextBox30" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                </td>
+                <td class="auto-style51">
+                    <asp:Label ID="Label58" runat="server" Text="ได้รับเครื่องราชฯ ชั้นล่าสุดวันที่ 5 ธันวาคม"></asp:Label>
+                </td>
+                <td class="auto-style53">
+                    <asp:TextBox ID="TextBox31" runat="server" Enabled="False" Width="63px"></asp:TextBox>
+                </td>
+                <td class="auto-style46"></td>
             </tr>
         </table>
     </asp:Panel>
