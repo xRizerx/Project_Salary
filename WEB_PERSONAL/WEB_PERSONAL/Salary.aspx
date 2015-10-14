@@ -32,6 +32,12 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style type="text/css">
+        body {
+            background-image: url("333.png");
+        }
+        
+    </style>
     <asp:Panel ID="Panel1" runat="server" Height="1024px" Width="1024px">
         Salary System<br />
         <br />
