@@ -53,11 +53,32 @@
             text-align: center;
             margin: 20px;
         }
+        .auto-style18 {
+            width: 100%;
+        }
     </style>
-    <asp:Panel ID="Panel2" runat="server" Height="437px">
+    <asp:Panel ID="Panel2" runat="server" Height="751px">
         <div class="c1">
             <asp:Label ID="Label1" runat="server" Text="ระบบการลา"></asp:Label>
+            
         </div>
+        <table style="width:100%;">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
         <table class="auto-style3">
             <tr>
                 <td class="auto-style8">
@@ -69,7 +90,7 @@
                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style16"></td>
-                <td class="auto-style2"></td>
+                <td class="auto-style2">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style7">
@@ -102,7 +123,9 @@
                     <asp:Label ID="Label10" runat="server" Text="ประเภทการลา"></asp:Label>
                 </td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT [LEAVE_TYPE_ID], [LEAVE_TYPE_NAME] FROM [TB_LEAVE_TYPE]"></asp:SqlDataSource>
                 </td>
                 <td class="auto-style15">&nbsp;</td>
                 <td>&nbsp;</td>
@@ -138,7 +161,9 @@
                     <asp:Label ID="Label13" runat="server" Text="สถานะการลา"></asp:Label>
                 </td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="LEAVE_STATUS_NAME" DataValueField="LEAVE_STATUS_ID">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT [LEAVE_STATUS_ID], [LEAVE_STATUS_NAME] FROM [TB_LEAVE_STATUS]"></asp:SqlDataSource>
                 </td>
                 <td class="auto-style15">&nbsp;</td>
                 <td>&nbsp;</td>

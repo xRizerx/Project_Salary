@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-    background-image: url("../Image/bg3.jpg");
+    background-image: url("../Image/333.png");
     background-attachment: fixed;
     /*background-size: 100% auto;*/
 }
@@ -30,7 +30,7 @@ form {
 .master_login {
     
     background-color: #F0F0F0;
-    box-shadow: 0px 0px 32px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 64px rgb(0,162,232);
 }
 
 .master_login_right {
@@ -197,6 +197,7 @@ form {
     /*background: linear-gradient(#ffaf22, #ffc051);*/
     background-color: #eeeef1;
     text-align: center;
+    box-shadow: 0px 0px 64px rgb(192,192,192);
 }
 .master_footer_label {
     font-size: 24px;
