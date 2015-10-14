@@ -70,6 +70,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Image\bg2.jpg" />
     <Content Include="Image\bg3.jpg" />
+    <Content Include="insignia1.aspx" />
     <Content Include="Leave.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
@@ -85,6 +86,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Script\jquery-1.7.1.min.js" />
+    <Content Include="Script\jquery-ui-1.8.20.min.js" />
+    <Content Include="Script\JSFunction.js" />
     <Content Include="SEMINAR-GENERAL.aspx" />
     <Content Include="TitleName-ADMIN.aspx" />
     <Content Include="Salary.aspx" />
@@ -101,6 +105,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entities\TitleName.cs" />
+    <Compile Include="insignia1.aspx.cs">
+      <DependentUpon>insignia1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia1.aspx.designer.cs">
+      <DependentUpon>insignia1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Leave.aspx.cs">
       <DependentUpon>Leave.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
