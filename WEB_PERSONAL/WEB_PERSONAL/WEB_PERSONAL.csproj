@@ -85,6 +85,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SalarybyID.aspx" />
     <Content Include="SEMINAR-GENERAL.aspx" />
     <Content Include="TitleName-ADMIN.aspx" />
     <Content Include="Salary.aspx" />
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SalarybyID.aspx.cs">
+      <DependentUpon>SalarybyID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalarybyID.aspx.designer.cs">
+      <DependentUpon>SalarybyID.aspx</DependentUpon>
     </Compile>
     <Compile Include="SEMINAR-GENERAL.aspx.cs">
       <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
