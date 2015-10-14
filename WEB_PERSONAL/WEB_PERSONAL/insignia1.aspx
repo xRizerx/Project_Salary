@@ -50,6 +50,25 @@
             width: 53px;
             height: 29px;
         }
+        .auto-style22 {
+            width: 92px;
+        }
+        .auto-style23 {
+            width: 303px;
+        }
+        .auto-style24 {
+            width: 196px;
+        }
+        .auto-style25 {
+            text-decoration: underline;
+        }
+        .auto-style26 {
+            width: 196px;
+            height: 25px;
+        }
+        .auto-style27 {
+            height: 25px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -296,6 +315,78 @@
                     <asp:Label ID="Label35" runat="server" Text="บาท"></asp:Label>
                 </td>
                 <td class="auto-style16">&nbsp;</td>
+            </tr>
+        </table>
+        <asp:Label ID="Label36" runat="server" Text="________________________________________________________________________"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="Label37" runat="server" BackColor="Red" BorderColor="White" ForeColor="White" Text="- หากมีการเปลี่ยนแปลงคำนำหน้าชื่อ/ชื่อ/นามสกุล ให้ระบุคำนำหน้าชื่อ/ชื่อ/นามสกุล เดิมด้วย"></asp:Label>
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style22">
+                    <asp:Label ID="Label38" runat="server" Text="คำนำหน้าชื่อ"></asp:Label>
+                </td>
+                <td class="auto-style23">
+                    <asp:TextBox ID="TextBox18" runat="server" Width="269px"></asp:TextBox>
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style22">
+                    <asp:Label ID="Label39" runat="server" Text="ชื่อ"></asp:Label>
+                </td>
+                <td class="auto-style23">
+                    <asp:TextBox ID="TextBox19" runat="server" Width="269px"></asp:TextBox>
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style22">
+                    <asp:Label ID="Label40" runat="server" Text="นามสกุล"></asp:Label>
+                </td>
+                <td class="auto-style23">
+                    <asp:TextBox ID="TextBox20" runat="server" Width="269px"></asp:TextBox>
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <br />
+        <asp:Label ID="Label41" runat="server" Text="________________________________________________________________________"></asp:Label>
+        <br />
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style26">
+                    <asp:Label ID="Label42" runat="server" BackColor="Red" ForeColor="White" Text="กรณีขอเป็นครั้งแรก บรรจุเมื่อ"></asp:Label>
+                </td>
+                <td class="auto-style27">
+                    <asp:TextBox ID="TextBox21" runat="server" Width="269px"></asp:TextBox>
+                </td>
+                <td class="auto-style27"></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <asp:Label ID="Label43" runat="server" CssClass="auto-style25" Text="- ประวัติการเลื่อนระดับตามที่ ก.พ.อ. กำหนดเดิม (ข้าราชการ) ให้กรอกข้อมูลย้อนหลังก่อนวันที่ 21 กันยายน 2554"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label44" runat="server" CssClass="auto-style25" Text="จำนวน 2 ระดับ "></asp:Label>
+                    <asp:Label ID="Label45" runat="server" Text="(เช่น ระดับ 7 เมื่อวันที่ 14ธีนวาคม 2553 และระดับ 6 เมื่อวันที่ 1 ตุลาคม 2550))"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style24">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
         </table>
     </asp:Panel>
