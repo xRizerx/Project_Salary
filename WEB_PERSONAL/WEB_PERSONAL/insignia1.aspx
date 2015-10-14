@@ -282,7 +282,7 @@
                 </td>
             </tr>
         </table>
-        &nbsp;<table style="width:100%;">
+        <table style="width:100%;">
             <tr>
                 <td class="auto-style14">เงินเดือนย้อนหลัง 5 ปี (ณ วันที่ 1 เมษายน</td>
                 <td class="auto-style15">
