@@ -380,7 +380,7 @@
                     <asp:Label ID="Label43" runat="server" CssClass="auto-style25" Text="- ประวัติการเลื่อนระดับตามที่ ก.พ.อ. กำหนดเดิม (ข้าราชการ) ให้กรอกข้อมูลย้อนหลังก่อนวันที่ 21 กันยายน 2554"></asp:Label>
                     <br />
                     <asp:Label ID="Label44" runat="server" CssClass="auto-style25" Text="จำนวน 2 ระดับ "></asp:Label>
-                    <asp:Label ID="Label45" runat="server" Text="(เช่น ระดับ 7 เมื่อวันที่ 14ธีนวาคม 2553 และระดับ 6 เมื่อวันที่ 1 ตุลาคม 2550))"></asp:Label>
+                    <asp:Label ID="Label45" runat="server" Text="(เช่น ระดับ 7 เมื่อวันที่ 14ธีนวาคม 2553 และระดับ 6 เมื่อวันที่ 1 ตุลาคม 2550)"></asp:Label>
                 </td>
             </tr>
             <tr>
