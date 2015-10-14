@@ -33,20 +33,53 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
+        @font-face {
+            font-family: ths;
+            src: url("Font/THSarabun.ttf");
+            font-family: thsb;
+            src: url("Font/THSarabun Bold.ttf");
+            font-family: thsbi;
+            src: url("Font/THSarabun BoldItalic.ttf");
+            font-family: thsi;
+            src: url("Font/THSarabun Italic.ttf");
+        }
         body {
             background-image: url("Image/333.png");
         }
+        .textmode{
+            font-family: ths;
+            font-size: 18px;
+        }
+        .textmodeb{
+            font-family: thsb;
+            font-size: 28px;
+            padding:20px;
+        }
+        .textmodebi{
+            font-family: thsbi;
+            font-size: 20px;
+        }
+        .textmodei{
+            font-family: thsi;
+            font-size: 20px;
+        }
+        .pancen{
+            text-align: center;
+        }
         
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1024px" Width="1024px" CssClass="body">
-        Salary System<br />
+    <div>
+    <asp:Panel ID="Panel1" runat="server" Height="1024px" Width="1024px" CssClass="pancen">
+        <asp:Label ID="Label2" runat="server" Text="Salary System" CssClass="textmode" Font-Size="40pt"></asp:Label><br />
         <br />
-        รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุคมศึกษา ครั้งที่ 1 วันที่ 1 เมษายน 2558 มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก<br />
+        <asp:Label ID="Label1" runat="server" CssClass="textmodeb" Text="รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุคมศึกษา"></asp:Label><br />
+        <asp:Label ID="Label3" runat="server" CssClass="textmodeb" Text="ครั้งที่ 1 วันที่ 1 เมษายน 2558"></asp:Label><br />
+        <asp:Label ID="Label21" runat="server" CssClass="textmodeb" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก"></asp:Label><br />
         <table style="width:100%;" border="0">
 
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label4" runat="server" Text="หน่วยงาน"></asp:Label>
+                    <asp:Label ID="Label4" runat="server" CssClass="textmode" Text="หน่วยงาน"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="BRANCH_NAME" DataValueField="BRANCH_NAME">
@@ -56,7 +89,7 @@
             </tr>
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label5" runat="server" Text="จำนวนคน ณ 1 มี.ค. 58"></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text="จำนวนคน ณ 1 มี.ค. 58" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:TextBox ID="TextBox31" runat="server" Width="75px"></asp:TextBox>
@@ -64,7 +97,7 @@
             </tr>
             <tr>
                 <td class="auto-style37">
-                    <asp:Label ID="Label6" runat="server" Text="อัตราเงินเดือนรวม ณ 1 มี.ค. 58"></asp:Label>
+                    <asp:Label ID="Label6" runat="server" Text="อัตราเงินเดือนรวม ณ 1 มี.ค. 58" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style38">
                     <asp:TextBox ID="TextBox32" runat="server" Width="100px" TextMode="Number"></asp:TextBox>
@@ -72,7 +105,7 @@
             </tr>
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label7" runat="server" Text="วงเงิน 2.9 % ของเงินเดือนรวม"></asp:Label>
+                    <asp:Label ID="Label7" runat="server" Text="วงเงิน 2.9 % ของเงินเดือนรวม" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label>
@@ -80,7 +113,7 @@
             </tr>
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label8" runat="server" Text="เงินที่ใช้เลื่อน ณ 1 เม.ย. 58"></asp:Label>
+                    <asp:Label ID="Label8" runat="server" Text="เงินที่ใช้เลื่อน ณ 1 เม.ย. 58" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:TextBox ID="TextBox25" runat="server" Width="90px"></asp:TextBox>
@@ -88,7 +121,7 @@
             </tr>
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label9" runat="server" Text="วงเงินที่เหลือ"></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Text="วงเงินที่เหลือ" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:Label ID="Label17" runat="server" Text="Label"></asp:Label>
@@ -96,7 +129,7 @@
             </tr>
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label10" runat="server" Text="วงเงิน 0.1 % ของเงินเดือนรวม ณ 1 มี.ค. 58"></asp:Label>
+                    <asp:Label ID="Label10" runat="server" Text="วงเงิน 0.1 % ของเงินเดือนรวม ณ 1 มี.ค. 58" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:Label ID="Label16" runat="server" Text="Label"></asp:Label>
@@ -104,7 +137,7 @@
             </tr>
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label11" runat="server" Text="จำนวนเงินที่อธิการบดีเพิ่มให้"></asp:Label>
+                    <asp:Label ID="Label11" runat="server" Text="จำนวนเงินที่อธิการบดีเพิ่มให้" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:TextBox ID="TextBox22" runat="server" Width="90px"></asp:TextBox>
@@ -112,7 +145,7 @@
             </tr>
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label12" runat="server" Text="วงเงินที่ใช้เลื่อนทั้งสิ้น (3%)"></asp:Label>
+                    <asp:Label ID="Label12" runat="server" Text="วงเงินที่ใช้เลื่อนทั้งสิ้น (3%)" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:Label ID="Label18" runat="server" Text="Label"></asp:Label>
@@ -120,7 +153,7 @@
             </tr>
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label13" runat="server" Text="เงินที่ใช้เลื่อน ณ 1 เม.ย. 58&nbsp;ทั้งสิ้น"></asp:Label>
+                    <asp:Label ID="Label13" runat="server" Text="เงินที่ใช้เลื่อน ณ 1 เม.ย. 58&nbsp;ทั้งสิ้น" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:Label ID="Label19" runat="server" Text="Label"></asp:Label>
@@ -128,7 +161,7 @@
             </tr>
             <tr>
                 <td class="auto-style39">
-                    <asp:Label ID="Label14" runat="server" Text="วงเงินคงเหลือทั้งสิ้น"></asp:Label>
+                    <asp:Label ID="Label14" runat="server" Text="วงเงินคงเหลือทั้งสิ้น" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
                     <asp:Label ID="Label20" runat="server" Text="Label"></asp:Label>
@@ -145,10 +178,23 @@
         </table>
         <table style="width:100%;">
             <tr>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:Calendar ID="Calendar2"
+ runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" OnSelectionChanged="Calendar2_SelectionChanged" Width="200px">
+                        <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                        <NextPrevStyle VerticalAlign="Bottom" />
+                        <OtherMonthDayStyle ForeColor="#808080" />
+                        <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                        <SelectorStyle BackColor="#CCCCCC" />
+                        <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+                        <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                        <WeekendDayStyle BackColor="#FFFFCC" />
+                    </asp:Calendar>
+                    <asp:Label ID="Label22" runat="server" Text="Label"></asp:Label>
+                </td>
                 <td>
                     &nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="Button4" runat="server" Text="คำนวณเงิน" OnClick="Button4_Click" />
+                    <asp:Button ID="Button4" runat="server" CssClass="textmode" Text="คำนวณเงิน" OnClick="Button4_Click" />
                 </td>
             </tr>
         </table>
@@ -156,13 +202,13 @@
         <table style="width:100%;">
             <tr>
                 <td class="master_footer">
-                    <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="140px" />
+                    <asp:Button ID="Button1" runat="server" CssClass="textmode" Text="บันทึก" Width="140px" />
                 </td>
                 <td class="master_footer">
-                    <asp:Button ID="Button2" runat="server" Text="ยกเลิก" Width="140px" />
+                    <asp:Button ID="Button2" runat="server" CssClass="textmode" Text="ยกเลิก" Width="140px" />
                 </td>
                 <td class="master_footer">
-                    <asp:Button ID="Button3" runat="server" Text="ออกรายงาน" Width="140px" />
+                    <asp:Button ID="Button3" runat="server" CssClass="textmode" Text="ออกรายงาน" Width="140px" />
                 </td>
             </tr>
         </table>
@@ -173,4 +219,5 @@
         <br />
         <br />
     </asp:Panel>
+    </div>
 </asp:Content>
