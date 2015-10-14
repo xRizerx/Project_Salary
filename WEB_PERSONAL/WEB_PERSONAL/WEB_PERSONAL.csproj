@@ -66,11 +66,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\333.png" />
     <Content Include="Default.aspx" />
-    <Content Include="Image\bg.jpg" />
+    <Content Include="Image\bg2.jpg" />
+    <Content Include="Image\bg3.jpg" />
     <Content Include="Leave.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
+    <Content Include="Font\THSarabun Bold.ttf" />
+    <Content Include="Font\THSarabun BoldItalic.ttf" />
+    <Content Include="Font\THSarabun Italic.ttf" />
+    <Content Include="Font\THSarabun.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
