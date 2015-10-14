@@ -15,10 +15,12 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" onload="form1_Load">
         <div>
             <asp:Panel ID="Panel6" runat="server" Height="40px" CssClass="master_login">
-            
+                <asp:LinkButton ID="LinkButton9" runat="server" CssClass="master_login_right" OnClick="LinkButton9_Click">เข้าสู่ระบบ</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton10" runat="server" CssClass="master_login_right" OnClick="LinkButton10_Click">ออกจากระบบ</asp:LinkButton>
+                <asp:Label ID="Label7" runat="server" CssClass="master_login_right" Text="Label"></asp:Label>
             </asp:Panel>
         </div>
         
