@@ -7,9 +7,9 @@ html, body {
 }
 
 body {
-    background-image: url("../Image/bg.jpg");
+    background-image: url("../Image/bg3.jpg");
     background-attachment: fixed;
-    background-size: 100% auto;
+    /*background-size: 100% auto;*/
 }
 
 .wrapper {
@@ -43,7 +43,8 @@ body {
 .master_nav {
 
     /*background-color: #6ea2ff;*/
-    background-color: rgba(255,255,255,0.5);
+    background-color: #000000;
+    /*background-color: rgba(0,0,0,0.9);*/
     padding: 20px;
     text-align: center;
 }
@@ -64,15 +65,18 @@ body {
     padding: 5px 20px;
     margin: 0 5px;
     width: 60px;
-    color: #ffffff;
+    color: #d0d0d0;
     /*background-color: #c17f00;*/
-    background: linear-gradient(#518fff,#5e97ff);
+    /*background: linear-gradient(#518fff,#5e97ff);*/
+    background-color: #000000;
     border-radius: 24px;
 }
 
 .master_nav a:hover {
+    color: #ffffff;
+    background-color: #202020;
     /*background: linear-gradient(#ffa800,#f1aa25);*/
-    background: linear-gradient(#518fff,#a1c3ff);
+    /*background: linear-gradient(#518fff,#a1c3ff);*/
     /*background-color: #ee9d00;*/
 }
 

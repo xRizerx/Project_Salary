@@ -10,12 +10,13 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <div>
+        <asp:Panel ID="Panel2" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
+    </div>
     <div class="wrapper">
         <form id="form1" runat="server">
     <div>
-        <div>
-            <asp:Panel ID="Panel2" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
-        </div>
+        
         <div class="master_header">
             <div>
                 <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
@@ -101,6 +102,9 @@
             
             </asp:Panel>
 
+        </div>
+        <div>
+            <asp:Panel ID="Panel5" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
         </div>
     </footer>
 </body>
