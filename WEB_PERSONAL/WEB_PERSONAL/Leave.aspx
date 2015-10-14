@@ -54,7 +54,18 @@
             margin: 20px;
         }
         .auto-style18 {
-            width: 100%;
+            width: 150px;
+        }
+        .auto-style19 {
+            height: 29px;
+            width: 150px;
+        }
+        .auto-style21 {
+            height: 26px;
+            width: 150px;
+        }
+        .auto-style22 {
+            width: 145px;
         }
     </style>
     <asp:Panel ID="Panel2" runat="server" Height="751px">
@@ -64,36 +75,41 @@
         </div>
         <table style="width:100%;">
                 <tr>
+                    <td class="auto-style18">&nbsp;</td>
+                    <td class="auto-style22">
+                        <asp:Label ID="Label7" runat="server" Text="รหัสเอกสาร"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
                     <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style18">&nbsp;</td>
+                    <td class="auto-style22">&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
+                    <td class="auto-style18">&nbsp;</td>
+                    <td class="auto-style22">&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
         <table class="auto-style3">
             <tr>
-                <td class="auto-style8">
+                <td class="auto-style19">
                     &nbsp;</td>
                 <td class="auto-style8">
-                    <asp:Label ID="Label7" runat="server" Text="รหัสเอกสาร"></asp:Label>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style16"></td>
                 <td class="auto-style2">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style7">
+                <td class="auto-style18">
                     &nbsp;</td>
                 <td class="auto-style7">
                     <asp:Label ID="Label8" runat="server" Text="วันที่เอกสาร"></asp:Label>
@@ -105,7 +121,7 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td class="auto-style19">
                     &nbsp;</td>
                 <td class="auto-style8">
                     <asp:Label ID="Label9" runat="server" Text="รหัสพนักงาน"></asp:Label>
@@ -117,7 +133,7 @@
                 <td class="auto-style2">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style7">
+                <td class="auto-style18">
                     &nbsp;</td>
                 <td class="auto-style7">
                     <asp:Label ID="Label10" runat="server" Text="ประเภทการลา"></asp:Label>
@@ -131,7 +147,7 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style7">
+                <td class="auto-style18">
                     &nbsp;</td>
                 <td class="auto-style7">
                     <asp:Label ID="Label11" runat="server" Text="จากวันที่"></asp:Label>
@@ -143,7 +159,7 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style7">
+                <td class="auto-style18">
                     &nbsp;</td>
                 <td class="auto-style7">
                     <asp:Label ID="Label12" runat="server" Text="ถึงวันที่"></asp:Label>
@@ -155,7 +171,7 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style7">
+                <td class="auto-style18">
                     &nbsp;</td>
                 <td class="auto-style7">
                     <asp:Label ID="Label13" runat="server" Text="สถานะการลา"></asp:Label>
@@ -169,7 +185,7 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style21">
                     &nbsp;</td>
                 <td class="auto-style9">
                     <asp:Label ID="Label14" runat="server" Text="รหัสผู้อนุมัติ"></asp:Label>
@@ -181,7 +197,7 @@
                 <td class="auto-style1">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style21">
                     &nbsp;</td>
                 <td class="auto-style9">
                     <asp:Label ID="Label15" runat="server" Text="วันที่อนุมัติ"></asp:Label>
@@ -193,7 +209,7 @@
                 <td class="auto-style1">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style21">
                     &nbsp;</td>
                 <td class="auto-style9">
                     <asp:Label ID="Label16" runat="server" Text="เหตุผลที่ลา"></asp:Label>
@@ -205,14 +221,14 @@
                 <td class="auto-style1">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">&nbsp;</td>
+                <td class="auto-style21">&nbsp;</td>
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style11">&nbsp;</td>
                 <td class="auto-style17">&nbsp;</td>
                 <td class="auto-style1">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">&nbsp;</td>
+                <td class="auto-style21">&nbsp;</td>
                 <td class="auto-style9">&nbsp;</td>
                 <td class="auto-style11">&nbsp;</td>
                 <td class="auto-style17">&nbsp;</td>
