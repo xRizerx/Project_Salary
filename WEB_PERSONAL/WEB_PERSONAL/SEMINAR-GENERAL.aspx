@@ -1,36 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SEMINAR-GENERAL.aspx.cs" Inherits="WEB_PERSONAL.SEMINAR_GENERAL" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="Script/jquery-ui-1.8.20.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <style type="text/css">
-
-        .auto-style1 {
-            width: 135px;
-        }
-        .auto-style2 {
-            width: 96px;
-        }
-
-        .auto-style3 {
-            width: 205px;
-        }
-
-        .auto-style4 {
-            width: 267px;
-        }
-
-        .auto-style6 {
-            width: 104px;
-        }
-        .auto-style7 {
-            width: 265px;
-        }
-
-        .auto-style8 {
-            width: 324px;
-        }
-
-    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ContentPlaceHolder1_txtDateFrom,#ContentPlaceHolder1_txtDateTO").datepicker({
+                dateFormat: 'dd/mm/yy',
+                beforeShow: function () {
+                    $(".ui-datepicker").css('font-size', 14)
+                }
+            });
+        });
+    </script>
+  
     <div>
         <fieldset>
             <legend>Insert</legend>
@@ -39,24 +22,24 @@
                     <tr>
                         <td style="text-align: right; margin-right: 5px; " class="auto-style1">ชื่อ :&nbsp;</td>
                         <td style="text-align: left; width: 50px;">
-                            <asp:TextBox ID="txt1" runat="server" MaxLength="100" Width="148px"></asp:TextBox>
+                            <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="148px"></asp:TextBox>
                         </td>
                         <td style="text-align: right; margin-right: 5px; " class="auto-style2">นามสกุล :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txt2" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
+                            <asp:TextBox ID="txtLastName" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
                         <td style="text-align: right; margin-right: 5px; " class="auto-style2">ตำแหน่ง :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txt3" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
+                            <asp:TextBox ID="txtPosition" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
                         <td style="text-align: right; margin-right: 5px; " class="auto-style6">ระดับ :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txt4" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
+                            <asp:TextBox ID="txtDegree" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
                     </tr>
                     </table>
                 <table>
                     <tr>
                        <td style="text-align: right; margin-right: 5px; " class="auto-style2">สังกัด :&nbsp;</td>
                         <td style="text-align: left; " class="auto-style3">
-                            <asp:TextBox ID="TextBox1" runat="server" MaxLength="100" Width="626px"></asp:TextBox></td>
+                            <asp:TextBox ID="txtCampus" runat="server" MaxLength="100" Width="576px"></asp:TextBox></td>
                         <td style="text-align: right; margin-right: 5px; " class="auto-style4">มหาวิทยาลัยเทคโนยีราชมงคลตะวันออก</td>
                     </tr>
                </table>
@@ -64,28 +47,26 @@
                      <tr>
                        <td style="text-align: right; margin-right: 5px; " class="auto-style7">ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน :&nbsp;</td>
                         <td style="text-align: left; " class="auto-styleพ">
-                            <asp:TextBox ID="txt5" runat="server" MaxLength="100" Width="720px"></asp:TextBox></td>
+                            <asp:TextBox ID="txtNameOfProject" runat="server" MaxLength="100" Width="720px"></asp:TextBox></td>
                       </tr>
                 </table>
+                <table>
+                     <tr>
+                       <td style="text-align: right; margin-right: 5px; " class="auto-style7">สถานที่ฝึกอบรม/สัมมนา/ดูงาน :&nbsp;</td>
+                        <td style="text-align: left; " class="auto-style">
+                            <asp:TextBox ID="txtPlace" runat="server" MaxLength="100" Width="720px"></asp:TextBox></td>
+                      </tr>
+                </table>       
                  <table>
                      <tr>
-                       <td style="text-align: right; margin-right: 5px; " class="auto-style7">ระยะเวลาการฝึกอบรม/สัมมนา/ดูงาน :&nbsp;</td>
-                        <td style="text-align: left; " class="auto-styleพ">
-                            <asp:TextBox ID="TextBox2" runat="server" MaxLength="100" Width="720px"></asp:TextBox></td>
+                       <td style="text-align: right; margin-right: 5px; " class="auto-style8">ระยะเวลาการฝึกอบรม/สัมมนา/ดูงาน&nbsp;&nbsp;&nbsp; </td>
+                        <td style="text-align: left; " class="auto-style5">
+                             ตั้งแต่วันที่
+                            <asp:TextBox ID="txtDateFrom" runat="server" CssClass="auto-style9"></asp:TextBox>
+                            ถึงวันที่
+                              <asp:TextBox ID="txtDateTO" runat="server"></asp:TextBox></td>
                       </tr>
                 </table>
-                 <table>
-                     <tr>
-                       <td style="text-align: right; margin-right: 5px; " class="auto-style8">ระยะเวลาการฝึกอบรม/สัมมนา/ดูงาน ตั้งแต่วันที่</td>
-                        <td style="text-align: left; " class="auto-styleพ">
-                            <asp:TextBox ID="TextBox3" runat="server" MaxLength="100" Width="200px"></asp:TextBox></td>
-                      </tr>
-                </table>
-
-
-
-
-
                    <table>
                        <tr>
                            <td>

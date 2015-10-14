@@ -6,6 +6,18 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" type="text/css" href="CSS/Master.css"/> 
+    <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
+    <link href="Content/themes/base/jquery.ui.theme.css" rel="stylesheet" />
+
+
+    
+    <script src="Script/jquery-1.7.1.min.js"></script>
+    <script src="Script/jquery-ui-1.8.20.min.js"></script>
+    <script src="Script/JSFunction.js"></script>
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
