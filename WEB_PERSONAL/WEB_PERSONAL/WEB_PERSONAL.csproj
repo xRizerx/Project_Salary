@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Image\bg.jpg" />
     <Content Include="Leave.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
@@ -80,8 +81,8 @@
   <ItemGroup>
     <Content Include="TitleName-ADMIN.aspx" />
     <Content Include="Salary.aspx" />
-    <Content Include="Seminar-INSERT.aspx" />
-    <Content Include="StyleSheet.css" />
+    <Content Include="Seminar.aspx" />
+    <Content Include="CSS\Master.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +132,7 @@
       <DependentUpon>Seminar-INSERT.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

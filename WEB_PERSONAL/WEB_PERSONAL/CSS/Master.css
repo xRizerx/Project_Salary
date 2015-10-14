@@ -3,6 +3,14 @@
 }
 html, body {
     height: 100%;
+    
+}
+
+body {
+    background-image: url("../Image/bg.jpg");
+    background-position: left center;
+    background-attachment: fixed;
+    background-size: 100% auto;
 }
 
 .wrapper {
@@ -12,10 +20,12 @@ html, body {
     margin: 0 auto -200px;
     width: 1024px;
     min-height: 100%;
+    background-color: rgba(255,255,255,0.8);
+    
 }
 
 .master_header {
-    background-color: #ffaf22;
+    background-color: #518fff;
     text-align: center;
     padding: 20px 0px;
 }
@@ -31,7 +41,8 @@ html, body {
 
 .master_nav {
 
-    background-color: #ffcb6e;
+    /*background-color: #6ea2ff;*/
+    background-color: rgba(255,255,255,0.5);
     padding: 20px;
     text-align: center;
 }
@@ -54,12 +65,13 @@ html, body {
     width: 60px;
     color: #ffffff;
     /*background-color: #c17f00;*/
-    background: linear-gradient(#ffa800,#e19303);
+    background: linear-gradient(#518fff,#5e97ff);
     border-radius: 24px;
 }
 
 .master_nav a:hover {
-    background: linear-gradient(#ffa800,#f1aa25);
+    /*background: linear-gradient(#ffa800,#f1aa25);*/
+    background: linear-gradient(#518fff,#a1c3ff);
     /*background-color: #ee9d00;*/
 }
 
@@ -87,7 +99,7 @@ html, body {
 
 
 .dpl {
-    background-color: #ffa200;
+    background-color: #2270ff;
 }
 
 .dpl2 {
