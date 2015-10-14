@@ -120,7 +120,7 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อย่อภาษาอังกฤษใช้แล้ว')", true);
             }
         } */
-        
+
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
@@ -172,6 +172,11 @@ namespace WEB_PERSONAL
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataSource = GetViewState();
             GridView1.DataBind();
+        }
+
+        protected void btnCancelPretitle_Click(object sender, EventArgs e)
+        {
+            ClearData();
         }
     }
 }

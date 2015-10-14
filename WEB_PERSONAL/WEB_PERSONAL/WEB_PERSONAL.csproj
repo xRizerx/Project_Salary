@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="333.png" />
     <Content Include="Default.aspx" />
+    <Content Include="Image\bg.jpg" />
     <Content Include="Leave.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
@@ -83,10 +84,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="pre-title-name.aspx" />
+    <Content Include="SEMINAR-GENERAL.aspx" />
+    <Content Include="TitleName-ADMIN.aspx" />
     <Content Include="Salary.aspx" />
-    <Content Include="Seminar.aspx" />
-    <Content Include="StyleSheet.css" />
+    <Content Include="CSS\Master.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -98,7 +99,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Enpretitlename.cs" />
+    <Compile Include="Entities\TitleName.cs" />
     <Compile Include="Leave.aspx.cs">
       <DependentUpon>Leave.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -113,12 +114,19 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="pre-title-name.aspx.cs">
-      <DependentUpon>pre-title-name.aspx</DependentUpon>
+    <Compile Include="SEMINAR-GENERAL.aspx.cs">
+      <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pre-title-name.aspx.designer.cs">
-      <DependentUpon>pre-title-name.aspx</DependentUpon>
+    <Compile Include="SEMINAR-GENERAL.aspx.designer.cs">
+      <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TitleName-ADMIN.aspx.cs">
+      <DependentUpon>TitleName-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TitleName-ADMIN.aspx.designer.cs">
+      <DependentUpon>TitleName-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salary.aspx.cs">
@@ -128,14 +136,8 @@
     <Compile Include="Salary.aspx.designer.cs">
       <DependentUpon>Salary.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seminar.aspx.cs">
-      <DependentUpon>Seminar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seminar.aspx.designer.cs">
-      <DependentUpon>Seminar.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -28,5 +28,10 @@ namespace WEB_PERSONAL
         {
             Response.Redirect("Leave.aspx");
         }
+
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Seminar.aspx");
+        }
     }
 }
