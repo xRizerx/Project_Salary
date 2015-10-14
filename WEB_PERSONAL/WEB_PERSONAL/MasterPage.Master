@@ -5,13 +5,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css"/> 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+        <div>
+            <asp:Panel ID="Panel2" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
+        </div>
         <div class="master_header">
+
+            
 
             <asp:Label ID="Label2" runat="server" Text="Header"></asp:Label>
 
@@ -42,7 +48,9 @@
         
         </asp:ContentPlaceHolder>
         <div class="master_footer">
-
+            <div>
+                <asp:Panel ID="Panel3" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
+            </div>
             <asp:Panel ID="Panel1" runat="server" Height="200px">
                 <asp:Label ID="Label1" runat="server" Text="Footer"></asp:Label>
             </asp:Panel>
