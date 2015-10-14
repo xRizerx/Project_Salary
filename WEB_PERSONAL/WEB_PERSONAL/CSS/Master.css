@@ -8,7 +8,6 @@ html, body {
 
 body {
     background-image: url("../Image/bg.jpg");
-    background-position: left center;
     background-attachment: fixed;
     background-size: 100% auto;
 }
@@ -25,6 +24,8 @@ body {
 }
 
 .master_header {
+    background-image: url("../Image/bg2.jpg");
+    background-size: 100% auto;
     background-color: #518fff;
     text-align: center;
     padding: 20px 0px;

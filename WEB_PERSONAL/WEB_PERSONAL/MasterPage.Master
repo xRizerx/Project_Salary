@@ -24,9 +24,7 @@
                 <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก" CssClass="master_header_label2"></asp:Label>
             </div>
         </div>
-        <div>
-            <asp:Panel ID="Panel5" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
-        </div>
+        
         <div class="master_nav">
 
             <ul>
