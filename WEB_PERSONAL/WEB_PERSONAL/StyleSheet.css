@@ -11,13 +11,7 @@ html, body {
     height: 100%;
     margin: 0 auto -200px;
     width: 1024px;
-    min-height: 768px;
-}
-
-.wrapper {
-    
-   
-    
+    min-height: 100%;
 }
 
 .master_header {
@@ -59,22 +53,45 @@ html, body {
     margin: 0 5px;
     width: 60px;
     color: #ffffff;
-    background-color: #ffe100;
+    /*background-color: #c17f00;*/
+    background: linear-gradient(#ffa800,#e19303);
     border-radius: 24px;
 }
 
 .master_nav a:hover {
-    background-color: #ebc700;
+    background: linear-gradient(#ffa800,#f1aa25);
+    /*background-color: #ee9d00;*/
 }
 
 .master_footer {
-    background: linear-gradient(#ffaf22, #ffc051);
+    /*background: linear-gradient(#ffaf22, #ffc051);*/
+    background-color: #eeeef1;
     text-align: center;
+}
+.master_footer_label {
+    font-size: 24px;
+    color: #404040;
+}
+.master_footer_label2 {
+    font-size: 20px;
+    color: #808080;
+}
+.master_footer_label3 {
+    font-size: 20px;
+    color: #808080;
+}
+.master_footer_label4 {
+    font-size: 20px;
+    color: #ff0000;
 }
 
 
 .dpl {
     background-color: #ffa200;
+}
+
+.dpl2 {
+    background-color: #e0e0e0;
 }
 
 
