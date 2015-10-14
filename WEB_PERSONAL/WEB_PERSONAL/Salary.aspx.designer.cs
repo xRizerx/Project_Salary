@@ -40,15 +40,6 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox28;
         
         /// <summary>
-        /// TextBox29 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox29;
-        
-        /// <summary>
         /// TextBox30 control.
         /// </summary>
         /// <remarks>
@@ -128,6 +119,15 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox21;
+        
+        /// <summary>
+        /// TextBox31 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox31;
         
         /// <summary>
         /// TextBox18 control.
