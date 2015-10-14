@@ -34,8 +34,22 @@
                 </li>
                 <li>
                     <asp:LinkButton ID="LinkButton3" runat="server">บุคลากร</asp:LinkButton>
+                </li>
+                <li>
                     <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">เงินเดือน</asp:LinkButton>
+                    <ul>
+                        <li>
+                            <asp:LinkButton ID="LinkButton7" runat="server" OnClick="LinkButton4_Click" CssClass="nav_a">DPIS</asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton8" runat="server" OnClick="LinkButton4_Click" CssClass="nav_a">การขึ้นเงินเดือนรายบุคคล</asp:LinkButton>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">การลา</asp:LinkButton>
+                </li>
+                <li>
                     <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">การสัมนา</asp:LinkButton>
                 </li>
                 <li>

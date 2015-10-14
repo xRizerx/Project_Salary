@@ -26,7 +26,7 @@ body {
 .master_header {
     background-image: url("../Image/bg2.jpg");
     background-size: 100% auto;
-    background-color: #518fff;
+    background-color: #000000;
     text-align: center;
     padding: 20px 0px;
 }
@@ -45,8 +45,9 @@ body {
     /*background-color: #6ea2ff;*/
     background-color: #000000;
     /*background-color: rgba(0,0,0,0.9);*/
-    padding: 20px;
+    padding: 5px 20px;
     text-align: center;
+    box-shadow: 0px 0px 32px rgba(0,0,0,0.5);
 }
 
 .master_nav ul {
@@ -62,23 +63,92 @@ body {
 .master_nav a {
     text-decoration: none;
     display: inline;
-    padding: 5px 20px;
-    margin: 0 5px;
+    padding: 10px 20px;
+    margin: 0;
     width: 60px;
-    color: #d0d0d0;
+    color: #c0c0c0;
     /*background-color: #c17f00;*/
     /*background: linear-gradient(#518fff,#5e97ff);*/
     background-color: #000000;
-    border-radius: 24px;
+    /*border-radius: 24px;*/
 }
 
 .master_nav a:hover {
     color: #ffffff;
-    background-color: #202020;
+    
     /*background: linear-gradient(#ffa800,#f1aa25);*/
     /*background: linear-gradient(#518fff,#a1c3ff);*/
     /*background-color: #ee9d00;*/
 }
+
+/*-START-A--------------------------------*/
+.master_nav ul ul {
+    display: none;
+}
+
+.master_nav ul li:hover > ul {
+	display: block;
+}
+.master_nav ul {
+	/*background: #efefef; 
+	background: linear-gradient(top, #efefef 0%, #bbbbbb 100%);  
+	background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%); 
+	background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 100%); */
+	
+	padding: 10px 20px;
+	/*border-radius: 10px;  */
+	list-style: none;
+	position: relative;
+	display: inline-table;
+}
+.master_nav ul:after {
+	content: "";
+    clear: both;
+    display: block;
+}
+.master_nav ul li {
+	float: left;
+}
+.master_nav ul li:hover .nav_a {
+	color: #c0c0c0;
+}
+
+.master_nav ul li .nav_a {
+	display: block;
+    padding: 1px 20px;
+	color: #000000;
+    text-decoration: none;
+}
+.master_nav ul ul {
+	background: #ffffff;
+    border-radius: 0px;
+    padding: 0;
+	position: absolute;
+    top: 100%;
+}
+.master_nav ul ul li {
+	float: none; 
+	border-top: 1px solid #6b727c;
+	border-bottom: 1px solid #575f6a;
+	position: relative;
+}
+.master_nav ul li ul li .nav_a {
+    width: 160px;
+}
+.master_nav ul ul li .nav_a {
+	padding: 10px 20px;
+	color: #fff;
+}	
+.master_nav ul ul li .nav_a:hover {
+    color: #ffffff;
+}
+.master_nav ul ul ul {
+	position: absolute;
+    left: 100%;
+    top:0;
+}
+
+/*-END-A------------------------------------*/
 
 .master_footer {
     /*background: linear-gradient(#ffaf22, #ffc051);*/

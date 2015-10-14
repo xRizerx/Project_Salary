@@ -59,6 +59,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
         .c1 {
+            font-family: ths;
             font-size: 32px;
             text-align: center;
             margin: 20px;
