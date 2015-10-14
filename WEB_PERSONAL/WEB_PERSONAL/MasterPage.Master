@@ -31,7 +31,10 @@
 
             <ul>
                 <li>
-                    <asp:LinkButton ID="LinkButton1" runat="server">การลา</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton5" runat="server" OnClick="LinkButton5_Click">หน้าหลัก</asp:LinkButton>
+                </li>
+                <li>
+                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">การลา</asp:LinkButton>
                 </li>
                 <li>
                     <asp:LinkButton ID="LinkButton2" runat="server">เครื่องราชอิสริยาภรณ์</asp:LinkButton>
@@ -40,7 +43,7 @@
                     <asp:LinkButton ID="LinkButton3" runat="server">บุคลากร</asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton ID="LinkButton4" runat="server">เงินเดือน</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">เงินเดือน</asp:LinkButton>
                 </li>
             </ul>
 

@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
     <Content Include="Leave.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
@@ -83,6 +84,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection\ConnectionDB.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Enpretitlename.cs" />
     <Compile Include="Leave.aspx.cs">
       <DependentUpon>Leave.aspx</DependentUpon>
