@@ -36,29 +36,25 @@
             width: 136px;
             text-align: center;
         }
-        .auto-style28 {
-            text-align: center;
-            width: 40px;
-        }
-        .auto-style30 {
-            text-align: center;
-        }
         .auto-style31 {
             width: 239px;
             text-align: center;
+        }
+        .auto-style32 {
+            text-align: center;
+            width: 128px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="Panel1" runat="server" Height="1000px" Width="2000px">
         Salary System<br />
-        <br />
+        &nbsp;GG<br />
         รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุคมศึกษา ครั้งที่ 1 วันที่ 1 เมษายน 2558 มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก<br />
-        <table style="width:100%;">
+        <table style="width:100%;" border="0">
             <tr>
-                <td class="auto-style28">ลำดับที่ </td>
+                <td class="auto-style32">ลำดับที่ </td>
                 <td class="auto-style31">หน่วยงาน </td>
-                <td class="auto-style17">จำนวนคน<br /> ณ 1 มี.ค. 58<br /> &nbsp;</td>
                 <td class="auto-style16">อัตรา<br /> เงินเดือนรวม<br /> ณ 1 มี.ค. 58</td>
                 <td class="auto-style18">วงเงิน 2.9 %<br /> ของเงินเดือนรวม<br /> &nbsp;</td>
                 <td class="auto-style20">เงินที่ใช้เลื่อน<br /> ณ 1 เม.ย. 58<br /> &nbsp;</td>
@@ -72,14 +68,11 @@
                 <td class="auto-style20">วงเงิน<br /> คงเหลือทั้งสิ้น<br /> &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style28">
+                <td class="auto-style32">
                     <asp:TextBox ID="TextBox27" runat="server" Width="30px"></asp:TextBox>
                 </td>
                 <td class="auto-style31">
                     <asp:TextBox ID="TextBox28" runat="server" Width="301px"></asp:TextBox>
-                </td>
-                <td class="auto-style17">
-                    <asp:TextBox ID="TextBox29" runat="server" Width="40px"></asp:TextBox>
                 </td>
                 <td class="auto-style16">
                     <asp:TextBox ID="TextBox30" runat="server" Width="100px"></asp:TextBox>
@@ -108,6 +101,21 @@
                 <td class="auto-style20">
                     <asp:TextBox ID="TextBox21" runat="server" Width="90px"></asp:TextBox>
                 </td>
+            </tr>
+            <tr>
+                <td class="auto-style32">จำนวนคน<br /> ณ 1 มี.ค. 58<br /> &nbsp;&nbsp;</td>
+                <td class="auto-style31">
+                    <asp:TextBox ID="TextBox31" runat="server" Width="40px"></asp:TextBox>
+                </td>
+                <td class="auto-style16">&nbsp;</td>
+                <td class="auto-style18">&nbsp;</td>
+                <td class="auto-style20">&nbsp;</td>
+                <td class="auto-style21">&nbsp;</td>
+                <td class="auto-style22">&nbsp;</td>
+                <td class="auto-style24">&nbsp;</td>
+                <td class="auto-style20">&nbsp;</td>
+                <td class="auto-style21">&nbsp;</td>
+                <td class="auto-style20">&nbsp;</td>
             </tr>
         </table>
         <table style="width:100%;">
