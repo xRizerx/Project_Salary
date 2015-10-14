@@ -31,7 +31,7 @@ namespace WEB_PERSONAL
 
         protected void LinkButton6_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Seminar.aspx");
+            
         }
     }
 }
