@@ -87,7 +87,7 @@
                             <asp:Label ID="lblTitleNameTh" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameTh" MaxLength="12" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtTitleNameTh" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
 
@@ -97,7 +97,7 @@
                             <asp:Label ID="lblTitleNameThMin" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH_MIN") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameThMin" MaxLength="12" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH_MIN") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtTitleNameThMin" MaxLength="8" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH_MIN") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
 
@@ -107,7 +107,7 @@
                             <asp:Label ID="lblTitleNameEn" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameEn" MaxLength="12" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtTitleNameEn" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
 
@@ -117,7 +117,7 @@
                             <asp:Label ID="lblTitleNameEnMin" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN_MIN") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameEnMin" MaxLength="30" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN_MIN") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtTitleNameEnMin" MaxLength="8" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN_MIN") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
 
