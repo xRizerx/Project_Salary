@@ -111,25 +111,25 @@
             height: 26px;
             width: 280px;
         }
-        .auto-style48 {
-            width: 280px;
-        }
-        .auto-style50 {
-            width: 244px;
-        }
         .auto-style51 {
             height: 26px;
-            width: 274px;
-        }
-        .auto-style52 {
             width: 274px;
         }
         .auto-style53 {
             height: 26px;
             width: 75px;
         }
-        .auto-style54 {
-            width: 75px;
+        .auto-style55 {
+            width: 129px;
+        }
+        .auto-style56 {
+            width: 123px;
+        }
+        .auto-style57 {
+            width: 121px;
+        }
+        .auto-style58 {
+            width: 120px;
         }
     </style>
 </asp:Content>
@@ -574,6 +574,29 @@
                     <asp:TextBox ID="TextBox31" runat="server" Enabled="False" Width="63px"></asp:TextBox>
                 </td>
                 <td class="auto-style46"></td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <table style="width:100%;">
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="auto-style55">
+                    <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="109px" />
+                </td>
+                <td class="auto-style56">
+                    <asp:Button ID="Button2" runat="server" Text="แก้ไข" Width="109px" />
+                </td>
+                <td class="auto-style57">
+                    <asp:Button ID="Button3" runat="server" Text="พิมพ์" Width="109px" />
+                </td>
+                <td class="auto-style58">
+                    <asp:Button ID="Button4" runat="server" Text="ยกเลิก" Width="109px" />
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
         </table>
     </asp:Panel>
