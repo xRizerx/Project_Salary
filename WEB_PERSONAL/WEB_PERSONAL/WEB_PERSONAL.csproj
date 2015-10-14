@@ -82,6 +82,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection\ConnectionDB.cs" />
+    <Compile Include="Entities\Enpretitlename.cs" />
     <Compile Include="Leave.aspx.cs">
       <DependentUpon>Leave.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
