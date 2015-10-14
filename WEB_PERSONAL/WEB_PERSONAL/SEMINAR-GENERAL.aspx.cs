@@ -1,4 +1,5 @@
-﻿using System;
+﻿using WEB_PERSONAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,18 @@ namespace WEB_PERSONAL
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        protected void btnSubmitCustomer_Click(object sender, EventArgs e)
+        {
+        }
+        protected void btnCancelCustomer_Click(object sender, EventArgs e)
+        {
+        }
+        protected void btnDateFrom_Click(object sender, EventArgs e)
+        {
+        }
+        protected void btnDateTO_Click(object sender, EventArgs e)
+        {
         }
     }
 }

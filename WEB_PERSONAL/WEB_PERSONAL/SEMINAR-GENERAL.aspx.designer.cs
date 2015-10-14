@@ -13,76 +13,85 @@ namespace WEB_PERSONAL {
     public partial class SEMINAR_GENERAL {
         
         /// <summary>
-        /// txt1 control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt1;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// txt2 control.
+        /// txtLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt2;
+        protected global::System.Web.UI.WebControls.TextBox txtLastName;
         
         /// <summary>
-        /// txt3 control.
+        /// txtPosition control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt3;
+        protected global::System.Web.UI.WebControls.TextBox txtPosition;
         
         /// <summary>
-        /// txt4 control.
+        /// txtDegree control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt4;
+        protected global::System.Web.UI.WebControls.TextBox txtDegree;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtCampus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtCampus;
         
         /// <summary>
-        /// txt5 control.
+        /// txtNameOfProject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt5;
+        protected global::System.Web.UI.WebControls.TextBox txtNameOfProject;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtPlace control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtPlace;
         
         /// <summary>
-        /// TextBox3 control.
+        /// txtDateFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtDateFrom;
+        
+        /// <summary>
+        /// txtDateTO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDateTO;
         
         /// <summary>
         /// btnSaveCustomer control.
