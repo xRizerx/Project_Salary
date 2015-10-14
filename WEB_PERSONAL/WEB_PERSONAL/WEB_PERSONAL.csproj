@@ -85,6 +85,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Script\jquery-1.7.1.min.js" />
+    <Content Include="Script\jquery-ui-1.8.20.min.js" />
+    <Content Include="Script\JSFunction.js" />
     <Content Include="SEMINAR-GENERAL.aspx" />
     <Content Include="TitleName-ADMIN.aspx" />
     <Content Include="Salary.aspx" />
