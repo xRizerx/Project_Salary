@@ -8,15 +8,30 @@
     <link rel="stylesheet" type="text/css" href="CSS/Master.css"/> 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            height: 28px;
+        }
+    </style>
 </head>
 <body>
+    <form id="form1" runat="server" onload="form1_Load">
+        <div>
+            <asp:Panel ID="Panel6" runat="server" Height="40px" CssClass="master_login">
+                <asp:LinkButton ID="LinkButton9" runat="server" CssClass="master_login_right" OnClick="LinkButton9_Click">เข้าสู่ระบบ</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton10" runat="server" CssClass="master_login_right" OnClick="LinkButton10_Click">ออกจากระบบ</asp:LinkButton>
+                <asp:Label ID="Label7" runat="server" CssClass="master_login_right" Text="Label"></asp:Label>
+            </asp:Panel>
+        </div>
+        
+        
+ 
     <div>
-        <asp:Panel ID="Panel2" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
+        <asp:Panel ID="Panel7" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
     </div>
     <div class="wrapper">
-        <form id="form1" runat="server">
-    <div>
         
+    <div>
         <div class="master_header">
             <div>
                 <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
@@ -34,12 +49,26 @@
                 </li>
                 <li>
                     <asp:LinkButton ID="LinkButton3" runat="server">บุคลากร</asp:LinkButton>
+                </li>
+                <li>
                     <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">เงินเดือน</asp:LinkButton>
+                    <ul>
+                        <li>
+                            <asp:LinkButton ID="LinkButton7" runat="server" OnClick="LinkButton4_Click" CssClass="nav_a">DPIS</asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton8" runat="server" OnClick="LinkButton4_Click" CssClass="nav_a">การขึ้นเงินเดือนรายบุคคล</asp:LinkButton>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">การลา</asp:LinkButton>
+                </li>
+                <li>
                     <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">การสัมนา</asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton ID="LinkButton2" runat="server">เครื่องราชอิสริยาภรณ์</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">เครื่องราชอิสริยาภรณ์</asp:LinkButton>
                 </li>
             </ul>
 
@@ -53,8 +82,8 @@
         </asp:ContentPlaceHolder>
         
     </div>
+        </div>
     </form>
-    </div>
     <footer>
         <div class="master_footer">
             <div>
@@ -72,6 +101,12 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>
+                                &nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
                                 <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="ออกแบบระบบโดยนักศึกษาสหกิจศึกษา ปีการศึกษา 2558"></asp:Label>
                             </td>
                             <td>&nbsp;</td>
@@ -84,18 +119,24 @@
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
-                            <td>
+                            <td class="auto-style1"></td>
+                            <td class="auto-style1">
                                 <asp:Label ID="Label4" runat="server" CssClass="master_footer_label3" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ"></asp:Label>
                             </td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style1"></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td>
+                                &nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style1"></td>
+                            <td class="auto-style1">
                                 <asp:Label ID="Label6" runat="server" CssClass="master_footer_label4" Text="เวอร์ชัน ทดสอบ"></asp:Label>
                             </td>
-                            <td>&nbsp;</td>
+                            <td class="auto-style1"></td>
                         </tr>
                     </table>
                 </div>
