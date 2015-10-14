@@ -10,7 +10,7 @@
                 beforeShow: function () {
                     $(".ui-datepicker").css('font-size', 14)
                 }
-            });
+            }); 
         });
     </script>
   
