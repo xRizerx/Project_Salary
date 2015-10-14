@@ -82,6 +82,12 @@
                     <td>
                         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                     </td>
+                    <td>
+                        <asp:Label ID="Label8" runat="server" Text="วันที่เอกสาร"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
@@ -89,10 +95,14 @@
                     <td class="auto-style22">&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style18">&nbsp;</td>
                     <td class="auto-style22">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
@@ -112,11 +122,9 @@
                 <td class="auto-style18">
                     &nbsp;</td>
                 <td class="auto-style7">
-                    <asp:Label ID="Label8" runat="server" Text="วันที่เอกสาร"></asp:Label>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style15">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>

@@ -38,10 +38,5 @@ namespace WEB_PERSONAL
             
         }
 
-        protected void Calendar2_SelectionChanged(object sender, EventArgs e)
-        {
-            Label22.Text = Calendar2.SelectedDate.ToShortDateString();
-            
-        }
     }
 }

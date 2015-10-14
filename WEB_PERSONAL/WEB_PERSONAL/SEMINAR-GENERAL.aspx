@@ -10,7 +10,7 @@
                 beforeShow: function () {
                     $(".ui-datepicker").css('font-size', 14)
                 }
-            });
+            }); 
         });
     </script>
   
@@ -34,7 +34,7 @@
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtDegree" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
                     </tr>
-                    </table>
+                    </table> 
                 <table>
                     <tr>
                        <td style="text-align: right; margin-right: 5px; " class="auto-style2">สังกัด :&nbsp;</td>
