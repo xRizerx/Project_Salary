@@ -26,8 +26,7 @@ namespace WEB_PERSONAL
                         {
                             DropDownList1.SelectedValue = reader.GetInt32(0).ToString();
                             TextBox3.Text = reader.GetString(1);
-                            TextBox11.Text = reader.GetString(2);
-                            TextBox12.Text = reader.GetString(3);
+                            TextBox11.Text = reader.GetString(2) + " " + reader.GetString(3);
                             TextBox10.Text = reader.GetString(4);
                             TextBox5.Text = reader.GetDateTime(5).ToString("dd/MM/yyyy");
                             TextBox6.Text = reader.GetDateTime(6).ToString("dd/MM/yyyy");
@@ -41,13 +40,14 @@ namespace WEB_PERSONAL
             {
                 con.Open();
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT TB_LEAVE.APPROVER_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_FNAME FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.APPROVER_ID = " + TextBox8.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.CITIZEN_ID", con))
+                    "SELECT TB_LEAVE.APPROVER_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, TB_LEAVE.APPROVE_DATE FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.PAPER_ID = " + TextBox1.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.APPROVER_ID", con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        TextBox8.Text = reader.GetString(0);
                         TextBox13.Text = reader.GetString(1) + " " + reader.GetString(2);
-                        
+                        TextBox9.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy");
                     }
                 }
             }

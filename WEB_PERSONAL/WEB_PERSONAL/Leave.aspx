@@ -60,6 +60,9 @@
         .auto-style35 {
             width: 110px;
         }
+        .auto-style36 {
+            width: 171px;
+        }
     </style>
     <asp:Panel ID="Panel2" runat="server" Height="751px">
         <div class="c1">
@@ -102,21 +105,19 @@
                     <td class="auto-style34">
                         <asp:Label ID="Label17" runat="server" Text="ชื่อ"></asp:Label>
                     </td>
-                    <td class="auto-style27">
+                    <td class="auto-style36">
                         <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
                     </td>
                     <td class="auto-style35">
-                        <asp:Label ID="Label18" runat="server" Text="นามสกุล"></asp:Label>
-                    </td>
+                        &nbsp;</td>
                     <td>
-                        <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
-                    </td>
+                        &nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style23">&nbsp;</td>
                     <td class="auto-style34">&nbsp;</td>
-                    <td class="auto-style27">&nbsp;</td>
+                    <td class="auto-style36">&nbsp;</td>
                     <td class="auto-style35">&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -124,7 +125,7 @@
                 <tr>
                     <td class="auto-style23">&nbsp;</td>
                     <td class="auto-style34">&nbsp;</td>
-                    <td class="auto-style27">&nbsp;</td>
+                    <td class="auto-style36">&nbsp;</td>
                     <td class="auto-style35">&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
