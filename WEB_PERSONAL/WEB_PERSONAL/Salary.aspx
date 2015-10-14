@@ -34,11 +34,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
         body {
-            background-image: url("333.png");
+            background-image: url("Image/333.png");
         }
         
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1024px" Width="1024px">
+    <asp:Panel ID="Panel1" runat="server" Height="1024px" Width="1024px" CssClass="body">
         Salary System<br />
         <br />
         รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุคมศึกษา ครั้งที่ 1 วันที่ 1 เมษายน 2558 มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก<br />
@@ -147,7 +147,8 @@
             <tr>
                 <td>&nbsp;</td>
                 <td>
-                    <asp:Button ID="Button4" runat="server" Text="คำนวณเงิน" />
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="Button4" runat="server" Text="คำนวณเงิน" OnClick="Button4_Click" />
                 </td>
             </tr>
         </table>

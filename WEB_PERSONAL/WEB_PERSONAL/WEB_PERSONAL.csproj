@@ -66,7 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="333.png" />
+    <Content Include="Image\333.png" />
     <Content Include="Default.aspx" />
     <Content Include="Image\bg.jpg" />
     <Content Include="Leave.aspx" />
