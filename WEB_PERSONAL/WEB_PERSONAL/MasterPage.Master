@@ -5,16 +5,73 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css"/> 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <div class="wrapper">
+        <form id="form1" runat="server">
     <div>
+        <div>
+            <asp:Panel ID="Panel2" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
+        </div>
+        <div class="master_header">
+
+            <div>
+                <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
+            </div>
+            <div>
+                <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก" CssClass="master_header_label2"></asp:Label>
+            </div>
+            
+
+        </div>
+        <div class="master_nav">
+
+            <ul>
+                <li>
+                    <asp:LinkButton ID="LinkButton1" runat="server">การลา</asp:LinkButton>
+                </li>
+                <li>
+                    <asp:LinkButton ID="LinkButton2" runat="server">เครื่องราชอิสริยาภรณ์</asp:LinkButton>
+                </li>
+                <li>
+                    <asp:LinkButton ID="LinkButton3" runat="server">บุคลากร</asp:LinkButton>
+                </li>
+                <li>
+                    <asp:LinkButton ID="LinkButton4" runat="server">เงินเดือน</asp:LinkButton>
+                </li>
+            </ul>
+
+            
+
+            
+
+        </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
+        
     </div>
     </form>
+    </div>
+    <footer>
+        <div class="master_footer">
+            <div>
+                <asp:Panel ID="Panel3" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
+            </div>
+            <div>
+
+                <asp:Panel ID="Panel4" runat="server" Height="20px">
+                </asp:Panel>
+
+            </div>
+            <asp:Panel ID="Panel1" runat="server" Height="200px">
+                <asp:Label ID="Label1" runat="server" Text="Footer"></asp:Label>
+            </asp:Panel>
+
+        </div>
+    </footer>
 </body>
 </html>
