@@ -175,23 +175,23 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
-        public bool CheckUseTitleName()
+        public bool CheckUseTitleNameTH()
         {
             bool result = true;
             SqlConnection conn = ConnectionDB.GetSqlConnection();
 
             // Create the command
-            SqlCommand command = new SqlCommand("SELECT count(TITLE_ID) FROM TB_TITLENAME WHERE TITLE_NAME_TH = @TITLE_NAME_TH ", conn);
+            SqlCommand command1 = new SqlCommand("SELECT count(TITLE_NAME_TH) FROM TB_TITLENAME WHERE TITLE_NAME_TH = @TITLE_NAME_TH ", conn);
 
             // Add the parameters.
-            command.Parameters.Add(new SqlParameter("TITLE_NAME_TH", TITLE_NAME_TH));
+            command1.Parameters.Add(new SqlParameter("TITLE_NAME_TH", TITLE_NAME_TH));
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                int count = (int)command.ExecuteScalar();
+                int count = (int)command1.ExecuteScalar();
                 if (count >= 1)
                 {
                     result = false;
@@ -204,10 +204,117 @@ namespace WEB_PERSONAL.Entities
             }
             finally
             {
-                command.Dispose();
+                command1.Dispose();
                 conn.Close();
             }
             return result;
         }
+
+/*
+        public bool CheckUseTitleNameTHmin()
+        {
+            bool result = true;
+            SqlConnection conn = ConnectionDB.GetSqlConnection();
+
+            // Create the command
+            SqlCommand command2 = new SqlCommand("SELECT count(TITLE_NAME_TH_MIN) FROM TB_TITLENAME WHERE TITLE_NAME_TH_MIN = @TITLE_NAME_TH_MIN ", conn);
+
+            // Add the parameters.
+            command2.Parameters.Add(new SqlParameter("TITLE_NAME_TH_MIN", TITLE_NAME_TH_MIN));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)command2.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command2.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+        public bool CheckUseTitleNameEN()
+        {
+            bool result = true;
+            SqlConnection conn = ConnectionDB.GetSqlConnection();
+
+            // Create the command
+            SqlCommand command3 = new SqlCommand("SELECT count(TITLE_NAME_EN) FROM TB_TITLENAME WHERE TITLE_NAME_EN = @TITLE_NAME_EN ", conn);
+
+            // Add the parameters.
+            command3.Parameters.Add(new SqlParameter("TITLE_NAME_EN", TITLE_NAME_EN));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)command3.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command3.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+        public bool CheckUseTitleNameENmin()
+        {
+            bool result = true;
+            SqlConnection conn = ConnectionDB.GetSqlConnection();
+
+            // Create the command
+            SqlCommand command4 = new SqlCommand("SELECT count(TITLE_NAME_EN_MIN) FROM TB_TITLENAME WHERE TITLE_NAME_EN_MIN = @TITLE_NAME_EN_MIN ", conn);
+
+            // Add the parameters.
+            command4.Parameters.Add(new SqlParameter("TITLE_NAME_EN_MIN", TITLE_NAME_EN_MIN));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)command4.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command4.Dispose();
+                conn.Close();
+            }
+            return result;
+        }  */
     }
 }
+ 

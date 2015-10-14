@@ -60,6 +60,21 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อภาษาไทย')", true);
                 return;
             }
+            if (string.IsNullOrEmpty(txtTitleNameThMin.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อย่อภาษาไทย')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtTitleNameEn.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อภาษาอังกฤษ')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtTitleNameEnMin.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อย่อภาษาอังกฤษ')", true);
+                return;
+            }
 
             TITLENAME ptn = new TITLENAME();
             ptn.TITLE_NAME_TH = txtTitleNameTh.Text;
@@ -68,17 +83,43 @@ namespace WEB_PERSONAL
             ptn.TITLE_NAME_EN_MIN = txtTitleNameEnMin.Text;
 
 
-            if (ptn.CheckUseTitleName())
+            if (ptn.CheckUseTitleNameTH())
             {
                 ptn.InsertTITLENAME();
-                ClearData();
                 BindData();
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('2222')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อภาษาไทยใช้แล้ว')", true);
             }
-        }
+        }/*   if (ptn.CheckUseTitleNameTHmin())
+            {
+                ptn.InsertTITLENAME();
+                BindData();
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อย่อภาษาไทยใช้แล้ว')", true);
+            }
+            if (ptn.CheckUseTitleNameEN())
+            {
+                ptn.InsertTITLENAME();
+                BindData();
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อภาษาอังกฤษใช้แล้ว')", true);
+            }
+            if (ptn.CheckUseTitleNameENmin())
+            {
+                ptn.InsertTITLENAME();
+                BindData();
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อย่อภาษาอังกฤษใช้แล้ว')", true);
+            }
+        } */
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
@@ -131,6 +172,11 @@ namespace WEB_PERSONAL
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataSource = GetViewState();
             GridView1.DataBind();
+        }
+
+        protected void btnCancelPretitle_Click(object sender, EventArgs e)
+        {
+            ClearData();
         }
     }
 }

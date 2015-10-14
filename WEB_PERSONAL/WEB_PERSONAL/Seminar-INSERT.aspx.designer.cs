@@ -10,5 +10,6 @@
 namespace WEB_PERSONAL {
     
     
-    
+    public partial class Seminar {
+    }
 }
