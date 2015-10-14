@@ -79,9 +79,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SEMINAR-GENERAL.aspx" />
     <Content Include="TitleName-ADMIN.aspx" />
     <Content Include="Salary.aspx" />
-    <Content Include="Seminar.aspx" />
     <Content Include="CSS\Master.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -109,6 +109,13 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="SEMINAR-GENERAL.aspx.cs">
+      <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SEMINAR-GENERAL.aspx.designer.cs">
+      <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TitleName-ADMIN.aspx.cs">
       <DependentUpon>TitleName-ADMIN.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -123,13 +130,6 @@
     </Compile>
     <Compile Include="Salary.aspx.designer.cs">
       <DependentUpon>Salary.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seminar-INSERT.aspx.cs">
-      <DependentUpon>Seminar-INSERT.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seminar-INSERT.aspx.designer.cs">
-      <DependentUpon>Seminar-INSERT.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
