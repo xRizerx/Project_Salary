@@ -179,20 +179,8 @@
         <table style="width:100%;">
             <tr>
                 <td>
-                    <asp:Calendar ID="Calendar2"
- runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" OnSelectionChanged="Calendar2_SelectionChanged" Width="200px">
-                        <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
-                        <NextPrevStyle VerticalAlign="Bottom" />
-                        <OtherMonthDayStyle ForeColor="#808080" />
-                        <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
-                        <SelectorStyle BackColor="#CCCCCC" />
-                        <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
-                        <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
-                        <WeekendDayStyle BackColor="#FFFFCC" />
-                    </asp:Calendar>
-                    <asp:Label ID="Label22" runat="server" Text="Label"></asp:Label>
-                </td>
-                <td>
+                    &nbsp;</td>
+                <td class="auto-style3">
                     &nbsp;&nbsp;&nbsp;
                     <asp:Button ID="Button4" runat="server" CssClass="textmode" Text="คำนวณเงิน" OnClick="Button4_Click" />
                 </td>
