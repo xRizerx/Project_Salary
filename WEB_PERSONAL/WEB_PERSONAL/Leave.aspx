@@ -7,22 +7,12 @@
         .auto-style2 {
             height: 29px;
         }
-        .auto-style3 {
-            width: 78%;
-        }
-        .auto-style5 {
-            height: 29px;
-            width: 174px;
-        }
         .auto-style7 {
             width: 147px;
         }
         .auto-style8 {
             height: 29px;
             width: 147px;
-        }
-        .auto-style10 {
-            width: 174px;
         }
         </style>
 </asp:Content>
@@ -32,8 +22,53 @@
             font-family: ths;
             font-size: 32px;
             text-align: center;
-            margin: 20px;
+            margin: 20px 0;
+            padding-bottom: 5px;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.25);
         }
+        .leave_button_div ul {
+             list-style-type: none;
+             margin: 0;
+             padding: 0;
+             margin-top: 8px;
+         }
+
+        .leave_button_div li {
+            display: inline;
+            /*555*/
+        }
+
+        .leave_button_div a {
+            text-decoration: none;
+            display: inline;
+            padding: 10px 20px;
+            margin: 0 5px;
+            width: 60px;
+            color: #404040;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+        }
+
+        .leave_button_div a:hover {
+            color: #000000;
+        }
+
+        .leave_paper_pull {
+           text-decoration: none;
+            display: inline;
+            padding: 3px 20px;
+            margin: 0 5px;
+            width: 60px;
+            color: #404040;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+        }
+
+        .leave_paper_pull:hover {
+             color: #000000;
+        }
+
         .auto-style22 {
             width: 145px;
         }
@@ -44,9 +79,6 @@
             height: 29px;
             width: 40px;
         }
-        .auto-style27 {
-            width: 200px;
-        }
         .auto-style31 {
             height: 29px;
             width: 121px;
@@ -54,14 +86,49 @@
         .auto-style32 {
             width: 121px;
         }
-        .auto-style34 {
-            width: 144px;
-        }
         .auto-style35 {
             width: 110px;
         }
-        .auto-style36 {
-            width: 171px;
+        .auto-style39 {
+            width: 176px;
+        }
+        .auto-style40 {
+            width: 175px;
+        }
+        .auto-style41 {
+            width: 57px;
+        }
+        .auto-style42 {
+            width: 40px;
+            height: 26px;
+        }
+        .auto-style43 {
+            width: 145px;
+            height: 26px;
+        }
+        .auto-style44 {
+            width: 175px;
+            height: 26px;
+        }
+        .auto-style45 {
+            width: 110px;
+            height: 26px;
+        }
+        .auto-style46 {
+            height: 26px;
+        }
+        .auto-style47 {
+            width: 19px;
+        }
+        .auto-style50 {
+            height: 29px;
+            width: 288px;
+        }
+        .auto-style51 {
+            width: 288px;
+        }
+        .auto-style52 {
+            width: 89px;
         }
     </style>
     <asp:Panel ID="Panel2" runat="server" Height="751px">
@@ -75,39 +142,45 @@
                     <td class="auto-style22">
                         <asp:Label ID="Label7" runat="server" Text="รหัสเอกสาร"></asp:Label>
                     </td>
-                    <td class="auto-style27">
+                    <td class="auto-style39">
                         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                     </td>
+                    <td class="auto-style52">
+                        <asp:LinkButton ID="LinkButton11" runat="server" OnClick="LinkButton11_Click" CssClass="leave_paper_pull">ดึง</asp:LinkButton>
+                    </td>
                     <td class="auto-style35">
-                        <asp:Label ID="Label8" runat="server" Text="วันที่เอกสาร"></asp:Label>
+                        <asp:Label ID="Label9" runat="server" Text="รหัสพนักงาน"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style47">&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style23">&nbsp;</td>
                     <td class="auto-style22">
-                        <asp:Label ID="Label9" runat="server" Text="รหัสพนักงาน"></asp:Label>
+                        <asp:Label ID="Label8" runat="server" Text="วันที่เอกสาร"></asp:Label>
                     </td>
-                    <td class="auto-style27">
-                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                    <td class="auto-style39">
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                     </td>
-                    <td class="auto-style35">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style52">&nbsp;</td>
+                    <td class="auto-style35">
+                        <asp:Label ID="Label17" runat="server" Text="ชื่อ"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style47">&nbsp;</td>
                 </tr>
             </table>
         <table style="width:100%;">
                 <tr>
                     <td class="auto-style23">&nbsp;</td>
-                    <td class="auto-style34">
-                        <asp:Label ID="Label17" runat="server" Text="ชื่อ"></asp:Label>
-                    </td>
-                    <td class="auto-style36">
-                        <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
-                    </td>
+                    <td class="auto-style22">
+                        &nbsp;</td>
+                    <td class="auto-style40">
+                        &nbsp;</td>
                     <td class="auto-style35">
                         &nbsp;</td>
                     <td>
@@ -116,29 +189,29 @@
                 </tr>
                 <tr>
                     <td class="auto-style23">&nbsp;</td>
-                    <td class="auto-style34">&nbsp;</td>
-                    <td class="auto-style36">&nbsp;</td>
+                    <td class="auto-style22">&nbsp;</td>
+                    <td class="auto-style40">&nbsp;</td>
                     <td class="auto-style35">&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style23">&nbsp;</td>
-                    <td class="auto-style34">&nbsp;</td>
-                    <td class="auto-style36">&nbsp;</td>
-                    <td class="auto-style35">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style42"></td>
+                    <td class="auto-style43"></td>
+                    <td class="auto-style44"></td>
+                    <td class="auto-style45"></td>
+                    <td class="auto-style46"></td>
+                    <td class="auto-style46"></td>
                 </tr>
             </table>
-        <table class="auto-style3">
+        <table class="ui-accordion">
             <tr>
                 <td class="auto-style24">
                     &nbsp;</td>
                 <td class="auto-style8">
                     <asp:Label ID="Label10" runat="server" Text="ประเภทการลา"></asp:Label>
                 </td>
-                <td class="auto-style5">
+                <td class="auto-style50">
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT [LEAVE_TYPE_ID], [LEAVE_TYPE_NAME] FROM [TB_LEAVE_TYPE]"></asp:SqlDataSource>
@@ -159,7 +232,7 @@
                 <td class="auto-style8">
                     <asp:Label ID="Label11" runat="server" Text="จากวันที่"></asp:Label>
                 </td>
-                <td class="auto-style5">
+                <td class="auto-style50">
                     <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style31">
@@ -176,7 +249,7 @@
                 <td class="auto-style7">
                     <asp:Label ID="Label12" runat="server" Text="ถึงวันที่"></asp:Label>
                 </td>
-                <td class="auto-style10">
+                <td class="auto-style51">
                     <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style32">
@@ -192,7 +265,7 @@
                     &nbsp;</td>
                 <td class="auto-style7">
                     &nbsp;</td>
-                <td class="auto-style10">
+                <td class="auto-style51">
                     &nbsp;</td>
                 <td class="auto-style32">
                     <asp:Label ID="Label15" runat="server" Text="วันที่อนุมัติ"></asp:Label>
@@ -207,7 +280,7 @@
                     &nbsp;</td>
                 <td class="auto-style7">
                     &nbsp;</td>
-                <td class="auto-style10">
+                <td class="auto-style51">
                     &nbsp;</td>
                 <td class="auto-style32">&nbsp;</td>
                 <td>&nbsp;</td>
@@ -227,7 +300,9 @@
             </tr>
             <tr>
                 <td class="auto-style23">&nbsp;</td>
-                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style7">
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -235,16 +310,24 @@
                 <td class="auto-style23">&nbsp;</td>
                 <td class="auto-style7">&nbsp;</td>
                 <td>
-                    <asp:LinkButton ID="LinkButton11" runat="server" OnClick="LinkButton11_Click">ดึง</asp:LinkButton>
+                    <div class="leave_button_div">
+                        <ul>
+                        <li>
+                            <asp:LinkButton ID="LinkButton12" runat="server" CssClass="leave_button" OnClick="LinkButton12_Click">เพิ่ม</asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton13" runat="server" OnClick="LinkButton13_Click">บันทึก</asp:LinkButton>
+                        </li>
+                    </ul>
+                    </div>
+                    
+                    
+                    
                 </td>
                 <td>&nbsp;</td>
             </tr>
         </table>
         <div>
-
-            
-
-            <asp:Button ID="Button1" runat="server" Text="บันทึก" />
 
             
 
