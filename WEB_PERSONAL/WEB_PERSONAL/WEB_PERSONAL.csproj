@@ -48,6 +48,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -109,6 +110,7 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Default.aspx" />
+    <Content Include="Image\333.jpg" />
     <Content Include="Image\bg2.jpg" />
     <Content Include="Image\bg3.jpg" />
     <Content Include="insignia_form.aspx" />
