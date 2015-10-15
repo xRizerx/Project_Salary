@@ -19,7 +19,7 @@ namespace WEB_PERSONAL {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel8;
+        //protected global::System.Web.UI.WebControls.Panel Panel8;
         
         /// <summary>
         /// Button1 control.
@@ -28,7 +28,7 @@ namespace WEB_PERSONAL {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        //protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
         /// Button2 control.
@@ -37,6 +37,6 @@ namespace WEB_PERSONAL {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        //protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

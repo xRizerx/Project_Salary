@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="CSS/Master.css"/> 
+    <link rel="stylesheet" type="text/css" href="CSS/Master.css" />
     <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
     <link href="Content/themes/base/jquery.ui.theme.css" rel="stylesheet" />
 
 
-    
+
     <script src="Script/jquery-1.7.1.min.js"></script>
     <script src="Script/jquery-ui-1.8.20.min.js"></script>
     <script src="Script/JSFunction.js"></script>
@@ -28,11 +28,14 @@
 </head>
 <body>
     <form id="form1" runat="server" onload="form1_Load">
-        <div>
-            <asp:Panel ID="Panel6" runat="server" Height="40px" CssClass="master_login">
+        <div class="master_login">
+            <asp:Panel ID="Panel6" runat="server" Height="40px">
                 <ul class="master_login_right">
                     <li>
                         <asp:Label ID="Label7" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
+                    </li>
+                    <li>
+                        <asp:Label ID="Label8" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
                     </li>
                     <li>
                         <asp:LinkButton ID="LinkButton9" runat="server" OnClick="LinkButton9_Click">เข้าสู่ระบบ</asp:LinkButton>
@@ -40,22 +43,14 @@
                     <li>
                         <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click">ออกจากระบบ</asp:LinkButton>
                     </li>
-                    
+
                 </ul>
-                
-                
-                
+
+
+
             </asp:Panel>
         </div>
-        
-        
- 
-    <div>
-        <asp:Panel ID="Panel7" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
-    </div>
-    <div class="wrapper">
-        
-    <div>
+
         <div class="master_header">
             <div>
                 <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
@@ -64,7 +59,7 @@
                 <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก" CssClass="master_header_label2"></asp:Label>
             </div>
         </div>
-        
+
         <div class="master_nav">
 
             <ul>
@@ -78,10 +73,10 @@
                     <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">เงินเดือน</asp:LinkButton>
                     <ul>
                         <li>
-                            <asp:LinkButton ID="LinkButton7" runat="server" OnClick="LinkButton4_Click" CssClass="nav_a">DPIS</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton7" runat="server" CssClass="nav_a" OnClick="LinkButton7_Click">DPIS</asp:LinkButton>
                         </li>
                         <li>
-                            <asp:LinkButton ID="LinkButton8" runat="server" OnClick="LinkButton4_Click" CssClass="nav_a">การขึ้นเงินเดือนรายบุคคล</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton8" runat="server" CssClass="nav_a" OnClick="LinkButton8_Click">การขึ้นเงินเดือนรายบุคคล</asp:LinkButton>
                         </li>
                     </ul>
                 </li>
@@ -96,36 +91,44 @@
                 </li>
             </ul>
 
-            
 
-            
+
+
 
         </div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-        
-    </div>
+
+        <div>
+            <asp:Panel ID="Panel7" runat="server" CssClass="dpl_green" Height="3px"></asp:Panel>
+        </div>
+        <div class="wrapper">
+
+            <div>
+
+
+
+
+                <div class="master_content_place_holder">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+
+
+            </div>
         </div>
     </form>
     <footer>
+        <div>
+            <asp:Panel ID="Panel3" runat="server" CssClass="dpl3" Height="3px"></asp:Panel>
+        </div>
         <div class="master_footer">
-            <div>
-                <asp:Panel ID="Panel3" runat="server" CssClass="dpl2" Height="3px"></asp:Panel>
-            </div>
-            <div>
 
-                <asp:Panel ID="Panel4" runat="server" Height="20px">
-                </asp:Panel>
 
-            </div>
             <asp:Panel ID="Panel1" runat="server" Height="200px">
                 <div>
-                    <table style="width:100%;">
+                    <table style="width: 100%;">
                         <tr>
                             <td>&nbsp;</td>
-                            <td>
-                                &nbsp;</td>
+                            <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
@@ -151,8 +154,7 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>
-                                &nbsp;</td>
+                            <td>&nbsp;</td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
@@ -164,13 +166,11 @@
                         </tr>
                     </table>
                 </div>
-            
+
             </asp:Panel>
 
         </div>
-        <div>
-            <asp:Panel ID="Panel5" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
-        </div>
+
     </footer>
 </body>
 </html>
