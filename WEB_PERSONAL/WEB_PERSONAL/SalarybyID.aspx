@@ -318,7 +318,7 @@
                     <asp:Button ID="Button2" runat="server" Text="คำนวณเงินเดือน" OnClick="Button2_Click" />
                 </td>
                 <td class="auto-style8">
-                    <asp:Button ID="Button3" runat="server" Text="บันทึก" />
+                    <asp:Button ID="Button3" runat="server" Text="บันทึก" OnClick="Button3_Click" />
                 </td>
                 <td>
                     <asp:Button ID="Button4" runat="server" Text="แก้ไขข้อมูล" />
