@@ -9,6 +9,8 @@ namespace WEB_PERSONAL
 {
     public partial class insignia_main : System.Web.UI.Page
     {
+        private object c;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,12 +18,13 @@ namespace WEB_PERSONAL
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("insignia_main.aspx");
+            Response.Redirect("insignia_citizen.aspx");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("insignia1.aspx");
+
+            Response.Redirect("insignia_user.aspx");
         }
     }
 }

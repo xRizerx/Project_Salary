@@ -108,7 +108,7 @@
                     <asp:Label ID="Label7" runat="server" Text="วงเงิน 2.9 % ของเงินเดือนรวม" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
-                    <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label15" runat="server" Text="-"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -124,7 +124,7 @@
                     <asp:Label ID="Label9" runat="server" Text="วงเงินที่เหลือ" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
-                    <asp:Label ID="Label17" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label17" runat="server" Text="-"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -132,7 +132,7 @@
                     <asp:Label ID="Label10" runat="server" Text="วงเงิน 0.1 % ของเงินเดือนรวม ณ 1 มี.ค. 58" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
-                    <asp:Label ID="Label16" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label16" runat="server" Text="-"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -148,7 +148,7 @@
                     <asp:Label ID="Label12" runat="server" Text="วงเงินที่ใช้เลื่อนทั้งสิ้น (3%)" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
-                    <asp:Label ID="Label18" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label18" runat="server" Text="-"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -156,7 +156,7 @@
                     <asp:Label ID="Label13" runat="server" Text="เงินที่ใช้เลื่อน ณ 1 เม.ย. 58&nbsp;ทั้งสิ้น" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
-                    <asp:Label ID="Label19" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label19" runat="server" Text="-"></asp:Label>
                 </td>
             </tr>
             <tr>
@@ -164,7 +164,7 @@
                     <asp:Label ID="Label14" runat="server" Text="วงเงินคงเหลือทั้งสิ้น" CssClass="textmode"></asp:Label>
                 </td>
                 <td class="auto-style31">
-                    <asp:Label ID="Label20" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="Label20" runat="server" Text="-"></asp:Label>
                 </td>
             </tr>
         </table>

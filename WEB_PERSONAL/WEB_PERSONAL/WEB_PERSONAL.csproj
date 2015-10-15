@@ -112,8 +112,9 @@
     <Content Include="Default.aspx" />
     <Content Include="Image\bg2.jpg" />
     <Content Include="Image\bg3.jpg" />
-    <Content Include="insignia1.aspx" />
-    <Content Include="insignia_main.aspx" />
+    <Content Include="insignia_form.aspx" />
+    <Content Include="insignia_citizen.aspx" />
+    <Content Include="insignia_user.aspx" />
     <Content Include="Leave.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
@@ -151,19 +152,26 @@
     </Compile>
     <Compile Include="Entities\Seminar.cs" />
     <Compile Include="Entities\TitleName.cs" />
-    <Compile Include="insignia1.aspx.cs">
-      <DependentUpon>insignia1.aspx</DependentUpon>
+    <Compile Include="insignia_form.aspx.cs">
+      <DependentUpon>insignia_form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="insignia1.aspx.designer.cs">
-      <DependentUpon>insignia1.aspx</DependentUpon>
+    <Compile Include="insignia_form.aspx.designer.cs">
+      <DependentUpon>insignia_form.aspx</DependentUpon>
     </Compile>
-    <Compile Include="insignia_main.aspx.cs">
-      <DependentUpon>insignia_main.aspx</DependentUpon>
+    <Compile Include="insignia_citizen.aspx.cs">
+      <DependentUpon>insignia_citizen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="insignia_main.aspx.designer.cs">
-      <DependentUpon>insignia_main.aspx</DependentUpon>
+    <Compile Include="insignia_citizen.aspx.designer.cs">
+      <DependentUpon>insignia_citizen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_user.aspx.cs">
+      <DependentUpon>insignia_user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_user.aspx.designer.cs">
+      <DependentUpon>insignia_user.aspx</DependentUpon>
     </Compile>
     <Compile Include="Leave.aspx.cs">
       <DependentUpon>Leave.aspx</DependentUpon>
