@@ -11,6 +11,7 @@ body {
     background-image: url("../Image/bg3.jpg");
     background-attachment: fixed;
     /*background-size: 100% auto;*/
+
 }
 
 form {
@@ -20,10 +21,9 @@ form {
     height: auto !important;
     height: 100%;
     /*margin: 0 auto -200px;*/
-    margin: 0 auto -120px;
+    margin: 0 auto -115px;
     width: 1024px;
     min-height: 100%;
-
     padding-bottom: 10px;
 }
 
@@ -31,6 +31,7 @@ form {
     background-color: rgba(255,255,255,0.9);
     margin: 232px 0;
     margin-top: 32px;
+    min-height: 50vh;
 }
 
 .master_login {
@@ -164,7 +165,7 @@ form {
 	background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%); 
 	background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 100%); */
 	
-	padding: 10px 20px;
+	padding: 5px 20px;
 	/*border-radius: 10px;  */
 	list-style: none;
 	position: relative;
