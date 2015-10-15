@@ -115,7 +115,6 @@
 
             </div>
         </div>
-    </form>
     <footer>
         <div>
             <asp:Panel ID="Panel3" runat="server" CssClass="dpl3" Height="3px"></asp:Panel>
@@ -123,14 +122,9 @@
         <div class="master_footer">
 
 
-            <asp:Panel ID="Panel1" runat="server" Height="200px">
+            <asp:Panel ID="Panel1" runat="server" Height="120px">
                 <div>
                     <table style="width: 100%;">
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
                         <tr>
                             <td>&nbsp;</td>
                             <td>
@@ -141,26 +135,14 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>
-                                <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ สาขาวิทยาการคอมพิวเตอร์"></asp:Label>
+                                <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ สาขาวิทยาการคอมพิวเตอร์<br>มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ"></asp:Label>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style1"></td>
                             <td class="auto-style1">
-                                <asp:Label ID="Label4" runat="server" CssClass="master_footer_label3" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ"></asp:Label>
-                            </td>
-                            <td class="auto-style1"></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style1"></td>
-                            <td class="auto-style1">
-                                <asp:Label ID="Label6" runat="server" CssClass="master_footer_label4" Text="เวอร์ชัน ทดสอบ"></asp:Label>
+                                <asp:Label ID="Label6" runat="server" CssClass="master_footer_label4" Text="เวอร์ชั่น ทดสอบ"></asp:Label>
                             </td>
                             <td class="auto-style1"></td>
                         </tr>
@@ -172,5 +154,6 @@
         </div>
 
     </footer>
-</body>
+    </form>
+    </body>
 </html>
