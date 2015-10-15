@@ -17,8 +17,16 @@
         .multext{
             resize:none;
         }
+         .a1{
+            border-radius:20px;
+            padding:5px 10px;
+            background-color:#00ff21;
+            text-decoration:none;
+            color:black;
+            text-align:center;
+        }
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1700px">
+    <asp:Panel ID="Panel1" runat="server" Height="1500px">
    <div>
         <fieldset>
             <legend>Insert</legend>
@@ -233,7 +241,8 @@
                        <tr>
                            
                             <td style="text-align: left; width: 50px;"> 
-                            <asp:Button ID="btnCancel" Text="Cancel" runat="server" OnClick="btnCancelCustomer_Click" Width="140px"/></td>
+                                <asp:LinkButton ID="btnCancel1" runat="server" OnClick="btnCancelCustomer_Click" Width="140px" CssClass="a1" >Cancel</asp:LinkButton>
+                            <asp:Button ID="btnCancel" Text="Cancel" runat="server" OnClick="btnCancelCustomer_Click" Width="140px" /></td>
                             <td style="text-align: left; width: 50px;"> </td> 
                             <td style="text-align: right; margin-right: 5px; ">  
                           
