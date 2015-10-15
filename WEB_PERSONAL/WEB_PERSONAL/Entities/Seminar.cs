@@ -18,6 +18,7 @@ namespace WEB_PERSONAL.Entities
         public string SEMINAR_DEGREE { get; set; }
         public string SEMINAR_CAMPUS { get; set; }
         public string SEMINAR_NAMEOFPROJECT { get; set; }
+        public string SEMINAR_PLACE { get; set; }
         public DateTime SEMINAR_DATE_FROM { get; set; }
         public DateTime SEMINAR_DATE_TO { get; set; }
         public int SEMINAR_DAY { get; set; }
@@ -38,7 +39,7 @@ namespace WEB_PERSONAL.Entities
 
         public Seminar() { }
         public Seminar(int SEMINAR_ID, string SEMINAR_NAME, string SEMINAR_LASTNAME, string SEMINAR_POSITION, string SEMINAR_DEGREE, string SEMINAR_CAMPUS, string SEMINAR_NAMEOFPROJECT,
-        DateTime SEMINAR_DATE_FROM, DateTime SEMINAR_DATE_TO, int SEMINAR_DAY, int SEMINAR_MONTH, int SEMINAR_YEAR, int SEMINAR_BUDGET, string SEMINAR_SUPPORT_BUDGET,
+        string SEMINAR_PLACE, DateTime SEMINAR_DATE_FROM, DateTime SEMINAR_DATE_TO, int SEMINAR_DAY, int SEMINAR_MONTH, int SEMINAR_YEAR, int SEMINAR_BUDGET, string SEMINAR_SUPPORT_BUDGET,
         string SEMINAR_CERTIFICATE, string SEMINAR_ABSTRACT, string SEMINAR_RESULT, string SEMINAR_SHOW_1, string SEMINAR_SHOW_2, string SEMINAR_SHOW_3, string SEMINAR_SHOW_4, string SEMINAR_SHOW_PROBLEM,
         string SEMINAR_SHOW_COMMENT, DateTime SEMINAR_SIGNED_DATE)
         {
@@ -49,6 +50,7 @@ namespace WEB_PERSONAL.Entities
             this.SEMINAR_DEGREE = SEMINAR_DEGREE;
             this.SEMINAR_CAMPUS = SEMINAR_CAMPUS;
             this.SEMINAR_NAMEOFPROJECT = SEMINAR_NAMEOFPROJECT;
+            this.SEMINAR_PLACE = SEMINAR_PLACE;
             this.SEMINAR_DATE_FROM = SEMINAR_DATE_FROM;
             this.SEMINAR_DATE_TO = SEMINAR_DATE_TO;
             this.SEMINAR_DAY = SEMINAR_DAY;
@@ -86,6 +88,7 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("SEMINAR_DEGREE ", SEMINAR_DEGREE));
                 command.Parameters.Add(new SqlParameter("SEMINAR_CAMPUS ", SEMINAR_CAMPUS));
                 command.Parameters.Add(new SqlParameter("SEMINAR_NAMEOFPROJECT ", SEMINAR_NAMEOFPROJECT));
+                command.Parameters.Add(new SqlParameter("SEMINAR_PLACE ", SEMINAR_PLACE));
                 command.Parameters.Add(new SqlParameter("SEMINAR_DATE_FROM ", SEMINAR_DATE_FROM));
                 command.Parameters.Add(new SqlParameter("SEMINAR_DATE_TO  ", SEMINAR_DATE_TO));
                 command.Parameters.Add(new SqlParameter("SEMINAR_DAY  ", SEMINAR_DAY));
@@ -127,6 +130,7 @@ namespace WEB_PERSONAL.Entities
             query += " SEMINAR_DEGREE = @SEMINAR_DEGREE ,";
             query += " SEMINAR_CAMPUS = @SEMINAR_CAMPUS ,";
             query += " SEMINAR_NAMEOFPROJECT = @SEMINAR_NAMEOFPROJECT ,";
+            query += " SEMINAR_PLACE = @SEMINAR_PLACE ,";
             query += " SEMINAR_DATE_FROM = @SEMINAR_DATE_FROM ,";
             query += " SEMINAR_DATE_TO = @SEMINAR_DATE_TO ,";
             query += " SEMINAR_DAY = @SEMINAR_DAY ,";
@@ -158,6 +162,7 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("SEMINAR_DEGREE", SEMINAR_DEGREE));
                 command.Parameters.Add(new SqlParameter("SEMINAR_CAMPUS", SEMINAR_CAMPUS));
                 command.Parameters.Add(new SqlParameter("SEMINAR_NAMEOFPROJECT", SEMINAR_NAMEOFPROJECT));
+                command.Parameters.Add(new SqlParameter("SEMINAR_PLACE", SEMINAR_PLACE));
                 command.Parameters.Add(new SqlParameter("SEMINAR_DATE_FROM", SEMINAR_DATE_FROM));
                 command.Parameters.Add(new SqlParameter("SEMINAR_DATE_TO", SEMINAR_DATE_TO));
                 command.Parameters.Add(new SqlParameter("SEMINAR_DAY", SEMINAR_DAY));
