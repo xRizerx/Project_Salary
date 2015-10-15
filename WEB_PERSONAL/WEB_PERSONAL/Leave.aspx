@@ -22,10 +22,11 @@
             font-family: ths;
             font-size: 32px;
             text-align: center;
-            margin: 20px 0;
+            margin: 0;
+            margin-bottom: 10px;
             padding-bottom: 5px;
             color: #ffffff;
-            background-color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(0, 0, 0, 0.9);
         }
         .leave_button_div ul {
              list-style-type: none;

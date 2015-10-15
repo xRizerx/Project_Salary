@@ -130,6 +130,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label19;
         
         /// <summary>
+        /// Label55 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label55;
+        
+        /// <summary>
         /// Label20 control.
         /// </summary>
         /// <remarks>
@@ -328,6 +337,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox5;
         
         /// <summary>
+        /// Label56 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label56;
+        
+        /// <summary>
         /// Label38 control.
         /// </summary>
         /// <remarks>
@@ -373,13 +391,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label40;
         
         /// <summary>
-        /// TextBox8 control.
+        /// Label58 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.Label Label58;
+        
+        /// <summary>
+        /// Label57 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label57;
         
         /// <summary>
         /// Label41 control.
