@@ -51,24 +51,16 @@
             </asp:Panel>
         </div>
 
-
-
-        <div>
-            <asp:Panel ID="Panel7" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
-        </div>
-        <div class="wrapper">
-
+        <div class="master_header">
             <div>
-                <div class="master_header">
-                    <div>
-                        <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
-                    </div>
-                    <div>
-                        <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก" CssClass="master_header_label2"></asp:Label>
-                    </div>
-                </div>
+                <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
+            </div>
+            <div>
+                <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก" CssClass="master_header_label2"></asp:Label>
+            </div>
+        </div>
 
-                <div class="master_nav">
+        <div class="master_nav">
 
                     <ul>
                         <li>
@@ -105,22 +97,32 @@
 
                 </div>
 
+        <div>
+            <asp:Panel ID="Panel7" runat="server" CssClass="dpl" Height="3px"></asp:Panel>
+        </div>
+        <div class="wrapper">
+
+            <div>
+
+
+                
+
                 <div class="master_content_place_holder">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
-                
+
 
             </div>
         </div>
     </form>
     <footer>
         <div>
-                <asp:Panel ID="Panel3" runat="server" CssClass="dpl3" Height="3px"></asp:Panel>
-            </div>
+            <asp:Panel ID="Panel3" runat="server" CssClass="dpl3" Height="3px"></asp:Panel>
+        </div>
         <div class="master_footer">
-            
- 
+
+
             <asp:Panel ID="Panel1" runat="server" Height="200px">
                 <div>
                     <table style="width: 100%;">
@@ -168,7 +170,7 @@
             </asp:Panel>
 
         </div>
-        
+
     </footer>
 </body>
 </html>
