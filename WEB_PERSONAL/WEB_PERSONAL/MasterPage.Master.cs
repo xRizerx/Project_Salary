@@ -36,7 +36,7 @@ namespace WEB_PERSONAL
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("insignia1.aspx");
+            Response.Redirect("insignia_main.aspx");
         }
 
         protected void LinkButton9_Click(object sender, EventArgs e)
