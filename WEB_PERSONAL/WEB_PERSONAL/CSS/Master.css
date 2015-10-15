@@ -20,7 +20,7 @@ form {
     height: auto !important;
     height: 100%;
     /*margin: 0 auto -200px;*/
-    margin: 0 auto -200px;
+    margin: 0 auto -120px;
     width: 1024px;
     min-height: 100%;
 
@@ -227,23 +227,31 @@ form {
     box-shadow: 0px -4px 16px rgba(0,0,0,0.5);
     padding: 20px;
 
+    background-image: url("../Image/bg4.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    /*background-size: 100% auto;*/
     
 }
 .master_footer_label {
-    font-size: 24px;
-    color: #404040;
+    font-size: 18px;
+    color: #c0c0c0;
+    text-shadow: 1px 1px 1px #000000;
 }
 .master_footer_label2 {
-    font-size: 20px;
+    font-size: 14px;
     color: #808080;
+    text-shadow: 1px 1px 1px #000000;
 }
 .master_footer_label3 {
-    font-size: 20px;
+    font-size: 14px;
     color: #808080;
+    text-shadow: 1px 1px 1px #000000;
 }
 .master_footer_label4 {
-    font-size: 20px;
+    font-size: 14px;
     color: #ff0000;
+    text-shadow: 1px 1px 1px #000000;
 }
 
 
@@ -262,5 +270,5 @@ form {
 
 
 .footer, .push {
-    height: 200px; /* .push must be the same height as .footer */
+    height: 150px; /* .push must be the same height as .footer */
 }

@@ -47,10 +47,10 @@
             border-radius: 20px;
         }
 
-            .leave_button_div a:hover {
-                color: #000000;
-                background-color: #c0c0c0;
-            }
+        .leave_button_div a:hover {
+            color: #000000;
+            background-color: #c0c0c0;
+        }
 
         .leave_paper_pull {
             text-decoration: none;
@@ -63,10 +63,10 @@
             border-radius: 24px;
         }
 
-            .leave_paper_pull:hover {
-                color: #000000;
-                background-color: #c0c0c0;
-            }
+        .leave_paper_pull:hover {
+            color: #000000;
+            background-color: #c0c0c0;
+        }
 
         .leave_grid_view {
             margin: 0 auto;
@@ -350,7 +350,7 @@
                         <td>&nbsp;</td>
                     </tr>
                 </table>
-               
+
 
             </asp:Panel>
         </div>
