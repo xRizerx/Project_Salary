@@ -36,19 +36,14 @@
                     <asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style1" MaxLength="13"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Text="ค้นหา" />
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT [STF_NAME], [STF_LNAME], [POSITION_ID], [ADMIN_POSITION_ID], [SUBSTAFFTYPE_ID], [STAFFTYPE_ID], [BRANCH_ID] FROM [TB_PERSONAL] WHERE ([CITIZEN_ID] = @CITIZEN_ID)">
-                        <SelectParameters>
-                            <asp:ControlParameter ControlID="TextBox1" Name="CITIZEN_ID" PropertyName="Text" Type="String" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
+                    <asp:Button ID="Button1" runat="server" Text="ค้นหา" OnClick="Button1_Click" />
                 </td>
             </tr>
         </table>
         <table style="width:100%;">
             <tr>
                 <td class="auto-style4">ชื่อ - นามสกุล :</td>
-                <td class="auto-style6">&nbsp;<asp:Label ID="Label11" runat="server" Text="Label"></asp:Label>
+                <td class="auto-style6"><asp:Label ID="Label11" runat="server" Text="Label"></asp:Label>
                     &nbsp;</td>
                 <td class="auto-style7">
                     <asp:Label ID="Label13" runat="server" Text="Label"></asp:Label>
@@ -76,6 +71,18 @@
                 <td class="auto-style6">
                     <asp:Label ID="Label19" runat="server" Text="Label"></asp:Label>
                 </td>
+                <td class="auto-style7">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
                 <td class="auto-style7">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -160,6 +167,18 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
                 <td class="auto-style4">
                     <asp:Label ID="Label38" runat="server" Text="ร้อยละได้เลื่อน(ตามสัดส่วน)"></asp:Label>
                 </td>
@@ -181,11 +200,31 @@
                     <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">
                     <asp:Label ID="Label41" runat="server" Text="ร้อยละที่ได้เลื่อน"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style6">
                     <asp:Label ID="Label42" runat="server" Text="Label"></asp:Label>
                 </td>
+                <td class="auto-style7">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style4">
@@ -239,8 +278,13 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
+                <td class="auto-style8">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
                 <td>
-                    <asp:Button ID="Button2" runat="server" Text="คำนวณเงินเดือน" />
+                    <asp:Button ID="Button2" runat="server" Text="คำนวณเงินเดือน" OnClick="Button2_Click" />
                 </td>
                 <td class="auto-style8">
                     <asp:Button ID="Button3" runat="server" Text="บันทึก" />
