@@ -114,6 +114,7 @@
     <Content Include="Image\anime1.jpg" />
     <Content Include="Image\bg2.jpg" />
     <Content Include="Image\bg3.jpg" />
+    <Content Include="Image\bg4.jpg" />
     <Content Include="insignia_form.aspx" />
     <Content Include="insignia_citizen.aspx" />
     <Content Include="insignia_user.aspx" />

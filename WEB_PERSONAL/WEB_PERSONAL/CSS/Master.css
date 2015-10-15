@@ -88,7 +88,8 @@ form {
 }
 
 .master_header {
-    background-image: url("../Image/bg2.jpg");
+    background-image: url("../Image/bg4.jpg");
+    background-position-y: 720px;
     background-size: 100% auto;
     background-color: #000000;
     text-align: center;
@@ -253,6 +254,9 @@ form {
 }
 .dpl3 {
     background-color: #000000;
+}
+.dpl_green {
+    background-color: #38a800;
 }
 
 
