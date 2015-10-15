@@ -89,8 +89,9 @@ form {
 
 .master_header {
     background-image: url("../Image/bg4.jpg");
-    background-position-y: 720px;
-    background-size: 100% auto;
+    background-position: center;
+    background-position-y: 750px;
+    
     background-color: #000000;
     text-align: center;
     padding: 20px 0px;
