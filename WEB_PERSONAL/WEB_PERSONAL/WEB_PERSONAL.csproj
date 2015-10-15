@@ -115,6 +115,7 @@
     <Content Include="Image\bg2.jpg" />
     <Content Include="Image\bg3.jpg" />
     <Content Include="Image\bg4.jpg" />
+    <Content Include="insignia_admin.aspx" />
     <Content Include="insignia_form.aspx" />
     <Content Include="insignia_citizen.aspx" />
     <Content Include="insignia_user.aspx" />
@@ -155,6 +156,13 @@
     </Compile>
     <Compile Include="Entities\Seminar.cs" />
     <Compile Include="Entities\TitleName.cs" />
+    <Compile Include="insignia_admin.aspx.cs">
+      <DependentUpon>insignia_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_admin.aspx.designer.cs">
+      <DependentUpon>insignia_admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="insignia_form.aspx.cs">
       <DependentUpon>insignia_form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
