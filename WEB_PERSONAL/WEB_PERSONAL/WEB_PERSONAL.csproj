@@ -108,7 +108,6 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Image\333.png" />
     <Content Include="Default.aspx" />
     <Content Include="Image\bg2.jpg" />
     <Content Include="Image\bg3.jpg" />

@@ -150,7 +150,7 @@ namespace WEB_PERSONAL
 
         protected void btnCancelCustomer_Click(object sender, EventArgs e)
         {
-            ClearData;
+            //ClearData;
         }
     }
 }
