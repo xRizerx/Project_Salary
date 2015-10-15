@@ -11,6 +11,7 @@
         }
         .auto-style4 {
             width: 147px;
+            height: 585px;
         }
         .auto-style6 {
             width: 147px;
@@ -18,7 +19,7 @@
         }
         .auto-style7 {
             width: 100%;
-            height: 411px;
+            height: 262px;
         }
         .auto-style8 {
             width: 109px;
@@ -32,13 +33,6 @@
         }
         .auto-style11 {
             height: 58px;
-        }
-        .auto-style12 {
-            width: 109px;
-            height: 45px;
-        }
-        .auto-style13 {
-            height: 45px;
         }
         .auto-style14 {
             width: 109px;
@@ -61,6 +55,26 @@
         .auto-style19 {
             height: 50px;
         }
+        .auto-style21 {
+            width: 147px;
+            height: 63px;
+        }
+        .auto-style22 {
+            height: 63px; /* .push must be the same height as .footer */
+        }
+        .auto-style23 {
+            height: 871px;
+        }
+        .auto-style24 {
+            width: 109px;
+            height: 19px;
+        }
+        .auto-style25 {
+            height: 19px;
+        }
+        .auto-style26 {
+            height: 585px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -74,15 +88,15 @@
                 <td class="auto-style11"></td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
-                <td><fieldset style="300px" class="auto-style3">
+                <td class="auto-style26"></td>
+                <td class="auto-style4"></td>
+                <td class="auto-style26"><fieldset style="300px" class="auto-style3">
                     <legend><b>สำหรับผู้ดูแลระบบ</b></legend>
                     <table class="auto-style7">
                         <tr>
-                            <td class="auto-style12"></td>
-                            <td class="auto-style13"></td>
-                            <td class="auto-style13"></td>
+                            <td class="auto-style24"></td>
+                            <td class="auto-style25"></td>
+                            <td class="auto-style25"></td>
                         </tr>
                         <tr>
                             <td class="auto-style9"></td>
@@ -108,7 +122,7 @@
                         <tr>
                             <td class="auto-style18"></td>
                             <td class="auto-style19">
-                                <asp:Button ID="Button3" runat="server" BackColor="Red" ForeColor="White" Height="46px" Text="1. แก้ใบบันทึกประวัติการรับเครื่องราชอิสริยาภรณ์ของบุคลากร" Width="443px" />
+                                <asp:Button ID="Button3" runat="server" BackColor="Red" ForeColor="White" Height="44px" Text="1. แก้ใบบันทึกประวัติการรับเครื่องราชอิสริยาภรณ์ของบุคลากร" Width="443px" />
                             </td>
                             <td class="auto-style19"></td>
                         </tr>
@@ -129,15 +143,15 @@
                         </tr>
                     </table>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style26"></td>
+                <td class="auto-style26"></td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style22"></td>
+                <td class="auto-style21"></td>
+                <td class="auto-style22"></td>
+                <td class="auto-style22"></td>
+                <td class="auto-style22"></td>
             </tr>
         </table>
     </asp:Panel>
