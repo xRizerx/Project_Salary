@@ -16,7 +16,7 @@ namespace WEB_PERSONAL
 
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Salary.aspx");
+            /*Response.Redirect("Salary.aspx");*/
         }
 
         protected void LinkButton5_Click(object sender, EventArgs e)
@@ -58,13 +58,33 @@ namespace WEB_PERSONAL
                 LinkButton9.Visible = true;
                 LinkButton10.Visible = false;
             }
+
+            if (Session["login_system_status"] != null)
+            {
+                Label8.Text = "(" + Session["login_system_status"].ToString() + ")";
+            }
+            else
+            {
+                Label8.Text = "";
+            }
         }
 
         protected void LinkButton10_Click(object sender, EventArgs e)
         {
             //log out
             Session.Remove("login_id");
+            Session.Remove("login_system_status");
             Response.Redirect("Default.aspx");
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Salary.aspx");
+        }
+
+        protected void LinkButton8_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SalarybyID.aspx");
         }
     }
 }
