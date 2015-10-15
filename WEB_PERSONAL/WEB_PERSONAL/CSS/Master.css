@@ -36,7 +36,11 @@ form {
 .master_login {
     
     background-color: #F0F0F0;
-    box-shadow: 0px 4px 16px rgb(0,162,232);
+    /*box-shadow: 0px 0px 16px rgb(0,162,232);*/
+    box-shadow: 0px 0px 16px #ffffff;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
 }
 
 .master_login_right {
@@ -83,6 +87,7 @@ form {
     background-color: #000000;
     text-align: center;
     padding: 20px 0px;
+    padding-top: 64px;
 }
 
 .master_header_label {

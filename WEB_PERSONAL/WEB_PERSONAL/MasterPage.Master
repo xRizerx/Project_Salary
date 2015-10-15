@@ -28,8 +28,8 @@
 </head>
 <body>
     <form id="form1" runat="server" onload="form1_Load">
-        <div>
-            <asp:Panel ID="Panel6" runat="server" Height="40px" CssClass="master_login">
+        <div class="master_login">
+            <asp:Panel ID="Panel6" runat="server" Height="40px">
                 <ul class="master_login_right">
                     <li>
                         <asp:Label ID="Label7" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
