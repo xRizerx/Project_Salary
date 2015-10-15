@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 namespace WEB_PERSONAL
 {
@@ -23,8 +24,37 @@ namespace WEB_PERSONAL
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    using (SqlCommand command = new SqlCommand(
+                        "SELECT count(*) FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox1.Text + "'", con))
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if(reader.GetInt32(0) == 1)
+                            {
+                                Response.Redirect("insignia_user.aspx");
+                            } else
+                            {
+                                string script = "alert(\"ไม่พบผู้ใช้งาน\");";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                            } 
+                        }
+                    }
+                }
 
-            Response.Redirect("insignia_user.aspx");
+            }
+            catch (Exception e2)
+            {
+                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            
         }
     }
 }

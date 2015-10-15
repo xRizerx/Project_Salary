@@ -215,114 +215,120 @@ namespace WEB_PERSONAL
                     reader.Close();
                     conn.Close();
                 }
+                /* จำนวนเงินที่คำนวณได้แบบไม่ปัดเศษ */
+                double basesalcal = Convert.ToDouble(Label24.Text);
+                double rate = Convert.ToDouble(TextBox3.Text);
+                Label26.Text = String.Format("{0:.##}", basesalcal * rate / 100);
+
+                /* จำนวนเงินที่คำนวณได้แบบปัดเศษ */
+                Label27.Text = "" + roundUp(Convert.ToDouble(Label26.Text));
+                /* จำนวนเงินที่ได้เลื่อน */
+                Double salcalround = Convert.ToDouble(Label27.Text);
+
+                double salary1 = Convert.ToDouble(TextBox2.Text);
+                int maxbasesal = Convert.ToInt32(Label22.Text);
+                Double isal = salary1 + salcalround;
+                if (isal <= maxbasesal)
+                {
+                    Label29.Text = "" + salcalround;
+                }
+                else
+                {
+                    Label29.Text = "" + (maxbasesal - salary1);
+                }
+
+                /* เงินตอบแทนพิเศษ */
+                double mbonus = salary1 + salcalround;
+                Double salup = Convert.ToDouble(Label29.Text);
+                if (mbonus <= maxbasesal)
+                {
+                    Label31.Text = "0";
+                }
+                else
+                {
+                    Label31.Text = "" + ((basesalcal * rate / 100) - salup);
+                }
+                /* รวมใช้เลื่อน */
+                double sumup = Convert.ToDouble(Label31.Text);
+                Label33.Text = "" + (salup + sumup);
+
+                /* เงินเดือนใหม่ */
+                Double sumup2 = Convert.ToDouble(Label33.Text);
+                if (isal <= maxbasesal)
+                {
+                    Label35.Text = "" + (salary1 + sumup2);
+
+                }
+                else
+                {
+                    Label35.Text = "" + maxbasesal;
+                }
+                /* ร้อยละที่ได้เลื่อน */
+                Double Rateup = Convert.ToDouble(TextBox6.Text);
+                Double Rateup2 = Convert.ToDouble(TextBox7.Text);
+                Label42.Text = "" + (rate + Rateup + Rateup2);
+                /* จำนวนเงินที่คำนวณได้แบบไม่ปัดเศษ รวมได้เลื่อนทั้งสิ้น */
+                Double Ratesum = Convert.ToDouble(Label42.Text);
+                Label44.Text = "" + (basesalcal * Ratesum / 100);
+                /* จำนวนเงินที่คำนวณได้แบบปัดเศษ รวมได้เลื่อนทั้งสิ้น */
+                Label46.Text = "" + roundUp(Convert.ToDouble(Label44.Text));
+                /* จำนวนเงินที่ได้เลื่อน รวมได้เลื่อนทั้งสิ้น */
+                Double salcalround2 = Convert.ToDouble(Label44.Text);
+                Double isal2 = salary1 + salcalround2;
+                if (isal <= maxbasesal)
+                {
+                    Label48.Text = Label46.Text;
+                }
+                else
+                {
+                    Label48.Text = "" + (maxbasesal - salary1);
+                }
+                /* เงินตอบแทนพิเศษ */
+                Double salup2 = Convert.ToDouble(Label48.Text);
+                double mbonus2 = salary1 + salcalround2;
+
+                if (mbonus2 <= maxbasesal)
+                {
+                    Label50.Text = "0";
+                }
+                else
+                {
+                    Label50.Text = "" + ((basesalcal * Ratesum / 100) - salup2);
+                }
+                /* รวมใช้เลื่อน */
+                Double sumup4 = Convert.ToDouble(Label50.Text);
+                Label52.Text = "" + (salup2 + sumup4);
+                /* เงินเดือนใหม่ รวมได้เลื่อนทั้งสิ้น */
+                Double salcalround3 = Convert.ToDouble(Label46.Text);
+                if (mbonus2 <= maxbasesal)
+                {
+                    Label54.Text = "" + (salary1 + salcalround3);
+
+                }
+                else
+                {
+                    Label54.Text = "" + maxbasesal;
+                }
+
+                Label58.Text = "" + (Convert.ToDouble(Label52.Text) - sumup2);
+
             }
             catch
             {
                 string script = "alert(\"เกิดข้อผิดพลาด\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
-            /* จำนวนเงินที่คำนวณได้แบบไม่ปัดเศษ */
-            double basesalcal = Convert.ToDouble(Label24.Text);
-            double rate = Convert.ToDouble(TextBox3.Text);
-            Label26.Text = String.Format("{0:.##}", basesalcal * rate/100);
-
-            /* จำนวนเงินที่คำนวณได้แบบปัดเศษ */
-            Label27.Text = ""+ roundUp(Convert.ToDouble(Label26.Text));
-            /* จำนวนเงินที่ได้เลื่อน */
-            Double salcalround = Convert.ToDouble(Label27.Text);
-
-            double salary1 = Convert.ToDouble(TextBox2.Text);
-            int maxbasesal = Convert.ToInt32(Label22.Text);
-            Double isal = salary1 + salcalround;
-            if(isal <= maxbasesal)
-            {
-                Label29.Text = "" + salcalround;
-            }
-            else
-            {
-                Label29.Text = "" + (maxbasesal-salary1);
-            }
-
-            /* เงินตอบแทนพิเศษ */
-            double mbonus = salary1 + salcalround;
-            Double salup = Convert.ToDouble(Label29.Text);
-            if (mbonus <= maxbasesal)
-            {
-                Label31.Text = "0";
-            }
-            else
-            {
-                Label31.Text = ""+((basesalcal * rate / 100) - salup);
-            }
-            /* รวมใช้เลื่อน */
-            double sumup = Convert.ToDouble(Label31.Text);
-            Label33.Text = "" + (salup+sumup);
-
-            /* เงินเดือนใหม่ */
-            Double sumup2 = Convert.ToDouble(Label33.Text);
-            if (isal<=maxbasesal)
-            {
-                Label35.Text = "" + (salary1 + sumup2);
-                
-            }
-            else
-            {
-                Label35.Text = "" + maxbasesal;
-            }
-            /* ร้อยละที่ได้เลื่อน */
-            Double Rateup = Convert.ToDouble(TextBox6.Text);
-            Double Rateup2 = Convert.ToDouble(TextBox7.Text);
-            Label42.Text = "" + (rate + Rateup + Rateup2);
-            /* จำนวนเงินที่คำนวณได้แบบไม่ปัดเศษ รวมได้เลื่อนทั้งสิ้น */
-            Double Ratesum = Convert.ToDouble(Label42.Text);
-            Label44.Text = "" + (basesalcal * Ratesum / 100);
-            /* จำนวนเงินที่คำนวณได้แบบปัดเศษ รวมได้เลื่อนทั้งสิ้น */
-            Label46.Text = "" + roundUp(Convert.ToDouble(Label44.Text));
-            /* จำนวนเงินที่ได้เลื่อน รวมได้เลื่อนทั้งสิ้น */
-            Double salcalround2 = Convert.ToDouble(Label44.Text);
-            Double isal2 = salary1 + salcalround2;
-            if (isal <= maxbasesal)
-            {
-                Label48.Text = Label46.Text;
-            }
-            else
-            {
-                Label48.Text = "" + (maxbasesal - salary1);
-            }
-            /* เงินตอบแทนพิเศษ */
-            Double salup2 = Convert.ToDouble(Label48.Text);
-            double mbonus2 = salary1 + salcalround2;
-
-            if (mbonus2 <= maxbasesal)
-            {
-                Label50.Text = "0";
-            }
-            else
-            {
-                Label50.Text = "" + ((basesalcal * Ratesum / 100) - salup2);
-            }
-            /* รวมใช้เลื่อน */
-            Double sumup4 = Convert.ToDouble(Label50.Text);
-            Label52.Text = "" + (salup2 + sumup4);
-            /* เงินเดือนใหม่ รวมได้เลื่อนทั้งสิ้น */
-            Double salcalround3 = Convert.ToDouble(Label46.Text);
-            if (mbonus2 <= maxbasesal)
-            {
-                Label54.Text = "" + (salary1 + salcalround3);
-
-            }
-            else
-            {
-                Label54.Text = "" + maxbasesal;
-            }
-
-            Label58.Text = "" + (Convert.ToDouble(Label52.Text) - sumup2);
-
+            
         }
         private int roundUp(double i)
         {
             int j = Convert.ToInt32(i);
             return (10 - j % 10) + j;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
