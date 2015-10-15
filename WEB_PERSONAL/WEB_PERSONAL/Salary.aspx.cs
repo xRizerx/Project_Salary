@@ -35,7 +35,7 @@ namespace WEB_PERSONAL
             Label19.Text = String.Format("{0:.##}", b + ee);/*[10]=[5]+[8]*/
             double g = Convert.ToDouble(Label19.Text);/*[10]*/
             Label20.Text = String.Format("{0:.##}", f - g);/*[11]=[9]-[10]*/
-            
+
         }
 
     }
