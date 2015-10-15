@@ -31,6 +31,7 @@
         .auto-style39 {
             width: 100px;
             text-align: left;
+            text-decoration:none;
         }
 
         .auto-style40 {
@@ -50,7 +51,10 @@
             font-family: thsi;
             src: url("Font/THSarabun Italic.ttf");
         }
-
+        .divpan{
+            background-image: url("Image/green_button.jpg");
+            text-align: center;
+        }
         .textmode {
             font-family: ths;
             font-size: 16px;
@@ -82,10 +86,20 @@
         .panin{
             border:1px solid black;
             margin: 20px;
+            background-color:rgba(255,255,255,0.5);
         }
+        .button_ui{
+            background: #939393;
+            padding: 5px 10px;
+            border-radius: 0px 0px 10px 10px;
+            text-decoration:none;
+            color:white;
+            border-color: black;
+            border: 1px solid black;
+            }
     </style>
-    <div>
-        <asp:Panel ID="Panel1" runat="server" Height="1024px" CssClass="pancen">
+    <div class="divover">
+        <asp:Panel ID="Panel1" runat="server" Height="1024px" CssClass="divpan">
 
             <asp:Label ID="Label2" runat="server" Text="Salary System" CssClass="textmode" Font-Size="40pt"></asp:Label><br />
             <br />
@@ -278,13 +292,13 @@
         <table style="width: 100%;">
             <tr>
                 <td class="pancen">
-                    <asp:Button ID="Button1" runat="server" CssClass="textmode" Text="บันทึก" Width="140px" />
+                    <asp:LinkButton ID="LinkButton1" runat="server" Width="140px" CssClass="button_ui">บันทึก</asp:LinkButton>
                 </td>
                 <td class="pancen">
-                    <asp:Button ID="Button2" runat="server" CssClass="textmode" Text="ยกเลิก" Width="140px" />
+                    <asp:LinkButton ID="LinkButton2" runat="server" Width="140px" CssClass="button_ui">ยกเลิก</asp:LinkButton>
                 </td>
                 <td class="pancen">
-                    <asp:Button ID="Button3" runat="server" CssClass="textmode" Text="ออกรายงาน" Width="140px" />
+                    <asp:LinkButton ID="LinkButton3" runat="server" Width="140px" CssClass="button_ui">ออกรายงาน</asp:LinkButton>
                 </td>
             </tr>
         </table>
