@@ -35,7 +35,7 @@
                         <asp:Label ID="Label7" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
                     </li>
                     <li>
-                        <asp:LinkButton ID="LinkButton9" runat="server" OnClick="LinkButton9_Click">เข้าสู่ระบบๆ</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton9" runat="server" OnClick="LinkButton9_Click">เข้าสู่ระบบ</asp:LinkButton>
                     </li>
                     <li>
                         <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click">ออกจากระบบ</asp:LinkButton>
@@ -89,7 +89,7 @@
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">การลา</asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">การสัมนา</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">การสัมมนา</asp:LinkButton>
                 </li>
                 <li>
                     <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">เครื่องราชอิสริยาภรณ์</asp:LinkButton>
