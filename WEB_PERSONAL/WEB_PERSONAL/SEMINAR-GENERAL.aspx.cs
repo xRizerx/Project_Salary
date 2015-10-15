@@ -20,11 +20,10 @@ namespace WEB_PERSONAL
         protected void btnCancelCustomer_Click(object sender, EventArgs e)
         {
         }
-        protected void btnDateFrom_Click(object sender, EventArgs e)
+
+        protected void chkBox_CheckedChanged(object sender, EventArgs e)
         {
-        }
-        protected void btnDateTO_Click(object sender, EventArgs e)
-        {
+
         }
     }
 }
