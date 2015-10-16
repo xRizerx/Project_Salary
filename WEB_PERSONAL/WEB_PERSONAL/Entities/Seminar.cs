@@ -70,6 +70,8 @@ namespace WEB_PERSONAL.Entities
             this.SEMINAR_SIGNED_DATE = SEMINAR_SIGNED_DATE;
         }
 
+       
+
         public int InsertSEMINAR()
         {
             int id = 0;

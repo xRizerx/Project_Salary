@@ -241,13 +241,12 @@
                        <tr>
                            
                             <td style="text-align: left; width: 50px;"> 
-                                <asp:LinkButton ID="btnCancel1" runat="server" OnClick="btnCancelCustomer_Click" Width="140px" CssClass="a1" >Cancel</asp:LinkButton>
-                            <asp:Button ID="btnCancel" Text="Cancel" runat="server" OnClick="btnCancelCustomer_Click" Width="140px" /></td>
+                            <asp:Button ID="btnCancel" Text="Cancel" runat="server" OnClick="btnCancelSeminar_Click" Width="140px" /></td>
                             <td style="text-align: left; width: 50px;"> </td> 
                             <td style="text-align: right; margin-right: 5px; ">  
                           
 
-                            <asp:Button ID="btnSaveCustomer" Text="OK" runat="server" OnClick="btnSubmitCustomer_Click" Width="140px" /></td>
+                            <asp:Button ID="btnSaveCustomer" Text="OK" runat="server" OnClick="btnSubmitSeminar_Click" Width="140px" /></td>
                             
                          
                            </tr>               

@@ -122,6 +122,7 @@
     <Content Include="insignia_admin.aspx" />
     <Content Include="insignia_form.aspx" />
     <Content Include="insignia_citizen.aspx" />
+    <Content Include="insignia_form_edit.aspx" />
     <Content Include="insignia_user.aspx" />
     <Content Include="Leave.aspx" />
     <Content Include="Login.aspx" />
@@ -187,6 +188,13 @@
     </Compile>
     <Compile Include="insignia_citizen.aspx.designer.cs">
       <DependentUpon>insignia_citizen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_form_edit.aspx.cs">
+      <DependentUpon>insignia_form_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_form_edit.aspx.designer.cs">
+      <DependentUpon>insignia_form_edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_user.aspx.cs">
       <DependentUpon>insignia_user.aspx</DependentUpon>

@@ -180,7 +180,7 @@
                     <asp:Label ID="Label11" runat="server" Text="ชื่อหน่วยงานที่ขอพระราชทาน"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox1" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -237,7 +237,7 @@
                     <asp:Label ID="Label17" runat="server" Text="ยศ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox2" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -246,7 +246,7 @@
                     <asp:Label ID="Label18" runat="server" Text="คำนำหน้าชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox3" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -255,7 +255,7 @@
                     <asp:Label ID="Label19" runat="server" Text="ชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox4" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -264,7 +264,7 @@
                     <asp:Label ID="Label20" runat="server" Text="นามสกุล"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox5" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -273,7 +273,7 @@
                     <asp:Label ID="Label21" runat="server" Text="เพศ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox6" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox6" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -282,7 +282,7 @@
                     <asp:Label ID="Label22" runat="server" Text="วัน/เดือน/ปีเกิด"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox7" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox7" runat="server" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -291,7 +291,7 @@
                     <asp:Label ID="Label23" runat="server" Text="เลขประจำตัวประชาชน"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox8" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox8" runat="server" Width="269px" MaxLength="13"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -300,7 +300,7 @@
                     <asp:Label ID="Label24" runat="server" Text="วัน/เดือน/ปีที่เริ่มรับราชการ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox9" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox9" runat="server" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -309,7 +309,7 @@
                     <asp:Label ID="Label25" runat="server" Text="ตำแหน่งและระดับที่เริ่มรับราชการ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox10" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox10" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -318,7 +318,7 @@
                     <asp:Label ID="Label26" runat="server" Text="ชื่อตำแหน่งปัจจุบัน"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox11" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox11" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -327,7 +327,7 @@
                     <asp:Label ID="Label27" runat="server" Text="ประเภท"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox12" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox12" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -336,7 +336,7 @@
                     <asp:Label ID="Label28" runat="server" Text="ระดับ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox13" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox13" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -345,7 +345,7 @@
                     <asp:Label ID="Label29" runat="server" Text="เงินเดือนปัจจุบัน"></asp:Label>
                 </td>
                 <td class="auto-style11">
-                    <asp:TextBox ID="TextBox14" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox14" runat="server" Width="269px"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
                     <asp:Label ID="Label30" runat="server" Text="บาท"></asp:Label>
@@ -356,7 +356,7 @@
                     <asp:Label ID="Label33" runat="server" Text="เงินประจำตำแหน่ง"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox15" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox15" runat="server" Width="269px"></asp:TextBox>
                 </td>
                 <td>
                     <asp:Label ID="Label31" runat="server" Text="บาท"></asp:Label>
@@ -367,11 +367,11 @@
             <tr>
                 <td class="auto-style14">เงินเดือนย้อนหลัง 5 ปี (ณ วันที่ 1 เมษายน</td>
                 <td class="auto-style15">
-                    <asp:TextBox ID="TextBox16" runat="server" Enabled="False" Width="63px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox16" runat="server" Width="63px"></asp:TextBox>
                     <asp:Label ID="Label34" runat="server" Text=")"></asp:Label>
                 </td>
                 <td class="auto-style18">
-                    <asp:TextBox ID="TextBox17" runat="server" Enabled="False" Width="159px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox17" runat="server" Width="159px"></asp:TextBox>
                 </td>
                 <td class="auto-style21">
                     <asp:Label ID="Label35" runat="server" Text="บาท"></asp:Label>
@@ -389,7 +389,7 @@
                     <asp:Label ID="Label38" runat="server" Text="คำนำหน้าชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="TextBox18" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox18" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -402,7 +402,7 @@
                     <asp:Label ID="Label39" runat="server" Text="ชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="TextBox19" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox19" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -415,7 +415,7 @@
                     <asp:Label ID="Label40" runat="server" Text="นามสกุล"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="TextBox20" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox20" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -450,7 +450,7 @@
                                 <asp:Label ID="Label46" runat="server" Text="1. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style38">
-                                <asp:TextBox ID="TextBox23" runat="server" Width="269px"></asp:TextBox>
+                                <asp:TextBox ID="TextBox23" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                             </td>
                             <td class="auto-style40">
                                 <asp:Label ID="Label50" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
@@ -465,7 +465,7 @@
                                 <asp:Label ID="Label49" runat="server" Text="2. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style39">
-                                <asp:TextBox ID="TextBox24" runat="server" Width="269px"></asp:TextBox>
+                                <asp:TextBox ID="TextBox24" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                             </td>
                             <td class="auto-style41">
                                 <asp:Label ID="Label55" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
@@ -494,7 +494,7 @@
                     <asp:Label ID="Label52" runat="server" Text="1. ระดับ"></asp:Label>
                 </td>
                 <td class="auto-style38">
-                    <asp:TextBox ID="TextBox27" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox27" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td class="auto-style40">&nbsp;</td>
                 <td class="auto-style33">&nbsp;</td>
@@ -505,7 +505,7 @@
                     <asp:Label ID="Label54" runat="server" Text="2. ระดับ"></asp:Label>
                 </td>
                 <td class="auto-style39">
-                    <asp:TextBox ID="TextBox29" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox29" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td class="auto-style41">&nbsp;</td>
                 <td>&nbsp;</td>
@@ -565,13 +565,13 @@
                     <asp:Label ID="Label57" runat="server" Text="เครื่องราชอิสริยาภรณ์ชั้นล่าสุดที่ได้รับ"></asp:Label>
                 </td>
                 <td class="auto-style47">
-                    <asp:TextBox ID="TextBox30" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox30" runat="server" Width="269px" MaxLength="50"></asp:TextBox>
                 </td>
                 <td class="auto-style51">
                     <asp:Label ID="Label58" runat="server" Text="ได้รับเครื่องราชฯ ชั้นล่าสุดวันที่ 5 ธันวาคม"></asp:Label>
                 </td>
                 <td class="auto-style53">
-                    <asp:TextBox ID="TextBox31" runat="server" Enabled="False" Width="63px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox31" runat="server" Width="63px"></asp:TextBox>
                 </td>
                 <td class="auto-style46"></td>
             </tr>
@@ -583,17 +583,15 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style55">
-                    <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="109px" />
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style56">
-                    <asp:Button ID="Button2" runat="server" Text="แก้ไข" Width="109px" OnClick="Button2_Click1" />
+                    <asp:Button ID="Button2" runat="server" Text="ยืนยัน" Width="109px" OnClick="Button2_Click" />
                 </td>
                 <td class="auto-style57">
-                    <asp:Button ID="Button3" runat="server" Text="พิมพ์" Width="109px" />
+                    <asp:Button ID="Button3" runat="server" Text="ยกเลิก" Width="109px" OnClick="Button3_Click" />
                 </td>
                 <td class="auto-style58">
-                    <asp:Button ID="Button4" runat="server" Text="ยกเลิก" Width="109px" />
-                </td>
+                    &nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
