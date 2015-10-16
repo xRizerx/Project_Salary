@@ -32,9 +32,9 @@
             width: 100%;
         }
     </style>
-    <asp:Panel ID="Panel5" runat="server" Height="2137px" CssClass="mp">
+    <asp:Panel ID="Panel5" runat="server" Height="1951px" CssClass="mp">
         <div>
-            <asp:Label ID="Label1" runat="server" Text="ทดสอบหน้าหลัก" CssClass="t1"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="ทดสอบหน้าหลัก อิอิ" CssClass="t1"></asp:Label>
         </div>
         <div>
             <p>
@@ -42,7 +42,7 @@
             </p>
         </div>
         <div>
-            <img src="Image/anime1.jpg" class="i90p" />
+            <img src="Image/anime1.jpg" class="i80p" />
         </div>
         <div>
             <p>
@@ -60,7 +60,7 @@
         </div>
         <br />
         <div>
-            <img src="Image/anime3.jpg" class="i100p" />
+            <img src="Image/anime3.jpg" class="i80p" />
         </div>
         <div>
             <p>

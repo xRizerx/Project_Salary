@@ -55,8 +55,10 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style4"></td>
-                <td class="auto-style5"></td>
-                <td class="auto-style6"></td>
+                <td class="auto-style5">&nbsp;</td>
+                <td class="auto-style6">
+                    <asp:Label ID="Label9" runat="server" ForeColor="Red"></asp:Label>
+                </td>
                 <td class="auto-style6"></td>
             </tr>
             <tr>
@@ -92,6 +94,12 @@
                     </div>
                     
                 </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style2">&nbsp;</td>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>

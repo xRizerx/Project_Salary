@@ -17,6 +17,7 @@ namespace WEB_PERSONAL.CSS
 
         protected void LinkButton10_Click(object sender, EventArgs e)
         {
+            Label9.Text = "";
             try
             {
                 string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
@@ -33,9 +34,10 @@ namespace WEB_PERSONAL.CSS
                                 {
                                     if(reader.GetInt32(0) == 0)
                                     {
-                                        string script2 = "alert(\"ไม่พบผู้ใช้งาน!\");";
+                                        Label9.Text = "ไม่พบผู้ใช้งาน!";
+                                        /*string script2 = "alert(\"ไม่พบผู้ใช้งาน!\");";
                                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
-                                        return;
+                                        */return;
                                     }
                                 }
                             }
@@ -59,8 +61,10 @@ namespace WEB_PERSONAL.CSS
                                     }
                                     else
                                     {
-                                        string script2 = "alert(\"รหัสผ่านไม่ถูกต้อง!\");";
+                                        Label9.Text = "รหัสผ่านไม่ถูกต้อง!";
+                                        /*string script2 = "alert(\"รหัสผ่านไม่ถูกต้อง!\");";
                                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
+                                        */
                                     }
                                 }
                             }

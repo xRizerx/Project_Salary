@@ -62,9 +62,6 @@
         .auto-style22 {
             height: 63px; /* .push must be the same height as .footer */
         }
-        .auto-style23 {
-            height: 871px;
-        }
         .auto-style24 {
             width: 109px;
             height: 19px;
@@ -115,15 +112,14 @@
                         <tr>
                             <td class="auto-style16"></td>
                             <td class="auto-style17">
-                                <asp:Label ID="Label8" runat="server" BackColor="Red" ForeColor="White" Text="ส่วนการแก้ไข"></asp:Label>
+                                <asp:Button ID="Button3" runat="server" BackColor="Red" ForeColor="White" Height="44px" Text="1. แก้ใบบันทึกประวัติการรับเครื่องราชอิสริยาภรณ์ของบุคลากร" Width="443px" />
                             </td>
                             <td class="auto-style17"></td>
                         </tr>
                         <tr>
                             <td class="auto-style18"></td>
                             <td class="auto-style19">
-                                <asp:Button ID="Button3" runat="server" BackColor="Red" ForeColor="White" Height="44px" Text="1. แก้ใบบันทึกประวัติการรับเครื่องราชอิสริยาภรณ์ของบุคลากร" Width="443px" />
-                            </td>
+                                &nbsp;</td>
                             <td class="auto-style19"></td>
                         </tr>
                         <tr>
