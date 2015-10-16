@@ -36,7 +36,7 @@ form {
 .master_login {
     
     background-color: #F0F0F0;
-    box-shadow: 0px 5px 32px rgba(255,255,255,1);
+    /*box-shadow: 0px 0px 32px rgba(255,255,255,1);*/
     /*box-shadow: 0px 0px 16px rgb(0,162,232);*/
     
 
@@ -49,6 +49,9 @@ form {
     
 }
 
+.master_login_left {
+    float: left;
+}
 .master_login_right {
     float: right;
 }
@@ -56,9 +59,10 @@ form {
 .master_login ul {
     
      list-style-type: none;
-     margin: 0;
      padding: 0;
-     margin-top: 8px;
+     margin-top: 4px;
+     margin-left: 4px;
+     margin-right: -4px;
  }
 
 .master_login li {
@@ -69,8 +73,9 @@ form {
 .master_login a {
     text-decoration: none;
     display: inline;
-    padding: 5px 20px;
+    padding: 3px 20px;
     margin: 0 20px;
+    margin-top: 5px;
     width: 60px;
     color: #c0c0c0;
     background-color: #000000;
@@ -136,46 +141,51 @@ form {
     padding: 10px 20px;
     margin: 0;
     width: 60px;
-    color: #c0c0c0;
+    
     /*background-color: #c17f00;*/
     /*background: linear-gradient(#518fff,#5e97ff);*/
     /*border-radius: 24px;*/
 
     /*background-color: #000000;*/
 
-    animation: key_master_nav_a_out;
-    animation-duration: 0.4s;
+    color: #c0c0c0;
     background: #000000;
+    text-shadow: 0px 0px 0px #000000;
+
+    animation: key_master_nav_a_out;
+    animation-duration: 1.0s;
+    
 }
 
 .master_nav a:hover {
     color: #ffffff;
-    text-shadow: 1px 1px 2px #808080;
+    background: #202020;
+    text-shadow: 1px 1px 2px #404040;
+
     animation: key_master_nav_a_in;
     animation-duration: 0.4s;
-    background: #404040;
-    /*background-color: #202020;*/
-    /*background: linear-gradient(#ffa800,#f1aa25);*/
-    /*background: linear-gradient(#518fff,#a1c3ff);*/
-    /*background-color: #ee9d00;*/
 }
 
 @keyframes key_master_nav_a_in {
     from {
+        color: #c0c0c0;
         background: #000000;
         text-shadow: 0px 0px 0px #000000;
     } 
     to {
-        background: #404040;
-        text-shadow: 1px 1px 2px #808080;
+        color: #ffffff;
+        background: #202020;
+        text-shadow: 1px 1px 2px #404040;
     }
 }
 @keyframes key_master_nav_a_out {
     from {
-        background: #404040;
-        text-shadow: 1px 1px 2px #808080;
+        color: #ffffff;
+        background: #202020;
+        text-shadow: 1px 1px 2px #404040;
     } 
     to {
+        color: #c0c0c0;
         background: #000000;
         text-shadow: 0px 0px 0px #000000;
     }
@@ -244,6 +254,8 @@ form {
 }	
 .master_nav ul ul li .nav_a:hover {
     color: #ffffff;
+    background: #202020;
+    text-shadow: 1px 1px 2px #404040;
 }
 .master_nav ul ul ul {
 	position: absolute;
@@ -300,6 +312,9 @@ form {
 }
 .dpl_green {
     background-color: #38a800;
+}
+.dpl_red {
+    background-color: #ff0000;
 }
 
 

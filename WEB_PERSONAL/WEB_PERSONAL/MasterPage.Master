@@ -30,6 +30,18 @@
     <form id="form1" runat="server" onload="form1_Load">
         <div class="master_login">
             <asp:Panel ID="Panel6" runat="server" Height="40px">
+
+                <ul class="master_login_left">
+                    <li>
+                        <img src="Image/anime1.jpg" width="32" height="32" />
+                    </li>
+                    <li>
+                        <img src="Image/anime2.jpg" width="32" height="32" />
+                    </li>
+
+
+                </ul>
+
                 <ul class="master_login_right">
                     <li>
                         <asp:Label ID="Label7" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
@@ -49,7 +61,12 @@
 
 
             </asp:Panel>
+            <div>
+                <asp:Panel ID="Panel4" runat="server" CssClass="dpl_red" Height="1px"></asp:Panel>
+            </div>
         </div>
+
+
 
         <div class="master_header">
             <div>
