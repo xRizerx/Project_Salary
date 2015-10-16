@@ -117,13 +117,14 @@
     <Content Include="Image\bg2.jpg" />
     <Content Include="Image\bg3.jpg" />
     <Content Include="Image\bg4.jpg" />
+    <Content Include="Image\bgbyid.jpg" />
     <Content Include="Image\green_button.jpg" />
     <Content Include="Image\anime2.jpg" />
+    <Content Include="M-Admin.aspx" />
     <Content Include="Personal.aspx" />
     <Content Include="insignia_admin.aspx" />
-    <Content Include="insignia_form.aspx" />
+    <Content Include="insignia_from.aspx" />
     <Content Include="insignia_citizen.aspx" />
-    <Content Include="insignia_form_edit.aspx" />
     <Content Include="insignia_user.aspx" />
     <Content Include="Leave.aspx" />
     <Content Include="Login.aspx" />
@@ -146,6 +147,7 @@
     <Content Include="Script\jquery-ui-1.8.20.min.js" />
     <Content Include="Script\JSFunction.js" />
     <Content Include="SEMINAR-GENERAL.aspx" />
+    <Content Include="Study.aspx" />
     <Content Include="TitleName-ADMIN.aspx" />
     <Content Include="Salary.aspx" />
     <Content Include="CSS\Master.css" />
@@ -162,6 +164,13 @@
     </Compile>
     <Compile Include="Entities\Seminar.cs" />
     <Compile Include="Entities\TitleName.cs" />
+    <Compile Include="M-Admin.aspx.cs">
+      <DependentUpon>M-Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="M-Admin.aspx.designer.cs">
+      <DependentUpon>M-Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Personal.aspx.cs">
       <DependentUpon>Personal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -176,12 +185,12 @@
     <Compile Include="insignia_admin.aspx.designer.cs">
       <DependentUpon>insignia_admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="insignia_form.aspx.cs">
-      <DependentUpon>insignia_form.aspx</DependentUpon>
+    <Compile Include="insignia_from.aspx.cs">
+      <DependentUpon>insignia_from.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="insignia_form.aspx.designer.cs">
-      <DependentUpon>insignia_form.aspx</DependentUpon>
+    <Compile Include="insignia_from.aspx.designer.cs">
+      <DependentUpon>insignia_from.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_citizen.aspx.cs">
       <DependentUpon>insignia_citizen.aspx</DependentUpon>
@@ -189,13 +198,6 @@
     </Compile>
     <Compile Include="insignia_citizen.aspx.designer.cs">
       <DependentUpon>insignia_citizen.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="insignia_form_edit.aspx.cs">
-      <DependentUpon>insignia_form_edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="insignia_form_edit.aspx.designer.cs">
-      <DependentUpon>insignia_form_edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_user.aspx.cs">
       <DependentUpon>insignia_user.aspx</DependentUpon>
@@ -238,6 +240,13 @@
     </Compile>
     <Compile Include="SEMINAR-GENERAL.aspx.designer.cs">
       <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Study.aspx.cs">
+      <DependentUpon>Study.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Study.aspx.designer.cs">
+      <DependentUpon>Study.aspx</DependentUpon>
     </Compile>
     <Compile Include="TitleName-ADMIN.aspx.cs">
       <DependentUpon>TitleName-ADMIN.aspx</DependentUpon>

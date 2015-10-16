@@ -11,7 +11,7 @@ namespace WEB_PERSONAL
 {
 
 
-    public partial class insignia_form_edit
+    public partial class M_Admin
     {
     }
 }
