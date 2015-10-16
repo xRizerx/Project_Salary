@@ -86,5 +86,10 @@ namespace WEB_PERSONAL
         {
             Response.Redirect("SalarybyID.aspx");
         }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Personal.aspx");
+        }
     }
 }

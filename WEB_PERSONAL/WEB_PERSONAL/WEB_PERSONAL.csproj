@@ -118,6 +118,7 @@
     <Content Include="Image\bg4.jpg" />
     <Content Include="Image\green_button.jpg" />
     <Content Include="Image\anime2.jpg" />
+    <Content Include="Personal.aspx" />
     <Content Include="insignia_admin.aspx" />
     <Content Include="insignia_form.aspx" />
     <Content Include="insignia_citizen.aspx" />
@@ -159,6 +160,13 @@
     </Compile>
     <Compile Include="Entities\Seminar.cs" />
     <Compile Include="Entities\TitleName.cs" />
+    <Compile Include="Personal.aspx.cs">
+      <DependentUpon>Personal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Personal.aspx.designer.cs">
+      <DependentUpon>Personal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="insignia_admin.aspx.cs">
       <DependentUpon>insignia_admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

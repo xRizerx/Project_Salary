@@ -67,7 +67,7 @@
                     <asp:LinkButton ID="LinkButton5" runat="server" OnClick="LinkButton5_Click">หน้าหลัก</asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton ID="LinkButton3" runat="server">บุคลากร</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">บุคลากร</asp:LinkButton>
                 </li>
                 <li>
                     <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">เงินเดือน</asp:LinkButton>
@@ -90,15 +90,10 @@
                     <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">เครื่องราชอิสริยาภรณ์</asp:LinkButton>
                 </li>
             </ul>
-
-
-
-
-
         </div>
 
         <div>
-            <asp:Panel ID="Panel7" runat="server" CssClass="dpl_green" Height="3px"></asp:Panel>
+            <asp:Panel ID="Panel7" runat="server" CssClass="dpl_green" Height="1px"></asp:Panel>
         </div>
         <div class="wrapper">
 
@@ -115,45 +110,39 @@
 
             </div>
         </div>
-    <footer>
-        <div>
-            <asp:Panel ID="Panel3" runat="server" CssClass="dpl3" Height="3px"></asp:Panel>
-        </div>
-        <div class="master_footer">
+        <footer>
+            <div>
+                <asp:Panel ID="Panel3" runat="server" CssClass="dpl3" Height="1px"></asp:Panel>
+            </div>
+            <div class="master_footer">
 
 
-            <asp:Panel ID="Panel1" runat="server" Height="120px">
-                <div>
-                    <table style="width: 100%;">
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="ออกแบบระบบโดยนักศึกษาสหกิจศึกษา ปีการศึกษา 2558"></asp:Label>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ สาขาวิทยาการคอมพิวเตอร์<br>มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ"></asp:Label>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style1"></td>
-                            <td class="auto-style1">
-                                <asp:Label ID="Label6" runat="server" CssClass="master_footer_label4" Text="เวอร์ชั่น ทดสอบ"></asp:Label>
-                            </td>
-                            <td class="auto-style1"></td>
-                        </tr>
-                    </table>
-                </div>
+                <asp:Panel ID="Panel1" runat="server" Height="120px">
+                    <div>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="ออกแบบระบบโดยนักศึกษาสหกิจศึกษา ปีการศึกษา 2558"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ สาขาวิทยาการคอมพิวเตอร์<br>มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style1">
+                                    <asp:Label ID="Label6" runat="server" CssClass="master_footer_label4" Text="เวอร์ชั่น ทดสอบ"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
 
-            </asp:Panel>
+                </asp:Panel>
 
-        </div>
+            </div>
 
-    </footer>
+        </footer>
     </form>
-    </body>
+</body>
 </html>
