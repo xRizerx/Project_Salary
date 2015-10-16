@@ -117,6 +117,7 @@ form {
     padding: 5px 20px;
     text-align: center;
     box-shadow: 0px 0px 32px rgba(56,168,0,0.5);
+
 }
 
 .master_nav ul {
@@ -138,17 +139,46 @@ form {
     color: #c0c0c0;
     /*background-color: #c17f00;*/
     /*background: linear-gradient(#518fff,#5e97ff);*/
-    background-color: #000000;
     /*border-radius: 24px;*/
+
+    /*background-color: #000000;*/
+
+    animation: key_master_nav_a_out;
+    animation-duration: 0.4s;
+    background: #000000;
 }
 
 .master_nav a:hover {
     color: #ffffff;
     text-shadow: 1px 1px 2px #808080;
+    animation: key_master_nav_a_in;
+    animation-duration: 0.4s;
+    background: #404040;
     /*background-color: #202020;*/
     /*background: linear-gradient(#ffa800,#f1aa25);*/
     /*background: linear-gradient(#518fff,#a1c3ff);*/
     /*background-color: #ee9d00;*/
+}
+
+@keyframes key_master_nav_a_in {
+    from {
+        background: #000000;
+        text-shadow: 0px 0px 0px #000000;
+    } 
+    to {
+        background: #404040;
+        text-shadow: 1px 1px 2px #808080;
+    }
+}
+@keyframes key_master_nav_a_out {
+    from {
+        background: #404040;
+        text-shadow: 1px 1px 2px #808080;
+    } 
+    to {
+        background: #000000;
+        text-shadow: 0px 0px 0px #000000;
+    }
 }
 
 /*-START-A--------------------------------*/
@@ -178,6 +208,7 @@ form {
 }
 .master_nav ul li {
 	float: left;
+
 }
 .master_nav ul li:hover .nav_a {
 	color: #c0c0c0;
@@ -201,6 +232,7 @@ form {
 	border-top: 1px solid #6b727c;
 	border-bottom: 1px solid #575f6a;
 	position: relative;
+
 }
 .master_nav ul li ul li .nav_a {
     width: 160px;
@@ -208,6 +240,7 @@ form {
 .master_nav ul ul li .nav_a {
 	padding: 10px 20px;
 	color: #fff;
+    background-color: #000000;
 }	
 .master_nav ul ul li .nav_a:hover {
     color: #ffffff;
