@@ -15,6 +15,7 @@
     <script src="Script/jquery-1.7.1.min.js"></script>
     <script src="Script/jquery-ui-1.8.20.min.js"></script>
     <script src="Script/JSFunction.js"></script>
+    <script src="Script/Master.js"></script>
 
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 
@@ -24,19 +25,19 @@
         .auto-style1 {
             height: 28px;
         }
+
+        
     </style>
 </head>
 <body>
     <form id="form1" runat="server" onload="form1_Load">
+        
         <div class="master_login">
             <asp:Panel ID="Panel6" runat="server" Height="40px">
 
                 <ul class="master_login_left">
                     <li>
-                        <img src="Image/anime1.jpg" width="32" height="32" />
-                    </li>
-                    <li>
-                        <img src="Image/anime2.jpg" width="32" height="32" />
+                        <asp:ImageButton ID="ImageButton1" runat="server" Height="32" Width="32" ImageUrl="~/Image/google.png" OnClick="ImageButton1_Click" />
                     </li>
 
 

@@ -120,6 +120,7 @@
     <Content Include="Image\bgbyid.jpg" />
     <Content Include="Image\green_button.jpg" />
     <Content Include="Image\anime2.jpg" />
+    <Content Include="Image\google.png" />
     <Content Include="M-Admin.aspx" />
     <Content Include="Personal.aspx" />
     <Content Include="insignia_admin.aspx" />

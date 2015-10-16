@@ -101,5 +101,11 @@ namespace WEB_PERSONAL
         {
             Response.Redirect("M-Admin.aspx");
         }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("http://www.google.com");
+        }
+
     }
 }

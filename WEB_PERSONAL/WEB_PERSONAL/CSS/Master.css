@@ -27,7 +27,7 @@ form {
 }
 
 .master_content_place_holder {
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,1);
     margin: 152px 0;
     margin-top: 32px;
     min-height: 70vh;
@@ -39,7 +39,6 @@ form {
     /*box-shadow: 0px 0px 32px rgba(255,255,255,1);*/
     /*box-shadow: 0px 0px 16px rgb(0,162,232);*/
     
-
     /*background-color: rgba(0,0,0,0.5);
     box-shadow: 0px 0px 16px rgb(0,0,0);*/
     position: fixed;
@@ -54,6 +53,8 @@ form {
 }
 .master_login_right {
     float: right;
+    height: 32px;
+    line-height:32px;
 }
 
 .master_login ul {
@@ -65,6 +66,8 @@ form {
      margin-right: -4px;
  }
 
+
+
 .master_login li {
     display: inline;
     /*555*/
@@ -73,7 +76,7 @@ form {
 .master_login a {
     text-decoration: none;
     display: inline;
-    padding: 3px 20px;
+    padding: 5px 20px;
     margin: 0 20px;
     margin-top: 5px;
     width: 60px;
@@ -265,6 +268,8 @@ form {
 
 /*-END-A------------------------------------*/
 
+
+
 .master_footer {
     /*background: linear-gradient(#ffaf22, #ffc051);*/
     background-color: #eeeef1;
@@ -272,7 +277,6 @@ form {
     /*box-shadow: 0px 0px 16px #c0c0c0;*/
     box-shadow: 0px -4px 16px rgba(0,0,0,0.5);
     padding: 20px;
-
     background-image: url("../Image/bg4.jpg");
     background-position: center;
     background-attachment: fixed;
