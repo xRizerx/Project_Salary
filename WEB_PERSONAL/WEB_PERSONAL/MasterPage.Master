@@ -84,10 +84,16 @@
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">การลา</asp:LinkButton>
                 </li>
                 <li>
+                    <asp:LinkButton ID="LinkButton11" runat="server" OnClick="LinkButton11_Click">ศึกษาต่อ</asp:LinkButton>
+                </li>
+                <li>
                     <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">การสัมมนา</asp:LinkButton>
                 </li>
                 <li>
                     <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">เครื่องราชอิสริยาภรณ์</asp:LinkButton>
+                </li>
+                <li>
+                    <asp:LinkButton ID="LinkButton12" runat="server" OnClick="LinkButton12_Click">ติดต่อผู้ดูแลระบบ</asp:LinkButton>
                 </li>
             </ul>
         </div>
@@ -143,6 +149,9 @@
             </div>
 
         </footer>
+        <div>
+            <asp:Panel ID="Panel2" runat="server" CssClass="dpl3" Height="1px"></asp:Panel>
+        </div>
     </form>
 </body>
 </html>

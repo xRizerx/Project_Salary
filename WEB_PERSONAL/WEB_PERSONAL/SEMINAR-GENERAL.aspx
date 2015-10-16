@@ -84,10 +84,17 @@
 
                             <asp:TextBox ID="txtDateFrom" runat="server"></asp:TextBox></td>
                             <td style="text-align: left; width: 10px;"> </td> 
-                             <td style="text-align: left; margin-right: 5px; "class="auto-style5"> ถึงวันที่ </td>
+                             <td style="text-align: left; margin-right: 5px; "class="auto-style5"> ถึงวันที่ 
+                                
+                         </td>
                             <td style="text-align: left; width: 120px;">
                                 
-                            <asp:TextBox ID="txtDateTO" runat="server"></asp:TextBox></td>
+                            <asp:TextBox ID="txtDateTO" runat="server" OnTextChanged="txtDateTO_TextChanged"></asp:TextBox></td>
+                          <td style="text-align: left; width: 10px;"></td>
+                                <td style="text-align: left; width: 120px;">
+                         <asp:Button ID="Button1" runat="server" Text="คำนวณวัน/เดือน/ปี" Width="120px" /></td>
+
+
                       </tr>
                 </table>
 
@@ -99,19 +106,20 @@
                    <tr>
                 <td style="text-align: right; margin-right: 5px; "> รวมเวลา :&nbsp;</td>
                         <td style="text-align: left; width: 50px;">
-                            <asp:TextBox ID="txtYear" runat="server" MaxLength="100" Width="50px"></asp:TextBox></td>
-                            <td style="text-align: left; width: 10px;"> </td> 
-                              <td style="text-align: right; margin-right: 5px; "> ปี </td>
+                            <asp:TextBox ID="txtYear" runat="server" MaxLength="100" Width="50px" Enabled="False"></asp:TextBox></td>
+                           
+                              <td style="text-align: left; margin-right: 5px; "> ปี </td>
+                        <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 50px;">
-                            <asp:TextBox ID="txtMonth" runat="server" MaxLength="100" Width="50px"></asp:TextBox></td>
-                            <td style="text-align: left; width: 10px;"> </td> 
-                            <td style="text-align: right; margin-right: 5px; "> เดือน </td>
+                            <asp:TextBox ID="txtMonth" runat="server" MaxLength="100" Width="50px" Enabled="False"></asp:TextBox></td>
+                            
+                            <td style="text-align: left; margin-right: 5px; "> เดือน </td>
+                       <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 50px;">
-                            <asp:TextBox ID="txtDay" runat="server" MaxLength="100" Width="50px"></asp:TextBox></td>
+                            <asp:TextBox ID="txtDay" runat="server" MaxLength="100" Width="50px" Enabled="False"></asp:TextBox></td>
 
-                            <td style="text-align: left; width: 10px;"> </td> 
                             <td style="text-align: left; margin-right: 10px; "> วัน </td>
-
+                       <td style="text-align: left; width: 10px;"> </td> 
                          <td style="text-align: right; margin-right: 5px; "> ค่าใช้จ่ายตลอดโครงการ :&nbsp;</td>
                        <td style="text-align:  left; width: 50px;">
                             <asp:TextBox ID="txtBudget" runat="server" MaxLength="100" Width="356px"></asp:TextBox></td>
@@ -135,7 +143,7 @@
                             <asp:CheckBox ID="chkBox" runat="server" Text="ถ้ามี" OnCheckedChanged="chkBox_CheckedChanged" /> 
                         </td>
                         <td style="text-align: left; width: 50px;">
-                            <asp:TextBox ID="txtCertificate" runat="server" MaxLength="100" Width="738px"></asp:TextBox></td>
+                            <asp:TextBox ID="txtCertificate" runat="server" MaxLength="100" Width="738px" Enabled="False" Text="ไม่มี"></asp:TextBox></td>
                     </tr>
                 </table>
 
