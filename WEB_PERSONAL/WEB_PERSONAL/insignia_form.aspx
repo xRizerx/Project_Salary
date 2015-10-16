@@ -255,7 +255,7 @@
                     <asp:Label ID="Label19" runat="server" Text="ชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox4" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -586,7 +586,7 @@
                     <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="109px" />
                 </td>
                 <td class="auto-style56">
-                    <asp:Button ID="Button2" runat="server" Text="แก้ไข" Width="109px" />
+                    <asp:Button ID="Button2" runat="server" Text="แก้ไข" Width="109px" OnClick="Button2_Click1" />
                 </td>
                 <td class="auto-style57">
                     <asp:Button ID="Button3" runat="server" Text="พิมพ์" Width="109px" />

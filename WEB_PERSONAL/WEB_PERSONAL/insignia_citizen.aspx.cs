@@ -10,7 +10,6 @@ namespace WEB_PERSONAL
 {
     public partial class insignia_main : System.Web.UI.Page
     {
-        private object c;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,6 +37,7 @@ namespace WEB_PERSONAL
                         {
                             if(reader.GetInt32(0) == 1)
                             {
+                                Session["insignia_citizen_id"] = TextBox1.Text;
                                 Response.Redirect("insignia_user.aspx");
                             } else
                             {

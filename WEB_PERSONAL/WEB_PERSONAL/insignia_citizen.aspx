@@ -16,10 +16,10 @@
             height: 2px;
         }
         .auto-style10 {
-            width: 209px;
+            width: 368px;
         }
         .auto-style11 {
-            width: 575px;
+            width: 707px;
         }
         .auto-style12 {
             height: 174px;
@@ -30,13 +30,6 @@
         }
         .auto-style19 {
             width: 20px;
-        }
-        .auto-style20 {
-            width: 438px;
-        }
-        .auto-style21 {
-            text-align: center;
-            width: 438px;
         }
         .auto-style22 {
             width: 486px;
@@ -53,7 +46,7 @@
             <tr>
                 <td class="auto-style10">&nbsp;</td>
                 <td class="auto-style11">&nbsp;
-                    <fieldset style="300px" class="auto-style12">
+                    <fieldset style="width:300px" class="auto-style12">
 <legend><b>การจัดการเครื่องราชอิสริยาภรณ์</b></legend>
 
                         <table style="width:100%;">

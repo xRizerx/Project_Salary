@@ -1,48 +1,74 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SalaryByID.aspx.cs" Inherits="WEB_PERSONAL.SalaryByID" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
             margin-left: 0;
         }
+
         .auto-style2 {
             width: 200px;
         }
+
         .auto-style3 {
             width: 130px;
         }
+
         .auto-style4 {
             width: 228px;
         }
+
         .auto-style6 {
             width: 250px;
         }
+
         .auto-style7 {
             width: 240px;
         }
+
         .auto-style8 {
             width: 507px;
         }
+
         .auto-style9 {
             width: 228px;
             height: 24px;
         }
+
         .auto-style10 {
             width: 250px;
             height: 24px;
         }
+
         .auto-style11 {
             width: 240px;
             height: 24px;
         }
+
         .auto-style12 {
             height: 24px;
         }
+
+        .button_ui {
+            background: #939393;
+            padding: 5px 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            border-color: black;
+            border: 1px solid black;
+        }
     </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="Panel6" runat="server" Height="1024px" Width="1024px">
-        <asp:Label ID="Label7" runat="server" Text="การขึ้นเงินเดือนรายบุคคล" BackColor="Red" BorderColor="Black" Font-Bold="True" Font-Size="20pt" Font-Underline="True"></asp:Label>
-        <table style="width:100%;">
+        <asp:Label ID="Label7" runat="server" Text="การขึ้นเงินเดือนรายบุคคล" BackColor="Red" BorderColor="Black" Font-Bold="True" Font-Size="20pt" Font-Underline="True"></asp:Label><br />
+        <audio controls autoplay loop>
+            <source src="Entities/bnn.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <table style="width: 100%;">
             <tr>
                 <td class="auto-style2">
                     <asp:Label ID="Label8" runat="server" Text="กรุณาป้อนรหัสบัตรประชาชน"></asp:Label>
@@ -55,14 +81,14 @@
                 </td>
             </tr>
         </table>
-        <table style="width:100%;">
+        <table style="width: 100%;">
             <tr>
                 <td class="auto-style4">ชื่อ - นามสกุล :</td>
-                <td class="auto-style6"><asp:Label ID="Label11" runat="server" Text="-"></asp:Label>
+                <td class="auto-style6">
+                    <asp:Label ID="Label11" runat="server" Text="-"></asp:Label>
                     &nbsp;<asp:Label ID="Label13" runat="server" Text="-"></asp:Label>
                 </td>
-                <td class="auto-style7">
-                    &nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -222,10 +248,8 @@
                 <td class="auto-style6">
                     <asp:Label ID="Label58" runat="server" Text="-"></asp:Label>
                 </td>
-                <td class="auto-style7">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style4">&nbsp;</td>
@@ -242,8 +266,7 @@
                 <td class="auto-style4">
                     <asp:Label ID="Label57" runat="server" Text="รวมได้เลื่อนทั้งสิ้น"></asp:Label>
                 </td>
-                <td class="auto-style6">
-                    &nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
                 <td class="auto-style7">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -300,13 +323,15 @@
                 </td>
             </tr>
         </table>
-        <table style="width:100%;">
+        <table style="width: 100%;">
             <tr>
                 <td class="auto-style4">หมายเหตุ</td>
                 <td class="auto-style8">
                     <asp:TextBox ID="TextBox9" runat="server" Height="100px" TextMode="MultiLine" Width="500px"></asp:TextBox>
                 </td>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui" OnClick="LinkButton1_Click">คำนวณเงินเดือน</asp:LinkButton>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style4">&nbsp;</td>
@@ -314,14 +339,12 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style4">
-                    <asp:Button ID="Button2" runat="server" Text="คำนวณเงินเดือน" OnClick="Button2_Click" />
-                </td>
+                <td class="auto-style4"></td>
                 <td class="auto-style8">
-                    <asp:Button ID="Button3" runat="server" Text="บันทึก" OnClick="Button3_Click" />
+                    <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" CssClass="button_ui">บันทึก</asp:LinkButton>
                 </td>
                 <td>
-                    <asp:Button ID="Button4" runat="server" Text="แก้ไขข้อมูล" />
+                    <asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui">แก้ไขข้อมูล</asp:LinkButton>
                 </td>
             </tr>
         </table>
