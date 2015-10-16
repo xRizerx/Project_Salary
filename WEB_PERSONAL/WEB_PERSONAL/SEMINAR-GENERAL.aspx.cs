@@ -14,6 +14,7 @@ namespace WEB_PERSONAL
         {
 
         }
+
         protected void ClearData()
         {
             txtName.Text = "";
@@ -40,7 +41,7 @@ namespace WEB_PERSONAL
             txtProblem.Text = "";
             txtComment.Text = "";
         }
-    
+
         protected void btnSubmitCustomer_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtName.Text))
@@ -150,7 +151,7 @@ namespace WEB_PERSONAL
 
         protected void btnCancelCustomer_Click(object sender, EventArgs e)
         {
-            //ClearData;
+            ClearData();
         }
 
         protected void chkBox_CheckedChanged(object sender, EventArgs e)
