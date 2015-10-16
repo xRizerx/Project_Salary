@@ -56,6 +56,7 @@ namespace WEB_PERSONAL
                                     {
                                         TextBox4.Text = reader.GetString(0);
                                         TextBox5.Text = reader.GetString(1);
+                                        TextBox6.Text = reader.GetString(2);
                                     }
                                 }
                             }

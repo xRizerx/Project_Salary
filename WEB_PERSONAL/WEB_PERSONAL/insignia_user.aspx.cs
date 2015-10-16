@@ -20,5 +20,10 @@ namespace WEB_PERSONAL
             Response.Redirect("insignia_form.aspx");
 
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

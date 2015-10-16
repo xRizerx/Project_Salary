@@ -73,7 +73,7 @@
                         <tr>
                             <td class="auto-style8">&nbsp;</td>
                             <td>
-                                <asp:Button ID="Button2" runat="server" Height="46px" Text="2. ใบบันทึกประวัติการรับเครื่องราชอิสริยาภรณ์" Width="443px" />
+                                <asp:Button ID="Button2" runat="server" Height="46px" Text="2. ใบบันทึกประวัติการรับเครื่องราชอิสริยาภรณ์" Width="443px" OnClick="Button2_Click" />
                             </td>
                             <td>&nbsp;</td>
                         </tr>

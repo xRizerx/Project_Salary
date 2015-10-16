@@ -19,8 +19,8 @@ namespace WEB_PERSONAL.Entities
         public string SEMINAR_CAMPUS { get; set; }
         public string SEMINAR_NAMEOFPROJECT { get; set; }
         public string SEMINAR_PLACE { get; set; }
-        public DateTime SEMINAR_DATE_FROM { get; set; }
-        public DateTime SEMINAR_DATE_TO { get; set; }
+        public DateTime SEMINAR_DATETIME_FROM { get; set; }
+        public DateTime SEMINAR_DATETIME_TO { get; set; }
         public int SEMINAR_DAY { get; set; }
         public int SEMINAR_MONTH { get; set; }
         public int SEMINAR_YEAR { get; set; }
@@ -33,15 +33,15 @@ namespace WEB_PERSONAL.Entities
         public string SEMINAR_SHOW_2 { get; set; }
         public string SEMINAR_SHOW_3 { get; set; }
         public string SEMINAR_SHOW_4 { get; set; }
-        public string SEMINAR_SHOW_PROBLEM { get; set; }
-        public string SEMINAR_SHOW_COMMENT { get; set; }
+        public string SEMINAR_PROBLEM { get; set; }
+        public string SEMINAR_COMMENT { get; set; }
         public DateTime SEMINAR_SIGNED_DATE { get; set; }
 
         public Seminar() { }
         public Seminar(int SEMINAR_ID, string SEMINAR_NAME, string SEMINAR_LASTNAME, string SEMINAR_POSITION, string SEMINAR_DEGREE, string SEMINAR_CAMPUS, string SEMINAR_NAMEOFPROJECT,
-        string SEMINAR_PLACE, DateTime SEMINAR_DATE_FROM, DateTime SEMINAR_DATE_TO, int SEMINAR_DAY, int SEMINAR_MONTH, int SEMINAR_YEAR, int SEMINAR_BUDGET, string SEMINAR_SUPPORT_BUDGET,
-        string SEMINAR_CERTIFICATE, string SEMINAR_ABSTRACT, string SEMINAR_RESULT, string SEMINAR_SHOW_1, string SEMINAR_SHOW_2, string SEMINAR_SHOW_3, string SEMINAR_SHOW_4, string SEMINAR_SHOW_PROBLEM,
-        string SEMINAR_SHOW_COMMENT, DateTime SEMINAR_SIGNED_DATE)
+        string SEMINAR_PLACE, DateTime SEMINAR_DATETIME_FROM, DateTime SEMINAR_DATETIME_TO, int SEMINAR_DAY, int SEMINAR_MONTH, int SEMINAR_YEAR, int SEMINAR_BUDGET, string SEMINAR_SUPPORT_BUDGET,
+        string SEMINAR_CERTIFICATE, string SEMINAR_ABSTRACT, string SEMINAR_RESULT, string SEMINAR_SHOW_1, string SEMINAR_SHOW_2, string SEMINAR_SHOW_3, string SEMINAR_SHOW_4, string SEMINAR_PROBLEM,
+        string SEMINAR_COMMENT, DateTime SEMINAR_SIGNED_DATE)
         {
             this.SEMINAR_ID = SEMINAR_ID;
             this.SEMINAR_NAME = SEMINAR_NAME;
@@ -51,8 +51,8 @@ namespace WEB_PERSONAL.Entities
             this.SEMINAR_CAMPUS = SEMINAR_CAMPUS;
             this.SEMINAR_NAMEOFPROJECT = SEMINAR_NAMEOFPROJECT;
             this.SEMINAR_PLACE = SEMINAR_PLACE;
-            this.SEMINAR_DATE_FROM = SEMINAR_DATE_FROM;
-            this.SEMINAR_DATE_TO = SEMINAR_DATE_TO;
+            this.SEMINAR_DATETIME_FROM = SEMINAR_DATETIME_FROM;
+            this.SEMINAR_DATETIME_TO = SEMINAR_DATETIME_TO;
             this.SEMINAR_DAY = SEMINAR_DAY;
             this.SEMINAR_MONTH = SEMINAR_MONTH;
             this.SEMINAR_YEAR = SEMINAR_YEAR;
@@ -65,8 +65,8 @@ namespace WEB_PERSONAL.Entities
             this.SEMINAR_SHOW_2 = SEMINAR_SHOW_2;
             this.SEMINAR_SHOW_3 = SEMINAR_SHOW_3;
             this.SEMINAR_SHOW_4 = SEMINAR_SHOW_4;
-            this.SEMINAR_SHOW_PROBLEM = SEMINAR_SHOW_PROBLEM;
-            this.SEMINAR_SHOW_COMMENT = SEMINAR_SHOW_COMMENT;
+            this.SEMINAR_PROBLEM = SEMINAR_PROBLEM;
+            this.SEMINAR_COMMENT = SEMINAR_COMMENT;
             this.SEMINAR_SIGNED_DATE = SEMINAR_SIGNED_DATE;
         }
 
@@ -76,7 +76,7 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             SqlConnection conn = ConnectionDB.GetSqlConnection();
-            SqlCommand command = new SqlCommand("INSERT INTO TB_SEMINAR (seminar_name,seminar_lastname,seminar_position,seminar_degree,seminar_campus,seminar_nameofproject,seminar_place,seminar_date_from,seminar_date_to, seminar_day, seminar_month, seminar_year, seminar_budget, seminar_support_budget, seminar_certificate, seminar_abstract, seminar_result, seminar_show_1, seminar_show_2, seminar_show_3, seminar_problem, seminar_comment) VALUES (@seminar_name,@seminar_lastname,@seminar_position,@seminar_degree,@seminar_campus,@seminar_nameofproject,@seminar_place,@seminar_date_from,@seminar_date_to, @seminar_day, @seminar_month, @seminar_year, @seminar_budget, @seminar_support_budget, @seminar_certificate, @seminar_abstract, @seminar_result, @seminar_show_1, @seminar_show_2, @seminar_show_3, @seminar_problem, @seminar_comment)", conn);
+            SqlCommand command = new SqlCommand("INSERT INTO TB_SEMINAR (seminar_name,seminar_lastname,seminar_position,seminar_degree,seminar_campus,seminar_nameofproject,seminar_place,seminar_datetime_from,seminar_datetime_to, seminar_day, seminar_month, seminar_year, seminar_budget, seminar_support_budget, seminar_certificate, seminar_abstract, seminar_result, seminar_show_1, seminar_show_2, seminar_show_3, seminar_problem, seminar_comment) VALUES (@seminar_name,@seminar_lastname,@seminar_position,@seminar_degree,@seminar_campus,@seminar_nameofproject,@seminar_place,@seminar_datetime_from,@seminar_datetime_to, @seminar_day, @seminar_month, @seminar_year, @seminar_budget, @seminar_support_budget, @seminar_certificate, @seminar_abstract, @seminar_result, @seminar_show_1, @seminar_show_2, @seminar_show_3, @seminar_problem, @seminar_comment)", conn);
 
             try
             {
@@ -91,8 +91,8 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("SEMINAR_CAMPUS ", SEMINAR_CAMPUS));
                 command.Parameters.Add(new SqlParameter("SEMINAR_NAMEOFPROJECT ", SEMINAR_NAMEOFPROJECT));
                 command.Parameters.Add(new SqlParameter("SEMINAR_PLACE ", SEMINAR_PLACE));
-                command.Parameters.Add(new SqlParameter("SEMINAR_DATE_FROM ", SEMINAR_DATE_FROM));
-                command.Parameters.Add(new SqlParameter("SEMINAR_DATE_TO  ", SEMINAR_DATE_TO));
+                command.Parameters.Add(new SqlParameter("SEMINAR_DATETIME_FROM ", SEMINAR_DATETIME_FROM));
+                command.Parameters.Add(new SqlParameter("SEMINAR_DATETIME_TO  ", SEMINAR_DATETIME_TO));
                 command.Parameters.Add(new SqlParameter("SEMINAR_DAY  ", SEMINAR_DAY));
                 command.Parameters.Add(new SqlParameter("SEMINAR_MONTH  ", SEMINAR_MONTH));
                 command.Parameters.Add(new SqlParameter("SEMINAR_YEAR  ", SEMINAR_YEAR));
@@ -105,8 +105,8 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_2  ", SEMINAR_SHOW_2));
                 command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_3  ", SEMINAR_SHOW_3));
                 command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_4   ", SEMINAR_SHOW_4));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_PROBLEM   ", SEMINAR_SHOW_PROBLEM));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_COMMENT   ", SEMINAR_SHOW_COMMENT));
+                command.Parameters.Add(new SqlParameter("SEMINAR_PROBLEM   ", SEMINAR_PROBLEM));
+                command.Parameters.Add(new SqlParameter("SEMINAR_COMMENT   ", SEMINAR_COMMENT));
                 id = command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -133,8 +133,8 @@ namespace WEB_PERSONAL.Entities
             query += " SEMINAR_CAMPUS = @SEMINAR_CAMPUS ,";
             query += " SEMINAR_NAMEOFPROJECT = @SEMINAR_NAMEOFPROJECT ,";
             query += " SEMINAR_PLACE = @SEMINAR_PLACE ,";
-            query += " SEMINAR_DATE_FROM = @SEMINAR_DATE_FROM ,";
-            query += " SEMINAR_DATE_TO = @SEMINAR_DATE_TO ,";
+            query += " SEMINAR_DATETIME_FROM = @SEMINAR_DATETIME_FROM ,";
+            query += " SEMINAR_DATETIME_TO = @SEMINAR_DATETIME_TO ,";
             query += " SEMINAR_DAY = @SEMINAR_DAY ,";
             query += " SEMINAR_MONTH = @SEMINAR_MONTH ,";
             query += " SEMINAR_YEAR = @SEMINAR_YEAR ,";
@@ -147,8 +147,8 @@ namespace WEB_PERSONAL.Entities
             query += " SEMINAR_SHOW_2 = @SEMINAR_SHOW_2 ,";
             query += " SEMINAR_SHOW_3 = @SEMINAR_SHOW_3 ,";
             query += " SEMINAR_SHOW_4 = @SEMINAR_SHOW_4 ,";
-            query += " SEMINAR_SHOW_PROBLEM = @SEMINAR_SHOW_PROBLEM ,";
-            query += " SEMINAR_SHOW_COMMENT = @SEMINAR_SHOW_COMMENT ";
+            query += " SEMINAR_PROBLEM = @SEMINAR_PROBLEM ,";
+            query += " SEMINAR_COMMENT = @SEMINAR_COMMENT ";
             query += " where SEMINAR_ID  = @SEMINAR_ID ";
 
             SqlCommand command = new SqlCommand(query, conn);
@@ -165,8 +165,8 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("SEMINAR_CAMPUS", SEMINAR_CAMPUS));
                 command.Parameters.Add(new SqlParameter("SEMINAR_NAMEOFPROJECT", SEMINAR_NAMEOFPROJECT));
                 command.Parameters.Add(new SqlParameter("SEMINAR_PLACE", SEMINAR_PLACE));
-                command.Parameters.Add(new SqlParameter("SEMINAR_DATE_FROM", SEMINAR_DATE_FROM));
-                command.Parameters.Add(new SqlParameter("SEMINAR_DATE_TO", SEMINAR_DATE_TO));
+                command.Parameters.Add(new SqlParameter("SEMINAR_DATETIME_FROM", SEMINAR_DATETIME_FROM));
+                command.Parameters.Add(new SqlParameter("SEMINAR_DATETIME_TO", SEMINAR_DATETIME_TO));
                 command.Parameters.Add(new SqlParameter("SEMINAR_DAY", SEMINAR_DAY));
                 command.Parameters.Add(new SqlParameter("SEMINAR_MONTH", SEMINAR_MONTH));
                 command.Parameters.Add(new SqlParameter("SEMINAR_YEAR", SEMINAR_YEAR));
@@ -179,8 +179,8 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_2", SEMINAR_SHOW_2));
                 command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_3", SEMINAR_SHOW_3));
                 command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_4", SEMINAR_SHOW_4));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_PROBLEM", SEMINAR_SHOW_PROBLEM));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_COMMENT", SEMINAR_SHOW_COMMENT));
+                command.Parameters.Add(new SqlParameter("SEMINAR_PROBLEM", SEMINAR_PROBLEM));
+                command.Parameters.Add(new SqlParameter("SEMINAR_COMMENT", SEMINAR_COMMENT));
                 if (command.ExecuteNonQuery() > 0)
                 {
                     result = true;
