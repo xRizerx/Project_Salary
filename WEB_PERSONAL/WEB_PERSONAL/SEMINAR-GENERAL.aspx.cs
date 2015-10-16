@@ -1,6 +1,7 @@
 ﻿using WEB_PERSONAL.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,7 +13,13 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                txtDay.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtMonth.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtYear.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtBudget.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+            }
         }
 
         protected void ClearData()
@@ -42,7 +49,7 @@ namespace WEB_PERSONAL
             txtComment.Text = "";
         }
 
-        protected void btnSubmitCustomer_Click(object sender, EventArgs e)
+        protected void btnSubmitSeminar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtName.Text))
             {
@@ -114,42 +121,73 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน')", true);
                 return;
             }
-         /*  if (string.IsNullOrEmpty(txtShow1.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการเรียนการสอน')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtShow2.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการวิจัย')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtShow3.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการบริการวิชาการ')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtShow4.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านอื่นๆ')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtProblem.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtComment.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ความคิดเห็น/ข้อเสนอแนะอื่นๆ')", true);
-                return;
-            }
-            */
+            /*  if (string.IsNullOrEmpty(txtShow1.Text))
+               {
+                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการเรียนการสอน')", true);
+                   return;
+               }
+               if (string.IsNullOrEmpty(txtShow2.Text))
+               {
+                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการวิจัย')", true);
+                   return;
+               }
+               if (string.IsNullOrEmpty(txtShow3.Text))
+               {
+                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการบริการวิชาการ')", true);
+                   return;
+               }
+               if (string.IsNullOrEmpty(txtShow4.Text))
+               {
+                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านอื่นๆ')", true);
+                   return;
+               }
+               if (string.IsNullOrEmpty(txtProblem.Text))
+               {
+                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน')", true);
+                   return;
+               }
+               if (string.IsNullOrEmpty(txtComment.Text))
+               {
+                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ความคิดเห็น/ข้อเสนอแนะอื่นๆ')", true);
+                   return;
+               }
+               */
+            Seminar S = new Seminar();
+            S.SEMINAR_NAME = txtName.Text;
+            S.SEMINAR_LASTNAME = txtLastName.Text;
+            S.SEMINAR_POSITION = txtPosition.Text;
+            S.SEMINAR_DEGREE = txtDegree.Text;
+            S.SEMINAR_CAMPUS = txtCampus.Text;
+            S.SEMINAR_NAMEOFPROJECT = txtNameOfProject.Text;
+            S.SEMINAR_PLACE = txtPlace.Text;
+            S.SEMINAR_DATE_FROM = DateTime.Parse(txtDateFrom.Text);
+            S.SEMINAR_DATE_TO = DateTime.Parse(txtDateTO.Text);
+            S.SEMINAR_YEAR = Convert.ToInt32(txtYear.Text);
+            S.SEMINAR_MONTH = Convert.ToInt32(txtMonth.Text);
+            S.SEMINAR_DAY = Convert.ToInt32(txtDay.Text);
+            S.SEMINAR_BUDGET = Convert.ToInt32(txtBudget.Text);
+            S.SEMINAR_SUPPORT_BUDGET = txtSupportBudget.Text;
+            S.SEMINAR_CERTIFICATE = txtCertificate.Text;
+            S.SEMINAR_ABSTRACT = txtAbstract.Text;
+            S.SEMINAR_RESULT = txtResult.Text;
+            S.SEMINAR_SHOW_1 = txtShow1.Text;
+            S.SEMINAR_SHOW_2 = txtShow2.Text;
+            S.SEMINAR_SHOW_3 = txtShow3.Text;
+            S.SEMINAR_SHOW_4 = txtShow4.Text;
+            S.SEMINAR_SHOW_PROBLEM = txtProblem.Text;
+            S.SEMINAR_SHOW_COMMENT = txtComment.Text;
 
-           
-        }
+            string[] splitDate1 = txtDateFrom.Text.Split('/');
+            string[] splitDate2 = txtDateTO.Text.Split('/');
+            S.SEMINAR_DATE_FROM = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
+            S.SEMINAR_DATE_TO = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
 
-        protected void btnCancelCustomer_Click(object sender, EventArgs e)
+            S.InsertSEMINAR();
+            
+      }
+
+          
+        protected void btnCancelSeminar_Click(object sender, EventArgs e)
         {
             ClearData();
         }
