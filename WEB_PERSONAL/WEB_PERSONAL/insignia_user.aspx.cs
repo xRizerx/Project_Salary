@@ -9,6 +9,7 @@ namespace WEB_PERSONAL
 {
     public partial class insignia_user : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -17,6 +18,7 @@ namespace WEB_PERSONAL
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.Redirect("insignia_form.aspx");
+
         }
     }
 }
