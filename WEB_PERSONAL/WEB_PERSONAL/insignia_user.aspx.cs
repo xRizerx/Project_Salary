@@ -17,7 +17,7 @@ namespace WEB_PERSONAL
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("insignia_form.aspx");
+            Response.Redirect("insignia_from.aspx");
 
         }
 
