@@ -57,6 +57,12 @@ namespace WEB_PERSONAL
                                         TextBox4.Text = reader.GetString(0);
                                         TextBox5.Text = reader.GetString(1);
                                         TextBox6.Text = reader.GetString(2);
+                                        TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy");
+                                        TextBox8.Text = reader.GetString(4); 
+                                        TextBox2.Text = reader.GetString(5); 
+                                        TextBox3.Text = reader.GetString(6); 
+                                        TextBox9.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy"); 
+                                        TextBox11.Text = reader.GetString(8);
                                     }
                                 }
                             }
