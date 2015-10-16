@@ -118,6 +118,7 @@
     <Content Include="Image\bg4.jpg" />
     <Content Include="Image\green_button.jpg" />
     <Content Include="Image\anime2.jpg" />
+    <Content Include="M-Admin.aspx" />
     <Content Include="Personal.aspx" />
     <Content Include="insignia_admin.aspx" />
     <Content Include="insignia_form.aspx" />
@@ -145,6 +146,7 @@
     <Content Include="Script\jquery-ui-1.8.20.min.js" />
     <Content Include="Script\JSFunction.js" />
     <Content Include="SEMINAR-GENERAL.aspx" />
+    <Content Include="Study.aspx" />
     <Content Include="TitleName-ADMIN.aspx" />
     <Content Include="Salary.aspx" />
     <Content Include="CSS\Master.css" />
@@ -161,6 +163,13 @@
     </Compile>
     <Compile Include="Entities\Seminar.cs" />
     <Compile Include="Entities\TitleName.cs" />
+    <Compile Include="M-Admin.aspx.cs">
+      <DependentUpon>M-Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="M-Admin.aspx.designer.cs">
+      <DependentUpon>M-Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Personal.aspx.cs">
       <DependentUpon>Personal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -237,6 +246,13 @@
     </Compile>
     <Compile Include="SEMINAR-GENERAL.aspx.designer.cs">
       <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Study.aspx.cs">
+      <DependentUpon>Study.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Study.aspx.designer.cs">
+      <DependentUpon>Study.aspx</DependentUpon>
     </Compile>
     <Compile Include="TitleName-ADMIN.aspx.cs">
       <DependentUpon>TitleName-ADMIN.aspx</DependentUpon>

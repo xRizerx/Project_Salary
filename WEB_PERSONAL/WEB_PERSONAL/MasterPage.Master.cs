@@ -91,5 +91,15 @@ namespace WEB_PERSONAL
         {
             Response.Redirect("Personal.aspx");
         }
+
+        protected void LinkButton11_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Study.aspx");
+        }
+
+        protected void LinkButton12_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("M-Admin.aspx");
+        }
     }
 }

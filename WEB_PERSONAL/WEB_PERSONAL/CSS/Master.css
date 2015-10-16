@@ -11,7 +11,6 @@ body {
     background-image: url("../Image/bg3.jpg");
     background-attachment: fixed;
     /*background-size: 100% auto;*/
-
 }
 
 form {
@@ -31,7 +30,7 @@ form {
     background-color: rgba(255,255,255,0.9);
     margin: 152px 0;
     margin-top: 32px;
-    min-height: 50vh;
+    min-height: 70vh;
 }
 
 .master_login {
@@ -273,5 +272,5 @@ form {
 
 
 .footer, .push {
-    height: 150px; /* .push must be the same height as .footer */
+    height: 120px; /* .push must be the same height as .footer */
 }
