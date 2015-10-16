@@ -127,9 +127,9 @@
                             <asp:Label ID="Label4" runat="server" CssClass="textmode" Text="หน่วยงาน"></asp:Label>
                         </td>
                         <td class="auto-style31">
-                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="BRANCH_NAME" DataValueField="BRANCH_NAME">
+                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="BRANCH_NAME" DataValueField="BRANCH_ID">
                             </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT [BRANCH_NAME] FROM [TB_BRANCH]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_BRANCH]"></asp:SqlDataSource>
                         </td>
                     </tr>
                     <tr>
@@ -249,7 +249,7 @@
                 <table style="width: 100%;">
                     <tr>
                         <td class="auto-style12">Comment</td>
-                        <td class="auto-style3">&nbsp;<asp:TextBox ID="TextBox18" runat="server" Height="50px" Width="689px" Font-Size="16pt" TextMode="MultiLine" CssClass="auto-style40"></asp:TextBox>
+                        <td class="auto-style3">&nbsp;<asp:TextBox ID="TextBox18" runat="server" Height="50px" Width="689px" TextMode="MultiLine" CssClass="textmode"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -292,7 +292,7 @@
         <table style="width: 100%;">
             <tr>
                 <td class="pancen">
-                    <asp:LinkButton ID="LinkButton1" runat="server" Width="140px" CssClass="button_ui">บันทึก</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton1" runat="server" Width="140px" CssClass="button_ui" OnClick="LinkButton1_Click">บันทึก</asp:LinkButton>
                 </td>
                 <td class="pancen">
                     <asp:LinkButton ID="LinkButton2" runat="server" Width="140px" CssClass="button_ui">ยกเลิก</asp:LinkButton>
