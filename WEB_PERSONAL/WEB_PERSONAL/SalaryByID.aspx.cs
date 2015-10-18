@@ -195,7 +195,7 @@ namespace WEB_PERSONAL
                             else
                                 Label24.Text = "31610";
                         }
-                        if (Label15.Text == "ปฏิบัตงาน")
+                        if (Label15.Text == "ปฏิบัติงาน")
                         {
                             if (salary <= maxlowsal)
                             {

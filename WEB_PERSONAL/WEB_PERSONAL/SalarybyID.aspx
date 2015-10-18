@@ -376,7 +376,7 @@
             <tr>
                 <td class="auto-style4">หมายเหตุ</td>
                 <td colspan="2">
-                    <asp:TextBox ID="TextBox9" runat="server" Height="50px" TextMode="MultiLine" Width="500px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox9" runat="server" Height="50px" TextMode="MultiLine" Width="500px" Font-Size="14pt"></asp:TextBox>
                 </td>
                 <td>
                     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui" OnClick="LinkButton1_Click">คำนวณเงินเดือน</asp:LinkButton>

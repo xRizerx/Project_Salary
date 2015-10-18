@@ -16,7 +16,7 @@ namespace WEB_PERSONAL
 
         }
 
-        protected void Button4_Click(object sender, EventArgs e)
+        protected void LinkButton4_Click(object sender, EventArgs e)
         {
             TextBox31.Text = "0";
             using (SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!"))
@@ -83,5 +83,19 @@ namespace WEB_PERSONAL
             }
         }
 
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+            TextBox31.Text = "";
+            TextBox32.Text = "";
+            Label15.Text = "";
+            TextBox25.Text = "";
+            Label17.Text = "";
+            Label16.Text = "";
+            TextBox22.Text = "";
+            Label18.Text = "";
+            Label19.Text = "";
+            Label20.Text = "";
+            TextBox18.Text = "";
+        }
     }
 }
