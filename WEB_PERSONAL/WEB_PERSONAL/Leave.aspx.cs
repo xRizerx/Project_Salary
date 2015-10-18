@@ -34,11 +34,11 @@ namespace WEB_PERSONAL
                         {
                             while (reader.Read())
                             {
-                                if(reader.GetInt32(0) == 0)
+                                if (reader.GetInt32(0) == 0)
                                 {
                                     Label20.Text = "ไม่พบรหัสเอกสาร!";
                                     return;
-                                }    
+                                }
                             }
                         }
                     }
@@ -75,10 +75,10 @@ namespace WEB_PERSONAL
                             }
                         }
                     }
-                    
+
                 }
 
-               
+
             }
             catch (Exception e2)
             {
@@ -136,9 +136,9 @@ namespace WEB_PERSONAL
                         }
                     }
 
-                    
-                        
-                    
+
+
+
                 }
             }
             catch (Exception e2)

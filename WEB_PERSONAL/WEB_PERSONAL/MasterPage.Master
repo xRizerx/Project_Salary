@@ -63,7 +63,7 @@
 
             </asp:Panel>
             <div>
-                <asp:Panel ID="Panel4" runat="server" CssClass="dpl_red" Height="1px"></asp:Panel>
+                <asp:Panel ID="Panel4" runat="server" CssClass="dpl_sub_lime" Height="1px"></asp:Panel>
             </div>
         </div>
 

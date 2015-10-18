@@ -8,8 +8,9 @@ html, body {
 }
 
 body {
-    background-image: url("../Image/bg3.jpg");
+    /*background-image: url("../Image/bg3.jpg");*/
     background-attachment: fixed;
+    background-color: #d6ff81;
     /*background-size: 100% auto;*/
 }
 
@@ -36,11 +37,16 @@ form {
 .master_login {
     
     background-color: #F0F0F0;
+    background-color: #f8ffeb;
+
     /*box-shadow: 0px 0px 32px rgba(255,255,255,1);*/
     /*box-shadow: 0px 0px 16px rgb(0,162,232);*/
     
     /*background-color: rgba(0,0,0,0.5);
     box-shadow: 0px 0px 16px rgb(0,0,0);*/
+
+    box-shadow: 0px 0px 24px rgba(214,255,129,0.9);
+
     position: fixed;
     width: 100%;
     z-index: 999;
@@ -91,7 +97,7 @@ form {
 }
 
 .master_login_name {
-    color: #808080;
+    color: #404040;
 
 }
 
@@ -125,6 +131,7 @@ form {
     padding: 5px 20px;
     text-align: center;
     box-shadow: 0px 0px 32px rgba(56,168,0,0.5);
+    
 
 }
 
@@ -319,6 +326,9 @@ form {
 }
 .dpl_red {
     background-color: #ff0000;
+}
+.dpl_sub_lime {
+    background-color: #d6ff81;
 }
 
 
