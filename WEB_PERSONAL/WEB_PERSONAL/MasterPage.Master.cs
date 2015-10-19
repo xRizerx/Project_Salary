@@ -62,6 +62,7 @@ namespace WEB_PERSONAL
                 {
                     Label7.ForeColor = System.Drawing.Color.FromArgb(0, 162, 232);
                 }
+                
             } else
             {
                 Label7.Text = "ยังไม่ได้เข้าสู่ระบบ";
