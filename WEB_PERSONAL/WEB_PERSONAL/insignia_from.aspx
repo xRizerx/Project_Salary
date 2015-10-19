@@ -154,10 +154,10 @@
                 <td>&nbsp;</td>
                 <td class="auto-style2">
                     <asp:Label ID="Label9" runat="server" Text="ประเภท  "></asp:Label>
-                    <asp:RadioButton ID="RadioButton1" runat="server" Text="ข้าราชการ    " />
-                    <asp:RadioButton ID="RadioButton2" runat="server" Text="พนักงานในสถาบันฯ    " />
-                    <asp:RadioButton ID="RadioButton3" runat="server" Text="พนักงานราชการ    " />
-                    <asp:RadioButton ID="RadioButton4" runat="server" Text="ลูกจ้างประจำ    " />
+                    <asp:RadioButton ID="RadioButton1" runat="server" Text="ข้าราชการ    " GroupName="sel" />
+                    <asp:RadioButton ID="RadioButton2" runat="server" Text="พนักงานในสถาบันฯ    " GroupName="cal" />
+                    <asp:RadioButton ID="RadioButton3" runat="server" Text="พนักงานราชการ    " GroupName="cal" />
+                    <asp:RadioButton ID="RadioButton4" runat="server" Text="ลูกจ้างประจำ    " GroupName="cal" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -522,7 +522,7 @@
             <tr>
                 <td class="auto-style44">&nbsp;</td>
                 <td>
-                    <asp:CheckBox ID="CheckBox2" runat="server" Text="กลุ่มงานช่าง" />
+                    <asp:CheckBox ID="CheckBox2" runat="server" Text="กลุ่มงานช่าง" ValidationGroup="rr" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
