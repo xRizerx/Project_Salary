@@ -11,8 +11,12 @@ body {
     /*background-image: url("../Image/bg3.jpg");*/
     background-attachment: fixed;
     /*background-color: #d6ff81;*/
-    background-color: #e9ffa3;
+
+    
     /*background-size: 100% auto;*/
+
+    /*background-color: #e9ffa3;*/
+    background-color: #f0f0f0;
 }
 
 form {
@@ -37,15 +41,17 @@ form {
 
 .master_login {
     
-    background-color: #F0F0F0;
-    background-color: #f8ffeb;
-
+    /*background-color: #F0F0F0;
+    background-color: #f8ffeb;*/
+    background-color: #ffffff;
     /*box-shadow: 0px 0px 32px rgba(255,255,255,1);*/
     /*box-shadow: 0px 0px 16px rgb(0,162,232);*/
     
     /*background-color: rgba(0,0,0,0.5);
     box-shadow: 0px 0px 16px rgb(0,0,0);*/
-    box-shadow: 0px 0px 24px rgba(214,255,129,0.9);
+    /*box-shadow: 0px 0px 24px rgba(214,255,129,0.9);*/
+    box-shadow: 0px 0px 8px rgba(204,41,57,1);
+
 
     position: fixed;
     width: 100%;
@@ -56,6 +62,7 @@ form {
 
 .master_login_left {
     float: left;
+    line-height:32px;
 }
 .master_login_right {
     float: right;
@@ -90,12 +97,12 @@ form {
     background-color: #000000;
     text-shadow: 0px 0px 0px #000000;
     border-radius: 24px;
-    transition: color 0.5s ease, background-color 0.5s ease;
+    transition: color 0.5s ease, background-color 0.5s ease, text-shadow 0.5s ease;
 }
 
 .master_login a:hover {
     color: #ffffff;
-    background-color: #202020;
+    background-color: #cc2939;
     text-shadow: 1px 1px 16px #ffffff;
 }
 
@@ -105,11 +112,13 @@ form {
 }
 
 .master_header {
-    background-image: url("../Image/bg4.jpg");
+    background-image: url("../Image/333.jpg");
     background-position: center;
-    background-position-y: 750px;
+    /*background-position-y: 750px;*/
+    background-attachment: fixed;
     
     background-color: #000000;
+    background-color: #202020;
     text-align: center;
     padding: 20px 0px;
     padding-top: 64px;
@@ -133,7 +142,7 @@ form {
     /*background-color: rgba(0,0,0,0.9);*/
     padding: 5px 20px;
     text-align: center;
-    box-shadow: 0px 0px 32px rgba(56,168,0,0.5);
+    /*box-shadow: 0px 0px 32px rgba(56,168,0,0.5);*/
     
 
 }
@@ -158,14 +167,15 @@ form {
     color: #c0c0c0;
     background-color: #000000;
     text-shadow: 0px 0px 0px #000000;
-    transition: color 0.4s ease, background-color 0.4s ease, text-shadow 0.4s ease;
+    transition: color 0.5s ease, background-color 0.5s ease, text-shadow 0.5s ease;
     
 }
 
 
 .master_nav a:hover {
     color: #ffffff;
-    background-color: #1a8800;
+    /*background-color: #1a8800;*/
+    background-color: #cc2939;
     text-shadow: 1px 1px 16px #ffffff;
 }
 
@@ -254,7 +264,7 @@ form {
 }	
 .master_nav ul ul li .nav_a:hover {
     color: #ffffff;
-    background: #1a8800;
+    background: #cc2939;
     text-shadow: 1px 1px 2px #404040;
 }
 .master_nav ul ul ul {
@@ -269,14 +279,14 @@ form {
 
 .master_footer {
     /*background: linear-gradient(#ffaf22, #ffc051);*/
-    background-color: #eeeef1;
+    background-color: #202020;
     text-align: center;
     /*box-shadow: 0px 0px 16px #c0c0c0;*/
-    box-shadow: 0px -4px 16px rgba(0,0,0,0.5);
+    /*box-shadow: 0px 0px 8px #000000;*/
     padding: 10px 20px;
-    background-image: url("../Image/bg4.jpg");
+    /*background-image: url("../Image/bg4.jpg");
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: fixed;*/
     /*background-size: 100% auto;*/
     
 }
@@ -317,8 +327,17 @@ form {
 .dpl_red {
     background-color: #ff0000;
 }
+.dpl_sred {
+    background-color: #cc2939;
+}
 .dpl_sub_lime {
     background-color: #d6ff81;
+}
+.dpl_gray {
+    background-color: #808080;
+}
+.dpl_7c {
+    background: linear-gradient(to right, rgb(163,73,164),rgb(63,72,204),rgb(0,162,232),rgb(34,177,76),rgb(255,242,0),rgb(255,127,39),rgb(237,28,36));
 }
 
 

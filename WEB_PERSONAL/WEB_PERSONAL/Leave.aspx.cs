@@ -206,5 +206,11 @@ namespace WEB_PERSONAL
             int j = Convert.ToInt32(i);
             return (10 - j % 10) + j;
         }
+
+        protected void LinkButton14_Click(object sender, EventArgs e)
+        {
+            DateTime date = DateTime.Now;
+            TextBox2.Text = date.ToString("dd/MM/yyyy");
+        }
     }
 }
