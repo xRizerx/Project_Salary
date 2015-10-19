@@ -106,7 +106,7 @@
             <asp:Label ID="Label1" runat="server" CssClass="textmodeb" Text="รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุคมศึกษา"></asp:Label><br />
             <asp:Label ID="Label3" runat="server" CssClass="textmodeb" Text="ครั้งที่ 1 วันที่ 1 เมษายน 2558"></asp:Label><br />
             <asp:Label ID="Label21" runat="server" CssClass="textmodeb" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก"></asp:Label><br />
-            <asp:Panel ID="Panel2" runat="server" Height="600px" CssClass="panin">
+            <asp:Panel ID="Panel2" runat="server" Height="650px" CssClass="panin">
                 <table style="width: 100%;" border="0">
 
                     <tr>
@@ -158,7 +158,7 @@
                             <asp:Label ID="Label6" runat="server" Text="อัตราเงินเดือนรวม ณ 1 มี.ค. 58" CssClass="textmode"></asp:Label>
                         </td>
                         <td class="auto-style38">
-                            <asp:TextBox ID="TextBox32" runat="server" Width="100px" TextMode="Number"></asp:TextBox>
+                            <asp:TextBox ID="TextBox32" runat="server" Width="100px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -251,6 +251,8 @@
                         </td>
                         <td class="auto-style31">
                             <asp:TextBox ID="TextBox18" runat="server" Height="50px" TextMode="MultiLine" Width="500px"></asp:TextBox>
+                            <br />
+                            <br />
                         </td>
                     </tr>
                     <tr>

@@ -33,7 +33,7 @@ namespace WEB_PERSONAL
                         Label17.Text = reader.GetString(3);
                         Label19.Text = reader.GetString(4);
                         Label22.Text = reader.GetInt32(5).ToString();
-                    }            
+                    }
                     command.Dispose();
                     reader.Close();
                     conn.Close();
@@ -257,7 +257,7 @@ namespace WEB_PERSONAL
                 }
                 /* รวมใช้เลื่อน */
                 double sumup = Convert.ToDouble(Label31.Text);
-                Label33.Text = String.Format("{0:.##}",salup + sumup);
+                Label33.Text = String.Format("{0:.##}", salup + sumup);
 
                 /* เงินเดือนใหม่ */
                 Double sumup2 = Convert.ToDouble(Label33.Text);
@@ -304,7 +304,7 @@ namespace WEB_PERSONAL
                 }
                 /* รวมใช้เลื่อน */
                 Double sumup4 = Convert.ToDouble(Label50.Text);
-                Label52.Text = String.Format("{0:.##}",salup2 + sumup4);
+                Label52.Text = String.Format("{0:.##}", salup2 + sumup4);
                 /* เงินเดือนใหม่ รวมได้เลื่อนทั้งสิ้น */
                 Double salcalround3 = Convert.ToDouble(Label46.Text);
                 if (mbonus2 <= maxbasesal)
@@ -335,45 +335,52 @@ namespace WEB_PERSONAL
 
         protected void LinkButton2_Click(object sender, EventArgs ee)
         {
-            String a = TextBox1.Text;
-            String b = TextBox2.Text;
-            String c = Label22.Text;
-            String d = Label24.Text;
-            String e = TextBox3.Text;
-            String f = Label26.Text;
-            String g = Label27.Text;
-            String h = Label29.Text;
-            String i = Label31.Text;
-            String j = Label33.Text;
-            String k = Label35.Text;
-            String l = TextBox4.Text;
-            String m = TextBox5.Text;
-            String n = TextBox6.Text;
-            String o = TextBox7.Text;
-            String p = Label58.Text;
-            String q = Label42.Text;
-            String r = Label44.Text;
-            String s = Label46.Text;
-            String t = Label48.Text;
-            String u = Label50.Text;
-            String v = Label52.Text;
-            String w = Label54.Text;
-            String x = TextBox9.Text;
-            try
+            if (Session["login_id"] != null)
             {
-                SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
-                conn.Open();
-                string sql = "INSERT INTO TB_SALARY_UP (CITIZEN_ID,DETAIL_SALARY,DETAIL_MAXSALARY,DETAIL_BASEMONEY, DETAIL_PERCENT_RATE, DETAIL_MONEYNOTROUND, DETAIL_MONEYROUND, DETAIL_MONEYUP, DETAIL_MONEYBONUS, DETAIL_SUM_MONEY, DETAIL_NEW_SALARY, DETAIL_SCORE_TEST, DETAIL_LEVEL_TEST, ADMIN_RATESUM, ADMIN_RATE ,ADMIN_MONEY_ADD, SUM_PERCENT_RATE2, SUM_MONEYNOTROUND, SUM_MONEYROUND, SUM_MONEYUP, SUM_MONEYBONUS,SUM_MONEYUPTOTAL,SUM_NEWSALARY,COMMENT) VALUES ('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}', {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20}, {21}, {22},'{23}');";
-                sql = String.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x);
-                SqlCommand command = new SqlCommand(sql, conn);
-                string script = "alert(\"SAVE SUCCESSFUL.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                command.ExecuteNonQuery();
+                String a = TextBox1.Text;
+                String b = TextBox2.Text;
+                String c = Label22.Text;
+                String d = Label24.Text;
+                String e = TextBox3.Text;
+                String f = Label26.Text;
+                String g = Label27.Text;
+                String h = Label29.Text;
+                String i = Label31.Text;
+                String j = Label33.Text;
+                String k = Label35.Text;
+                String l = TextBox4.Text;
+                String m = TextBox5.Text;
+                String n = TextBox6.Text;
+                String o = TextBox7.Text;
+                String p = Label58.Text;
+                String q = Label42.Text;
+                String r = Label44.Text;
+                String s = Label46.Text;
+                String t = Label48.Text;
+                String u = Label50.Text;
+                String v = Label52.Text;
+                String w = Label54.Text;
+                String x = TextBox9.Text;
+                try
+                {
+                    SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
+                    conn.Open();
+                    string sql = "INSERT INTO TB_SALARY_UP (CITIZEN_ID,DETAIL_SALARY,DETAIL_MAXSALARY,DETAIL_BASEMONEY, DETAIL_PERCENT_RATE, DETAIL_MONEYNOTROUND, DETAIL_MONEYROUND, DETAIL_MONEYUP, DETAIL_MONEYBONUS, DETAIL_SUM_MONEY, DETAIL_NEW_SALARY, DETAIL_SCORE_TEST, DETAIL_LEVEL_TEST, ADMIN_RATESUM, ADMIN_RATE ,ADMIN_MONEY_ADD, SUM_PERCENT_RATE2, SUM_MONEYNOTROUND, SUM_MONEYROUND, SUM_MONEYUP, SUM_MONEYBONUS,SUM_MONEYUPTOTAL,SUM_NEWSALARY,COMMENT) VALUES ('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}', {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20}, {21}, {22},'{23}');";
+                    sql = String.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x);
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    string script = "alert(\"SAVE SUCCESSFUL.\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                    command.ExecuteNonQuery();
+                }
+                catch
+                {
+                    string script = "alert(\"เกิดข้อผิดพลาด\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                }
             }
-            catch
+            else
             {
-                string script = "alert(\"เกิดข้อผิดพลาด\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                Response.Redirect("Error-Member.aspx");
             }
         }
 

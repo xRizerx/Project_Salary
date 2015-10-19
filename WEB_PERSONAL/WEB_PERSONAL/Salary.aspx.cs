@@ -12,7 +12,10 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["login_id"] == null)
+            {
+                Response.Redirect("Error-Member.aspx");
+            }
 
         }
 
@@ -57,29 +60,36 @@ namespace WEB_PERSONAL
 
         protected void LinkButton1_Click(object sender, EventArgs ee)
         {
-            using (SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!"))
+            if (Session["login_id"] != null)
             {
-                conn.Open();
-
-                String a = DropDownList1.SelectedValue;
-                String b = TextBox31.Text;
-                String c = TextBox32.Text;
-                String d = Label15.Text;
-                String e = TextBox25.Text;
-                String f = Label17.Text;
-                String g = Label16.Text;
-                String h = TextBox22.Text;
-                String i = Label18.Text;
-                String j = Label19.Text;
-                String k = Label20.Text;
-                String l = TextBox18.Text;
-
-                string sql = "INSERT INTO TB_DPIS (BRANCH_ID, COUNT_PEOPLE, SUM_SALARY, RATE_SUMSALARY, RATE_MONEY_UP, RATE_BALANCE, SUM_PRE_MONTH, ADMIN_MONEY_ADD, SUM_MONEY_UP, SUM_MONEY_TOTAL, SUM_BALANCE, COMMENT) VALUES ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},'{11}');";
-                sql = string.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l);
-                using (SqlCommand command = new SqlCommand(sql, conn))
+                using (SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!"))
                 {
-                    command.ExecuteNonQuery();
+                    conn.Open();
+
+                    String a = DropDownList1.SelectedValue;
+                    String b = TextBox31.Text;
+                    String c = TextBox32.Text;
+                    String d = Label15.Text;
+                    String e = TextBox25.Text;
+                    String f = Label17.Text;
+                    String g = Label16.Text;
+                    String h = TextBox22.Text;
+                    String i = Label18.Text;
+                    String j = Label19.Text;
+                    String k = Label20.Text;
+                    String l = TextBox18.Text;
+
+                    string sql = "INSERT INTO TB_DPIS (BRANCH_ID, COUNT_PEOPLE, SUM_SALARY, RATE_SUMSALARY, RATE_MONEY_UP, RATE_BALANCE, SUM_PRE_MONTH, ADMIN_MONEY_ADD, SUM_MONEY_UP, SUM_MONEY_TOTAL, SUM_BALANCE, COMMENT) VALUES ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},'{11}');";
+                    sql = string.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l);
+                    using (SqlCommand command = new SqlCommand(sql, conn))
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
+            }
+            else
+            {
+                Response.Redirect("Error-Member.aspx");
             }
         }
 
