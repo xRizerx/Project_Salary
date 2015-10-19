@@ -107,21 +107,26 @@ form {
 }
 
 .master_login_name {
-    color: #404040;
+    color: #808080;
 
 }
 
 .master_header {
-    background-image: url("../Image/333.jpg");
+    background-image: url("../Image/DORAEMON.jpg");
     background-position: center;
     /*background-position-y: 750px;*/
-    background-attachment: fixed;
+    /*background-attachment: fixed;*/
+    background-size: 100% auto;
     
     background-color: #000000;
     background-color: #202020;
     text-align: center;
     padding: 20px 0px;
     padding-top: 64px;
+    transition: background-image 1s ease, opacity 1s ease;
+}
+.master_header:hover {
+    background-image: url("../Image/DORAEMON.jpg");
 }
 
 .master_header_label {
