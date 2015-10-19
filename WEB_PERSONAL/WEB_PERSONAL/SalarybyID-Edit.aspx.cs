@@ -12,12 +12,14 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["citizen_id"] == null)
+            if (!Page.IsPostBack)
             {
-                Response.Write("<script>alert('กรุณากดค้นหาก่อน'); self.close();</script>");
-                Response.End();
-                return;
-            }
+                if (Session["citizen_id"] == null)
+                {
+                    Response.Write("<script>alert('กรุณากดค้นหาก่อน'); self.close();</script>");
+                    Response.End();
+                    return;
+                }
                 SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
                 conn.Open();
                 using (SqlCommand command = new SqlCommand("Select TOP 1 TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_SUBSTAFFTYPE.SUBSTAFFTYPE_NAME,TB_ADMIN.ADMIN_POSITION_NAME,BASESALARY.MAXSALARY,TB_SALARY_UP.ID From TB_PERSONAL,TB_POSITION,TB_SUBSTAFFTYPE,TB_ADMIN,BASESALARY,TB_SALARY_UP WHERE TB_PERSONAL.CITIZEN_ID = '" + Session["citizen_id"] + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.SUBSTAFFTYPE_ID = TB_SUBSTAFFTYPE.SUBSTAFFTYPE_ID AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN.ADMIN_POSITION_ID AND TB_PERSONAL.POSITION_ID = BASESALARY.POSITION_ID AND TB_PERSONAL.CITIZEN_ID = TB_SALARY_UP.CITIZEN_ID ORDER BY TB_SALARY_UP.ID desc", conn))
@@ -46,7 +48,7 @@ namespace WEB_PERSONAL
                         }
                     }
                 }
-                using (SqlCommand command = new SqlCommand("Select TB_SALARY_UP.DETAIL_SALARY,TB_SALARY_UP.DETAIL_BASEMONEY,TB_SALARY_UP.DETAIL_PERCENT_RATE,TB_SALARY_UP.DETAIL_MONEYNOTROUND,TB_SALARY_UP.DETAIL_MONEYROUND,TB_SALARY_UP.DETAIL_MONEYUP,TB_SALARY_UP.DETAIL_MONEYBONUS,TB_SALARY_UP.DETAIL_SUM_MONEY,TB_SALARY_UP.DETAIL_NEW_SALARY,TB_SALARY_UP.DETAIL_SCORE_TEST,TB_SALARY_UP.DETAIL_LEVEL_TEST,TB_SALARY_UP.ADMIN_RATESUM,TB_SALARY_UP.ADMIN_RATE,TB_SALARY_UP.ADMIN_MONEY_ADD,TB_SALARY_UP.SUM_PERCENT_RATE2,TB_SALARY_UP.SUM_MONEYNOTROUND,TB_SALARY_UP.SUM_MONEYROUND,TB_SALARY_UP.SUM_MONEYUP,TB_SALARY_UP.SUM_MONEYBONUS,TB_SALARY_UP.SUM_MONEYUPTOTAL,TB_SALARY_UP.SUM_NEWSALARY,TB_SALARY_UP.COMMENT FROM TB_SALARY_UP WHERE TB_SALARY_UP.ID = 5", conn))
+                using (SqlCommand command = new SqlCommand("Select TB_SALARY_UP.DETAIL_SALARY,TB_SALARY_UP.DETAIL_BASEMONEY,TB_SALARY_UP.DETAIL_PERCENT_RATE,TB_SALARY_UP.DETAIL_MONEYNOTROUND,TB_SALARY_UP.DETAIL_MONEYROUND,TB_SALARY_UP.DETAIL_MONEYUP,TB_SALARY_UP.DETAIL_MONEYBONUS,TB_SALARY_UP.DETAIL_SUM_MONEY,TB_SALARY_UP.DETAIL_NEW_SALARY,TB_SALARY_UP.DETAIL_SCORE_TEST,TB_SALARY_UP.DETAIL_LEVEL_TEST,TB_SALARY_UP.ADMIN_RATESUM,TB_SALARY_UP.ADMIN_RATE,TB_SALARY_UP.ADMIN_MONEY_ADD,TB_SALARY_UP.SUM_PERCENT_RATE2,TB_SALARY_UP.SUM_MONEYNOTROUND,TB_SALARY_UP.SUM_MONEYROUND,TB_SALARY_UP.SUM_MONEYUP,TB_SALARY_UP.SUM_MONEYBONUS,TB_SALARY_UP.SUM_MONEYUPTOTAL,TB_SALARY_UP.SUM_NEWSALARY,TB_SALARY_UP.COMMENT FROM TB_SALARY_UP WHERE TB_SALARY_UP.ID = "+ Label63.Text +"", conn))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -76,20 +78,71 @@ namespace WEB_PERSONAL
                             TextBox9.Text = reader.GetString(21);
                         }
                         command.Dispose();
-                        reader.Close();            
+                        reader.Close();
                     }
 
                 }
                 conn.Close();
-
-
+            }
+            
         }
         private int roundUp(double i)
         {
             int j = Convert.ToInt32(i);
             return (10 - j % 10) + j;
         }
-        protected void LinkButton2_Click(object sender, EventArgs e)
+        protected void LinkButton2_Click(object sender, EventArgs ee)
+        {
+            String a = TextBox2.Text;
+            String b = Label22.Text;
+            String c = Label24.Text;
+            String d = TextBox3.Text;
+            String e = Label26.Text;
+            String f = Label27.Text;
+            String g = Label29.Text;
+            String h = Label31.Text;
+            String i = Label33.Text;
+            String j = Label35.Text;
+            String k = TextBox4.Text;
+            String l = TextBox5.Text;
+            String m = TextBox6.Text;
+            String n = TextBox7.Text;
+            String o = Label58.Text;
+            String p = Label42.Text;
+            String q = Label44.Text;
+            String r = Label46.Text;
+            String s = Label48.Text;
+            String t = Label50.Text;
+            String u = Label52.Text;
+            String v = Label54.Text;
+            String w = TextBox9.Text;
+            try
+            {
+                SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
+                conn.Open();
+                string sql = "UPDATE TB_SALARY_UP SET TB_SALARY_UP.DETAIL_SALARY={0},TB_SALARY_UP.DETAIL_MAXSALARY={1},TB_SALARY_UP.DETAIL_BASEMONEY={2},TB_SALARY_UP.DETAIL_PERCENT_RATE={3},TB_SALARY_UP.DETAIL_MONEYNOTROUND={4},TB_SALARY_UP.DETAIL_MONEYROUND={5},TB_SALARY_UP.DETAIL_MONEYUP={6},TB_SALARY_UP.DETAIL_MONEYBONUS={7},TB_SALARY_UP.DETAIL_SUM_MONEY={8},TB_SALARY_UP.DETAIL_NEW_SALARY={9},TB_SALARY_UP.DETAIL_SCORE_TEST={10},TB_SALARY_UP.DETAIL_LEVEL_TEST='{11}',TB_SALARY_UP.ADMIN_RATESUM={12},TB_SALARY_UP.ADMIN_RATE={13},TB_SALARY_UP.ADMIN_MONEY_ADD={14},TB_SALARY_UP.SUM_PERCENT_RATE2={15},TB_SALARY_UP.SUM_MONEYNOTROUND={16},TB_SALARY_UP.SUM_MONEYROUND={17},TB_SALARY_UP.SUM_MONEYUP={18},TB_SALARY_UP.SUM_MONEYBONUS={19},TB_SALARY_UP.SUM_MONEYUPTOTAL={20},TB_SALARY_UP.SUM_NEWSALARY={21},TB_SALARY_UP.COMMENT='{22}' WHERE ID = " + Label63.Text +"";
+                sql = String.Format(sql,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w);
+                SqlCommand command = new SqlCommand(sql, conn);
+                command.ExecuteNonQuery();
+                Response.Write("<script>alert('SAVE SUCCESSFUL'); self.close();</script>");
+                Response.End();
+
+            }
+            catch
+            {
+                string script = "alert(\"เกิดข้อผิดพลาด\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            Response.Write("<script>self.close();</script>");
+            Response.End();
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -358,14 +411,7 @@ namespace WEB_PERSONAL
                 string script = "alert(\"เกิดข้อผิดพลาด\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
-
+            
         }
-
-        protected void LinkButton3_Click(object sender, EventArgs e)
-        {
-            Response.Write("<script>self.close();</script>");
-            Response.End();
-        }
-
     }
 }
