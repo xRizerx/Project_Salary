@@ -65,8 +65,8 @@
         .panout {
             padding: 20px;
             text-align: center;
-            /*background-image: url("Image/bgbyid.jpg");
-            background-size:100%;*/
+            background-image: url("Image/bgbyid.jpg");
+            background-size:100%;
         }
         .auto-style14 {
             text-align: left;

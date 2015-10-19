@@ -31,8 +31,8 @@
 
         .panout {
             padding: 20px;
-            /*background-image: url("Image/bgbyid.jpg");
-            background-size:100%;*/
+            background-image: url("Image/bgbyid.jpg");
+            background-size:100%;
         }
 
         .auto-style1 {
