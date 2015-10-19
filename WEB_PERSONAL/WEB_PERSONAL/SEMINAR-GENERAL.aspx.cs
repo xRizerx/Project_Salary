@@ -17,7 +17,6 @@ namespace WEB_PERSONAL
             {
                 txtBudget.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
-            this.txtDateTO.Attributes.Add("onblur", "javascript:funBlur();");
         }
 
         protected void ClearData()
