@@ -116,6 +116,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Entities\bnn.mp3" />
     <Content Include="Image\444.jpg" />
+    <Content Include="Image\555.jpg" />
     <Content Include="Image\DORAEMON.jpg" />
     <Content Include="Image\i1.jpg" />
     <Content Include="Image\333.jpg" />

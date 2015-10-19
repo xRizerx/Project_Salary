@@ -22,10 +22,48 @@
          .auto-style9 {
              width: 195px;
          }
+         .divpan{
+            background-image: url("Image/555.jpg");
+            text-align: center;
+        }
+        .textmode {
+            font-family: ths;
+            font-size: 16px;
+        }
+
+        .textmodeb {
+            font-family: thsb;
+            font-size: 24px;
+            padding: 20px;
+        }
+
+        .textmodebi {
+            font-family: thsbi;
+            font-size: 20px;
+        }
+
+        .textmodei {
+            font-family: thsi;
+            font-size: 20px;
+        }
+
+        .pancen {
+            text-align: center;
+        }
+
+        .panin{
+            border:1px solid black;
+            margin: 20px;
+            background-color:rgba(255,255,255,0.6);
+            border-radius: 5px;
+        }
+         body {
+            background-image: url("Image/444.jpg");
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- 
+<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan">
 
     <div>
         <fieldset class="auto-style7">
@@ -129,5 +167,5 @@
 
         </fieldset>
     </div>
-
+  </asp:Panel>
 </asp:Content>
