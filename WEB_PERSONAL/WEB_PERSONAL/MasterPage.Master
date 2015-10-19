@@ -36,10 +36,7 @@
             <asp:Panel ID="Panel6" runat="server" Height="40px">
 
                 <ul class="master_login_left">
-                    <li>
-                        <asp:ImageButton ID="ImageButton1" runat="server" Height="32" Width="32" ImageUrl="~/Image/google.png" OnClick="ImageButton1_Click" />
-                    </li>
-
+                    
 
                 </ul>
 
@@ -66,7 +63,7 @@
 
             </asp:Panel>
             <div>
-                <asp:Panel ID="Panel4" runat="server" CssClass="dpl_sub_lime" Height="1px"></asp:Panel>
+                <asp:Panel ID="Panel4" runat="server" CssClass="dpl_sred" Height="1px"></asp:Panel>
             </div>
         </div>
 
@@ -120,7 +117,7 @@
         </div>
 
         <div>
-            <asp:Panel ID="Panel7" runat="server" CssClass="dpl_green" Height="1px"></asp:Panel>
+            <asp:Panel ID="Panel7" runat="server" CssClass="dpl_7c" Height="2px"></asp:Panel>
         </div>
         <div class="wrapper">
 
@@ -139,7 +136,7 @@
         </div>
         <footer>
             <div>
-                <asp:Panel ID="Panel3" runat="server" CssClass="dpl3" Height="1px"></asp:Panel>
+                <asp:Panel ID="Panel3" runat="server" CssClass="dpl_7c" Height="2px"></asp:Panel>
             </div>
             <div class="master_footer">
 

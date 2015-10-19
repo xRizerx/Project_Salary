@@ -56,7 +56,7 @@
             text-decoration: none;
             display: inline;
             padding: 3px 20px;
-            margin: 0 5px;
+            margin: 0 0px;
             width: 60px;
             color: #202020;
             background-color: #e0e0e0;
@@ -218,7 +218,9 @@
                         <td class="auto-style39">
                             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                         </td>
-                        <td class="auto-style55">&nbsp;</td>
+                        <td class="auto-style55">
+                            <asp:LinkButton ID="LinkButton14" runat="server" CssClass="leave_paper_pull" OnClick="LinkButton14_Click">วันนี้</asp:LinkButton>
+                        </td>
                         <td class="auto-style35">
                             <asp:Label ID="Label17" runat="server" Text="ชื่อ"></asp:Label>
                         </td>
