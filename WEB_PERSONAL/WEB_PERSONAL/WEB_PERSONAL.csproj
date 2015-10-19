@@ -124,6 +124,7 @@
     <Content Include="Image\google.png" />
     <Content Include="Image\i2.jpg" />
     <Content Include="Image\i3.jpg" />
+    <Content Include="insignia_recordnote.aspx" />
     <Content Include="M-Admin.aspx" />
     <Content Include="Personal.aspx" />
     <Content Include="insignia_admin.aspx" />
@@ -169,6 +170,13 @@
     </Compile>
     <Compile Include="Entities\Seminar.cs" />
     <Compile Include="Entities\TitleName.cs" />
+    <Compile Include="insignia_recordnote.aspx.cs">
+      <DependentUpon>insignia_recordnote.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_recordnote.aspx.designer.cs">
+      <DependentUpon>insignia_recordnote.aspx</DependentUpon>
+    </Compile>
     <Compile Include="M-Admin.aspx.cs">
       <DependentUpon>M-Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
