@@ -46,22 +46,29 @@ namespace WEB_PERSONAL
 
         protected void form1_Load(object sender, EventArgs e)
         {
-            
-            if(Session["login_id"] != null)
+
+            if (Session["login_id"] != null)
             {
                 /*Label7.Text = Session["login_id"].ToString();*/
-                Label7.Text = "";
-                Label8.Text = "(" + Session["login_system_status"].ToString() + ")";
-                Label4.Text = Session["login_name"].ToString() + " " + Session["login_lastname"];
+                string name = Session["login_name"].ToString() + " " + Session["login_lastname"];
+                string systemRank = "(" + Session["login_system_status"].ToString() + ")";
+                Label7.Text = name + " " + systemRank;
                 LinkButton9.Visible = false;
                 LinkButton10.Visible = true;
+                if(Session["login_system_status"].ToString() == "Admin")
+                {
+                    Label7.ForeColor = System.Drawing.Color.FromArgb(204,41,57);
+                } else
+                {
+                    Label7.ForeColor = System.Drawing.Color.FromArgb(0, 162, 232);
+                }
+                
             } else
             {
                 Label7.Text = "ยังไม่ได้เข้าสู่ระบบ";
-                Label8.Text = "";
-                Label4.Text = "";
                 LinkButton9.Visible = true;
                 LinkButton10.Visible = false;
+                Label7.ForeColor = System.Drawing.Color.FromArgb(128, 128, 128);
             }
 
         }

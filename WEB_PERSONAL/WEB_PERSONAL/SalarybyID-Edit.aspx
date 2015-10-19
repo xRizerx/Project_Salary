@@ -31,8 +31,11 @@
 
         .panout {
             padding: 20px;
-            background-image: url("Image/bgbyid.jpg");
-            background-size:100%;
+
+        }
+        body{
+           /*background-image: url("Image/bgbyid.jpg");
+            background-size:contain;*/
         }
 
         .auto-style1 {
@@ -70,7 +73,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Panel ID="Panel1" runat="server" CssClass="panout" Height="700px" Width="800px">
+            <asp:Panel ID="Panel1" runat="server" CssClass="panout" Height="800px" Width="800px">
                 <asp:Panel ID="Panel2" runat="server" CssClass="panin" Height="100%">
                     <table class="auto-style4" style="width: 100%;">
                         <tr>
@@ -349,7 +352,7 @@
                                 <asp:TextBox ID="TextBox9" runat="server" Font-Size="14pt" Height="50px" TextMode="MultiLine" Width="500px"></asp:TextBox>
                             </td>
                             <td class="auto-style7">
-                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui2">คำนวณเงินเดือน</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui2" OnClick="LinkButton1_Click" CausesValidation="False">คำนวณเงินเดือน</asp:LinkButton>
                             </td>
                         </tr>
                         <tr>

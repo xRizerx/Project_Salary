@@ -45,12 +45,6 @@
                         <asp:Label ID="Label7" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
                     </li>
                     <li>
-                        <asp:Label ID="Label4" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
-                    </li>
-                    <li>
-                        <asp:Label ID="Label8" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
-                    </li>
-                    <li>
                         <asp:LinkButton ID="LinkButton9" runat="server" OnClick="LinkButton9_Click">เข้าสู่ระบบ</asp:LinkButton>
                     </li>
                     <li>
