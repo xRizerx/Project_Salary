@@ -116,6 +116,7 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Default.aspx" />
     <Content Include="Entities\bnn.mp3" />
+    <Content Include="Error-Member.aspx" />
     <Content Include="Image\444.jpg" />
     <Content Include="Image\555.jpg" />
     <Content Include="Image\DORAEMON.jpg" />
@@ -132,6 +133,7 @@
     <Content Include="Image\google.png" />
     <Content Include="Image\i2.jpg" />
     <Content Include="Image\i3.jpg" />
+    <Content Include="Image\nopm.jpg" />
     <Content Include="insignia_recordnote.aspx" />
     <Content Include="js\index.js" />
     <Content Include="M-Admin.aspx" />
@@ -187,6 +189,13 @@
     </Compile>
     <Compile Include="Entities\Seminar.cs" />
     <Compile Include="Entities\TitleName.cs" />
+    <Compile Include="Error-Member.aspx.cs">
+      <DependentUpon>Error-Member.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error-Member.aspx.designer.cs">
+      <DependentUpon>Error-Member.aspx</DependentUpon>
+    </Compile>
     <Compile Include="insignia_recordnote.aspx.cs">
       <DependentUpon>insignia_recordnote.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
