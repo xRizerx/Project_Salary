@@ -48,6 +48,9 @@
                         <asp:Label ID="Label7" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
                     </li>
                     <li>
+                        <asp:Label ID="Label4" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
+                    </li>
+                    <li>
                         <asp:Label ID="Label8" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
                     </li>
                     <li>
@@ -141,7 +144,7 @@
             <div class="master_footer">
 
 
-                <asp:Panel ID="Panel1" runat="server" Height="120px">
+                <asp:Panel ID="Panel1" runat="server" Height="100px">
                     <div>
                         <table style="width: 100%;">
                             <tr>
