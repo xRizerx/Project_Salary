@@ -65,8 +65,8 @@
         .panout {
             padding: 20px;
             text-align: center;
-            background-image: url("Image/bgbyid.jpg");
-            background-size:100%;
+            /*background-image: url("Image/bgbyid.jpg");
+            background-size:100%;*/
         }
         .auto-style14 {
             text-align: left;
@@ -96,15 +96,28 @@
             border-radius: 4px;
         }
     </style>
+    <script language="javascript" type="text/javascript">
+<!--
+/****************************************************
+     Author: Eric King
+     Url: http://redrival.com/eak/index.shtml
+     This script is free to use as long as this info is left in
+     Featured on Dynamic Drive script library (http://www.dynamicdrive.com)
+****************************************************/
+var win=null;
+function NewWindow(mypage,myname,w,h,scroll,pos){
+if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
+if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
+else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
+settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=yes,menubar=no,toolbar=no,resizable=no';
+win=window.open(mypage,myname,settings);}
+// -->
+</script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="Panel6" runat="server" Height="1024px" CssClass="panout">
         <asp:Label ID="Label7" runat="server" Text="การขึ้นเงินเดือนรายบุคคล" Font-Bold="True" Font-Size="20pt" CssClass="header-text"></asp:Label><br /><br /><br />
-        <audio controls autoplay loop>
-            <source src="Entities/bnn.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
         <asp:Panel ID="Panel1" runat="server" CssClass="panin">
         <table style="width: 100%;">
             <tr>
@@ -211,11 +224,12 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style9">จำนวนเงินที่คำนวณได้</td>
+                <td class="auto-style9"><asp:Label ID="Label59" runat="server" Text="จำนวนเงินที่คำนวณได้"></asp:Label>
+                </td>
                 <td class="auto-style10">
                     <asp:Label ID="Label26" runat="server" Text="-"></asp:Label>
                 </td>
-                <td class="auto-style11">จำนวนเงินที่คำนวณได้(ปัดเศษ)</td>
+                <td class="auto-style11">&nbsp;</td>
                 <td class="auto-style12">
                     <asp:Label ID="Label27" runat="server" Text="-"></asp:Label>
                 </td>
@@ -399,7 +413,7 @@
                         <asp:LinkButton ID="LinkButton2" runat="server" CssClass="button_ui" OnClick="LinkButton2_Click">บันทึก</asp:LinkButton>
                     </td>
                     <td class="auto-style15">
-                        <asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui">แก้ไขข้อมูล</asp:LinkButton>
+                        <a href="SalarybyID-Edit.aspx" onclick="NewWindow(this.href,'แก้ไขข้อมูลบุคคล','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui">แก้ไขข้อมูล</a>
                     </td>
                     <tr>
                         <td class="auto-style18">&nbsp;</td>
