@@ -46,7 +46,7 @@
 
         
     </style>
-    <asp:Panel ID="Panel5" runat="server" Height="1951px" CssClass="mp">
+    <asp:Panel ID="Panel5" runat="server" Height="2825px" CssClass="mp">
 
         
 
@@ -62,7 +62,7 @@
         
 
         <div>
-            <img src="Image/anime1.jpg" class="i80p" />
+            <img src="Image/i1.jpg" class="i80p" />
         </div>
         <div>
             <p>
@@ -71,7 +71,7 @@
         </div>
         <br />
         <div>
-            <img src="Image/anime2.jpg" class="i80p" />
+            <img src="Image/i2.jpg" class="i80p" />
         </div>
         <div>
             <p>
@@ -80,7 +80,7 @@
         </div>
         <br />
         <div>
-            <img src="Image/anime3.jpg" class="i80p" />
+            <img src="Image/i3.jpg" class="i80p" />
         </div>
         <div>
             <p>
