@@ -16,7 +16,7 @@ namespace WEB_PERSONAL
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (RadioButton1.Checked == true)
+           /* if (RadioButton1.Checked == true)
             { 
                 TextBox1.Text = "kuy1";
             TextBox2.Text = "";
@@ -25,7 +25,7 @@ namespace WEB_PERSONAL
             { 
                 TextBox2.Text = "kuy2";
             TextBox1.Text = "";
-            }
+            }*/
 
         }
     }
