@@ -115,6 +115,7 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Default.aspx" />
     <Content Include="Entities\bnn.mp3" />
+    <Content Include="Image\i1.jpg" />
     <Content Include="Image\333.jpg" />
     <Content Include="Image\anime1.jpg" />
     <Content Include="Image\anime3.jpg" />
@@ -125,6 +126,8 @@
     <Content Include="Image\green_button.jpg" />
     <Content Include="Image\anime2.jpg" />
     <Content Include="Image\google.png" />
+    <Content Include="Image\i2.jpg" />
+    <Content Include="Image\i3.jpg" />
     <Content Include="M-Admin.aspx" />
     <Content Include="Personal.aspx" />
     <Content Include="insignia_admin.aspx" />
@@ -152,6 +155,7 @@
     <Content Include="Script\jquery-1.7.1.min.js" />
     <Content Include="Script\jquery-ui-1.8.20.min.js" />
     <Content Include="Script\JSFunction.js" />
+    <Content Include="SEMINAR-ADMIN.aspx" />
     <Content Include="SEMINAR-GENERAL.aspx" />
     <Content Include="Study.aspx" />
     <Content Include="TitleName-ADMIN.aspx" />
@@ -246,6 +250,13 @@
     </Compile>
     <Compile Include="SalaryByID.aspx.designer.cs">
       <DependentUpon>SalarybyID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SEMINAR-ADMIN.aspx.cs">
+      <DependentUpon>SEMINAR-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SEMINAR-ADMIN.aspx.designer.cs">
+      <DependentUpon>SEMINAR-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="SEMINAR-GENERAL.aspx.cs">
       <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>

@@ -46,7 +46,7 @@ namespace WEB_PERSONAL.CSS
                     }
 
                     {
-                        string sql = "SELECT TB_PERSONAL.PASSWORD, TB_SYSTEM_STATUS.NAME FROM TB_PERSONAL, TB_SYSTEM_STATUS WHERE TB_PERSONAL.CITIZEN_ID = '" + TextBox1.Text + "' AND TB_PERSONAL.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID";
+                        string sql = "SELECT TB_PERSONAL.PASSWORD, TB_SYSTEM_STATUS.NAME, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME FROM TB_PERSONAL, TB_SYSTEM_STATUS WHERE TB_PERSONAL.CITIZEN_ID = '" + TextBox1.Text + "' AND TB_PERSONAL.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID";
                         using (SqlCommand command = new SqlCommand(sql, con))
                         {
                             using (SqlDataReader reader = command.ExecuteReader())
@@ -57,6 +57,8 @@ namespace WEB_PERSONAL.CSS
                                     {
                                         Session["login_id"] = TextBox1.Text;
                                         Session["login_system_status"] = reader.GetString(1);
+                                        Session["login_name"] = reader.GetString(2);
+                                        Session["login_lastname"] = reader.GetString(3);
                                         Response.Redirect("Default.aspx");
                                     }
                                     else

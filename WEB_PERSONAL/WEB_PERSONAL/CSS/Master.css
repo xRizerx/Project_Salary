@@ -10,7 +10,8 @@ html, body {
 body {
     /*background-image: url("../Image/bg3.jpg");*/
     background-attachment: fixed;
-    background-color: #d6ff81;
+    /*background-color: #d6ff81;*/
+    background-color: #e9ffa3;
     /*background-size: 100% auto;*/
 }
 
@@ -21,7 +22,7 @@ form {
     height: auto !important;
     height: 100%;
     /*margin: 0 auto -200px;*/
-    margin: 0 auto -115px;
+    margin: 0 auto -120px;
     width: 1024px;
     min-height: 100%;
     padding-bottom: 10px;
@@ -44,7 +45,6 @@ form {
     
     /*background-color: rgba(0,0,0,0.5);
     box-shadow: 0px 0px 16px rgb(0,0,0);*/
-
     box-shadow: 0px 0px 24px rgba(214,255,129,0.9);
 
     position: fixed;
@@ -88,12 +88,15 @@ form {
     width: 60px;
     color: #c0c0c0;
     background-color: #000000;
+    text-shadow: 0px 0px 0px #000000;
     border-radius: 24px;
+    transition: color 0.5s ease, background-color 0.5s ease;
 }
 
 .master_login a:hover {
     color: #ffffff;
     background-color: #202020;
+    text-shadow: 1px 1px 16px #ffffff;
 }
 
 .master_login_name {
@@ -151,34 +154,25 @@ form {
     padding: 10px 20px;
     margin: 0;
     width: 60px;
-    
-    /*background-color: #c17f00;*/
-    /*background: linear-gradient(#518fff,#5e97ff);*/
-    /*border-radius: 24px;*/
-
-    /*background-color: #000000;*/
 
     color: #c0c0c0;
-    background: #000000;
+    background-color: #000000;
     text-shadow: 0px 0px 0px #000000;
-
-    animation: key_master_nav_a_out;
-    animation-duration: 1.0s;
+    transition: color 0.4s ease, background-color 0.4s ease, text-shadow 0.4s ease;
     
 }
+
 
 .master_nav a:hover {
     color: #ffffff;
-    background: #202020;
-    text-shadow: 1px 1px 2px #404040;
-
-    animation: key_master_nav_a_in;
-    animation-duration: 0.4s;
+    background-color: #1a8800;
+    text-shadow: 1px 1px 16px #ffffff;
 }
+
 
 @keyframes key_master_nav_a_in {
     from {
-        color: #c0c0c0;
+        color: #808080;
         background: #000000;
         text-shadow: 0px 0px 0px #000000;
     } 
@@ -195,7 +189,7 @@ form {
         text-shadow: 1px 1px 2px #404040;
     } 
     to {
-        color: #c0c0c0;
+        color: #808080;
         background: #000000;
         text-shadow: 0px 0px 0px #000000;
     }
@@ -210,13 +204,9 @@ form {
 	display: block;
 }
 .master_nav ul {
-	/*background: #efefef; 
-	background: linear-gradient(top, #efefef 0%, #bbbbbb 100%);  
-	background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%); 
-	background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 100%); */
-	
+
 	padding: 5px 20px;
-	/*border-radius: 10px;  */
+
 	list-style: none;
 	position: relative;
 	display: inline-table;
@@ -231,7 +221,7 @@ form {
 
 }
 .master_nav ul li:hover .nav_a {
-	color: #c0c0c0;
+	color: #808080;
 }
 
 .master_nav ul li .nav_a {
@@ -264,7 +254,7 @@ form {
 }	
 .master_nav ul ul li .nav_a:hover {
     color: #ffffff;
-    background: #202020;
+    background: #1a8800;
     text-shadow: 1px 1px 2px #404040;
 }
 .master_nav ul ul ul {
@@ -283,7 +273,7 @@ form {
     text-align: center;
     /*box-shadow: 0px 0px 16px #c0c0c0;*/
     box-shadow: 0px -4px 16px rgba(0,0,0,0.5);
-    padding: 20px;
+    padding: 10px 20px;
     background-image: url("../Image/bg4.jpg");
     background-position: center;
     background-attachment: fixed;
@@ -334,5 +324,5 @@ form {
 
 
 .footer, .push {
-    height: 120px; /* .push must be the same height as .footer */
+    height: 100px; /* .push must be the same height as .footer */
 }

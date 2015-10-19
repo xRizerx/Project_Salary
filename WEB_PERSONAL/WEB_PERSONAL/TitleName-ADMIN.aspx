@@ -122,8 +122,8 @@
                     </asp:TemplateField>
 
 
-                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="Modify" />
-                    <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" />
+                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
+                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" />
                 </Columns>
             </asp:GridView>
 

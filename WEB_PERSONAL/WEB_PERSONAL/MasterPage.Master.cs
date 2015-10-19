@@ -49,24 +49,21 @@ namespace WEB_PERSONAL
             
             if(Session["login_id"] != null)
             {
-                Label7.Text = Session["login_id"].ToString();
+                /*Label7.Text = Session["login_id"].ToString();*/
+                Label7.Text = "";
+                Label8.Text = "(" + Session["login_system_status"].ToString() + ")";
+                Label4.Text = Session["login_name"].ToString() + " " + Session["login_lastname"];
                 LinkButton9.Visible = false;
                 LinkButton10.Visible = true;
             } else
             {
                 Label7.Text = "ยังไม่ได้เข้าสู่ระบบ";
+                Label8.Text = "";
+                Label4.Text = "";
                 LinkButton9.Visible = true;
                 LinkButton10.Visible = false;
             }
 
-            if (Session["login_system_status"] != null)
-            {
-                Label8.Text = "(" + Session["login_system_status"].ToString() + ")";
-            }
-            else
-            {
-                Label8.Text = "";
-            }
         }
 
         protected void LinkButton10_Click(object sender, EventArgs e)
@@ -74,6 +71,8 @@ namespace WEB_PERSONAL
             //log out
             Session.Remove("login_id");
             Session.Remove("login_system_status");
+            Session.Remove("login_name");
+            Session.Remove("login_lastname");
             Response.Redirect("Default.aspx");
         }
 

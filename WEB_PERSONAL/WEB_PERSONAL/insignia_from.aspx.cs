@@ -46,7 +46,9 @@ namespace WEB_PERSONAL
                         {
                             RadioButton1.Checked = true;
 
-                            string sql = "select tb_personal.stf_name, tb_personal.stf_lname, tb_gender.gender_name, tb_personal.birthday, tb_personal.citizen_id, tb_rank.rank_name_th, tb_titlename.title_name_th, tb_personal.datetime_inwork, tb_position_work.position_work_name, AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO, tb_position.position_name from tb_personal, tb_gender , tb_rank, tb_department, tb_faculty, tb_titlename, tb_position_work, tb_position,AA_GOVERNMENTOFFICER_TYPE where tb_personal.citizen_id = " +  citizen_id + " AND tb_personal.gender_id = tb_gender.gender_id AND tb_personal.rank_id = tb_rank.seq AND tb_personal.department_id = tb_department.department_id AND tb_department.faculty_id = tb_faculty.faculty_id AND tb_personal.title_id = tb_titlename.title_id AND tb_personal.position_work = tb_position_work.position_work_id AND tb_personal.got_id = AA_GOVERNMENTOFFICER_TYPE.id_got AND tb_personal.position_id = tb_position.position_id; ";
+                            string sql = "select tb_personal.stf_name, tb_personal.stf_lname, tb_gender.gender_name, tb_personal.birthday, tb_personal.citizen_id, tb_rank.rank_name_th, tb_titlename.title_name_th, tb_personal.datetime_inwork, tb_position_work.position_work_name, AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO, tb_position.position_name, tb_salary.salary " +
+                                "from tb_personal, tb_gender , tb_rank, tb_department, tb_faculty, tb_titlename, tb_position_work, tb_position,AA_GOVERNMENTOFFICER_TYPE, tb_salary " +
+                                "where tb_personal.citizen_id = '" +  citizen_id + "' AND tb_personal.gender_id = tb_gender.gender_id AND tb_personal.rank_id = tb_rank.seq AND tb_personal.department_id = tb_department.department_id AND tb_department.faculty_id = tb_faculty.faculty_id AND tb_personal.title_id = tb_titlename.title_id AND tb_personal.position_work = tb_position_work.position_work_id AND tb_personal.got_id = AA_GOVERNMENTOFFICER_TYPE.id_got AND tb_personal.position_id = tb_position.position_id AND tb_salary.citizen_id = tb_personal.citizen_id ; ";
 		  /*tb_position_work.position_work_name*/;
                             using (SqlCommand command = new SqlCommand(sql, con))
                             {
@@ -54,15 +56,18 @@ namespace WEB_PERSONAL
                                 {
                                     while (reader.Read())
                                     {
-                                        TextBox4.Text = reader.GetString(0);
-                                        TextBox5.Text = reader.GetString(1);
-                                        TextBox6.Text = reader.GetString(2);
-                                        TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy");
-                                        TextBox8.Text = reader.GetString(4); 
-                                        TextBox2.Text = reader.GetString(5); 
-                                        TextBox3.Text = reader.GetString(6); 
-                                        TextBox9.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy"); 
-                                        TextBox11.Text = reader.GetString(8);
+                                        TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
+                                        TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
+                                        TextBox6.Text = reader.GetString(2); /*tb_gender.gender_name*/
+                                        TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy"); /*tb_personal.birthday*/
+                                        TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
+                                        TextBox2.Text = reader.GetString(5); /*tb_rank.rank_name_th*/
+                                        TextBox3.Text = reader.GetString(6); /*tb_titlename.title_name_th*/
+                                        TextBox9.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy"); /*tb_personal.datetime_inwork*/
+                                        TextBox11.Text = reader.GetString(8); /*tb_position_work.position_work_name*/
+                                        TextBox12.Text = reader.GetString(9); /*AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO*/
+                                        TextBox13.Text = reader.GetString(10); /*tb_position.position_name*/
+                                        TextBox14.Text = reader.GetInt32(11).ToString(); /*tb_salary.salary*/
                                     }
                                 }
                             }
