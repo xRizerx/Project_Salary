@@ -147,6 +147,7 @@
     <Content Include="Script\jquery-1.7.1.min.js" />
     <Content Include="Script\jquery-ui-1.8.20.min.js" />
     <Content Include="Script\JSFunction.js" />
+    <Content Include="SEMINAR-ADMIN.aspx" />
     <Content Include="SEMINAR-GENERAL.aspx" />
     <Content Include="Study.aspx" />
     <Content Include="TitleName-ADMIN.aspx" />
@@ -234,6 +235,13 @@
     </Compile>
     <Compile Include="SalaryByID.aspx.designer.cs">
       <DependentUpon>SalarybyID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SEMINAR-ADMIN.aspx.cs">
+      <DependentUpon>SEMINAR-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SEMINAR-ADMIN.aspx.designer.cs">
+      <DependentUpon>SEMINAR-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="SEMINAR-GENERAL.aspx.cs">
       <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>

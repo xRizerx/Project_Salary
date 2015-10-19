@@ -70,7 +70,49 @@ namespace WEB_PERSONAL.Entities
             this.SEMINAR_SIGNED_DATE = SEMINAR_SIGNED_DATE;
         }
 
-       
+
+        public DataTable GetSEMINAR(string SEMINAR_NAME)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = ConnectionDB.GetSqlConnection();
+            string query = "SELECT * FROM TB_SEMINAR ";
+            if (!string.IsNullOrEmpty(SEMINAR_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(SEMINAR_NAME))
+                {
+                    query += " and SEMINAR_NAME like @SEMINAR_NAME ";
+                }
+            }
+            SqlCommand command = new SqlCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(SEMINAR_NAME))
+                {
+                    command.Parameters.Add(new SqlParameter("SEMINAR_NAME", SEMINAR_NAME + "%"));
+                }
+                SqlDataAdapter sd = new SqlDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
 
         public int InsertSEMINAR()
         {
