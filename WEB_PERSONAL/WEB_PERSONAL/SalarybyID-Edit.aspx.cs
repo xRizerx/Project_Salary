@@ -8,55 +8,88 @@ using System.Data.SqlClient;
 
 namespace WEB_PERSONAL
 {
-    public partial class SalaryByID : System.Web.UI.Page
+    public partial class SalarybyID_Edit : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            try
+            if (Session["citizen_id"] == null)
             {
+                Response.Write("<script>alert('กรุณากดค้นหาก่อน'); self.close();</script>");
+                Response.End();
+                return;
+            }
                 SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
                 conn.Open();
-                SqlCommand command = new SqlCommand("Select TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_SUBSTAFFTYPE.SUBSTAFFTYPE_NAME,TB_ADMIN.ADMIN_POSITION_NAME,BASESALARY.MAXSALARY From TB_PERSONAL,TB_POSITION,TB_SUBSTAFFTYPE,TB_ADMIN,BASESALARY WHERE CITIZEN_ID = '" + TextBox1.Text + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.SUBSTAFFTYPE_ID = TB_SUBSTAFFTYPE.SUBSTAFFTYPE_ID AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN.ADMIN_POSITION_ID AND TB_PERSONAL.POSITION_ID = BASESALARY.POSITION_ID", conn);
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlCommand command = new SqlCommand("Select TOP 1 TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_SUBSTAFFTYPE.SUBSTAFFTYPE_NAME,TB_ADMIN.ADMIN_POSITION_NAME,BASESALARY.MAXSALARY,TB_SALARY_UP.ID From TB_PERSONAL,TB_POSITION,TB_SUBSTAFFTYPE,TB_ADMIN,BASESALARY,TB_SALARY_UP WHERE TB_PERSONAL.CITIZEN_ID = '" + Session["citizen_id"] + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.SUBSTAFFTYPE_ID = TB_SUBSTAFFTYPE.SUBSTAFFTYPE_ID AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN.ADMIN_POSITION_ID AND TB_PERSONAL.POSITION_ID = BASESALARY.POSITION_ID AND TB_PERSONAL.CITIZEN_ID = TB_SALARY_UP.CITIZEN_ID ORDER BY TB_SALARY_UP.ID desc", conn))
                 {
-                    bool found = false;
-                    while (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        found = true;
-                        Label11.Text = reader.GetString(0);
-                        Label13.Text = reader.GetString(1);
-                        Label15.Text = reader.GetString(2);
-                        Label17.Text = reader.GetString(3);
-                        Label19.Text = reader.GetString(4);
-                        Label22.Text = reader.GetInt32(5).ToString();
-                    }            
-                    command.Dispose();
-                    reader.Close();
-                    conn.Close();
-                    if (!found)
-                    {
-                        string script = "alert(\"ไม่พบผู้ใช้\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                    }
-                    else
-                    {
-                        Session["citizen_id"] = TextBox1.Text;
+                        bool found = false;
+                        while (reader.Read())
+                        {
+                            found = true;
+                            Label61.Text = Session["citizen_id"].ToString();
+                            Label11.Text = reader.GetString(0);
+                            Label13.Text = reader.GetString(1);
+                            Label15.Text = reader.GetString(2);
+                            Label17.Text = reader.GetString(3);
+                            Label19.Text = reader.GetString(4);
+                            Label22.Text = reader.GetInt32(5).ToString();
+                            Label63.Text = reader.GetInt32(6).ToString();
+                        }
+                        command.Dispose();
+                        reader.Close();
+                        if (!found)
+                        {
+                            string script = "alert(\"ไม่พบผู้ใช้\");";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                        }
                     }
                 }
-            }
-            catch
-            {
-                string script = "alert(\"เกิดข้อผิดพลาด\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
+                using (SqlCommand command = new SqlCommand("Select TB_SALARY_UP.DETAIL_SALARY,TB_SALARY_UP.DETAIL_BASEMONEY,TB_SALARY_UP.DETAIL_PERCENT_RATE,TB_SALARY_UP.DETAIL_MONEYNOTROUND,TB_SALARY_UP.DETAIL_MONEYROUND,TB_SALARY_UP.DETAIL_MONEYUP,TB_SALARY_UP.DETAIL_MONEYBONUS,TB_SALARY_UP.DETAIL_SUM_MONEY,TB_SALARY_UP.DETAIL_NEW_SALARY,TB_SALARY_UP.DETAIL_SCORE_TEST,TB_SALARY_UP.DETAIL_LEVEL_TEST,TB_SALARY_UP.ADMIN_RATESUM,TB_SALARY_UP.ADMIN_RATE,TB_SALARY_UP.ADMIN_MONEY_ADD,TB_SALARY_UP.SUM_PERCENT_RATE2,TB_SALARY_UP.SUM_MONEYNOTROUND,TB_SALARY_UP.SUM_MONEYROUND,TB_SALARY_UP.SUM_MONEYUP,TB_SALARY_UP.SUM_MONEYBONUS,TB_SALARY_UP.SUM_MONEYUPTOTAL,TB_SALARY_UP.SUM_NEWSALARY,TB_SALARY_UP.COMMENT FROM TB_SALARY_UP WHERE TB_SALARY_UP.ID = 5", conn))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            TextBox2.Text = reader.GetDouble(0).ToString();
+                            Label24.Text = reader.GetDouble(1).ToString();
+                            TextBox3.Text = reader.GetDouble(2).ToString();
+                            Label26.Text = reader.GetDouble(3).ToString();
+                            Label27.Text = reader.GetDouble(4).ToString();
+                            Label29.Text = reader.GetDouble(5).ToString();
+                            Label31.Text = reader.GetDouble(6).ToString();
+                            Label33.Text = reader.GetDouble(7).ToString();
+                            Label35.Text = reader.GetDouble(8).ToString();
+                            TextBox4.Text = reader.GetDouble(9).ToString();
+                            TextBox5.Text = reader.GetString(10);
+                            TextBox6.Text = reader.GetDouble(11).ToString();
+                            TextBox7.Text = reader.GetDouble(12).ToString();
+                            Label58.Text = reader.GetDouble(13).ToString();
+                            Label42.Text = reader.GetDouble(14).ToString();
+                            Label44.Text = reader.GetDouble(15).ToString();
+                            Label46.Text = reader.GetDouble(16).ToString();
+                            Label48.Text = reader.GetDouble(17).ToString();
+                            Label50.Text = reader.GetDouble(18).ToString();
+                            Label52.Text = reader.GetDouble(19).ToString();
+                            Label54.Text = reader.GetDouble(20).ToString();
+                            TextBox9.Text = reader.GetString(21);
+                        }
+                        command.Dispose();
+                        reader.Close();            
+                    }
+
+                }
+                conn.Close();
+
 
         }
-
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        private int roundUp(double i)
+        {
+            int j = Convert.ToInt32(i);
+            return (10 - j % 10) + j;
+        }
+        protected void LinkButton2_Click(object sender, EventArgs e)
         {
             try
             {
@@ -257,7 +290,7 @@ namespace WEB_PERSONAL
                 }
                 /* รวมใช้เลื่อน */
                 double sumup = Convert.ToDouble(Label31.Text);
-                Label33.Text = String.Format("{0:.##}",salup + sumup);
+                Label33.Text = "" + (salup + sumup);
 
                 /* เงินเดือนใหม่ */
                 Double sumup2 = Convert.ToDouble(Label33.Text);
@@ -304,7 +337,7 @@ namespace WEB_PERSONAL
                 }
                 /* รวมใช้เลื่อน */
                 Double sumup4 = Convert.ToDouble(Label50.Text);
-                Label52.Text = String.Format("{0:.##}",salup2 + sumup4);
+                Label52.Text = "" + (salup2 + sumup4);
                 /* เงินเดือนใหม่ รวมได้เลื่อนทั้งสิ้น */
                 Double salcalround3 = Convert.ToDouble(Label46.Text);
                 if (mbonus2 <= maxbasesal)
@@ -327,60 +360,12 @@ namespace WEB_PERSONAL
             }
 
         }
-        private int roundUp(double i)
-        {
-            int j = Convert.ToInt32(i);
-            return (10 - j % 10) + j;
-        }
-
-        protected void LinkButton2_Click(object sender, EventArgs ee)
-        {
-            String a = TextBox1.Text;
-            String b = TextBox2.Text;
-            String c = Label22.Text;
-            String d = Label24.Text;
-            String e = TextBox3.Text;
-            String f = Label26.Text;
-            String g = Label27.Text;
-            String h = Label29.Text;
-            String i = Label31.Text;
-            String j = Label33.Text;
-            String k = Label35.Text;
-            String l = TextBox4.Text;
-            String m = TextBox5.Text;
-            String n = TextBox6.Text;
-            String o = TextBox7.Text;
-            String p = Label58.Text;
-            String q = Label42.Text;
-            String r = Label44.Text;
-            String s = Label46.Text;
-            String t = Label48.Text;
-            String u = Label50.Text;
-            String v = Label52.Text;
-            String w = Label54.Text;
-            String x = TextBox9.Text;
-            try
-            {
-                SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
-                conn.Open();
-                string sql = "INSERT INTO TB_SALARY_UP (CITIZEN_ID,DETAIL_SALARY,DETAIL_MAXSALARY,DETAIL_BASEMONEY, DETAIL_PERCENT_RATE, DETAIL_MONEYNOTROUND, DETAIL_MONEYROUND, DETAIL_MONEYUP, DETAIL_MONEYBONUS, DETAIL_SUM_MONEY, DETAIL_NEW_SALARY, DETAIL_SCORE_TEST, DETAIL_LEVEL_TEST, ADMIN_RATESUM, ADMIN_RATE ,ADMIN_MONEY_ADD, SUM_PERCENT_RATE2, SUM_MONEYNOTROUND, SUM_MONEYROUND, SUM_MONEYUP, SUM_MONEYBONUS,SUM_MONEYUPTOTAL,SUM_NEWSALARY,COMMENT) VALUES ('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}', {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20}, {21}, {22},'{23}');";
-                sql = String.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x);
-                SqlCommand command = new SqlCommand(sql, conn);
-                string script = "alert(\"SAVE SUCCESSFUL.\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                command.ExecuteNonQuery();
-            }
-            catch
-            {
-                string script = "alert(\"เกิดข้อผิดพลาด\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
-        }
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
-            Response.Redirect("SalarybyID_Edit");
-
+            Response.Write("<script>self.close();</script>");
+            Response.End();
         }
+
     }
 }
