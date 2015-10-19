@@ -25,66 +25,104 @@
             color:black;
             text-align:center;
         }
+         .divpan{
+            background-image: url("Image/555.jpg");
+            text-align: center;
+        }
+        .textmode {
+            font-family: ths;
+            font-size: 16px;
+        }
+
+        .textmodeb {
+            font-family: thsb;
+            font-size: 24px;
+            padding: 20px;
+        }
+
+        .textmodebi {
+            font-family: thsbi;
+            font-size: 20px;
+        }
+
+        .textmodei {
+            font-family: thsi;
+            font-size: 20px;
+        }
+
+        .pancen {
+            text-align: center;
+        }
+
+        .panin{
+            border:1px solid black;
+            margin: 20px;
+            background-color:rgba(255,255,255,0.6);
+            border-radius: 5px;
+        }
+         body {
+            background-image: url("Image/444.jpg");
+        }
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1500px">
+    <asp:Panel ID="Panel1" runat="server" Height="1500px" CssClass="divpan">
    <div>
         <fieldset>
             <legend>Insert</legend>
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: right; margin-right: 5px; " class="auto-style1">1. </td>
-                        <td style="text-align: right; margin-right: 5px; " class="auto-style1">ชื่อ :&nbsp;</td>
+                        <td style="text-align: right; margin-right: 5px; ">1. </td>
+                        <td style="text-align: right; margin-right: 5px; ">ชื่อ :&nbsp;</td>
                         <td style="text-align: left; width: 50px;">
                             <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="148px"></asp:TextBox>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px; " class="auto-style2">นามสกุล :&nbsp;</td>
+                        <td style="text-align: right; margin-right: 5px; ">นามสกุล :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtLastName" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
-                        <td style="text-align: right; margin-right: 5px; " class="auto-style2">ตำแหน่ง :&nbsp;</td>
+                        <td style="text-align: right; margin-right: 5px; ">ตำแหน่ง :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtPosition" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
-                        <td style="text-align: right; margin-right: 5px; " class="auto-style6">ระดับ :&nbsp;</td>
+                        <td style="text-align: right; margin-right: 5px; ">ระดับ :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtDegree" runat="server" MaxLength="100" Width="148px"></asp:TextBox></td>
                     </tr>
                     </table> 
                 <table>
                     <tr>
-                       <td style="text-align: right; margin-right: 5px; " class="auto-style2">สังกัด :&nbsp;</td>
-                        <td style="text-align: left; " class="auto-style3">
+                       <td style="text-align: right; margin-right: 5px; ">สังกัด :&nbsp;</td>
+                        <td style="text-align: left;">
                             <asp:TextBox ID="txtCampus" runat="server" MaxLength="100" Width="576px"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px; " class="auto-style4">มหาวิทยาลัยเทคโนยีราชมงคลตะวันออก</td>
+                        <td style="text-align: right; margin-right: 5px; ">มหาวิทยาลัยเทคโนยีราชมงคลตะวันออก</td>
                     </tr>
                </table>
                  <table>
                      <tr>
-                          <td style="text-align: right; margin-right: 5px; " class="auto-style1">2. </td>
-                       <td style="text-align: right; margin-right: 5px; " class="auto-style7">ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน :&nbsp;</td>
-                        <td style="text-align: left; " class="auto-styleพ">
-                            <asp:TextBox ID="txtNameOfProject" runat="server" MaxLength="100" Width="720px"></asp:TextBox></td>
+                          <td style="text-align: right; margin-right: 5px; ">2. </td>
+                       <td style="text-align: right; margin-right: 5px; ">ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน :&nbsp;</td>
+                        <td style="text-align: left; ">
+                            <asp:TextBox ID="txtNameOfProject" runat="server" MaxLength="100" Width="690px"></asp:TextBox></td>
                       </tr>
                 </table>
                 <table>
                      <tr>
-                         <td style="text-align: right; margin-right: 5px; " class="auto-style1">3. </td>
-                       <td style="text-align: right; margin-right: 5px; " class="auto-style7">สถานที่ฝึกอบรม/สัมมนา/ดูงาน :&nbsp;</td>
-                        <td style="text-align: left; " class="auto-style">
-                            <asp:TextBox ID="txtPlace" runat="server" MaxLength="100" Width="748px"></asp:TextBox></td>
+                         <td style="text-align: right; margin-right: 5px; ">3. </td>
+                       <td style="text-align: right; margin-right: 5px; ">สถานที่ฝึกอบรม/สัมมนา/ดูงาน :&nbsp;</td>
+                        <td style="text-align: left; ">
+                            <asp:TextBox ID="txtPlace" runat="server" MaxLength="100" Width="718px"></asp:TextBox></td>
                       </tr>
                 </table>       
                  <table>
                      <tr>
-                       <td style="text-align: right; margin-right: 5px; " class="auto-style8">ระยะเวลาการฝึกอบรม/สัมมนา/ดูงาน</td>
+                       <td style="text-align: right; margin-right: 5px; ">ระยะเวลาการฝึกอบรม/สัมมนา/ดูงาน</td>
                          <td style="text-align: left; width: 10px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; "class="auto-style5"> ตั้งแต่วันที่ </td>
+                        <td style="text-align: left; margin-right: 5px; "> ตั้งแต่วันที่ </td>
                             <td style="text-align: left; width: 120px;">
 
                             <asp:TextBox ID="txtDateFrom" runat="server"></asp:TextBox></td>
                             <td style="text-align: left; width: 10px;"> </td> 
-                             <td style="text-align: left; margin-right: 5px; "class="auto-style5"> ถึงวันที่ 
+                             <td style="text-align: left; margin-right: 5px;"> ถึงวันที่ 
                                 
                          </td>
                             <td style="text-align: left; width: 120px;">
@@ -143,7 +181,7 @@
                             <asp:CheckBox ID="chkBox" runat="server" Text="ถ้ามี" OnCheckedChanged="chkBox_CheckedChanged" /> 
                         </td>
                         <td style="text-align: left; width: 50px;">
-                            <asp:TextBox ID="txtCertificate" runat="server" MaxLength="100" Width="738px" Enabled="False" Text="ไม่มี"></asp:TextBox></td>
+                            <asp:TextBox ID="txtCertificate" runat="server" MaxLength="100" Width="739px" Enabled="False" Text="ไม่มี"></asp:TextBox></td>
                     </tr>
                 </table>
 

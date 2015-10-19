@@ -6,7 +6,7 @@
             width: 303px;
         }
          .divpan{
-            background-image: url("Image/green_button.jpg");
+            background-image: url("Image/555.jpg");
             text-align: center;
         }
         .textmode {
