@@ -99,9 +99,13 @@ namespace WEB_PERSONAL
             GridView1.DataBind();
         }
 
-        protected void btnSearchCustomer_Click(object sender, EventArgs e)
+        protected void btnSearchNameSeminar_Click(object sender, EventArgs e)
         {
-
+            Seminar S = new Seminar();
+            DataTable dt = S.GetSEMINAR(txtSearchNameSeminar.Text);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
         }
     }
 }
