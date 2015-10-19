@@ -111,6 +111,7 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Default.aspx" />
     <Content Include="Entities\bnn.mp3" />
+    <Content Include="Image\DORAEMON.jpg" />
     <Content Include="Image\i1.jpg" />
     <Content Include="Image\333.jpg" />
     <Content Include="Image\anime1.jpg" />

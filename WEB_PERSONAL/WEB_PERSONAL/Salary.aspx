@@ -61,7 +61,7 @@
         }
 
         body {
-            background-image: url("Image/333.jpg");
+            background-image: url("Image/DORAEMON.jpg");
         }
         .panin{
             border:1px solid black;
