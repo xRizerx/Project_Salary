@@ -1,16 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SEMINAR-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.SEMINAR_ADMIN" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+        .auto-style2 {
+            width: 303px;
+        }
+    </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" ScrollBars="Both">
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal">
         <div>
-        <fieldset>
+        <fieldset class="auto-style2">
             <legend>Search</legend>
             <div>
                 ชื่อ :
-                <asp:TextBox ID="txtSearchCusName" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtSearchNameSeminar" runat="server"></asp:TextBox>
                
-                <asp:Button ID="btnSearchCustomer" Text="Search" runat="server" OnClick="btnSearchCustomer_Click" />
+                <asp:Button ID="btnSearchNameSeminar" Text="Search" runat="server" OnClick="btnSearchNameSeminar_Click" />
             </div>
         </fieldset>
       </div>
@@ -26,7 +33,7 @@
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewSEMINARADMIN_PageIndexChanging" PageSize="15">
+                OnPageIndexChanging="myGridViewSEMINARADMIN_PageIndexChanging" PageSize="10">
                 <Columns>
                     	<asp:TemplateField HeaderText="ID" Visible="false">
                        		 <ItemTemplate>
@@ -125,7 +132,7 @@
                            	<asp:Label ID="lblSEMINAR_DAY" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DAY") %>'></asp:Label>
                         	</ItemTemplate>
                         		<EditItemTemplate>
-                            		<asp:TextBox ID="txtDay"  MaxLength="140" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DAY") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtDay"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DAY") %>'></asp:TextBox>
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
@@ -134,11 +141,121 @@
                            	<asp:Label ID="lblSEMINAR_MONTH" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_MONTH") %>'></asp:Label>
                         	</ItemTemplate>
                         		<EditItemTemplate>
-                            		<asp:TextBox ID="txtMonth"  MaxLength="140" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_MONTH") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtMonth"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_MONTH") %>'></asp:TextBox>
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="รวมระยะเวลา : ปี " ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="ค่าใช้จ่ายตลอดโครงการ" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="แหล่งงบประมาณที่ได้รับการสนับสนุน" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="ประกาศนียบัตรที่ได้รับ" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="สรุปผลการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="140" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="140" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="ด้านการเรียนการสอน" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="140" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="ด้านการวิจัย" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="140" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="ด้านการบริการวิชาการ" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="140" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="ด้านอื่นๆ" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="140" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="120">
+                        	<ItemTemplate>
+                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
+                        	</ItemTemplate>
+                        		<EditItemTemplate>
+                            		<asp:TextBox ID="txtYear"  MaxLength="140" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
+                        		</EditItemTemplate>
+                   	 </asp:TemplateField>
+
+
+                    <asp:TemplateField HeaderText="ความคิดเห็น/ข้อเสนอแนะอื่นๆ" ControlStyle-Width="120">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
                         	</ItemTemplate>
@@ -149,9 +266,8 @@
 
 
 
-
-                    	<asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="Modify" />
-                    	<asp:CommandField ShowDeleteButton="True" HeaderText="Delete" />
+                    	<asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
+                    	<asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" />
                 </Columns>
             </asp:GridView>
 
