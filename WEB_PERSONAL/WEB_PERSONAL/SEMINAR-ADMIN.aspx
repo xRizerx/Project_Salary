@@ -132,7 +132,7 @@
                     	<asp:TemplateField HeaderText="ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="120">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_NAMEOFPROJECT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_NAMEOFPROJECT") %>'></asp:Label>
-                        	</ItemTemplate>
+                        	</ItemTemplate> 
                         		<EditItemTemplate>
                             		<asp:TextBox ID="txtNameOfProject"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_NAMEOFPROJECT") %>'></asp:TextBox>
                         		</EditItemTemplate>
