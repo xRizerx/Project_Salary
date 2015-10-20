@@ -13,5 +13,15 @@ namespace WEB_PERSONAL
         {
 
         }
+
+        protected void btnSubmitSeminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCancelSeminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

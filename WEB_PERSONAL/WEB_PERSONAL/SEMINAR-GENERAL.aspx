@@ -72,7 +72,7 @@
     <asp:Panel ID="Panel1" runat="server" Height="1500px" CssClass="divpan">
    <div>
         <fieldset>
-            <legend>Insert</legend>
+            <legend>เพิ่มข้อมูลการฝึกอบรม/สัมมนา/ดูงาน</legend>
             <div>
                 <table>
                     <tr>
@@ -275,17 +275,6 @@
                             <asp:TextBox ID="txtComment" runat="server" MaxLength="1000" TextMode="MultiLine" Height="100px" Width="947px" CssClass="multext"></asp:TextBox></td>
                     </tr>
                 </table>
-
-
-
-
-
-
-
-
-
-
-
 
 
                    <table>
