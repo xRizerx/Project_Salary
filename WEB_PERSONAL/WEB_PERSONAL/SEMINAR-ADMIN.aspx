@@ -21,7 +21,7 @@
         }
 
         .textmodebi {
-            font-family: thsbi;
+            C: \Users\OATINDYZ-NT\Source\Repos\RMUTTO\WEB_PERSONAL\WEB_PERSONAL\SEMINAR-ADMIN.aspx font-family: thsbi;
             font-size: 20px;
         }
 

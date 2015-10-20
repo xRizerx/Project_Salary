@@ -137,7 +137,6 @@
     <Content Include="insignia_recordnote.aspx" />
     <Content Include="js\index.js" />
     <Content Include="M-Admin.aspx" />
-    <Content Include="Personal.aspx" />
     <Content Include="insignia_admin.aspx" />
     <Content Include="insignia_from.aspx" />
     <Content Include="insignia_citizen.aspx" />
@@ -158,6 +157,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Personnel-ADMIN\Personnel-ADMIN.aspx" />
+    <Content Include="Personnel-GENERAL\Personnel-GENERAL.aspx" />
     <Content Include="SalarybyID-Edit.aspx" />
     <Content Include="SalarybyID.aspx" />
     <Content Include="Script\jquery-1.7.1.min.js" />
@@ -210,13 +211,6 @@
     <Compile Include="M-Admin.aspx.designer.cs">
       <DependentUpon>M-Admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Personal.aspx.cs">
-      <DependentUpon>Personal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Personal.aspx.designer.cs">
-      <DependentUpon>Personal.aspx</DependentUpon>
-    </Compile>
     <Compile Include="insignia_admin.aspx.cs">
       <DependentUpon>insignia_admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,6 +259,20 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Personnel-ADMIN\Personnel-ADMIN.aspx.cs">
+      <DependentUpon>Personnel-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Personnel-ADMIN\Personnel-ADMIN.aspx.designer.cs">
+      <DependentUpon>Personnel-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Personnel-GENERAL\Personnel-GENERAL.aspx.cs">
+      <DependentUpon>Personnel-GENERAL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Personnel-GENERAL\Personnel-GENERAL.aspx.designer.cs">
+      <DependentUpon>Personnel-GENERAL.aspx</DependentUpon>
     </Compile>
     <Compile Include="SalarybyID-Edit.aspx.cs">
       <DependentUpon>SalarybyID-Edit.aspx</DependentUpon>
