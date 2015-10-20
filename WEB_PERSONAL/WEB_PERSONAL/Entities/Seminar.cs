@@ -217,7 +217,7 @@ namespace WEB_PERSONAL.Entities
             query += " SEMINAR_DAY = @SEMINAR_DAY ,";
             query += " SEMINAR_MONTH = @SEMINAR_MONTH ,";
             query += " SEMINAR_YEAR = @SEMINAR_YEAR ,";
-            query += " SEMINAR_BUDGET = @SEMINAR_BUDGET";
+            query += " SEMINAR_BUDGET = @SEMINAR_BUDGET ,";
             query += " SEMINAR_SUPPORT_BUDGET = @SEMINAR_SUPPORT_BUDGET ,";
             query += " SEMINAR_CERTIFICATE = @SEMINAR_CERTIFICATE ,";
             query += " SEMINAR_ABSTRACT = @SEMINAR_ABSTRACT ,";
@@ -228,7 +228,7 @@ namespace WEB_PERSONAL.Entities
             query += " SEMINAR_SHOW_4 = @SEMINAR_SHOW_4 ,";
             query += " SEMINAR_PROBLEM = @SEMINAR_PROBLEM ,";
             query += " SEMINAR_COMMENT = @SEMINAR_COMMENT ";
-            query += " where SEMINAR_ID  = @SEMINAR_ID ";
+            query += " where SEMINAR_ID  = @SEMINAR_ID";
 
             SqlCommand command = new SqlCommand(query, conn);
             try
@@ -260,6 +260,7 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_4", SEMINAR_SHOW_4));
                 command.Parameters.Add(new SqlParameter("SEMINAR_PROBLEM", SEMINAR_PROBLEM));
                 command.Parameters.Add(new SqlParameter("SEMINAR_COMMENT", SEMINAR_COMMENT));
+                command.Parameters.Add(new SqlParameter("SEMINAR_ID", SEMINAR_ID));
                 if (command.ExecuteNonQuery() > 0)
                 {
                     result = true;

@@ -75,8 +75,8 @@ namespace WEB_PERSONAL
             TextBox txtCampus = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtCampus");
             TextBox txtNameOfProject = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtNameOfProject");
             TextBox txtPlace = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPlace");
-            TextBox lblSEMINAR_DATETIME_FROM = (TextBox)GridView1.Rows[e.RowIndex].FindControl("lblSEMINAR_DATETIME_FROM");
-            TextBox lblSEMINAR_DATETIME_TO = (TextBox)GridView1.Rows[e.RowIndex].FindControl("lblSEMINAR_DATETIME_TO");
+            TextBox lblSEMINAR_DATETIME_FROM = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtDateFrom");
+            TextBox lblSEMINAR_DATETIME_TO = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtDateTO");
             TextBox txtDay = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtDay");
             TextBox txtMonth = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtMonth");
             TextBox txtYear = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtYear");
@@ -91,14 +91,11 @@ namespace WEB_PERSONAL
             TextBox txtShow4 = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtShow4");
             TextBox txtProblem = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtProblem");
             TextBox txtComment = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtComment");
-            Label txtSEMINAR_SIGNED_DATETIME = (Label)GridView1.Rows[e.RowIndex].FindControl("txtSEMINAR_SIGNED_DATETIME");
 
-            string[] splitDate1 = lblSEMINAR_DATETIME_FROM.Text.Split('/');
-            string[] splitDate2 = lblSEMINAR_DATETIME_TO.Text.Split('/');
-            string[] splitDate3 = txtSEMINAR_SIGNED_DATETIME.Text.Split('/');
-            DateTime SEMINAR_DATETIME_FROM = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
-            DateTime SEMINAR_DATETIME_TO = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
-            DateTime SEMINAR_SIGNED_DATETIME = new DateTime(Convert.ToInt32(splitDate3[2]), Convert.ToInt32(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
+
+            DateTime SEMINAR_DATETIME_FROM = DateTime.Parse(lblSEMINAR_DATETIME_FROM.Text);
+            DateTime SEMINAR_DATETIME_TO = DateTime.Parse(lblSEMINAR_DATETIME_TO.Text);
+            DateTime SEMINAR_SIGNED_DATETIME = DateTime.Now;
 
             Seminar S = new Seminar(Convert.ToInt32(lblSEMINAR_ID.Text)
                 , txtName.Text
