@@ -99,6 +99,43 @@ namespace WEB_PERSONAL.Entities
                 }
                 SqlDataAdapter sd = new SqlDataAdapter(command);
                 sd.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    if (DBNull.Value != dt.Rows[0]["SEMINAR_ID"])
+                    {
+                        this.SEMINAR_ID = Convert.ToInt32(dt.Rows[0]["SEMINAR_ID"]);
+                    }
+                    if (DBNull.Value != dt.Rows[0]["SEMINAR_DATETIME_FROM"])
+                    {
+                        this.SEMINAR_DATETIME_FROM = DateTime.Parse(dt.Rows[0]["SEMINAR_DATETIME_FROM"].ToString());
+                    }
+                    if (DBNull.Value != dt.Rows[0]["SEMINAR_DATETIME_TO"])
+                    {
+                        this.SEMINAR_DATETIME_TO = DateTime.Parse(dt.Rows[0]["SEMINAR_DATETIME_TO"].ToString());
+                    }
+                    if (DBNull.Value != dt.Rows[0]["SEMINAR_SIGNED_DATETIME"])
+                    {
+                        this.SEMINAR_SIGNED_DATE = DateTime.Parse(dt.Rows[0]["SEMINAR_SIGNED_DATE"].ToString());
+                    }
+                    if (DBNull.Value != dt.Rows[0]["SEMINAR_DAY"])
+                    {
+                        this.SEMINAR_DAY = Convert.ToInt32(dt.Rows[0]["SEMINAR_DAY"]);
+                    }
+                    if (DBNull.Value != dt.Rows[0]["SEMINAR_MONTH"])
+                    {
+                        this.SEMINAR_MONTH = Convert.ToInt32(dt.Rows[0]["SEMINAR_MONTH"]);
+                    }
+                    if (DBNull.Value != dt.Rows[0]["SEMINAR_YEAR"])
+                    {
+                        this.SEMINAR_YEAR = Convert.ToInt32(dt.Rows[0]["SEMINAR_YEAR"]);
+                    }
+                    if (DBNull.Value != dt.Rows[0]["SEMINAR_BUDGET"])
+                    {
+                        this.SEMINAR_BUDGET = Convert.ToInt32(dt.Rows[0]["SEMINAR_BUDGET"]);
+                    }
+                    
+                }
             }
             catch (Exception ex)
             {
