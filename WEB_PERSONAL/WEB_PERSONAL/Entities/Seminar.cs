@@ -134,7 +134,7 @@ namespace WEB_PERSONAL.Entities
                         {
                             this.SEMINAR_BUDGET = Convert.ToInt32(dt.Rows[0]["SEMINAR_BUDGET"]);
                         }
-
+                        
                     }
                 }
                 catch (Exception ex)

@@ -96,6 +96,7 @@ namespace WEB_PERSONAL
             DateTime SEMINAR_DATETIME_TO = DateTime.Parse(lblSEMINAR_DATETIME_TO.Text);
             DateTime SEMINAR_SIGNED_DATETIME = DateTime.Now;
 
+            
             Seminar S = new Seminar(Convert.ToInt32(lblSEMINAR_ID.Text)
                 , txtName.Text
                 , txtLastName.Text
