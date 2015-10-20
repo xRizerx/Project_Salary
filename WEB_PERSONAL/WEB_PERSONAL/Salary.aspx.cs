@@ -16,6 +16,21 @@ namespace WEB_PERSONAL
             {
                 Response.Redirect("Error-Member.aspx");
             }
+            if (!Page.IsPostBack)
+            {
+
+                TextBox31.Text = "";
+                TextBox32.Text = "";
+                Label15.Text = "";
+                TextBox25.Text = "";
+                Label17.Text = "";
+                Label16.Text = "";
+                TextBox22.Text = "";
+                Label18.Text = "";
+                Label19.Text = "";
+                Label20.Text = "";
+                TextBox18.Text = "";
+            }
 
         }
 
@@ -107,5 +122,7 @@ namespace WEB_PERSONAL
             Label20.Text = "";
             TextBox18.Text = "";
         }
+
+
     }
 }
