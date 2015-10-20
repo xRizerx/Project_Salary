@@ -304,7 +304,7 @@
 
                         <asp:TemplateField HeaderText="วันที่กรอกฟรอม" Visible="True" ControlStyle-Width="200">
                        		 <ItemTemplate>
-                            		<asp:Label ID="lblSEMINAR_SIGNED_DATETIME" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SIGNED_DATETIME","{0:dd/MM/yyyy}") %>'></asp:Label>
+                            		<asp:Label ID="lblSEMINAR_SIGNED_DATETIME" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SIGNED_DATETIME") %>'></asp:Label>
                        		 </ItemTemplate>
                   	    </asp:TemplateField>
 
