@@ -3,16 +3,21 @@
     <script src="Script/jquery-ui-1.8.20.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#ContentPlaceHolder1_txtDateFrom,#ContentPlaceHolder1_txtDateTO").datepicker({
-                dateFormat: 'dd/mm/yy',
-                beforeShow: function () {
-                    $(".ui-datepicker").css('font-size', 14)
-                }
-            });  
-        });
-    </script>
+    <script>
+            $(function () {
+                $(document).ready(function () {
+                    $("#ContentPlaceHolder1_txtDateFrom,#ContentPlaceHolder1_txtDateTO").datepicker({
+                        dateFormat: 'dd/mm/yy',
+                        changeMonth: true,
+                        changeYear: true,
+                        beforeShow: function () {
+                            $(".ui-datepicker").css('font-size', 14)
+                        }
+                    });
+                });
+            });
+  </script>
+
     <style type="text/CSS">
         .multext{
             resize:none;
