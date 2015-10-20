@@ -17,7 +17,6 @@ namespace WEB_PERSONAL
             {
                 txtBudget.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
-            this.txtDateTO.Attributes.Add("onblur", "javascript:funBlur();");
         }
 
         protected void ClearData()
@@ -36,7 +35,7 @@ namespace WEB_PERSONAL
             txtDay.Text = "";
             txtBudget.Text = "";
             txtSupportBudget.Text = "";
-
+ 
             txtAbstract.Text = "";
             txtResult.Text = "";
             txtShow1.Text = "";
@@ -189,12 +188,15 @@ namespace WEB_PERSONAL
             S.SEMINAR_SHOW_4 = txtShow4.Text;
             S.SEMINAR_PROBLEM = txtProblem.Text;
             S.SEMINAR_COMMENT = txtComment.Text;
+            S.SEMINAR_SIGNED_DATETIME = DateTime.Now;
 
             string[] splitDate1 = txtDateFrom.Text.Split('/');
             string[] splitDate2 = txtDateTO.Text.Split('/');
             S.SEMINAR_DATETIME_FROM = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
             S.SEMINAR_DATETIME_TO = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
 
+
+            DateTime SEMINAR_SIGNED_DATETIME = DateTime.Now;            
             S.InsertSEMINAR();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
             ClearData();

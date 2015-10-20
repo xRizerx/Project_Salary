@@ -35,13 +35,13 @@ namespace WEB_PERSONAL.Entities
         public string SEMINAR_SHOW_4 { get; set; }
         public string SEMINAR_PROBLEM { get; set; }
         public string SEMINAR_COMMENT { get; set; }
-        public DateTime SEMINAR_SIGNED_DATE { get; set; }
+        public DateTime SEMINAR_SIGNED_DATETIME { get; set; }
 
         public Seminar() { }
         public Seminar(int SEMINAR_ID, string SEMINAR_NAME, string SEMINAR_LASTNAME, string SEMINAR_POSITION, string SEMINAR_DEGREE, string SEMINAR_CAMPUS, string SEMINAR_NAMEOFPROJECT,
         string SEMINAR_PLACE, DateTime SEMINAR_DATETIME_FROM, DateTime SEMINAR_DATETIME_TO, int SEMINAR_DAY, int SEMINAR_MONTH, int SEMINAR_YEAR, int SEMINAR_BUDGET, string SEMINAR_SUPPORT_BUDGET,
         string SEMINAR_CERTIFICATE, string SEMINAR_ABSTRACT, string SEMINAR_RESULT, string SEMINAR_SHOW_1, string SEMINAR_SHOW_2, string SEMINAR_SHOW_3, string SEMINAR_SHOW_4, string SEMINAR_PROBLEM,
-        string SEMINAR_COMMENT, DateTime SEMINAR_SIGNED_DATE)
+        string SEMINAR_COMMENT, DateTime SEMINAR_SIGNED_DATETIME)
         {
             this.SEMINAR_ID = SEMINAR_ID;
             this.SEMINAR_NAME = SEMINAR_NAME;
@@ -67,7 +67,7 @@ namespace WEB_PERSONAL.Entities
             this.SEMINAR_SHOW_4 = SEMINAR_SHOW_4;
             this.SEMINAR_PROBLEM = SEMINAR_PROBLEM;
             this.SEMINAR_COMMENT = SEMINAR_COMMENT;
-            this.SEMINAR_SIGNED_DATE = SEMINAR_SIGNED_DATE;
+            this.SEMINAR_SIGNED_DATETIME = SEMINAR_SIGNED_DATETIME;
         }
 
 
@@ -78,47 +78,84 @@ namespace WEB_PERSONAL.Entities
             string query = "SELECT * FROM TB_SEMINAR ";
             if (!string.IsNullOrEmpty(SEMINAR_NAME))
             {
-                query += " where 1=1 ";
-                if (!string.IsNullOrEmpty(SEMINAR_NAME))
-                {
-                    query += " and SEMINAR_NAME like @SEMINAR_NAME ";
+                    query += " where 1=1 ";
+                    if (!string.IsNullOrEmpty(SEMINAR_NAME))
+                    {
+                        query += " and SEMINAR_NAME like @SEMINAR_NAME ";
+                    }
                 }
-            }
-            SqlCommand command = new SqlCommand(query, conn);
-            // Create the command
-            try
-            {
-                if (conn.State != ConnectionState.Open)
+                SqlCommand command = new SqlCommand(query, conn);
+                // Create the command
+                try
                 {
-                    conn.Open();
+                    if (conn.State != ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+
+                    if (!string.IsNullOrEmpty(SEMINAR_NAME))
+                    {
+                        command.Parameters.Add(new SqlParameter("SEMINAR_NAME", SEMINAR_NAME + "%"));
+                    }
+                    SqlDataAdapter sd = new SqlDataAdapter(command);
+                    sd.Fill(dt);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        if (DBNull.Value != dt.Rows[0]["SEMINAR_ID"])
+                        {
+                            this.SEMINAR_ID = Convert.ToInt32(dt.Rows[0]["SEMINAR_ID"]);
+                        }
+                        if (DBNull.Value != dt.Rows[0]["SEMINAR_DATETIME_FROM"])
+                        {
+                            this.SEMINAR_DATETIME_FROM = DateTime.Parse(dt.Rows[0]["SEMINAR_DATETIME_FROM"].ToString());
+                        }
+                        if (DBNull.Value != dt.Rows[0]["SEMINAR_DATETIME_TO"])
+                        {
+                            this.SEMINAR_DATETIME_TO = DateTime.Parse(dt.Rows[0]["SEMINAR_DATETIME_TO"].ToString());
+                        }
+                        if (DBNull.Value != dt.Rows[0]["SEMINAR_SIGNED_DATETIME"])
+                        {
+                            this.SEMINAR_SIGNED_DATETIME = DateTime.Parse(dt.Rows[0]["SEMINAR_SIGNED_DATETIME"].ToString());
+                        }
+                        if (DBNull.Value != dt.Rows[0]["SEMINAR_DAY"])
+                        {
+                            this.SEMINAR_DAY = Convert.ToInt32(dt.Rows[0]["SEMINAR_DAY"]);
+                        }
+                        if (DBNull.Value != dt.Rows[0]["SEMINAR_MONTH"])
+                        {
+                            this.SEMINAR_MONTH = Convert.ToInt32(dt.Rows[0]["SEMINAR_MONTH"]);
+                        }
+                        if (DBNull.Value != dt.Rows[0]["SEMINAR_YEAR"])
+                        {
+                            this.SEMINAR_YEAR = Convert.ToInt32(dt.Rows[0]["SEMINAR_YEAR"]);
+                        }
+                        if (DBNull.Value != dt.Rows[0]["SEMINAR_BUDGET"])
+                        {
+                            this.SEMINAR_BUDGET = Convert.ToInt32(dt.Rows[0]["SEMINAR_BUDGET"]);
+                        }
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+                finally
+                {
+                    command.Dispose();
+                    conn.Close();
                 }
 
-                if (!string.IsNullOrEmpty(SEMINAR_NAME))
-                {
-                    command.Parameters.Add(new SqlParameter("SEMINAR_NAME", SEMINAR_NAME + "%"));
-                }
-                SqlDataAdapter sd = new SqlDataAdapter(command);
-                sd.Fill(dt);
+                return dt;
             }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                command.Dispose();
-                conn.Close();
-            }
-
-            return dt;
-        }
-
+        
         public int InsertSEMINAR()
         {
             int id = 0;
             SqlConnection conn = ConnectionDB.GetSqlConnection();
-            SqlCommand command = new SqlCommand("INSERT INTO TB_SEMINAR (seminar_name,seminar_lastname,seminar_position,seminar_degree,seminar_campus,seminar_nameofproject,seminar_place,seminar_datetime_from,seminar_datetime_to, seminar_day, seminar_month, seminar_year, seminar_budget, seminar_support_budget, seminar_certificate, seminar_abstract, seminar_result, seminar_show_1, seminar_show_2, seminar_show_3, seminar_problem, seminar_comment) VALUES (@seminar_name,@seminar_lastname,@seminar_position,@seminar_degree,@seminar_campus,@seminar_nameofproject,@seminar_place,@seminar_datetime_from,@seminar_datetime_to, @seminar_day, @seminar_month, @seminar_year, @seminar_budget, @seminar_support_budget, @seminar_certificate, @seminar_abstract, @seminar_result, @seminar_show_1, @seminar_show_2, @seminar_show_3, @seminar_problem, @seminar_comment)", conn);
+            SqlCommand command = new SqlCommand("INSERT INTO TB_SEMINAR (seminar_name,seminar_lastname,seminar_position,seminar_degree,seminar_campus,seminar_nameofproject,seminar_place,seminar_datetime_from,seminar_datetime_to, seminar_day, seminar_month, seminar_year, seminar_budget, seminar_support_budget, seminar_certificate, seminar_abstract, seminar_result, seminar_show_1, seminar_show_2, seminar_show_3, seminar_problem, seminar_comment,SEMINAR_SIGNED_DATETIME) VALUES (@seminar_name,@seminar_lastname,@seminar_position,@seminar_degree,@seminar_campus,@seminar_nameofproject,@seminar_place,@seminar_datetime_from,@seminar_datetime_to, @seminar_day, @seminar_month, @seminar_year, @seminar_budget, @seminar_support_budget, @seminar_certificate, @seminar_abstract, @seminar_result, @seminar_show_1, @seminar_show_2, @seminar_show_3, @seminar_problem, @seminar_comment,@SEMINAR_SIGNED_DATETIME)", conn);
 
             try
             {
@@ -149,6 +186,7 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_4   ", SEMINAR_SHOW_4));
                 command.Parameters.Add(new SqlParameter("SEMINAR_PROBLEM   ", SEMINAR_PROBLEM));
                 command.Parameters.Add(new SqlParameter("SEMINAR_COMMENT   ", SEMINAR_COMMENT));
+                command.Parameters.Add(new SqlParameter("SEMINAR_SIGNED_DATETIME   ", SEMINAR_SIGNED_DATETIME));
                 id = command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -180,7 +218,7 @@ namespace WEB_PERSONAL.Entities
             query += " SEMINAR_DAY = @SEMINAR_DAY ,";
             query += " SEMINAR_MONTH = @SEMINAR_MONTH ,";
             query += " SEMINAR_YEAR = @SEMINAR_YEAR ,";
-            query += " SEMINAR_BUDGET = @SEMINAR_BUDGET";
+            query += " SEMINAR_BUDGET = @SEMINAR_BUDGET ,";
             query += " SEMINAR_SUPPORT_BUDGET = @SEMINAR_SUPPORT_BUDGET ,";
             query += " SEMINAR_CERTIFICATE = @SEMINAR_CERTIFICATE ,";
             query += " SEMINAR_ABSTRACT = @SEMINAR_ABSTRACT ,";
@@ -190,9 +228,10 @@ namespace WEB_PERSONAL.Entities
             query += " SEMINAR_SHOW_3 = @SEMINAR_SHOW_3 ,";
             query += " SEMINAR_SHOW_4 = @SEMINAR_SHOW_4 ,";
             query += " SEMINAR_PROBLEM = @SEMINAR_PROBLEM ,";
-            query += " SEMINAR_COMMENT = @SEMINAR_COMMENT ";
-            query += " where SEMINAR_ID  = @SEMINAR_ID ";
-
+            query += " SEMINAR_COMMENT = @SEMINAR_COMMENT ,";
+            query += " SEMINAR_SIGNED_DATETIME = @SEMINAR_SIGNED_DATETIME ";
+            query += " where SEMINAR_ID  = @SEMINAR_ID";
+            
             SqlCommand command = new SqlCommand(query, conn);
             try
             {
@@ -223,6 +262,8 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_4", SEMINAR_SHOW_4));
                 command.Parameters.Add(new SqlParameter("SEMINAR_PROBLEM", SEMINAR_PROBLEM));
                 command.Parameters.Add(new SqlParameter("SEMINAR_COMMENT", SEMINAR_COMMENT));
+                command.Parameters.Add(new SqlParameter("SEMINAR_SIGNED_DATETIME", SEMINAR_SIGNED_DATETIME));
+                command.Parameters.Add(new SqlParameter("SEMINAR_ID", SEMINAR_ID));
                 if (command.ExecuteNonQuery() > 0)
                 {
                     result = true;
