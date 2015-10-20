@@ -21,7 +21,7 @@
         }
 
         .textmodebi {
-            font-family: thsbi;
+            C: \Users\OATINDYZ-NT\Source\Repos\RMUTTO\WEB_PERSONAL\WEB_PERSONAL\SEMINAR-ADMIN.aspx font-family: thsbi;
             font-size: 20px;
         }
 
@@ -149,7 +149,7 @@
 
                     <asp:TemplateField HeaderText="วันที่เริ่ม" ControlStyle-Width="180">
                         	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_DATETIME_FROM" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_FROM") %>'></asp:Label>
+                           	<asp:Label ID="lblSEMINAR_DATETIME_FROM" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_FROM","{0:dd/MM/yyyy}") %>'></asp:Label>
                         	</ItemTemplate>
                         		<EditItemTemplate>
                             		<asp:TextBox ID="txtDateFrom"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_FROM") %>'></asp:TextBox>
@@ -158,7 +158,7 @@
 
                     <asp:TemplateField HeaderText="วันที่สิ้นสุด" ControlStyle-Width="180">
                         	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_DATETIME_TO" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_TO") %>'></asp:Label>
+                           	<asp:Label ID="lblSEMINAR_DATETIME_TO" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_TO","{0:dd/MM/yyyy}") %>'></asp:Label>
                         	</ItemTemplate>
                         		<EditItemTemplate>
                             		<asp:TextBox ID="txtDateTO"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_TO") %>'></asp:TextBox>
@@ -302,7 +302,7 @@
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="SEMINAR_SIGNED_DATETIME" Visible="false">
+                        <asp:TemplateField HeaderText="วันที่กรอกฟรอม" Visible="True" ControlStyle-Width="200">
                        		 <ItemTemplate>
                             		<asp:Label ID="lblSEMINAR_SIGNED_DATETIME" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SIGNED_DATETIME") %>'></asp:Label>
                        		 </ItemTemplate>

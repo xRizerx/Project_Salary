@@ -2,54 +2,133 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style3 {
-            width: 90px;
+            width: 126px;
         }
         .auto-style4 {
-            width: 100px;
+            width: 623px;
+            height: 259px;
+        }
+        .auto-style6 {
+            width: 225px;
+        }
+        .auto-style9 {
+            text-align: center;
+            width: 225px;
+        }
+        .auto-style10 {
+            width: 187px;
+        }
+        .auto-style11 {
+            height: 23px;
+        }
+        .auto-style12 {
+            width: 100%;
+            margin-top: 0;
+        }
+        .auto-style13 {
+            width: 181px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel8" runat="server" Height="1094px">
-        <div>
-            <table border="1">
-                <tr align="center">
-                    <td>
-                        ได้รับชั้น / รายการ
-                    </td>
-                    <td colspan="4">
-                        ราชกิจจานุเบกษา
-                    </td>
-                    <td colspan="2">ใบกำกับ</td>
-                    <td colspan="2">เหรียญตราฯ</td>
-                </tr>
-                <tr align="center">
-                    <td></td>
-                    <td class="auto-style3">เล่ม</td>
-                    <td class="auto-style3">ตอน</td>
-                    <td>หน้า</td>
-                    <td class="auto-style4">วัด เดือน ปี</td>
-                    <td class="auto-style3">ได้รับ</td>
-                    <td class="auto-style3">ไม่ได้รับ</td>
-                    <td>ได้รับ</td>
-                    <td>ไม่ได้รับ</td>
-                </tr>
-                 <tr align="center">
-                    <td></td>
-                    <td class="auto-style3"><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></td>
-                    <td class="auto-style3"><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></td>
-                    <td><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></td>
-                    <td class="auto-style4"><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></td>
-                    <td class="auto-style3"><asp:RadioButton ID="RadioButton1" runat="server" groupname="G1"/></td>
-                    <td class="auto-style3"><asp:RadioButton ID="RadioButton2" runat="server" groupname="G1"/></td>
-                    <td><asp:RadioButton ID="RadioButton3" runat="server" groupname="G2"/></td>
-                    <td><asp:RadioButton ID="RadioButton4" runat="server" groupname="G2"/></td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" /></td>
-                </tr>
-            </table>
-        </div>
+    <asp:Panel ID="Panel8" runat="server" Height="1501px">
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style13">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style13">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style13">&nbsp;</td>
+                <td><fieldset class="auto-style4">
+                        <legend><b>ทดสอบ</b></legend>
+
+                        <table style="width:100%;">
+                            <tr>
+                                <td class="auto-style10">&nbsp;</td>
+                                <td class="auto-style6">&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style10">&nbsp;</td>
+                                <td class="auto-style9">
+                                    <asp:Label ID="Label8" runat="server" Text="กรอกเลขประจำตัวประชาชน"></asp:Label>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style10">&nbsp;</td>
+                                <td class="auto-style9">
+                                    <asp:TextBox ID="TextBox1" style="text-align:center" runat="server"
+                                         MaxLength="13" Width="200px"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:Button ID="Button1" runat="server" Text="ค้นหา" />
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br />
+                        <table class="auto-style12">
+                            <tr>
+                                <td class="auto-style11"></td>
+                                <td class="auto-style11"></td>
+                                <td class="auto-style11"></td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style11">
+                                    <asp:Label ID="Label9" runat="server" Text="ชื่อ"></asp:Label>
+                                </td>
+                                <td class="auto-style11">
+                                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                </td>
+                                <td class="auto-style11"></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+
+                    </fieldset></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style13">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style13">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style13">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style13">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style13">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style13">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
     </asp:Panel>
 </asp:Content>

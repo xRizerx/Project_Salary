@@ -16,7 +16,7 @@
     <style type="text/css">
         .c1 {
             font-family: ths;
-            font-size: 64px;
+            font-size: 32px;
             text-align: center;
             margin: 0;
             margin-bottom: 10px;
@@ -39,18 +39,10 @@
         .leave_button_div a {
             text-decoration: none;
             display: inline;
-            padding: 10px 20px;
-            margin: 0 5px;
-            width: 60px;
-            color: #202020;
-            background-color: #e0e0e0;
-            border-radius: 20px;
+           
         }
 
-        .leave_button_div a:hover {
-            color: #000000;
-            background-color: #c0c0c0;
-        }
+
 
         .leave_paper_pull {
             text-decoration: none;
@@ -75,14 +67,14 @@
         }
 
         .leave_sec1 {
-            margin: 20px;
-            border: 1px solid #000000;
+            margin: 0 20px;
+            border: 1px solid #808080;
         }
 
         .leave_sec2 {
             margin: 20px;
             padding: 20px;
-            border: 1px solid #000000;
+            border: 1px solid #808080;
         }
 
         .auto-style23 {
@@ -162,11 +154,12 @@
         }
     </style>
     <asp:Panel ID="Panel2" runat="server" Height="1032px">
+        <br />
         <div class="c1">
             <asp:Label ID="Label1" runat="server" Text="ระบบการลา"></asp:Label>
 
         </div>
-
+        <br />
         <div>
             <asp:Panel ID="Panel4" runat="server" CssClass="leave_sec1" Height="518px">
                 <table style="width: 100%;">
@@ -200,7 +193,7 @@
                             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                         </td>
                         <td class="auto-style55">
-                            <asp:LinkButton ID="LinkButton11" runat="server" CssClass="leave_paper_pull" OnClick="LinkButton11_Click">ดึง</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton11" runat="server" CssClass="master_default_button" OnClick="LinkButton11_Click">ดึง</asp:LinkButton>
                         </td>
                         <td class="auto-style35">
                             <asp:Label ID="Label9" runat="server" Text="รหัสพนักงาน"></asp:Label>
@@ -219,7 +212,7 @@
                             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                         </td>
                         <td class="auto-style55">
-                            <asp:LinkButton ID="LinkButton14" runat="server" CssClass="leave_paper_pull" OnClick="LinkButton14_Click">วันนี้</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton14" runat="server" CssClass="master_default_button" OnClick="LinkButton14_Click">วันนี้</asp:LinkButton>
                         </td>
                         <td class="auto-style35">
                             <asp:Label ID="Label17" runat="server" Text="ชื่อ"></asp:Label>
@@ -338,10 +331,10 @@
                             <div class="leave_button_div">
                                 <ul>
                                     <li>
-                                        <asp:LinkButton ID="LinkButton12" runat="server" CssClass="leave_button" OnClick="LinkButton12_Click">เพิ่ม</asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton12" runat="server" CssClass="master_default_button" OnClick="LinkButton12_Click">เพิ่ม</asp:LinkButton>
                                     </li>
                                     <li>
-                                        <asp:LinkButton ID="LinkButton13" runat="server" OnClick="LinkButton13_Click">บันทึก</asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_default_button" OnClick="LinkButton13_Click">บันทึก</asp:LinkButton>
                                     </li>
                                 </ul>
                             </div>
