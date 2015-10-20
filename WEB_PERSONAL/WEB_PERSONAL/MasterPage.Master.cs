@@ -100,7 +100,7 @@ namespace WEB_PERSONAL
 
         protected void LinkButton11_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Study.aspx");
+            Response.Redirect("Study-IN.aspx");
         }
 
         protected void LinkButton12_Click(object sender, EventArgs e)
