@@ -157,8 +157,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Personnel-ADMIN\Personnel-ADMIN.aspx" />
-    <Content Include="Personnel-GENERAL\Personnel-GENERAL.aspx" />
+    <Content Include="Personnel-ADMIN.aspx" />
+    <Content Include="Personnel-GENERAL.aspx" />
     <Content Include="SalarybyID-Edit.aspx" />
     <Content Include="SalarybyID.aspx" />
     <Content Include="Script\jquery-1.7.1.min.js" />
@@ -260,18 +260,18 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Personnel-ADMIN\Personnel-ADMIN.aspx.cs">
+    <Compile Include="Personnel-ADMIN.aspx.cs">
       <DependentUpon>Personnel-ADMIN.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Personnel-ADMIN\Personnel-ADMIN.aspx.designer.cs">
+    <Compile Include="Personnel-ADMIN.aspx.designer.cs">
       <DependentUpon>Personnel-ADMIN.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Personnel-GENERAL\Personnel-GENERAL.aspx.cs">
+    <Compile Include="Personnel-GENERAL.aspx.cs">
       <DependentUpon>Personnel-GENERAL.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Personnel-GENERAL\Personnel-GENERAL.aspx.designer.cs">
+    <Compile Include="Personnel-GENERAL.aspx.designer.cs">
       <DependentUpon>Personnel-GENERAL.aspx</DependentUpon>
     </Compile>
     <Compile Include="SalarybyID-Edit.aspx.cs">
