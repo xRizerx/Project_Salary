@@ -77,7 +77,6 @@
         }
         .leave_sec2 {
             margin: 20px auto;
-            width: 90%;
             padding: 20px;
             border: 1px solid #808080;
         }
@@ -86,6 +85,8 @@
         }
         .auto-style6 {
             width: 280px;
+            text-align: right;
+            padding-right: 5px;
         }
 
     </style>
