@@ -95,12 +95,12 @@ namespace WEB_PERSONAL
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Personal.aspx");
+            Response.Redirect("Personnel-GENERAL.aspx");
         }
 
         protected void LinkButton11_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Study.aspx");
+            Response.Redirect("Study-IN.aspx");
         }
 
         protected void LinkButton12_Click(object sender, EventArgs e)
