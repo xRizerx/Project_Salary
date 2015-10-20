@@ -61,6 +61,7 @@ namespace WEB_PERSONAL
             Seminar S = new Seminar();
             S.SEMINAR_ID = id;
             S.DeleteSEMINAR();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
@@ -91,8 +92,6 @@ namespace WEB_PERSONAL
             TextBox txtShow4 = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtShow4");
             TextBox txtProblem = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtProblem");
             TextBox txtComment = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtComment");
-
-
             DateTime SEMINAR_DATETIME_FROM = DateTime.Parse(lblSEMINAR_DATETIME_FROM.Text);
             DateTime SEMINAR_DATETIME_TO = DateTime.Parse(lblSEMINAR_DATETIME_TO.Text);
             DateTime SEMINAR_SIGNED_DATETIME = DateTime.Now;
@@ -133,7 +132,15 @@ namespace WEB_PERSONAL
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            DataRowView drv = e.Row.DataItem as DataRowView;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
+                    TextBox txt = (TextBox)e.Row.FindControl("txtBudget");
+                    txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                }
+            }
         }
         protected void myGridViewSEMINARADMIN_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
