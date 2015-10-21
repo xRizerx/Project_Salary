@@ -96,7 +96,7 @@
             <div>
                 <table>
                    <tr>
-                        <td style="text-align: left; margin-right: 5px; ">รหัสประจำตัวประชาชน*</td>
+                        <td style="text-align: left; margin-right: 5px; ">รหัสประจำตัวประชาชน <span class="textred">*</span></td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ประเภทบุคลากร*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
@@ -104,7 +104,7 @@
                    </tr>
                    <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="txt1" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="txt1" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสประจำตัวประชาชน 13 หลัก"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txt2" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -127,7 +127,7 @@
                             <asp:TextBox ID="TextBox2" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox3" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox3" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="เลขที่ตำแหน่ง"></asp:TextBox></td> 
                     </tr>
                      <tr>
                         <td style="text-align: left; margin-right: 5px; ">คำนำหน้าชื่อ(ยึดตามบัตรประชาชน)*</td>
@@ -144,7 +144,7 @@
                             <asp:TextBox ID="TextBox5" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox6" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox6" runat="server" MaxLength="100" Width="200px" CssClass="tb5" placeholder="เงินเดือนปัจจุบัน"></asp:TextBox>                             <asp:TextBox ID="TextBox44" runat="server" Width="50px" Enabled="false" CssClass="input-group-addon">.00</asp:TextBox></td>
                     </tr>
                      <tr>
                         <td style="text-align: left; margin-right: 5px; ">ชื่อ*</td>
@@ -155,13 +155,13 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox7" runat="server" MaxLength="100" Width="250px" CssClass="tb5" ForeColor="#999999">ชื่อ</asp:TextBox></td>  
+                            <asp:TextBox ID="TextBox7" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox8" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox9" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox9" runat="server" MaxLength="100" Width="200px" CssClass="tb5" placeholder="เงินประจำตำแหน่งที่ได้รับ"></asp:TextBox>                             <asp:TextBox ID="TextBox45" runat="server" Width="50px" Enabled="false" CssClass="input-group-addon">.00</asp:TextBox> 
                     </tr>
                      <tr>
                         <td style="text-align: left; margin-right: 5px; ">นามสกุล*</td>
@@ -172,7 +172,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox10" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="TextBox10" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="นามสกุล"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox11" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -216,7 +216,7 @@
                             <asp:TextBox ID="TextBox16" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox17" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox17" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตำแหน่งในสายงาน"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox18" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -230,13 +230,13 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox19" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="TextBox19" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="บ้านเลขที่"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox20" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox21" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox21" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง 'มหาปรมาภรณ์ช้างเผือก'"></asp:TextBox></td>
                     </tr>
                      <tr>
                         <td style="text-align: left; margin-right: 5px; ">หมู่</td>
@@ -247,13 +247,13 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox22" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="TextBox22" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="หมู่บ้าน"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox23" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox24" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox24" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง 'ดีเด่น'"></asp:TextBox></td>
                     </tr>
                      <tr>
                         <td style="text-align: left; margin-right: 5px; ">ถนน</td>
@@ -264,13 +264,13 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox25" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="TextBox25" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ถนน"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox26" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox27" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox27" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง '5.0025'"></asp:TextBox></td>
                     </tr>
                      <tr>
                         <td style="text-align: left; margin-right: 5px; ">จังหวัด*</td>
@@ -284,10 +284,10 @@
                             <asp:TextBox ID="TextBox28" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox29" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox29" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง ความปลอดภัยและประสิทธิภาพของยา"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox30" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox30" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง 'ดีเด่น'"></asp:TextBox></td>
                     </tr>
                      <tr>
                         <td style="text-align: left; margin-right: 5px; ">อำเภอ*</td>
@@ -304,7 +304,7 @@
                             <asp:TextBox ID="TextBox32" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox33" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox33" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง '5.0025'"></asp:TextBox></td>
                     </tr>
                      <tr>
                         <td style="text-align: left; margin-right: 5px; ">ตำบล*</td>
@@ -331,10 +331,10 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox36" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="TextBox36" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง(0-2456-5789) ต่อ 2240"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox37" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox37" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อหลักสูตร/ชื่อสาขา"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
@@ -347,7 +347,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox38" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="TextBox38" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสไปรษณีย์"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox39" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -381,7 +381,7 @@
                         <td style="text-align: left; width: 100px;"></td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox43" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox43" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อสถาบันที่จบการศึกษาสูงสุด"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
