@@ -104,7 +104,7 @@
                    </tr>
                    <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="txt1" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสประจำตัวประชาชน 13 หลัก"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtCITIZEN_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสประจำตัวประชาชน 13 หลัก"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txt2" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -121,7 +121,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox1" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtUNIV_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox2" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -138,7 +138,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox4" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtTITLE_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox5" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -155,7 +155,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox7" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtSTF_NAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox8" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -172,7 +172,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox10" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="นามสกุล"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtSTF_LNAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="นามสกุล"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox11" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -189,7 +189,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox13" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtGENDER_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox14" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -213,7 +213,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox16" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtBIRTHDAY" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox17" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตำแหน่งในสายงาน"></asp:TextBox></td>
@@ -230,7 +230,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox19" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="บ้านเลขที่"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtHOMEADD" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="บ้านเลขที่"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox20" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -247,7 +247,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox22" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="หมู่บ้าน"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtMOO" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="หมู่บ้าน"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox23" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -264,7 +264,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox25" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ถนน"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtSTREET" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ถนน"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox26" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -281,7 +281,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox28" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtPROVINCE_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox29" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง ความปลอดภัยและประสิทธิภาพของยา"></asp:TextBox></td>
@@ -298,7 +298,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox31" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtAMPHUR_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox32" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -315,7 +315,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox34" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtDISTRICT_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox35" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -331,7 +331,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox36" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง(0-2456-5789) ต่อ 2240"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtTELEPHONE" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง(0-2456-5789) ต่อ 2240"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox37" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อหลักสูตร/ชื่อสาขา"></asp:TextBox></td>
@@ -347,7 +347,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="TextBox38" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสไปรษณีย์"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtPOST_CODE" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสไปรษณีย์"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox39" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>

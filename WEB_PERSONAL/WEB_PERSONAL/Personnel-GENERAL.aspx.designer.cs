@@ -22,13 +22,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// txt1 control.
+        /// txtCITIZEN_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt1;
+        protected global::System.Web.UI.WebControls.TextBox txtCITIZEN_ID;
         
         /// <summary>
         /// txt2 control.
@@ -49,13 +49,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txt3;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtUNIV_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtUNIV_ID;
         
         /// <summary>
         /// TextBox2 control.
@@ -76,13 +76,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
-        /// TextBox4 control.
+        /// txtTITLE_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtTITLE_ID;
         
         /// <summary>
         /// TextBox5 control.
@@ -112,13 +112,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox44;
         
         /// <summary>
-        /// TextBox7 control.
+        /// txtSTF_NAME control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox txtSTF_NAME;
         
         /// <summary>
         /// TextBox8 control.
@@ -148,13 +148,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox45;
         
         /// <summary>
-        /// TextBox10 control.
+        /// txtSTF_LNAME control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.TextBox txtSTF_LNAME;
         
         /// <summary>
         /// TextBox11 control.
@@ -175,13 +175,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox12;
         
         /// <summary>
-        /// TextBox13 control.
+        /// txtGENDER_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox txtGENDER_ID;
         
         /// <summary>
         /// TextBox14 control.
@@ -202,13 +202,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox15;
         
         /// <summary>
-        /// TextBox16 control.
+        /// txtBIRTHDAY control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox16;
+        protected global::System.Web.UI.WebControls.TextBox txtBIRTHDAY;
         
         /// <summary>
         /// TextBox17 control.
@@ -229,13 +229,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox18;
         
         /// <summary>
-        /// TextBox19 control.
+        /// txtHOMEADD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox19;
+        protected global::System.Web.UI.WebControls.TextBox txtHOMEADD;
         
         /// <summary>
         /// TextBox20 control.
@@ -256,13 +256,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox21;
         
         /// <summary>
-        /// TextBox22 control.
+        /// txtMOO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox22;
+        protected global::System.Web.UI.WebControls.TextBox txtMOO;
         
         /// <summary>
         /// TextBox23 control.
@@ -283,13 +283,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox24;
         
         /// <summary>
-        /// TextBox25 control.
+        /// txtSTREET control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox25;
+        protected global::System.Web.UI.WebControls.TextBox txtSTREET;
         
         /// <summary>
         /// TextBox26 control.
@@ -310,13 +310,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox27;
         
         /// <summary>
-        /// TextBox28 control.
+        /// txtPROVINCE_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox28;
+        protected global::System.Web.UI.WebControls.TextBox txtPROVINCE_ID;
         
         /// <summary>
         /// TextBox29 control.
@@ -337,13 +337,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox30;
         
         /// <summary>
-        /// TextBox31 control.
+        /// txtAMPHUR_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox31;
+        protected global::System.Web.UI.WebControls.TextBox txtAMPHUR_ID;
         
         /// <summary>
         /// TextBox32 control.
@@ -364,13 +364,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox33;
         
         /// <summary>
-        /// TextBox34 control.
+        /// txtDISTRICT_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox34;
+        protected global::System.Web.UI.WebControls.TextBox txtDISTRICT_ID;
         
         /// <summary>
         /// TextBox35 control.
@@ -382,13 +382,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox35;
         
         /// <summary>
-        /// TextBox36 control.
+        /// txtTELEPHONE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox36;
+        protected global::System.Web.UI.WebControls.TextBox txtTELEPHONE;
         
         /// <summary>
         /// TextBox37 control.
@@ -400,13 +400,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox37;
         
         /// <summary>
-        /// TextBox38 control.
+        /// txtPOST_CODE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox38;
+        protected global::System.Web.UI.WebControls.TextBox txtPOST_CODE;
         
         /// <summary>
         /// TextBox39 control.
