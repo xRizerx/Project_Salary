@@ -373,3 +373,21 @@ form {
     background-color: #cc2939;
     text-shadow: 1px 1px 16px #ffffff;
 }
+.master_OAT_button {
+    text-decoration: none;
+    display: inline;
+    padding: 3px 20px;
+    margin: 0 0px;
+    margin-top: 5px;
+    width: 60px;
+    color: #ffc300;
+    background-color: rgba(0, 114, 255, 0.90);
+    text-shadow: 0px 0px 0px #000000;
+    border-radius: 24px;
+    transition: color 0.5s ease, background-color 0.5s ease, text-shadow 0.5s ease;
+}
+.master_OAT_button:hover {
+        color: rgb(255, 0, 0);
+        background-color: #2edce8;
+        text-shadow: 1px 1px 16px #ffffff;
+}

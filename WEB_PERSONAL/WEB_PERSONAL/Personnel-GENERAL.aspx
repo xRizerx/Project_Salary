@@ -31,7 +31,7 @@
             text-align:center;
         }
          .divpan{
-            background-image: url("Image/555.jpg");
+            background-image: url("Image/sky.jpg");
             text-align: center;
         }
         .textmode {
@@ -68,6 +68,18 @@
          body {
             background-image: url("Image/444.jpg");
         }
+         .tb5 {
+	        background-image:url(images/form_bg.jpg);
+	        background-repeat:repeat-x;
+	        border:1px solid #d1c7ac;
+	        width: 230px;
+	        color:#333333;
+	        padding:3px;
+	        margin-right:4px;
+	        margin-bottom:8px;
+	        font-family:tahoma, arial, sans-serif;
+            border-radius:10px;
+              }
     </style>
     <asp:Panel ID="Panel1" runat="server" Height="1500px" CssClass="divpan">
    <div>
@@ -79,7 +91,7 @@
                         <td style="text-align: left; margin-right: 5px; ">รหัสประจำตัวประชาชน*</td>
                         <tr>
                              <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="200px"></asp:TextBox>
+                            <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="200px" CssClass="tb5"></asp:TextBox>
                         </td>
                         </tr>
                        

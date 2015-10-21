@@ -6,7 +6,7 @@
             width: 303px;
         }
          .divpan{
-            background-image: url("Image/555.jpg");
+            background-image: url("Image/sky.jpg");
             text-align:center;
         }
         .textmode {
@@ -21,7 +21,6 @@
         }
 
         .textmodebi {
-            C: \Users\OATINDYZ-NT\Source\Repos\RMUTTO\WEB_PERSONAL\WEB_PERSONAL\SEMINAR-ADMIN.aspx font-family: thsbi;
             font-size: 20px;
         }
 
@@ -43,6 +42,18 @@
          body {
             background-image: url("Image/444.jpg");
         }
+          .tb5 {
+	        background-image:url(images/form_bg.jpg);
+	        background-repeat:repeat-x;
+	        border:1px solid #d1c7ac;
+	        width: 230px;
+	        color:#333333;
+	        padding:3px;
+	        margin-right:4px;
+	        margin-bottom:8px;
+	        font-family:tahoma, arial, sans-serif;
+            border-radius:10px;
+              }
     </style>
 
 </asp:Content>
@@ -53,7 +64,7 @@
             <legend>Search</legend>
             <div>
                 ชื่อ :
-                <asp:TextBox ID="txtSearchNameSeminar" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtSearchNameSeminar" runat="server" CssClass="tb5"></asp:TextBox>
                
                 <asp:Button ID="btnSearchNameSeminar" Text="Search" runat="server" OnClick="btnSearchNameSeminar_Click" />
             </div>
