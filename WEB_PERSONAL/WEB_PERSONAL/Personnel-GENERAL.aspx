@@ -401,6 +401,28 @@
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
               </table> 
+                 <table>
+                    <tr>
+                        <td style="text-align: left; width:300px;"> </td> 
+                        <td style="text-align: left; width:300px;"> </td> 
+                        <td style="text-align: left; width:300px;"> </td> 
+                        <td style="text-align: left; width:1024px;"> </td> 
+                    </tr> 
+                </table>
+                <table>
+                    <tr>
+                         <td style="text-align: left; width:300px;"> </td> 
+                    </tr>   
+                          <tr>
+                            <td style="text-align: left; width:300px;"> </td> 
+                            <td style="text-align: left; width: 50px;"> 
+                            <asp:Button ID="btnCancelPersonnel" Text="Cancel" runat="server" OnClick="btnCancelPersonnel_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                            <td style="text-align: left; width: 50px;"> </td> 
+                            <td style="text-align: right; margin-right: 5px; ">  
+                            <asp:Button ID="btnSavePersonnel" Text="OK" runat="server" OnClick="btnSubmitPersonnel_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                           </tr>               
+                </table>
+
             </div>
         </fieldset>
     </div>

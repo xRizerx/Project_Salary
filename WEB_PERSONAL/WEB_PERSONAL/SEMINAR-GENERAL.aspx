@@ -292,16 +292,11 @@
 
                    <table>
                        <tr>
-                           
                             <td style="text-align: left; width: 50px;"> 
-                            <asp:Button ID="btnCancel" Text="Cancel" runat="server" OnClick="btnCancelSeminar_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                            <asp:Button ID="btnCancelSeminar" Text="Cancel" runat="server" OnClick="btnCancelSeminar_Click" Width="140px" CssClass="master_OAT_button" /></td>
                             <td style="text-align: left; width: 50px;"> </td> 
                             <td style="text-align: right; margin-right: 5px; ">  
-                          
-
-                            <asp:Button ID="btnSaveCustomer" Text="OK" runat="server" OnClick="btnSubmitSeminar_Click" Width="140px" CssClass="master_OAT_button" /></td>
-                            
-                         
+                            <asp:Button ID="btnSaveSeminar" Text="OK" runat="server" OnClick="btnSubmitSeminar_Click" Width="140px" CssClass="master_OAT_button" /></td>
                            </tr>               
                 </table>
             </div>
