@@ -79,6 +79,7 @@
 	        margin-bottom:8px;
 	        font-family:tahoma, arial, sans-serif;
             border-radius:10px;
+            resize:none;
               }
     </style>
     <asp:Panel ID="Panel1" runat="server" Height="1500px" CssClass="divpan">
@@ -87,14 +88,12 @@
             <legend>เพิ่มข้อมูลบุคลากร</legend>
             <div>
                 <table>
-                    <tr>
+                   <tr>
                         <td style="text-align: left; margin-right: 5px; ">รหัสประจำตัวประชาชน*</td>
-                        <tr>
-                             <td style="text-align: left; width: 100px;">
-                            <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="200px" CssClass="tb5"></asp:TextBox>
-                        </td>
-                        </tr>
-                       
+                   </tr>
+                   <tr>
+                        <td style="text-align: left; width: 100px;">
+                            <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="200px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: right; margin-right: 5px; ">นามสกุล :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
@@ -103,7 +102,7 @@
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtPosition" runat="server" MaxLength="100" Width="200px"></asp:TextBox></td>
                     </tr>
-                    </table> 
+              </table> 
             </div>
         </fieldset>
     </div>

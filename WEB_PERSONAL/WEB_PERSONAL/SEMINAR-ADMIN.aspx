@@ -53,6 +53,7 @@
 	        margin-bottom:8px;
 	        font-family:tahoma, arial, sans-serif;
             border-radius:10px;
+            resize:none;
               }
     </style>
 
@@ -66,7 +67,7 @@
                 ชื่อ :
                 <asp:TextBox ID="txtSearchNameSeminar" runat="server" CssClass="tb5"></asp:TextBox>
                
-                <asp:Button ID="btnSearchNameSeminar" Text="Search" runat="server" OnClick="btnSearchNameSeminar_Click" />
+                <asp:Button ID="btnSearchNameSeminar" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchNameSeminar_Click" />
             </div>
         </fieldset>
       </div>
