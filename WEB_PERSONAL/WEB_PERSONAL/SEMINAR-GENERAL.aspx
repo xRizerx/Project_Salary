@@ -82,7 +82,7 @@
             resize:none;
               }
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1593px" CssClass="divpan">
+    <asp:Panel ID="Panel1" runat="server" Height="1605px" CssClass="divpan">
    <div>
         <fieldset>
             <legend>เพิ่มข้อมูลการฝึกอบรม/สัมมนา/ดูงาน</legend>

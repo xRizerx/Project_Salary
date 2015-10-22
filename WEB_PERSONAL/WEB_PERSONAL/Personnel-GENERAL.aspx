@@ -88,22 +88,28 @@
             width: 90px;
             height: 23px;
         }
+        .input-group-addon{color:#8a6d3b;background-color:#fcf8e3;border-color:#8a6d3b}
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1500px" CssClass="divpan">
-   <div>
+    <asp:Panel runat="server" CssClass="divpan" Height="1445px">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <div>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+             <ContentTemplate>
         <fieldset>
             <legend>เพิ่มข้อมูลบุคลากร</legend>
             <div>
                 <table>
                    <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">รหัสประจำตัวประชาชน <span class="textred">*</span></td>
-                        <td style="text-align: left; width: 90px;"> </td> 
+                        <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ประเภทบุคลากร*</td>
-                        <td style="text-align: left; width: 90px;"> </td> 
+                        <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ความพิการ*</td>
                    </tr>
                    <tr>
-                        <td style="text-align: left; width: 100px;">
+                        <td style="text-align: left; width: 30px;"> </td>
+                        <td style="text-align: left; width: 80px;">
                             <asp:TextBox ID="txtCITIZEN_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสประจำตัวประชาชน 13 หลัก"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -113,6 +119,7 @@
                             <asp:TextBox ID="txt3" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; " class="auto-style2">มหาวิทยาลัย</td>
                         <td style="text-align: left; " class="auto-style3"> </td> 
                         <td style="text-align: left; margin-right: 5px; " class="auto-style2">ระยะเวลาจ้าง*</td>
@@ -120,6 +127,7 @@
                         <td style="text-align: left; margin-right: 5px; " class="auto-style2">เลขที่ตำแหน่ง</td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:DropDownList ID="DropDownUNIV_ID" runat="server" Width="250px" CssClass="tb5" DataSourceID="SqlDataSource1" DataTextField="UNIV_NAME" DataValueField="UNIV_ID"></asp:DropDownList> 
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_UNIVERSITY]"></asp:SqlDataSource>
@@ -134,6 +142,7 @@
 
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">คำนำหน้าชื่อ(ยึดตามบัตรประชาชน)*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ประเภทเงินจ้าง*</td>
@@ -141,6 +150,7 @@
                         <td style="text-align: left; margin-right: 5px; ">เงินเดือนปัจจุัน</td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                            <asp:DropDownList ID="DropDownTITLE_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" DataSourceID="TB_TITLENAME" DataTextField="TITLE_NAME_TH" DataValueField="TITLE_ID"></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_TITLENAME" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_TITLENAME]"></asp:SqlDataSource>
@@ -151,9 +161,10 @@
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox6" runat="server" MaxLength="100" Width="200px" CssClass="tb5" placeholder="เงินเดือนปัจจุบัน"></asp:TextBox> 
-                            <asp:TextBox ID="TextBox44" runat="server" Width="50px" Enabled="false" CssClass="input-group-addon">.00</asp:TextBox></td>
+                            <asp:TextBox ID="TextBox44" runat="server" Width="30px" Enabled="false" CssClass="tb5">.00</asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">ชื่อ*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ประเภทตำแหน่ง*</td>
@@ -161,6 +172,7 @@
                         <td style="text-align: left; margin-right: 5px; ">เงินประจำตำแหน่งที่ได้รับ</td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:TextBox ID="txtSTF_NAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -169,9 +181,10 @@
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox9" runat="server" MaxLength="100" Width="200px" CssClass="tb5" placeholder="เงินประจำตำแหน่งที่ได้รับ"></asp:TextBox> 
-                            <asp:TextBox ID="TextBox45" runat="server" Width="50px" Enabled="false" CssClass="input-group-addon">.00</asp:TextBox> </td>
+                            <asp:TextBox ID="TextBox45" runat="server" Width="30px" Enabled="false" CssClass="tb5">.00</asp:TextBox> </td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">นามสกุล*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ตำแหน่งบริหาร*</td>
@@ -179,6 +192,7 @@
                         <td style="text-align: left; margin-right: 5px; ">ศาสนา</td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:TextBox ID="txtSTF_LNAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="นามสกุล"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -189,6 +203,7 @@
                             <asp:TextBox ID="TextBox12" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">เพศ</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ตำแหน่งทางวิชาการ*</td>
@@ -196,6 +211,7 @@
                         <td style="text-align: left; margin-right: 5px; ">ประเภทการดำรงตำแหน่งปัจจุบัน</td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:DropDownList ID="DropDownGENDER_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" DataSourceID="TB_GENDER" DataTextField="GENDER_NAME" DataValueField="GENDER_ID"></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_GENDER" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_GENDER]"></asp:SqlDataSource>
@@ -208,6 +224,7 @@
                             <asp:TextBox ID="TextBox15" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">วันเกิด*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ตำแหน่งในสายงาน</td>
@@ -215,6 +232,7 @@
                         <td style="text-align: left; margin-right: 5px; ">วันที่มีผลบัลคับใช้ตามข้อมูล </td>
                     </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; width: 90px;"> </td> 
@@ -222,6 +240,7 @@
                         <td style="text-align: left; margin-right: 5px; ">"การเข้าสู่ตำแหน่งปัจจุบัน"</td>
                     </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:TextBox ID="txtBIRTHDAY" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -232,6 +251,7 @@
                             <asp:TextBox ID="TextBox18" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">บ้านเลขที่*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า*</td>
@@ -239,6 +259,7 @@
                         <td style="text-align: left; margin-right: 5px; ">เครื่องราชอิสริยาภรณ์สูงสุดที่ได้รับ</td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:TextBox ID="txtHOMEADD" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="บ้านเลขที่"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -249,6 +270,7 @@
                             <asp:TextBox ID="TextBox21" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง 'มหาปรมาภรณ์ช้างเผือก'"></asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">หมู่</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">วันที่เข้าทำงานครั้งแรก*</td>
@@ -256,6 +278,7 @@
                         <td style="text-align: left; margin-right: 5px; ">ข้อความระดับผลการประเมิณรอบงานที่1</td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:TextBox ID="txtMOO" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="หมู่บ้าน"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -266,6 +289,7 @@
                             <asp:TextBox ID="TextBox24" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง 'ดีเด่น'"></asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">ถนน</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">วันที่เข้าทำงาน ณ สถานที่ปัจจุบัน*</td>
@@ -273,6 +297,7 @@
                         <td style="text-align: left; margin-right: 5px; ">ร้อยละการเลื่อนขั้นเงินเดือนตามผลการประเมินรอบที่1</td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:TextBox ID="txtSTREET" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ถนน"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -283,6 +308,7 @@
                             <asp:TextBox ID="TextBox27" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง '5.0025'"></asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">จังหวัด*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">สาขางานที่เชี่ยวชาญ*</td>
@@ -290,9 +316,9 @@
                         <td style="text-align: left; margin-right: 5px; ">ข้อความระดับผลการประเมิณรอบงานที่2</td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
-                            <asp:DropDownList ID="ddlPROVINCE" AutoPostBack ="true" AppendDataBoundItems="true" runat="server" Height="30px" Width="250px" onselectedindexchanged="ddlPROVINCE_SelectedIndexChanged" BackColor="#3399FF" ForeColor="#FF9999" CssClass="tb5"></asp:DropDownList>
-                        </td>  
+                            <asp:DropDownList ID="ddlPROVINCE" runat="server" Width="250px" OnSelectedIndexChanged="ddlPROVINCE_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox29" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง ความปลอดภัยและประสิทธิภาพของยา"></asp:TextBox></td>
@@ -301,17 +327,16 @@
                             <asp:TextBox ID="TextBox30" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง 'ดีเด่น'"></asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">อำเภอ*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">กลุ่มสาขาวิชาที่สอน(ISCED)*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ร้อยละการเลื่อนขั้นเงินเดือนตามผลการประเมินรอบที่2</td>
                    </tr>
-                    <tr>
+                    <tr><td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
-                             <asp:DropDownList ID="ddlAMPHUR" AutoPostBack ="true" AppendDataBoundItems="true" runat="server" Height="30px" Width="250px" onselectedindexchanged="ddlAMPHUR_SelectedIndexChanged" BackColor="#3399FF" ForeColor="#FF9999" CssClass="tb5"></asp:DropDownList>
-                        </td> 
-                         
+                            <asp:DropDownList ID="ddlAMPHUR" runat="server" Width="250px" OnSelectedIndexChanged="ddlAMPHUR_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox32" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -320,6 +345,7 @@
                             <asp:TextBox ID="TextBox33" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง '5.0025'"></asp:TextBox></td>
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">ตำบล*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ระดับการศึกษาที่จบสูงสุด*</td>
@@ -327,9 +353,9 @@
                         <td style="text-align: left; margin-right: 5px; "></td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
-                             <asp:DropDownList ID="ddlDISTRICT" AutoPostBack ="true" AppendDataBoundItems="true" runat="server" Height="30px" Width="250px" BackColor="#3399FF" ForeColor="#FF9999" CssClass="tb5"></asp:DropDownList>
-                        </td>  
+                            <asp:DropDownList ID="ddlDISTRICT" runat="server" Width="250px" CssClass="tb5"></asp:DropDownList></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox35" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -337,6 +363,7 @@
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">รหัสไปรษณีย์</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">หลักสูตรที่จบการศึกษาสูงสุด*</td>
@@ -344,6 +371,7 @@
                         <td style="text-align: left; margin-right: 5px; "></td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:TextBox ID="txtPOST_CODE" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสไปรษณีย์"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -353,6 +381,7 @@
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">หมายเลขโทรศัพท์ที่ทำงาน</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">กลุ่มสาขาวิชาที่จบสูงสุด(ISCED)*</td>
@@ -360,6 +389,7 @@
                         <td style="text-align: left; margin-right: 5px; "></td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:TextBox ID="txtTELEPHONE" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง(0-2456-5789) ต่อ 2240"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -369,6 +399,7 @@
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">สัญชาติ*</td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">สาขาวิชาที่จบสูงสุด*</td>
@@ -376,6 +407,7 @@
                         <td style="text-align: left; margin-right: 5px; "></td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;">
                             <asp:TextBox ID="TextBox40" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -385,6 +417,7 @@
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
                      <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; width: 90px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">ชื่อสถาบันที่จบการศึกษาสูงสุด*</td>
@@ -392,6 +425,7 @@
                         <td style="text-align: left; margin-right: 5px; "></td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;"></td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -400,6 +434,7 @@
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
                       <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 90px;"> </td> 
                         <td style="text-align: left; width: 90px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">ประเทศที่จบการศึกษาสูงสุด*</td>
@@ -407,6 +442,7 @@
                         <td style="text-align: left; margin-right: 5px; "></td>
                    </tr>
                     <tr>
+                        <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 100px;"></td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -415,20 +451,11 @@
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
               </table> 
+               
+
                  <table>
-                    <tr>
-                        <td style="text-align: left; width:300px;"> </td> 
-                        <td style="text-align: left; width:300px;"> </td> 
-                        <td style="text-align: left; width:300px;"> </td> 
-                        <td style="text-align: left; width:1024px;"> </td> 
-                    </tr> 
-                </table>
-                <table>
-                    <tr>
-                         <td style="text-align: left; width:300px;"> </td> 
-                    </tr>   
                           <tr>
-                            <td style="text-align: left; width:300px;"> </td> 
+                            <td style="text-align: left; width:350px; height:200px;"> </td> 
                             <td style="text-align: left; width: 50px;"> 
                             <asp:Button ID="btnCancelPersonnel" Text="Cancel" runat="server" OnClick="btnCancelPersonnel_Click" Width="140px" CssClass="master_OAT_button" /></td>
                             <td style="text-align: left; width: 50px;"> </td> 
@@ -437,9 +464,19 @@
                            </tr>               
                 </table>
 
-            </div>
-        </fieldset>
-    </div>
+               
+                <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="ddlPROVINCE" EventName="SelectedIndexChanged" />
+                <asp:AsyncPostBackTrigger ControlID="ddlAMPHUR" EventName="SelectedIndexChanged" />
+            </Triggers>
+        </asp:UpdatePanel>
+                </div>
         </asp:Panel>
-    
 </asp:Content>
