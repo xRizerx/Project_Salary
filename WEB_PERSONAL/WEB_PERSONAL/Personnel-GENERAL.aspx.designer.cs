@@ -49,13 +49,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txt3;
         
         /// <summary>
-        /// txtUNIV_ID control.
+        /// DropDownUNIV_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUNIV_ID;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownUNIV_ID;
+        
+        /// <summary>
+        /// SqlDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
         /// TextBox2 control.
@@ -76,13 +85,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
-        /// txtTITLE_ID control.
+        /// DropDownTITLE_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTITLE_ID;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTITLE_ID;
+        
+        /// <summary>
+        /// TB_TITLENAME control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_TITLENAME;
         
         /// <summary>
         /// TextBox5 control.
@@ -175,13 +193,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox12;
         
         /// <summary>
-        /// txtGENDER_ID control.
+        /// DropDownGENDER_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGENDER_ID;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownGENDER_ID;
+        
+        /// <summary>
+        /// TB_GENDER control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_GENDER;
         
         /// <summary>
         /// TextBox14 control.
@@ -310,13 +337,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox27;
         
         /// <summary>
-        /// txtPROVINCE_ID control.
+        /// DropDownPROVINCE_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPROVINCE_ID;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownPROVINCE_ID;
+        
+        /// <summary>
+        /// TB_PROVINCE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_PROVINCE;
         
         /// <summary>
         /// TextBox29 control.
@@ -337,13 +373,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox30;
         
         /// <summary>
-        /// txtAMPHUR_ID control.
+        /// DropDownAMPHUR_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAMPHUR_ID;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownAMPHUR_ID;
+        
+        /// <summary>
+        /// TB_AMPHUR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_AMPHUR;
         
         /// <summary>
         /// TextBox32 control.
@@ -364,13 +409,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox33;
         
         /// <summary>
-        /// txtDISTRICT_ID control.
+        /// DropDownDISTRICT_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDISTRICT_ID;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownDISTRICT_ID;
+        
+        /// <summary>
+        /// TB_DISTRICT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_DISTRICT;
         
         /// <summary>
         /// TextBox35 control.
@@ -382,13 +436,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox35;
         
         /// <summary>
-        /// txtTELEPHONE control.
+        /// txtPOST_CODE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTELEPHONE;
+        protected global::System.Web.UI.WebControls.TextBox txtPOST_CODE;
         
         /// <summary>
         /// TextBox37 control.
@@ -400,13 +454,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox37;
         
         /// <summary>
-        /// txtPOST_CODE control.
+        /// txtTELEPHONE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPOST_CODE;
+        protected global::System.Web.UI.WebControls.TextBox txtTELEPHONE;
         
         /// <summary>
         /// TextBox39 control.
