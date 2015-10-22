@@ -80,17 +80,9 @@
 	        font-family:tahoma, arial, sans-serif;
             border-radius:10px;
             resize:none;
-              }
-        .auto-style2 {
-            height: 23px;
-        }
-        .auto-style3 {
-            width: 90px;
-            height: 23px;
-        }
         .input-group-addon{color:#8a6d3b;background-color:#fcf8e3;border-color:#8a6d3b}
     </style>
-    <asp:Panel runat="server" CssClass="divpan" Height="1445px">
+    <asp:Panel runat="server" CssClass="divpan" Height="1250px">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -120,11 +112,11 @@
                     </tr>
                      <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; " class="auto-style2">มหาวิทยาลัย</td>
-                        <td style="text-align: left; " class="auto-style3"> </td> 
-                        <td style="text-align: left; margin-right: 5px; " class="auto-style2">ระยะเวลาจ้าง*</td>
-                        <td style="text-align: left; " class="auto-style3"> </td> 
-                        <td style="text-align: left; margin-right: 5px; " class="auto-style2">เลขที่ตำแหน่ง</td>
+                        <td style="text-align: left; margin-right: 5px; ">มหาวิทยาลัย</td>
+                        <td style="text-align: left; "> </td> 
+                        <td style="text-align: left; margin-right: 5px; ">ระยะเวลาจ้าง*</td>
+                        <td style="text-align: left; "> </td> 
+                        <td style="text-align: left; margin-right: 5px; ">เลขที่ตำแหน่ง</td>
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 30px;"> </td>
@@ -451,11 +443,9 @@
                         <td style="text-align: left; width: 170px;"> </td> 
                     </tr>
               </table> 
-               
-
                  <table>
                           <tr>
-                            <td style="text-align: left; width:350px; height:200px;"> </td> 
+                            <td style="text-align: left; width:350px; height:50px;"> </td> 
                             <td style="text-align: left; width: 50px;"> 
                             <asp:Button ID="btnCancelPersonnel" Text="Cancel" runat="server" OnClick="btnCancelPersonnel_Click" Width="140px" CssClass="master_OAT_button" /></td>
                             <td style="text-align: left; width: 50px;"> </td> 
@@ -463,8 +453,6 @@
                             <asp:Button ID="btnSavePersonnel" Text="OK" runat="server" OnClick="btnSubmitPersonnel_Click" Width="140px" CssClass="master_OAT_button" /></td>
                            </tr>               
                 </table>
-
-               
                 <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>
                         <div id="ajaxloader">
