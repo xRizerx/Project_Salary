@@ -169,7 +169,7 @@
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox9" runat="server" MaxLength="100" Width="200px" CssClass="tb5" placeholder="เงินประจำตำแหน่งที่ได้รับ"></asp:TextBox> 
-                            <asp:TextBox ID="TextBox45" runat="server" Width="50px" Enabled="false" CssClass="input-group-addon">.00</asp:TextBox> 
+                            <asp:TextBox ID="TextBox45" runat="server" Width="50px" Enabled="false" CssClass="input-group-addon">.00</asp:TextBox> </td>
                     </tr>
                      <tr>
                         <td style="text-align: left; margin-right: 5px; ">นามสกุล*</td>
@@ -291,7 +291,7 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:DropDownList ID="DropDownPROVINCE_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" DataSourceID="TB_PROVINCE" DataTextField="PROVINCE_TH" DataValueField="PROVINCE_ID"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownPROVINCE_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" DataSourceID="TB_PROVINCE" DataTextField="PROVINCE_TH" DataValueField="PROVINCE_ID" AutoPostBack="True"></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_PROVINCE" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_PROVINCE]"></asp:SqlDataSource>
                         </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -310,14 +310,14 @@
                    </tr>
                     <tr>
                         <td style="text-align: left; width: 100px;">
-                            <asp:DropDownList ID="DropDownAMPHUR_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" DataSourceID="TB_AMPHUR" DataTextField="AMPHUR_TH" DataValueField="AMPHUR_ID"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownAMPHUR_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" DataSourceID="TB_AMPHUR" DataTextField="AMPHUR_TH" DataValueField="AMPHUR_ID" AutoPostBack="True"></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_AMPHUR" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_AMPHUR] WHERE ([PROVINCE_ID] = @PROVINCE_ID)">
                                 <SelectParameters>
-                                    <asp:ControlParameter ControlID="DropDownAMPHUR_ID" Name="PROVINCE_ID" PropertyName="SelectedValue" Type="Int32" />
+                                    <asp:ControlParameter ControlID="DropDownPROVINCE_ID" Name="PROVINCE_ID" PropertyName="SelectedValue" Type="Int32" />
                                 </SelectParameters>
                             </asp:SqlDataSource>
                         </td> 
-                        </td>  
+                         
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox32" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -337,7 +337,7 @@
                             <asp:DropDownList ID="DropDownDISTRICT_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" DataSourceID="TB_DISTRICT" DataTextField="DISTRICT_TH" DataValueField="DISTRICT_ID"></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_DISTRICT" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_DISTRICT] WHERE ([AMPHUR_ID] = @AMPHUR_ID)">
                                 <SelectParameters>
-                                    <asp:ControlParameter ControlID="DropDownDISTRICT_ID" Name="AMPHUR_ID" PropertyName="SelectedValue" Type="Int32" />
+                                    <asp:ControlParameter ControlID="DropDownAMPHUR_ID" Name="AMPHUR_ID" PropertyName="SelectedValue" Type="Int32" />
                                 </SelectParameters>
                             </asp:SqlDataSource>
                         </td>  
