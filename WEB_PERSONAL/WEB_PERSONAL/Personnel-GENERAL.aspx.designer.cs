@@ -337,22 +337,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox27;
         
         /// <summary>
-        /// DropDownPROVINCE_ID control.
+        /// ddlPROVINCE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownPROVINCE_ID;
-        
-        /// <summary>
-        /// TB_PROVINCE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TB_PROVINCE;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPROVINCE;
         
         /// <summary>
         /// TextBox29 control.
@@ -373,22 +364,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox30;
         
         /// <summary>
-        /// DropDownAMPHUR_ID control.
+        /// ddlAMPHUR control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownAMPHUR_ID;
-        
-        /// <summary>
-        /// TB_AMPHUR control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TB_AMPHUR;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAMPHUR;
         
         /// <summary>
         /// TextBox32 control.
@@ -409,22 +391,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox33;
         
         /// <summary>
-        /// DropDownDISTRICT_ID control.
+        /// ddlDISTRICT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownDISTRICT_ID;
-        
-        /// <summary>
-        /// TB_DISTRICT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TB_DISTRICT;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDISTRICT;
         
         /// <summary>
         /// TextBox35 control.
