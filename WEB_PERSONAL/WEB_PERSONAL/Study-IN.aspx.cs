@@ -24,46 +24,73 @@ namespace WEB_PERSONAL
                 {
                     con.Open();
                     {
-                        string sql = "select ID, DATE, CITIZEN_ID, LEVEL, BRANCH_NAME, LOCATION_NAME, FROM_DATE, TO_DATE, CONTRACT_GIVER_NAME, CONTRACT_RECEIVER_NAME, CONTRACT_WITNESS1_NAME, CONTRACT_WITNESS2_NAME, MATE_NAME, MATE_WITNESS1_NAME, MATE_WITNESS2_NAME, LAWYER_NAME, DEPARTMENT_OFFICIAL_NAME, DIRECTOR_NAME, DEPUTY_DIRECTOR_NAME, TYPE_ID, ISNULL(FUND_TYPE,''), ISNULL(COUNTRY_NAME,'') from TB_STUDY where id = " + TextBox1.Text;
-                        using (SqlCommand command = new SqlCommand(sql, con))
                         {
-                            using (SqlDataReader reader = command.ExecuteReader())
+                            string sql = "select ID, DATE, CITIZEN_ID, LEVEL, BRANCH_NAME, LOCATION_NAME, FROM_DATE, TO_DATE, CONTRACT_GIVER_NAME, CONTRACT_RECEIVER_NAME, CONTRACT_WITNESS1_NAME, CONTRACT_WITNESS2_NAME, MATE_NAME, MATE_WITNESS1_NAME, MATE_WITNESS2_NAME, LAWYER_NAME, DEPARTMENT_OFFICIAL_NAME, DIRECTOR_NAME, DEPUTY_DIRECTOR_NAME, TYPE_ID, ISNULL(FUND_TYPE,''), ISNULL(COUNTRY_NAME,'') from TB_STUDY where id = " + TextBox1.Text;
+                            using (SqlCommand command = new SqlCommand(sql, con))
                             {
-                                while(reader.Read())
+                                using (SqlDataReader reader = command.ExecuteReader())
                                 {
-                                    TextBox1.Text = reader.GetInt32(0).ToString();
-                                    TextBox2.Text = reader.GetDateTime(1).ToString("dd/MM/yyyy");
-                                    TextBox3.Text = reader.GetString(2);
-                                    TextBox4.Text = reader.GetString(3);
-                                    TextBox5.Text = reader.GetString(4);
-                                    TextBox6.Text = reader.GetString(5);
-                                    TextBox7.Text = reader.GetDateTime(6).ToString("dd/MM/yyyy");
-                                    TextBox8.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy");
-                                    TextBox9.Text = reader.GetString(8);
-                                    TextBox10.Text = reader.GetString(9);
-                                    TextBox11.Text = reader.GetString(10);
-                                    TextBox12.Text = reader.GetString(11);
-                                    TextBox13.Text = reader.GetString(12);
-                                    TextBox14.Text = reader.GetString(13);
-                                    TextBox15.Text = reader.GetString(14);
-                                    TextBox16.Text = reader.GetString(15);
-                                    TextBox17.Text = reader.GetString(16);
-                                    TextBox18.Text = reader.GetString(17);
-                                    TextBox19.Text = reader.GetString(18);
-                                    DropDownList1.SelectedValue = reader.GetInt32(19).ToString();
-                                    TextBox20.Text = reader.GetString(20);
-                                    TextBox21.Text = reader.GetString(21);
+                                    while (reader.Read())
+                                    {
+                                        TextBox1.Text = reader.GetInt32(0).ToString();
+                                        TextBox2.Text = reader.GetDateTime(1).ToString("dd/MM/yyyy");
+                                        TextBox3.Text = reader.GetString(2);
+                                        TextBox4.Text = reader.GetString(3);
+                                        TextBox5.Text = reader.GetString(4);
+                                        TextBox6.Text = reader.GetString(5);
+                                        TextBox7.Text = reader.GetDateTime(6).ToString("dd/MM/yyyy");
+                                        TextBox8.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy");
+                                        TextBox9.Text = reader.GetString(8);
+                                        TextBox10.Text = reader.GetString(9);
+                                        TextBox11.Text = reader.GetString(10);
+                                        TextBox12.Text = reader.GetString(11);
+                                        TextBox13.Text = reader.GetString(12);
+                                        TextBox14.Text = reader.GetString(13);
+                                        TextBox15.Text = reader.GetString(14);
+                                        TextBox16.Text = reader.GetString(15);
+                                        TextBox17.Text = reader.GetString(16);
+                                        TextBox18.Text = reader.GetString(17);
+                                        TextBox19.Text = reader.GetString(18);
+                                        DropDownList1.SelectedValue = reader.GetInt32(19).ToString();
+                                        TextBox20.Text = reader.GetString(20);
+                                        TextBox21.Text = reader.GetString(21);
 
+                                    }
                                 }
+
                             }
-                            
                         }
+
+                        {
+                            string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox3.Text + "'";
+                            using (SqlCommand command = new SqlCommand(sql, con))
+                            {
+                                using (SqlDataReader reader = command.ExecuteReader())
+                                {
+                                    if(reader.HasRows)
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            TextBox22.Text = reader.GetString(0);
+                                        }
+                                    } else
+                                    {
+                                        string script = "alert('ไม่พบรหัสพนักงาน')";
+                                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                                    }
+                                    
+                                }
+
+                            }
+                        }
+
+
                     }
                 }
             }
             catch (Exception e2)
             {
-                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+                string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
@@ -90,7 +117,7 @@ namespace WEB_PERSONAL
             }
             catch (Exception e2)
             {
-                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+                string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
@@ -124,7 +151,47 @@ namespace WEB_PERSONAL
             }
             catch (Exception e2)
             {
-                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+                string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }
+
+        protected void LinkButton18_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    {
+                        string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox3.Text + "'";
+                        using (SqlCommand command = new SqlCommand(sql, con))
+                        {
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        TextBox22.Text = reader.GetString(0);
+                                    }
+                                }
+                                else
+                                {
+                                    string script = "alert('ไม่พบรหัสพนักงาน')";
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception e2)
+            {
+                string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }

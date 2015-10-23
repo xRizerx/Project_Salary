@@ -1,6 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Study-IN.aspx.cs" Inherits="WEB_PERSONAL.Study_IN" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        $(function () {
+            $(document).ready(function () {
+                $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox7,#ContentPlaceHolder1_TextBox8").datepicker({
+                    dateFormat: 'dd/mm/yy',
+                    changeMonth: true,
+                    changeYear: true,
+                    beforeShow: function () {
+                        $(".ui-datepicker").css('font-size', 14)
+                    }
+                });
+            });
+        });
+    </script>
     <style type="text/css">
         .auto-style4 {
             width: 331px;
@@ -35,30 +49,7 @@
 
         .login_button_div li {
             display: inline;
-            /*555*/
         }
-
-        .login_button_div a {
-            text-decoration: none;
-            display: inline;
-            padding: 5px 20px;
-            margin: 0 0px;
-            margin-top: 5px;
-            width: 60px;
-            color: #c0c0c0;
-            background-color: #000000;
-            text-shadow: 0px 0px 0px #000000;
-            border-radius: 24px;
-            transition: color 0.5s ease, background-color 0.5s ease, text-shadow 0.5s ease;
-        }
-
-            .login_button_div a:hover {
-                color: #ffffff;
-                background-color: #cc2939;
-                text-shadow: 1px 1px 16px #ffffff;
-            }
-
-
 
         .cen {
             text-align: center;
@@ -136,6 +127,18 @@
                     </td>
                     <td class="auto-style5">
                         <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:LinkButton ID="LinkButton18" runat="server" CssClass="master_default_button" OnClick="LinkButton18_Click">ดึง</asp:LinkButton>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style6">
+                        <asp:Label ID="Label35" runat="server" Text="ชื่อพนักงาน"></asp:Label>
+                    </td>
+                    <td class="auto-style5">
+                        <asp:TextBox ID="TextBox22" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -410,20 +413,14 @@
                 </tr>
                 <tr>
                     <td class="auto-style6">&nbsp;</td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">&nbsp;</td>
                     <td class="auto-style5">
                         <div class="login_button_div">
                             <ul>
                                 <li>
-                                    <asp:LinkButton ID="LinkButton16" runat="server" OnClick="LinkButton16_Click">เพิ่ม</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton16" runat="server" CssClass="master_default_button" OnClick="LinkButton16_Click">เพิ่ม</asp:LinkButton>
                                 </li>
                                 <li>
-                                    <asp:LinkButton ID="LinkButton17" runat="server" OnClick="LinkButton17_Click">แก้ไข</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton17" runat="server" CssClass="master_default_button" OnClick="LinkButton17_Click">แก้ไข</asp:LinkButton>
                                 </li>
                             </ul>
 

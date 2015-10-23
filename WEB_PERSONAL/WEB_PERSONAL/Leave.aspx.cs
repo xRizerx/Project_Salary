@@ -209,8 +209,83 @@ namespace WEB_PERSONAL
 
         protected void LinkButton14_Click(object sender, EventArgs e)
         {
-            DateTime date = DateTime.Now;
-            TextBox2.Text = date.ToString("dd/MM/yyyy");
+            try
+            {
+                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    {
+                        string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox3.Text + "'";
+                        using (SqlCommand command = new SqlCommand(sql, con))
+                        {
+                            using(SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if(reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        TextBox11.Text = reader.GetString(0);
+                                    }
+                                } else
+                                {
+                                    string script2 = "alert('ไม่พบรหัสพนักงาน!');";
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
+                                }
+                                
+                            }
+                           
+                            
+                        }
+                    }
+                }
+            }
+            catch (Exception e2)
+            {
+                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }
+
+        protected void LinkButton15_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    {
+                        string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox8.Text + "'";
+                        using (SqlCommand command = new SqlCommand(sql, con))
+                        {
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        TextBox13.Text = reader.GetString(0);
+                                    }
+                                }
+                                else
+                                {
+                                    string script2 = "alert('ไม่พบรหัสพนักงาน!');";
+                                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
+                                }
+
+                            }
+
+
+                        }
+                    }
+                }
+            }
+            catch (Exception e2)
+            {
+                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
         }
     }
 }

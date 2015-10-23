@@ -13,6 +13,20 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        $(function () {
+            $(document).ready(function () {
+                $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox5,#ContentPlaceHolder1_TextBox6,#ContentPlaceHolder1_TextBox9").datepicker({
+                    dateFormat: 'dd/mm/yy',
+                    changeMonth: true,
+                    changeYear: true,
+                    beforeShow: function () {
+                        $(".ui-datepicker").css('font-size', 14)
+                    }
+                });
+            });
+        });
+    </script>
     <style type="text/css">
         .c1 {
             font-family: ths;
@@ -39,7 +53,6 @@
         .leave_button_div a {
             text-decoration: none;
             display: inline;
-           
         }
 
 
@@ -55,10 +68,10 @@
             border-radius: 24px;
         }
 
-        .leave_paper_pull:hover {
-            color: #000000;
-            background-color: #c0c0c0;
-        }
+            .leave_paper_pull:hover {
+                color: #000000;
+                background-color: #c0c0c0;
+            }
 
         .leave_grid_view {
             margin: 0 auto;
@@ -200,6 +213,7 @@
                         </td>
                         <td>
                             <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                            <asp:LinkButton ID="LinkButton14" runat="server" CssClass="master_default_button" OnClick="LinkButton14_Click">ดึง</asp:LinkButton>
                         </td>
                         <td class="auto-style47">&nbsp;</td>
                     </tr>
@@ -212,13 +226,12 @@
                             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                         </td>
                         <td class="auto-style55">
-                            <asp:LinkButton ID="LinkButton14" runat="server" CssClass="master_default_button" OnClick="LinkButton14_Click">วันนี้</asp:LinkButton>
-                        </td>
+                            &nbsp;</td>
                         <td class="auto-style35">
                             <asp:Label ID="Label17" runat="server" Text="ชื่อ"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TextBox11" runat="server" ReadOnly="True"></asp:TextBox>
                         </td>
                         <td class="auto-style47">&nbsp;</td>
                     </tr>
@@ -267,6 +280,7 @@
                         </td>
                         <td class="auto-style2">
                             <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                            <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_default_button" OnClick="LinkButton15_Click">ดึง</asp:LinkButton>
                         </td>
                         <td class="auto-style2">&nbsp;</td>
                     </tr>
@@ -282,7 +296,7 @@
                             <asp:Label ID="Label19" runat="server" Text="ชื่อ"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox13" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TextBox13" runat="server" ReadOnly="True"></asp:TextBox>
                         </td>
                         <td>&nbsp;</td>
                     </tr>
