@@ -40,24 +40,13 @@ form {
 }
 
 .master_login {
-    
-    /*background-color: #F0F0F0;
-    background-color: #f8ffeb;*/
     background-color: #ffffff;
-    /*box-shadow: 0px 0px 32px rgba(255,255,255,1);*/
-    /*box-shadow: 0px 0px 16px rgb(0,162,232);*/
-    
-    /*background-color: rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 16px rgb(0,0,0);*/
-    /*box-shadow: 0px 0px 24px rgba(214,255,129,0.9);*/
-    box-shadow: 0px 0px 8px rgba(204,41,57,1);
-
-
+    /*box-shadow: 0px 0px 8px rgba(204,41,57,1);*/
+    height: 32px;
     position: fixed;
     width: 100%;
     z-index: 999;
-
-    
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .master_login_left {
@@ -67,43 +56,34 @@ form {
 .master_login_right {
     float: right;
     height: 32px;
-    line-height:32px;
+    line-height: 32px;
 }
 
 .master_login ul {
-    
      list-style-type: none;
      padding: 0;
-     margin-top: 4px;
-     margin-left: 4px;
-     margin-right: -4px;
  }
-
-
 
 .master_login li {
     display: inline;
-    /*555*/
 }
 
 .master_login a {
     text-decoration: none;
     display: inline;
-    padding: 5px 20px;
+    padding: 3px 20px;
     margin: 0 20px;
     margin-top: 5px;
     width: 60px;
-    color: #c0c0c0;
-    background-color: #000000;
-    text-shadow: 0px 0px 0px #000000;
+    color: #000000;
+    background-color: #e0e0e0;
     border-radius: 24px;
-    transition: color 0.5s ease, background-color 0.5s ease, text-shadow 0.5s ease;
+    transition: color 0.25s ease, background-color 0.25s ease;
 }
 
 .master_login a:hover {
     color: #ffffff;
-    background-color: #cc2939;
-    text-shadow: 1px 1px 16px #ffffff;
+    background-color: #404040;
 }
 
 .master_login_name {
@@ -125,38 +105,32 @@ form {
     padding-top: 64px;
     transition: background-image 1s ease, opacity 1s ease;
 }
-.master_header:hover {
-    background-image: url("../Image/DORAEMON.jpg");
-}
+
 
 .master_header_label {
-    font-size: 48px;
+    font-size: 40px;
     color: #ffffff;
-    text-shadow: 0px 0px 8px rgba(0,0,0,0.9);
+    text-shadow: 0px 0px 8px #404040;
 }
 .master_header_label2 {
     font-size: 24px;
     color: #ffffff;
-    text-shadow: 0px 0px 8px rgba(0,0,0,0.9);
+    text-shadow: 0px 0px 8px #000000;
 }
 
 .master_nav {
-
-    /*background-color: #6ea2ff;*/
     background-color: #000000;
-    /*background-color: rgba(0,0,0,0.9);*/
-    padding: 5px 20px;
+    margin: 0;
     text-align: center;
-    /*box-shadow: 0px 0px 32px rgba(56,168,0,0.5);*/
-    
 
+    background-color: #e0e0e0;
 }
 
 .master_nav ul {
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
- }
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
 .master_nav li {
     display: inline;
@@ -165,23 +139,20 @@ form {
 .master_nav a {
     text-decoration: none;
     display: inline;
-    padding: 10px 20px;
-    margin: 0;
-    width: 60px;
+    padding: 3px 20px;
+    margin: 0 1px;
 
-    color: #c0c0c0;
-    background-color: #000000;
-    text-shadow: 0px 0px 0px #000000;
-    transition: color 0.5s ease, background-color 0.5s ease, text-shadow 0.5s ease;
-    
+    border-radius: 24px;
+
+    color: #000000;
+    background-color: #e0e0e0;
+    transition: color 0.25s ease, background-color 0.25s ease;
 }
 
 
 .master_nav a:hover {
     color: #ffffff;
-    /*background-color: #1a8800;*/
-    background-color: #cc2939;
-    text-shadow: 1px 1px 16px #ffffff;
+    background-color: #404040;
 }
 
 
@@ -220,7 +191,7 @@ form {
 }
 .master_nav ul {
 
-	padding: 5px 20px;
+	padding: 3px 20px;
 
 	list-style: none;
 	position: relative;
@@ -236,7 +207,7 @@ form {
 
 }
 .master_nav ul li:hover .nav_a {
-	color: #808080;
+
 }
 
 .master_nav ul li .nav_a {
@@ -246,7 +217,7 @@ form {
     text-decoration: none;
 }
 .master_nav ul ul {
-	background: #ffffff;
+
     border-radius: 0px;
     padding: 0;
 	position: absolute;
@@ -254,23 +225,24 @@ form {
 }
 .master_nav ul ul li {
 	float: none; 
-	border-top: 1px solid #6b727c;
+
 	border-bottom: 1px solid #575f6a;
 	position: relative;
 
 }
 .master_nav ul li ul li .nav_a {
-    width: 160px;
+    padding: 3px 20px;
 }
 .master_nav ul ul li .nav_a {
-	padding: 10px 20px;
-	color: #fff;
-    background-color: #000000;
+    margin-top: -1px;
+	padding: 3px 20px;
+	color: #000000;
+    background-color: #e0e0e0;
 }	
 .master_nav ul ul li .nav_a:hover {
     color: #ffffff;
-    background: #cc2939;
-    text-shadow: 1px 1px 2px #404040;
+    background: #404040;
+
 }
 .master_nav ul ul ul {
 	position: absolute;
@@ -285,6 +257,7 @@ form {
 .master_footer {
     /*background: linear-gradient(#ffaf22, #ffc051);*/
     background-color: #202020;
+    background-color: #e0e0e0;
     text-align: center;
     /*box-shadow: 0px 0px 16px #c0c0c0;*/
     /*box-shadow: 0px 0px 8px #000000;*/
@@ -297,13 +270,11 @@ form {
 }
 .master_footer_label {
     font-size: 18px;
-    color: #c0c0c0;
-    text-shadow: 1px 1px 1px #000000;
+    color: #404040;
 }
 .master_footer_label2 {
     font-size: 14px;
-    color: #a0a0a0;
-    text-shadow: 1px 1px 1px #000000;
+    color: #808080;
 }
 .master_footer_label3 {
     font-size: 14px;
@@ -313,7 +284,9 @@ form {
 .master_footer_label4 {
     font-size: 14px;
     color: #ffcc00;
-    text-shadow: 1px 1px 1px #000000;
+    background-color: #000000;
+    padding: 3px 10px;
+    border-radius: 24px;
 }
 
 
@@ -361,17 +334,15 @@ form {
     margin: 0 0px;
     margin-top: 5px;
     width: 60px;
-    color: #c0c0c0;
-    background-color: #000000;
-    text-shadow: 0px 0px 0px #000000;
+    color: #000000;
+    background-color: #e0e0e0;
     border-radius: 24px;
-    transition: color 0.5s ease, background-color 0.5s ease, text-shadow 0.5s ease;
+    transition: color 0.25s ease, background-color 0.25s ease;
 }
 
 .master_default_button:hover {
     color: #ffffff;
-    background-color: #cc2939;
-    text-shadow: 1px 1px 16px #ffffff;
+    background-color: #404040;
 }
 .master_OAT_button {
     background-color: rgba(0, 114, 255, 0.90);

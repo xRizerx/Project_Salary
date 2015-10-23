@@ -33,7 +33,7 @@
     <form id="form1" runat="server" onload="form1_Load">
         
         <div class="master_login">
-            <asp:Panel ID="Panel6" runat="server" Height="40px">
+
 
                 <ul class="master_login_left">
                     
@@ -55,10 +55,8 @@
 
 
 
-            </asp:Panel>
-            <div>
-                <asp:Panel ID="Panel4" runat="server" CssClass="dpl_sred" Height="1px"></asp:Panel>
-            </div>
+ 
+            
         </div>
 
 
@@ -110,9 +108,7 @@
             </ul>
         </div>
 
-        <div>
-            <asp:Panel ID="Panel7" runat="server" CssClass="dpl_7c" Height="2px"></asp:Panel>
-        </div>
+        
         <div class="wrapper">
 
             <div>
@@ -129,9 +125,7 @@
             </div>
         </div>
         <footer>
-            <div>
-                <asp:Panel ID="Panel3" runat="server" CssClass="dpl_7c" Height="2px"></asp:Panel>
-            </div>
+           
             <div class="master_footer">
 
 
@@ -161,9 +155,7 @@
             </div>
 
         </footer>
-        <div>
-            <asp:Panel ID="Panel2" runat="server" CssClass="dpl3" Height="1px"></asp:Panel>
-        </div>
+     
     </form>
 </body>
 </html>

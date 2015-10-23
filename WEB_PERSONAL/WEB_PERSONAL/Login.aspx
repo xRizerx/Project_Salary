@@ -10,37 +10,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
-        .login_button_div ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            margin-top: 8px;
-        }
 
-        .login_button_div li {
-            display: inline;
-            /*555*/
-        }
-
-        .login_button_div a {
-            text-decoration: none;
-            display: inline;
-            padding: 5px 20px;
-            margin: 0 0px;
-            margin-top: 5px;
-            width: 60px;
-            color: #c0c0c0;
-            background-color: #000000;
-            text-shadow: 0px 0px 0px #000000;
-            border-radius: 24px;
-            transition: color 0.5s ease, background-color 0.5s ease, text-shadow 0.5s ease;
-        }
-
-        .login_button_div a:hover {
-            color: #ffffff;
-            background-color: #cc2939;
-            text-shadow: 1px 1px 16px #ffffff;
-        }
 
         .c2 {
             text-align: center;
@@ -107,13 +77,9 @@
                 <tr>
                     <td class="auto-style8">&nbsp;</td>
                     <td class="auto-style11">
-                        <div class="login_button_div">
-                            <ul>
-                                <li>
-                                    <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click">เข้าสู่ระบบ</asp:LinkButton>
-                                </li>
-                            </ul>
-                        </div>
+             
+                        <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click" CssClass="master_default_button">เข้าสู่ระบบ</asp:LinkButton>
+               
 
                     </td>
                 </tr>
