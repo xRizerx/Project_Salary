@@ -427,13 +427,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList ddlPROVINCE;
         
         /// <summary>
-        /// TextBox29 control.
+        /// DropDownISCED_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox29;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownISCED_ID;
+        
+        /// <summary>
+        /// TB_ISCED control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_ISCED;
         
         /// <summary>
         /// TextBox30 control.

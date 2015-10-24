@@ -329,7 +329,9 @@
                             <asp:DropDownList ID="ddlPROVINCE" runat="server" Width="250px" OnSelectedIndexChanged="ddlPROVINCE_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox29" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                           <asp:DropDownList ID="DropDownISCED_ID" runat="server" Width="250px" CssClass="tb5" DataSourceID="TB_ISCED" DataTextField="ISCED_NAME" DataValueField="ISCED_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_ISCED" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_ISCED]"></asp:SqlDataSource>
+                        </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="TextBox30" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง 'ดีเด่น'"></asp:TextBox></td>
