@@ -30,14 +30,15 @@
     </style>
 </head>
 <body>
+
+    
     <form id="form1" runat="server" onload="form1_Load">
         
         <div class="master_login">
 
 
                 <ul class="master_login_left">
-                    
-
+      
                 </ul>
 
                 <ul class="master_login_right">

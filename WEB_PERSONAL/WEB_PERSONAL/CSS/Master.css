@@ -51,7 +51,6 @@ form {
 
 .master_login_left {
     float: left;
-    line-height:32px;
 }
 .master_login_right {
     float: right;
@@ -82,6 +81,22 @@ form {
 }
 
 .master_login a:hover {
+    color: #ffffff;
+    background-color: #404040;
+}
+.master_login button {
+    text-decoration: none;
+    display: inline;
+    padding: 0 20px;
+    margin: 0;
+    height: 32px;
+    color: #000000;
+    background-color: #e0e0e0;
+    border: none;
+    transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.master_login button:hover {
     color: #ffffff;
     background-color: #404040;
 }
