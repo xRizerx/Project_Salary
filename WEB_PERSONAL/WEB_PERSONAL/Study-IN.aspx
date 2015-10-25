@@ -16,10 +16,7 @@
         });
     </script>
     <style type="text/css">
-        .auto-style4 {
-            width: 331px;
-        }
-        
+                
         .auto-style5 {
             width: 189px;
         }
@@ -84,17 +81,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:Panel ID="Panel8" runat="server" Height="1983px" CssClass="pan">
+    <asp:Panel ID="Panel8" runat="server" Height="1461px" CssClass="pan">
 
         <div>
             <asp:Label ID="Label1" runat="server" Text="การลาศึกษาต่อภายในและภายนอกประเทศ" CssClass="sin_a"></asp:Label>
         </div>
-        <br />
-
-        <asp:Panel ID="Panel1" runat="server" CssClass="cen">
-            <iframe width="800" height="500" src="https://www.youtube.com/embed/ey3m2iWzkrE" frameborder="0" allowfullscreen></iframe>
-        </asp:Panel>
-
         <br />
 
         <div class="tb">

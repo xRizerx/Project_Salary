@@ -32,10 +32,6 @@
             font-family: ths;
             font-size: 32px;
             text-align: center;
-            margin: 0;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            color: #000000;
         }
 
         .leave_button_div ul {
