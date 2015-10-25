@@ -6,7 +6,7 @@
   <script>
             $(function () {
                 $(document).ready(function () {
-                    $("#ContentPlaceHolder1_txtBIRTHDAY,#ContentPlaceHolder1_txtDATE_INWORRK").datepicker({
+                    $("#ContentPlaceHolder1_txtBIRTHDAY,#ContentPlaceHolder1_txtDATETIME_INWORRK").datepicker({
                         dateFormat: 'dd/mm/yy',
                         changeMonth: true,
                         changeYear: true,
