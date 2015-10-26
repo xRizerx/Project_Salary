@@ -1,56 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="TitleName-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.pre_title_name" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .auto-style1 {
-            width: 102px;
+        .divpan {
+            background-image: url("Image/sky.jpg");
         }
-        .auto-style2 {
-            width: 107px;
-        }
-        .auto-style3 {
-            width: 270px;
-        }
-        .auto-style6 {
-            width: 6px;
-        }
-           .auto-style7 {
-            width: 1036px;
-        }
-         .auto-style8 {
-             width: 38px;
-         }
-         .auto-style9 {
-             width: 195px;
-         }
-         .divpan{
-            background-image: url("Image/555.jpg");
-            text-align: center;
-        }
-        .textmode {
-            font-family: ths;
-            font-size: 16px;
-        }
-
-        .textmodeb {
-            font-family: thsb;
-            font-size: 24px;
-            padding: 20px;
-        }
-
-        .textmodebi {
-            font-family: thsbi;
-            font-size: 20px;
-        }
-
-        .textmodei {
-            font-family: thsi;
-            font-size: 20px;
-        }
-
-        .pancen {
-            text-align: center;
-        }
-
         .panin{
             border:1px solid black;
             margin: 20px;
@@ -63,36 +16,40 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan">
+<asp:Panel ID="Panel1" runat="server" Height="512px" CssClass="divpan">
 
     <div>
-        <fieldset class="auto-style7">
+        <fieldset>
             <legend>Insert</legend>
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: right; margin-right: 5px; " class="auto-style3">ชื่อภาษาไทย :&nbsp;</td>
+                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: right; margin-right: 5px; ">ชื่อภาษาไทย :&nbsp;</td>
                         <td style="text-align: left; width: 120px;">
                             <asp:TextBox ID="txtTitleNameTh" runat="server" MaxLength="6"></asp:TextBox>
                         </td>
-                        <td style="text-align: right; margin-right: 5px; " class="auto-style9">ชื่อย่อภาษาไทย :&nbsp;</td>
-                        <td style="text-align: left; " class="auto-style2">
+                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: right; margin-right: 5px; ">ชื่อย่อภาษาไทย :&nbsp;</td>
+                        <td style="text-align: left; ">
                             <asp:TextBox ID="txtTitleNameThMin" runat="server" MaxLength="10"></asp:TextBox></td>
                        
                         
                     </tr>
                     <tr>
-                        <td style="text-align: right; margin-right: 5px;" class="auto-style3">ชื่อภาษาอังกฤษ :&nbsp;</td>
-                        <td style="text-align: left;" class="auto-style1">
+                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: right; margin-right: 5px;">ชื่อภาษาอังกฤษ :&nbsp;</td>
+                        <td style="text-align: left;">
                             <asp:TextBox ID="txtTitleNameEn" runat="server"></asp:TextBox>
                         </td>
-                        <td style="text-align: right; margin-right: 5px;" class="auto-style9">ชื่อย่อภาษาอังกฤษ :&nbsp;</td>
-                        <td style="text-align: left; " class="auto-style2">
+                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: right; margin-right: 5px;">ชื่อย่อภาษาอังกฤษ :&nbsp;</td>
+                        <td style="text-align: left; "">
                             <asp:TextBox ID="txtTitleNameEnMin" runat="server" MaxLength="10"></asp:TextBox></td>
-                        <td style="text-align: right; margin-right: 5px;" class="auto-style6"></td>
-                        <td style="text-align: left;" class="auto-style8">
+                        <td style="text-align: right; margin-right: 5px;"></td>
+                        <td style="text-align: left;">
                             <asp:Button ID="btnSubmitPretitle" Text="OK" runat="server" OnClick = "btnSubmitPretitle_Click" /></td>
-                        <td style="text-align: left;" class="auto-style1">
+                        <td style="text-align: left;">
                             <asp:Button ID="btnCancelPretitle" Text="Cancel" runat="server" OnClick = "btnCancelPretitle_Click" /></td>
                     </tr>
                 </table>
@@ -100,9 +57,9 @@
         </fieldset>
     </div>
     <div>
-        <fieldset>
+        <fieldset >
             <legend>Data </legend>
-            <asp:GridView ID="GridView1" runat="server"
+            <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="TITLE_ID"
@@ -120,7 +77,7 @@
                     </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ชื่อภาษาไทย" ControlStyle-Width="230">
+                    <asp:TemplateField HeaderText="ชื่อภาษาไทย" ControlStyle-Width="223">
                             <ItemTemplate>
                             <asp:Label ID="lblTitleNameTh" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH") %>'></asp:Label>
                             </ItemTemplate>
@@ -130,7 +87,7 @@
                     </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ชื่อย่อภาษไทย" ControlStyle-Width="230">
+                    <asp:TemplateField HeaderText="ชื่อย่อภาษไทย" ControlStyle-Width="223">
                             <ItemTemplate>
                             <asp:Label ID="lblTitleNameThMin" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH_MIN") %>'></asp:Label>
                             </ItemTemplate>
@@ -140,7 +97,7 @@
                     </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ชื่อภาษาอังกฤษ" ControlStyle-Width="230">
+                    <asp:TemplateField HeaderText="ชื่อภาษาอังกฤษ" ControlStyle-Width="223">
                             <ItemTemplate>
                             <asp:Label ID="lblTitleNameEn" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN") %>'></asp:Label>
                             </ItemTemplate>
@@ -150,7 +107,7 @@
                     </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ชื่อย่อภาษาอังกฤษ" ControlStyle-Width="230">
+                    <asp:TemplateField HeaderText="ชื่อย่อภาษาอังกฤษ" ControlStyle-Width="223">
                             <ItemTemplate>
                             <asp:Label ID="lblTitleNameEnMin" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN_MIN") %>'></asp:Label>
                             </ItemTemplate>

@@ -2,42 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <style type="text/css">
-        .auto-style2 {
-            width: 303px;
-        }
          .divpan{
-            background-image: url("Image/sky.jpg");
-            text-align:center;
-        }
-        .textmode {
-            font-family: ths;
-            font-size: 16px;
-        }
+            background-image: url("Image/sky.jpg");     
 
-        .textmodeb {
-            font-family: thsb;
-            font-size: 24px;
-            padding: 20px;
-        }
-
-        .textmodebi {
-            font-size: 20px;
-        }
-
-        .textmodei {
-            font-family: thsi;
-            font-size: 20px;
-        }
-
-        .pancen {
-            text-align:center;
-        }
-
-        .panin{
-            border:1px solid black;
-            margin: 20px;
-            background-color:rgba(255,255,255,0.6);
-            border-radius: 5px;
         }
          body {
             background-image: url("Image/444.jpg");
@@ -56,12 +23,11 @@
             resize:none;
               }
     </style>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan">
         <div class="divover">
-        <fieldset class="auto-style2">
+        <fieldset>
             <legend>Search</legend>
             <div>
                 ชื่อ :
@@ -73,8 +39,8 @@
       </div>
       <div>
         <fieldset>
-            <legend>Data </legend>
-            <asp:GridView ID="GridView1" runat="server"
+            <legend>Data</legend>
+            <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="SEMINAR_ID"
