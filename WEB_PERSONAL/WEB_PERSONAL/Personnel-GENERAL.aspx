@@ -6,7 +6,7 @@
   <script>
             $(function () {
                 $(document).ready(function () {
-                    $("#ContentPlaceHolder1_txtBIRTHDAY,#ContentPlaceHolder1_txtDATE_INWORRK").datepicker({
+                    $("#ContentPlaceHolder1_txtBIRTHDAY,#ContentPlaceHolder1_txtDATETIME_INWORRK").datepicker({
                         dateFormat: 'dd/mm/yy',
                         changeMonth: true,
                         changeYear: true,
@@ -28,59 +28,26 @@
             background-color:#00ff21;
             text-decoration:none;
             color:black;
-            text-align:center;
         }
          .divpan{
             background-image: url("Image/sky.jpg");
-            text-align: center;
-        }
-        .textmode {
-            font-family: ths;
-            font-size: 16px;
-        }
-
-        .textmodeb {
-            font-family: thsb;
-            font-size: 24px;
-            padding: 20px;
-        }
-
-        .textmodebi {
-            font-family: thsbi;
-            font-size: 20px;
-        }
-
-        .textmodei {
-            font-family: thsi;
-            font-size: 20px;
-        }
-
-        .pancen {
-            text-align: center;
-        }
-
-        .panin{
-            border:1px solid black;
-            margin: 20px;
-            background-color:rgba(255,255,255,0.6);
-            border-radius: 5px;
         }
          body {
             background-image: url("Image/444.jpg");
         }
-         .tb5 {
-	        background-image:url(images/form_bg.jpg);
-	        background-repeat:repeat-x;
-	        border:1px solid #d1c7ac;
-	        width: 230px;
-	        color:#333333;
-	        padding:3px;
-	        margin-right:4px;
-	        margin-bottom:8px;
-	        font-family:tahoma, arial, sans-serif;
-            border-radius:10px;
-            resize:none;
-        .input-group-addon{color:#8a6d3b;background-color:#fcf8e3;border-color:#8a6d3b}
+        .tb5 {
+            background-image: url(images/form_bg.jpg);
+            background-repeat: repeat-x;
+            border: 1px solid #d1c7ac;
+            width: 230px;
+            color: #333333;
+            padding: 3px;
+            margin-right: 4px;
+            margin-bottom: 8px;
+            font-family: tahoma, arial, sans-serif;
+            border-radius: 10px;
+            resize: none;
+        }
     </style>
     <asp:Panel runat="server" CssClass="divpan" Height="1250px">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
@@ -88,7 +55,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
              <ContentTemplate>
         <fieldset>
-            <legend>เพิ่มข้อมูลบุคลากร</legend>
+            <legend style="margin-left: auto; margin-right: auto; text-align: center;">เพิ่มข้อมูลบุคลากร</legend>
             <div>
                 <table>
                    <tr>

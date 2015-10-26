@@ -30,40 +30,9 @@
             color:black;
             text-align:center;
         }
-         .divpan{
+        .divpan {
             background-image: url("Image/sky.jpg");
             text-align: center;
-        }
-        .textmode {
-            font-family: ths;
-            font-size: 16px;
-        }
-
-        .textmodeb {
-            font-family: thsb;
-            font-size: 24px;
-            padding: 20px;
-        }
-
-        .textmodebi {
-            font-family: thsbi;
-            font-size: 20px;
-        }
-
-        .textmodei {
-            font-family: thsi;
-            font-size: 20px;
-        }
-
-        .pancen {
-            text-align: center;
-        }
-
-        .panin{
-            border:1px solid black;
-            margin: 20px;
-            background-color:rgba(255,255,255,0.6);
-            border-radius: 5px;
         }
          body {
             background-image: url("Image/444.jpg");
