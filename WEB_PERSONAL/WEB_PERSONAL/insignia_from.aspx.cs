@@ -110,5 +110,11 @@ namespace WEB_PERSONAL
         {
             Response.Redirect("insignia_from_edit");
         }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("insignia_user.aspx");
+
+        }
     }
 }

@@ -592,7 +592,7 @@
                     <asp:Button ID="Button3" runat="server" Text="พิมพ์" Width="109px" />
                 </td>
                 <td class="auto-style58">
-                    <asp:Button ID="Button4" runat="server" Text="ยกเลิก" Width="109px" />
+                    <asp:Button ID="Button4" runat="server" Text="ยกเลิก" Width="109px" OnClick="Button4_Click" />
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
