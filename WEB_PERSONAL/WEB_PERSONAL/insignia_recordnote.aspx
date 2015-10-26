@@ -241,5 +241,19 @@
         </div>
     </asp:Panel>
 
+        <br />
+        <br />
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="UPDATE" Width="141px" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
     </asp:Panel>
 </asp:Content>

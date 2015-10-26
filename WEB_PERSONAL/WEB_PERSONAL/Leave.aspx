@@ -346,6 +346,9 @@
                                     <li>
                                         <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_default_button" OnClick="LinkButton13_Click">บันทึก</asp:LinkButton>
                                     </li>
+                                    <li>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_default_button" OnClick="LinkButton1_Click">ออกรายงาน 1</asp:LinkButton>
+                                    </li>
                                 </ul>
                             </div>
 

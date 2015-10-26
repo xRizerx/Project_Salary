@@ -287,5 +287,10 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Leave-Report1.aspx");
+        }
     }
 }

@@ -138,6 +138,7 @@
     <Content Include="Image\sky.jpg" />
     <Content Include="insignia_recordnote.aspx" />
     <Content Include="js\index.js" />
+    <Content Include="Leave-Report1.aspx" />
     <Content Include="M-Admin.aspx" />
     <Content Include="insignia_admin.aspx" />
     <Content Include="insignia_from.aspx" />
@@ -151,6 +152,17 @@
     <Content Include="Font\THSarabun BoldItalic.ttf" />
     <Content Include="Font\THSarabun Italic.ttf" />
     <Content Include="Font\THSarabun.ttf" />
+    <Content Include="personalDataSet.xsc">
+      <DependentUpon>personalDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="personalDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>personalDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="personalDataSet.xss">
+      <DependentUpon>personalDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,6 +220,13 @@
     <Compile Include="insignia_recordnote.aspx.designer.cs">
       <DependentUpon>insignia_recordnote.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Leave-Report1.aspx.cs">
+      <DependentUpon>Leave-Report1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Leave-Report1.aspx.designer.cs">
+      <DependentUpon>Leave-Report1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="M-Admin.aspx.cs">
       <DependentUpon>M-Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -263,6 +282,11 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="personalDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Personnel-ADMIN.aspx.cs">
       <DependentUpon>Personnel-ADMIN.aspx</DependentUpon>

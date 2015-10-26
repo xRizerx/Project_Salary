@@ -77,5 +77,27 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
+                conn.Open();
+                using (SqlCommand command = new SqlCommand("update user_insert set วัน เดือน ปี='" + TextBox5.Text + "'ตำแหน่ง='" + TextBox6.Text  + "ระดับ=" + TextBox7.Text + "ได้รับ ชั้น/รายการ" + TextBox8.Text + "เล่ม" + TextBox9.Text + "ตอน" + TextBox10.Text + "หน้า" + TextBox11.Text + "วัน เดือน ปี" + TextBox12.Text, conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+                string script = "alert(\"อัพเดตเรียบร้อย\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+
+            //--
+
+        }
     }
 }
