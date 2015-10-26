@@ -75,7 +75,7 @@
                             <asp:TextBox ID="txtCITIZEN_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสประจำตัวประชาชน 13 หลัก"></asp:TextBox></td>    
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                             <asp:TextBox ID="TextBox1" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสไปรษณีย์"></asp:TextBox></td>  
+                            <asp:DropDownList ID="ddlZIPCODE" runat="server" Width="257px" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:DropDownList ID="DropDownDEPARTMENT_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_DEPARTMENT" DataTextField="DEPARTMENT_NAME" DataValueField="FACULTY_ID"></asp:DropDownList>
@@ -334,23 +334,13 @@
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                           <asp:DropDownList ID="ddlDISTRICT" runat="server" Width="257px" CssClass="tb5"></asp:DropDownList></td> 
+                           <asp:DropDownList ID="ddlDISTRICT" runat="server" Width="257px" OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                      </tr>
                  </table>
-
-
-
-
-
-
-
-
-
-
 
                  <table>
                           <tr>
@@ -372,6 +362,7 @@
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="ddlPROVINCE" EventName="SelectedIndexChanged" />
                 <asp:AsyncPostBackTrigger ControlID="ddlAMPHUR" EventName="SelectedIndexChanged" />
+                <asp:AsyncPostBackTrigger ControlID="ddlDISTRICT" EventName="SelectedIndexChanged" />
             </Triggers>
         </asp:UpdatePanel>
                 </div>
