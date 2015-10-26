@@ -18,33 +18,34 @@ namespace WEB_PERSONAL
         {
             try
             {
-                SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
-                conn.Open();
-                SqlCommand command = new SqlCommand("Select TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_SUBSTAFFTYPE.SUBSTAFFTYPE_NAME,TB_ADMIN.ADMIN_POSITION_NAME,BASESALARY.MAXSALARY From TB_PERSONAL,TB_POSITION,TB_SUBSTAFFTYPE,TB_ADMIN,BASESALARY WHERE CITIZEN_ID = '" + TextBox1.Text + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.SUBSTAFFTYPE_ID = TB_SUBSTAFFTYPE.SUBSTAFFTYPE_ID AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN.ADMIN_POSITION_ID AND TB_PERSONAL.POSITION_ID = BASESALARY.POSITION_ID", conn);
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!"))
                 {
-                    bool found = false;
-                    while (reader.Read())
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand("Select TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_SUBSTAFFTYPE.SUBSTAFFTYPE_NAME,TB_ADMIN.ADMIN_POSITION_NAME,BASESALARY.MAXSALARY,TB_SALARY.SALARY From TB_PERSONAL,TB_POSITION,TB_SUBSTAFFTYPE,TB_ADMIN,BASESALARY,TB_SALARY WHERE TB_PERSONAL.CITIZEN_ID = '" + TextBox1.Text + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.SUBSTAFFTYPE_ID = TB_SUBSTAFFTYPE.SUBSTAFFTYPE_ID AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN.ADMIN_POSITION_ID AND TB_PERSONAL.POSITION_ID = BASESALARY.POSITION_ID AND TB_SALARY.SAL_DATE = '01/03/2558'", conn))
                     {
-                        found = true;
-                        Label11.Text = reader.GetString(0);
-                        Label13.Text = reader.GetString(1);
-                        Label15.Text = reader.GetString(2);
-                        Label17.Text = reader.GetString(3);
-                        Label19.Text = reader.GetString(4);
-                        Label22.Text = reader.GetInt32(5).ToString();
-                    }
-                    command.Dispose();
-                    reader.Close();
-                    conn.Close();
-                    if (!found)
-                    {
-                        string script = "alert(\"ไม่พบผู้ใช้\");";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                    }
-                    else
-                    {
-                        Session["citizen_id"] = TextBox1.Text;
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Label11.Text = reader.GetString(0);
+                                    Label13.Text = reader.GetString(1);
+                                    Label15.Text = reader.GetString(2);
+                                    Label17.Text = reader.GetString(3);
+                                    Label19.Text = reader.GetString(4);
+                                    Label22.Text = reader.GetInt32(5).ToString();
+                                    TextBox2.Text = reader.GetInt32(6).ToString();
+
+                                }
+                                Session["citizen_id"] = TextBox1.Text;
+                            }
+                            else
+                            {
+                                string script = "alert(\"ไม่พบผู้ใช้\");";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                            }
+                        }
                     }
                 }
             }
@@ -335,53 +336,47 @@ namespace WEB_PERSONAL
 
         protected void LinkButton2_Click(object sender, EventArgs ee)
         {
-            if (Session["login_id"] != null)
+            String a = TextBox1.Text;
+            String b = TextBox2.Text;
+            String c = Label22.Text;
+            String d = Label24.Text;
+            String e = TextBox3.Text;
+            String f = Label26.Text;
+            String g = Label27.Text;
+            String h = Label29.Text;
+            String i = Label31.Text;
+            String j = Label33.Text;
+            String k = Label35.Text;
+            String l = TextBox4.Text;
+            String m = TextBox5.Text;
+            String n = TextBox6.Text;
+            String o = TextBox7.Text;
+            String p = Label58.Text;
+            String q = Label42.Text;
+            String r = Label44.Text;
+            String s = Label46.Text;
+            String t = Label48.Text;
+            String u = Label50.Text;
+            String v = Label52.Text;
+            String w = Label54.Text;
+            String x = TextBox9.Text;
+            DateTime dt = DateTime.Today;
+            DateTime firstDayOfMonth = new DateTime(dt.Year, dt.Month, 1);
+            String y = firstDayOfMonth.ToString("dd/MM/yyyy");
+            using (SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!"))
             {
-                String a = TextBox1.Text;
-                String b = TextBox2.Text;
-                String c = Label22.Text;
-                String d = Label24.Text;
-                String e = TextBox3.Text;
-                String f = Label26.Text;
-                String g = Label27.Text;
-                String h = Label29.Text;
-                String i = Label31.Text;
-                String j = Label33.Text;
-                String k = Label35.Text;
-                String l = TextBox4.Text;
-                String m = TextBox5.Text;
-                String n = TextBox6.Text;
-                String o = TextBox7.Text;
-                String p = Label58.Text;
-                String q = Label42.Text;
-                String r = Label44.Text;
-                String s = Label46.Text;
-                String t = Label48.Text;
-                String u = Label50.Text;
-                String v = Label52.Text;
-                String w = Label54.Text;
-                String x = TextBox9.Text;
-                try
+                conn.Open();
+                string sql = "INSERT INTO TB_SALARY_UP (CITIZEN_ID,DETAIL_SALARY,DETAIL_MAXSALARY,DETAIL_BASEMONEY, DETAIL_PERCENT_RATE, DETAIL_MONEYNOTROUND, DETAIL_MONEYROUND, DETAIL_MONEYUP, DETAIL_MONEYBONUS, DETAIL_SUM_MONEY, DETAIL_NEW_SALARY, DETAIL_SCORE_TEST, DETAIL_LEVEL_TEST, ADMIN_RATESUM, ADMIN_RATE ,ADMIN_MONEY_ADD, SUM_PERCENT_RATE2, SUM_MONEYNOTROUND, SUM_MONEYROUND, SUM_MONEYUP, SUM_MONEYBONUS,SUM_MONEYUPTOTAL,SUM_NEWSALARY,COMMENT,TIMEUPDATE) VALUES ('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}', {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20}, {21}, {22},'{23}','{24}');";
+                sql = String.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y);
+                using (SqlCommand command = new SqlCommand(sql, conn))
                 {
-                    SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
-                    conn.Open();
-                    string sql = "INSERT INTO TB_SALARY_UP (CITIZEN_ID,DETAIL_SALARY,DETAIL_MAXSALARY,DETAIL_BASEMONEY, DETAIL_PERCENT_RATE, DETAIL_MONEYNOTROUND, DETAIL_MONEYROUND, DETAIL_MONEYUP, DETAIL_MONEYBONUS, DETAIL_SUM_MONEY, DETAIL_NEW_SALARY, DETAIL_SCORE_TEST, DETAIL_LEVEL_TEST, ADMIN_RATESUM, ADMIN_RATE ,ADMIN_MONEY_ADD, SUM_PERCENT_RATE2, SUM_MONEYNOTROUND, SUM_MONEYROUND, SUM_MONEYUP, SUM_MONEYBONUS,SUM_MONEYUPTOTAL,SUM_NEWSALARY,COMMENT) VALUES ('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}', {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20}, {21}, {22},'{23}');";
-                    sql = String.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x);
-                    SqlCommand command = new SqlCommand(sql, conn);
                     string script = "alert(\"SAVE SUCCESSFUL.\");";
                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                     command.ExecuteNonQuery();
                 }
-                catch
-                {
-                    string script = "alert(\"เกิดข้อผิดพลาด\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }
+
             }
-            else
-            {
-                Response.Redirect("Error-Member.aspx");
-            }
+
         }
 
         protected void LinkButton3_Click(object sender, EventArgs e)

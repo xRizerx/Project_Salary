@@ -41,9 +41,9 @@ namespace WEB_PERSONAL
                         sqlConn.Close();
 
                         ddlPROVINCE.Items.Insert(0, new ListItem("--กรุณาเลือกจังหวัด--", "0"));
-
                         ddlAMPHUR.Items.Insert(0, new ListItem("--กรุณาเลือกอำเภอ--", "0"));
                         ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือกตำบล--", "0"));
+                        ddlZIPCODE.Items.Insert(0, new ListItem("--กรุณาเลือกรหัสไปรษณีย์--", "0"));
                     }
                 }
             }
@@ -72,7 +72,6 @@ namespace WEB_PERSONAL
                         sqlConn.Close();
 
                         ddlAMPHUR.Items.Insert(0, new ListItem("--กรุณาเลือกอำเภอ--", "0"));
-
                         ddlDISTRICT.Items.Clear();
                         ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือกตำบล--", "0"));
                     }
@@ -103,6 +102,33 @@ namespace WEB_PERSONAL
                         sqlConn.Close();
 
                         ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือกตำบล--", "0"));
+                    }
+                }
+            }
+            catch { }
+        }
+        protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection sqlConn = new SqlConnection(strConn))
+                {
+                    using (SqlCommand sqlCmd = new SqlCommand())
+                    {
+                        sqlCmd.CommandText = "select POST_CODE from TB_DISTRICT where DISTRICT_ID";
+                        sqlCmd.Parameters.AddWithValue("@DISTRICT_ID", ddlAMPHUR.SelectedValue);
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        ddlDISTRICT.DataSource = dt;
+                        ddlDISTRICT.DataValueField = "DISTRICT_ID";
+                        ddlDISTRICT.DataTextField = "POST_CODE";
+                        ddlDISTRICT.DataBind();
+                        sqlConn.Close();
+
+                        ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือกรหัสไปรษณีย์--", "0"));
                     }
                 }
             }

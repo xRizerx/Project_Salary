@@ -57,6 +57,15 @@
             border-color: black;
             border: 1px solid black;
         }
+        .button_ui_edit {
+            background:rgb(79, 255, 169);
+            padding: 5px 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: Black;
+            border-color: yellow;
+            border: 1px solid black;
+        }
         .panin{
             background-color:rgba(255,255,255,0.8);
             border-radius: 5px;
@@ -67,6 +76,9 @@
             text-align: center;
             background-image: url("Image/bgbyid.jpg");
             background-size:100%;
+        }
+        body {
+            background-image: url("Image/ef333.jpg");
         }
         .auto-style14 {
             text-align: left;
@@ -137,6 +149,7 @@ win=window.open(mypage,myname,settings);}
                 </td>
                 <td class="auto-style14">
                     <asp:Button ID="Button1" runat="server" Height="24px" OnClick="Button1_Click" Text="ค้นหา" Width="100px" />
+                    <a href="SalarybyID-Edit.aspx" onclick="NewWindow(this.href,'ปรับฐานเงินเดือน','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui_edit">ปรับฐานเงินเดือน</a>
                 </td>
             </tr>
             <tr>
