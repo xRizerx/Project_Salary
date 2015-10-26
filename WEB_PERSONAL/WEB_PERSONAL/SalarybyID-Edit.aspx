@@ -349,7 +349,7 @@
                         <tr>
                             <td class="auto-style2">หมายเหตุ</td>
                             <td>
-                                <asp:TextBox ID="TextBox9" runat="server" Font-Size="14pt" Height="50px" TextMode="MultiLine" Width="500px"></asp:TextBox>
+                                <asp:TextBox ID="TextBox9" runat="server" Font-Size="14pt" Height="50px" TextMode="MultiLine" Width="400px"></asp:TextBox>
                             </td>
                             <td class="auto-style7">
                                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui2" OnClick="LinkButton1_Click" CausesValidation="False">คำนวณเงินเดือน</asp:LinkButton>
@@ -368,12 +368,17 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style8"><asp:LinkButton ID="LinkButton2" runat="server" CssClass="button_ui" OnClick="LinkButton2_Click">บันทึก</asp:LinkButton></td>
+                            <td class="auto-style8">
+                                <asp:LinkButton ID="LinkButton4" runat="server" CssClass="button_ui" OnClick="LinkButton4_Click">ลบ</asp:LinkButton>
+                            </td>
                             <td class="auto-style8"><asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui" OnClick="LinkButton3_Click">ยกเลิก</asp:LinkButton></td>
                         </tr>
                         <tr>
+                            <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>

@@ -279,7 +279,7 @@
                     <asp:LinkButton ID="LinkButton2" runat="server" Width="140px" CssClass="button_ui" OnClick="LinkButton2_Click">ยกเลิก</asp:LinkButton>
                 </td>
                 <td class="pancen">
-                    <asp:LinkButton ID="LinkButton3" runat="server" Width="140px" CssClass="button_ui">ออกรายงาน</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton3" runat="server" Width="140px" CssClass="button_ui" OnClick="LinkButton3_Click">ออกรายงาน</asp:LinkButton>
                 </td>
             </tr>
         </table>

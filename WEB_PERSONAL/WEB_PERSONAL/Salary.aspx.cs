@@ -123,6 +123,9 @@ namespace WEB_PERSONAL
             TextBox18.Text = "";
         }
 
-
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Salary-report.aspx");
+        }
     }
 }
