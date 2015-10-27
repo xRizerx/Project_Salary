@@ -77,23 +77,44 @@
         }
         .auto-style49 {
             width: 876px;
-            height: 2px;
-            text-align: center;
-        }
-        .auto-style50 {
-            height: 2px;
-        }
-        .auto-style51 {
-            text-align: center;
-            width: 225px;
-            height: 2px;
-        }
-        .auto-style52 {
-            height: 2px;
+            height: 20px;
             text-align: center;
         }
         .auto-style54 {
             text-align: center;
+            height: 30px;
+        }
+        .auto-style55 {
+            height: 531px;
+        }
+        .auto-style57 {
+            height: 15px;
+        }
+        .auto-style60 {
+            margin-bottom: 0;
+        }
+        .auto-style63 {
+            height: 12px;
+        }
+        .auto-style64 {
+            text-align: center;
+            width: 225px;
+            height: 30px;
+        }
+        .auto-style77 {
+            height: 8px;
+        }
+        .auto-style81 {
+            text-align: center;
+            height: 20px;
+        }
+        .auto-style82 {
+            height: 20px;
+        }
+        .auto-style83 {
+            text-align: center;
+            width: 225px;
+            height: 20px;
         }
     </style>
 </asp:Content>
@@ -190,52 +211,192 @@
         <br />
         <br />
 
-        <asp:Panel ID="Panel1" runat="server" Height="187px" ScrollBars="Both">
+        <asp:Panel ID="Panel1" runat="server" Height="623px" ScrollBars="Both" CssClass="auto-style60">
         <div>
-            <table border="1">
+            <table border="1" class="auto-style55">
                 <caption>
                     <tr>
-                        <td class="auto-style9">วัน เดือน ปี</td>
-                        <td class="auto-style9">ตำแหน่ง</td>
-                        <td class="auto-style54">ระดับ</td>
-                        <td class="auto-style9">ได้รับ ชั้น/รายการ</td>
-                        <td colspan="4" class="auto-style9">ราชกิจจานุเบกษา </td>
-                        <td colspan="2" class="auto-style9">ใบกำกับ</td>
-                        <td colspan="2" class="auto-style9">เหรียญตราฯ</td>
-                        <td class="auto-style9">หมายเหตุ</td>
+                        <td class="auto-style64" style="background-color: #008080; color: #FFFFFF;">วัน เดือน ปี</td>
+                        <td class="auto-style64" style="background-color: #008080; color: #FFFFFF;">ตำแหน่ง</td>
+                        <td class="auto-style54" style="background-color: #008080; color: #FFFFFF;">ระดับ</td>
+                        <td class="auto-style64" style="background-color: #008080; color: #FFFFFF;">ได้รับ ชั้น/รายการ</td>
+                        <td colspan="4" class="auto-style64" style="background-color: #008080; color: #FFFFFF;">ราชกิจจานุเบกษา </td>
+                        <td colspan="2" class="auto-style64" style="background-color: #008080; color: #FFFFFF;">ใบกำกับ</td>
+                        <td colspan="2" class="auto-style64" style="background-color: #008080; color: #FFFFFF;">เหรียญตราฯ</td>
+                        <td class="auto-style64" style="background-color: #008080; color: #FFFFFF;">หมายเหตุ</td>
                     </tr>
                 </caption>
                 </tr>
                 <tr align="center">
-                    <td class="auto-style50"></td>
-                    <td class="auto-style50"></td>
-                    <td class="auto-style50"></td>
-                    <td class="auto-style50"></td>
-                    <td class="auto-style51">เล่ม</td>
-                    <td class="auto-style51">ตอน</td>
-                    <td class="auto-style52">หน้า</td>
-                    <td class="auto-style49">วัน เดือน ปี</td>
-                    <td class="auto-style51">ได้รับ</td>
-                    <td class="auto-style51">ไม่ได้รับ</td>
-                    <td class="auto-style52">ได้รับ</td>
-                    <td class="auto-style52">ไม่ได้รับ</td>
+                    <td class="auto-style82" style="background-color: #008080; color: #FFFFFF;"></td>
+                    <td class="auto-style82" style="background-color: #008080; color: #FFFFFF;"></td>
+                    <td class="auto-style82" style="background-color: #008080; color: #FFFFFF;"></td>
+                    <td class="auto-style82" style="background-color: #008080; color: #FFFFFF;"></td>
+                    <td class="auto-style83" style="background-color: #008080; color: #FFFFFF;">เล่ม</td>
+                    <td class="auto-style83" style="background-color: #008080; color: #FFFFFF;">ตอน</td>
+                    <td class="auto-style81" style="background-color: #008080; color: #FFFFFF;">หน้า</td>
+                    <td class="auto-style49" style="background-color: #008080; color: #FFFFFF;">วัน เดือน ปี</td>
+                    <td class="auto-style83" style="background-color: #008080; color: #FFFFFF;">ได้รับ</td>
+                    <td class="auto-style83" style="background-color: #008080; color: #FFFFFF;">ไม่ได้รับ</td>
+                    <td class="auto-style81" style="background-color: #008080; color: #FFFFFF;">ได้รับ</td>
+                    <td class="auto-style81" style="background-color: #008080; color: #FFFFFF;">ไม่ได้รับ</td>
                 </tr>
                  <tr align="center">
-                    <td class="auto-style5"> <asp:TextBox ID="TextBox5" runat="server" Width="100px"></asp:TextBox></td>
-                    <td class="auto-style3"><asp:TextBox ID="TextBox6" runat="server" Width="150px"></asp:TextBox></td>
-                    <td class="auto-style3"><asp:TextBox ID="TextBox7" runat="server" Width="150px"></asp:TextBox></td>
-                    <td><asp:TextBox ID="TextBox8" runat="server" Width="150px"></asp:TextBox></td>
-                     <td><asp:TextBox ID="TextBox9" runat="server" Width="50px"></asp:TextBox></td>
-                     <td><asp:TextBox ID="TextBox10" runat="server" Width="50px"></asp:TextBox></td>
-                     <td><asp:TextBox ID="TextBox11" runat="server" Width="50px"></asp:TextBox></td><td><asp:TextBox ID="TextBox12" runat="server" Width="100px"></asp:TextBox></td>
-                    <td><asp:RadioButton ID="RadioButton2" runat="server" groupname="G1" Width="60px"/></td>
-                    <td><asp:RadioButton ID="RadioButton4" runat="server" groupname="G1" Width="60px"/></td>
-                    <td><asp:RadioButton ID="RadioButton3" runat="server" groupname="G2" Width="60px"/></td>
-                    <td><asp:RadioButton ID="RadioButton1" runat="server" groupname="G2" Width="60px"/></td>
-                    <td class="auto-style5"> <asp:TextBox ID="TextBox13" runat="server" Width="200px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"> <asp:TextBox ID="TextBox5" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox6" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox7" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox8" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox9" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox10" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox11" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox12" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton2" runat="server" groupname="G1" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton4" runat="server" groupname="G1" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton3" runat="server" groupname="G2" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton1" runat="server" groupname="G2" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"> <asp:TextBox ID="TextBox13" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style77" style="background-color: #808080"> <asp:TextBox ID="TextBox14" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox15" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox16" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox17" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox18" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox19" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox20" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox21" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton5" runat="server" groupname="G3" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton6" runat="server" groupname="G3" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton7" runat="server" groupname="G4" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton8" runat="server" groupname="G4" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"> <asp:TextBox ID="TextBox22" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox23" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox24" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox25" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox26" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox27" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox28" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox29" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox30" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton9" runat="server" groupname="G5" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton10" runat="server" groupname="G5" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton11" runat="server" groupname="G6" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton12" runat="server" groupname="G6" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox31" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox32" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox33" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox34" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox35" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox36" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox37" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox38" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox39" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton13" runat="server" groupname="G7" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton14" runat="server" groupname="G7" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton15" runat="server" groupname="G8" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton16" runat="server" groupname="G8" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox40" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox41" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox42" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox43" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox44" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox45" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox46" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox47" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox48" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton17" runat="server" groupname="G9" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton18" runat="server" groupname="G9" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton19" runat="server" groupname="G10" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton20" runat="server" groupname="G10" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox49" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox50" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox51" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox52" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox53" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox54" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox55" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox56" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox57" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton21" runat="server" groupname="G11" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton22" runat="server" groupname="G11" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton23" runat="server" groupname="G12" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton24" runat="server" groupname="G12" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox58" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox59" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox60" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox61" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox62" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox63" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox64" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox65" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox66" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton25" runat="server" groupname="G13" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton26" runat="server" groupname="G13" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton27" runat="server" groupname="G14" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton28" runat="server" groupname="G14" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox67" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox68" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox69" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox70" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox71" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox72" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox73" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox74" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox75" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton29" runat="server" groupname="G15" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton30" runat="server" groupname="G15" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton31" runat="server" groupname="G16" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton32" runat="server" groupname="G16" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox76" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox77" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox78" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox79" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox80" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox81" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox82" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox83" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox84" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton33" runat="server" groupname="G17" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton34" runat="server" groupname="G17" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton35" runat="server" groupname="G18" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton36" runat="server" groupname="G18" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox85" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox86" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox87" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox88" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox89" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox90" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox91" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox92" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style57" style="background-color: #808080"><asp:TextBox ID="TextBox93" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton37" runat="server" groupname="G19" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton38" runat="server" groupname="G19" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton39" runat="server" groupname="G20" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"><asp:RadioButton ID="RadioButton40" runat="server" groupname="G20" Width="60px"/></td>
+                    <td class="auto-style57" style="background-color: #808080"> <asp:TextBox ID="TextBox94" runat="server" Width="200px"></asp:TextBox></td>
+                </tr>
+                 <tr align="center">
+                    <td class="auto-style77" style="background-color: #808080"> <asp:TextBox ID="TextBox95" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox96" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox97" runat="server" Width="150px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox98" runat="server" Width="150px"></asp:TextBox></td>
+                     <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox99" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox100" runat="server" Width="50px"></asp:TextBox></td>
+                     <td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox101" runat="server" Width="50px"></asp:TextBox></td><td class="auto-style77" style="background-color: #808080"><asp:TextBox ID="TextBox102" runat="server" Width="100px"></asp:TextBox></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton41" runat="server" groupname="G21" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton42" runat="server" groupname="G21" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton43" runat="server" groupname="G22" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"><asp:RadioButton ID="RadioButton44" runat="server" groupname="G22" Width="60px"/></td>
+                    <td class="auto-style77" style="background-color: #808080"> <asp:TextBox ID="TextBox103" runat="server" Width="200px"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <td class="auto-style5"></td>
+                    <td class="auto-style63" style="background-color: #808080"></td>
                 </tr>
             </table>
         </div>
