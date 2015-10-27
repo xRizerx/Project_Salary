@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace WEB_PERSONAL
 {
@@ -43,7 +44,6 @@ namespace WEB_PERSONAL
                         ddlPROVINCE.Items.Insert(0, new ListItem("--กรุณาเลือกจังหวัด--", "0"));
                         ddlAMPHUR.Items.Insert(0, new ListItem("--กรุณาเลือกอำเภอ--", "0"));
                         ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือกตำบล--", "0"));
-                        ddlZIPCODE.Items.Insert(0, new ListItem("--กรุณาเลือกรหัสไปรษณีย์--", "0"));
                     }
                 }
             }
@@ -102,38 +102,28 @@ namespace WEB_PERSONAL
                         sqlConn.Close();
 
                         ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือกตำบล--", "0"));
-                    }
-                }
-            }
-            catch { }
-        }
-        protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                using (SqlConnection sqlConn = new SqlConnection(strConn))
-                {
-                    using (SqlCommand sqlCmd = new SqlCommand())
-                    {
-                        sqlCmd.CommandText = "select POST_CODE from TB_DISTRICT where DISTRICT_ID";
-                        sqlCmd.Parameters.AddWithValue("@DISTRICT_ID", ddlAMPHUR.SelectedValue);
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        ddlDISTRICT.DataSource = dt;
-                        ddlDISTRICT.DataValueField = "DISTRICT_ID";
-                        ddlDISTRICT.DataTextField = "POST_CODE";
-                        ddlDISTRICT.DataBind();
-                        sqlConn.Close();
 
-                        ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือกรหัสไปรษณีย์--", "0"));
+                       
                     }
                 }
             }
             catch { }
         }
+
+        protected void ddlDISTRICT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ZIPCODE = "select POST_CODE from TB_DISTRICT where DISTRICT_ID = " + ddlDISTRICT.SelectedValue + "";
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connectionstring"].ConnectionString);
+
+            conn.Open();
+
+            SqlCommand SC = new SqlCommand(ZIPCODE, conn);
+            string ZIPCODE2 = SC.ExecuteScalar().ToString();
+            
+            txtZIPCODE.Text = ZIPCODE2;
+        }
+
 
         protected void btnCancelPersonnel_Click(object sender, EventArgs e)
         {
@@ -144,5 +134,7 @@ namespace WEB_PERSONAL
         {
 
         }
+
+        
     }
 }
