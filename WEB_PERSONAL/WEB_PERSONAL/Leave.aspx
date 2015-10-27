@@ -161,7 +161,7 @@
             width: 109px;
         }
     </style>
-    <asp:Panel ID="Panel2" runat="server" Height="1184px">
+    <asp:Panel ID="Panel2" runat="server" Height="1435px">
         <br />
         <div class="c1">
             <asp:Label ID="Label1" runat="server" Text="ระบบการลา"></asp:Label>
@@ -363,14 +363,14 @@
         </div>
 
         <div>
-            <asp:Panel ID="Panel5" runat="server" CssClass="leave_sec2" Height="500px">
+            <asp:Panel ID="Panel5" runat="server" CssClass="leave_sec2" Height="800px">
 
                 <asp:Button ID="Button1" runat="server" Text="ทดสอบ" OnClick="Button1_Click1" />
 
                 <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="ทั้งหมด" />
 
                 <asp:Panel ID="Panel8" runat="server" ScrollBars="Both" CssClass="leave_grid_view" Height="90%">
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="true" OnPageIndexChanging="GridView1_PageIndexChanging">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging">
                         <AlternatingRowStyle BackColor="White" />
                         <EditRowStyle BackColor="#2461BF" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
