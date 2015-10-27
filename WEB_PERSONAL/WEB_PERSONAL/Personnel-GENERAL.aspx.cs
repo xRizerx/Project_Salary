@@ -1,4 +1,5 @@
-﻿using System;
+﻿using WEB_PERSONAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,7 +19,10 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 BindPROVINCEList();
+                txtCITIZEN_ID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtTELEPHONE.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
+
         }
 
         private void BindPROVINCEList()
@@ -123,18 +127,106 @@ namespace WEB_PERSONAL
             
             txtZIPCODE.Text = ZIPCODE2;
         }
+        protected void ClearData()
+        {
+            DropDownYEAR.SelectedIndex = 0;
+            txtCITIZEN_ID.Text = "";
+            DropDownUNIV_ID.SelectedIndex = 0;
+            DropDownTITLE_ID.SelectedIndex = 0;
+            txtSTF_NAME.Text = "";
+            txtSTF_LNAME.Text = "";
+            DropDownGENDER_ID.SelectedIndex = 0;
+            txtBIRTHDAY.Text = "";
+            txtHOMEADD.Text = "";
+            txtMOO.Text = "";
+            txtSTREET.Text = "";
+            ddlPROVINCE.SelectedIndex = 0;
+            ddlAMPHUR.SelectedIndex = 0;
+            ddlDISTRICT.SelectedIndex = 0;
+            txtZIPCODE.Text = "";
+            txtTELEPHONE.Text = "";
+            DropDownNATION_ID.SelectedIndex = 0;
+            DropDownSTAFFTYPE_ID.SelectedIndex = 0;
+            DropDownTIME_CONTACT_ID.SelectedIndex = 0;
+            DropDownBUDGET_ID.SelectedIndex = 0;
+            DropDownSUBSTAFFTYPE_ID.SelectedIndex = 0;
+            DropDownADMIN_POSITION_ID.SelectedIndex = 0;
+            DropDownPOSITION_ID.SelectedIndex = 0;
+            DropDownPOSITION_WORK.SelectedIndex = 0;
+            DropDownDEPARTMENT_ID.SelectedIndex = 0;
+            txtDATETIME_INWORRK.Text = "";
+            txtSPECIAL_NAME.Text = "";
+            DropDownTEACH_ISCED_ID.SelectedIndex = 0;
+            DropDownGRAD_LEV_ID.SelectedIndex = 0;
+            txtGRAD_CURR.Text = "";
+            DropDownGRAD_ISCED_ID.SelectedIndex = 0;
+            DropDownGRAD_PROG_ID.SelectedIndex = 0;
+            txtGRAD_UNIV.Text = "";
+            DropDownGRAD_COUNTRY_ID.SelectedIndex = 0;
+        }
 
 
         protected void btnCancelPersonnel_Click(object sender, EventArgs e)
         {
-
+            ClearData();
         }
 
         protected void btnSubmitPersonnel_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtCITIZEN_ID.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชน')", true);
+                return;
+            }
+            Personnel P = new Personnel();
+            P.YEAR = Convert.ToInt32(DropDownYEAR.SelectedValue);
+            P.UNIV_ID = Convert.ToString(DropDownUNIV_ID.SelectedValue.ToString());
+            P.CITIZEN_ID = txtCITIZEN_ID.Text;
+            P.TITLE_ID = Convert.ToString(DropDownTITLE_ID.SelectedValue.ToString());
+            P.STF_NAME = txtSTF_NAME.Text;
+            P.STF_LNAME = txtSTF_LNAME.Text;
+            P.GENDER_ID = Convert.ToInt32(DropDownGENDER_ID.SelectedValue.ToString());
+            P.BIRTHDAY = DateTime.Parse(txtBIRTHDAY.Text);
+            P.HOMEADD = txtHOMEADD.Text;
+            P.MOO = txtMOO.Text;
+            P.STRRET = txtSTREET.Text;
+            P.DISTRICT_ID = Convert.ToInt32(ddlDISTRICT.SelectedValue.ToString());
+            P.AMPHUR_ID = Convert.ToInt32(ddlAMPHUR.SelectedValue.ToString());
+            P.PROVINCE_ID = Convert.ToInt32(ddlPROVINCE.SelectedValue.ToString());
+            P.TELEPHONE = txtTELEPHONE.Text;
+            P.ZIPCODE_ID = Convert.ToInt32(txtZIPCODE.Text);
+            P.NATION_ID = Convert.ToString(DropDownNATION_ID.SelectedValue.ToString());
+            P.STAFFTYPE_ID = Convert.ToInt32(DropDownSTAFFTYPE_ID.SelectedValue.ToString());
+            P.TIME_CONTACT_ID = Convert.ToInt32(DropDownTIME_CONTACT_ID.SelectedValue.ToString());
+            P.BUDGET_ID = Convert.ToInt32(DropDownBUDGET_ID.SelectedValue.ToString());
+            P.SUBSTAFFTYPE_ID = Convert.ToInt32(DropDownSUBSTAFFTYPE_ID.SelectedValue.ToString());
+            P.ADMIN_POSITION_ID = Convert.ToString(DropDownADMIN_POSITION_ID.SelectedValue.ToString());
+            P.POSITION_ID = Convert.ToString(DropDownPOSITION_ID.SelectedValue.ToString());
+            P.POSITION_WORK_ID = Convert.ToString(DropDownPOSITION_WORK.SelectedValue.ToString());
+            P.DEPARTMENT_ID = Convert.ToString(DropDownDEPARTMENT_ID.SelectedValue.ToString());
+            P.DATETIME_INWORK = DateTime.Parse(txtDATETIME_INWORRK.Text);
+            P.SPECIAL_NAME = txtSPECIAL_NAME.Text;
+            P.TEACH_ISCED_ID = Convert.ToString(DropDownTEACH_ISCED_ID.SelectedValue.ToString());
+            P.GRAD_LEV_ID = Convert.ToString(DropDownGRAD_LEV_ID.SelectedValue.ToString());
+            P.GRAD_CURR = txtGRAD_CURR.Text;
+            P.GRAD_ISCED_ID = Convert.ToString(DropDownGRAD_ISCED_ID.SelectedValue.ToString());
+            P.GRAD_PROG_ID = Convert.ToString(DropDownGRAD_PROG_ID.SelectedValue.ToString());
+            P.GRAD_UNIV = txtGRAD_UNIV.Text;
+            P.GRAD_COUNTRY_ID = Convert.ToInt32(DropDownGRAD_COUNTRY_ID.SelectedValue.ToString());
 
+            string[] splitDate1 = txtBIRTHDAY.Text.Split('/');
+            string[] splitDate2 = txtDATETIME_INWORRK.Text.Split('/');
+            P.BIRTHDAY = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
+            P.DATETIME_INWORK = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
+
+            P.InsertPersonnel();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            ClearData();
         }
 
-        
+        protected void btnBackPersonnel_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
