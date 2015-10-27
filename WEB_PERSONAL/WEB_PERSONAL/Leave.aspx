@@ -220,8 +220,7 @@
                         <td class="auto-style39">
                             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                         </td>
-                        <td class="auto-style55">
-                            &nbsp;</td>
+                        <td class="auto-style55">&nbsp;</td>
                         <td class="auto-style35">
                             <asp:Label ID="Label17" runat="server" Text="ชื่อ"></asp:Label>
                         </td>
@@ -365,9 +364,21 @@
         <div>
             <asp:Panel ID="Panel5" runat="server" CssClass="leave_sec2" Height="800px">
 
-                <asp:Button ID="Button1" runat="server" Text="ทดสอบ" OnClick="Button1_Click1" />
+                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="Button1_Click1" CssClass="master_default_button">ทดสอบ</asp:LinkButton>
 
-                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="ทั้งหมด" />
+
+                <div style="padding: 5px; border: 1px solid #808080;">
+                    <asp:Label ID="Label2" runat="server" Text="ประเภท"></asp:Label>
+                    <div>
+                        
+                        <asp:LinkButton ID="LinkButton3" runat="server" OnClick="Button2_Click" CssClass="master_default_button">ทั้งหมด</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton4" runat="server" OnClick="Button3_Click" CssClass="master_default_button">ยังไม่ตรวจสอบ</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton5" runat="server" OnClick="Button4_Click" CssClass="master_default_button">อนุมัติ</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton6" runat="server" OnClick="Button5_Click" CssClass="master_default_button">ไม่อนุมัติ</asp:LinkButton>
+     
+                    </div>
+                </div>
+
 
                 <asp:Panel ID="Panel8" runat="server" ScrollBars="Both" CssClass="leave_grid_view" Height="90%">
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging">
