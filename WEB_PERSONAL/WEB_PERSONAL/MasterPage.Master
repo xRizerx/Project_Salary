@@ -23,7 +23,12 @@
     </asp:ContentPlaceHolder>
     <style type="text/css">
         .auto-style1 {
-            height: 28px;
+            height: 24px;
+        }
+
+        
+        .auto-style2 {
+            height: 50px;
         }
 
         
@@ -130,7 +135,7 @@
             <div class="master_footer">
 
 
-                <asp:Panel ID="Panel1" runat="server" Height="100px">
+                <asp:Panel ID="Panel1" runat="server" Height="120px">
                     <div>
                         <table style="width: 100%;">
                             <tr>
@@ -139,8 +144,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td class="auto-style2">
                                     <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ สาขาวิทยาการคอมพิวเตอร์<br>มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="master_footer_separate"></div>
                                 </td>
                             </tr>
                             <tr>

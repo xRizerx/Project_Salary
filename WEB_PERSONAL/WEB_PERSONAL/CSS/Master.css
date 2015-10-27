@@ -301,13 +301,24 @@ form {
     text-shadow: 1px 1px 1px #000000;
 }
 .master_footer_label4 {
-    font-size: 14px;
+    /*font-size: 14px;
     color: #ffcc00;
     background-color: #000000;
     text-shadow: 1px 1px 1px #000000;
     background-color: #808080;
     padding: 3px 30px;
-    border-radius: 24px;
+    border-radius: 24px;*/
+    font-size: 14px;
+    color: #808080;
+    padding-bottom: 15px;
+}
+.master_footer_separate {
+    margin: 0 auto;
+    width: 1024px;
+    height: 0px;
+    /*background-color: #c0c0c0;*/
+    border-top: 1px solid #c0c0c0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 
@@ -345,7 +356,7 @@ form {
 
 
 .footer, .push {
-    height: 100px; /* .push must be the same height as .footer */
+    height: 120px; /* .push must be the same height as .footer */
 }
 
 .master_default_button {
