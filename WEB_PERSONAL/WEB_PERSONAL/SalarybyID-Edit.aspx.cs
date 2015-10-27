@@ -413,5 +413,25 @@ namespace WEB_PERSONAL
             }
             
         }
+
+        protected void LinkButton4_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
+            conn.Open();
+            using (SqlCommand command = new SqlCommand("DELETE FROM TB_SALARY_UP WHERE ID = " + Label63.Text + "", conn))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        
+                    }
+                    Response.Write("<script>alert('Delete Successful!'); self.close();</script>");
+                    Response.End();
+
+                }
+            }
+            conn.Close();
+        }
     }
 }

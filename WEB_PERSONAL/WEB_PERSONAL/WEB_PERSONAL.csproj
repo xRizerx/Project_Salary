@@ -119,7 +119,9 @@
     <Content Include="Error-Member.aspx" />
     <Content Include="Image\444.jpg" />
     <Content Include="Image\555.jpg" />
+    <Content Include="Image\bg5.jpg" />
     <Content Include="Image\DORAEMON.jpg" />
+    <Content Include="Image\ef333.jpg" />
     <Content Include="Image\i1.jpg" />
     <Content Include="Image\333.jpg" />
     <Content Include="Image\anime1.jpg" />
@@ -172,8 +174,10 @@
   <ItemGroup>
     <Content Include="Personnel-ADMIN.aspx" />
     <Content Include="Personnel-GENERAL.aspx" />
+    <Content Include="Salary-report.aspx" />
     <Content Include="SalarybyID-Edit.aspx" />
     <Content Include="SalarybyID.aspx" />
+    <Content Include="Salary_Basesalary.aspx" />
     <Content Include="Script\jquery-1.7.1.min.js" />
     <Content Include="Script\jquery-ui-1.8.20.min.js" />
     <Content Include="Script\JSFunction.js" />
@@ -299,6 +303,13 @@
     <Compile Include="Personnel-GENERAL.aspx.designer.cs">
       <DependentUpon>Personnel-GENERAL.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Salary-report.aspx.cs">
+      <DependentUpon>Salary-report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Salary-report.aspx.designer.cs">
+      <DependentUpon>Salary-report.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SalarybyID-Edit.aspx.cs">
       <DependentUpon>SalarybyID-Edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -312,6 +323,13 @@
     </Compile>
     <Compile Include="SalaryByID.aspx.designer.cs">
       <DependentUpon>SalarybyID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Salary_Basesalary.aspx.cs">
+      <DependentUpon>Salary_Basesalary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Salary_Basesalary.aspx.designer.cs">
+      <DependentUpon>Salary_Basesalary.aspx</DependentUpon>
     </Compile>
     <Compile Include="SEMINAR-ADMIN.aspx.cs">
       <DependentUpon>SEMINAR-ADMIN.aspx</DependentUpon>

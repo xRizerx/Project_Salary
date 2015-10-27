@@ -15,16 +15,16 @@
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="รหัสเอกสาร" HeaderText="รหัสเอกสาร" ReadOnly="True" SortExpression="รหัสเอกสาร"/>
-                <asp:BoundField DataField="วันที่เอกสาร" HeaderText="วันที่เอกสาร" SortExpression="วันที่เอกสาร" DataFormatString="{0:MM/dd/yyyy}"/>
+                <asp:BoundField DataField="วันที่เอกสาร" HeaderText="วันที่เอกสาร" SortExpression="วันที่เอกสาร" DataFormatString="{0:dd/MM/yyyy}"/>
                 <asp:BoundField DataField="รหัสผู้ลา" HeaderText="รหัสผู้ลา" SortExpression="รหัสผู้ลา" />
                 <asp:BoundField DataField="ชื่อผู้ลา" HeaderText="ชื่อผู้ลา" SortExpression="ชื่อผู้ลา" ReadOnly="True" />
                 <asp:BoundField DataField="ประเภท" HeaderText="ประเภท" SortExpression="ประเภท" />
-                <asp:BoundField DataField="จากวันที่" HeaderText="จากวันที่" SortExpression="จากวันที่" DataFormatString="{0:MM/dd/yyyy}" />
-                <asp:BoundField DataField="ถึงวันที่" HeaderText="ถึงวันที่" SortExpression="ถึงวันที่" DataFormatString="{0:MM/dd/yyyy}" />
+                <asp:BoundField DataField="จากวันที่" HeaderText="จากวันที่" SortExpression="จากวันที่" DataFormatString="{0:dd/MM/yyyy}" />
+                <asp:BoundField DataField="ถึงวันที่" HeaderText="ถึงวันที่" SortExpression="ถึงวันที่" DataFormatString="{0:dd/MM/yyyy}" />
                 <asp:BoundField DataField="สถานะ" HeaderText="สถานะ" SortExpression="สถานะ" />
                 <asp:BoundField DataField="รหัสผู้อนุมัติ" HeaderText="รหัสผู้อนุมัติ" SortExpression="รหัสผู้อนุมัติ" />
                 <asp:BoundField DataField="ชื่อผู้อนุมัติ" HeaderText="ชื่อผู้อนุมัติ" SortExpression="ชื่อผู้อนุมัติ" ReadOnly="True" />
-                <asp:BoundField DataField="วันที่อนุมัติ" HeaderText="วันที่อนุมัติ" SortExpression="วันที่อนุมัติ" DataFormatString="{0:MM/dd/yyyy}" />
+                <asp:BoundField DataField="วันที่อนุมัติ" HeaderText="วันที่อนุมัติ" SortExpression="วันที่อนุมัติ" DataFormatString="{0:dd/MM/yyyy}" />
                 <asp:BoundField DataField="เหตุผล" HeaderText="เหตุผล" SortExpression="เหตุผล" />
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
