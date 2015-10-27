@@ -40,13 +40,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtCITIZEN_ID;
         
         /// <summary>
-        /// ddlZIPCODE control.
+        /// txtZIPCODE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlZIPCODE;
+        protected global::System.Web.UI.WebControls.TextBox txtZIPCODE;
         
         /// <summary>
         /// DropDownDEPARTMENT_ID control.
