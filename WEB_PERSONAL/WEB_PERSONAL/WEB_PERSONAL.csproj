@@ -194,6 +194,7 @@
     <Content Include="Personnel-GENERAL.aspx" />
     <Content Include="Salary-report.aspx" />
     <Content Include="SalarybyID-Edit.aspx" />
+    <Content Include="SalaryByID-Report.aspx" />
     <Content Include="SalarybyID.aspx" />
     <Content Include="Salary_Basesalary.aspx" />
     <Content Include="Script\jquery-1.7.1.min.js" />
@@ -342,6 +343,13 @@
     </Compile>
     <Compile Include="SalarybyID-Edit.aspx.designer.cs">
       <DependentUpon>SalarybyID-Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryByID-Report.aspx.cs">
+      <DependentUpon>SalaryByID-Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalaryByID-Report.aspx.designer.cs">
+      <DependentUpon>SalaryByID-Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="SalaryByID.aspx.cs">
       <DependentUpon>SalarybyID.aspx</DependentUpon>
