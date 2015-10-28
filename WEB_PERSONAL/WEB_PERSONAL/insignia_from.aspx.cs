@@ -49,7 +49,7 @@ namespace WEB_PERSONAL
                             string sql = "select tb_personal.stf_name, tb_personal.stf_lname, tb_gender.gender_name, tb_personal.birthday, tb_personal.citizen_id, tb_rank.rank_name_th, tb_titlename.title_name_th, tb_personal.datetime_inwork, tb_position_work.position_work_name, AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO, tb_position.position_name, tb_salary.salary " +
                                 "from tb_personal, tb_gender , tb_rank, tb_department, tb_faculty, tb_titlename, tb_position_work, tb_position,AA_GOVERNMENTOFFICER_TYPE, tb_salary " +
                                 "where tb_personal.citizen_id = '" +  citizen_id + "' AND tb_personal.gender_id = tb_gender.gender_id AND tb_personal.rank_id = tb_rank.seq AND tb_personal.department_id = tb_department.department_id AND tb_department.faculty_id = tb_faculty.faculty_id AND tb_personal.title_id = tb_titlename.title_id AND tb_personal.position_work = tb_position_work.position_work_id AND tb_personal.got_id = AA_GOVERNMENTOFFICER_TYPE.id_got AND tb_personal.position_id = tb_position.position_id AND tb_salary.citizen_id = tb_personal.citizen_id ; ";
-		  /*tb_position_work.position_work_name*/;
+		  
                             using (SqlCommand command = new SqlCommand(sql, con))
                             {
                                 using (SqlDataReader reader = command.ExecuteReader())
