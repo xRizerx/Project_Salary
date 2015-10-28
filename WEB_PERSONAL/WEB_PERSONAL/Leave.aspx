@@ -160,8 +160,11 @@
         .auto-style55 {
             width: 109px;
         }
+        .auto-style57 {
+            width: 200px;
+        }
     </style>
-    <asp:Panel ID="Panel2" runat="server" Height="1184px">
+    <asp:Panel ID="Panel2" runat="server" Height="1658px">
         <br />
         <div class="c1">
             <asp:Label ID="Label1" runat="server" Text="ระบบการลา"></asp:Label>
@@ -220,8 +223,7 @@
                         <td class="auto-style39">
                             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                         </td>
-                        <td class="auto-style55">
-                            &nbsp;</td>
+                        <td class="auto-style55">&nbsp;</td>
                         <td class="auto-style35">
                             <asp:Label ID="Label17" runat="server" Text="ชื่อ"></asp:Label>
                         </td>
@@ -363,14 +365,81 @@
         </div>
 
         <div>
-            <asp:Panel ID="Panel5" runat="server" CssClass="leave_sec2" Height="500px">
+            <asp:Panel ID="Panel5" runat="server" CssClass="leave_sec2" Height="996px">
 
-                <asp:Button ID="Button1" runat="server" Text="ทดสอบ" OnClick="Button1_Click1" />
+                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="Button1_Click1" CssClass="master_default_button">ทดสอบ</asp:LinkButton>
 
-                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="ทั้งหมด" />
+                <table>
+                    <tr>
+                        <td class="auto-style57">
+                            <asp:Label ID="Label2" runat="server" Text="ค้นหาตามสถานะ"></asp:Label>
+                        </td>
+                        <td>
+                             <asp:LinkButton ID="LinkButton3" runat="server" OnClick="Button2_Click" CssClass="master_default_button">ทั้งหมด</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton4" runat="server" OnClick="Button3_Click" CssClass="master_default_button">ยังไม่ตรวจสอบ</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton5" runat="server" OnClick="Button4_Click" CssClass="master_default_button">อนุมัติ</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton6" runat="server" OnClick="Button5_Click" CssClass="master_default_button">ไม่อนุมัติ</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label18" runat="server" Text="ค้นหาตามประเภท"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged"></asp:DropDownList>
+                        </td>
+                    </tr>
+                </table>
 
-                <asp:Panel ID="Panel8" runat="server" ScrollBars="Both" CssClass="leave_grid_view" Height="90%">
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="true" OnPageIndexChanging="GridView1_PageIndexChanging">
+                <table>
+                    <tr>
+                        <td class="auto-style57">
+                            <asp:Label ID="Label3" runat="server" Text="ค้นหาตามรหัสผู้ลา"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton7" runat="server" CssClass="master_default_button" OnClick="LinkButton7_Click">ค้นหา</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style57">
+                            <asp:Label ID="Label5" runat="server" Text="ค้นหาตามชื่อผู้ลา"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton9" runat="server" CssClass="master_default_button" OnClick="LinkButton9_Click">ค้นหา</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style57">
+                            <asp:Label ID="Label4" runat="server" Text="ค้นหาตามรหัสผู้อนุมัติ"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton8" runat="server" CssClass="master_default_button" OnClick="LinkButton8_Click">ค้นหา</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style57">
+                            <asp:Label ID="Label6" runat="server" Text="ค้นหาตามชื่อผู้อนุมัติ"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TextBox14" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton10" runat="server" CssClass="master_default_button" OnClick="LinkButton10_Click">ค้นหา</asp:LinkButton>
+                        </td>
+                    </tr>
+                </table>
+
+                <asp:Panel ID="Panel8" runat="server" ScrollBars="Both" CssClass="leave_grid_view" Height="800px">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging">
                         <AlternatingRowStyle BackColor="White" />
                         <EditRowStyle BackColor="#2461BF" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

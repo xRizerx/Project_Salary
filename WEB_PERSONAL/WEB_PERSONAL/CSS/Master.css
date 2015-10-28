@@ -47,6 +47,8 @@ form {
     width: 100%;
     z-index: 999;
     border-bottom: 1px solid #f0f0f0;
+
+
 }
 
 .master_login_left {
@@ -107,7 +109,7 @@ form {
 }
 
 .master_header {
-    background-image: url("../Image/DORAEMON.jpg");
+    background-image: url("../Image/bg5.jpg");
     background-position: center;
     /*background-position-y: 750px;*/
     /*background-attachment: fixed;*/
@@ -118,8 +120,8 @@ form {
     text-align: center;
     padding: 20px 0px;
     padding-top: 64px;
-    transition: background-image 1s ease, opacity 1s ease;
 }
+
 
 
 .master_header_label {
@@ -139,6 +141,7 @@ form {
     text-align: center;
 
     background-color: #e0e0e0;
+
 }
 
 .master_nav ul {
@@ -281,6 +284,7 @@ form {
     background-position: center;
     background-attachment: fixed;*/
     /*background-size: 100% auto;*/
+
     
 }
 .master_footer_label {
@@ -297,11 +301,24 @@ form {
     text-shadow: 1px 1px 1px #000000;
 }
 .master_footer_label4 {
-    font-size: 14px;
+    /*font-size: 14px;
     color: #ffcc00;
     background-color: #000000;
-    padding: 3px 10px;
-    border-radius: 24px;
+    text-shadow: 1px 1px 1px #000000;
+    background-color: #808080;
+    padding: 3px 30px;
+    border-radius: 24px;*/
+    font-size: 14px;
+    color: #808080;
+    padding-bottom: 15px;
+}
+.master_footer_separate {
+    margin: 0 auto;
+    width: 1024px;
+    height: 0px;
+    /*background-color: #c0c0c0;*/
+    border-top: 1px solid #c0c0c0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 
@@ -339,7 +356,7 @@ form {
 
 
 .footer, .push {
-    height: 100px; /* .push must be the same height as .footer */
+    height: 120px; /* .push must be the same height as .footer */
 }
 
 .master_default_button {
@@ -347,8 +364,9 @@ form {
     display: inline;
     padding: 3px 20px;
     margin: 0 0px;
-    margin-top: 5px;
-    width: 60px;
+    /*margin-top: 5px;*/
+    /*width: 60px;*/
+    border: none;
     color: #000000;
     background-color: #e0e0e0;
     border-radius: 24px;

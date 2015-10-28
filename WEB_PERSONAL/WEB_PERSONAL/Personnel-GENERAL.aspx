@@ -3,7 +3,7 @@
       <script src="Script/jquery-ui-1.8.20.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <script>
+ <!-- <script>
             $(function () {
                 $(document).ready(function () {
                     $("#ContentPlaceHolder1_txtBIRTHDAY,#ContentPlaceHolder1_txtDATETIME_INWORRK").datepicker({
@@ -16,7 +16,19 @@
                     });
                 });
             });
-  </script>
+  </script> -->
+    <script type="text/javascript">
+        function pageLoad(sender, args) {
+            $("#ContentPlaceHolder1_txtBIRTHDAY,#ContentPlaceHolder1_txtDATETIME_INWORRK").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                beforeShow: function () {
+                    $(".ui-datepicker").css('font-size', 14)
+                }
+            });
+        }    
+    </script>
 
     <style type="text/CSS">
         .multext{
@@ -63,30 +75,33 @@
                  <table>
                      <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">รหัสประจำตัวประชาชน <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">ปีการศึกษา <span class="textred">*</span></span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">รหัสไปรษณีย์ <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">จังหวัด <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า <span class="textred">*</span></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:TextBox ID="txtCITIZEN_ID" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="รหัสประจำตัวประชาชน 13 หลัก"></asp:TextBox></td>    
+                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" AutoPostBack="True" DataSourceID="TB_YEAR" DataTextField="YEAR_NAME" DataValueField="YEAR_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_YEAR" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_YEAR] ORDER BY [YEAR_NAME]"></asp:SqlDataSource>  
+                         </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="ddlZIPCODE" runat="server" Width="257px" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td> 
+                            <asp:DropDownList ID="ddlPROVINCE" runat="server" Width="257px" OnSelectedIndexChanged="ddlPROVINCE_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList>
+                            </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownDEPARTMENT_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_DEPARTMENT" DataTextField="DEPARTMENT_NAME" DataValueField="FACULTY_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_DEPARTMENT" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_DEPARTMENT]"></asp:SqlDataSource>
+                            <asp:DropDownList ID="DropDownDEPARTMENT_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_DEPARTMENT2" DataTextField="DEPARTMENT_NAME" DataValueField="DEPARTMENT_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_DEPARTMENT2" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_DEPARTMENT2]"></asp:SqlDataSource>
                         </td>
                      </tr>
                       <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">มหาวิทยาลัย</td>
+                        <td style="text-align: left; margin-right: 5px; ">มหาวิทยาลัย <span class="textred">*</span></td>
                         <td style="text-align: left; "> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">หมายเลขโทรศัพท์ที่ทำงาน</td>
+                        <td style="text-align: left; margin-right: 5px; ">อำเภอ <span class="textred">*</span></td>
                         <td style="text-align: left; "> </td> 
                         <td style="text-align: left; margin-right: 5px; ">วันที่เข้าทำงาน ณ สถานที่ปัจจุบัน <span class="textred">*</span></td>
                      </tr>
@@ -94,35 +109,31 @@
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
                             <asp:DropDownList ID="DropDownUNIV_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_UNIVERSITY" DataTextField="UNIV_NAME" DataValueField="UNIV_ID"></asp:DropDownList> 
-                           
-                            <asp:SqlDataSource ID="TB_UNIVERSITY" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_UNIVERSITY]"></asp:SqlDataSource>
-                           
+                            <asp:SqlDataSource ID="TB_UNIVERSITY" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_UNIVERSITY]"></asp:SqlDataSource> 
                         </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtTELEPHONE" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง(0-2456-5789) ต่อ 2240"></asp:TextBox>
+                        <asp:DropDownList ID="ddlAMPHUR" runat="server" Width="257px" OnSelectedIndexChanged="ddlAMPHUR_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtDATETIME_INWORRK" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">คำนำหน้าชื่อ(ยึดตามบัตรประชาชน)</td>
+                        <td style="text-align: left; margin-right: 5px; ">รหัสประจำตัวประชาชน <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">สัญชาติ <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">ตำบล <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">สาขางานที่เชี่ยวชาญ <span class="textred">*</span></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:DropDownList ID="DropDownTITLE_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_TITLENAME" DataTextField="TITLE_NAME_TH" DataValueField="TITLE_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_TITLENAME" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_TITLENAME]"></asp:SqlDataSource>
+                        <asp:TextBox ID="txtCITIZEN_ID" runat="server" MaxLength="13" Width="250px" CssClass="tb5" placeholder="รหัสประจำตัวประชาชน 13 หลัก"></asp:TextBox>   
                         </td>   
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                          <asp:DropDownList ID="DropDownNATION_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_NATIONALS" DataTextField="NATIONAL_NAME_THA" DataValueField="NATIONAL_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_NATIONALS" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_NATIONALS]"></asp:SqlDataSource>
+                             <asp:DropDownList ID="ddlDISTRICT" runat="server" OnSelectedIndexChanged="ddlDISTRICT_SelectedIndexChanged" Width="257px" AutoPostBack="true" CssClass="tb5"></asp:DropDownList>
                          </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -130,20 +141,21 @@
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">ชื่อ</td>
+                        <td style="text-align: left; margin-right: 5px; ">คำนำหน้าชื่อ (ยึดตามบัตรประชาชน) <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">ประเภทบุคลากร <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">รหัสไปรษณีย์ <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">กลุ่มสาขาวิชาที่สอน(ISCED) <span class="textred">*</span></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:TextBox ID="txtSTF_NAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ"></asp:TextBox></td>  
+                            <asp:DropDownList ID="DropDownTITLE_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_TITLENAME" DataTextField="TITLE_NAME_TH" DataValueField="TITLE_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_TITLENAME" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_TITLENAME]"></asp:SqlDataSource>
+                            </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownSTAFFTYPE_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_STAFFTYPE" DataTextField="STAFFTYPE_NAME" DataValueField="STAFFTYPE_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_STAFFTYPE" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_STAFFTYPE]"></asp:SqlDataSource>
+                            <asp:TextBox ID="txtZIPCODE" runat="server" Width="257px" CssClass="tb5"></asp:TextBox>    
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -155,20 +167,20 @@
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">นามสกุล</td>
+                        <td style="text-align: left; margin-right: 5px; ">ชื่อ <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">ระยะเวลาจ้าง <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">หมายเลขโทรศัพท์ที่ทำงาน</td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ระดับการศึกษาที่จบสูงสุด <span class="textred">*</span></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:TextBox ID="txtSTF_LNAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="นามสกุล"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtSTF_NAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ"></asp:TextBox>
+                            </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownTIME_CONTACT_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_TIME_CONTACT" DataTextField="TIME_CONTACT_NAME" DataValueField="TIME_CONTACT_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_TIME_CONTACT" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_TIME_CONTACT]"></asp:SqlDataSource>
+                         <asp:TextBox ID="txtTELEPHONE" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ตัวอย่าง(0-2456-5789) ต่อ 2240"></asp:TextBox>   
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -178,22 +190,21 @@
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">เพศ</td>
+                        <td style="text-align: left; margin-right: 5px; ">นามสกุล <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">ประเภทเงินจ้าง <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">สัญชาติ <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">หลักสูตรที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:DropDownList ID="DropDownGENDER_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_GENDER" DataTextField="GENDER_NAME" DataValueField="GENDER_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_GENDER" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_GENDER]"></asp:SqlDataSource>
+                           <asp:TextBox ID="txtSTF_LNAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="นามสกุล"></asp:TextBox>
                         </td>   
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownBUDGET_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_BUDGET" DataTextField="BUDGET_NAME" DataValueField="BUDGET_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_BUDGET" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_BUDGET]"></asp:SqlDataSource>
+                             <asp:DropDownList ID="DropDownNATION_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_NATIONALS" DataTextField="NATIONAL_NAME_THA" DataValueField="NATIONAL_ID"></asp:DropDownList>
+                             <asp:SqlDataSource ID="TB_NATIONALS" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_NATIONALS]"></asp:SqlDataSource>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -201,20 +212,22 @@
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">วันเกิด <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">เพศ <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">ประเภทตำแหน่ง <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">ประเภทบุคลากร <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">กลุ่มสาขาวิชาที่จบสูงสุด(ISCED) <span class="textred">*</span></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:TextBox ID="txtBIRTHDAY" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>  
+                             <asp:DropDownList ID="DropDownGENDER_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_GENDER" DataTextField="GENDER_NAME" DataValueField="GENDER_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_GENDER" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_GENDER]"></asp:SqlDataSource>
+                            </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownSUBSTAFFTYPE_ID" runat="server" MaxLength="100" Width="257px" CssClass="tb5" DataSourceID="TB_SUBSTAFFTYPE" DataTextField="SUBSTAFFTYPE_NAME" DataValueField="SUBSTAFFTYPE_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_SUBSTAFFTYPE" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_SUBSTAFFTYPE]"></asp:SqlDataSource>
+                            <asp:DropDownList ID="DropDownSTAFFTYPE_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_STAFFTYPE" DataTextField="STAFFTYPE_NAME" DataValueField="STAFFTYPE_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_STAFFTYPE" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_STAFFTYPE]"></asp:SqlDataSource>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -224,64 +237,67 @@
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">บ้านเลขที่ <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">วันเกิด <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">ตำแหน่งบริหาร <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">ระยะเวลาจ้าง <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">สาขาวิชาที่จบสูงสุด <span class="textred">*</span></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:TextBox ID="txtHOMEADD" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="บ้านเลขที่"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtBIRTHDAY" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox>
+                            </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownADMIN_POSITION_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_ADMIN" DataTextField="ADMIN_POSITION_NAME" DataValueField="ADMIN_POSITION_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_ADMIN" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_ADMIN]"></asp:SqlDataSource>
+                            <asp:DropDownList ID="DropDownTIME_CONTACT_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_TIME_CONTACT" DataTextField="TIME_CONTACT_NAME" DataValueField="TIME_CONTACT_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_TIME_CONTACT" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_TIME_CONTACT]"></asp:SqlDataSource>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownGRAD_PROG_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_PROGRAM" DataTextField="PROG_NAME" DataValueField="PROG_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_PROGRAM" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_PROGRAM]"></asp:SqlDataSource>
+                            <asp:DropDownList ID="DropDownGRAD_PROG_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_PROGRAM2" DataTextField="GRAD_PROG_NAME" DataValueField="GRAD_PROG_ID"></asp:DropDownList> 
+                            <asp:SqlDataSource ID="TB_PROGRAM2" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_PROGRAM2]"></asp:SqlDataSource>
                          </td>
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">หมู่</td>
+                        <td style="text-align: left; margin-right: 5px; ">บ้านเลขที่ <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">ตำแหน่งทางวิชาการ <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">ประเภทเงินจ้าง <span class="textred">*</td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ชื่อสถาบันที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:TextBox ID="txtMOO" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="หมู่บ้าน"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtHOMEADD" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="บ้านเลขที่"></asp:TextBox>
+                            </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownPOSITION_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_POSITION" DataTextField="POSITION_NAME" DataValueField="POSITION_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_POSITION" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_POSITION]"></asp:SqlDataSource>
+                            <asp:DropDownList ID="DropDownBUDGET_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_BUDGET" DataTextField="BUDGET_NAME" DataValueField="BUDGET_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_BUDGET" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_BUDGET]"></asp:SqlDataSource>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtGRAD_UNIV" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อสถาบันที่จบการศึกษาสูงสุด"></asp:TextBox></td>
+                            <asp:TextBox ID="txtGRAD_UNIV" runat="server" MaxLength="70" Width="250px" CssClass="tb5" placeholder="ชื่อสถาบันที่จบการศึกษาสูงสุด"></asp:TextBox></td>
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">ถนน</td>
+                        <td style="text-align: left; margin-right: 5px; ">หมู่</td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">ตำแหน่งในสายงาน</td>
+                         <td style="text-align: left; margin-right: 5px; ">ประเภทตำแหน่ง <span class="textred">*</span></td> 
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ประเทศที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:TextBox ID="txtSTREET" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ถนน"></asp:TextBox></td> 
+                            <asp:TextBox ID="txtMOO" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="หมู่บ้าน"></asp:TextBox>
+                            </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownPOSITION_WORK" runat="server" Width="257px" CssClass="tb5" placeholder="ตำแหน่งในสายงาน" DataSourceID="TB_POSITION_WORK" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_POSITION_WORK" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_POSITION_WORK]"></asp:SqlDataSource>
+                            <asp:DropDownList ID="DropDownSUBSTAFFTYPE_ID" runat="server" MaxLength="100" Width="257px" CssClass="tb5" DataSourceID="TB_SUBSTAFFTYPE" DataTextField="SUBSTAFFTYPE_NAME" DataValueField="SUBSTAFFTYPE_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_SUBSTAFFTYPE" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_SUBSTAFFTYPE]"></asp:SqlDataSource>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -291,54 +307,62 @@
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">จังหวัด <span class="textred">*</span></td>
+                        <td style="text-align: left; margin-right: 5px; ">ถนน</td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; "></td>
+                        <td style="text-align: left; margin-right: 5px; ">ตำแหน่งบริหาร <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; "></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:DropDownList ID="ddlPROVINCE" runat="server" Width="257px" OnSelectedIndexChanged="ddlPROVINCE_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td>   
+                            <asp:TextBox ID="txtSTREET" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ถนน"></asp:TextBox>
+                        </td>   
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
+                             <asp:DropDownList ID="DropDownADMIN_POSITION_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_ADMIN" DataTextField="ADMIN_POSITION_NAME" DataValueField="ADMIN_POSITION_ID"></asp:DropDownList>
+                             <asp:SqlDataSource ID="TB_ADMIN" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_ADMIN]"></asp:SqlDataSource>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;"> </td>
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">อำเภอ <span class="textred">*</span></td>
-                        <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; "></td>
+                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; margin-right: 5px; ">ตำแหน่งทางวิชาการ <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; "></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                             <asp:DropDownList ID="ddlAMPHUR" runat="server" Width="257px" OnSelectedIndexChanged="ddlAMPHUR_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td>  
+                        </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
+                             <asp:DropDownList ID="DropDownPOSITION_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_POSITION" DataTextField="POSITION_NAME" DataValueField="POSITION_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_POSITION" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_POSITION]"></asp:SqlDataSource>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">ตำบล <span class="textred">*</span></td>
-                        <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; "></td>
+                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; margin-right: 5px; ">ตำแหน่งในสายงาน</td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; "></td>
                      </tr>
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                           <asp:DropDownList ID="ddlDISTRICT" runat="server" Width="257px" OnSelectedIndexChanged="ddlDistrict_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td> 
+                        </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
+                             <asp:DropDownList ID="DropDownPOSITION_WORK" runat="server" Width="257px" CssClass="tb5" placeholder="ตำแหน่งในสายงาน" DataSourceID="TB_POSITION_WORK" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_POSITION_WORK" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_POSITION_WORK]"></asp:SqlDataSource>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
+
                      </tr>
                  </table>
 
@@ -362,7 +386,6 @@
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="ddlPROVINCE" EventName="SelectedIndexChanged" />
                 <asp:AsyncPostBackTrigger ControlID="ddlAMPHUR" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="ddlDISTRICT" EventName="SelectedIndexChanged" />
             </Triggers>
         </asp:UpdatePanel>
                 </div>
