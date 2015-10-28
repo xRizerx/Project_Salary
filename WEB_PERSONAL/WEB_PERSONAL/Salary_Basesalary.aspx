@@ -29,14 +29,14 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Panel ID="Panel1" runat="server" CssClass="panout" Height="400px">
+        <asp:Panel ID="Panel1" runat="server" CssClass="panout" Height="250px">
             <asp:Panel ID="Panel2" runat="server" CssClass="panin" Width="100%" Height="100%">
 
                 <table style="width:100%;">
                     <tr>
                         <td>&nbsp;</td>
                         <td>
-                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="POSITION_NAME" DataValueField="BASE_ID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="POSITION_NAME" DataValueField="BASE_ID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT BASESALARY.BASE_ID, TB_POSITION.POSITION_NAME FROM BASESALARY INNER JOIN TB_POSITION ON BASESALARY.POSITION_ID = TB_POSITION.POSITION_ID"></asp:SqlDataSource>
                         </td>
@@ -101,7 +101,7 @@
                     <tr>
                         <td>&nbsp;</td>
                         <td>
-                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui">บันทึก</asp:LinkButton>&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui" OnClick="LinkButton1_Click">บันทึก</asp:LinkButton>&nbsp;&nbsp;&nbsp;
                             <asp:LinkButton ID="LinkButton2" runat="server" CssClass="button_ui">ยกเลิก</asp:LinkButton>
                         </td>
                         <td>&nbsp;</td>

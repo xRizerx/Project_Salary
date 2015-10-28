@@ -384,5 +384,10 @@ namespace WEB_PERSONAL
             Response.Redirect("SalarybyID_Edit");
 
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SalaryByID-Report.aspx");
+        }
     }
 }
