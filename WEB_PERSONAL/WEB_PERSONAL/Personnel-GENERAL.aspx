@@ -64,18 +64,17 @@
             color:red;
         }
     </style>
-    <asp:Panel runat="server" CssClass="divpan" Height="1600px">
-    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <asp:Panel runat="server" CssClass="divpan" Height="1300px">
     <div>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-             <ContentTemplate>
+
         <fieldset>
             <legend style="margin-left: auto; margin-right: auto; text-align: center;">เพิ่มข้อมูลบุคลากร</legend>
             <div>
+               <asp:ScriptManager ID="ScriptManager1" runat="server" />
                  <table>
                      <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">ปีการศึกษา <span class="textred">*</span></span></td>
+                        <td style="text-align: left; margin-right: 5px; ">ปีการศึกษา <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">จังหวัด <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
@@ -84,12 +83,20 @@
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" AutoPostBack="True" DataSourceID="TB_YEAR" DataTextField="YEAR_NAME" DataValueField="YEAR_ID"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_YEAR" DataTextField="YEAR_NAME" DataValueField="YEAR_NAME"></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_YEAR" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_YEAR] ORDER BY [YEAR_NAME]"></asp:SqlDataSource>  
                          </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
+
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
                             <asp:DropDownList ID="ddlPROVINCE" runat="server" Width="257px" OnSelectedIndexChanged="ddlPROVINCE_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="ddlPROVINCE" EventName="SelectedIndexChanged" />
+                            </Triggers>
+                            </asp:UpdatePanel>
                             </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -113,7 +120,15 @@
                         </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                        <asp:DropDownList ID="ddlAMPHUR" runat="server" Width="257px" OnSelectedIndexChanged="ddlAMPHUR_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList></td>
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                               <ContentTemplate>
+                             <asp:DropDownList ID="ddlAMPHUR" runat="server" Width="257px" OnSelectedIndexChanged="ddlAMPHUR_SelectedIndexChanged" AutoPostBack="true" CssClass="tb5"></asp:DropDownList>
+                             </ContentTemplate>
+                            <Triggers>
+                             <asp:AsyncPostBackTrigger ControlID="ddlAMPHUR" EventName="SelectedIndexChanged" />
+                            </Triggers>
+                            </asp:UpdatePanel>
+                        </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtDATETIME_INWORRK" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
@@ -133,7 +148,14 @@
                         </td>   
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                             <asp:DropDownList ID="ddlDISTRICT" runat="server" OnSelectedIndexChanged="ddlDISTRICT_SelectedIndexChanged" Width="257px" AutoPostBack="true" CssClass="tb5"></asp:DropDownList>
+                            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                   <ContentTemplate>
+                                      <asp:DropDownList ID="ddlDISTRICT" runat="server" OnSelectedIndexChanged="ddlDISTRICT_SelectedIndexChanged" Width="257px" AutoPostBack="true" CssClass="tb5"></asp:DropDownList>
+                                   </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="ddlDISTRICT" EventName="SelectedIndexChanged" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
                          </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -155,7 +177,11 @@
                             </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
+                            <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                   <ContentTemplate>
                             <asp:TextBox ID="txtZIPCODE" runat="server" Width="257px" CssClass="tb5"></asp:TextBox>    
+                                   </ContentTemplate>
+                            </asp:UpdatePanel>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -176,7 +202,7 @@
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:TextBox ID="txtSTF_NAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ"></asp:TextBox>
+                            <asp:TextBox ID="txtSTF_NAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ" OnTextChanged="txtSTF_NAME_TextChanged"></asp:TextBox>
                             </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -263,7 +289,7 @@
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">บ้านเลขที่ <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">ประเภทเงินจ้าง <span class="textred">*</td>
+                        <td style="text-align: left; margin-right: 5px; ">ประเภทเงินจ้าง <span class="textred">*</span></td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ชื่อสถาบันที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
                      </tr>
@@ -322,6 +348,7 @@
                         <td style="text-align: left; width: 170px;">
                              <asp:DropDownList ID="DropDownADMIN_POSITION_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_ADMIN" DataTextField="ADMIN_POSITION_NAME" DataValueField="ADMIN_POSITION_ID"></asp:DropDownList>
                              <asp:SqlDataSource ID="TB_ADMIN" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_ADMIN]"></asp:SqlDataSource>
+                        </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;"> </td>
                      </tr>
@@ -341,8 +368,9 @@
                         <td style="text-align: left; width: 170px;">
                              <asp:DropDownList ID="DropDownPOSITION_ID" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_POSITION" DataTextField="POSITION_NAME" DataValueField="POSITION_ID"></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_POSITION" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_POSITION]"></asp:SqlDataSource>
+                        </td>
                         <td style="text-align: left; width: 10px;"> </td> 
-                        <td style="text-align: left; width: 170px;">
+                        <td style="text-align: left; width: 170px;"> </td> 
                      </tr>
                       <tr>
                         <td style="text-align: left; width: 30px;"> </td>
@@ -360,8 +388,9 @@
                         <td style="text-align: left; width: 170px;">
                              <asp:DropDownList ID="DropDownPOSITION_WORK" runat="server" Width="257px" CssClass="tb5" placeholder="ตำแหน่งในสายงาน" DataSourceID="TB_POSITION_WORK" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID"></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_POSITION_WORK" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_POSITION_WORK]"></asp:SqlDataSource>
+                        </td>
                         <td style="text-align: left; width: 10px;"> </td> 
-                        <td style="text-align: left; width: 170px;">
+                        <td style="text-align: left; width: 170px;"> </td> 
 
                      </tr>
                  </table>
@@ -382,12 +411,27 @@
                             Loading..</div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
-            </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="ddlPROVINCE" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="ddlAMPHUR" EventName="SelectedIndexChanged" />
-            </Triggers>
-        </asp:UpdatePanel>
-                </div>
+                 <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanel2">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                 <asp:UpdateProgress ID="UpdateProgress3" runat="server" AssociatedUpdatePanelID="UpdatePanel3">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                <asp:UpdateProgress ID="UpdateProgress4" runat="server" AssociatedUpdatePanelID="UpdatePanel4">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+               
+    </div>
+        </fieldset>
+    </div>
         </asp:Panel>
 </asp:Content>
