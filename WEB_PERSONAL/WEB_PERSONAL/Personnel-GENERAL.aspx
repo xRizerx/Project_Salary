@@ -202,7 +202,7 @@
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:TextBox ID="txtSTF_NAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ" OnTextChanged="txtSTF_NAME_TextChanged"></asp:TextBox>
+                            <asp:TextBox ID="txtSTF_NAME" runat="server" MaxLength="100" Width="250px" CssClass="tb5" placeholder="ชื่อ"></asp:TextBox>
                             </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
