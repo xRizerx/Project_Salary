@@ -1,8 +1,8 @@
-﻿using WEB_PERSONAL.Connection;
+﻿using Rmutto.Connection;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.OracleClient;
 using System.Linq;
 using System.Web;
 
@@ -90,7 +90,7 @@ namespace WEB_PERSONAL.Entities
         public DataTable GetPersonnel(string SEMINAR_NAME)
         {
             DataTable dt = new DataTable();
-            SqlConnection conn = ConnectionDB.GetSqlConnection();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "SELECT * FROM TB_PERSONAL ";
             if (!string.IsNullOrEmpty(SEMINAR_NAME))
             {
@@ -100,7 +100,7 @@ namespace WEB_PERSONAL.Entities
                     query += " and CITIZEN_ID like @CITIZEN_ID ";
                 }
             }
-            SqlCommand command = new SqlCommand(query, conn);
+            OracleCommand command = new OracleCommand(query, conn);
             // Create the command
             try
             {
@@ -111,9 +111,9 @@ namespace WEB_PERSONAL.Entities
 
                 if (!string.IsNullOrEmpty(SEMINAR_NAME))
                 {
-                    command.Parameters.Add(new SqlParameter("CITIZEN_ID", CITIZEN_ID + "%"));
+                    command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID + "%"));
                 }
-                SqlDataAdapter sd = new SqlDataAdapter(command);
+                OracleDataAdapter sd = new OracleDataAdapter(command);
                 sd.Fill(dt);
 
             }
@@ -134,8 +134,8 @@ namespace WEB_PERSONAL.Entities
         public int InsertPersonnel()
         {
             int id = 0;
-            SqlConnection conn = ConnectionDB.GetSqlConnection();
-            SqlCommand command = new SqlCommand("INSERT INTO TB_PERSONAL (YEAR,UNIV_ID,CITIZEN_ID,TITLE_ID,STF_NAME,STF_LNAME,GENDER_ID,BIRTHDAY,HOMEADD) VALUES (@YEAR,@UNIV_ID,@CITIZEN_ID,@TITLE_ID,@STF_NAME,@STF_LNAME,@GENDER_ID,@BIRTHDAY,HOMEADD)", conn);
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_PERSONAL (YEAR,UNIV_ID,CITIZEN_ID,TITLE_ID,STF_NAME,STF_LNAME,GENDER_ID,BIRTHDAY,HOMEADD) VALUES (@YEAR,@UNIV_ID,@CITIZEN_ID,@TITLE_ID,@STF_NAME,@STF_LNAME,@GENDER_ID,@BIRTHDAY,HOMEADD)", conn);
         
             try
             {
@@ -143,40 +143,40 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new SqlParameter("YEAR", YEAR));
-                command.Parameters.Add(new SqlParameter("UNIV_ID", UNIV_ID));
-                command.Parameters.Add(new SqlParameter("CITIZEN_ID", CITIZEN_ID));
-                command.Parameters.Add(new SqlParameter("TITLE_ID", TITLE_ID));
-                command.Parameters.Add(new SqlParameter("STF_NAME", STF_NAME));
-                command.Parameters.Add(new SqlParameter("STF_LNAME", STF_LNAME));
-                command.Parameters.Add(new SqlParameter("GENDER_ID", GENDER_ID));
-                command.Parameters.Add(new SqlParameter("BIRTHDAY", BIRTHDAY));
-                command.Parameters.Add(new SqlParameter("HOMEADD", HOMEADD));
-                /*  command.Parameters.Add(new SqlParameter("MOO", MOO));
-                  command.Parameters.Add(new SqlParameter("STREET", STREET));
-                  command.Parameters.Add(new SqlParameter("DISTRICT_ID", DISTRICT_ID));
-                  command.Parameters.Add(new SqlParameter("AMPHUR_ID", AMPHUR_ID));
-                  command.Parameters.Add(new SqlParameter("PROVINCE_ID", PROVINCE_ID));
-                  command.Parameters.Add(new SqlParameter("TELEPHONE", TELEPHONE));
-                  command.Parameters.Add(new SqlParameter("ZIPCODE_ID", ZIPCODE_ID));
-                  command.Parameters.Add(new SqlParameter("NATION_ID", NATION_ID));
-                  command.Parameters.Add(new SqlParameter("STAFFTYPE_ID", STAFFTYPE_ID));
-                  command.Parameters.Add(new SqlParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
-                  command.Parameters.Add(new SqlParameter("BUDGET_ID", BUDGET_ID));
-                  command.Parameters.Add(new SqlParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
-                  command.Parameters.Add(new SqlParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID));
-                  command.Parameters.Add(new SqlParameter("POSITION_ID", POSITION_ID));
-                  command.Parameters.Add(new SqlParameter("POSITION_WORK_ID", POSITION_WORK_ID));
-                  command.Parameters.Add(new SqlParameter("DEPARTMENT_ID", DEPARTMENT_ID));
-                  command.Parameters.Add(new SqlParameter("DATETIME_INWORK", DATETIME_INWORK));
-                  command.Parameters.Add(new SqlParameter("SPECIAL_NAME", SPECIAL_NAME));
-                  command.Parameters.Add(new SqlParameter("TEACH_ISCED_ID", TEACH_ISCED_ID));
-                  command.Parameters.Add(new SqlParameter("GRAD_LEV_ID", GRAD_LEV_ID));
-                  command.Parameters.Add(new SqlParameter("GRAD_CURR", GRAD_CURR));
-                  command.Parameters.Add(new SqlParameter("GRAD_ISCED_ID", GRAD_ISCED_ID));
-                  command.Parameters.Add(new SqlParameter("GRAD_PROG_ID", GRAD_PROG_ID));
-                  command.Parameters.Add(new SqlParameter("GRAD_UNIV", GRAD_UNIV));
-                  command.Parameters.Add(new SqlParameter("GRAD_COUNTRY_ID", GRAD_COUNTRY_ID)); */
+                command.Parameters.Add(new OracleParameter("YEAR", YEAR));
+                command.Parameters.Add(new OracleParameter("UNIV_ID", UNIV_ID));
+                command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
+                command.Parameters.Add(new OracleParameter("TITLE_ID", TITLE_ID));
+                command.Parameters.Add(new OracleParameter("STF_NAME", STF_NAME));
+                command.Parameters.Add(new OracleParameter("STF_LNAME", STF_LNAME));
+                command.Parameters.Add(new OracleParameter("GENDER_ID", GENDER_ID));
+                command.Parameters.Add(new OracleParameter("BIRTHDAY", BIRTHDAY));
+                command.Parameters.Add(new OracleParameter("HOMEADD", HOMEADD));
+                /*  command.Parameters.Add(new OracleParameter("MOO", MOO));
+                  command.Parameters.Add(new OracleParameter("STREET", STREET));
+                  command.Parameters.Add(new OracleParameter("DISTRICT_ID", DISTRICT_ID));
+                  command.Parameters.Add(new OracleParameter("AMPHUR_ID", AMPHUR_ID));
+                  command.Parameters.Add(new OracleParameter("PROVINCE_ID", PROVINCE_ID));
+                  command.Parameters.Add(new OracleParameter("TELEPHONE", TELEPHONE));
+                  command.Parameters.Add(new OracleParameter("ZIPCODE_ID", ZIPCODE_ID));
+                  command.Parameters.Add(new OracleParameter("NATION_ID", NATION_ID));
+                  command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
+                  command.Parameters.Add(new OracleParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
+                  command.Parameters.Add(new OracleParameter("BUDGET_ID", BUDGET_ID));
+                  command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
+                  command.Parameters.Add(new OracleParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID));
+                  command.Parameters.Add(new OracleParameter("POSITION_ID", POSITION_ID));
+                  command.Parameters.Add(new OracleParameter("POSITION_WORK_ID", POSITION_WORK_ID));
+                  command.Parameters.Add(new OracleParameter("DEPARTMENT_ID", DEPARTMENT_ID));
+                  command.Parameters.Add(new OracleParameter("DATETIME_INWORK", DATETIME_INWORK));
+                  command.Parameters.Add(new OracleParameter("SPECIAL_NAME", SPECIAL_NAME));
+                  command.Parameters.Add(new OracleParameter("TEACH_ISCED_ID", TEACH_ISCED_ID));
+                  command.Parameters.Add(new OracleParameter("GRAD_LEV_ID", GRAD_LEV_ID));
+                  command.Parameters.Add(new OracleParameter("GRAD_CURR", GRAD_CURR));
+                  command.Parameters.Add(new OracleParameter("GRAD_ISCED_ID", GRAD_ISCED_ID));
+                  command.Parameters.Add(new OracleParameter("GRAD_PROG_ID", GRAD_PROG_ID));
+                  command.Parameters.Add(new OracleParameter("GRAD_UNIV", GRAD_UNIV));
+                  command.Parameters.Add(new OracleParameter("GRAD_COUNTRY_ID", GRAD_COUNTRY_ID)); */
                 id = command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -194,7 +194,7 @@ namespace WEB_PERSONAL.Entities
         public bool UpdatePersonnel()
         {
             bool result = false;
-            SqlConnection conn = ConnectionDB.GetSqlConnection();
+            SqlConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_SEMINAR Set ";
             query += " SEMINAR_NAME = @SEMINAR_NAME ,";
             query += " SEMINAR_LASTNAME = @SEMINAR_LASTNAME ,";
@@ -222,38 +222,38 @@ namespace WEB_PERSONAL.Entities
             query += " SEMINAR_SIGNED_DATETIME = @SEMINAR_SIGNED_DATETIME ";
             query += " where SEMINAR_ID  = @SEMINAR_ID";
 
-            SqlCommand command = new SqlCommand(query, conn);
+            OracleCommand command = new OracleCommand(query, conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new SqlParameter("SEMINAR_NAME", SEMINAR_NAME));
-                command.Parameters.Add(new SqlParameter("SEMINAR_LASTNAME", SEMINAR_LASTNAME));
-                command.Parameters.Add(new SqlParameter("SEMINAR_POSITION", SEMINAR_POSITION));
-                command.Parameters.Add(new SqlParameter("SEMINAR_DEGREE", SEMINAR_DEGREE));
-                command.Parameters.Add(new SqlParameter("SEMINAR_CAMPUS", SEMINAR_CAMPUS));
-                command.Parameters.Add(new SqlParameter("SEMINAR_NAMEOFPROJECT", SEMINAR_NAMEOFPROJECT));
-                command.Parameters.Add(new SqlParameter("SEMINAR_PLACE", SEMINAR_PLACE));
-                command.Parameters.Add(new SqlParameter("SEMINAR_DATETIME_FROM", SEMINAR_DATETIME_FROM));
-                command.Parameters.Add(new SqlParameter("SEMINAR_DATETIME_TO", SEMINAR_DATETIME_TO));
-                command.Parameters.Add(new SqlParameter("SEMINAR_DAY", SEMINAR_DAY));
-                command.Parameters.Add(new SqlParameter("SEMINAR_MONTH", SEMINAR_MONTH));
-                command.Parameters.Add(new SqlParameter("SEMINAR_YEAR", SEMINAR_YEAR));
-                command.Parameters.Add(new SqlParameter("SEMINAR_BUDGET", SEMINAR_BUDGET));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SUPPORT_BUDGET", SEMINAR_SUPPORT_BUDGET));
-                command.Parameters.Add(new SqlParameter("SEMINAR_CERTIFICATE", SEMINAR_CERTIFICATE));
-                command.Parameters.Add(new SqlParameter("SEMINAR_ABSTRACT", SEMINAR_ABSTRACT));
-                command.Parameters.Add(new SqlParameter("SEMINAR_RESULT", SEMINAR_RESULT));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_1", SEMINAR_SHOW_1));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_2", SEMINAR_SHOW_2));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_3", SEMINAR_SHOW_3));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SHOW_4", SEMINAR_SHOW_4));
-                command.Parameters.Add(new SqlParameter("SEMINAR_PROBLEM", SEMINAR_PROBLEM));
-                command.Parameters.Add(new SqlParameter("SEMINAR_COMMENT", SEMINAR_COMMENT));
-                command.Parameters.Add(new SqlParameter("SEMINAR_SIGNED_DATETIME", SEMINAR_SIGNED_DATETIME));
-                command.Parameters.Add(new SqlParameter("SEMINAR_ID", SEMINAR_ID));
+                command.Parameters.Add(new OracleParameter("SEMINAR_NAME", SEMINAR_NAME));
+                command.Parameters.Add(new OracleParameter("SEMINAR_LASTNAME", SEMINAR_LASTNAME));
+                command.Parameters.Add(new OracleParameter("SEMINAR_POSITION", SEMINAR_POSITION));
+                command.Parameters.Add(new OracleParameter("SEMINAR_DEGREE", SEMINAR_DEGREE));
+                command.Parameters.Add(new OracleParameter("SEMINAR_CAMPUS", SEMINAR_CAMPUS));
+                command.Parameters.Add(new OracleParameter("SEMINAR_NAMEOFPROJECT", SEMINAR_NAMEOFPROJECT));
+                command.Parameters.Add(new OracleParameter("SEMINAR_PLACE", SEMINAR_PLACE));
+                command.Parameters.Add(new OracleParameter("SEMINAR_DATETIME_FROM", SEMINAR_DATETIME_FROM));
+                command.Parameters.Add(new OracleParameter("SEMINAR_DATETIME_TO", SEMINAR_DATETIME_TO));
+                command.Parameters.Add(new OracleParameter("SEMINAR_DAY", SEMINAR_DAY));
+                command.Parameters.Add(new OracleParameter("SEMINAR_MONTH", SEMINAR_MONTH));
+                command.Parameters.Add(new OracleParameter("SEMINAR_YEAR", SEMINAR_YEAR));
+                command.Parameters.Add(new OracleParameter("SEMINAR_BUDGET", SEMINAR_BUDGET));
+                command.Parameters.Add(new OracleParameter("SEMINAR_SUPPORT_BUDGET", SEMINAR_SUPPORT_BUDGET));
+                command.Parameters.Add(new OracleParameter("SEMINAR_CERTIFICATE", SEMINAR_CERTIFICATE));
+                command.Parameters.Add(new OracleParameter("SEMINAR_ABSTRACT", SEMINAR_ABSTRACT));
+                command.Parameters.Add(new OracleParameter("SEMINAR_RESULT", SEMINAR_RESULT));
+                command.Parameters.Add(new OracleParameter("SEMINAR_SHOW_1", SEMINAR_SHOW_1));
+                command.Parameters.Add(new OracleParameter("SEMINAR_SHOW_2", SEMINAR_SHOW_2));
+                command.Parameters.Add(new OracleParameter("SEMINAR_SHOW_3", SEMINAR_SHOW_3));
+                command.Parameters.Add(new OracleParameter("SEMINAR_SHOW_4", SEMINAR_SHOW_4));
+                command.Parameters.Add(new OracleParameter("SEMINAR_PROBLEM", SEMINAR_PROBLEM));
+                command.Parameters.Add(new OracleParameter("SEMINAR_COMMENT", SEMINAR_COMMENT));
+                command.Parameters.Add(new OracleParameter("SEMINAR_SIGNED_DATETIME", SEMINAR_SIGNED_DATETIME));
+                command.Parameters.Add(new OracleParameter("SEMINAR_ID", SEMINAR_ID));
                 if (command.ExecuteNonQuery() > 0)
                 {
                     result = true;
@@ -274,15 +274,15 @@ namespace WEB_PERSONAL.Entities
         public bool DeletePersonnel()
         {
             bool result = false;
-            SqlConnection conn = ConnectionDB.GetSqlConnection();
-            SqlCommand command = new SqlCommand("Delete TB_PERSONAL where CITIZEN_ID = @CITIZEN_ID", conn);
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_PERSONAL where CITIZEN_ID = @CITIZEN_ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new SqlParameter("CITIZEN_ID", CITIZEN_ID));
+                command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
