@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Leave.aspx.cs" Inherits="WEB_PERSONAL.Leave" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Leave.aspx.cs" Inherits="WEB_PERSONAL.Leave" MaintainScrollPositionOnPostback="true"%>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -161,7 +161,10 @@
             width: 109px;
         }
         .auto-style57 {
-            width: 200px;
+            width: 198px;
+        }
+        .auto-style58 {
+            width: 180px;
         }
     </style>
     <asp:Panel ID="Panel2" runat="server" Height="1658px">
@@ -371,7 +374,7 @@
 
                 <table>
                     <tr>
-                        <td class="auto-style57">
+                        <td class="auto-style58">
                             <asp:Label ID="Label2" runat="server" Text="ค้นหาตามสถานะ"></asp:Label>
                         </td>
                         <td>
@@ -382,7 +385,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="auto-style58">
                             <asp:Label ID="Label18" runat="server" Text="ค้นหาตามประเภท"></asp:Label>
                         </td>
                         <td>
@@ -393,7 +396,7 @@
 
                 <table>
                     <tr>
-                        <td class="auto-style57">
+                        <td class="auto-style58">
                             <asp:Label ID="Label3" runat="server" Text="ค้นหาตามรหัสผู้ลา"></asp:Label>
                         </td>
                         <td>
@@ -404,7 +407,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style57">
+                        <td class="auto-style58">
                             <asp:Label ID="Label5" runat="server" Text="ค้นหาตามชื่อผู้ลา"></asp:Label>
                         </td>
                         <td>
@@ -415,7 +418,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style57">
+                        <td class="auto-style58">
                             <asp:Label ID="Label4" runat="server" Text="ค้นหาตามรหัสผู้อนุมัติ"></asp:Label>
                         </td>
                         <td>
@@ -426,7 +429,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style57">
+                        <td class="auto-style58">
                             <asp:Label ID="Label6" runat="server" Text="ค้นหาตามชื่อผู้อนุมัติ"></asp:Label>
                         </td>
                         <td>
