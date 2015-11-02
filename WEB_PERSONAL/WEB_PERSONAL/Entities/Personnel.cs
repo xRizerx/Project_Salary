@@ -20,7 +20,7 @@ namespace WEB_PERSONAL.Entities
         public DateTime BIRTHDAY { get; set; }
         public string HOMEADD { get; set; }
         public string MOO { get; set; }
-        public string STRRET { get; set; }
+        public string STREET { get; set; }
         public int DISTRICT_ID { get; set; }
         public int AMPHUR_ID { get; set; }
         public int PROVINCE_ID { get; set; }
@@ -48,7 +48,7 @@ namespace WEB_PERSONAL.Entities
 
         public Personnel() { }
         public Personnel(int YEAR, string UNIV_ID, string CITIZEN_ID, string TITLE_ID, string STF_NAME, string STF_LNAME, int GENDER_ID,
-        DateTime BIRTHDAY, string HOMEADD, string MOO, string STRRET, int DISTRICT_ID, int AMPHUR_ID, int PROVINCE_ID, string TELEPHONE,
+        DateTime BIRTHDAY, string HOMEADD, string MOO, string STREET, int DISTRICT_ID, int AMPHUR_ID, int PROVINCE_ID, string TELEPHONE,
         int ZIPCODE_ID, string NATION_ID, int STAFFTYPE_ID, int TIME_CONTACT_ID, int BUDGET_ID, int SUBSTAFFTYPE_ID, string ADMIN_POSITION_ID, string POSITION_ID,
         string POSITION_WORK_ID, string DEPARTMENT_ID, DateTime DATETIME_INWORK, string SPECIAL_NAME, string TEACH_ISCED_ID, string GRAD_LEV_ID, string GRAD_CURR, string GRAD_ISCED_ID, string GRAD_PROG_ID, string GRAD_UNIV, int GRAD_COUNTRY_ID)
         {
@@ -62,7 +62,7 @@ namespace WEB_PERSONAL.Entities
             this.BIRTHDAY = BIRTHDAY;
             this.HOMEADD = HOMEADD;
             this.MOO = MOO;
-            this.STRRET = STRRET;
+            this.STREET = STREET;
             this.DISTRICT_ID = DISTRICT_ID;
             this.AMPHUR_ID = PROVINCE_ID;
             this.TELEPHONE = TELEPHONE;
@@ -135,8 +135,8 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             SqlConnection conn = ConnectionDB.GetSqlConnection();
-            SqlCommand command = new SqlCommand("INSERT INTO TB_PERSONAL (YEAR ,UNIV_ID ,CITIZEN_ID ,TITLE_ID ,STF_NAME ,STF_LNAME ,GENDER_ID ,BIRTHDAY ,HOMEADD , MOO , STRRET , DISTRICT_ID , AMPHUR_ID , PROVINCE_ID , TELEPHONE , ZIPCODE_ID , NATION_ID , STAFFTYPE_ID , TIME_CONTACT_ID , BUDGET_ID , SUBSTAFFTYPE_ID , ADMIN_POSITION_ID ,POSITION_ID , POSITION_WORK_ID , DEPARTMENT_ID , DATETIME_INWORK , SPECIAL_NAME , TEACH_ISCED_ID , GRAD_LEV_ID , GRAD_CURR , GRAD_ISCED_ID , GRAD_PROG_ID , GRAD_UNIV , GRAD_COUNTRY_ID ) VALUES (@YEAR ,@UNIV_ID ,@CITIZEN_ID ,@TITLE_ID ,@STF_NAME ,@STF_LNAME ,@GENDER_ID ,@BIRTHDAY ,@HOMEADD , @MOO , @STRRET , @DISTRICT_ID , @AMPHUR_ID , @PROVINCE_ID , @TELEPHONE , @ZIPCODE_ID , @NATION_ID , @STAFFTYPE_ID , @TIME_CONTACT_ID , @BUDGET_ID , @SUBSTAFFTYPE_ID , @ADMIN_POSITION_ID ,@POSITION_ID ,@POSITION_WORK_ID ,@DEPARTMENT_ID ,@DATETIME_INWORK ,@SPECIAL_NAME ,@TEACH_ISCED_ID ,@GRAD_LEV_ID ,@GRAD_CURR ,@GRAD_ISCED_ID ,@GRAD_PROG_ID ,@GRAD_UNIV ,@GRAD_COUNTRY_ID)", conn);
-
+            SqlCommand command = new SqlCommand("INSERT INTO TB_PERSONAL (YEAR,UNIV_ID,CITIZEN_ID,TITLE_ID,STF_NAME,STF_LNAME,GENDER_ID,BIRTHDAY,HOMEADD) VALUES (@YEAR,@UNIV_ID,@CITIZEN_ID,@TITLE_ID,@STF_NAME,@STF_LNAME,@GENDER_ID,@BIRTHDAY,HOMEADD)", conn);
+        
             try
             {
                 if (conn.State != ConnectionState.Open)
@@ -152,31 +152,31 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new SqlParameter("GENDER_ID", GENDER_ID));
                 command.Parameters.Add(new SqlParameter("BIRTHDAY", BIRTHDAY));
                 command.Parameters.Add(new SqlParameter("HOMEADD", HOMEADD));
-                command.Parameters.Add(new SqlParameter("MOO", MOO));
-                command.Parameters.Add(new SqlParameter("STRRET", STRRET));
-                command.Parameters.Add(new SqlParameter("DISTRICT_ID", DISTRICT_ID));
-                command.Parameters.Add(new SqlParameter("AMPHUR_ID", AMPHUR_ID));
-                command.Parameters.Add(new SqlParameter("PROVINCE_ID", PROVINCE_ID));
-                command.Parameters.Add(new SqlParameter("TELEPHONE", TELEPHONE));
-                command.Parameters.Add(new SqlParameter("ZIPCODE_ID", ZIPCODE_ID));
-                command.Parameters.Add(new SqlParameter("NATION_ID", NATION_ID));
-                command.Parameters.Add(new SqlParameter("STAFFTYPE_ID", STAFFTYPE_ID));
-                command.Parameters.Add(new SqlParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
-                command.Parameters.Add(new SqlParameter("BUDGET_ID", BUDGET_ID));
-                command.Parameters.Add(new SqlParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
-                command.Parameters.Add(new SqlParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID));
-                command.Parameters.Add(new SqlParameter("POSITION_ID", POSITION_ID));
-                command.Parameters.Add(new SqlParameter("POSITION_WORK_ID", POSITION_WORK_ID));
-                command.Parameters.Add(new SqlParameter("DEPARTMENT_ID", DEPARTMENT_ID));
-                command.Parameters.Add(new SqlParameter("DATETIME_INWORK", DATETIME_INWORK));
-                command.Parameters.Add(new SqlParameter("SPECIAL_NAME", SPECIAL_NAME));
-                command.Parameters.Add(new SqlParameter("TEACH_ISCED_ID", TEACH_ISCED_ID));
-                command.Parameters.Add(new SqlParameter("GRAD_LEV_ID", GRAD_LEV_ID));
-                command.Parameters.Add(new SqlParameter("GRAD_CURR", GRAD_CURR));
-                command.Parameters.Add(new SqlParameter("GRAD_ISCED_ID", GRAD_ISCED_ID));
-                command.Parameters.Add(new SqlParameter("GRAD_PROG_ID", GRAD_PROG_ID));
-                command.Parameters.Add(new SqlParameter("GRAD_UNIV", GRAD_UNIV));
-                command.Parameters.Add(new SqlParameter("GRAD_COUNTRY_ID", GRAD_COUNTRY_ID));
+                /*  command.Parameters.Add(new SqlParameter("MOO", MOO));
+                  command.Parameters.Add(new SqlParameter("STREET", STREET));
+                  command.Parameters.Add(new SqlParameter("DISTRICT_ID", DISTRICT_ID));
+                  command.Parameters.Add(new SqlParameter("AMPHUR_ID", AMPHUR_ID));
+                  command.Parameters.Add(new SqlParameter("PROVINCE_ID", PROVINCE_ID));
+                  command.Parameters.Add(new SqlParameter("TELEPHONE", TELEPHONE));
+                  command.Parameters.Add(new SqlParameter("ZIPCODE_ID", ZIPCODE_ID));
+                  command.Parameters.Add(new SqlParameter("NATION_ID", NATION_ID));
+                  command.Parameters.Add(new SqlParameter("STAFFTYPE_ID", STAFFTYPE_ID));
+                  command.Parameters.Add(new SqlParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
+                  command.Parameters.Add(new SqlParameter("BUDGET_ID", BUDGET_ID));
+                  command.Parameters.Add(new SqlParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
+                  command.Parameters.Add(new SqlParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID));
+                  command.Parameters.Add(new SqlParameter("POSITION_ID", POSITION_ID));
+                  command.Parameters.Add(new SqlParameter("POSITION_WORK_ID", POSITION_WORK_ID));
+                  command.Parameters.Add(new SqlParameter("DEPARTMENT_ID", DEPARTMENT_ID));
+                  command.Parameters.Add(new SqlParameter("DATETIME_INWORK", DATETIME_INWORK));
+                  command.Parameters.Add(new SqlParameter("SPECIAL_NAME", SPECIAL_NAME));
+                  command.Parameters.Add(new SqlParameter("TEACH_ISCED_ID", TEACH_ISCED_ID));
+                  command.Parameters.Add(new SqlParameter("GRAD_LEV_ID", GRAD_LEV_ID));
+                  command.Parameters.Add(new SqlParameter("GRAD_CURR", GRAD_CURR));
+                  command.Parameters.Add(new SqlParameter("GRAD_ISCED_ID", GRAD_ISCED_ID));
+                  command.Parameters.Add(new SqlParameter("GRAD_PROG_ID", GRAD_PROG_ID));
+                  command.Parameters.Add(new SqlParameter("GRAD_UNIV", GRAD_UNIV));
+                  command.Parameters.Add(new SqlParameter("GRAD_COUNTRY_ID", GRAD_COUNTRY_ID)); */
                 id = command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -299,7 +299,6 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
-        
+
     }
 }
- 
