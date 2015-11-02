@@ -149,7 +149,8 @@ win=window.open(mypage,myname,settings);}
                 </td>
                 <td class="auto-style14">
                     <asp:Button ID="Button1" runat="server" Height="24px" OnClick="Button1_Click" Text="ค้นหา" Width="100px" />
-                    <a href="SalarybyID-Edit.aspx" onclick="NewWindow(this.href,'ปรับฐานเงินเดือน','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui_edit">ปรับฐานเงินเดือน</a>
+                    <a href="Salary_Basesalary.aspx" onclick="NewWindow(this.href,'ปรับฐานเงินเดือน','320','320','yes','center');return false" onfocus="this.blur()" class="button_ui_edit">ปรับฐานเงินเดือน</a>
+                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="ออกรายงาน" CssClass="button_ui_edit" />
                 </td>
             </tr>
             <tr>

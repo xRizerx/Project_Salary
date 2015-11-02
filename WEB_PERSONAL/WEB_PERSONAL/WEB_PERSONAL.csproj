@@ -57,6 +57,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -194,6 +195,7 @@
     <Content Include="Personnel-GENERAL.aspx" />
     <Content Include="Salary-report.aspx" />
     <Content Include="SalarybyID-Edit.aspx" />
+    <Content Include="SalaryByID-Report.aspx" />
     <Content Include="SalarybyID.aspx" />
     <Content Include="Salary_Basesalary.aspx" />
     <Content Include="Script\jquery-1.7.1.min.js" />
@@ -343,6 +345,13 @@
     <Compile Include="SalarybyID-Edit.aspx.designer.cs">
       <DependentUpon>SalarybyID-Edit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SalaryByID-Report.aspx.cs">
+      <DependentUpon>SalaryByID-Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalaryByID-Report.aspx.designer.cs">
+      <DependentUpon>SalaryByID-Report.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SalaryByID.aspx.cs">
       <DependentUpon>SalarybyID.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -413,6 +422,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
