@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Data.OracleClient;
 
 namespace WEB_PERSONAL.Connection
 {
     public static class ConnectionDB
     {
-        private static SqlConnection conn;
+        private static OraConnection conn;
         static ConnectionDB()
         {
             //
             // TODO: Add constructor logic here
             //
-            string connectionString = ConfigurationManager.ConnectionStrings["Connectionstring"].ToString();
-            conn = new SqlConnection(connectionString);
+            string RMUTTOORCL = ConfigurationManager.RMUTTOORCL["Connectionstring"].ToString();
+            conn = new SqlConnection(RMUTTOORCL);
         }
 
-        public static SqlConnection GetSqlConnection()
+        public static OraConnection GetSqlConnection()
         {
             return conn;
         }
