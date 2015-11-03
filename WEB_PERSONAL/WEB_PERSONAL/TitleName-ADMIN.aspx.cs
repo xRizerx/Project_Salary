@@ -85,43 +85,7 @@ namespace WEB_PERSONAL
             ptn.InsertTITLENAME();
             BindData();
         }
-         /*    if (ptn.CheckUseTitleNameTH())
-            {
-                ptn.InsertTITLENAME();
-                BindData();
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อภาษาไทยใช้แล้ว')", true);
-            }
-        }   if (ptn.CheckUseTitleNameTHmin())
-            {
-                ptn.InsertTITLENAME();
-                BindData();
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อย่อภาษาไทยใช้แล้ว')", true);
-            }
-            if (ptn.CheckUseTitleNameEN())
-            {
-                ptn.InsertTITLENAME();
-                BindData();
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อภาษาอังกฤษใช้แล้ว')", true);
-            }
-            if (ptn.CheckUseTitleNameENmin())
-            {
-                ptn.InsertTITLENAME();
-                BindData();
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อย่อภาษาอังกฤษใช้แล้ว')", true);
-            }
-        } */
+     
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
