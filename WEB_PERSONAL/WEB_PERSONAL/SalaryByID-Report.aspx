@@ -10,40 +10,49 @@
     <form id="form1" runat="server">
     <div>
         <asp:Panel ID="Panel1" runat="server">
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT DISTINCT TB_PERSONAL.CITIZEN_ID, TB_TITLENAME.TITLE_NAME_TH, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, TB_POSITION.POSITION_NAME, TB_POSITION_WORK.POSITION_WORK_NAME, TB_ADMIN.ADMIN_POSITION_NAME, TB_SALARY_UP.DETAIL_SALARY, TB_SALARY_UP.DETAIL_MAXSALARY, TB_SALARY_UP.DETAIL_BASEMONEY, TB_SALARY_UP.DETAIL_PERCENT_RATE, TB_SALARY_UP.DETAIL_MONEYNOTROUND, TB_SALARY_UP.DETAIL_MONEYROUND, TB_SALARY_UP.DETAIL_MONEYUP, TB_SALARY_UP.DETAIL_MONEYBONUS, TB_SALARY_UP.DETAIL_SUM_MONEY, TB_SALARY_UP.DETAIL_NEW_SALARY, TB_SALARY_UP.DETAIL_SCORE_TEST, TB_SALARY_UP.DETAIL_LEVEL_TEST, TB_SALARY_UP.ADMIN_RATESUM, TB_SALARY_UP.ADMIN_RATE, TB_SALARY_UP.ADMIN_MONEY_ADD, TB_SALARY_UP.SUM_PERCENT_RATE2, TB_SALARY_UP.SUM_MONEYNOTROUND, TB_SALARY_UP.SUM_MONEYROUND, TB_SALARY_UP.SUM_MONEYUP, TB_SALARY_UP.SUM_MONEYBONUS, TB_SALARY_UP.SUM_MONEYUPTOTAL, TB_SALARY_UP.SUM_NEWSALARY, TB_SALARY_UP.COMMENT FROM TB_PERSONAL INNER JOIN TB_POSITION ON TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID INNER JOIN TB_TITLENAME ON TB_PERSONAL.TITLE_ID = TB_TITLENAME.TITLE_ID INNER JOIN TB_POSITION_WORK ON TB_PERSONAL.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID INNER JOIN TB_ADMIN ON TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN.ADMIN_POSITION_ID INNER JOIN TB_SALARY_UP ON TB_PERSONAL.CITIZEN_ID = TB_SALARY_UP.CITIZEN_ID">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_PERSONAL&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>">
             </asp:SqlDataSource>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="CITIZEN_ID" DataSourceID="SqlDataSource1">
                 <Columns>
-                    <asp:BoundField DataField="CITIZEN_ID" HeaderText="CITIZEN_ID" ReadOnly="True" SortExpression="CITIZEN_ID" />
-                    <asp:BoundField DataField="TITLE_NAME_TH" HeaderText="TITLE_NAME_TH" SortExpression="TITLE_NAME_TH" />
+                    <asp:BoundField DataField="YEAR" HeaderText="YEAR" SortExpression="YEAR" />
+                    <asp:BoundField DataField="UNIV_ID" HeaderText="UNIV_ID" SortExpression="UNIV_ID" />
+                    <asp:BoundField DataField="CITIZEN_ID" HeaderText="CITIZEN_ID" SortExpression="CITIZEN_ID" ReadOnly="True" />
+                    <asp:BoundField DataField="TITLE_ID" HeaderText="TITLE_ID" SortExpression="TITLE_ID" />
                     <asp:BoundField DataField="STF_NAME" HeaderText="STF_NAME" SortExpression="STF_NAME" />
                     <asp:BoundField DataField="STF_LNAME" HeaderText="STF_LNAME" SortExpression="STF_LNAME" />
-                    <asp:BoundField DataField="POSITION_NAME" HeaderText="POSITION_NAME" SortExpression="POSITION_NAME" />
-                    <asp:BoundField DataField="POSITION_WORK_NAME" HeaderText="POSITION_WORK_NAME" SortExpression="POSITION_WORK_NAME" />
-                    <asp:BoundField DataField="ADMIN_POSITION_NAME" HeaderText="ADMIN_POSITION_NAME" SortExpression="ADMIN_POSITION_NAME" />
-                    <asp:BoundField DataField="DETAIL_SALARY" HeaderText="DETAIL_SALARY" SortExpression="DETAIL_SALARY" />
-                    <asp:BoundField DataField="DETAIL_MAXSALARY" HeaderText="DETAIL_MAXSALARY" SortExpression="DETAIL_MAXSALARY" />
-                    <asp:BoundField DataField="DETAIL_BASEMONEY" HeaderText="DETAIL_BASEMONEY" SortExpression="DETAIL_BASEMONEY" />
-                    <asp:BoundField DataField="DETAIL_PERCENT_RATE" HeaderText="DETAIL_PERCENT_RATE" SortExpression="DETAIL_PERCENT_RATE" />
-                    <asp:BoundField DataField="DETAIL_MONEYNOTROUND" HeaderText="DETAIL_MONEYNOTROUND" SortExpression="DETAIL_MONEYNOTROUND" />
-                    <asp:BoundField DataField="DETAIL_MONEYROUND" HeaderText="DETAIL_MONEYROUND" SortExpression="DETAIL_MONEYROUND" />
-                    <asp:BoundField DataField="DETAIL_MONEYUP" HeaderText="DETAIL_MONEYUP" SortExpression="DETAIL_MONEYUP" />
-                    <asp:BoundField DataField="DETAIL_MONEYBONUS" HeaderText="DETAIL_MONEYBONUS" SortExpression="DETAIL_MONEYBONUS" />
-                    <asp:BoundField DataField="DETAIL_SUM_MONEY" HeaderText="DETAIL_SUM_MONEY" SortExpression="DETAIL_SUM_MONEY" />
-                    <asp:BoundField DataField="DETAIL_NEW_SALARY" HeaderText="DETAIL_NEW_SALARY" SortExpression="DETAIL_NEW_SALARY" />
-                    <asp:BoundField DataField="DETAIL_SCORE_TEST" HeaderText="DETAIL_SCORE_TEST" SortExpression="DETAIL_SCORE_TEST" />
-                    <asp:BoundField DataField="DETAIL_LEVEL_TEST" HeaderText="DETAIL_LEVEL_TEST" SortExpression="DETAIL_LEVEL_TEST" />
-                    <asp:BoundField DataField="ADMIN_RATESUM" HeaderText="ADMIN_RATESUM" SortExpression="ADMIN_RATESUM" />
-                    <asp:BoundField DataField="ADMIN_RATE" HeaderText="ADMIN_RATE" SortExpression="ADMIN_RATE" />
-                    <asp:BoundField DataField="ADMIN_MONEY_ADD" HeaderText="ADMIN_MONEY_ADD" SortExpression="ADMIN_MONEY_ADD" />
-                    <asp:BoundField DataField="SUM_PERCENT_RATE2" HeaderText="SUM_PERCENT_RATE2" SortExpression="SUM_PERCENT_RATE2" />
-                    <asp:BoundField DataField="SUM_MONEYNOTROUND" HeaderText="SUM_MONEYNOTROUND" SortExpression="SUM_MONEYNOTROUND" />
-                    <asp:BoundField DataField="SUM_MONEYROUND" HeaderText="SUM_MONEYROUND" SortExpression="SUM_MONEYROUND" />
-                    <asp:BoundField DataField="SUM_MONEYUP" HeaderText="SUM_MONEYUP" SortExpression="SUM_MONEYUP" />
-                    <asp:BoundField DataField="SUM_MONEYBONUS" HeaderText="SUM_MONEYBONUS" SortExpression="SUM_MONEYBONUS" />
-                    <asp:BoundField DataField="SUM_MONEYUPTOTAL" HeaderText="SUM_MONEYUPTOTAL" SortExpression="SUM_MONEYUPTOTAL" />
-                    <asp:BoundField DataField="SUM_NEWSALARY" HeaderText="SUM_NEWSALARY" SortExpression="SUM_NEWSALARY" />
-                    <asp:BoundField DataField="COMMENT" HeaderText="COMMENT" SortExpression="COMMENT" />
+                    <asp:BoundField DataField="GENDER_ID" HeaderText="GENDER_ID" SortExpression="GENDER_ID" />
+                    <asp:BoundField DataField="BIRTHDAY" HeaderText="BIRTHDAY" SortExpression="BIRTHDAY" />
+                    <asp:BoundField DataField="HOMEADD" HeaderText="HOMEADD" SortExpression="HOMEADD" />
+                    <asp:BoundField DataField="DISTRICT_ID" HeaderText="DISTRICT_ID" SortExpression="DISTRICT_ID" />
+                    <asp:BoundField DataField="AMPHUR_ID" HeaderText="AMPHUR_ID" SortExpression="AMPHUR_ID" />
+                    <asp:BoundField DataField="PROVINCE_ID" HeaderText="PROVINCE_ID" SortExpression="PROVINCE_ID" />
+                    <asp:BoundField DataField="TELEPHONE" HeaderText="TELEPHONE" SortExpression="TELEPHONE" />
+                    <asp:BoundField DataField="ZIPCODE_ID" HeaderText="ZIPCODE_ID" SortExpression="ZIPCODE_ID" />
+                    <asp:BoundField DataField="NATION_ID" HeaderText="NATION_ID" SortExpression="NATION_ID" />
+                    <asp:BoundField DataField="STAFFTYPE_ID" HeaderText="STAFFTYPE_ID" SortExpression="STAFFTYPE_ID" />
+                    <asp:BoundField DataField="TIME_CONTACT_ID" HeaderText="TIME_CONTACT_ID" SortExpression="TIME_CONTACT_ID" />
+                    <asp:BoundField DataField="BUDGET_ID" HeaderText="BUDGET_ID" SortExpression="BUDGET_ID" />
+                    <asp:BoundField DataField="SUBSTAFFTYPE_ID" HeaderText="SUBSTAFFTYPE_ID" SortExpression="SUBSTAFFTYPE_ID" />
+                    <asp:BoundField DataField="ADMIN_POSITION_ID" HeaderText="ADMIN_POSITION_ID" SortExpression="ADMIN_POSITION_ID" />
+                    <asp:BoundField DataField="POSITION_ID" HeaderText="POSITION_ID" SortExpression="POSITION_ID" />
+                    <asp:BoundField DataField="POSITION_WORK_ID" HeaderText="POSITION_WORK_ID" SortExpression="POSITION_WORK_ID" />
+                    <asp:BoundField DataField="DEPARTMENT_ID" HeaderText="DEPARTMENT_ID" SortExpression="DEPARTMENT_ID" />
+                    <asp:BoundField DataField="DATETIME_INWORK" HeaderText="DATETIME_INWORK" SortExpression="DATETIME_INWORK" />
+                    <asp:BoundField DataField="SPECIAL_NAME" HeaderText="SPECIAL_NAME" SortExpression="SPECIAL_NAME" />
+                    <asp:BoundField DataField="TEACH_ISCED_ID" HeaderText="TEACH_ISCED_ID" SortExpression="TEACH_ISCED_ID" />
+                    <asp:BoundField DataField="GRAD_LEV_ID" HeaderText="GRAD_LEV_ID" SortExpression="GRAD_LEV_ID" />
+                    <asp:BoundField DataField="GRAD_CURR" HeaderText="GRAD_CURR" SortExpression="GRAD_CURR" />
+                    <asp:BoundField DataField="GRAD_ISCED_ID" HeaderText="GRAD_ISCED_ID" SortExpression="GRAD_ISCED_ID" />
+                    <asp:BoundField DataField="GRAD_PROG_ID" HeaderText="GRAD_PROG_ID" SortExpression="GRAD_PROG_ID" />
+                    <asp:BoundField DataField="GRAD_UNIV" HeaderText="GRAD_UNIV" SortExpression="GRAD_UNIV" />
+                    <asp:BoundField DataField="GRAD_COUNTRY_ID" HeaderText="GRAD_COUNTRY_ID" SortExpression="GRAD_COUNTRY_ID" />
+                    <asp:BoundField DataField="BRANCH_ID" HeaderText="BRANCH_ID" SortExpression="BRANCH_ID" />
+                    <asp:BoundField DataField="RANK_ID" HeaderText="RANK_ID" SortExpression="RANK_ID" />
+                    <asp:BoundField DataField="GOT_ID" HeaderText="GOT_ID" SortExpression="GOT_ID" />
+                    <asp:BoundField DataField="GET_ID" HeaderText="GET_ID" SortExpression="GET_ID" />
+                    <asp:BoundField DataField="PASSWORD" HeaderText="PASSWORD" SortExpression="PASSWORD" />
+                    <asp:BoundField DataField="SYSTEM_STATUS_ID" HeaderText="SYSTEM_STATUS_ID" SortExpression="SYSTEM_STATUS_ID" />
+                    <asp:BoundField DataField="STREET" HeaderText="STREET" SortExpression="STREET" />
                 </Columns>
                 <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
                 <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />

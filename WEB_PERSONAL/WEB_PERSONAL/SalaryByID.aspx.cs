@@ -19,17 +19,26 @@ namespace WEB_PERSONAL
         {
             try
             {
-               /* using (OracleConnection conn = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;"))
-                {
-                    conn.Open();
-                    string script = "alert(\"3333\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                }*/
                 using (OracleConnection conn = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;"))
                 //using (SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!"))
                 {
                     conn.Open();
-                    using (OracleCommand command = new OracleCommand("Select TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_SUBSTAFFTYPE.SUBSTAFFTYPE_NAME,TB_ADMIN.ADMIN_POSITION_NAME,BASESALARY.MAXSALARY,TB_SALARY.SALARY From TB_PERSONAL,TB_POSITION,TB_SUBSTAFFTYPE,TB_ADMIN,BASESALARY,TB_SALARY WHERE TB_PERSONAL.CITIZEN_ID = '" + TextBox1.Text + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.SUBSTAFFTYPE_ID = TB_SUBSTAFFTYPE.SUBSTAFFTYPE_ID AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN.ADMIN_POSITION_ID AND TB_PERSONAL.POSITION_ID = BASESALARY.POSITION_ID AND TB_SALARY.SAL_DATE = '01/03/2558'", conn))
+                    int m=3;
+                    switch (DateTime.Now.Month)
+                    {
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 10:
+                        case 11:
+                        case 12:
+                            m = 9;
+                            break;
+                    }
+                    {
+
+                    }
+                    using (OracleCommand command = new OracleCommand("Select TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_SUBSTAFFTYPE.SUBSTAFFTYPE_NAME,TB_ADMIN.ADMIN_POSITION_NAME,BASESALARY.MAXSALARY,TB_SALARY.SALARY From TB_PERSONAL,TB_POSITION,TB_SUBSTAFFTYPE,TB_ADMIN,BASESALARY,TB_SALARY WHERE TB_PERSONAL.CITIZEN_ID = '"+TextBox1.Text+"' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.SUBSTAFFTYPE_ID = TB_SUBSTAFFTYPE.SUBSTAFFTYPE_ID AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN.ADMIN_POSITION_ID AND TB_PERSONAL.POSITION_ID = BASESALARY.POSITION_ID AND EXTRACT(MONTH FROM SAL_DATE) = "+m, conn))
                     {
                         using (OracleDataReader reader = command.ExecuteReader())
                         {
@@ -369,21 +378,25 @@ namespace WEB_PERSONAL
             String w = Label54.Text;
             String x = TextBox9.Text;
             DateTime dt = DateTime.Today;
-            DateTime firstDayOfMonth = new DateTime(dt.Year, dt.Month, 1);
-            String y = firstDayOfMonth.ToString("dd/MM/yyyy");
-            using (SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!"))
-            {
-                conn.Open();
-                string sql = "INSERT INTO TB_SALARY_UP (CITIZEN_ID,DETAIL_SALARY,DETAIL_MAXSALARY,DETAIL_BASEMONEY, DETAIL_PERCENT_RATE, DETAIL_MONEYNOTROUND, DETAIL_MONEYROUND, DETAIL_MONEYUP, DETAIL_MONEYBONUS, DETAIL_SUM_MONEY, DETAIL_NEW_SALARY, DETAIL_SCORE_TEST, DETAIL_LEVEL_TEST, ADMIN_RATESUM, ADMIN_RATE ,ADMIN_MONEY_ADD, SUM_PERCENT_RATE2, SUM_MONEYNOTROUND, SUM_MONEYROUND, SUM_MONEYUP, SUM_MONEYBONUS,SUM_MONEYUPTOTAL,SUM_NEWSALARY,COMMENT,TIMEUPDATE) VALUES ('{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}', {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20}, {21}, {22},'{23}','{24}');";
-                sql = String.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y);
-                using (SqlCommand command = new SqlCommand(sql, conn))
+            String y = dt.ToString("dd MMMM yyyy");
+                using (OracleConnection conn = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;"))
                 {
-                    string script = "alert(\"SAVE SUCCESSFUL.\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                    command.ExecuteNonQuery();
-                }
+                    conn.Open();
+                    string sql = "INSERT INTO TB_SALARY_UP VALUES (SEQ_SALUP_ID.NEXTVAL,'{0}', {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, '{12}', {13}, {14}, {15}, {16}, {17}, {18}, {19}, {20}, {21}, {22},'{23}','{24}')";
+                    sql = String.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y);
+                    OracleTransaction trans = conn.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
+                    using (OracleCommand command = new OracleCommand(sql, conn))
+                    {
+                        command.Transaction = trans;
+                        trans.Commit();
+                        command.ExecuteNonQuery();
+                        string script = "alert(\"SAVE SUCCESSFUL.\");";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true); 
+                    }
 
-            }
+                }
+ 
+           
 
         }
 
