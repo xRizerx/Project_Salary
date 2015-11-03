@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Data.OracleClient;
 
 namespace WEB_PERSONAL
 {
@@ -417,8 +418,7 @@ namespace WEB_PERSONAL
                 test.HeaderText = "เหตุผล";
                 GridView1.Columns.Add(test);
             }
-
-            OracleDataSource sds = new SqlDataSource(connectionString, sql);
+            SqlDataSource sds = new SqlDataSource(connectionString, sql);
             GridView1.DataSource = sds;
             GridView1.DataBind();
         }
