@@ -398,6 +398,7 @@
     <Compile Include="Salary.aspx.designer.cs">
       <DependentUpon>Salary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

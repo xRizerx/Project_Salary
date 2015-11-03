@@ -252,7 +252,7 @@
                         <td class="auto-style50">
                             <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID">
                             </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTO.ORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTO.ORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE_TYPE&quot;"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE_TYPE&quot;"></asp:SqlDataSource>
                         </td>
                         <td class="auto-style31">
                             <asp:Label ID="Label13" runat="server" Text="สถานะการลา"></asp:Label>
@@ -260,7 +260,7 @@
                         <td class="auto-style2">
                             <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource1" DataTextField="LEAVE_STATUS_NAME" DataValueField="LEAVE_STATUS_ID">
                             </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTO.ORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTO.ORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE_STATUS&quot;"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE_STATUS&quot;"></asp:SqlDataSource>
                         </td>
                         <td class="auto-style2">&nbsp;</td>
                     </tr>

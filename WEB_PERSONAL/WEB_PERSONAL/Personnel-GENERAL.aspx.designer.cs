@@ -67,13 +67,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownDEPARTMENT_ID;
         
         /// <summary>
-        /// TB_DEPARTMENT2 control.
+        /// TB_DEPARTMENT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TB_DEPARTMENT2;
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_DEPARTMENT;
         
         /// <summary>
         /// DropDownUNIV_ID control.
@@ -373,13 +373,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownGRAD_PROG_ID;
         
         /// <summary>
-        /// TB_PROGRAM2 control.
+        /// TB_PROGRAM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TB_PROGRAM2;
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_PROGRAM;
         
         /// <summary>
         /// txtHOMEADD control.
