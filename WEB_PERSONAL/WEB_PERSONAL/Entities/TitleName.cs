@@ -83,7 +83,6 @@ namespace WEB_PERSONAL.Entities
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             OracleCommand command = new OracleCommand("INSERT INTO TB_TITLENAME (TITLE_NAME_TH,TITLE_NAME_TH_MIN,TITLE_NAME_EN,TITLE_NAME_EN_MIN) VALUES (:TITLE_NAME_TH, :TITLE_NAME_TH_MIN, :TITLE_NAME_EN, :TITLE_NAME_EN_MIN)", conn);
-         //   OracleTransaction commit = conn.BeginTransaction(IsolationLevel.ReadCommitted);
             try
             {
                 if (conn.State != ConnectionState.Open)

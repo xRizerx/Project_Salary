@@ -50,6 +50,9 @@
             border-radius:10px;
             resize:none;
               }
+          .textred{
+            color:red;
+        }
     </style>
     <asp:Panel ID="Panel1" runat="server" Height="1605px" CssClass="divpan">
    <div>
@@ -59,25 +62,25 @@
                 <table>
                     <tr>
                         <td style="text-align: right; margin-right: 5px; ">1. </td>
-                        <td style="text-align: right; margin-right: 5px; ">ชื่อ :&nbsp;</td>
+                        <td style="text-align: right; margin-right: 5px; ">ชื่อ<span class="textred">*</span> :&nbsp;</td>
                         <td style="text-align: left; width: 50px;">
                             <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="148px" CssClass="tb5"></asp:TextBox>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px; ">นามสกุล :&nbsp;</td>
+                        <td style="text-align: right; margin-right: 5px; ">นามสกุล<span class="textred">*</span> :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtLastName" runat="server" MaxLength="100" Width="148px" CssClass="tb5"></asp:TextBox></td>
-                        <td style="text-align: right; margin-right: 5px; ">ตำแหน่ง :&nbsp;</td>
+                        <td style="text-align: right; margin-right: 5px; ">ตำแหน่ง<span class="textred">*</span> :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtPosition" runat="server" MaxLength="100" Width="148px" CssClass="tb5"></asp:TextBox></td>
-                        <td style="text-align: right; margin-right: 5px; ">ระดับ :&nbsp;</td>
+                        <td style="text-align: right; margin-right: 5px; ">ระดับ<span class="textred">*</span> :&nbsp;</td>
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtDegree" runat="server" MaxLength="100" Width="148px" CssClass="tb5"></asp:TextBox></td>
                     </tr>
                     </table> 
                 <table>
                     <tr>
-                       <td style="text-align: right; margin-right: 5px; ">สังกัด :&nbsp;</td>
+                       <td style="text-align: right; margin-right: 5px; ">สังกัด<span class="textred">*</span> :&nbsp;</td>
                         <td style="text-align: left;">
                             <asp:TextBox ID="txtCampus" runat="server" MaxLength="100" Width="576px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -87,7 +90,7 @@
                  <table>
                      <tr>
                           <td style="text-align: right; margin-right: 5px; ">2. </td>
-                       <td style="text-align: right; margin-right: 5px; ">ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน :&nbsp;</td>
+                       <td style="text-align: right; margin-right: 5px; ">ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน<span class="textred">*</span> :&nbsp;</td>
                         <td style="text-align: left; ">
                             <asp:TextBox ID="txtNameOfProject" runat="server" MaxLength="100" Width="690px" CssClass="tb5"></asp:TextBox></td>
                       </tr>
@@ -95,7 +98,7 @@
                 <table>
                      <tr>
                          <td style="text-align: right; margin-right: 5px; ">3. </td>
-                       <td style="text-align: right; margin-right: 5px; ">สถานที่ฝึกอบรม/สัมมนา/ดูงาน :&nbsp;</td>
+                       <td style="text-align: right; margin-right: 5px; ">สถานที่ฝึกอบรม/สัมมนา/ดูงาน<span class="textred">*</span> :&nbsp;</td>
                         <td style="text-align: left; ">
                             <asp:TextBox ID="txtPlace" runat="server" MaxLength="100" Width="718px" CssClass="tb5"></asp:TextBox></td>
                       </tr>
@@ -104,14 +107,12 @@
                      <tr>
                        <td style="text-align: right; margin-right: 5px; ">ระยะเวลาการฝึกอบรม/สัมมนา/ดูงาน</td>
                          <td style="text-align: left; width: 10px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; "> ตั้งแต่วันที่ </td>
+                        <td style="text-align: left; margin-right: 5px; ">ตั้งแต่วันที่<span class="textred">*</span> </td>
                             <td style="text-align: left; width: 120px;">
 
                             <asp:TextBox ID="txtDateFrom" runat="server" Width="155px" CssClass="tb5"></asp:TextBox></td>
                             <td style="text-align: left; width: 10px;"> </td> 
-                             <td style="text-align: left; margin-right: 5px;"> ถึงวันที่ 
-                                
-                         </td>
+                             <td style="text-align: left; margin-right: 5px;">ถึงวันที่<span class="textred">*</span></td>
                             <td style="text-align: left; width: 120px;">
                                 
                             <asp:TextBox ID="txtDateTO" runat="server" Width="155px" OnTextChanged="txtDateTO_TextChanged" CssClass="tb5"></asp:TextBox></td>
@@ -145,7 +146,7 @@
 
                             <td style="text-align: left; margin-right: 10px; "> วัน </td>
                        <td style="text-align: left; width: 10px;"> </td> 
-                         <td style="text-align: right; margin-right: 5px; "> ค่าใช้จ่ายตลอดโครงการ :&nbsp;</td>
+                         <td style="text-align: right; margin-right: 5px; ">ค่าใช้จ่ายตลอดโครงการ<span class="textred">*</span> :&nbsp;</td>
                        <td style="text-align:  left; width: 50px;">
                             <asp:TextBox ID="txtBudget" runat="server" MaxLength="100" Width="356px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: right; margin-right: 5px; "> บาท </td>
@@ -155,7 +156,7 @@
 
                 <table>
                     <tr>
-                        <td style="text-align: right; margin-right: 5px; "> แหล่งงบประมาณที่ได้รับการสนับสนุน </td>
+                        <td style="text-align: right; margin-right: 5px; ">แหล่งงบประมาณที่ได้รับการสนับสนุน<span class="textred">*</span></td>
                         <td style="text-align: left; width: 50px;">
                             <asp:TextBox ID="txtSupportBudget" runat="server" MaxLength="100" Width="702px" CssClass="tb5"></asp:TextBox></td>
                     </tr>
