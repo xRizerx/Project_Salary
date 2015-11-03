@@ -73,7 +73,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Panel ID="Panel1" runat="server" CssClass="panout" Height="800px" Width="800px">
+            <asp:Panel ID="Panel1" runat="server" CssClass="panout" Height="900px" Width="800px">
                 <asp:Panel ID="Panel2" runat="server" CssClass="panin" Height="100%">
                     <table class="auto-style4" style="width: 100%;">
                         <tr>
