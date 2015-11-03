@@ -176,7 +176,7 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPersonnel_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCITIZEN_ID.Text))
+            /*if (string.IsNullOrEmpty(txtCITIZEN_ID.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชน')", true);
                 return;
@@ -200,7 +200,7 @@ namespace WEB_PERSONAL
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก บ้านเลขที่')", true);
                 return;
-            }
+            }*/
             Personnel P = new Personnel();
             P.YEAR = Convert.ToInt32(DropDownYEAR.SelectedValue);
             P.UNIV_ID = Convert.ToString(DropDownUNIV_ID.SelectedValue.ToString());
@@ -211,37 +211,36 @@ namespace WEB_PERSONAL
             P.GENDER_ID = Convert.ToInt32(DropDownGENDER_ID.SelectedValue.ToString());
             P.BIRTHDAY = DateTime.Parse(txtBIRTHDAY.Text);
             P.HOMEADD = txtHOMEADD.Text;
-            /*  P.MOO = txtMOO.Text;
-             P.STREET = txtSTREET.Text;
-             P.DISTRICT_ID = Convert.ToInt32(ddlDISTRICT.SelectedValue.ToString());
-             P.AMPHUR_ID = Convert.ToInt32(ddlAMPHUR.SelectedValue.ToString());
-             P.PROVINCE_ID = Convert.ToInt32(ddlPROVINCE.SelectedValue.ToString());
-             P.TELEPHONE = txtTELEPHONE.Text;
-             P.ZIPCODE_ID = Convert.ToInt32(txtZIPCODE.Text);
-             P.NATION_ID = Convert.ToString(DropDownNATION_ID.SelectedValue.ToString());
-             P.STAFFTYPE_ID = Convert.ToInt32(DropDownSTAFFTYPE_ID.SelectedValue.ToString());
-             P.TIME_CONTACT_ID = Convert.ToInt32(DropDownTIME_CONTACT_ID.SelectedValue.ToString());
-               P.BUDGET_ID = Convert.ToInt32(DropDownBUDGET_ID.SelectedValue.ToString());
-               P.SUBSTAFFTYPE_ID = Convert.ToInt32(DropDownSUBSTAFFTYPE_ID.SelectedValue.ToString());
-               P.ADMIN_POSITION_ID = Convert.ToString(DropDownADMIN_POSITION_ID.SelectedValue.ToString());
-               P.POSITION_ID = Convert.ToString(DropDownPOSITION_ID.SelectedValue.ToString());
-               P.POSITION_WORK_ID = Convert.ToString(DropDownPOSITION_WORK.SelectedValue.ToString());
-               P.DEPARTMENT_ID = Convert.ToString(DropDownDEPARTMENT_ID.SelectedValue.ToString());
-               P.DATETIME_INWORK = DateTime.Parse(txtDATETIME_INWORRK.Text);
-               P.SPECIAL_NAME = txtSPECIAL_NAME.Text;
-               P.TEACH_ISCED_ID = Convert.ToString(DropDownTEACH_ISCED_ID.SelectedValue.ToString());
-               P.GRAD_LEV_ID = Convert.ToString(DropDownGRAD_LEV_ID.SelectedValue.ToString());
-               P.GRAD_CURR = txtGRAD_CURR.Text;
-               P.GRAD_ISCED_ID = Convert.ToString(DropDownGRAD_ISCED_ID.SelectedValue.ToString());
-               P.GRAD_PROG_ID = Convert.ToString(DropDownGRAD_PROG_ID.SelectedValue.ToString());
-               P.GRAD_UNIV = txtGRAD_UNIV.Text;
-               P.GRAD_COUNTRY_ID = Convert.ToInt32(DropDownGRAD_COUNTRY_ID.SelectedValue.ToString());
+            P.MOO = txtMOO.Text;
+            P.STREET = txtSTREET.Text;
+            P.DISTRICT_ID = Convert.ToInt32(ddlDISTRICT.SelectedValue.ToString());
+            P.AMPHUR_ID = Convert.ToInt32(ddlAMPHUR.SelectedValue.ToString());
+            P.PROVINCE_ID = Convert.ToInt32(ddlPROVINCE.SelectedValue.ToString());
+            P.TELEPHONE = txtTELEPHONE.Text;
+            P.ZIPCODE_ID = Convert.ToInt32(txtZIPCODE.Text);
+            P.NATION_ID = Convert.ToString(DropDownNATION_ID.SelectedValue.ToString());
+            P.STAFFTYPE_ID = Convert.ToInt32(DropDownSTAFFTYPE_ID.SelectedValue.ToString());
+            P.TIME_CONTACT_ID = Convert.ToInt32(DropDownTIME_CONTACT_ID.SelectedValue.ToString());
+            P.BUDGET_ID = Convert.ToInt32(DropDownBUDGET_ID.SelectedValue.ToString());
+            P.SUBSTAFFTYPE_ID = Convert.ToInt32(DropDownSUBSTAFFTYPE_ID.SelectedValue.ToString());
+            P.ADMIN_POSITION_ID = Convert.ToString(DropDownADMIN_POSITION_ID.SelectedValue.ToString());
+            P.POSITION_ID = Convert.ToString(DropDownPOSITION_ID.SelectedValue.ToString());
+            P.POSITION_WORK_ID = Convert.ToString(DropDownPOSITION_WORK.SelectedValue.ToString());
+            P.DEPARTMENT_ID = Convert.ToString(DropDownDEPARTMENT_ID.SelectedValue.ToString());
+            P.DATETIME_INWORK = DateTime.Parse(txtDATETIME_INWORRK.Text);
+            P.SPECIAL_NAME = txtSPECIAL_NAME.Text;
+            P.TEACH_ISCED_ID = Convert.ToString(DropDownTEACH_ISCED_ID.SelectedValue.ToString());
+            P.GRAD_LEV_ID = Convert.ToString(DropDownGRAD_LEV_ID.SelectedValue.ToString());
+            P.GRAD_CURR = txtGRAD_CURR.Text;
+            P.GRAD_ISCED_ID = Convert.ToString(DropDownGRAD_ISCED_ID.SelectedValue.ToString());
+            P.GRAD_PROG_ID = Convert.ToString(DropDownGRAD_PROG_ID.SelectedValue.ToString());
+            P.GRAD_UNIV = txtGRAD_UNIV.Text;
+            P.GRAD_COUNTRY_ID = Convert.ToInt32(DropDownGRAD_COUNTRY_ID.SelectedValue.ToString());
 
-     */
             string[] splitDate1 = txtBIRTHDAY.Text.Split('/');
-          //string[] splitDate2 = txtDATETIME_INWORRK.Text.Split('/');
+            string[] splitDate2 = txtDATETIME_INWORRK.Text.Split('/');
             P.BIRTHDAY = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
-          //P.DATETIME_INWORK = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
+            P.DATETIME_INWORK = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
         
             P.InsertPersonnel();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
