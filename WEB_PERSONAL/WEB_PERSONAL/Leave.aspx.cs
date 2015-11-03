@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 using System.Data.OracleClient;
 
 namespace WEB_PERSONAL
@@ -22,8 +23,7 @@ namespace WEB_PERSONAL
 
             try
             {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (OracleConnection con = new OracleConnection(connectionString))
+                using (OracleConnection con = Util.OC())
                 {
                     con.Open();
 
@@ -93,10 +93,8 @@ namespace WEB_PERSONAL
         {
             try
             {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (OracleConnection con = new OracleConnection(connectionString))
+                using (OracleConnection con = Util.OC())
                 {
-                    con.Open();
                     {
                         string sql = "SELECT count(*) FROM TB_LEAVE WHERE PAPER_ID = " + TextBox1.Text;
                         using (OracleCommand command = new OracleCommand(sql, con))
@@ -107,7 +105,7 @@ namespace WEB_PERSONAL
                                 {
                                     if (reader.GetInt32(0) == 1)
                                     {
-                                        string script2 = "alert(\"รหัสนี้มีอยู่ในระบบแล้ว!\");";
+                                        string script2 = "alert('รหัสนี้มีอยู่ในระบบแล้ว!');";
                                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
                                         return;
                                     }
@@ -119,20 +117,20 @@ namespace WEB_PERSONAL
                     {
                         string sql = "INSERT INTO TB_LEAVE VALUES(" +
                         TextBox1.Text + ",'" +
-                        toDate(TextBox2.Text) + "','" +
+                        Util.ToOracleDate(TextBox2.Text) + "','" +
                         TextBox3.Text + "'," +
                         DropDownList1.SelectedValue + ",'" +
-                        toDate(TextBox5.Text) + "', '" +
-                        toDate(TextBox6.Text) + "'," +
+                        Util.ToOracleDate(TextBox5.Text) + "', '" +
+                        Util.ToOracleDate(TextBox6.Text) + "'," +
                         DropDownList2.SelectedValue + ",'" +
                         TextBox8.Text + "', '" +
-                        toDate(TextBox9.Text) + "','" +
+                        Util.ToOracleDate(TextBox9.Text) + "','" +
                         TextBox10.Text + "')";
+                        TextBox10.Text = sql;
                         using (OracleCommand command = new OracleCommand(sql, con))
                         {
                             command.ExecuteNonQuery();
-                            string script2 = "alert(\"เพิ่มข้อมูลสำเร็จ!\");";
-                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
+                            Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
                         }
                     }
 
@@ -143,9 +141,10 @@ namespace WEB_PERSONAL
             }
             catch (Exception e2)
             {
-                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+                string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
+            
         }
 
         private string toDate(String str)
@@ -154,27 +153,25 @@ namespace WEB_PERSONAL
             int paper_date_y = Convert.ToInt32(paper_date_s[2]) - 543;
             return paper_date_y + paper_date_s[1] + paper_date_s[0];
         }
-
+        
         //save - update
         protected void LinkButton13_Click(object sender, EventArgs e)
         {
             try
             {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (OracleConnection con = new OracleConnection(connectionString))
+                using (OracleConnection con = Util.OC())
                 {
-                    con.Open();
                     {
                         string sql = "UPDATE TB_LEAVE SET " +
                         "PAPER_ID = " + TextBox1.Text + "," +
-                        "PAPER_DATE = '" + toDate(TextBox2.Text) + "'," +
+                        "PAPER_DATE = '" + Util.ToOracleDate(TextBox2.Text) + "'," +
                         "CITIZEN_ID = '" + TextBox3.Text + "'," +
                         "LEAVE_TYPE_ID = " + DropDownList1.SelectedValue + "," +
-                        "LEAVE_FROM_DATE = '" + toDate(TextBox5.Text) + "'," +
-                        "LEAVE_TO_DATE = '" + toDate(TextBox6.Text) + "'," +
+                        "LEAVE_FROM_DATE = '" + Util.ToOracleDate(TextBox5.Text) + "'," +
+                        "LEAVE_TO_DATE = '" + Util.ToOracleDate(TextBox6.Text) + "'," +
                         "LEAVE_STATUS_ID = " + DropDownList2.SelectedValue + "," +
                         "APPROVER_ID = '" + TextBox8.Text + "'," +
-                        "APPROVE_DATE = '" + toDate(TextBox9.Text) + "'," +
+                        "APPROVE_DATE = '" + Util.ToOracleDate(TextBox9.Text) + "'," +
                         "REASON = '" + TextBox10.Text + "' " +
                         "WHERE PAPER_ID = " + TextBox1.Text;
                         using (OracleCommand command = new OracleCommand(sql, con))
@@ -209,14 +206,14 @@ namespace WEB_PERSONAL
 
         protected void LinkButton14_Click(object sender, EventArgs e)
         {
+
             try
             {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (OracleConnection con = new OracleConnection(connectionString))
+                using (OracleConnection con = Util.OC())
                 {
                     con.Open();
                     {
-                        string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox3.Text + "'";
+                        string sql = "SELECT STF_NAME || ' ' || STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox3.Text + "'";
                         using (OracleCommand command = new OracleCommand(sql, con))
                         {
                             using(OracleDataReader reader = command.ExecuteReader())
@@ -251,12 +248,11 @@ namespace WEB_PERSONAL
         {
             try
             {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (OracleConnection con = new OracleConnection(connectionString))
+                using (OracleConnection con = Util.OC())
                 {
                     con.Open();
                     {
-                        string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox8.Text + "'";
+                        string sql = "SELECT STF_NAME || ' ' || STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox8.Text + "'";
                         using (OracleCommand command = new OracleCommand(sql, con))
                         {
                             using (OracleDataReader reader = command.ExecuteReader())
@@ -295,7 +291,6 @@ namespace WEB_PERSONAL
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
             string sql = "select citizen_id, stf_name from tb_personal";
 
             GridView1.AutoGenerateColumns = false;
@@ -313,7 +308,7 @@ namespace WEB_PERSONAL
                 test.HeaderText = "NAME";
                 GridView1.Columns.Add(test);
             }
-            SqlDataSource sds = new SqlDataSource(connectionString, sql);
+            SqlDataSource sds = new SqlDataSource(Util.CS(), sql);
             GridView1.DataSource = sds;
             GridView1.DataBind();
         }
@@ -336,7 +331,6 @@ namespace WEB_PERSONAL
 
         private void pullSql(string sql)
         {
-            string connectionString = "Data Source=ORCL_RMUTTO;User Id=RMUTTO;Password=Zxcvbnm";
 
             GridView1.AutoGenerateColumns = false;
             GridView1.Controls.Clear();
@@ -418,8 +412,8 @@ namespace WEB_PERSONAL
                 GridView1.Columns.Add(test);
             }
 
-            //OracleDataSource sds = new SqlDataSource(connectionString, sql);
-           // GridView1.DataSource = sds;
+            SqlDataSource sds = new SqlDataSource(Util.CS(), sql);
+            GridView1.DataSource = sds;
             GridView1.DataBind();
         }
 

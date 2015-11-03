@@ -51,6 +51,8 @@
                 OnRowDataBound="GridView1_RowDataBound"
                 OnPageIndexChanging="myGridViewSEMINARADMIN_PageIndexChanging" PageSize="10">
                 <Columns>
+                        <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
+                    	<asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" />
                     	<asp:TemplateField HeaderText="ID" Visible="false">
                        		 <ItemTemplate>
                             		<asp:Label ID="lblSEMINAR_ID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_ID") %>'></asp:Label>
@@ -286,8 +288,7 @@
                        		 </ItemTemplate>
                   	    </asp:TemplateField>
 
-                    	<asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
-                    	<asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" />
+                    	
                 </Columns>
             </asp:GridView>
 
