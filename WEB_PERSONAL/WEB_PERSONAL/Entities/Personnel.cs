@@ -97,7 +97,7 @@ namespace WEB_PERSONAL.Entities
                 query += " where 1=1 ";
                 if (!string.IsNullOrEmpty(SEMINAR_NAME))
                 {
-                    query += " and CITIZEN_ID like @CITIZEN_ID ";
+                    query += " and CITIZEN_ID like :CITIZEN_ID ";
                 }
             }
             OracleCommand command = new OracleCommand(query, conn);
@@ -135,7 +135,7 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_PERSONAL (YEAR,UNIV_ID,CITIZEN_ID,TITLE_ID,STF_NAME,STF_LNAME,GENDER_ID,BIRTHDAY,HOMEADD) VALUES (@YEAR,@UNIV_ID,@CITIZEN_ID,@TITLE_ID,@STF_NAME,@STF_LNAME,@GENDER_ID,@BIRTHDAY,HOMEADD)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_PERSONAL (YEAR,UNIV_ID,CITIZEN_ID,TITLE_ID,STF_NAME,STF_LNAME,GENDER_ID,BIRTHDAY,HOMEADD) VALUES (:YEAR,:UNIV_ID,:CITIZEN_ID,:TITLE_ID,:STF_NAME,:STF_LNAME,:GENDER_ID,:BIRTHDAY,HOMEADD)", conn);
         
             try
             {
@@ -196,31 +196,31 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             SqlConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_SEMINAR Set ";
-            query += " SEMINAR_NAME = @SEMINAR_NAME ,";
-            query += " SEMINAR_LASTNAME = @SEMINAR_LASTNAME ,";
-            query += " SEMINAR_POSITION = @SEMINAR_POSITION ,";
-            query += " SEMINAR_DEGREE = @SEMINAR_DEGREE ,";
-            query += " SEMINAR_CAMPUS = @SEMINAR_CAMPUS ,";
-            query += " SEMINAR_NAMEOFPROJECT = @SEMINAR_NAMEOFPROJECT ,";
-            query += " SEMINAR_PLACE = @SEMINAR_PLACE ,";
-            query += " SEMINAR_DATETIME_FROM = @SEMINAR_DATETIME_FROM ,";
-            query += " SEMINAR_DATETIME_TO = @SEMINAR_DATETIME_TO ,";
-            query += " SEMINAR_DAY = @SEMINAR_DAY ,";
-            query += " SEMINAR_MONTH = @SEMINAR_MONTH ,";
-            query += " SEMINAR_YEAR = @SEMINAR_YEAR ,";
-            query += " SEMINAR_BUDGET = @SEMINAR_BUDGET ,";
-            query += " SEMINAR_SUPPORT_BUDGET = @SEMINAR_SUPPORT_BUDGET ,";
-            query += " SEMINAR_CERTIFICATE = @SEMINAR_CERTIFICATE ,";
-            query += " SEMINAR_ABSTRACT = @SEMINAR_ABSTRACT ,";
-            query += " SEMINAR_RESULT = @SEMINAR_RESULT ,";
-            query += " SEMINAR_SHOW_1 = @SEMINAR_SHOW_1 ,";
-            query += " SEMINAR_SHOW_2 = @SEMINAR_SHOW_2 ,";
-            query += " SEMINAR_SHOW_3 = @SEMINAR_SHOW_3 ,";
-            query += " SEMINAR_SHOW_4 = @SEMINAR_SHOW_4 ,";
-            query += " SEMINAR_PROBLEM = @SEMINAR_PROBLEM ,";
-            query += " SEMINAR_COMMENT = @SEMINAR_COMMENT ,";
-            query += " SEMINAR_SIGNED_DATETIME = @SEMINAR_SIGNED_DATETIME ";
-            query += " where SEMINAR_ID  = @SEMINAR_ID";
+            query += " SEMINAR_NAME = :SEMINAR_NAME ,";
+            query += " SEMINAR_LASTNAME = :SEMINAR_LASTNAME ,";
+            query += " SEMINAR_POSITION = :SEMINAR_POSITION ,";
+            query += " SEMINAR_DEGREE = :SEMINAR_DEGREE ,";
+            query += " SEMINAR_CAMPUS = :SEMINAR_CAMPUS ,";
+            query += " SEMINAR_NAMEOFPROJECT = :SEMINAR_NAMEOFPROJECT ,";
+            query += " SEMINAR_PLACE = :SEMINAR_PLACE ,";
+            query += " SEMINAR_DATETIME_FROM = :SEMINAR_DATETIME_FROM ,";
+            query += " SEMINAR_DATETIME_TO = :SEMINAR_DATETIME_TO ,";
+            query += " SEMINAR_DAY = :SEMINAR_DAY ,";
+            query += " SEMINAR_MONTH = :SEMINAR_MONTH ,";
+            query += " SEMINAR_YEAR = :SEMINAR_YEAR ,";
+            query += " SEMINAR_BUDGET = :SEMINAR_BUDGET ,";
+            query += " SEMINAR_SUPPORT_BUDGET = :SEMINAR_SUPPORT_BUDGET ,";
+            query += " SEMINAR_CERTIFICATE = :SEMINAR_CERTIFICATE ,";
+            query += " SEMINAR_ABSTRACT = :SEMINAR_ABSTRACT ,";
+            query += " SEMINAR_RESULT = :SEMINAR_RESULT ,";
+            query += " SEMINAR_SHOW_1 = :SEMINAR_SHOW_1 ,";
+            query += " SEMINAR_SHOW_2 = :SEMINAR_SHOW_2 ,";
+            query += " SEMINAR_SHOW_3 = :SEMINAR_SHOW_3 ,";
+            query += " SEMINAR_SHOW_4 = :SEMINAR_SHOW_4 ,";
+            query += " SEMINAR_PROBLEM = :SEMINAR_PROBLEM ,";
+            query += " SEMINAR_COMMENT = :SEMINAR_COMMENT ,";
+            query += " SEMINAR_SIGNED_DATETIME = :SEMINAR_SIGNED_DATETIME ";
+            query += " where SEMINAR_ID  = :SEMINAR_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -275,7 +275,7 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_PERSONAL where CITIZEN_ID = @CITIZEN_ID", conn);
+            OracleCommand command = new OracleCommand("Delete TB_PERSONAL where CITIZEN_ID = :CITIZEN_ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)

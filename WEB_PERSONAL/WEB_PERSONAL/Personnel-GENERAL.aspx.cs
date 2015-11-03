@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+using System.Data.OracleClient;
 using System.Data;
 using System.Configuration;
 
@@ -13,7 +13,8 @@ namespace WEB_PERSONAL
 {
     public partial class Personnel_GENERAL : System.Web.UI.Page
     {
-        public static string strConn = @"Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!";
+      //  public static string strConn = @"Data Source = 203.158.140.67; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!";
+        public static string strConn = @"Data Source = ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -29,14 +30,14 @@ namespace WEB_PERSONAL
         {
             try
             {
-                using (SqlConnection sqlConn = new SqlConnection(strConn))
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
                 {
-                    using (SqlCommand sqlCmd = new SqlCommand())
+                    using (OracleCommand sqlCmd = new OracleCommand())
                     {
                         sqlCmd.CommandText = "select * from TB_PROVINCE";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
-                        SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         ddlPROVINCE.DataSource = dt;
@@ -59,15 +60,15 @@ namespace WEB_PERSONAL
         {
             try
             {
-                using (SqlConnection sqlConn = new SqlConnection(strConn))
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
                 {
-                    using (SqlCommand sqlCmd = new SqlCommand())
+                    using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_AMPHUR where PROVINCE_ID=@PROVINCE_ID";
-                        sqlCmd.Parameters.AddWithValue("@PROVINCE_ID", ddlPROVINCE.SelectedValue);
+                        sqlCmd.CommandText = "select * from TB_AMPHUR where PROVINCE_ID=:PROVINCE_ID";
+                        sqlCmd.Parameters.AddWithValue(":PROVINCE_ID", ddlPROVINCE.SelectedValue);
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
-                        SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         ddlAMPHUR.DataSource = dt;
@@ -90,15 +91,15 @@ namespace WEB_PERSONAL
         {
             try
             {
-                using (SqlConnection sqlConn = new SqlConnection(strConn))
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
                 {
-                    using (SqlCommand sqlCmd = new SqlCommand())
+                    using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DISTRICT where AMPHUR_ID=@DISTRICT_ID";
-                        sqlCmd.Parameters.AddWithValue("@DISTRICT_ID", ddlAMPHUR.SelectedValue);
+                        sqlCmd.CommandText = "select * from TB_DISTRICT where AMPHUR_ID=:DISTRICT_ID";
+                        sqlCmd.Parameters.AddWithValue(":DISTRICT_ID", ddlAMPHUR.SelectedValue);
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
-                        SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         ddlDISTRICT.DataSource = dt;
@@ -120,11 +121,11 @@ namespace WEB_PERSONAL
         {
             string ZIPCODE = "select POST_CODE from TB_DISTRICT where DISTRICT_ID = " + ddlDISTRICT.SelectedValue + "";
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connectionstring"].ConnectionString);
+            OracleConnection conn = new OracleConnection(ConfigurationManager.ConnectionStrings["RMUTTOORCL"].ConnectionString);
 
             conn.Open();
 
-            SqlCommand SC = new SqlCommand(ZIPCODE, conn);
+            OracleCommand SC = new OracleCommand(ZIPCODE, conn);
             string ZIPCODE2 = SC.ExecuteScalar().ToString();
 
             txtZIPCODE.Text = ZIPCODE2;
