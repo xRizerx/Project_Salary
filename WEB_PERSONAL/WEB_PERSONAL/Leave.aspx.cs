@@ -24,14 +24,14 @@ namespace WEB_PERSONAL
             try
             {
                 string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (OracleConnection con = new OracleConnection(connectionString))
                 {
                     con.Open();
 
                     {
-                        using (SqlCommand command = new SqlCommand(
+                        using (OracleCommand command = new OracleCommand(
                         "SELECT COUNT(*) FROM TB_LEAVE WHERE PAPER_ID = " + TextBox1.Text, con))
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        using (OracleDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
@@ -45,9 +45,9 @@ namespace WEB_PERSONAL
                     }
 
                     {
-                        using (SqlCommand command = new SqlCommand(
+                        using (OracleCommand command = new OracleCommand(
                         "SELECT TB_LEAVE.Leave_type_id, TB_PERSONAL.CITIZEN_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, TB_LEAVE.Reason, TB_LEAVE.LEAVE_FROM_DATE, TB_LEAVE.LEAVE_TO_DATE, TB_LEAVE.PAPER_DATE, TB_LEAVE.LEAVE_STATUS_ID FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.PAPER_ID = " + TextBox1.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.CITIZEN_ID", con))
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        using (OracleDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
@@ -64,9 +64,9 @@ namespace WEB_PERSONAL
                     }
 
                     {
-                        using (SqlCommand command = new SqlCommand(
+                        using (OracleCommand command = new OracleCommand(
                         "SELECT TB_LEAVE.APPROVER_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, TB_LEAVE.APPROVE_DATE FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.PAPER_ID = " + TextBox1.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.APPROVER_ID", con))
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        using (OracleDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
@@ -95,14 +95,14 @@ namespace WEB_PERSONAL
             try
             {
                 string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (OracleConnection con = new OracleConnection(connectionString))
                 {
                     con.Open();
                     {
                         string sql = "SELECT count(*) FROM TB_LEAVE WHERE PAPER_ID = " + TextBox1.Text;
-                        using (SqlCommand command = new SqlCommand(sql, con))
+                        using (OracleCommand command = new OracleCommand(sql, con))
                         {
-                            using (SqlDataReader reader = command.ExecuteReader())
+                            using (OracleDataReader reader = command.ExecuteReader())
                             {
                                 while (reader.Read())
                                 {
@@ -129,7 +129,7 @@ namespace WEB_PERSONAL
                         TextBox8.Text + "', '" +
                         toDate(TextBox9.Text) + "','" +
                         TextBox10.Text + "')";
-                        using (SqlCommand command = new SqlCommand(sql, con))
+                        using (OracleCommand command = new OracleCommand(sql, con))
                         {
                             command.ExecuteNonQuery();
                             string script2 = "alert(\"เพิ่มข้อมูลสำเร็จ!\");";
@@ -162,7 +162,7 @@ namespace WEB_PERSONAL
             try
             {
                 string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (OracleConnection con = new OracleConnection(connectionString))
                 {
                     con.Open();
                     {
@@ -178,7 +178,7 @@ namespace WEB_PERSONAL
                         "APPROVE_DATE = '" + toDate(TextBox9.Text) + "'," +
                         "REASON = '" + TextBox10.Text + "' " +
                         "WHERE PAPER_ID = " + TextBox1.Text;
-                        using (SqlCommand command = new SqlCommand(sql, con))
+                        using (OracleCommand command = new OracleCommand(sql, con))
                         {
                             command.ExecuteNonQuery();
                             string script2 = "alert(\"บันทึกสำเร็จ!\");";
@@ -213,14 +213,14 @@ namespace WEB_PERSONAL
             try
             {
                 string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (OracleConnection con = new OracleConnection(connectionString))
                 {
                     con.Open();
                     {
                         string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox3.Text + "'";
-                        using (SqlCommand command = new SqlCommand(sql, con))
+                        using (OracleCommand command = new OracleCommand(sql, con))
                         {
-                            using(SqlDataReader reader = command.ExecuteReader())
+                            using(OracleDataReader reader = command.ExecuteReader())
                             {
                                 if(reader.HasRows)
                                 {
@@ -253,14 +253,14 @@ namespace WEB_PERSONAL
             try
             {
                 string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (OracleConnection con = new OracleConnection(connectionString))
                 {
                     con.Open();
                     {
                         string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox8.Text + "'";
-                        using (SqlCommand command = new SqlCommand(sql, con))
+                        using (OracleCommand command = new OracleCommand(sql, con))
                         {
-                            using (SqlDataReader reader = command.ExecuteReader())
+                            using (OracleDataReader reader = command.ExecuteReader())
                             {
                                 if (reader.HasRows)
                                 {
@@ -418,8 +418,9 @@ namespace WEB_PERSONAL
                 test.HeaderText = "เหตุผล";
                 GridView1.Columns.Add(test);
             }
-            SqlDataSource sds = new SqlDataSource(connectionString, sql);
-            GridView1.DataSource = sds;
+
+            //OracleDataSource sds = new SqlDataSource(connectionString, sql);
+           // GridView1.DataSource = sds;
             GridView1.DataBind();
         }
 

@@ -82,8 +82,10 @@ namespace WEB_PERSONAL
             ptn.TITLE_NAME_EN = txtTitleNameEn.Text;
             ptn.TITLE_NAME_EN_MIN = txtTitleNameEnMin.Text;
 
-
-            if (ptn.CheckUseTitleNameTH())
+            ptn.InsertTITLENAME();
+            BindData();
+        }
+         /*    if (ptn.CheckUseTitleNameTH())
             {
                 ptn.InsertTITLENAME();
                 BindData();
@@ -92,7 +94,7 @@ namespace WEB_PERSONAL
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ชื่อภาษาไทยใช้แล้ว')", true);
             }
-        }/*   if (ptn.CheckUseTitleNameTHmin())
+        }   if (ptn.CheckUseTitleNameTHmin())
             {
                 ptn.InsertTITLENAME();
                 BindData();

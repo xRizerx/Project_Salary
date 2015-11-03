@@ -1,8 +1,8 @@
-﻿using WEB_PERSONAL.Connection;
+﻿using Rmutto.Connection;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.OracleClient;
 using System.Linq;
 using System.Web;
 
@@ -30,21 +30,21 @@ namespace WEB_PERSONAL.Entities
         public DataTable GetTITLENAME(string TITLENAMETH, string TITLENAMEEN)
         {
             DataTable dt = new DataTable();
-            SqlConnection conn = ConnectionDB.GetSqlConnection();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "SELECT * FROM TB_TITLENAME ";
             if (!string.IsNullOrEmpty(TITLENAMETH) || !string.IsNullOrEmpty(TITLENAMEEN))
             {
                 query += " where 1=1 ";
                 if (!string.IsNullOrEmpty(TITLE_NAME_TH))
                 {
-                    query += " and TITLE_NAME_TH like @TITLENAMETH ";
+                    query += " and TITLE_NAME_TH like :TITLENAMETH ";
                 }
                 if (!string.IsNullOrEmpty(TITLE_NAME_EN))
                 {
-                    query += " and TITLE_NAME_EN like @TITLENAMEEN ";
+                    query += " and TITLE_NAME_EN like :TITLENAMEEN ";
                 }
             }
-            SqlCommand command = new SqlCommand(query, conn);
+            OracleCommand command = new OracleCommand(query, conn);
             // Create the command
             try
             {
@@ -55,13 +55,13 @@ namespace WEB_PERSONAL.Entities
 
                 if (!string.IsNullOrEmpty(TITLENAMETH))
                 {
-                    command.Parameters.Add(new SqlParameter("TITLENAMETH", TITLENAMETH + "%"));
+                    command.Parameters.Add(new OracleParameter("TITLENAMETH", TITLENAMETH + "%"));
                 }
                 if (!string.IsNullOrEmpty(TITLENAMEEN))
                 {
-                    command.Parameters.Add(new SqlParameter("TITLENAMEEN", TITLENAMEEN));
+                    command.Parameters.Add(new OracleParameter("TITLENAMEEN", TITLENAMEEN));
                 }
-                SqlDataAdapter sd = new SqlDataAdapter(command);
+                OracleDataAdapter sd = new OracleDataAdapter(command);
                 sd.Fill(dt);
             }
             catch (Exception ex)
@@ -81,18 +81,19 @@ namespace WEB_PERSONAL.Entities
         public int InsertTITLENAME()
         {
             int id = 0;
-            SqlConnection conn = ConnectionDB.GetSqlConnection();
-            SqlCommand command = new SqlCommand("INSERT INTO TB_TITLENAME (TITLE_NAME_TH,TITLE_NAME_TH_MIN,TITLE_NAME_EN,TITLE_NAME_EN_MIN) VALUES (@TITLE_NAME_TH, @TITLE_NAME_TH_MIN, @TITLE_NAME_EN, @TITLE_NAME_EN_MIN)", conn);
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_TITLENAME (TITLE_NAME_TH,TITLE_NAME_TH_MIN,TITLE_NAME_EN,TITLE_NAME_EN_MIN) VALUES (:TITLE_NAME_TH, :TITLE_NAME_TH_MIN, :TITLE_NAME_EN, :TITLE_NAME_EN_MIN)", conn);
+         //   OracleTransaction commit = conn.BeginTransaction(IsolationLevel.ReadCommitted);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new SqlParameter("TITLE_NAME_TH", TITLE_NAME_TH));
-                command.Parameters.Add(new SqlParameter("TITLE_NAME_TH_MIN", TITLE_NAME_TH_MIN));
-                command.Parameters.Add(new SqlParameter("TITLE_NAME_EN", TITLE_NAME_EN));
-                command.Parameters.Add(new SqlParameter("TITLE_NAME_EN_MIN", TITLE_NAME_EN_MIN));
+                command.Parameters.Add(new OracleParameter("TITLE_NAME_TH", TITLE_NAME_TH));
+                command.Parameters.Add(new OracleParameter("TITLE_NAME_TH_MIN", TITLE_NAME_TH_MIN));
+                command.Parameters.Add(new OracleParameter("TITLE_NAME_EN", TITLE_NAME_EN));
+                command.Parameters.Add(new OracleParameter("TITLE_NAME_EN_MIN", TITLE_NAME_EN_MIN));
                 id = command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -106,30 +107,30 @@ namespace WEB_PERSONAL.Entities
             }
             return id;
         }
-
+        
         public bool UpdateTITLENAME()
         {
             bool result = false;
-            SqlConnection conn = ConnectionDB.GetSqlConnection();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_TITLENAME Set ";
-            query += " TITLE_NAME_TH = @TITLE_NAME_TH,";
-            query += " TITLE_NAME_TH_MIN = @TITLE_NAME_TH_MIN,";
-            query += " TITLE_NAME_EN = @TITLE_NAME_EN,";
-            query += " TITLE_NAME_EN_MIN = @TITLE_NAME_EN_MIN";
-            query += " where TITLE_ID = @TITLE_ID";
+            query += " TITLE_NAME_TH = :TITLE_NAME_TH,";
+            query += " TITLE_NAME_TH_MIN = :TITLE_NAME_TH_MIN,";
+            query += " TITLE_NAME_EN = :TITLE_NAME_EN,";
+            query += " TITLE_NAME_EN_MIN = :TITLE_NAME_EN_MIN";
+            query += " where TITLE_ID = :TITLE_ID";
 
-            SqlCommand command = new SqlCommand(query, conn);
+            OracleCommand command = new OracleCommand(query, conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new SqlParameter("TITLE_NAME_TH", TITLE_NAME_TH));
-                command.Parameters.Add(new SqlParameter("TITLE_NAME_TH_MIN", TITLE_NAME_TH_MIN));
-                command.Parameters.Add(new SqlParameter("TITLE_NAME_EN", TITLE_NAME_EN));
-                command.Parameters.Add(new SqlParameter("TITLE_NAME_EN_MIN", TITLE_NAME_EN_MIN));
-                command.Parameters.Add(new SqlParameter("TITLE_ID", TITLE_ID));
+                command.Parameters.Add(new OracleParameter("TITLE_NAME_TH", TITLE_NAME_TH));
+                command.Parameters.Add(new OracleParameter("TITLE_NAME_TH_MIN", TITLE_NAME_TH_MIN));
+                command.Parameters.Add(new OracleParameter("TITLE_NAME_EN", TITLE_NAME_EN));
+                command.Parameters.Add(new OracleParameter("TITLE_NAME_EN_MIN", TITLE_NAME_EN_MIN));
+                command.Parameters.Add(new OracleParameter("TITLE_ID", TITLE_ID));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -150,15 +151,15 @@ namespace WEB_PERSONAL.Entities
         public bool DeleteTITLENAME()
         {
             bool result = false;
-            SqlConnection conn = ConnectionDB.GetSqlConnection();
-            SqlCommand command = new SqlCommand("Delete TB_TITLENAME where TITLE_ID = @TITLE_ID", conn);
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_TITLENAME where TITLE_ID = :TITLE_ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new SqlParameter("TITLE_ID", TITLE_ID));
+                command.Parameters.Add(new OracleParameter("TITLE_ID", TITLE_ID));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -178,13 +179,13 @@ namespace WEB_PERSONAL.Entities
         public bool CheckUseTitleNameTH()
         {
             bool result = true;
-            SqlConnection conn = ConnectionDB.GetSqlConnection();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
 
             // Create the command
-            SqlCommand command1 = new SqlCommand("SELECT count(TITLE_NAME_TH) FROM TB_TITLENAME WHERE TITLE_NAME_TH = @TITLE_NAME_TH ", conn);
+            OracleCommand command1 = new OracleCommand("SELECT count(TITLE_NAME_TH) FROM TB_TITLENAME WHERE TITLE_NAME_TH = :TITLE_NAME_TH ", conn);
 
             // Add the parameters.
-            command1.Parameters.Add(new SqlParameter("TITLE_NAME_TH", TITLE_NAME_TH));
+            command1.Parameters.Add(new OracleParameter("TITLE_NAME_TH", TITLE_NAME_TH));
             try
             {
                 if (conn.State != ConnectionState.Open)
@@ -217,7 +218,7 @@ namespace WEB_PERSONAL.Entities
             SqlConnection conn = ConnectionDB.GetSqlConnection();
 
             // Create the command
-            SqlCommand command2 = new SqlCommand("SELECT count(TITLE_NAME_TH_MIN) FROM TB_TITLENAME WHERE TITLE_NAME_TH_MIN = @TITLE_NAME_TH_MIN ", conn);
+            SqlCommand command2 = new SqlCommand("SELECT count(TITLE_NAME_TH_MIN) FROM TB_TITLENAME WHERE TITLE_NAME_TH_MIN = :TITLE_NAME_TH_MIN ", conn);
 
             // Add the parameters.
             command2.Parameters.Add(new SqlParameter("TITLE_NAME_TH_MIN", TITLE_NAME_TH_MIN));
@@ -252,7 +253,7 @@ namespace WEB_PERSONAL.Entities
             SqlConnection conn = ConnectionDB.GetSqlConnection();
 
             // Create the command
-            SqlCommand command3 = new SqlCommand("SELECT count(TITLE_NAME_EN) FROM TB_TITLENAME WHERE TITLE_NAME_EN = @TITLE_NAME_EN ", conn);
+            SqlCommand command3 = new SqlCommand("SELECT count(TITLE_NAME_EN) FROM TB_TITLENAME WHERE TITLE_NAME_EN = :TITLE_NAME_EN ", conn);
 
             // Add the parameters.
             command3.Parameters.Add(new SqlParameter("TITLE_NAME_EN", TITLE_NAME_EN));
@@ -287,7 +288,7 @@ namespace WEB_PERSONAL.Entities
             SqlConnection conn = ConnectionDB.GetSqlConnection();
 
             // Create the command
-            SqlCommand command4 = new SqlCommand("SELECT count(TITLE_NAME_EN_MIN) FROM TB_TITLENAME WHERE TITLE_NAME_EN_MIN = @TITLE_NAME_EN_MIN ", conn);
+            SqlCommand command4 = new SqlCommand("SELECT count(TITLE_NAME_EN_MIN) FROM TB_TITLENAME WHERE TITLE_NAME_EN_MIN = :TITLE_NAME_EN_MIN ", conn);
 
             // Add the parameters.
             command4.Parameters.Add(new SqlParameter("TITLE_NAME_EN_MIN", TITLE_NAME_EN_MIN));

@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
+using System.Data.OracleClient;
 using System.Linq;
 using System.Web;
 
-namespace WEB_PERSONAL.Connection
+namespace Rmutto.Connection
 {
     public static class ConnectionDB
     {
-        private static SqlConnection conn;
+        private static OracleConnection conn;
         static ConnectionDB()
         {
             //
             // TODO: Add constructor logic here
             //
-            string connectionString = ConfigurationManager.ConnectionStrings["Connectionstring"].ToString();
-            conn = new SqlConnection(connectionString);
+            string connectionString = ConfigurationManager.ConnectionStrings["RMUTTOORCL"].ToString();
+            conn = new OracleConnection(connectionString);
         }
 
-        public static SqlConnection GetSqlConnection()
+        public static OracleConnection GetOracleConnection()
         {
             return conn;
         }
