@@ -151,6 +151,7 @@
     <Content Include="Image\i3.jpg" />
     <Content Include="Image\nopm.jpg" />
     <Content Include="Image\sky.jpg" />
+    <Content Include="insignia_from_edit.aspx" />
     <Content Include="insignia_recordnote 2.aspx" />
     <Content Include="insignia_recordnote.aspx" />
     <Content Include="js\index.js" />
@@ -230,6 +231,13 @@
     </Compile>
     <Compile Include="Error-Member.aspx.designer.cs">
       <DependentUpon>Error-Member.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_from_edit.aspx.cs">
+      <DependentUpon>insignia_from_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_from_edit.aspx.designer.cs">
+      <DependentUpon>insignia_from_edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_recordnote 2.aspx.cs">
       <DependentUpon>insignia_recordnote 2.aspx</DependentUpon>

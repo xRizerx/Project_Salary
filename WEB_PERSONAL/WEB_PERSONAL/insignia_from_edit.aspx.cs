@@ -8,7 +8,7 @@ using System.Data.OracleClient;
 
 namespace WEB_PERSONAL
 {
-    public partial class insignia1 : System.Web.UI.Page
+    public partial class insignia2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -58,7 +58,7 @@ namespace WEB_PERSONAL
                                     {
                                         TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
                                         TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
-                                        TextBox6.Text = reader.GetString(2); /*tb_gender.gender_name*/
+                                        DropDownList6 = reader.GetString(2); /*tb_gender.gender_name
                                         TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy"); /*tb_personal.birthday*/
                                         TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
                                         TextBox2.Text = reader.GetString(5); /*tb_rank.rank_name_th*/
@@ -108,7 +108,7 @@ namespace WEB_PERSONAL
 
         protected void Button2_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("insignia_from_edit.aspx");
+            Response.Redirect("insignia_from_edit");
         }
 
         protected void Button4_Click(object sender, EventArgs e)
