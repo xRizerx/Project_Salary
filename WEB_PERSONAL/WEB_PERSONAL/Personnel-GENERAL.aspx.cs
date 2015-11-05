@@ -246,11 +246,19 @@ namespace WEB_PERSONAL
             string[] splitDate2 = txtDATETIME_INWORRK.Text.Split('/');
             P.BIRTHDAY = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
             P.DATETIME_INWORK = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
-        
-            P.InsertPersonnel();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
-            ClearData();
-        }
 
+            if (P.CheckUseCitizenID())
+            {
+                P.InsertPersonnel();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสประจำตัวประชาชนอยู่ในระบบแล้ว !')", true);
+            }
+        }
     }
+
+    
 }

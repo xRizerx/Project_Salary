@@ -3,9 +3,12 @@
     <style type="text/css">
         .panin {
             background-image: url("Image/insignia01.jpg");
-            background-size:100%;
             border-radius:5px;
+            background-size: contain;
             background-repeat:no-repeat;
+        }
+        .p2 {
+            background-color: rgba(128, 128, 128, 0.3);
         }
         .auto-style3 {
             text-align: center;
@@ -17,21 +20,17 @@
             background-color:#808080;
             text-decoration:none;
             color:white;
-            transition: color 0.25s ease, background-color 0.25s ease;
+            transition: color 0.75s ease, background-color 0.75s ease;
             display:inline;
         }
         .button:hover {
     color: #00ffff;
     background-color: #808080;
 }
-        .auto-style6 {
-            width: 280px;
-        }
-        .auto-style8 {
-            width: 500px;
-        }
         .auto-style9 {
-            font-size: x-large;
+            font-size: 32px;
+            color: #ffffff;
+            text-shadow: 1px 1px 1px #000000;
         }
         .auto-style10 {
             text-align: right;
@@ -39,32 +38,35 @@
         .auto-style11 {
             text-align: left;
         }
+        .auto-style13 {
+            width: 500px;
+            height: 183px;
+        }
+        .auto-style14 {
+            width: 280px;
+            height: 257px;
+        }
+        .auto-style15 {
+            width: 280px;
+            height: 183px;
+        }
         </style>
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel8" runat="server" Height="1077px">
-        <table style="width:100%;">
+    <asp:Panel ID="Panel8" runat="server" Height="1077px" CssClass="panin">
+        <div style="height:100px"></div>
+        <div class="p2">
+            
+            <table style="width:100%;">
             <tr>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style8">&nbsp;</td>
-                <td class="auto-style6">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style8">
-                    <asp:Panel ID="Panel9" runat="server" Height="388px" Width="536px" CssClass="panin" BorderWidth="0px">
+                <td class="auto-style15"></td>
+                <td class="auto-style13">
+                    <asp:Panel ID="Panel9" runat="server" Height="173px" Width="536px" BorderWidth="0px">
                         
                         <table style="width:100%;">
                             <tr>
-                                <td colspan="2" class="auto-style3">
-                                    &nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">&nbsp;</td>
-                            </tr>
-                            <tr>
                                 <td class="auto-style3" colspan="2">
-                                    <asp:Label ID="Label9" runat="server" BackColor="White" CssClass="auto-style9" Text="กรอกรหัสบัตรประจำตัวประชาชน"></asp:Label>
+                                    <asp:Label ID="Label9" runat="server" CssClass="auto-style9" Text="กรอกรหัสบัตรประจำตัวประชาชน"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -93,13 +95,11 @@
                         
                     </asp:Panel>
                 </td>
-                <td class="auto-style6">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style8">&nbsp;</td>
-                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style15"></td>
             </tr>
         </table>
+        </div>
+            
+        
     </asp:Panel>
 </asp:Content>

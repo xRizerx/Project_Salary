@@ -396,7 +396,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_UNIVERSITY ";
+            string query = "SELECT * FROM TB_UNIVERSITY_V2 order by UNIV_ID asc ";
             if (!string.IsNullOrEmpty(UNIV_ID) || !string.IsNullOrEmpty(UNIV_NAME))
             {
                 query += " where 1=1 ";
@@ -424,7 +424,58 @@ namespace WEB_PERSONAL.Entities
                 }
                 if (!string.IsNullOrEmpty(UNIV_NAME))
                 {
-                    command.Parameters.Add(new OracleParameter("UNIV_NAME", UNIV_NAME + "%"));
+                    command.Parameters.Add(new OracleParameter("UNIV_NAME", "%" + UNIV_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetUniversitySearch(string UNIV_ID, string UNIV_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_UNIVERSITY_V2 ";
+            if (!string.IsNullOrEmpty(UNIV_ID) || !string.IsNullOrEmpty(UNIV_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(UNIV_ID))
+                {
+                    query += " and UNIV_ID like :UNIV_ID ";
+                }
+                if (!string.IsNullOrEmpty(UNIV_NAME))
+                {
+                    query += " and UNIV_NAME like :UNIV_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(UNIV_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("UNIV_ID", UNIV_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(UNIV_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("UNIV_NAME", "%" + UNIV_NAME + "%"));
                 }
                 OracleDataAdapter sd = new OracleDataAdapter(command);
                 sd.Fill(dt);
@@ -447,7 +498,7 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_UNIVERSITY (UNIV_ID,UNIV_NAME) VALUES (:UNIV_ID, :UNIV_NAME)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_UNIVERSITY_V2 (UNIV_ID,UNIV_NAME) VALUES (:UNIV_ID, :UNIV_NAME)", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
@@ -474,7 +525,7 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "Update TB_UNIVERSITY Set ";
+            string query = "Update TB_UNIVERSITY_V2 Set ";
             query += " UNIV_ID = :UNIV_ID,";
             query += " UNIV_NAME = :UNIV_NAME";
             query += " where UNIV_SEQ = :UNIV_SEQ";
@@ -509,7 +560,7 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_UNIVERSITY where UNIV_SEQ = :UNIV_SEQ", conn);
+            OracleCommand command = new OracleCommand("Delete TB_UNIVERSITY_V2 where UNIV_SEQ = :UNIV_SEQ", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)

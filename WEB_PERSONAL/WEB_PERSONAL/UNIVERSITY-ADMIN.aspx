@@ -34,8 +34,8 @@
         <fieldset>
             <legend>Search</legend>
             <div>
-                รหัสมหาวิทยาลัย :&nbsp<asp:TextBox ID="txtSearchUnivID" runat="server" CssClass="tb5" Width="100px" MaxLength="5"></asp:TextBox>
-                ชื่อมหาวิทยาลัย :&nbsp<asp:TextBox ID="txtSearchUnivName" runat="server" CssClass="tb5" Width="100px" MaxLength="100"></asp:TextBox>
+                รหัสมหาวิทยาลัย :&nbsp<asp:TextBox ID="txtSearchUnivID" runat="server" CssClass="tb5" Width="230px" MaxLength="5"></asp:TextBox>
+                ชื่อมหาวิทยาลัย :&nbsp<asp:TextBox ID="txtSearchUnivName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchUniv" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchUniv_Click" />
             </div>
         </fieldset>
@@ -46,7 +46,7 @@
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width: 110px;"></td>
+                        <td style="text-align: left; width: 89px;"></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสมหาวิทยาลัย :&nbsp;</td>
                         <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertUnivID" runat="server" CssClass="tb5" MaxLength="5"></asp:TextBox></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อมหาวิทยาลัย :&nbsp;</td>
@@ -61,7 +61,7 @@
     <div>
         <fieldset >
             <legend>Data</legend>
-            <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
+            <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: left;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="UNIV_SEQ"
@@ -85,7 +85,7 @@
                             		<asp:TextBox ID="txtUnivIDEdit" MaxLength="5" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.UNIV_ID") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="ชื่อมหาวิทยาลัย" ControlStyle-Width="223">
+                     <asp:TemplateField HeaderText="ชื่อมหาวิทยาลัย" ControlStyle-Width="600">
                             <ItemTemplate>
                             <asp:Label ID="lblUnivNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.UNIV_NAME") %>'></asp:Label>
                             </ItemTemplate>

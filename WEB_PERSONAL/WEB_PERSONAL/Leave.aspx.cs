@@ -7,131 +7,11 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data.OracleClient;
 using System.Globalization;
+using System.Drawing;
 
 namespace WEB_PERSONAL {
     public partial class Leave : System.Web.UI.Page {
         //pull from paper_id
-        protected void LinkButton11_Click(object sender, EventArgs e) {
-            Label20.Text = "";
-            if (TextBox1.Text == "") {
-                Label20.Text = "กรุณากรอกรหัสเอกสาร!";
-                return;
-            }
-
-            try {
-                using (OracleConnection con = Util.OC()) {
-                    {
-                        using (OracleCommand command = new OracleCommand(
-                        "SELECT COUNT(*) FROM TB_LEAVE WHERE PAPER_ID = " + TextBox1.Text, con))
-                        using (OracleDataReader reader = command.ExecuteReader()) {
-                            while (reader.Read()) {
-                                if (reader.GetInt32(0) == 0) {
-                                    Label20.Text = "ไม่พบรหัสเอกสาร!";
-                                    return;
-                                }
-                            }
-                        }
-                    }
-
-                    {
-                        using (OracleCommand command = new OracleCommand(
-                        "SELECT TB_LEAVE.Leave_type_id, TB_PERSONAL.CITIZEN_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, NVL(TB_LEAVE.Reason,''), TB_LEAVE.LEAVE_FROM_DATE, TB_LEAVE.LEAVE_TO_DATE, TB_LEAVE.PAPER_DATE, TB_LEAVE.LEAVE_STATUS_ID FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.PAPER_ID = " + TextBox1.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.CITIZEN_ID", con))
-                        using (OracleDataReader reader = command.ExecuteReader()) {
-                            while (reader.Read()) {
-                                DropDownList1.SelectedValue = reader.GetInt32(0).ToString();
-                                TextBox3.Text = reader.GetString(1);
-                                TextBox11.Text = reader.GetString(2) + " " + reader.GetString(3);
-                                TextBox10.Text = reader.IsDBNull(4) ? "":reader.GetString(4);
-                                TextBox5.Text = reader.GetDateTime(5).ToString("dd/MM/yyyy");
-                                TextBox6.Text = reader.GetDateTime(6).ToString("dd/MM/yyyy");
-                                TextBox2.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy");
-                                DropDownList2.SelectedValue = reader.GetInt32(8).ToString();
-                            }
-                        }
-                    }
-
-                    {
-                        using (OracleCommand command = new OracleCommand(
-                        "SELECT TB_LEAVE.APPROVER_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, TB_LEAVE.APPROVE_DATE FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.PAPER_ID = " + TextBox1.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.APPROVER_ID", con))
-                        using (OracleDataReader reader = command.ExecuteReader()) {
-                            while (reader.Read()) {
-                                TextBox8.Text = reader.GetString(0);
-                                TextBox13.Text = reader.GetString(1) + " " + reader.GetString(2);
-                                TextBox9.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy");
-                            }
-                        }
-                    }
-
-                }
-
-
-            } catch (Exception e2) {
-                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
-
-        }
-
-        //insert
-        protected void LinkButton12_Click(object sender, EventArgs e) {
-           // try {
-                using (OracleConnection con = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;")) {
-                    {
-                        con.Open();
-                        string sql = "SELECT count(*) FROM TB_LEAVE WHERE PAPER_ID = " + TextBox1.Text;
-                        using (OracleCommand command = new OracleCommand(sql, con)) {
-                            using (OracleDataReader reader = command.ExecuteReader()) {
-                                while (reader.Read()) {
-                                    if (reader.GetInt32(0) == 1) {
-                                        Util.Alert(this, "รหัสนี้มีอยู่ในระบบแล้ว!");
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    {
-                       /* string sql = "INSERT INTO TB_LEAVE VALUES(" +
-                        TextBox1.Text + ",'" +
-                        Util.ToOracleDate(TextBox2.Text) + "','" +
-                        TextBox3.Text + "'," +
-                        DropDownList1.SelectedValue + ",'" +
-                        Util.ToOracleDate(TextBox5.Text) + "', '" +
-                        Util.ToOracleDate(TextBox6.Text) + "'," +
-                        DropDownList2.SelectedValue + ",'" +
-                        TextBox8.Text + "', '" +
-                        Util.ToOracleDate(TextBox9.Text) + "','" +
-                        TextBox10.Text + "')";*/
-
-                    string sql = "INSERT INTO TB_LEAVE VALUES(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10)";
-
-                        using (OracleCommand command = new OracleCommand(sql, con)) {
-                        command.Parameters.AddWithValue("1", TextBox1.Text);
-                        command.Parameters.AddWithValue("2", DateTime.ParseExact(TextBox2.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture));
-                        command.Parameters.AddWithValue("3", TextBox3.Text);
-                        command.Parameters.AddWithValue("4", DropDownList1.SelectedValue);
-                        command.Parameters.AddWithValue("5", DateTime.ParseExact(TextBox5.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture));
-                        command.Parameters.AddWithValue("6", DateTime.ParseExact(TextBox6.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture));
-                        command.Parameters.AddWithValue("7", DropDownList2.SelectedValue);
-                        command.Parameters.AddWithValue("8", TextBox8.Text);
-                        command.Parameters.AddWithValue("9", DateTime.ParseExact(TextBox9.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture));
-                        command.Parameters.AddWithValue("10", TextBox10.Text);
-
-                        command.ExecuteNonQuery();
-                            Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
-                        }
-                    }
-
-
-
-
-                }
-            //} catch (Exception e2) {
-            //    Util.Alert(this,"เกิดข้อผิดพลาด! " + e2.Message);
-            //}
-
-        }
 
         private string toDate(String str) {
             string[] paper_date_s = str.Split('/');
@@ -141,32 +21,30 @@ namespace WEB_PERSONAL {
 
         //save - update
         protected void LinkButton13_Click(object sender, EventArgs e) {
-            try {
-                using (OracleConnection con = Util.OC()) {
-                    {
-                        string sql = "UPDATE TB_LEAVE SET " +
-                        "PAPER_ID = " + TextBox1.Text + "," +
-                        "PAPER_DATE = '" + Util.ToOracleDate(TextBox2.Text) + "'," +
-                        "CITIZEN_ID = '" + TextBox3.Text + "'," +
-                        "LEAVE_TYPE_ID = " + DropDownList1.SelectedValue + "," +
-                        "LEAVE_FROM_DATE = '" + Util.ToOracleDate(TextBox5.Text) + "'," +
-                        "LEAVE_TO_DATE = '" + Util.ToOracleDate(TextBox6.Text) + "'," +
-                        "LEAVE_STATUS_ID = " + DropDownList2.SelectedValue + "," +
-                        "APPROVER_ID = '" + TextBox8.Text + "'," +
-                        "APPROVE_DATE = '" + Util.ToOracleDate(TextBox9.Text) + "'," +
-                        "REASON = '" + TextBox10.Text + "' " +
-                        "WHERE PAPER_ID = " + TextBox1.Text;
-                        using (OracleCommand command = new OracleCommand(sql, con)) {
-                            command.ExecuteNonQuery();
-                            string script2 = "alert(\"บันทึกสำเร็จ!\");";
-                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
-                        }
+            //try {
+            using (OracleConnection con = Util.OC()) {
+                {
+                    string sql = "UPDATE TB_LEAVE SET PAPER_ID = :1, PAPER_DATE = :2, CITIZEN_ID = :3, LEAVE_TYPE_ID = :4, LEAVE_FROM_DATE = :5, LEAVE_TO_DATE = :6, LEAVE_STATUS_ID = :7, APPROVER_ID = :8, APPROVE_DATE = :9, REASON = :10 WHERE PAPER_ID = :1";
+                    using (OracleCommand command = new OracleCommand(sql, con)) {
+                        command.Parameters.AddWithValue("1", Label33.Text);
+                        command.Parameters.AddWithValue("2", Util.toOracleDateTime(TextBox2.Text));
+                        command.Parameters.AddWithValue("3", TextBox3.Text);
+                        command.Parameters.AddWithValue("4", DropDownList1.SelectedValue);
+                        command.Parameters.AddWithValue("5", Util.toOracleDateTime(TextBox5.Text));
+                        command.Parameters.AddWithValue("6", Util.toOracleDateTime(TextBox6.Text));
+                        command.Parameters.AddWithValue("7", DropDownList2.SelectedValue);
+                        command.Parameters.AddWithValue("8", TextBox8.Text);
+                        command.Parameters.AddWithValue("9", Util.toOracleDateTime(TextBox9.Text));
+                        command.Parameters.AddWithValue("10", TextBox10.Text);
+                        command.ExecuteNonQuery();
+                        Util.Alert(this, "บันทึกสำเร็จ!");
                     }
                 }
-            } catch (Exception e2) {
-                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
+            //} catch (Exception e2) {
+            // string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+            // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            //}
         }
 
         protected void Button1_Click(object sender, EventArgs e) {
@@ -185,14 +63,13 @@ namespace WEB_PERSONAL {
 
             try {
                 using (OracleConnection con = Util.OC()) {
-                    con.Open();
                     {
                         string sql = "SELECT STF_NAME || ' ' || STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox3.Text + "'";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 if (reader.HasRows) {
                                     while (reader.Read()) {
-                                        TextBox11.Text = reader.GetString(0);
+                                        Label31.Text = reader.GetString(0);
                                     }
                                 } else {
                                     string script2 = "alert('ไม่พบรหัสพนักงาน!');";
@@ -221,7 +98,7 @@ namespace WEB_PERSONAL {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 if (reader.HasRows) {
                                     while (reader.Read()) {
-                                        TextBox13.Text = reader.GetString(0);
+                                        Label32.Text = reader.GetString(0);
                                     }
                                 } else {
                                     string script2 = "alert('ไม่พบรหัสพนักงาน!');";
@@ -245,7 +122,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void Button1_Click1(object sender, EventArgs e) {
-            string sql = "select citizen_id, stf_name from tb_personal";
+            string sql = "select citizen_id, stf_name || stf_lname as \"x\" from tb_personal";
 
             GridView1.AutoGenerateColumns = false;
             GridView1.Controls.Clear();
@@ -258,18 +135,16 @@ namespace WEB_PERSONAL {
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "STF_NAME";
-                test.HeaderText = "NAME";
+                test.DataField = "x";
+                test.HeaderText = "กำ";
                 GridView1.Columns.Add(test);
             }
-            SqlDataSource sds = new SqlDataSource(Util.CS(), sql);
+            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", sql);
             GridView1.DataSource = sds;
             GridView1.DataBind();
         }
 
-        protected void Button2_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc;");
-        }
+
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e) {
             GridView1.PageIndex = e.NewPageIndex;
@@ -277,7 +152,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void Button3_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 1 order by tb_leave.paper_id desc;");
+            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'PAPER_DATE',tb_leave.CITIZEN_ID as 'CITIZEN_ID',a.stf_name + ' ' + a.STF_LNAME as 'STF_NAME',tb_leave_type.LEAVE_TYPE_NAME as 'LEAVE_TYPE_NAME',tb_leave.LEAVE_FROM_DATE as 'LEAVE_FROM_DATE',tb_leave.LEAVE_TO_DATE as 'LEAVE_TO_DATE',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'LEAVE_STATUS',TB_LEAVE.APPROVER_ID as 'APPROVER_ID',b.stf_name + ' ' + b.STF_LNAME as 'STF_NAME2',TB_LEAVE.APPROVE_DATE as 'APPROVE_DATE',TB_LEAVE.REASON as 'REASON' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 1 order by tb_leave.paper_id desc;");
         }
 
         private void pullSql(string sql) {
@@ -287,82 +162,82 @@ namespace WEB_PERSONAL {
             GridView1.Columns.Clear();
             {
                 BoundField test = new BoundField();
-                test.DataField = "รหัสเอกสาร";
+                test.DataField = "PAPER_ID";
                 test.HeaderText = "รหัสเอกสาร";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "วันที่เอกสาร";
+                test.DataField = "PAPER_DATE";
                 test.HeaderText = "วันที่เอกสาร";
                 test.DataFormatString = "{0:dd/MM/yyyy}";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "รหัสผู้ลา";
+                test.DataField = "CITIZEN_ID";
                 test.HeaderText = "รหัสผู้ลา";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "ชื่อผู้ลา";
+                test.DataField = "STF_NAME";
                 test.HeaderText = "ชื่อผู้ลา";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "ประเภท";
+                test.DataField = "LEAVE_TYPE_NAME";
                 test.HeaderText = "ประเภท";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "จากวันที่";
+                test.DataField = "LEAVE_FROM_DATE";
                 test.HeaderText = "จากวันที่";
                 test.DataFormatString = "{0:dd/MM/yyyy}";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "ถึงวันที่";
+                test.DataField = "LEAVE_TO_DATE";
                 test.HeaderText = "ถึงวันที่";
                 test.DataFormatString = "{0:dd/MM/yyyy}";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "สถานะ";
+                test.DataField = "LEAVE_STATUS_NAME";
                 test.HeaderText = "สถานะ";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "รหัสผู้อนุมัติ";
+                test.DataField = "APPROVER_ID";
                 test.HeaderText = "รหัสผู้อนุมัติ";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "ชื่อผู้อนุมัติ";
+                test.DataField = "STF_NAME2";
                 test.HeaderText = "ชื่อผู้อนุมัติ";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "วันที่อนุมัติ";
+                test.DataField = "APPROVE_DATE";
                 test.HeaderText = "วันที่อนุมัติ";
                 test.DataFormatString = "{0:dd/MM/yyyy}";
                 GridView1.Columns.Add(test);
             }
             {
                 BoundField test = new BoundField();
-                test.DataField = "เหตุผล";
+                test.DataField = "REASON";
                 test.HeaderText = "เหตุผล";
                 GridView1.Columns.Add(test);
             }
 
-            SqlDataSource sds = new SqlDataSource(Util.CS(), sql);
+            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient","DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", sql);
             GridView1.DataSource = sds;
             GridView1.DataBind();
         }
@@ -399,6 +274,144 @@ namespace WEB_PERSONAL {
 
         protected void DropDownList4_SelectedIndexChanged(object sender, EventArgs e) {
             pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_type_id = " + DropDownList4.SelectedValue + " order by tb_leave.paper_id desc;");
+        }
+
+        protected void Button1_Click2(object sender, EventArgs e) {
+            try {
+
+                using (OracleConnection con = Util.OC()) {
+                    {
+                        string sql = "SELECT STF_NAME || ' ' || STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox16.Text + "'";
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            using (OracleDataReader reader = command.ExecuteReader()) {
+                                if (reader.HasRows) {
+                                    reader.Read();
+                                    Label24.Text = reader.GetString(0);
+                                    Label24.ForeColor = Color.Black;
+                                } else {
+                                    Label24.Text = "ไม่พบรหัสพนักงาน";
+                                    Label24.ForeColor = Color.Red;
+                                    //string script2 = "alert('ไม่พบรหัสพนักงาน!');";
+                                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
+                                }
+
+                            }
+
+
+                        }
+                    }
+                }
+            } catch (Exception e2) {
+                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+        }
+
+        protected void LinkButton16_Click(object sender, EventArgs e) {
+
+            if (Session["login_id"] == null) {
+                Util.Alert(this, "กรุณาเข้าสู่ระบบก่อน");
+                return;
+            }
+
+            // try {
+            using (OracleConnection con = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;")) {
+                con.Open();
+                {
+                    string sql = "INSERT INTO TB_LEAVE VALUES(SEQ_LEAVE_ID.NEXTVAL,:2,:3,:4,:5,:6,:7,:8,:9,:10)";
+
+                    using (OracleCommand command = new OracleCommand(sql, con)) {
+                        //command.Parameters.AddWithValue("1", "SEQ_LEAVE_ID.NEXTVAL");
+                        command.Parameters.AddWithValue("2", Util.toOracleDateTime(DateTime.Today.AddYears(-543)));
+                        command.Parameters.AddWithValue("3", TextBox16.Text);
+                        command.Parameters.AddWithValue("4", DropDownList5.SelectedValue);
+                        command.Parameters.AddWithValue("5", Util.toOracleDateTime(TextBox17.Text));
+                        command.Parameters.AddWithValue("6", Util.toOracleDateTime(TextBox18.Text));
+                        command.Parameters.AddWithValue("7", DropDownList6.SelectedValue);
+                        command.Parameters.AddWithValue("8", Session["login_id"].ToString());
+                        command.Parameters.AddWithValue("9", Util.toOracleDateTime(DateTime.Today.AddYears(-543)));
+                        command.Parameters.AddWithValue("10", TextBox19.Text);
+
+                        command.ExecuteNonQuery();
+                        Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
+                    }
+                }
+
+
+
+
+            }
+            //} catch (Exception e2) {
+            //    Util.Alert(this,"เกิดข้อผิดพลาด! " + e2.Message);
+            //}
+
+        }
+
+        //pull paper from id
+        protected void LinkButton18_Click(object sender, EventArgs e) {
+            Label20.Text = "";
+            if (TextBox15.Text == "") {
+                Label20.Text = "กรุณากรอกรหัสเอกสาร!";
+                return;
+            }
+
+            //try {
+            using (OracleConnection con = Util.OC()) {
+                {
+                    using (OracleCommand command = new OracleCommand(
+                    "SELECT COUNT(*) FROM TB_LEAVE WHERE PAPER_ID = " + TextBox15.Text, con))
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        while (reader.Read()) {
+                            if (reader.GetInt32(0) == 0) {
+                                Label20.Text = "ไม่พบรหัสเอกสาร!";
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                {
+                    using (OracleCommand command = new OracleCommand(
+                    "SELECT TB_LEAVE.Leave_type_id, TB_PERSONAL.CITIZEN_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, NVL(TB_LEAVE.Reason,''), TB_LEAVE.LEAVE_FROM_DATE, TB_LEAVE.LEAVE_TO_DATE, TB_LEAVE.PAPER_DATE, TB_LEAVE.LEAVE_STATUS_ID, TB_LEAVE.PAPER_ID FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.PAPER_ID = " + TextBox15.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.CITIZEN_ID", con))
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        while (reader.Read()) {
+                            DropDownList1.SelectedValue = reader.GetInt32(0).ToString();
+                            TextBox3.Text = reader.GetString(1);
+                            Label31.Text = reader.GetString(2) + " " + reader.GetString(3);
+                            TextBox10.Text = reader.IsDBNull(4) ? "" : reader.GetString(4);
+                            TextBox5.Text = reader.GetDateTime(5).AddYears(-543).ToString("dd/MM/yyyy");
+                            TextBox6.Text = reader.GetDateTime(6).AddYears(-543).ToString("dd/MM/yyyy");
+                            TextBox2.Text = reader.GetDateTime(7).AddYears(-543).ToString("dd/MM/yyyy");
+                            DropDownList2.SelectedValue = reader.GetInt32(8).ToString();
+                            Label33.Text = "" + reader.GetInt32(9);
+                        }
+                    }
+                }
+
+                {
+                    using (OracleCommand command = new OracleCommand(
+                    "SELECT TB_LEAVE.APPROVER_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, TB_LEAVE.APPROVE_DATE FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.PAPER_ID = " + TextBox15.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.APPROVER_ID", con))
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        while (reader.Read()) {
+                            TextBox8.Text = reader.GetString(0);
+                            Label32.Text = reader.GetString(1) + " " + reader.GetString(2);
+                            TextBox9.Text = reader.GetDateTime(3).AddYears(-543).ToString("dd/MM/yyyy");
+                        }
+                    }
+                }
+
+            }
+
+
+            //} catch (Exception e2) {
+            //   string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+            //   ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            // }
+
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e) {
+            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc");
         }
     }
 }
