@@ -39,7 +39,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             TITLENAME ptn = new TITLENAME();
-            DataTable dt = ptn.GetTITLENAME("", "");
+            DataTable dt = ptn.GetTITLENAME("", "", "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -143,6 +143,15 @@ namespace WEB_PERSONAL
         protected void btnCancelPretitle_Click(object sender, EventArgs e)
         {
             ClearData();
+        }
+
+        protected void btnSearchTitleName_Click(object sender, EventArgs e)
+        {
+            TITLENAME ptn = new TITLENAME();
+            DataTable dt = ptn.GetTITLENAME(txtSearchTH.Text, txtSearchTHmin.Text, txtSearchEN.Text, txtSearchENmin.Text);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
         }
     }
 }
