@@ -1,16 +1,14 @@
-﻿using WEB_PERSONAL.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Data;
 
 namespace WEB_PERSONAL
 {
-    public partial class pre_title_name : System.Web.UI.Page
+    public partial class Year_ADMIN : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,37 +23,34 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["Title"];
+            return (DataTable)ViewState["YEAR"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["Title"] = data;
+            ViewState["YEAR"] = data;
         }
 
         #endregion
 
         void BindData()
         {
-            TITLENAME ptn = new TITLENAME();
-            DataTable dt = ptn.GetTITLENAME("", "", "", "");
+          /* TITLENAME ptn = new TITLENAME();
+            DataTable dt = ptn.GetTITLENAME("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
-            SetViewState(dt);
+            SetViewState(dt); */
         }
 
         private void ClearData()
         {
-            txtTitleNameEn.Text = "";
-            txtTitleNameEnMin.Text = "";
-            txtTitleNameTh.Text = "";
-            txtTitleNameThMin.Text = "";
+           
         }
 
-        protected void btnSubmitPretitle_Click(object sender, EventArgs e)
+        protected void btnSubmitYEAR_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTitleNameTh.Text))
+            /*if (string.IsNullOrEmpty(txtTitleNameTh.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อภาษาไทย')", true);
                 return;
@@ -83,9 +78,9 @@ namespace WEB_PERSONAL
             ptn.TITLE_NAME_EN_MIN = txtTitleNameEnMin.Text;
 
             ptn.InsertTITLENAME();
-            BindData();
+            BindData(); */
         }
-     
+
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
@@ -99,17 +94,17 @@ namespace WEB_PERSONAL
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
-            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+        /*    int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             TITLENAME ptn = new TITLENAME();
             ptn.TITLE_ID = id;
             ptn.DeleteTITLENAME();
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData(); */
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblTitleID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblTitleID");
+           /* Label lblTitleID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblTitleID");
 
             TextBox txtTitleNameTh = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameTh");
 
@@ -128,30 +123,21 @@ namespace WEB_PERSONAL
             ptn.UpdateTITLENAME();
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData(); */
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
         }
-        protected void myGridViewPRETITLE_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void myGridViewYEAR_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataSource = GetViewState();
             GridView1.DataBind();
         }
 
-        protected void btnCancelPretitle_Click(object sender, EventArgs e)
+        protected void btnCancelYEAR_Click(object sender, EventArgs e)
         {
             ClearData();
-        }
-
-        protected void btnSearchTitleName_Click(object sender, EventArgs e)
-        {
-            TITLENAME ptn = new TITLENAME();
-            DataTable dt = ptn.GetTITLENAME(txtSearchTH.Text, txtSearchTHmin.Text, txtSearchEN.Text, txtSearchENmin.Text);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            SetViewState(dt);
         }
     }
 }

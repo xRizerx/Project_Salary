@@ -16,8 +16,19 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" Height="512px" CssClass="divpan">
-
+<asp:Panel ID="Panel1" runat="server" Height="600px" CssClass="divpan">
+    <div>
+        <fieldset>
+            <legend>Search</legend>
+            <div>
+                ชื่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTH" runat="server" Width="100px"></asp:TextBox>
+                ชื่อย่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTHmin" runat="server" Width="100px"></asp:TextBox>
+                ชื่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchEN" runat="server" Width="100px"></asp:TextBox>
+                ชื่อย่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchENmin" runat="server" Width="100px"></asp:TextBox>
+                <asp:Button ID="btnSearchTitleName" Text="Search" runat="server" OnClick="btnSearchTitleName_Click" />
+            </div>
+        </fieldset>
+    </div>
     <div>
         <fieldset>
             <legend>Insert</legend>
@@ -32,9 +43,7 @@
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: right; margin-right: 5px; ">ชื่อย่อภาษาไทย :&nbsp;</td>
                         <td style="text-align: left; ">
-                            <asp:TextBox ID="txtTitleNameThMin" runat="server" MaxLength="10"></asp:TextBox></td>
-                       
-                        
+                            <asp:TextBox ID="txtTitleNameThMin" runat="server" MaxLength="10"></asp:TextBox></td>  
                     </tr>
                     <tr>
                         <td style="text-align: left; width: 80px;"> </td> 
@@ -58,7 +67,7 @@
     </div>
     <div>
         <fieldset >
-            <legend>Data </legend>
+            <legend>Data</legend>
             <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"

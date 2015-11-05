@@ -172,6 +172,7 @@
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Year-ADMIN.aspx" />
     <None Include="personalDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>personalDataSet.Designer.cs</LastGenOutput>
@@ -224,7 +225,7 @@
     </Compile>
     <Compile Include="Entities\Personnel.cs" />
     <Compile Include="Entities\Seminar.cs" />
-    <Compile Include="Entities\TitleName.cs" />
+    <Compile Include="Entities\Manage.cs" />
     <Compile Include="Error-Member.aspx.cs">
       <DependentUpon>Error-Member.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -407,6 +408,13 @@
       <DependentUpon>Salary.aspx</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
+    <Compile Include="Year-ADMIN.aspx.cs">
+      <DependentUpon>Year-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Year-ADMIN.aspx.designer.cs">
+      <DependentUpon>Year-ADMIN.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
