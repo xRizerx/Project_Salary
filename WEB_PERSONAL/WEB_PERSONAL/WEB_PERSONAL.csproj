@@ -172,6 +172,7 @@
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="UNIVERSITY-ADMIN.aspx" />
     <Content Include="Year-ADMIN.aspx" />
     <None Include="personalDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -406,6 +407,13 @@
     </Compile>
     <Compile Include="Salary.aspx.designer.cs">
       <DependentUpon>Salary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UNIVERSITY-ADMIN.aspx.cs">
+      <DependentUpon>UNIVERSITY-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UNIVERSITY-ADMIN.aspx.designer.cs">
+      <DependentUpon>UNIVERSITY-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Year-ADMIN.aspx.cs">

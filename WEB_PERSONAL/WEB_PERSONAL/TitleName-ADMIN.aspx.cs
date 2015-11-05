@@ -51,6 +51,10 @@ namespace WEB_PERSONAL
             txtTitleNameEnMin.Text = "";
             txtTitleNameTh.Text = "";
             txtTitleNameThMin.Text = "";
+            txtSearchTH.Text = "";
+            txtSearchTHmin.Text = "";
+            txtSearchEN.Text = "";
+            txtSearchENmin.Text = "";
         }
 
         protected void btnSubmitPretitle_Click(object sender, EventArgs e)
@@ -143,6 +147,11 @@ namespace WEB_PERSONAL
         protected void btnCancelPretitle_Click(object sender, EventArgs e)
         {
             ClearData();
+            TITLENAME ptn = new TITLENAME();
+            DataTable dt = ptn.GetTITLENAME("", "", "", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
         }
 
         protected void btnSearchTitleName_Click(object sender, EventArgs e)
