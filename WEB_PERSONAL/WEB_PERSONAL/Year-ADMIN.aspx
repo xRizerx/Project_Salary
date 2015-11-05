@@ -35,7 +35,7 @@
             <legend>Search</legend>
             <div>
                 ปีการศึกษา :&nbsp<asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb5" Width="100px" MaxLength="4"></asp:TextBox>
-                <asp:Button ID="btnSearchTitleName" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchYear_Click" />
+                <asp:Button ID="btnSearchYear" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchYear_Click" />
             </div>
         </fieldset>
     </div>

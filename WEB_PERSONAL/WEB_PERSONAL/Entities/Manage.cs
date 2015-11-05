@@ -377,5 +377,162 @@ namespace WEB_PERSONAL.Entities
             return result;
         }
     }
+
+    public class ClassUniversity
+    {
+        public int UNIV_SEQ { get; set; }
+        public string UNIV_ID { get; set; }
+        public string UNIV_NAME { get; set; }
+
+        public ClassUniversity() { }
+        public ClassUniversity(int UNIV_SEQ, string UNIV_ID, string UNIV_NAME)
+        {
+            this.UNIV_SEQ = UNIV_SEQ;
+            this.UNIV_ID = UNIV_ID;
+            this.UNIV_NAME = UNIV_NAME;
+        }
+
+        public DataTable GetUniversity(string UNIV_ID, string UNIV_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_UNIVERSITY ";
+            if (!string.IsNullOrEmpty(UNIV_ID) || !string.IsNullOrEmpty(UNIV_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(UNIV_ID))
+                {
+                    query += " and UNIV_ID like :UNIV_ID ";
+                }
+                if (!string.IsNullOrEmpty(UNIV_NAME))
+                {
+                    query += " and UNIV_NAME like :UNIV_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(UNIV_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("UNIV_ID", UNIV_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(UNIV_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("UNIV_NAME", UNIV_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertUniversity()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_UNIVERSITY (UNIV_ID,UNIV_NAME) VALUES (:UNIV_ID, :UNIV_NAME)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("UNIV_ID", UNIV_ID));
+                command.Parameters.Add(new OracleParameter("UNIV_NAME", UNIV_NAME));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateUniversity()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_UNIVERSITY Set ";
+            query += " UNIV_ID = :UNIV_ID,";
+            query += " UNIV_NAME = :UNIV_NAME";
+            query += " where UNIV_SEQ = :UNIV_SEQ";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("UNIV_ID", UNIV_ID));
+                command.Parameters.Add(new OracleParameter("UNIV_NAME", UNIV_NAME));
+                command.Parameters.Add(new OracleParameter("UNIV_SEQ", UNIV_SEQ));
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteUniversity()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_UNIVERSITY where UNIV_SEQ = :UNIV_SEQ", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("UNIV_SEQ", UNIV_SEQ));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
 }
  
