@@ -192,6 +192,7 @@ namespace WEB_PERSONAL.Entities
             return result;
         }
     }
+
     public class ClassYear
     {
         public int Year_ID { get; set; }
@@ -568,6 +569,150 @@ namespace WEB_PERSONAL.Entities
                     conn.Open();
                 }
                 command.Parameters.Add(new OracleParameter("UNIV_SEQ", UNIV_SEQ));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
+
+    public class ClassGender
+    {
+        public int Gender_ID { get; set; }
+        public string Gender_Name { get; set; }
+
+        public ClassGender() { }
+        public ClassGender(int Gender_ID, string Gender_Name)
+        {
+            this.Gender_ID = Gender_ID;
+            this.Gender_Name = Gender_Name;
+        }
+
+        public DataTable GetGender(string Gender_Name)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_GENDER ";
+            if (!string.IsNullOrEmpty(Gender_Name))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(Gender_Name))
+                {
+                    query += " and Gender_Name like :Gender_Name ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(Gender_Name))
+                {
+                    command.Parameters.Add(new OracleParameter("Gender_Name", Gender_Name + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertGender()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_GENDER (Gender_Name) VALUES (:Gender_Name)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("Gender_Name", Gender_Name));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateGender()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_GENDER Set ";
+            query += " Gender_Name = :Gender_Name";
+            query += " where Gender_ID = :Gender_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("Gender_Name", Gender_Name));
+                command.Parameters.Add(new OracleParameter("Gender_ID", Gender_ID));
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteGender()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_GENDER where Gender_ID = :Gender_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("Gender_ID", Gender_ID));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;

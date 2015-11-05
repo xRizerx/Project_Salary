@@ -131,6 +131,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Entities\bnn.mp3" />
     <Content Include="Error-Member.aspx" />
+    <Content Include="Gender-ADMIN.aspx" />
     <Content Include="Image\444.jpg" />
     <Content Include="Image\555.jpg" />
     <Content Include="Image\bg5.jpg" />
@@ -165,6 +166,7 @@
     <Content Include="insignia_user.aspx" />
     <Content Include="Leave.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="National-ADMIN.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
     <Content Include="Font\THSarabun Bold.ttf" />
@@ -235,6 +237,13 @@
     </Compile>
     <Compile Include="Error-Member.aspx.designer.cs">
       <DependentUpon>Error-Member.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gender-ADMIN.aspx.cs">
+      <DependentUpon>Gender-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gender-ADMIN.aspx.designer.cs">
+      <DependentUpon>Gender-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_from_edit.aspx.cs">
       <DependentUpon>insignia_from_edit.aspx</DependentUpon>
@@ -319,6 +328,13 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="National-ADMIN.aspx.cs">
+      <DependentUpon>National-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="National-ADMIN.aspx.designer.cs">
+      <DependentUpon>National-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="personalDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
