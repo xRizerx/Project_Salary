@@ -13,7 +13,7 @@ namespace WEB_PERSONAL
 {
     public partial class insignia_recordnote_2 : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(@"Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=False;User ID=rmutto;Password=Zxcvbnm!");
+        SqlConnection con = new SqlConnection(@"Data Source=203.158.140.67;Initial Catalog=personal;Integrated Security=False;User ID=rmutto1;Password=Zxcvbnm!");
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -27,10 +27,10 @@ namespace WEB_PERSONAL
         protected void Button1_Click(object sender, EventArgs e)
         {
             con.Open();
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into TB_recordnote value('" + TextBox1.Text + "','" + TextBox2.Text + "')";
-            cmd.ExecuteNonQuery();
+            SqlCommand Cmd = con.CreateCommand();
+            Cmd.CommandType = CommandType.Text;
+            Cmd.CommandText = "insert into TB_recordnote value()";
+            Cmd.ExecuteNonQuery();
 
             con.Close();
             Response.Redirect("insignia_recordnote2.aspx");

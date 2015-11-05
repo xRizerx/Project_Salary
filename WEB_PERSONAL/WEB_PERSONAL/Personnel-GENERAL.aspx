@@ -3,20 +3,6 @@
       <script src="Script/jquery-ui-1.8.20.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- <!-- <script>
-            $(function () {
-                $(document).ready(function () {
-                    $("#ContentPlaceHolder1_txtBIRTHDAY,#ContentPlaceHolder1_txtDATETIME_INWORRK").datepicker({
-                        dateFormat: 'dd/mm/yy',
-                        changeMonth: true,
-                        changeYear: true,
-                        beforeShow: function () {
-                            $(".ui-datepicker").css('font-size', 14)
-                        }
-                    });
-                });
-            });
-  </script> -->
     <script type="text/javascript">
         function pageLoad(sender, args) {
             $("#ContentPlaceHolder1_txtBIRTHDAY,#ContentPlaceHolder1_txtDATETIME_INWORRK").datepicker({
@@ -63,22 +49,8 @@
         .textred{
             color:red;
         }
-
-        .auto-style3 {
-            background-image: url('images/form_bg.jpg');
-            background-repeat: repeat-x;
-            border: 1px solid #d1c7ac;
-            color: #333333;
-            padding: 3px;
-            margin-right: 4px;
-            margin-bottom: 8px;
-            font-family: tahoma, arial, sans-serif;
-            border-radius: 10px;
-            resize: none;
-        }
-
     </style>
-    <asp:Panel runat="server" CssClass="divpan" Height="1300px">
+    <asp:Panel runat="server" CssClass="divpan" Height="900px">
     <div>
 
         <fieldset>
@@ -97,8 +69,8 @@
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_YEAR" DataTextField="YEAR" DataValueField="YEAR"></asp:DropDownList>
-<asp:SqlDataSource ID="TB_YEAR" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_YEAR&quot; ORDER BY &quot;YEAR&quot;"></asp:SqlDataSource>
+                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_YEAR" DataTextField="YEAR_NAME" DataValueField="YEAR_NAME"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_YEAR" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_YEAR&quot; ORDER BY &quot;YEAR_NAME&quot;"></asp:SqlDataSource>
                          </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -129,8 +101,8 @@
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:DropDownList ID="DropDownUNIV_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_UNIVERSITY" DataTextField="UNIV_NAME" DataValueField="UNIV_ID"></asp:DropDownList> 
-                            <asp:SqlDataSource ID="TB_UNIVERSITY" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_UNIVERSITY&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource> 
+                            <asp:DropDownList ID="DropDownUNIV_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_UNIVERSITY_V2" DataTextField="UNIV_NAME" DataValueField="UNIV_ID"></asp:DropDownList> 
+                            <asp:SqlDataSource ID="TB_UNIVERSITY_V2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_UNIVERSITY_V2&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource> 
                         </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">

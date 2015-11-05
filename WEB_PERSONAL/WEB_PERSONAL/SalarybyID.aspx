@@ -56,6 +56,7 @@
             color: white;
             border-color: black;
             border: 1px solid black;
+            font-size:16px;
         }
         .button_ui_edit {
             background:rgb(79, 255, 169);
@@ -424,7 +425,7 @@ win=window.open(mypage,myname,settings);}
                 </tr>
                 <tr>
                     <td class="auto-style18">
-                        <asp:LinkButton ID="LinkButton2" runat="server" CssClass="button_ui" OnClick="LinkButton2_Click">บันทึก</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton2" runat="server" CssClass="button_ui" OnClick="LinkButton2_Click" Font-Size="14px">บันทึก</asp:LinkButton>
                     </td>
                     <td class="auto-style15">
                         <a href="SalarybyID-Edit.aspx" onclick="NewWindow(this.href,'แก้ไขข้อมูลบุคคล','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui">แก้ไขข้อมูล</a>

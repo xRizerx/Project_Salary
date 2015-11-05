@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
+using System.Data.OracleClient;
 
 namespace WEB_PERSONAL
 {
@@ -25,13 +25,13 @@ namespace WEB_PERSONAL
         {
             try
             {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
+                string connectionString = "Data Source=ORCL_RMUTTO;User ID=rmutto;Password=Zxcvbnm";
+                using (OracleConnection con = new OracleConnection(connectionString))
                 {
                     con.Open();
-                    using (SqlCommand command = new SqlCommand(
+                    using (OracleCommand command = new OracleCommand(
                         "SELECT count(*) FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox1.Text + "'", con))
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (OracleDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {

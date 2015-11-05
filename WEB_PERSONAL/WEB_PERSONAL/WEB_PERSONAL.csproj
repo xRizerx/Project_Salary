@@ -149,8 +149,11 @@
     <Content Include="Image\google.png" />
     <Content Include="Image\i2.jpg" />
     <Content Include="Image\i3.jpg" />
+    <Content Include="Image\insignia.jpg" />
+    <Content Include="Image\insignia01.jpg" />
     <Content Include="Image\nopm.jpg" />
     <Content Include="Image\sky.jpg" />
+    <Content Include="insignia_from_edit.aspx" />
     <Content Include="insignia_recordnote 2.aspx" />
     <Content Include="insignia_recordnote.aspx" />
     <Content Include="js\index.js" />
@@ -171,6 +174,8 @@
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="UNIVERSITY-ADMIN.aspx" />
+    <Content Include="Year-ADMIN.aspx" />
     <None Include="personalDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>personalDataSet.Designer.cs</LastGenOutput>
@@ -223,13 +228,20 @@
     </Compile>
     <Compile Include="Entities\Personnel.cs" />
     <Compile Include="Entities\Seminar.cs" />
-    <Compile Include="Entities\TitleName.cs" />
+    <Compile Include="Entities\Manage.cs" />
     <Compile Include="Error-Member.aspx.cs">
       <DependentUpon>Error-Member.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Error-Member.aspx.designer.cs">
       <DependentUpon>Error-Member.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_from_edit.aspx.cs">
+      <DependentUpon>insignia_from_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_from_edit.aspx.designer.cs">
+      <DependentUpon>insignia_from_edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_recordnote 2.aspx.cs">
       <DependentUpon>insignia_recordnote 2.aspx</DependentUpon>
@@ -398,7 +410,21 @@
     <Compile Include="Salary.aspx.designer.cs">
       <DependentUpon>Salary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UNIVERSITY-ADMIN.aspx.cs">
+      <DependentUpon>UNIVERSITY-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UNIVERSITY-ADMIN.aspx.designer.cs">
+      <DependentUpon>UNIVERSITY-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Util.cs" />
+    <Compile Include="Year-ADMIN.aspx.cs">
+      <DependentUpon>Year-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Year-ADMIN.aspx.designer.cs">
+      <DependentUpon>Year-ADMIN.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
