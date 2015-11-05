@@ -10,7 +10,6 @@
             background-image: url("Image/444.jpg");
         }
           .tb5 {
-	        background-image:url(images/form_bg.jpg);
 	        background-repeat:repeat-x;
 	        border:1px solid #d1c7ac;
 	        width: 230px;

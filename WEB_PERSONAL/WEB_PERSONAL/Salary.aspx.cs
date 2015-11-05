@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Data.OracleClient;
 
 namespace WEB_PERSONAL
 {
@@ -37,12 +38,12 @@ namespace WEB_PERSONAL
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
             TextBox31.Text = "0";
-            using (SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!"))
+            using (OracleConnection conn = new OracleConnection(Util.CS()))
             {
                 conn.Open();
-                using (SqlCommand command = new SqlCommand("SELECT COUNT(TB_PERSONAL.CITIZEN_ID)COUNT_PEPOLE FROM TB_PERSONAL WHERE BRANCH_ID = " + DropDownList1.SelectedValue + " GROUP BY BRANCH_ID", conn))
+                using (OracleCommand command = new OracleCommand("SELECT COUNT(TB_PERSONAL.CITIZEN_ID)COUNT_PEPOLE FROM TB_PERSONAL WHERE BRANCH_ID = " + DropDownList1.SelectedValue + " GROUP BY BRANCH_ID", conn))
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (OracleDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -77,7 +78,7 @@ namespace WEB_PERSONAL
         {
             if (Session["login_id"] != null)
             {
-                using (SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!"))
+                using (OracleConnection conn = new OracleConnection(Util.CS()))
                 {
                     conn.Open();
 
@@ -93,10 +94,9 @@ namespace WEB_PERSONAL
                     String j = Label19.Text;
                     String k = Label20.Text;
                     String l = TextBox18.Text;
-
-                    string sql = "INSERT INTO TB_DPIS (BRANCH_ID, COUNT_PEOPLE, SUM_SALARY, RATE_SUMSALARY, RATE_MONEY_UP, RATE_BALANCE, SUM_PRE_MONTH, ADMIN_MONEY_ADD, SUM_MONEY_UP, SUM_MONEY_TOTAL, SUM_BALANCE, COMMENT) VALUES ({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},'{11}');";
+                    string sql = "INSERT INTO TB_DPIS (DPIS_ID,BRANCH_ID, COUNT_PEOPLE, SUM_SALARY, RATE_SUMSALARY, RATE_MONEY_UP, RATE_BALANCE, SUM_PRE_MONTH, ADMIN_MONEY_ADD, SUM_MONEY_UP, SUM_MONEY_TOTAL, SUM_BALANCE, COMMENT) VALUES (DPIS_ID.NEXTVAL,{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},'{11}');";
                     sql = string.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l);
-                    using (SqlCommand command = new SqlCommand(sql, conn))
+                    using (OracleCommand command = new OracleCommand(sql, conn))
                     {
                         command.ExecuteNonQuery();
                     }

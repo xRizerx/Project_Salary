@@ -13,6 +13,29 @@
          body {
             background-image: url("Image/444.jpg");
         }
+         .tb5 {
+	        background-repeat:repeat-x;
+	        border:1px solid #d1c7ac;
+	        width: 150px;
+	        color:#333333;
+	        padding:3px;
+	        margin-right:4px;
+	        margin-bottom:8px;
+	        font-family:tahoma, arial, sans-serif;
+            border-radius:10px;
+            resize:none;
+              }
+            .tb6 {
+	        background-repeat:repeat-x;
+	        border:1px solid #d1c7ac;
+	        color:#333333;
+	        padding:3px;
+	        margin-right:4px;
+	        margin-bottom:8px;
+	        font-family:tahoma, arial, sans-serif;
+            border-radius:10px;
+            resize:none;
+              }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -21,11 +44,11 @@
         <fieldset>
             <legend>Search</legend>
             <div>
-                ชื่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTH" runat="server" Width="100px"></asp:TextBox>
-                ชื่อย่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTHmin" runat="server" Width="100px"></asp:TextBox>
-                ชื่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchEN" runat="server" Width="100px"></asp:TextBox>
-                ชื่อย่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchENmin" runat="server" Width="100px"></asp:TextBox>
-                <asp:Button ID="btnSearchTitleName" Text="Search" runat="server" OnClick="btnSearchTitleName_Click" />
+                ชื่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
+                ชื่อย่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTHmin" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
+                ชื่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchEN" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
+                ชื่อย่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchENmin" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
+                <asp:Button ID="btnSearchTitleName" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchTitleName_Click" />
             </div>
         </fieldset>
     </div>
@@ -38,28 +61,28 @@
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: right; margin-right: 5px; ">ชื่อภาษาไทย :&nbsp;</td>
                         <td style="text-align: left; width: 120px;">
-                            <asp:TextBox ID="txtTitleNameTh" runat="server" MaxLength="6"></asp:TextBox>
+                            <asp:TextBox ID="txtTitleNameTh" runat="server" CssClass="tb5" MaxLength="6"></asp:TextBox>
                         </td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 50px;"> </td> 
                         <td style="text-align: right; margin-right: 5px; ">ชื่อย่อภาษาไทย :&nbsp;</td>
                         <td style="text-align: left; ">
-                            <asp:TextBox ID="txtTitleNameThMin" runat="server" MaxLength="10"></asp:TextBox></td>  
+                            <asp:TextBox ID="txtTitleNameThMin" runat="server" CssClass="tb5" MaxLength="10"></asp:TextBox></td>  
                     </tr>
                     <tr>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: right; margin-right: 5px;">ชื่อภาษาอังกฤษ :&nbsp;</td>
                         <td style="text-align: left;">
-                            <asp:TextBox ID="txtTitleNameEn" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtTitleNameEn" runat="server" CssClass="tb5"></asp:TextBox>
                         </td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 50px;"> </td> 
                         <td style="text-align: right; margin-right: 5px;">ชื่อย่อภาษาอังกฤษ :&nbsp;</td>
                         <td style="text-align: left; "">
-                            <asp:TextBox ID="txtTitleNameEnMin" runat="server" MaxLength="10"></asp:TextBox></td>
+                            <asp:TextBox ID="txtTitleNameEnMin" runat="server" MaxLength="10" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: right; margin-right: 5px;"></td>
                         <td style="text-align: left;">
-                            <asp:Button ID="btnSubmitPretitle" Text="OK" runat="server" OnClick = "btnSubmitPretitle_Click" /></td>
+                            <asp:Button ID="btnSubmitPretitle" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitPretitle_Click" /></td>
                         <td style="text-align: left;">
-                            <asp:Button ID="btnCancelPretitle" Text="Cancel" runat="server" OnClick = "btnCancelPretitle_Click" /></td>
+                            <asp:Button ID="btnCancelPretitle" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelPretitle_Click" /></td>
                     </tr>
                 </table>
             </div>

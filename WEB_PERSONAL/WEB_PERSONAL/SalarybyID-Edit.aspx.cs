@@ -81,7 +81,7 @@ namespace WEB_PERSONAL
                                 Label50.Text = reader.GetDouble(18).ToString();
                                 Label52.Text = reader.GetDouble(19).ToString();
                                 Label54.Text = reader.GetDouble(20).ToString();
-                                TextBox9.Text = reader.GetString(21);
+                                TextBox9.Text = reader.IsDBNull(21)?"":reader.GetString(21);
                             }
                             command.Dispose();
                             reader.Close();
@@ -123,14 +123,19 @@ namespace WEB_PERSONAL
             String w = TextBox9.Text;
             try
             {
-                SqlConnection conn = new SqlConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
-                conn.Open();
-                string sql = "UPDATE TB_SALARY_UP SET TB_SALARY_UP.DETAIL_SALARY={0},TB_SALARY_UP.DETAIL_MAXSALARY={1},TB_SALARY_UP.DETAIL_BASEMONEY={2},TB_SALARY_UP.DETAIL_PERCENT_RATE={3},TB_SALARY_UP.DETAIL_MONEYNOTROUND={4},TB_SALARY_UP.DETAIL_MONEYROUND={5},TB_SALARY_UP.DETAIL_MONEYUP={6},TB_SALARY_UP.DETAIL_MONEYBONUS={7},TB_SALARY_UP.DETAIL_SUM_MONEY={8},TB_SALARY_UP.DETAIL_NEW_SALARY={9},TB_SALARY_UP.DETAIL_SCORE_TEST={10},TB_SALARY_UP.DETAIL_LEVEL_TEST='{11}',TB_SALARY_UP.ADMIN_RATESUM={12},TB_SALARY_UP.ADMIN_RATE={13},TB_SALARY_UP.ADMIN_MONEY_ADD={14},TB_SALARY_UP.SUM_PERCENT_RATE2={15},TB_SALARY_UP.SUM_MONEYNOTROUND={16},TB_SALARY_UP.SUM_MONEYROUND={17},TB_SALARY_UP.SUM_MONEYUP={18},TB_SALARY_UP.SUM_MONEYBONUS={19},TB_SALARY_UP.SUM_MONEYUPTOTAL={20},TB_SALARY_UP.SUM_NEWSALARY={21},TB_SALARY_UP.COMMENT='{22}' WHERE ID = " + Label63.Text + "";
-                sql = String.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w);
-                SqlCommand command = new SqlCommand(sql, conn);
-                command.ExecuteNonQuery();
-                Response.Write("<script>alert('SAVE SUCCESSFUL'); self.close();</script>");
-                Response.End();
+                using (OracleConnection conn = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;"))
+                {
+                    conn.Open();
+                    string sql = "UPDATE TB_SALARY_UP SET TB_SALARY_UP.DETAIL_SALARY={0},TB_SALARY_UP.DETAIL_MAXSALARY={1},TB_SALARY_UP.DETAIL_BASEMONEY={2},TB_SALARY_UP.DETAIL_PERCENT_RATE={3},TB_SALARY_UP.DETAIL_MONEYNOTROUND={4},TB_SALARY_UP.DETAIL_MONEYROUND={5},TB_SALARY_UP.DETAIL_MONEYUP={6},TB_SALARY_UP.DETAIL_MONEYBONUS={7},TB_SALARY_UP.DETAIL_SUM_MONEY={8},TB_SALARY_UP.DETAIL_NEW_SALARY={9},TB_SALARY_UP.DETAIL_SCORE_TEST={10},TB_SALARY_UP.DETAIL_LEVEL_TEST='{11}',TB_SALARY_UP.ADMIN_RATESUM={12},TB_SALARY_UP.ADMIN_RATE={13},TB_SALARY_UP.ADMIN_MONEY_ADD={14},TB_SALARY_UP.SUM_PERCENT_RATE2={15},TB_SALARY_UP.SUM_MONEYNOTROUND={16},TB_SALARY_UP.SUM_MONEYROUND={17},TB_SALARY_UP.SUM_MONEYUP={18},TB_SALARY_UP.SUM_MONEYBONUS={19},TB_SALARY_UP.SUM_MONEYUPTOTAL={20},TB_SALARY_UP.SUM_NEWSALARY={21},TB_SALARY_UP.\"COMMENT\"='{22}' WHERE ID = " + Label63.Text;
+                    sql = String.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w);
+                    using (OracleCommand command = new OracleCommand(sql, conn))
+                    {
+                        command.ExecuteNonQuery();
+                        Response.Write("<script>alert('SAVE SUCCESSFUL'); self.close();</script>");
+                        Response.End();
+                    }
+                }
+
 
             }
             catch
@@ -152,7 +157,7 @@ namespace WEB_PERSONAL
             try
             {
                 OracleConnection conn = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;");
-                    conn.Open();
+                conn.Open();
                 OracleCommand command = new OracleCommand("Select TB_POSITION.POSITION_NAME,BASESALARY.MAXSALARY,BASESALARY.MINSALARY,BASESALARY.MAXLOWSALARY,BASESALARY.MINLOWSALARY From TB_POSITION,BASESALARY,TB_PERSONAL WHERE TB_POSITION.POSITION_NAME = '" + Label15.Text + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_POSITION.POSITION_ID = BASESALARY.POSITION_ID", conn);
                 using (OracleDataReader reader = command.ExecuteReader())
                 {
@@ -421,22 +426,16 @@ namespace WEB_PERSONAL
 
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
-            OracleConnection conn = new OracleConnection("Data Source = 203.158.140.66; Initial Catalog = personal; Integrated Security = False; User ID = rmutto; Password = Zxcvbnm!");
-            conn.Open();
-            using (OracleCommand command = new OracleCommand("DELETE FROM TB_SALARY_UP WHERE ID = " + Label63.Text + "", conn))
+            using (OracleConnection conn = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;"))
             {
-                using (OracleDataReader reader = command.ExecuteReader())
+                conn.Open();
+                using (OracleCommand command = new OracleCommand("DELETE FROM TB_SALARY_UP WHERE ID = " + Label63.Text, conn))
                 {
-                    while (reader.Read())
-                    {
-
-                    }
+                    command.ExecuteNonQuery();
                     Response.Write("<script>alert('Delete Successful!'); self.close();</script>");
                     Response.End();
-
                 }
             }
-            conn.Close();
         }
     }
 }

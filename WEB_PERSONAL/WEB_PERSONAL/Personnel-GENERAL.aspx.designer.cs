@@ -85,13 +85,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownUNIV_ID;
         
         /// <summary>
-        /// TB_UNIVERSITY control.
+        /// TB_UNIVERSITY_V2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TB_UNIVERSITY;
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_UNIVERSITY_V2;
         
         /// <summary>
         /// UpdatePanel2 control.
