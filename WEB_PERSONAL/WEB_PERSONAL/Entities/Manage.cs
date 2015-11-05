@@ -208,7 +208,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_YEAR ";
+            string query = "SELECT * FROM TB_YEAR order by Year_Name desc ";
             if (!string.IsNullOrEmpty(Year_Name))
             {
                 query += " where 1=1 ";
@@ -235,7 +235,48 @@ namespace WEB_PERSONAL.Entities
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
 
+            return dt;
+        }
+
+        public DataTable GetYearSearch(string Year_Name)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_YEAR";
+            if (!string.IsNullOrEmpty(Year_Name))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(Year_Name))
+                {
+                    query += " and Year_Name like :Year_Name ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(Year_Name))
+                {
+                    command.Parameters.Add(new OracleParameter("Year_Name", Year_Name + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally
@@ -278,7 +319,8 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_Year Set ";
-            query += " Year_Name = :Year_Name,";
+            query += " Year_Name = :Year_Name";
+            query += " where Year_ID = :Year_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -288,6 +330,7 @@ namespace WEB_PERSONAL.Entities
                     conn.Open();
                 }
                 command.Parameters.Add(new OracleParameter("Year_Name", Year_Name));
+                command.Parameters.Add(new OracleParameter("Year_ID", Year_ID));
 
                 if (command.ExecuteNonQuery() > 0)
                 {

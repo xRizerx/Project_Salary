@@ -16,6 +16,8 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 BindData();
+                txtYearName.Attributes.Add("onkeypress", "return allowOnlyNumber(this)");
+                txtSearchTH.Attributes.Add("onkeypress", "return allowOnlyNumber(this)");
             }
         }
 
@@ -47,21 +49,22 @@ namespace WEB_PERSONAL
         private void ClearData()
         {
             txtSearchTH.Text ="";
-            txtYear.Text = "";
+            txtYearName.Text = "";
         }
 
         protected void btnSubmitYEAR_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtYear.Text))
+            if (string.IsNullOrEmpty(txtYearName.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ปีการศึกษา')", true);
                 return;
             }
                 ClassYear y = new ClassYear();
-                y.Year_Name = txtYear.Text;
+                y.Year_Name = txtYearName.Text;
 
                 y.InsertYear();
                 BindData();
+                ClearData();
         }
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
@@ -86,12 +89,12 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblYear_ID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblYear_ID");
+            Label lblYearID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblYearID");
 
-            TextBox txtYear = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtYear");
+            TextBox txtYearNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtYearNameEdit");
 
-            ClassYear y = new ClassYear(Convert.ToInt32(lblYear_ID.Text)
-                , txtYear.Text);
+            ClassYear y = new ClassYear(Convert.ToInt32(lblYearID.Text)
+                , txtYearNameEdit.Text);
 
             y.UpdateYear();
 
@@ -100,6 +103,15 @@ namespace WEB_PERSONAL
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            DataRowView drv = e.Row.DataItem as DataRowView;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
+                    TextBox txt = (TextBox)e.Row.FindControl("txtYearNameEdit");
+                    txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                }
+            }
         }
         protected void myGridViewYEAR_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -111,12 +123,17 @@ namespace WEB_PERSONAL
         protected void btnCancelYEAR_Click(object sender, EventArgs e)
         {
             ClearData();
+            ClassYear y = new ClassYear();
+            DataTable dt = y.GetYear("");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
         }
 
         protected void btnSearchYear_Click(object sender, EventArgs e)
         {
             ClassYear y = new ClassYear();
-            DataTable dt = y.GetYear(txtSearchTH.Text);
+            DataTable dt = y.GetYearSearch(txtSearchTH.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

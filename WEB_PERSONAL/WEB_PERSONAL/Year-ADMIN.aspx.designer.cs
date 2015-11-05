@@ -40,13 +40,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Button btnSearchTitleName;
         
         /// <summary>
-        /// txtYear control.
+        /// txtYearName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYear;
+        protected global::System.Web.UI.WebControls.TextBox txtYearName;
         
         /// <summary>
         /// btnSubmitYEAR control.
