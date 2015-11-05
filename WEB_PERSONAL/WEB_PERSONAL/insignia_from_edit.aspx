@@ -341,7 +341,8 @@
                     <asp:Label ID="Label28" runat="server" Text="ระดับ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList10" runat="server" Width="269px"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownList10" runat="server" Width="269px" DataSourceID="SqlDataSource9" DataTextField="POSITION_NAME" DataValueField="POSITION_ID"></asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;POSITION_ID&quot;, &quot;POSITION_NAME&quot; FROM &quot;TB_POSITION&quot;"></asp:SqlDataSource>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -350,7 +351,7 @@
                     <asp:Label ID="Label29" runat="server" Text="เงินเดือนปัจจุบัน"></asp:Label>
                 </td>
                 <td class="auto-style11">
-                    <asp:TextBox ID="TextBox14" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox14" runat="server" Width="269px"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
                     <asp:Label ID="Label30" runat="server" Text="บาท"></asp:Label>

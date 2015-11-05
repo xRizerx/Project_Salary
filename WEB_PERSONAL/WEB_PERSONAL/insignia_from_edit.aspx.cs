@@ -58,6 +58,7 @@ namespace WEB_PERSONAL
                                     {
                                         TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
                                         TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
+                                        //DropDownList6 = reader.GetString(2); /*tb_gender.gender_name
                                        // DropDownList6 = reader.GetString(2); /*tb_gender.gender_name
                                         TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy"); /*tb_personal.birthday*/
                                         TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
