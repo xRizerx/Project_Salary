@@ -730,5 +730,234 @@ namespace WEB_PERSONAL.Entities
             return result;
         }
     }
+
+    public class ClassNational
+    {
+        public int NATION_SEQ { get; set; }
+        public string NATION_ID { get; set; }
+        public string NATION_ENG { get; set; }
+        public string NATION_THA { get; set; }
+
+        public ClassNational() { }
+        public ClassNational(int NATION_SEQ, string NATION_ID, string NATION_ENG, string NATION_THA)
+        {
+            this.NATION_SEQ = NATION_SEQ;
+            this.NATION_ID = NATION_ID;
+            this.NATION_ENG = NATION_ENG;
+            this.NATION_THA = NATION_THA;
+        }
+
+        public DataTable GetNational(string NATION_ID, string NATION_ENG, string NATION_THA)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_NATIONAL order by NATION_ENG asc ";
+            if (!string.IsNullOrEmpty(NATION_ID) || !string.IsNullOrEmpty(NATION_ENG) || !string.IsNullOrEmpty(NATION_THA))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(NATION_ID))
+                {
+                    query += " and NATION_ID like :NATION_ID ";
+                }
+                if (!string.IsNullOrEmpty(NATION_ENG))
+                {
+                    query += " and NATION_ENG like :NATION_ENG ";
+                }
+                if (!string.IsNullOrEmpty(NATION_THA))
+                {
+                    query += " and NATION_THA like :NATION_THA ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(NATION_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("NATION_ID", NATION_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(NATION_ENG))
+                {
+                    command.Parameters.Add(new OracleParameter("NATION_ENG", "%" + NATION_ENG + "%"));
+                }
+                if (!string.IsNullOrEmpty(NATION_THA))
+                {
+                    command.Parameters.Add(new OracleParameter("NATION_THA", "%" + NATION_THA + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetNationalSearch(string NATION_ID, string NATION_ENG, string NATION_THA)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_NATIONAL ";
+            if (!string.IsNullOrEmpty(NATION_ID) || !string.IsNullOrEmpty(NATION_ENG) || !string.IsNullOrEmpty(NATION_THA))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(NATION_ID))
+                {
+                    query += " and NATION_ID like :NATION_ID ";
+                }
+                if (!string.IsNullOrEmpty(NATION_ENG))
+                {
+                    query += " and NATION_ENG like :NATION_ENG ";
+                }
+                if (!string.IsNullOrEmpty(NATION_THA))
+                {
+                    query += " and NATION_THA like :NATION_THA ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(NATION_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("NATION_ID", NATION_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(NATION_ENG))
+                {
+                    command.Parameters.Add(new OracleParameter("NATION_ENG", "%" + NATION_ENG + "%"));
+                }
+                if (!string.IsNullOrEmpty(NATION_THA))
+                {
+                    command.Parameters.Add(new OracleParameter("NATION_THA", "%" + NATION_THA + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertNational()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_NATIONAL (NATION_ID,NATION_ENG,NATION_THA) VALUES (:NATION_ID,:NATION_ENG,:NATION_THA)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("NATION_ID", NATION_ID));
+                command.Parameters.Add(new OracleParameter("NATION_ENG", NATION_ENG));
+                command.Parameters.Add(new OracleParameter("NATION_THA", NATION_THA));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateNational()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_NATIONAL Set ";
+            query += " NATION_ID = :NATION_ID,";
+            query += " NATION_ENG = :NATION_ENG,";
+            query += " NATION_THA = :NATION_THA";
+            query += " where NATION_SEQ = :NATION_SEQ";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("NATION_ID", NATION_ID));
+                command.Parameters.Add(new OracleParameter("NATION_ENG", NATION_ENG));
+                command.Parameters.Add(new OracleParameter("NATION_THA", NATION_THA));
+                command.Parameters.Add(new OracleParameter("NATION_SEQ", NATION_SEQ));
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteNational()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_NATIONAL where NATION_SEQ = :NATION_SEQ", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("NATION_SEQ", NATION_SEQ));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
 }
  
