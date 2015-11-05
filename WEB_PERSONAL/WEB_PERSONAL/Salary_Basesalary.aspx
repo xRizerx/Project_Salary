@@ -38,7 +38,7 @@
                         <td>
                             <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="POSITION_NAME" DataValueField="BASE_ID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
                             </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT BASESALARY.BASE_ID, TB_POSITION.POSITION_NAME FROM BASESALARY INNER JOIN TB_POSITION ON BASESALARY.POSITION_ID = TB_POSITION.POSITION_ID"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT BASESALARY.BASE_ID, TB_POSITION.POSITION_NAME FROM BASESALARY, TB_POSITION WHERE BASESALARY.POSITION_ID = TB_POSITION.POSITION_ID" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
                         </td>
                         <td>&nbsp;</td>
                     </tr>

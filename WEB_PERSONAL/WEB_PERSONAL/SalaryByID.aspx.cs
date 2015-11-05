@@ -53,7 +53,6 @@ namespace WEB_PERSONAL
                                     Label19.Text = reader.GetString(4);
                                     Label22.Text = reader.GetInt32(5).ToString();
                                     TextBox2.Text = reader.GetInt32(6).ToString();
-
                                 }
                                 Session["citizen_id"] = TextBox1.Text;
                             }
