@@ -4,17 +4,27 @@ using System.Linq;
 using System.Web;
 using System.Data.OracleClient;
 using System.Web.UI;
+using System.Globalization;
 
 namespace WEB_PERSONAL {
 
     public class Util {
 
+        /*public static string YearDown543(DateTime date) {
+
+        }*/
         public static string ToOracleDate(string date) {
             string[] s = date.Split('/');
             return s[0] + " " + ToOracleMonth(s[1]) + " " + s[2];
         }
         public static string ToOracleDate(DateTime date) {
             return date.Day.ToString("00") + " " + ToOracleMonth(date.Month) + " " + date.Year.ToString("0000");
+        }
+        public static DateTime toOracleDateTime(string date) {
+            return DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+        }
+        public static DateTime toOracleDateTime(DateTime date) {
+            return DateTime.ParseExact(date.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
         public static string ToOracleMonth(string month) {
             return ToOracleMonth(Int32.Parse(month));

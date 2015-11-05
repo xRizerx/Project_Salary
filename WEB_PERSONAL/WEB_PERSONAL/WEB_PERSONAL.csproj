@@ -149,6 +149,8 @@
     <Content Include="Image\google.png" />
     <Content Include="Image\i2.jpg" />
     <Content Include="Image\i3.jpg" />
+    <Content Include="Image\insignia.jpg" />
+    <Content Include="Image\insignia01.jpg" />
     <Content Include="Image\nopm.jpg" />
     <Content Include="Image\sky.jpg" />
     <Content Include="insignia_from_edit.aspx" />

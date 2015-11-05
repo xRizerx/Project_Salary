@@ -59,14 +59,15 @@ namespace WEB_PERSONAL
                                         TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
                                         TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
                                         //DropDownList6 = reader.GetString(2); /*tb_gender.gender_name
+                                       // DropDownList6 = reader.GetString(2); /*tb_gender.gender_name
                                         TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy"); /*tb_personal.birthday*/
                                         TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
-                                        TextBox2.Text = reader.GetString(5); /*tb_rank.rank_name_th*/
-                                        TextBox3.Text = reader.GetString(6); /*tb_titlename.title_name_th*/
+                                        
+                                        
                                         TextBox9.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy"); /*tb_personal.datetime_inwork*/
-                                        TextBox11.Text = reader.GetString(8); /*tb_position_work.position_work_name*/
-                                        TextBox12.Text = reader.GetString(9); /*AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO*/
-                                        TextBox13.Text = reader.GetString(10); /*tb_position.position_name*/
+                                        
+                                        
+                                        
                                         /*TextBox14.Text = reader.GetInt32(11).ToString(); /*tb_salary.salary*/
                                     }
                                 }

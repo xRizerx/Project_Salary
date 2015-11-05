@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Data.OracleClient;
 
 namespace WEB_PERSONAL.CSS
 {
@@ -18,26 +19,22 @@ namespace WEB_PERSONAL.CSS
         protected void LinkButton10_Click(object sender, EventArgs e)
         {
             Label9.Text = "";
-            try
+            //try
             {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (OracleConnection con = Util.OC())
                 {
-                    con.Open();
                     {
                         string sql = "SELECT count(*) FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox1.Text + "'";
-                        using (SqlCommand command = new SqlCommand(sql, con))
+                        using (OracleCommand command = new OracleCommand(sql, con))
                         {
-                            using(SqlDataReader reader = command.ExecuteReader())
+                            using(OracleDataReader reader = command.ExecuteReader())
                             {
                                 while(reader.Read())
                                 {
                                     if(reader.GetInt32(0) == 0)
                                     {
                                         Label9.Text = "ไม่พบผู้ใช้งาน!";
-                                        /*string script2 = "alert(\"ไม่พบผู้ใช้งาน!\");";
-                                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
-                                        */return;
+                                        return;
                                     }
                                 }
                             }
@@ -47,9 +44,9 @@ namespace WEB_PERSONAL.CSS
 
                     {
                         string sql = "SELECT TB_PERSONAL.PASSWORD, TB_SYSTEM_STATUS.NAME, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME FROM TB_PERSONAL, TB_SYSTEM_STATUS WHERE TB_PERSONAL.CITIZEN_ID = '" + TextBox1.Text + "' AND TB_PERSONAL.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID";
-                        using (SqlCommand command = new SqlCommand(sql, con))
+                        using (OracleCommand command = new OracleCommand(sql, con))
                         {
-                            using (SqlDataReader reader = command.ExecuteReader())
+                            using (OracleDataReader reader = command.ExecuteReader())
                             {
                                 while (reader.Read())
                                 {
@@ -64,9 +61,6 @@ namespace WEB_PERSONAL.CSS
                                     else
                                     {
                                         Label9.Text = "รหัสผ่านไม่ถูกต้อง!";
-                                        /*string script2 = "alert(\"รหัสผ่านไม่ถูกต้อง!\");";
-                                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
-                                        */
                                     }
                                 }
                             }
@@ -75,11 +69,11 @@ namespace WEB_PERSONAL.CSS
                     }
                 }
             }
-            catch (Exception e2)
-            {
-                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
+            //catch (Exception e2)
+            //{
+             //   string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+             //   ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            //}
             
         }
     }
