@@ -176,7 +176,7 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPersonnel_Click(object sender, EventArgs e)
         {
-            /*if (string.IsNullOrEmpty(txtCITIZEN_ID.Text))
+            if (string.IsNullOrEmpty(txtCITIZEN_ID.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชน')", true);
                 return;
@@ -196,11 +196,16 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุล')", true);
                 return;
             }
-            if (string.IsNullOrEmpty(txtHOMEADD.Text))
+            if (string.IsNullOrEmpty(txtZIPCODE.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก บ้านเลขที่')", true);
                 return;
-            }*/
+            }
+            if (string.IsNullOrEmpty(txtDATETIME_INWORRK.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชน')", true);
+                return;
+            }
             Personnel P = new Personnel();
             P.YEAR = Convert.ToInt32(DropDownYEAR.SelectedValue);
             P.UNIV_ID = Convert.ToString(DropDownUNIV_ID.SelectedValue.ToString());

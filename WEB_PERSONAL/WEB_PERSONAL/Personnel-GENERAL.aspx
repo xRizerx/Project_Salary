@@ -69,8 +69,8 @@
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_YEAR" DataTextField="YEAR" DataValueField="YEAR"></asp:DropDownList>
-                            <asp:SqlDataSource ID="TB_YEAR" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_YEAR&quot; ORDER BY &quot;YEAR&quot;"></asp:SqlDataSource>
+                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_YEAR" DataTextField="YEAR_NAME" DataValueField="YEAR_NAME"></asp:DropDownList>
+                            <asp:SqlDataSource ID="TB_YEAR" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_YEAR&quot; ORDER BY &quot;YEAR_NAME&quot;"></asp:SqlDataSource>
                          </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
