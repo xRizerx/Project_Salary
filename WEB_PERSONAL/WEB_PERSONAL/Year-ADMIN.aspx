@@ -18,8 +18,16 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" Height="600px" CssClass="divpan">
-
+<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan">
+    <div>
+        <fieldset>
+            <legend>Search</legend>
+            <div>
+                ปีการศึกษา :&nbsp<asp:TextBox ID="txtSearchTH" runat="server" Width="100px"></asp:TextBox>
+                <asp:Button ID="btnSearchTitleName" Text="Search" runat="server" OnClick="btnSearchYear_Click" />
+            </div>
+        </fieldset>
+    </div>
     <div>
         <fieldset>
             <legend>Insert</legend>
@@ -27,7 +35,7 @@
                 <table>
                     <tr>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">ปีการศึกษา :&nbsp;</td>
-                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtTitleNameTh" runat="server" MaxLength="6"></asp:TextBox></td>
+                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtYear" runat="server" MaxLength="6"></asp:TextBox></td>
                         <td style="text-align: left;"><asp:Button ID="btnSubmitYEAR" Text="OK" runat="server" OnClick = "btnSubmitYEAR_Click" /></td>
                         <td style="text-align: left;"><asp:Button ID="btnCancelYEAR" Text="Cancel" runat="server" OnClick = "btnCancelYEAR_Click" /></td>
                     </tr>
@@ -49,12 +57,17 @@
                 OnRowDataBound="GridView1_RowDataBound"
                 OnPageIndexChanging="myGridViewYEAR_PageIndexChanging" PageSize="10">
                 <Columns>
+                    <asp:TemplateField HeaderText="ID" Visible="false">
+                            <ItemTemplate>
+                            <asp:Label ID="lblYear_ID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Year_ID") %>'></asp:Label>
+                            </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="ปีการศึกษา" ControlStyle-Width="223">
                             <ItemTemplate>
-                            <asp:Label ID="lblTitleNameEnMin" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR") %>'></asp:Label>
+                            <asp:Label ID="lblYear_Name" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_NAME") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameEnMin" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtYear_Name" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_NAME") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />

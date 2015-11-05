@@ -16,7 +16,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" Height="600px" CssClass="divpan">
+<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan">
     <div>
         <fieldset>
             <legend>Search</legend>
@@ -86,7 +86,7 @@
                     </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ชื่อภาษาไทย" ControlStyle-Width="223">
+                    <asp:TemplateField HeaderText="ชื่อภาษาไทย" ControlStyle-Width="210">
                             <ItemTemplate>
                             <asp:Label ID="lblTitleNameTh" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH") %>'></asp:Label>
                             </ItemTemplate>
@@ -96,17 +96,17 @@
                     </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ชื่อย่อภาษไทย" ControlStyle-Width="223">
+                    <asp:TemplateField HeaderText="ชื่อย่อภาษไทย" ControlStyle-Width="210">
                             <ItemTemplate>
                             <asp:Label ID="lblTitleNameThMin" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH_MIN") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameThMin" MaxLength="8" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH_MIN") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtTitleNameThMin" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH_MIN") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ชื่อภาษาอังกฤษ" ControlStyle-Width="223">
+                    <asp:TemplateField HeaderText="ชื่อภาษาอังกฤษ" ControlStyle-Width="210">
                             <ItemTemplate>
                             <asp:Label ID="lblTitleNameEn" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN") %>'></asp:Label>
                             </ItemTemplate>
@@ -116,12 +116,12 @@
                     </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ชื่อย่อภาษาอังกฤษ" ControlStyle-Width="223">
+                    <asp:TemplateField HeaderText="ชื่อย่อภาษาอังกฤษ" ControlStyle-Width="210">
                             <ItemTemplate>
                             <asp:Label ID="lblTitleNameEnMin" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN_MIN") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameEnMin" MaxLength="8" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN_MIN") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtTitleNameEnMin" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN_MIN") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
 

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using WEB_PERSONAL.Entities;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 
 namespace WEB_PERSONAL
 {
@@ -23,64 +24,45 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["YEAR"];
+            return (DataTable)ViewState["YEAR_NAME"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["YEAR"] = data;
+            ViewState["YEAR_NAME"] = data;
         }
 
         #endregion
 
         void BindData()
         {
-          /* TITLENAME ptn = new TITLENAME();
-            DataTable dt = ptn.GetTITLENAME("", "");
+            ClassYear y = new ClassYear();
+            DataTable dt = y.GetYear("");
             GridView1.DataSource = dt;
             GridView1.DataBind();
-            SetViewState(dt); */
+            SetViewState(dt);
         }
 
         private void ClearData()
         {
-           
+            txtSearchTH.Text ="";
+            txtYear.Text = "";
         }
 
         protected void btnSubmitYEAR_Click(object sender, EventArgs e)
         {
-            /*if (string.IsNullOrEmpty(txtTitleNameTh.Text))
+            if (string.IsNullOrEmpty(txtYear.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อภาษาไทย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ปีการศึกษา')", true);
                 return;
             }
-            if (string.IsNullOrEmpty(txtTitleNameThMin.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อย่อภาษาไทย')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtTitleNameEn.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อภาษาอังกฤษ')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtTitleNameEnMin.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อย่อภาษาอังกฤษ')", true);
-                return;
-            }
+                ClassYear y = new ClassYear();
+                y.Year_Name = txtYear.Text;
 
-            TITLENAME ptn = new TITLENAME();
-            ptn.TITLE_NAME_TH = txtTitleNameTh.Text;
-            ptn.TITLE_NAME_TH_MIN = txtTitleNameThMin.Text;
-            ptn.TITLE_NAME_EN = txtTitleNameEn.Text;
-            ptn.TITLE_NAME_EN_MIN = txtTitleNameEnMin.Text;
-
-            ptn.InsertTITLENAME();
-            BindData(); */
+                y.InsertYear();
+                BindData();
         }
-
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
@@ -94,36 +76,27 @@ namespace WEB_PERSONAL
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
-        /*    int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            TITLENAME ptn = new TITLENAME();
-            ptn.TITLE_ID = id;
-            ptn.DeleteTITLENAME();
+            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            ClassYear y = new ClassYear();
+            y.Year_ID = id;
+            y.DeleteYear();
 
             GridView1.EditIndex = -1;
-            BindData(); */
+            BindData(); 
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-           /* Label lblTitleID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblTitleID");
+            Label lblYear_ID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblYear_ID");
 
-            TextBox txtTitleNameTh = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameTh");
+            TextBox txtYear = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtYear");
 
-            TextBox txtTitleNameThMin = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameThMin");
+            ClassYear y = new ClassYear(Convert.ToInt32(lblYear_ID.Text)
+                , txtYear.Text);
 
-            TextBox txtTitleNameEn = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameEn");
-
-            TextBox txtTitleNameEnMin = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameEnMin");
-
-            TITLENAME ptn = new TITLENAME(Convert.ToInt32(lblTitleID.Text)
-                , txtTitleNameTh.Text
-                , txtTitleNameThMin.Text
-                , txtTitleNameEn.Text
-                , txtTitleNameEnMin.Text);
-
-            ptn.UpdateTITLENAME();
+            y.UpdateYear();
 
             GridView1.EditIndex = -1;
-            BindData(); */
+            BindData();
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -138,6 +111,15 @@ namespace WEB_PERSONAL
         protected void btnCancelYEAR_Click(object sender, EventArgs e)
         {
             ClearData();
+        }
+
+        protected void btnSearchYear_Click(object sender, EventArgs e)
+        {
+            ClassYear y = new ClassYear();
+            DataTable dt = y.GetYear(txtSearchTH.Text);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
         }
     }
 }
