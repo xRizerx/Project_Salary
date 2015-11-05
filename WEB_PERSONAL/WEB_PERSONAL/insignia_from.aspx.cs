@@ -8,7 +8,7 @@ using System.Data.OracleClient;
 
 namespace WEB_PERSONAL
 {
-    public partial class insignia1 : System.Web.UI.Page
+    public partial class insignia_form : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -10,7 +10,8 @@
 namespace WEB_PERSONAL {
     
     
-    public partial class insignia2 {
+    public partial class insignia_form
+    {
         
         /// <summary>
         /// Panel6 control.
