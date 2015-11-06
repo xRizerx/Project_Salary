@@ -180,7 +180,8 @@
                     <asp:Label ID="Label11" runat="server" Text="ชื่อหน่วยงานที่ขอพระราชทาน"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox1" runat="server" Width="269px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList11" runat="server" AppendDataBoundItems="True" AutoPostBack="True" DataSourceID="SqlDataSource10" DataTextField="FACULTY_NAME" DataValueField="FACULTY_ID" Width="269px"></asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;FACULTY_ID&quot;, &quot;FACULTY_NAME&quot; FROM &quot;TB_FACULTY&quot;"></asp:SqlDataSource>
                 </td>
                 <td>&nbsp;</td>
             </tr>
