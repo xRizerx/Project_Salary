@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Year-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.Year_ADMIN" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="TimeContact-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.TimeContact_ADMIN" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <style type="text/css">
+<style type="text/css">
         .divpan {
             background-image: url("Image/sky.jpg");
             text-align: center;
@@ -34,8 +34,8 @@
         <fieldset>
             <legend>Search</legend>
             <div>
-                ปีการศึกษา :&nbsp<asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
-                <asp:Button ID="btnSearchYear" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchYear_Click" />
+                ระยะเวลาการจ้างงาน :&nbsp<asp:TextBox ID="txtSearchTimeContactName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                <asp:Button ID="btnSearchTimeContact" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchTimeContact_Click" />
             </div>
         </fieldset>
     </div>
@@ -45,11 +45,11 @@
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width:292px"></td>
-                        <td style="margin-left: auto; margin-right: auto; text-align: center">ปีการศึกษา :</td>
-                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtYearName" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
-                        <td style="text-align: left;"><asp:Button ID="btnSubmitYEAR" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitYEAR_Click" /></td>
-                        <td style="text-align: left;"><asp:Button ID="btnCancelYEAR" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelYEAR_Click" /></td>
+                        <td style="text-align: left; width:263px"></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">ระยะเวลาการจ้างงาน :</td>
+                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertTimeContactName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
+                        <td style="text-align: left;"><asp:Button ID="btnSubmitTimeContact" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitTimeContact_Click" /></td>
+                        <td style="text-align: left;"><asp:Button ID="btnCancelTimeContact" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelTimeContact_Click" /></td>
                     </tr>
                 </table>
             </div>
@@ -61,25 +61,25 @@
             <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
-                DataKeyNames="YEAR_ID"
+                DataKeyNames="TIME_CONTACT_ID"
                 OnRowEditing="modEditCommand"
                 OnRowCancelingEdit="modCancelCommand"
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewYEAR_PageIndexChanging" PageSize="15">
+                OnPageIndexChanging="myGridViewTimeContact_PageIndexChanging" PageSize="15">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                             <ItemTemplate>
-                            <asp:Label ID="lblYearID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Year_ID") %>'></asp:Label>
+                            <asp:Label ID="lblTimeContactID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TIME_CONTACT_ID") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ปีการศึกษา" ControlStyle-Width="223">
+                    <asp:TemplateField HeaderText="ระยะเวลาการจ้างงาน" ControlStyle-Width="400">
                             <ItemTemplate>
-                            <asp:Label ID="lblYearNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_NAME") %>'></asp:Label>
+                            <asp:Label ID="lblTimeContactNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TIME_CONTACT_NAME") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtYearNameEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_NAME") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtTimeContactNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TIME_CONTACT_NAME") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />

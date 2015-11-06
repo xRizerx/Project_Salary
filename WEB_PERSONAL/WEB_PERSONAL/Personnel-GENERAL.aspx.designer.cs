@@ -265,13 +265,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownNATION_ID;
         
         /// <summary>
-        /// TB_NATIONALS control.
+        /// TB_NATIONAL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource TB_NATIONALS;
+        protected global::System.Web.UI.WebControls.SqlDataSource TB_NATIONAL;
         
         /// <summary>
         /// txtGRAD_CURR control.

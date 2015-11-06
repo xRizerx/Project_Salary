@@ -102,7 +102,7 @@
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
                             <asp:DropDownList ID="DropDownUNIV_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_UNIVERSITY_V2" DataTextField="UNIV_NAME" DataValueField="UNIV_ID"></asp:DropDownList> 
-                            <asp:SqlDataSource ID="TB_UNIVERSITY_V2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_UNIVERSITY_V2&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource> 
+                            <asp:SqlDataSource ID="TB_UNIVERSITY_V2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_UNIVERSITY_V2&quot; ORDER BY &quot;UNIV_ID&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource> 
                         </td>  
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -214,8 +214,8 @@
                         </td>   
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                             <asp:DropDownList ID="DropDownNATION_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_NATIONALS" DataTextField="NATIONAL_NAME_THA" DataValueField="NATIONAL_ID"></asp:DropDownList>
-                             <asp:SqlDataSource ID="TB_NATIONALS" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_NATIONALS&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
+                             <asp:DropDownList ID="DropDownNATION_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_NATIONAL" DataTextField="NATION_THA" DataValueField="NATION_ID"></asp:DropDownList>
+                             <asp:SqlDataSource ID="TB_NATIONAL" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_NATIONAL&quot; ORDER BY &quot;NATION_ENG&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -296,7 +296,7 @@
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">หมู่</td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                         <td style="text-align: left; margin-right: 5px; ">ประเภทตำแหน่ง <span class="textred">*</span></td> 
+                         <td style="text-align: left; margin-right: 5px; ">ประเภทบุคลากรย่อย <span class="textred">*</span></td> 
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ประเทศที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
                      </tr>
