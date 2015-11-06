@@ -103,13 +103,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
-        /// TextBox1 control.
+        /// DropDownList11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList11;
+        
+        /// <summary>
+        /// SqlDataSource10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource10;
         
         /// <summary>
         /// Label12 control.

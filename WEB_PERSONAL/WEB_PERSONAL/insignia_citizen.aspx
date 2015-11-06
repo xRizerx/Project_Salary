@@ -10,6 +10,9 @@
         .p2 {
             background-color: rgba(128, 128, 128, 0.3);
         }
+        .center{
+            text-align:center
+        }
         .auto-style3 {
             text-align: center;
         }
@@ -66,7 +69,7 @@
                         <table style="width:100%;">
                             <tr>
                                 <td class="auto-style3" colspan="2">
-                                    <asp:Label ID="Label9" runat="server" CssClass="auto-style9" Text="กรอกรหัสบัตรประจำตัวประชาชน"></asp:Label>
+                                    <asp:Label ID="Label9" runat="server" CssClass="auto-style9" Text="กรอกรหัสบัตรประจำตัวประชาชน 13 หลัก"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -74,7 +77,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" class="auto-style3">
-                                    <asp:TextBox ID="TextBox1" runat="server" Width="340px" Height="32px"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox1" runat="server" Width="340px" Height="32px" MaxLength="13" ToolTip="กรอกเลขประจำตัวประชาชน 13 หลัก" CssClass="center"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>

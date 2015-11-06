@@ -28,7 +28,7 @@ namespace WEB_PERSONAL
                 {
                     con.Open();
                     {
-                        string Oracle = "SELECT STAFFTYPE_ID FROM TB_PERSONAL WHERE CITIZEN_ID = " + citizen_id;
+                        string Oracle = "SELECT STAFFTYPE_ID,title_id FROM TB_PERSONAL WHERE CITIZEN_ID = " + citizen_id;
                         using (OracleCommand command = new OracleCommand(Oracle, con))
                         {
                             using (OracleDataReader reader = command.ExecuteReader())
@@ -36,6 +36,8 @@ namespace WEB_PERSONAL
                                 while (reader.Read())
                                 {
                                     staff_type_id = reader.GetInt32(0);
+
+                                    DropDownList5.SelectedValue = ""+reader.GetInt32(1);
                                 }
                             }
                         }
@@ -58,8 +60,6 @@ namespace WEB_PERSONAL
                                     {
                                         TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
                                         TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
-                                        //DropDownList6 = reader.GetString(2); /*tb_gender.gender_name
-                                       // DropDownList6 = reader.GetString(2); /*tb_gender.gender_name
                                         TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy"); /*tb_personal.birthday*/
                                         TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
                                         
@@ -90,11 +90,14 @@ namespace WEB_PERSONAL
 
                 }
             }
-           // catch (Exception e2)
-           // {
+            // catch (Exception e2)
+            // {
             //    string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
             //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-           //S }
+            //S }
+            if (!IsPostBack) {
+                DropDownList11.Items.Add("--Please Select District--");
+            }
         }
 
         protected void Button2_Click(object sender, EventArgs e)
