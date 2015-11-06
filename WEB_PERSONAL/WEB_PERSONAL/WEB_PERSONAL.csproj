@@ -178,6 +178,7 @@
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
     <Content Include="StaffType-ADMIN.aspx" />
+    <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TimeContact-ADMIN.aspx" />
     <Content Include="UNIVERSITY-ADMIN.aspx" />
     <Content Include="Year-ADMIN.aspx" />
@@ -427,6 +428,13 @@
     </Compile>
     <Compile Include="Study-IN.aspx.designer.cs">
       <DependentUpon>Study-IN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubStaffType-ADMIN.aspx.cs">
+      <DependentUpon>SubStaffType-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubStaffType-ADMIN.aspx.designer.cs">
+      <DependentUpon>SubStaffType-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="TimeContact-ADMIN.aspx.cs">
       <DependentUpon>TimeContact-ADMIN.aspx</DependentUpon>
