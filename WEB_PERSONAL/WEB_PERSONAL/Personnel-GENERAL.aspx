@@ -296,7 +296,7 @@
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">หมู่</td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                         <td style="text-align: left; margin-right: 5px; ">ประเภทตำแหน่ง <span class="textred">*</span></td> 
+                         <td style="text-align: left; margin-right: 5px; ">ประเภทบุคลากรย่อย <span class="textred">*</span></td> 
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ประเทศที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
                      </tr>
