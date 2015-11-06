@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       <style type="text/css">
         .divpan {
-            background-image: url("Image/sky.jpg");
+
             text-align: center;
         }
         .panin{
@@ -12,7 +12,7 @@
             border-radius: 5px;
         }
          body {
-            background-image: url("Image/444.jpg");
+            background-image: url("Image/444.png");
         }
          .tb5 {
 	        background-repeat:repeat-x;
@@ -29,7 +29,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan">
+<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
     <div>
         <fieldset>
             <legend>Search</legend>
@@ -72,14 +72,14 @@
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewNATIONAL_PageIndexChanging" PageSize="15">
+                OnPageIndexChanging="myGridViewNATIONAL_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                             <ItemTemplate>
                             <asp:Label ID="lblNationSEQ" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NATION_SEQ") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="รหัสสัญชาติ" ControlStyle-Width="80">
+                    <asp:TemplateField HeaderText="รหัสสัญชาติ" ControlStyle-Width="80" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblNationIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NATION_ID") %>'></asp:Label>
                             </ItemTemplate>
@@ -87,7 +87,7 @@
                             		<asp:TextBox ID="txtNationIDEdit" MaxLength="2" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NATION_ID") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="ชื่อสัญชาติภาษาอังกฤษ" ControlStyle-Width="350">
+                     <asp:TemplateField HeaderText="ชื่อสัญชาติภาษาอังกฤษ" ControlStyle-Width="380" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblNationENGEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NATION_ENG") %>'></asp:Label>
                             </ItemTemplate>
@@ -95,7 +95,7 @@
                             		<asp:TextBox ID="txtNationENGEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NATION_ENG") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="ชื่อสัญชาติภาษาไทย" ControlStyle-Width="350">
+                     <asp:TemplateField HeaderText="ชื่อสัญชาติภาษาไทย" ControlStyle-Width="380" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblNationTHAEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NATION_THA") %>'></asp:Label>
                             </ItemTemplate>
@@ -103,8 +103,8 @@
                             		<asp:TextBox ID="txtNationTHAEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NATION_THA") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
-                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" />
+                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
+                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
                 </Columns>
             </asp:GridView>
 

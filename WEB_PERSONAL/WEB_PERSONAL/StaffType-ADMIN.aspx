@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 <style type="text/css">
         .divpan {
-            background-image: url("Image/sky.jpg");
+         
             text-align: center;
         }
         .panin{
@@ -12,7 +12,7 @@
             border-radius: 5px;
         }
          body {
-            background-image: url("Image/444.jpg");
+            background-image: url("Image/444.png");
         }
          .tb5 {
 	        background-repeat:repeat-x;
@@ -29,8 +29,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan">
-    <div>
+<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+    <div> 
         <fieldset>
             <legend>Search</legend>
             <div>
@@ -45,7 +45,9 @@
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width:252px"></td>
+                        <td style="text-align: left; width:20px"></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทของบุคลากร :</td>
+                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertStaffID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทของบุคลากร :</td>
                         <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertStaffName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
                         <td style="text-align: left;"><asp:Button ID="btnSubmitStaff" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitStaff_Click" /></td>
@@ -61,20 +63,28 @@
             <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
-                DataKeyNames="STAFFTYPE_ID"
+                DataKeyNames="STAFFTYPE_SEQ"
                 OnRowEditing="modEditCommand"
                 OnRowCancelingEdit="modCancelCommand"
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewSTAFFTYPE_PageIndexChanging" PageSize="15">
+                OnPageIndexChanging="myGridViewSTAFFTYPE_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                             <ItemTemplate>
-                            <asp:Label ID="lblStaffID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_ID") %>'></asp:Label>
+                            <asp:Label ID="lblStaffSEQ" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_SEQ") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ชื่อประเภทของบุคลากร" ControlStyle-Width="400">
+                    <asp:TemplateField HeaderText="รหัสประเภทของบุคลากร" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblStaffIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_ID") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtStaffIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_ID") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ชื่อประเภทของบุคลากร" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblStaffNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_NAME") %>'></asp:Label>
                             </ItemTemplate>
@@ -82,8 +92,8 @@
                             		<asp:TextBox ID="txtStaffNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_NAME") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
-                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" />
+                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
+                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
                 </Columns>
             </asp:GridView>
 

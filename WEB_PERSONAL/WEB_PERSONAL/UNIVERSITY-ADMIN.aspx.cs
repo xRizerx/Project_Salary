@@ -26,13 +26,13 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["UNIVERSITY_NAME"];
+            return (DataTable)ViewState["UNIVERSITY"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["UNIVERSITY_NAME"] = data;
+            ViewState["UNIVERSITY"] = data;
         }
 
         #endregion
@@ -58,22 +58,30 @@ namespace WEB_PERSONAL
         {
             if (string.IsNullOrEmpty(txtInsertUnivID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่รหัสมหาวิทยาลัย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสมหาวิทยาลัย')", true);
                 return;
             }
             
             if (string.IsNullOrEmpty(txtInsertUnivName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อมหาวิทยาลัย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อมหาวิทยาลัย')", true);
                 return;
             }
             ClassUniversity u = new ClassUniversity();
             u.UNIV_ID = txtInsertUnivID.Text;
             u.UNIV_NAME = txtInsertUnivName.Text;
 
-            u.InsertUniversity();
-            BindData();
-            ClearData();
+            if (u.CheckUseUniversityID())
+            {
+                u.InsertUniversity();
+                BindData();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสมหาวิทยาลัยนี้ อยู่ในระบบแล้ว !')", true);
+            }
         }
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)

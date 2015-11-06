@@ -26,13 +26,13 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["YEAR_NAME"];
+            return (DataTable)ViewState["YEAR"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["YEAR_NAME"] = data;
+            ViewState["YEAR"] = data;
         }
 
         #endregion
@@ -56,15 +56,23 @@ namespace WEB_PERSONAL
         {
             if (string.IsNullOrEmpty(txtYearName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ปีการศึกษา')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ปีการศึกษา')", true);
                 return;
             }
                 ClassYear y = new ClassYear();
                 y.Year_Name = txtYearName.Text;
 
+            if (y.CheckUseYearName())
+            {
                 y.InsertYear();
                 BindData();
                 ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีปีการศึกษานี้ อยู่ในระบบแล้ว !')", true);
+            }
         }
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)

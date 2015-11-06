@@ -16,6 +16,7 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 BindData();
+                txtInsertGenderID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
 
@@ -24,13 +25,13 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["GENDER_NAME"];
+            return (DataTable)ViewState["GENDER"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["GENDER_NAME"] = data;
+            ViewState["GENDER"] = data;
         }
 
         #endregion
@@ -47,22 +48,37 @@ namespace WEB_PERSONAL
         private void ClearData()
         {
             txtSearchGenderName.Text = "";
-            txtGenderName.Text = "";
+            txtInsertGenderID.Text = "";
+            txtInsertGenderName.Text = "";
         }
 
         protected void btnSubmitGender_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtGenderName.Text))
+            if (string.IsNullOrEmpty(txtInsertGenderID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่เพศ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสเพศ')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtInsertGenderName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อเพศ')", true);
                 return;
             }
             ClassGender g = new ClassGender();
-            g.Gender_Name = txtGenderName.Text;
+            g.Gender_ID = Convert.ToInt32(txtInsertGenderID.Text);
+            g.Gender_Name = txtInsertGenderName.Text;
 
-            g.InsertGender();
-            BindData();
-            ClearData();
+            if (g.CheckUseGenderID())
+            {
+                g.InsertGender();
+                BindData();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสเพศนี้ อยู่ในระบบแล้ว !')", true);
+            }
         }
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
@@ -79,7 +95,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassGender y = new ClassGender();
-            y.Gender_ID = id;
+            y.Gender_SEQ = id;
             y.DeleteGender();
 
             GridView1.EditIndex = -1;
@@ -87,11 +103,12 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblGenderID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblGenderID");
-
+            Label lblGenderSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblGenderSEQ");
+            TextBox txtGenderIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtGenderIDEdit");
             TextBox txtGenderNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtGenderNameEdit");
 
-            ClassGender g = new ClassGender(Convert.ToInt32(lblGenderID.Text)
+            ClassGender g = new ClassGender(Convert.ToInt32(lblGenderSEQ.Text)
+                , Convert.ToInt32(txtGenderIDEdit.Text)
                 , txtGenderNameEdit.Text);
 
             g.UpdateGender();
@@ -101,7 +118,15 @@ namespace WEB_PERSONAL
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-           
+            DataRowView drv = e.Row.DataItem as DataRowView;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
+                    TextBox txt = (TextBox)e.Row.FindControl("txtGenderIDEdit");
+                    txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                }
+            }
         }
         protected void myGridViewGENDER_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -123,7 +148,7 @@ namespace WEB_PERSONAL
         protected void btnSearchGender_Click(object sender, EventArgs e)
         {
             ClassGender g = new ClassGender();
-            DataTable dt = g.GetGender(txtSearchGenderName.Text);
+            DataTable dt = g.GetGenderSearch(txtSearchGenderName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

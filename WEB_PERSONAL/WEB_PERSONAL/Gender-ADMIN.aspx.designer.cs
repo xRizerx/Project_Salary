@@ -40,13 +40,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Button btnSearchGender;
         
         /// <summary>
-        /// txtGenderName control.
+        /// txtInsertGenderID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGenderName;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertGenderID;
+        
+        /// <summary>
+        /// txtInsertGenderName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInsertGenderName;
         
         /// <summary>
         /// btnSubmitGender control.

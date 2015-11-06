@@ -25,13 +25,13 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["NATION_ID"];
+            return (DataTable)ViewState["NATION"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["NATION_ID"] = data;
+            ViewState["NATION"] = data;
         }
 
         #endregion
@@ -59,19 +59,19 @@ namespace WEB_PERSONAL
         {
             if (string.IsNullOrEmpty(txtInsertNationID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่รหัสสัญชาติ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสสัญชาติ')", true);
                 return;
             }
 
             if (string.IsNullOrEmpty(txtInsertNationENG.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อสัญชาติภาษาอังกฤษ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อสัญชาติภาษาอังกฤษ')", true);
                 return;
             }
 
             if (string.IsNullOrEmpty(txtInsertNationTHA.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อสัญชาติภาษาไทย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อสัญชาติภาษาไทย')", true);
                 return;
             }
             ClassNational n = new ClassNational();
@@ -79,9 +79,17 @@ namespace WEB_PERSONAL
             n.NATION_ENG = txtInsertNationENG.Text;
             n.NATION_THA = txtInsertNationTHA.Text;
 
-            n.InsertNational();
-            BindData();
-            ClearData();
+            if (n.CheckUseNationID())
+            {
+                n.InsertNational();
+                BindData();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสสัญชาตินี้ อยู่ในระบบแล้ว !')", true);
+            }
         }
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)

@@ -61,7 +61,7 @@ namespace WEB_PERSONAL
             }
             if (string.IsNullOrEmpty(txtInsertSubStaffTypeName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ประเภทบุคลากรย่อย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อประเภทบุคลากรย่อย')", true);
                 return;
             }
             ClassSubStaffType sst = new ClassSubStaffType();
@@ -78,7 +78,6 @@ namespace WEB_PERSONAL
             else
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสประเภทบุคลากรย่อยนี้ อยู่ในระบบแล้ว !')", true);
-                txtInsertSubStaffTypeID.Text = "";
             }
         }
 
@@ -104,6 +103,7 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
+           
             Label lblSubStaffTypeSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblSubStaffTypeSEQ");
             TextBox txtSubStaffTypeIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffTypeIDEdit");
             TextBox txtSubStaffTypeNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffTypeNameEdit");
@@ -116,6 +116,8 @@ namespace WEB_PERSONAL
 
             GridView1.EditIndex = -1;
             BindData();
+
+
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -140,7 +142,6 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassSubStaffType sst = new ClassSubStaffType();
-            //DataTable dt = sst.GetSubStaffType(int.Parse(""), "");
             DataTable dt = sst.GetSubStaffType("");
             GridView1.DataSource = dt;
             GridView1.DataBind();
@@ -150,7 +151,7 @@ namespace WEB_PERSONAL
         protected void SearchSubStaffType_Click(object sender, EventArgs e)
         {
             ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType(txtSearchSubStaffTypeName.Text);
+            DataTable dt = sst.GetSubStaffTypeSearch(txtSearchSubStaffTypeName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

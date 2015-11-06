@@ -16,6 +16,7 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 BindData();
+                txtInsertTimeContactID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
 
@@ -24,13 +25,13 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["TIME_CONTACT_NAME"];
+            return (DataTable)ViewState["TIME_CONTACT"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["TIME_CONTACT_NAME"] = data;
+            ViewState["TIME_CONTACT"] = data;
         }
 
         #endregion
@@ -47,22 +48,37 @@ namespace WEB_PERSONAL
         private void ClearData()
         {
             txtSearchTimeContactName.Text = "";
+            txtInsertTimeContactID.Text = "";
             txtInsertTimeContactName.Text = "";
         }
 
         protected void btnSubmitTimeContact_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtInsertTimeContactID.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสระยะเวลาการจ้างงาน')", true);
+                return;
+            }
             if (string.IsNullOrEmpty(txtInsertTimeContactName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ระยะเวลาการจ้างงาน')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อระยะเวลาการจ้างงาน')", true);
                 return;
             }
             ClassTimeContact tc = new ClassTimeContact();
+            tc.TIME_CONTACT_ID = Convert.ToInt32(txtInsertTimeContactID.Text);
             tc.TIME_CONTACT_NAME = txtInsertTimeContactName.Text;
 
-            tc.InsertTimeContact();
-            BindData();
-            ClearData();
+            if (tc.CheckUseTimeContactID())
+            {
+                tc.InsertTimeContact();
+                BindData();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสระยะเวลาการจ้างงาน อยู่ในระบบแล้ว !')", true);
+            }
         }
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
@@ -79,7 +95,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassTimeContact tc = new ClassTimeContact();
-            tc.TIME_CONTACT_ID = id;
+            tc.TIME_CONTACT_SEQ = id;
             tc.DeleteTimeContact();
 
             GridView1.EditIndex = -1;
@@ -87,11 +103,12 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblTimeContactID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblTimeContactID");
-
+            Label lblTimeContactSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblTimeContactSEQ");
+            TextBox txtTimeContactIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTimeContactIDEdit");
             TextBox txtTimeContactNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTimeContactNameEdit");
 
-            ClassTimeContact tc = new ClassTimeContact(Convert.ToInt32(lblTimeContactID.Text)
+            ClassTimeContact tc = new ClassTimeContact(Convert.ToInt32(lblTimeContactSEQ.Text)
+                , Convert.ToInt32(txtTimeContactIDEdit.Text)
                 , txtTimeContactNameEdit.Text);
 
             tc.UpdateTimeContact();
@@ -101,7 +118,15 @@ namespace WEB_PERSONAL
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            DataRowView drv = e.Row.DataItem as DataRowView;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
+                    TextBox txt = (TextBox)e.Row.FindControl("txtTimeContactIDEdit");
+                    txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                }
+            }
         }
         protected void myGridViewTimeContact_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -123,7 +148,7 @@ namespace WEB_PERSONAL
         protected void btnSearchTimeContact_Click(object sender, EventArgs e)
         {
             ClassTimeContact tc = new ClassTimeContact();
-            DataTable dt = tc.GetTimeContact(txtSearchTimeContactName.Text);
+            DataTable dt = tc.GetTimeContactSearch(txtSearchTimeContactName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

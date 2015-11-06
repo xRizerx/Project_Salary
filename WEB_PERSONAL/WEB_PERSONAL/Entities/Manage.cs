@@ -1924,13 +1924,16 @@ namespace WEB_PERSONAL.Entities
 
             return dt;
         }
-
-        /* public DataTable GetSubStaffType(int SUBSTAFFTYPE_ID, string SUBSTAFFTYPE_NAME)
+        /*
+         public DataTable GetSubStaffType1(int SUBSTAFFTYPE_ID, string SUBSTAFFTYPE_NAME)
          {
+            //ไปดัก ฟิวแรก เป็น != 0 แทน แล้ว ส่ง 0 เข้าไปแทน
+
+            int field1 = 0;
              DataTable dt = new DataTable();
              OracleConnection conn = ConnectionDB.GetOracleConnection();
              string query = "SELECT * FROM TB_SUBSTAFFTYPE ";
-             if (!string.IsNullOrEmpty(SUBSTAFFTYPE_ID.ToString()) || !string.IsNullOrEmpty(SUBSTAFFTYPE_NAME))
+             if (! = 0(SUBSTAFFTYPE_ID) || !string.IsNullOrEmpty(SUBSTAFFTYPE_NAME))
              {
                  query += " where 1=1 ";
                  if (!string.IsNullOrEmpty(SUBSTAFFTYPE_ID.ToString()))
@@ -1971,7 +1974,8 @@ namespace WEB_PERSONAL.Entities
 
              return dt;
          }
-         */
+         
+        */
         public int InsertSubStaffType()
         {
             int id = 0;

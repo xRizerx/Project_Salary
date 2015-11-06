@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       <style type="text/css">
         .divpan {
-            background-image: url("Image/sky.jpg");
+
             text-align: center;
         }
         .panin{
@@ -12,7 +12,7 @@
             border-radius: 5px;
         }
          body {
-            background-image: url("Image/444.jpg");
+            background-image: url("Image/444.png");
         }
          .tb5 {
 	        background-repeat:repeat-x;
@@ -29,7 +29,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan">
+<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
     <div>
         <fieldset>
             <legend>Search</legend>
@@ -70,14 +70,14 @@
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewUNIVERSITY_PageIndexChanging" PageSize="15">
+                OnPageIndexChanging="myGridViewUNIVERSITY_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                             <ItemTemplate>
                             <asp:Label ID="lblUnivSEQ" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.UNIV_SEQ") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="รหัสมหาวิทยาลัย" ControlStyle-Width="223">
+                    <asp:TemplateField HeaderText="รหัสมหาวิทยาลัย" ControlStyle-Width="223" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblUnivIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.UNIV_ID") %>'></asp:Label>
                             </ItemTemplate>
@@ -85,7 +85,7 @@
                             		<asp:TextBox ID="txtUnivIDEdit" MaxLength="5" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.UNIV_ID") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="ชื่อมหาวิทยาลัย" ControlStyle-Width="600">
+                     <asp:TemplateField HeaderText="ชื่อมหาวิทยาลัย" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblUnivNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.UNIV_NAME") %>'></asp:Label>
                             </ItemTemplate>
@@ -93,8 +93,8 @@
                             		<asp:TextBox ID="txtUnivNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.UNIV_NAME") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
-                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" />
+                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
+                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
                 </Columns>
             </asp:GridView>
 

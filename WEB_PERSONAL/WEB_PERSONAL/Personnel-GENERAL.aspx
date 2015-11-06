@@ -27,11 +27,8 @@
             text-decoration:none;
             color:black;
         }
-         .divpan{
-            background-image: url("Image/sky.jpg");
-        }
          body {
-            background-image: url("Image/444.jpg");
+            background-image: url("Image/444.png");
         }
         .tb5 {
             background-image: url(images/form_bg.jpg);
@@ -50,7 +47,7 @@
             color:red;
         }
     </style>
-    <asp:Panel runat="server" CssClass="divpan" Height="900px">
+    <asp:Panel runat="server" CssClass="divpan" Height="900px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
     <div>
 
         <fieldset>
@@ -69,7 +66,7 @@
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_YEAR" DataTextField="YEAR_NAME" DataValueField="YEAR_NAME"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_YEAR" DataTextField="YEAR_NAME" DataValueField="YEAR_NAME" ></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_YEAR" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_YEAR&quot; ORDER BY &quot;YEAR_NAME&quot;"></asp:SqlDataSource>
                          </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
