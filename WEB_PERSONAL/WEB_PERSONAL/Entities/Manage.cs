@@ -377,6 +377,41 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+
+        public bool CheckUseYearName()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(Year_Name) FROM TB_Year WHERE Year_Name = :Year_Name ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("Year_Name", Year_Name));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
 
     public class ClassUniversity
@@ -585,21 +620,100 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+
+        public bool CheckUseUniversityID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(UNIV_ID) FROM TB_UNIVERSITY_V2 WHERE UNIV_ID = :UNIV_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("UNIV_ID", UNIV_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
 
     public class ClassGender
     {
+        public int Gender_SEQ { get; set; }
         public int Gender_ID { get; set; }
         public string Gender_Name { get; set; }
 
         public ClassGender() { }
-        public ClassGender(int Gender_ID, string Gender_Name)
+        public ClassGender(int Gender_SEQ, int Gender_ID, string Gender_Name)
         {
+            this.Gender_SEQ = Gender_SEQ;
             this.Gender_ID = Gender_ID;
             this.Gender_Name = Gender_Name;
         }
 
         public DataTable GetGender(string Gender_Name)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_GENDER order by Gender_ID asc";
+            if (!string.IsNullOrEmpty(Gender_Name))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(Gender_Name))
+                {
+                    query += " and Gender_Name like :Gender_Name ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(Gender_Name))
+                {
+                    command.Parameters.Add(new OracleParameter("Gender_Name", Gender_Name + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetGenderSearch(string Gender_Name)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
@@ -645,13 +759,14 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_GENDER (Gender_Name) VALUES (:Gender_Name)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_GENDER (Gender_ID,Gender_Name) VALUES (:Gender_ID,:Gender_Name)", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
+                command.Parameters.Add(new OracleParameter("Gender_ID", Gender_ID));
                 command.Parameters.Add(new OracleParameter("Gender_Name", Gender_Name));
                 id = command.ExecuteNonQuery();
             }
@@ -672,8 +787,9 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_GENDER Set ";
+            query += " Gender_ID = :Gender_ID,";
             query += " Gender_Name = :Gender_Name";
-            query += " where Gender_ID = :Gender_ID";
+            query += " where Gender_SEQ = :Gender_SEQ";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -682,8 +798,9 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("Gender_Name", Gender_Name));
                 command.Parameters.Add(new OracleParameter("Gender_ID", Gender_ID));
+                command.Parameters.Add(new OracleParameter("Gender_Name", Gender_Name));
+                command.Parameters.Add(new OracleParameter("Gender_SEQ", Gender_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -705,18 +822,53 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_GENDER where Gender_ID = :Gender_ID", conn);
+            OracleCommand command = new OracleCommand("Delete TB_GENDER where Gender_SEQ = :Gender_SEQ", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("Gender_ID", Gender_ID));
+                command.Parameters.Add(new OracleParameter("Gender_SEQ", Gender_SEQ));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
                 }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+        public bool CheckUseGenderID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(Gender_ID) FROM TB_GENDER WHERE Gender_ID = :Gender_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("Gender_ID", Gender_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
             }
             catch (Exception ex)
             {
@@ -958,21 +1110,100 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+
+        public bool CheckUseNationID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(NATION_ID) FROM TB_NATIONAL WHERE NATION_ID = :NATION_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("NATION_ID", NATION_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
 
     public class ClassStaffType
     {
+        public int STAFFTYPE_SEQ { get; set; }
         public int STAFFTYPE_ID { get; set; }
         public string STAFFTYPE_NAME { get; set; }
 
         public ClassStaffType() { }
-        public ClassStaffType(int STAFFTYPE_ID, string STAFFTYPE_NAME)
+        public ClassStaffType(int STAFFTYPE_SEQ, int STAFFTYPE_ID, string STAFFTYPE_NAME)
         {
+            this.STAFFTYPE_SEQ = STAFFTYPE_SEQ;
             this.STAFFTYPE_ID = STAFFTYPE_ID;
             this.STAFFTYPE_NAME = STAFFTYPE_NAME;
         }
 
         public DataTable GetStaffType(string STAFFTYPE_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_STAFFTYPE order by STAFFTYPE_ID asc";
+            if (!string.IsNullOrEmpty(STAFFTYPE_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(STAFFTYPE_NAME))
+                {
+                    query += " and STAFFTYPE_NAME like :STAFFTYPE_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(STAFFTYPE_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("STAFFTYPE_NAME", "%" + STAFFTYPE_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetStaffTypeSearch(string STAFFTYPE_NAME)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
@@ -1018,13 +1249,14 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_STAFFTYPE (STAFFTYPE_NAME) VALUES (:STAFFTYPE_NAME)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_STAFFTYPE (STAFFTYPE_ID,STAFFTYPE_NAME) VALUES (:STAFFTYPE_ID,:STAFFTYPE_NAME)", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
+                command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
                 command.Parameters.Add(new OracleParameter("STAFFTYPE_NAME", STAFFTYPE_NAME));
                 id = command.ExecuteNonQuery();
             }
@@ -1045,8 +1277,9 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_STAFFTYPE Set ";
+            query += " STAFFTYPE_ID = :STAFFTYPE_ID,";
             query += " STAFFTYPE_NAME = :STAFFTYPE_NAME";
-            query += " where STAFFTYPE_ID = :STAFFTYPE_ID";
+            query += " where STAFFTYPE_SEQ = :STAFFTYPE_SEQ";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -1055,8 +1288,9 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("STAFFTYPE_NAME", STAFFTYPE_NAME));
                 command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
+                command.Parameters.Add(new OracleParameter("STAFFTYPE_NAME", STAFFTYPE_NAME));
+                command.Parameters.Add(new OracleParameter("STAFFTYPE_SEQ", STAFFTYPE_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -1078,14 +1312,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_STAFFTYPE where STAFFTYPE_ID = :STAFFTYPE_ID", conn);
+            OracleCommand command = new OracleCommand("Delete TB_STAFFTYPE where STAFFTYPE_SEQ = :STAFFTYPE_SEQ", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
+                command.Parameters.Add(new OracleParameter("STAFFTYPE_SEQ", STAFFTYPE_SEQ));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -1102,21 +1336,100 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+
+        public bool CheckUseStaffTypeID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(STAFFTYPE_ID) FROM TB_STAFFTYPE WHERE STAFFTYPE_ID = :STAFFTYPE_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
 
     public class ClassTimeContact
     {
+        public int TIME_CONTACT_SEQ { get; set; }
         public int TIME_CONTACT_ID { get; set; }
         public string TIME_CONTACT_NAME { get; set; }
 
         public ClassTimeContact() { }
-        public ClassTimeContact(int TIME_CONTACT_ID, string TIME_CONTACT_NAME)
+        public ClassTimeContact(int TIME_CONTACT_SEQ, int TIME_CONTACT_ID, string TIME_CONTACT_NAME)
         {
+            this.TIME_CONTACT_SEQ = TIME_CONTACT_SEQ;
             this.TIME_CONTACT_ID = TIME_CONTACT_ID;
             this.TIME_CONTACT_NAME = TIME_CONTACT_NAME;
         }
 
         public DataTable GetTimeContact(string TIME_CONTACT_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_TIME_CONTACT order by TIME_CONTACT_ID asc";
+            if (!string.IsNullOrEmpty(TIME_CONTACT_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(TIME_CONTACT_NAME))
+                {
+                    query += " and TIME_CONTACT_NAME like :TIME_CONTACT_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(TIME_CONTACT_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("TIME_CONTACT_NAME", "%" + TIME_CONTACT_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetTimeContactSearch(string TIME_CONTACT_NAME)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
@@ -1162,13 +1475,14 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_TIME_CONTACT (TIME_CONTACT_NAME) VALUES (:TIME_CONTACT_NAME)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_TIME_CONTACT (TIME_CONTACT_ID,TIME_CONTACT_NAME) VALUES (:TIME_CONTACT_ID,:TIME_CONTACT_NAME)", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
+                command.Parameters.Add(new OracleParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
                 command.Parameters.Add(new OracleParameter("TIME_CONTACT_NAME", TIME_CONTACT_NAME));
                 id = command.ExecuteNonQuery();
             }
@@ -1189,8 +1503,9 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_TIME_CONTACT Set ";
+            query += " TIME_CONTACT_ID = :TIME_CONTACT_ID,";
             query += " TIME_CONTACT_NAME = :TIME_CONTACT_NAME";
-            query += " where TIME_CONTACT_ID = :TIME_CONTACT_ID";
+            query += " where TIME_CONTACT_SEQ = :TIME_CONTACT_SEQ";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -1199,8 +1514,9 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("TIME_CONTACT_NAME", TIME_CONTACT_NAME));
                 command.Parameters.Add(new OracleParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
+                command.Parameters.Add(new OracleParameter("TIME_CONTACT_NAME", TIME_CONTACT_NAME));
+                command.Parameters.Add(new OracleParameter("TIME_CONTACT_SEQ", TIME_CONTACT_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -1222,14 +1538,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_TIME_CONTACT where TIME_CONTACT_ID = :TIME_CONTACT_ID", conn);
+            OracleCommand command = new OracleCommand("Delete TB_TIME_CONTACT where TIME_CONTACT_SEQ = :TIME_CONTACT_SEQ", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
+                command.Parameters.Add(new OracleParameter("TIME_CONTACT_SEQ", TIME_CONTACT_SEQ));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -1246,21 +1562,100 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+
+        public bool CheckUseTimeContactID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(TIME_CONTACT_ID) FROM TB_TIME_CONTACT WHERE TIME_CONTACT_ID = :TIME_CONTACT_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
 
     public class ClassBudget
     {
+        public int BUDGET_SEQ { get; set; }
         public int BUDGET_ID { get; set; }
         public string BUDGET_NAME { get; set; }
 
         public ClassBudget() { }
-        public ClassBudget(int BUDGET_ID, string BUDGET_NAME)
+        public ClassBudget(int BUDGET_SEQ, int BUDGET_ID, string BUDGET_NAME)
         {
+            this.BUDGET_SEQ = BUDGET_SEQ;
             this.BUDGET_ID = BUDGET_ID;
             this.BUDGET_NAME = BUDGET_NAME;
         }
 
         public DataTable GetBudget(string BUDGET_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_BUDGET order by BUDGET_ID asc";
+            if (!string.IsNullOrEmpty(BUDGET_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(BUDGET_NAME))
+                {
+                    query += " and BUDGET_NAME like :BUDGET_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(BUDGET_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("BUDGET_NAME", "%" + BUDGET_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetBudgetSearch(string BUDGET_NAME)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
@@ -1306,13 +1701,14 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_BUDGET (BUDGET_NAME) VALUES (:BUDGET_NAME)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_BUDGET (BUDGET_ID,BUDGET_NAME) VALUES (:BUDGET_ID,:BUDGET_NAME)", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
+                command.Parameters.Add(new OracleParameter("BUDGET_ID", BUDGET_ID));
                 command.Parameters.Add(new OracleParameter("BUDGET_NAME", BUDGET_NAME));
                 id = command.ExecuteNonQuery();
             }
@@ -1333,8 +1729,9 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_BUDGET Set ";
+            query += " BUDGET_ID = :BUDGET_ID,";
             query += " BUDGET_NAME = :BUDGET_NAME";
-            query += " where BUDGET_ID = :BUDGET_ID";
+            query += " where BUDGET_SEQ = :BUDGET_SEQ";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -1343,8 +1740,9 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("BUDGET_NAME", BUDGET_NAME));
                 command.Parameters.Add(new OracleParameter("BUDGET_ID", BUDGET_ID));
+                command.Parameters.Add(new OracleParameter("BUDGET_NAME", BUDGET_NAME));
+                command.Parameters.Add(new OracleParameter("BUDGET_SEQ", BUDGET_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -1366,14 +1764,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_BUDGET where BUDGET_ID = :BUDGET_ID", conn);
+            OracleCommand command = new OracleCommand("Delete TB_BUDGET where BUDGET_SEQ = :BUDGET_SEQ", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("BUDGET_ID", BUDGET_ID));
+                command.Parameters.Add(new OracleParameter("BUDGET_SEQ", BUDGET_SEQ));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -1390,21 +1788,102 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+
+        public bool CheckUseBudgetID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(BUDGET_ID) FROM TB_BUDGET WHERE BUDGET_ID = :BUDGET_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("BUDGET_ID", BUDGET_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
 
     public class ClassSubStaffType
     {
+        public int SUBSTAFFTYPE_SEQ { get; set; }
         public int SUBSTAFFTYPE_ID { get; set; }
         public string SUBSTAFFTYPE_NAME { get; set; }
+        
 
         public ClassSubStaffType() { }
-        public ClassSubStaffType(int SUBSTAFFTYPE_ID, string SUBSTAFFTYPE_NAME)
+        public ClassSubStaffType(int SUBSTAFFTYPE_SEQ, int SUBSTAFFTYPE_ID, string SUBSTAFFTYPE_NAME)
         {
+            this.SUBSTAFFTYPE_SEQ = SUBSTAFFTYPE_SEQ;
             this.SUBSTAFFTYPE_ID = SUBSTAFFTYPE_ID;
             this.SUBSTAFFTYPE_NAME = SUBSTAFFTYPE_NAME;
+            
         }
 
         public DataTable GetSubStaffType(string SUBSTAFFTYPE_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_SUBSTAFFTYPE order by SUBSTAFFTYPE_ID asc";
+            if (!string.IsNullOrEmpty(SUBSTAFFTYPE_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(SUBSTAFFTYPE_NAME))
+                {
+                    query += " and SUBSTAFFTYPE_NAME like :SUBSTAFFTYPE_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(SUBSTAFFTYPE_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_NAME", "%" + SUBSTAFFTYPE_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetSubStaffTypeSearch(string SUBSTAFFTYPE_NAME)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
@@ -1446,18 +1925,66 @@ namespace WEB_PERSONAL.Entities
             return dt;
         }
 
+        /* public DataTable GetSubStaffType(int SUBSTAFFTYPE_ID, string SUBSTAFFTYPE_NAME)
+         {
+             DataTable dt = new DataTable();
+             OracleConnection conn = ConnectionDB.GetOracleConnection();
+             string query = "SELECT * FROM TB_SUBSTAFFTYPE ";
+             if (!string.IsNullOrEmpty(SUBSTAFFTYPE_ID.ToString()) || !string.IsNullOrEmpty(SUBSTAFFTYPE_NAME))
+             {
+                 query += " where 1=1 ";
+                 if (!string.IsNullOrEmpty(SUBSTAFFTYPE_ID.ToString()))
+                 {
+                     query += " and SUBSTAFFTYPE_ID like :SUBSTAFFTYPE_ID ";
+                 }
+                 if (!string.IsNullOrEmpty(SUBSTAFFTYPE_NAME))
+                 {
+                     query += " and SUBSTAFFTYPE_NAME like :SUBSTAFFTYPE_NAME ";
+                 }
+             }
+             OracleCommand command = new OracleCommand(query, conn);
+             // Create the command
+             try
+             {
+                 if (conn.State != ConnectionState.Open)
+                 {
+                     conn.Open();
+                 }
+
+                 if (!string.IsNullOrEmpty(SUBSTAFFTYPE_NAME))
+                 {
+                     command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID + "%"));
+                     command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_NAME", "%" + SUBSTAFFTYPE_NAME + "%"));
+                 }
+                 OracleDataAdapter sd = new OracleDataAdapter(command);
+                 sd.Fill(dt);
+             }
+             catch (Exception ex)
+             {
+                 throw ex;
+             }
+             finally
+             {
+                 command.Dispose();
+                 conn.Close();
+             }
+
+             return dt;
+         }
+         */
         public int InsertSubStaffType()
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_SUBSTAFFTYPE (SUBSTAFFTYPE_NAME) VALUES (:SUBSTAFFTYPE_NAME)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_SUBSTAFFTYPE (SUBSTAFFTYPE_ID,SUBSTAFFTYPE_NAME) VALUES (:SUBSTAFFTYPE_ID,:SUBSTAFFTYPE_NAME)", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_NAME", SUBSTAFFTYPE_NAME));
+                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
+                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_NAME", SUBSTAFFTYPE_NAME));  
                 id = command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -1477,8 +2004,9 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_SUBSTAFFTYPE Set ";
+            query += " SUBSTAFFTYPE_ID = :SUBSTAFFTYPE_ID,";
             query += " SUBSTAFFTYPE_NAME = :SUBSTAFFTYPE_NAME";
-            query += " where SUBSTAFFTYPE_ID = :SUBSTAFFTYPE_ID";
+            query += " where SUBSTAFFTYPE_SEQ = :SUBSTAFFTYPE_SEQ";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -1487,8 +2015,9 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_NAME", SUBSTAFFTYPE_NAME));
                 command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
+                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_NAME", SUBSTAFFTYPE_NAME));
+                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_SEQ", SUBSTAFFTYPE_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -1510,14 +2039,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_SUBSTAFFTYPE where SUBSTAFFTYPE_ID = :SUBSTAFFTYPE_ID", conn);
+            OracleCommand command = new OracleCommand("Delete TB_SUBSTAFFTYPE where SUBSTAFFTYPE_SEQ = :SUBSTAFFTYPE_SEQ", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
+                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_SEQ", SUBSTAFFTYPE_SEQ));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -1534,6 +2063,42 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+        public bool CheckUseSubStaffTypeID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(SUBSTAFFTYPE_ID) FROM TB_SUBSTAFFTYPE WHERE SUBSTAFFTYPE_ID = :SUBSTAFFTYPE_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+
     }
 
 }

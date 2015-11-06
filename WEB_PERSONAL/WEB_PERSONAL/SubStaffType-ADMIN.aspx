@@ -34,7 +34,7 @@
         <fieldset>
             <legend>Search</legend>
             <div>
-                ประเภทบุคลากรย่อย :&nbsp<asp:TextBox ID="txtSearchSubStaffTypeName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                ชื่อประเภทบุคลากรย่อย :&nbsp<asp:TextBox ID="txtSearchSubStaffTypeName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchSubStaffType" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="SearchSubStaffType_Click" />
             </div>
         </fieldset>
@@ -45,8 +45,10 @@
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width:263px"></td>
-                        <td style="margin-left: auto; margin-right: auto; text-align: center">ประเภทบุคลากรย่อย :</td>
+                        <td style="text-align: left; width:20px"></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทบุคลากรย่อย :</td>
+                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertSubStaffTypeID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทบุคลากรย่อย :</td>
                         <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertSubStaffTypeName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
                         <td style="text-align: left;"><asp:Button ID="btnSubmitSubStaffType" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitSubStaffType_Click" /></td>
                         <td style="text-align: left;"><asp:Button ID="btnCancelSubStaffType" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelSubStaffType_Click" /></td>
@@ -61,7 +63,7 @@
             <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
-                DataKeyNames="SUBSTAFFTYPE_ID"
+                DataKeyNames="SUBSTAFFTYPE_SEQ"
                 OnRowEditing="modEditCommand"
                 OnRowCancelingEdit="modCancelCommand"
                 OnRowUpdating="modUpdateCommand"
@@ -71,10 +73,18 @@
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                             <ItemTemplate>
-                            <asp:Label ID="lblSubStaffTypeID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_ID") %>'></asp:Label>
+                            <asp:Label ID="lblSubStaffTypeSEQ" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_SEQ") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="ประเภทบุคลากรย่อย" ControlStyle-Width="700">
+                    <asp:TemplateField HeaderText="รหัสประเภทบุคลากรย่อย" ControlStyle-Width="230">
+                            <ItemTemplate>
+                            <asp:Label ID="lblSubStaffTypeIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_ID") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtSubStaffTypeIDEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_ID") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ชื่อประเภทบุคลากรย่อย" ControlStyle-Width="600">
                             <ItemTemplate>
                             <asp:Label ID="lblSubStaffTypeNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_NAME") %>'></asp:Label>
                             </ItemTemplate>

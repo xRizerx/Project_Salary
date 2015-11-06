@@ -16,6 +16,7 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 BindData();
+                txtInsertSubStaffTypeID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
 
@@ -24,13 +25,13 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["SUBSTAFFTYPE_NAME"];
+            return (DataTable)ViewState["SUBSTAFFTYPE"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["SUBSTAFFTYPE_NAME"] = data;
+            ViewState["SUBSTAFFTYPE"] = data;
         }
 
         #endregion
@@ -47,22 +48,38 @@ namespace WEB_PERSONAL
         private void ClearData()
         {
             txtSearchSubStaffTypeName.Text = "";
+            txtInsertSubStaffTypeID.Text = "";
             txtInsertSubStaffTypeName.Text = "";
         }
 
         protected void btnSubmitSubStaffType_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtInsertSubStaffTypeID.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสประเภทบุคลากรย่อย')", true);
+                return;
+            }
             if (string.IsNullOrEmpty(txtInsertSubStaffTypeName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ประเภทบุคลากรย่อย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ประเภทบุคลากรย่อย')", true);
                 return;
             }
             ClassSubStaffType sst = new ClassSubStaffType();
+            sst.SUBSTAFFTYPE_ID = Convert.ToInt32(txtInsertSubStaffTypeID.Text);
             sst.SUBSTAFFTYPE_NAME = txtInsertSubStaffTypeName.Text;
 
-            sst.InsertSubStaffType();
-            BindData();
-            ClearData();
+            if (sst.CheckUseSubStaffTypeID())
+            {
+                sst.InsertSubStaffType();
+                BindData();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสประเภทบุคลากรย่อยนี้ อยู่ในระบบแล้ว !')", true);
+                txtInsertSubStaffTypeID.Text = "";
+            }
         }
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
@@ -79,7 +96,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassSubStaffType sst = new ClassSubStaffType();
-            sst.SUBSTAFFTYPE_ID = id;
+            sst.SUBSTAFFTYPE_SEQ = id;
             sst.DeleteSubStaffType();
 
             GridView1.EditIndex = -1;
@@ -87,11 +104,12 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblSubStaffTypeID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblSubStaffTypeID");
-
+            Label lblSubStaffTypeSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblSubStaffTypeSEQ");
+            TextBox txtSubStaffTypeIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffTypeIDEdit");
             TextBox txtSubStaffTypeNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffTypeNameEdit");
 
-            ClassSubStaffType sst = new ClassSubStaffType(Convert.ToInt32(lblSubStaffTypeID.Text)
+            ClassSubStaffType sst = new ClassSubStaffType(Convert.ToInt32(lblSubStaffTypeSEQ.Text)
+                , Convert.ToInt32(txtSubStaffTypeIDEdit.Text)
                 , txtSubStaffTypeNameEdit.Text);
 
             sst.UpdateSubStaffType();
@@ -101,7 +119,15 @@ namespace WEB_PERSONAL
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            DataRowView drv = e.Row.DataItem as DataRowView;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
+                    TextBox txt = (TextBox)e.Row.FindControl("txtSubStaffTypeIDEdit");
+                    txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                }
+            }
         }
         protected void myGridViewSubStaffType_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -114,6 +140,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassSubStaffType sst = new ClassSubStaffType();
+            //DataTable dt = sst.GetSubStaffType(int.Parse(""), "");
             DataTable dt = sst.GetSubStaffType("");
             GridView1.DataSource = dt;
             GridView1.DataBind();
