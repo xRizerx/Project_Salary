@@ -34,7 +34,7 @@
         <fieldset>
             <legend>Search</legend>
             <div>
-                เพศ :&nbsp<asp:TextBox ID="txtSearchGenderName" runat="server" CssClass="tb5" Width="230px" MaxLength="10"></asp:TextBox>
+                เพศ :&nbsp<asp:TextBox ID="txtSearchGenderName" runat="server" CssClass="tb5" Width="230px" MaxLength="20"></asp:TextBox>
                 <asp:Button ID="btnSearchGender" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchGender_Click" />
             </div>
         </fieldset>
@@ -47,7 +47,7 @@
                     <tr>
                         <td style="text-align: left; width:317px"></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">เพศ :</td>
-                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtGenderName" runat="server" CssClass="tb5" MaxLength="10"></asp:TextBox></td>
+                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtGenderName" runat="server" CssClass="tb5" MaxLength="20"></asp:TextBox></td>
                         <td style="text-align: left;"><asp:Button ID="btnSubmitGender" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitGender_Click" /></td>
                         <td style="text-align: left;"><asp:Button ID="btnCancelGender" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelGender_Click" /></td>
                     </tr>
@@ -79,7 +79,7 @@
                             <asp:Label ID="lblGenderNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GENDER_NAME") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtGenderNameEdit" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GENDER_NAME") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtGenderNameEdit" MaxLength="20" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GENDER_NAME") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
