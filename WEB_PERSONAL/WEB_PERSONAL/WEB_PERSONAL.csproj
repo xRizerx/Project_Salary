@@ -176,6 +176,7 @@
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="StaffType-ADMIN.aspx" />
     <Content Include="UNIVERSITY-ADMIN.aspx" />
     <Content Include="Year-ADMIN.aspx" />
     <None Include="personalDataSet.xsd">
@@ -403,6 +404,13 @@
     </Compile>
     <Compile Include="SEMINAR-GENERAL.aspx.designer.cs">
       <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StaffType-ADMIN.aspx.cs">
+      <DependentUpon>StaffType-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaffType-ADMIN.aspx.designer.cs">
+      <DependentUpon>StaffType-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Study-IN.aspx.cs">
       <DependentUpon>Study-IN.aspx</DependentUpon>

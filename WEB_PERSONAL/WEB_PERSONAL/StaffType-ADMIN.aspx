@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Gender-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.Gender_ADMIN" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="StaffType-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.StaffType_ADMIN" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-       <style type="text/css">
+<style type="text/css">
         .divpan {
             background-image: url("Image/sky.jpg");
             text-align: center;
@@ -34,8 +34,8 @@
         <fieldset>
             <legend>Search</legend>
             <div>
-                เพศ :&nbsp<asp:TextBox ID="txtSearchGenderName" runat="server" CssClass="tb5" Width="230px" MaxLength="10"></asp:TextBox>
-                <asp:Button ID="btnSearchGender" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchGender_Click" />
+                ชื่อประเภทของบุคลากร :&nbsp<asp:TextBox ID="txtSearchStaffName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                <asp:Button ID="btnSearchStaff" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchStaff_Click" />
             </div>
         </fieldset>
     </div>
@@ -45,11 +45,11 @@
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width:317px"></td>
-                        <td style="margin-left: auto; margin-right: auto; text-align: center">เพศ :</td>
-                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtGenderName" runat="server" CssClass="tb5" MaxLength="10"></asp:TextBox></td>
-                        <td style="text-align: left;"><asp:Button ID="btnSubmitGender" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitGender_Click" /></td>
-                        <td style="text-align: left;"><asp:Button ID="btnCancelGender" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelGender_Click" /></td>
+                        <td style="text-align: left; width:252px"></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทของบุคลากร :</td>
+                        <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertStaffName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
+                        <td style="text-align: left;"><asp:Button ID="btnSubmitStaff" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitStaff_Click" /></td>
+                        <td style="text-align: left;"><asp:Button ID="btnCancelStaff" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelStaff_Click" /></td>
                     </tr>
                 </table>
             </div>
@@ -61,25 +61,25 @@
             <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
-                DataKeyNames="GENDER_ID"
+                DataKeyNames="STAFFTYPE_ID"
                 OnRowEditing="modEditCommand"
                 OnRowCancelingEdit="modCancelCommand"
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewGENDER_PageIndexChanging" PageSize="15">
+                OnPageIndexChanging="myGridViewSTAFFTYPE_PageIndexChanging" PageSize="15">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                             <ItemTemplate>
-                            <asp:Label ID="lblGenderID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GENDER_ID") %>'></asp:Label>
+                            <asp:Label ID="lblStaffID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_ID") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="เพศ" ControlStyle-Width="290">
+                    <asp:TemplateField HeaderText="ชื่อประเภทของบุคลากร" ControlStyle-Width="400">
                             <ItemTemplate>
-                            <asp:Label ID="lblGenderNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GENDER_NAME") %>'></asp:Label>
+                            <asp:Label ID="lblStaffNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_NAME") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtGenderNameEdit" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GENDER_NAME") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtStaffNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_NAME") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
