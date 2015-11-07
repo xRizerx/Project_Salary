@@ -91,6 +91,7 @@ namespace WEB_PERSONAL
             ClassYear y = new ClassYear();
             y.Year_ID = id;
             y.DeleteYear();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData(); 
@@ -105,7 +106,7 @@ namespace WEB_PERSONAL
                 , txtYearNameEdit.Text);
 
             y.UpdateYear();
-
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData();
         }

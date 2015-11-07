@@ -97,6 +97,7 @@ namespace WEB_PERSONAL
             ClassBudget b = new ClassBudget();
             b.BUDGET_SEQ = id;
             b.DeleteBudget();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
@@ -113,7 +114,7 @@ namespace WEB_PERSONAL
                 , txtBudgetNameEdit.Text);
 
             b.UpdateBudget();
-
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData();
         }

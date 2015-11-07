@@ -18,6 +18,8 @@ namespace WEB_PERSONAL
                 BindData();
                 txtSearchUnivID.Attributes.Add("onkeypress", "return allowOnlyNumber(this)");
                 txtInsertUnivID.Attributes.Add("onkeypress", "return allowOnlyNumber(this)");
+                GridView1.AllowPaging = true;
+                GridView1.AllowSorting = true;
             }
         }
 
@@ -100,6 +102,7 @@ namespace WEB_PERSONAL
             ClassUniversity y = new ClassUniversity();
             y.UNIV_SEQ = id;
             y.DeleteUniversity();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
@@ -115,7 +118,7 @@ namespace WEB_PERSONAL
                 , txtUnivNameEdit.Text);
 
             u.UpdateUniversity();
-
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData();
         }

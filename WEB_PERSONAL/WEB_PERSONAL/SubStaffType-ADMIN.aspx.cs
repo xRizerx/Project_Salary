@@ -97,6 +97,7 @@ namespace WEB_PERSONAL
             ClassSubStaffType sst = new ClassSubStaffType();
             sst.SUBSTAFFTYPE_SEQ = id;
             sst.DeleteSubStaffType();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
@@ -113,7 +114,7 @@ namespace WEB_PERSONAL
                 , txtSubStaffTypeNameEdit.Text);
 
             sst.UpdateSubStaffType();
-
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData();
 

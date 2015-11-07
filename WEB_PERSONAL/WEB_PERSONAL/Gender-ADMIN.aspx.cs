@@ -97,6 +97,7 @@ namespace WEB_PERSONAL
             ClassGender y = new ClassGender();
             y.Gender_SEQ = id;
             y.DeleteGender();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
@@ -112,7 +113,7 @@ namespace WEB_PERSONAL
                 , txtGenderNameEdit.Text);
 
             g.UpdateGender();
-
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData();
         }

@@ -29,7 +29,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
     <div>
         <fieldset>
             <legend>Search</legend>
@@ -63,7 +63,7 @@
             <legend>Data</legend>
             <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: left;"
                 AutoGenerateColumns="false"
-                AllowPaging="true"
+                AllowPaging="True"
                 DataKeyNames="UNIV_SEQ"
                 OnRowEditing="modEditCommand"
                 OnRowCancelingEdit="modCancelCommand"
@@ -84,6 +84,8 @@
                                     <EditItemTemplate>
                             		<asp:TextBox ID="txtUnivIDEdit" MaxLength="5" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.UNIV_ID") %>'></asp:TextBox>
                         		    </EditItemTemplate>
+                            <ControlStyle Width="223px" />
+                            <HeaderStyle BackColor="#0099FF" ForeColor="Aqua" />
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="ชื่อมหาวิทยาลัย" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
@@ -92,9 +94,15 @@
                                     <EditItemTemplate>
                             		<asp:TextBox ID="txtUnivNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.UNIV_NAME") %>'></asp:TextBox>
                         		    </EditItemTemplate>
+                            <ControlStyle Width="600px" />
+                            <HeaderStyle BackColor="#0099FF" ForeColor="Aqua" />
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
-                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
+                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" >
+                    <HeaderStyle BackColor="#0099FF" ForeColor="Aqua" />
+                    </asp:CommandField>
+                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" >
+                    <HeaderStyle BackColor="#0099FF" ForeColor="Aqua" />
+                    </asp:CommandField>
                 </Columns>
             </asp:GridView>
 

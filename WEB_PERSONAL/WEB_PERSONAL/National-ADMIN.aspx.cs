@@ -108,6 +108,7 @@ namespace WEB_PERSONAL
             ClassNational n = new ClassNational();
             n.NATION_SEQ = id;
             n.DeleteNational();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
@@ -125,7 +126,7 @@ namespace WEB_PERSONAL
                 , txtNationTHAEdit.Text);
 
             n.UpdateNational();
-
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData();
         }

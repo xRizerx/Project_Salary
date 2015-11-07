@@ -108,6 +108,7 @@ namespace WEB_PERSONAL
             TITLENAME ptn = new TITLENAME();
             ptn.TITLE_ID = id;
             ptn.DeleteTITLENAME();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
@@ -131,6 +132,7 @@ namespace WEB_PERSONAL
                 , txtTitleNameEnMin.Text);
 
             ptn.UpdateTITLENAME();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();

@@ -97,6 +97,7 @@ namespace WEB_PERSONAL
             ClassTimeContact tc = new ClassTimeContact();
             tc.TIME_CONTACT_SEQ = id;
             tc.DeleteTimeContact();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
@@ -112,7 +113,7 @@ namespace WEB_PERSONAL
                 , txtTimeContactNameEdit.Text);
 
             tc.UpdateTimeContact();
-
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData();
         }
