@@ -178,6 +178,7 @@
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Position-ADMIN.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TimeContact-ADMIN.aspx" />
@@ -373,6 +374,13 @@
     </Compile>
     <Compile Include="Personnel-GENERAL.aspx.designer.cs">
       <DependentUpon>Personnel-GENERAL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Position-ADMIN.aspx.cs">
+      <DependentUpon>Position-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Position-ADMIN.aspx.designer.cs">
+      <DependentUpon>Position-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Salary-report.aspx.cs">
       <DependentUpon>Salary-report.aspx</DependentUpon>
