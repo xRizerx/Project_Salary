@@ -95,7 +95,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassGender y = new ClassGender();
-            y.Gender_SEQ = id;
+            y.Gender_ID = id;
             y.DeleteGender();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
@@ -104,12 +104,10 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblGenderSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblGenderSEQ");
             TextBox txtGenderIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtGenderIDEdit");
             TextBox txtGenderNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtGenderNameEdit");
 
-            ClassGender g = new ClassGender(Convert.ToInt32(lblGenderSEQ.Text)
-                , Convert.ToInt32(txtGenderIDEdit.Text)
+            ClassGender g = new ClassGender(Convert.ToInt32(txtGenderIDEdit.Text)
                 , txtGenderNameEdit.Text);
 
             g.UpdateGender();

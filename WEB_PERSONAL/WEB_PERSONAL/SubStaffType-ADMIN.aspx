@@ -63,7 +63,7 @@
             <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
-                DataKeyNames="SUBSTAFFTYPE_SEQ"
+                DataKeyNames="SUBSTAFFTYPE_ID"
                 OnRowEditing="modEditCommand"
                 OnRowCancelingEdit="modCancelCommand"
                 OnRowUpdating="modUpdateCommand"
@@ -71,11 +71,6 @@
                 OnRowDataBound="GridView1_RowDataBound"
                 OnPageIndexChanging="myGridViewSubStaffType_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                 <Columns>
-                    <asp:TemplateField HeaderText="ID" Visible="false">
-                            <ItemTemplate>
-                            <asp:Label ID="lblSubStaffTypeSEQ" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_SEQ") %>'></asp:Label>
-                            </ItemTemplate>
-                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="รหัสประเภทบุคลากรย่อย" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblSubStaffTypeIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_ID") %>'></asp:Label>

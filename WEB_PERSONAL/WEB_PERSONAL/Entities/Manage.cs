@@ -659,14 +659,12 @@ namespace WEB_PERSONAL.Entities
 
     public class ClassGender
     {
-        public int Gender_SEQ { get; set; }
         public int Gender_ID { get; set; }
         public string Gender_Name { get; set; }
 
         public ClassGender() { }
-        public ClassGender(int Gender_SEQ, int Gender_ID, string Gender_Name)
+        public ClassGender(int Gender_ID, string Gender_Name)
         {
-            this.Gender_SEQ = Gender_SEQ;
             this.Gender_ID = Gender_ID;
             this.Gender_Name = Gender_Name;
         }
@@ -789,7 +787,7 @@ namespace WEB_PERSONAL.Entities
             string query = "Update TB_GENDER Set ";
             query += " Gender_ID = :Gender_ID,";
             query += " Gender_Name = :Gender_Name";
-            query += " where Gender_SEQ = :Gender_SEQ";
+            query += " where Gender_ID = :Gender_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -800,7 +798,6 @@ namespace WEB_PERSONAL.Entities
                 }
                 command.Parameters.Add(new OracleParameter("Gender_ID", Gender_ID));
                 command.Parameters.Add(new OracleParameter("Gender_Name", Gender_Name));
-                command.Parameters.Add(new OracleParameter("Gender_SEQ", Gender_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -822,14 +819,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_GENDER where Gender_SEQ = :Gender_SEQ", conn);
+            OracleCommand command = new OracleCommand("Delete TB_GENDER where Gender_ID = :Gender_ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("Gender_SEQ", Gender_SEQ));
+                command.Parameters.Add(new OracleParameter("Gender_ID", Gender_ID));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -889,6 +886,7 @@ namespace WEB_PERSONAL.Entities
         public string NATION_ID { get; set; }
         public string NATION_ENG { get; set; }
         public string NATION_THA { get; set; }
+        
 
         public ClassNational() { }
         public ClassNational(int NATION_SEQ, string NATION_ID, string NATION_ENG, string NATION_THA)
@@ -1149,14 +1147,12 @@ namespace WEB_PERSONAL.Entities
 
     public class ClassStaffType
     {
-        public int STAFFTYPE_SEQ { get; set; }
         public int STAFFTYPE_ID { get; set; }
         public string STAFFTYPE_NAME { get; set; }
 
         public ClassStaffType() { }
-        public ClassStaffType(int STAFFTYPE_SEQ, int STAFFTYPE_ID, string STAFFTYPE_NAME)
+        public ClassStaffType(int STAFFTYPE_ID, string STAFFTYPE_NAME)
         {
-            this.STAFFTYPE_SEQ = STAFFTYPE_SEQ;
             this.STAFFTYPE_ID = STAFFTYPE_ID;
             this.STAFFTYPE_NAME = STAFFTYPE_NAME;
         }
@@ -1279,7 +1275,7 @@ namespace WEB_PERSONAL.Entities
             string query = "Update TB_STAFFTYPE Set ";
             query += " STAFFTYPE_ID = :STAFFTYPE_ID,";
             query += " STAFFTYPE_NAME = :STAFFTYPE_NAME";
-            query += " where STAFFTYPE_SEQ = :STAFFTYPE_SEQ";
+            query += " where STAFFTYPE_ID = :STAFFTYPE_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -1290,7 +1286,6 @@ namespace WEB_PERSONAL.Entities
                 }
                 command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
                 command.Parameters.Add(new OracleParameter("STAFFTYPE_NAME", STAFFTYPE_NAME));
-                command.Parameters.Add(new OracleParameter("STAFFTYPE_SEQ", STAFFTYPE_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -1312,14 +1307,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_STAFFTYPE where STAFFTYPE_SEQ = :STAFFTYPE_SEQ", conn);
+            OracleCommand command = new OracleCommand("Delete TB_STAFFTYPE where STAFFTYPE_ID = :STAFFTYPE_ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("STAFFTYPE_SEQ", STAFFTYPE_SEQ));
+                command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -1375,14 +1370,12 @@ namespace WEB_PERSONAL.Entities
 
     public class ClassTimeContact
     {
-        public int TIME_CONTACT_SEQ { get; set; }
         public int TIME_CONTACT_ID { get; set; }
         public string TIME_CONTACT_NAME { get; set; }
 
         public ClassTimeContact() { }
-        public ClassTimeContact(int TIME_CONTACT_SEQ, int TIME_CONTACT_ID, string TIME_CONTACT_NAME)
+        public ClassTimeContact(int TIME_CONTACT_ID, string TIME_CONTACT_NAME)
         {
-            this.TIME_CONTACT_SEQ = TIME_CONTACT_SEQ;
             this.TIME_CONTACT_ID = TIME_CONTACT_ID;
             this.TIME_CONTACT_NAME = TIME_CONTACT_NAME;
         }
@@ -1505,7 +1498,7 @@ namespace WEB_PERSONAL.Entities
             string query = "Update TB_TIME_CONTACT Set ";
             query += " TIME_CONTACT_ID = :TIME_CONTACT_ID,";
             query += " TIME_CONTACT_NAME = :TIME_CONTACT_NAME";
-            query += " where TIME_CONTACT_SEQ = :TIME_CONTACT_SEQ";
+            query += " where TIME_CONTACT_ID = :TIME_CONTACT_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -1516,7 +1509,6 @@ namespace WEB_PERSONAL.Entities
                 }
                 command.Parameters.Add(new OracleParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
                 command.Parameters.Add(new OracleParameter("TIME_CONTACT_NAME", TIME_CONTACT_NAME));
-                command.Parameters.Add(new OracleParameter("TIME_CONTACT_SEQ", TIME_CONTACT_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -1538,14 +1530,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_TIME_CONTACT where TIME_CONTACT_SEQ = :TIME_CONTACT_SEQ", conn);
+            OracleCommand command = new OracleCommand("Delete TB_TIME_CONTACT where TIME_CONTACT_ID = :TIME_CONTACT_ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("TIME_CONTACT_SEQ", TIME_CONTACT_SEQ));
+                command.Parameters.Add(new OracleParameter("TIME_CONTACT_ID", TIME_CONTACT_ID));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -1601,14 +1593,12 @@ namespace WEB_PERSONAL.Entities
 
     public class ClassBudget
     {
-        public int BUDGET_SEQ { get; set; }
         public int BUDGET_ID { get; set; }
         public string BUDGET_NAME { get; set; }
 
         public ClassBudget() { }
-        public ClassBudget(int BUDGET_SEQ, int BUDGET_ID, string BUDGET_NAME)
+        public ClassBudget(int BUDGET_ID, string BUDGET_NAME)
         {
-            this.BUDGET_SEQ = BUDGET_SEQ;
             this.BUDGET_ID = BUDGET_ID;
             this.BUDGET_NAME = BUDGET_NAME;
         }
@@ -1731,7 +1721,7 @@ namespace WEB_PERSONAL.Entities
             string query = "Update TB_BUDGET Set ";
             query += " BUDGET_ID = :BUDGET_ID,";
             query += " BUDGET_NAME = :BUDGET_NAME";
-            query += " where BUDGET_SEQ = :BUDGET_SEQ";
+            query += " where BUDGET_ID = :BUDGET_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -1742,7 +1732,6 @@ namespace WEB_PERSONAL.Entities
                 }
                 command.Parameters.Add(new OracleParameter("BUDGET_ID", BUDGET_ID));
                 command.Parameters.Add(new OracleParameter("BUDGET_NAME", BUDGET_NAME));
-                command.Parameters.Add(new OracleParameter("BUDGET_SEQ", BUDGET_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -1764,14 +1753,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_BUDGET where BUDGET_SEQ = :BUDGET_SEQ", conn);
+            OracleCommand command = new OracleCommand("Delete TB_BUDGET where BUDGET_ID = :BUDGET_ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("BUDGET_SEQ", BUDGET_SEQ));
+                command.Parameters.Add(new OracleParameter("BUDGET_ID", BUDGET_ID));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -1827,18 +1816,15 @@ namespace WEB_PERSONAL.Entities
 
     public class ClassSubStaffType
     {
-        public int SUBSTAFFTYPE_SEQ { get; set; }
         public int SUBSTAFFTYPE_ID { get; set; }
         public string SUBSTAFFTYPE_NAME { get; set; }
 
 
         public ClassSubStaffType() { }
-        public ClassSubStaffType(int SUBSTAFFTYPE_SEQ, int SUBSTAFFTYPE_ID, string SUBSTAFFTYPE_NAME)
+        public ClassSubStaffType(int SUBSTAFFTYPE_ID, string SUBSTAFFTYPE_NAME)
         {
-            this.SUBSTAFFTYPE_SEQ = SUBSTAFFTYPE_SEQ;
             this.SUBSTAFFTYPE_ID = SUBSTAFFTYPE_ID;
             this.SUBSTAFFTYPE_NAME = SUBSTAFFTYPE_NAME;
-
         }
 
         public DataTable GetSubStaffType(string SUBSTAFFTYPE_NAME)
@@ -2010,7 +1996,7 @@ namespace WEB_PERSONAL.Entities
             string query = "Update TB_SUBSTAFFTYPE Set ";
             query += " SUBSTAFFTYPE_ID = :SUBSTAFFTYPE_ID,";
             query += " SUBSTAFFTYPE_NAME = :SUBSTAFFTYPE_NAME";
-            query += " where SUBSTAFFTYPE_SEQ = :SUBSTAFFTYPE_SEQ";
+            query += " where SUBSTAFFTYPE_ID = :SUBSTAFFTYPE_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -2021,7 +2007,6 @@ namespace WEB_PERSONAL.Entities
                 }
                 command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
                 command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_NAME", SUBSTAFFTYPE_NAME));
-                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_SEQ", SUBSTAFFTYPE_SEQ));
 
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -2043,14 +2028,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_SUBSTAFFTYPE where SUBSTAFFTYPE_SEQ = :SUBSTAFFTYPE_SEQ", conn);
+            OracleCommand command = new OracleCommand("Delete TB_SUBSTAFFTYPE where SUBSTAFFTYPE_ID = :SUBSTAFFTYPE_ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_SEQ", SUBSTAFFTYPE_SEQ));
+                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;

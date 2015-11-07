@@ -95,7 +95,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassTimeContact tc = new ClassTimeContact();
-            tc.TIME_CONTACT_SEQ = id;
+            tc.TIME_CONTACT_ID = id;
             tc.DeleteTimeContact();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
@@ -104,12 +104,10 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblTimeContactSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblTimeContactSEQ");
             TextBox txtTimeContactIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTimeContactIDEdit");
             TextBox txtTimeContactNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTimeContactNameEdit");
 
-            ClassTimeContact tc = new ClassTimeContact(Convert.ToInt32(lblTimeContactSEQ.Text)
-                , Convert.ToInt32(txtTimeContactIDEdit.Text)
+            ClassTimeContact tc = new ClassTimeContact(Convert.ToInt32(txtTimeContactIDEdit.Text)
                 , txtTimeContactNameEdit.Text);
 
             tc.UpdateTimeContact();

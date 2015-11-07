@@ -62,7 +62,7 @@
             <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
-                DataKeyNames="TIME_CONTACT_SEQ"
+                DataKeyNames="TIME_CONTACT_ID"
                 OnRowEditing="modEditCommand"
                 OnRowCancelingEdit="modCancelCommand"
                 OnRowUpdating="modUpdateCommand"
@@ -70,11 +70,6 @@
                 OnRowDataBound="GridView1_RowDataBound"
                 OnPageIndexChanging="myGridViewTimeContact_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                 <Columns>
-                    <asp:TemplateField HeaderText="ID" Visible="false">
-                            <ItemTemplate>
-                            <asp:Label ID="lblTimeContactSEQ" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TIME_CONTACT_SEQ") %>'></asp:Label>
-                            </ItemTemplate>
-                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="รหัสระยะเวลาการจ้างงาน" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblTimeContactIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TIME_CONTACT_ID") %>'></asp:Label>

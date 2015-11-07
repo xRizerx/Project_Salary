@@ -95,7 +95,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassStaffType s = new ClassStaffType();
-            s.STAFFTYPE_SEQ = id;
+            s.STAFFTYPE_ID = id;
             s.DeleteStaffType();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
@@ -104,12 +104,10 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblStaffSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblStaffSEQ");
             TextBox txtStaffIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtStaffIDEdit");
             TextBox txtStaffNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtStaffNameEdit");
 
-            ClassStaffType s = new ClassStaffType(Convert.ToInt32(lblStaffSEQ.Text)
-                , Convert.ToInt32(txtStaffIDEdit.Text)
+            ClassStaffType s = new ClassStaffType(Convert.ToInt32(txtStaffIDEdit.Text)
                 , txtStaffNameEdit.Text);
 
             s.UpdateStaffType();

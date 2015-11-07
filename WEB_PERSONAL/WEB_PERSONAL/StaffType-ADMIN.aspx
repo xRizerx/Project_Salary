@@ -63,19 +63,14 @@
             <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
-                DataKeyNames="STAFFTYPE_SEQ"
+                DataKeyNames="STAFFTYPE_ID"
                 OnRowEditing="modEditCommand"
                 OnRowCancelingEdit="modCancelCommand"
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
                 OnPageIndexChanging="myGridViewSTAFFTYPE_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
-                <Columns>
-                    <asp:TemplateField HeaderText="ID" Visible="false">
-                            <ItemTemplate>
-                            <asp:Label ID="lblStaffSEQ" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_SEQ") %>'></asp:Label>
-                            </ItemTemplate>
-                    </asp:TemplateField>
+                <Columns>     
                     <asp:TemplateField HeaderText="รหัสประเภทของบุคลากร" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblStaffIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_ID") %>'></asp:Label>

@@ -95,7 +95,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassBudget b = new ClassBudget();
-            b.BUDGET_SEQ = id;
+            b.BUDGET_ID = id;
             b.DeleteBudget();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
@@ -105,12 +105,10 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblBudgetSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblBudgetSEQ");
             TextBox txtBudgetIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtBudgetIDEdit");
             TextBox txtBudgetNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtBudgetNameEdit");
 
-            ClassBudget b = new ClassBudget(Convert.ToInt32(lblBudgetSEQ.Text)
-                , Convert.ToInt32(txtBudgetIDEdit.Text)
+            ClassBudget b = new ClassBudget(Convert.ToInt32(txtBudgetIDEdit.Text)
                 , txtBudgetNameEdit.Text);
 
             b.UpdateBudget();
