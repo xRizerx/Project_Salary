@@ -328,7 +328,7 @@
                         </td>   
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                             <asp:DropDownList ID="DropDownADMIN_POSITION_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_ADMIN" DataTextField="ADMIN_POSITION_NAME" DataValueField="ADMIN_POSITION_ID"></asp:DropDownList>
+                             <asp:DropDownList ID="DropDownADMIN_POSITION_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_ADMIN_POSITION" DataTextField="ADMIN_POSITION_NAME" DataValueField="ADMIN_POSITION_ID"></asp:DropDownList>
                              <asp:SqlDataSource ID="TB_ADMIN_POSITION" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_ADMIN_POSITION&quot; ORDER BY &quot;ADMIN_POSITION_ID&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
