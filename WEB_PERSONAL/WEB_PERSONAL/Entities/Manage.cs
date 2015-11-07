@@ -2348,5 +2348,736 @@ namespace WEB_PERSONAL.Entities
         }
     }
 
+    public class ClassPosition
+    {
+        public string POSITION_ID { get; set; }
+        public string POSITION_NAME { get; set; }
+        public int SUBSTAFFTYPE_ID { get; set; }
+
+        public ClassPosition() { }
+        public ClassPosition(string POSITION_ID, string POSITION_NAME, int SUBSTAFFTYPE_ID)
+        {
+            this.POSITION_ID = POSITION_ID;
+            this.POSITION_NAME = POSITION_NAME;
+            this.SUBSTAFFTYPE_ID = SUBSTAFFTYPE_ID;
+        }
+
+        public DataTable GetPosition(string POSITION_ID, string POSITION_NAME, int SUBSTAFFTYPE_ID)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_ADMIN_POSITION order by ADMIN_POSITION_ID asc ";
+            if (!string.IsNullOrEmpty(POSITION_ID) || !string.IsNullOrEmpty(POSITION_NAME) || SUBSTAFFTYPE_ID != 0)
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(POSITION_ID))
+                {
+                    query += " and POSITION_ID like :POSITION_ID ";
+                }
+                if (!string.IsNullOrEmpty(POSITION_NAME))
+                {
+                    query += " and POSITION_NAME like :POSITION_NAME ";
+                }
+                if (SUBSTAFFTYPE_ID != 0)
+                {
+                    query += " and SUBSTAFFTYPE_ID like :SUBSTAFFTYPE_ID ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(POSITION_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("POSITION_ID", POSITION_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(POSITION_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("POSITION_NAME", "%" + POSITION_NAME + "%"));
+                }
+                if (SUBSTAFFTYPE_ID != 0)
+                {
+                    command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetPositionSearch(string POSITION_ID, string POSITION_NAME, int SUBSTAFFTYPE_ID)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_ADMIN_POSITION";
+            if (!string.IsNullOrEmpty(POSITION_ID) || !string.IsNullOrEmpty(POSITION_NAME) || SUBSTAFFTYPE_ID != 0)
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(POSITION_ID))
+                {
+                    query += " and POSITION_ID like :POSITION_ID ";
+                }
+                if (!string.IsNullOrEmpty(POSITION_NAME))
+                {
+                    query += " and POSITION_NAME like :POSITION_NAME ";
+                }
+                if (SUBSTAFFTYPE_ID != 0)
+                {
+                    query += " and SUBSTAFFTYPE_ID like :SUBSTAFFTYPE_ID ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(POSITION_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("POSITION_ID", POSITION_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(POSITION_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("POSITION_NAME", "%" + POSITION_NAME + "%"));
+                }
+                if (SUBSTAFFTYPE_ID != 0)
+                {
+                    command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertPosition()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_POSITION (POSITION_ID,POSITION_NAME,SUBSTAFFTYPE_ID) VALUES (:POSITION_ID,:POSITION_NAME,:SUBSTAFFTYPE_ID)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("POSITION_ID", POSITION_ID));
+                command.Parameters.Add(new OracleParameter("POSITION_NAME", POSITION_NAME));
+                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdatePosition()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_POSITION Set ";
+            query += " POSITION_ID = :ADMIN_POSITION_ID,";
+            query += " POSITION_NAME = :POSITION_NAME,";
+            query += " SUBSTAFFTYPE_ID = :SUBSTAFFTYPE_ID";
+            query += " where POSITION_ID = :POSITION_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("POSITION_ID", POSITION_ID));
+                command.Parameters.Add(new OracleParameter("POSITION_NAME", POSITION_NAME));
+                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeletePosition()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_POSITION where POSITION_ID = :POSITION_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("POSITION_ID", POSITION_ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+        public bool CheckUsePositionID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(POSITION_ID) FROM TB_POSITION WHERE POSITION_ID = :POSITION_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("POSITION_ID", POSITION_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
+
+    public class ClassPositionWork
+    {
+        public string POSITION_WORK_ID { get; set; }
+        public string POSITION_WORK_NAME { get; set; }
+
+        public ClassPositionWork() { }
+        public ClassPositionWork(string POSITION_WORK_ID, string POSITION_WORK_NAME)
+        {
+            this.POSITION_WORK_ID = POSITION_WORK_ID;
+            this.POSITION_WORK_NAME = POSITION_WORK_NAME;
+        }
+
+        public DataTable GetPositionWork(string POSITION_WORK_ID, string POSITION_WORK_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_POSITION_WORK order by ADMIN_POSITION_ID asc ";
+            if (!string.IsNullOrEmpty(POSITION_WORK_ID) || !string.IsNullOrEmpty(POSITION_WORK_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(POSITION_WORK_ID))
+                {
+                    query += " and POSITION_WORK_ID like :POSITION_WORK_ID ";
+                }
+                if (!string.IsNullOrEmpty(POSITION_WORK_NAME))
+                {
+                    query += " and POSITION_WORK_NAME like :POSITION_WORK_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(POSITION_WORK_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("POSITION_WORK_ID", POSITION_WORK_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(POSITION_WORK_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("POSITION_WORK_NAME", "%" + POSITION_WORK_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetPositionWorkSearch(string POSITION_WORK_ID, string POSITION_WORK_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_POSITION_WORK";
+            if (!string.IsNullOrEmpty(POSITION_WORK_ID) || !string.IsNullOrEmpty(POSITION_WORK_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(POSITION_WORK_ID))
+                {
+                    query += " and POSITION_WORK_ID like :POSITION_WORK_ID ";
+                }
+                if (!string.IsNullOrEmpty(POSITION_WORK_NAME))
+                {
+                    query += " and POSITION_WORK_NAME like :POSITION_WORK_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(POSITION_WORK_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("POSITION_WORK_ID", POSITION_WORK_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(POSITION_WORK_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("POSITION_WORK_NAME", "%" + POSITION_WORK_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertPositionWork()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_POSITION_WORK (POSITION_WORK_ID,POSITION_WORK_NAME) VALUES (:POSITION_WORK_ID,:POSITION_WORK_NAME)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("POSITION_WORK_ID", POSITION_WORK_ID));
+                command.Parameters.Add(new OracleParameter("POSITION_WORK_NAME", POSITION_WORK_NAME));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdatePositionWork()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_POSITION_WORK Set ";
+            query += " POSITION_WORK_ID = :POSITION_WORK_ID,";
+            query += " POSITION_WORK_NAME = :POSITION_WORK_NAME";
+            query += " where POSITION_WORK_ID = :POSITION_WORK_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("POSITION_WORK_ID", POSITION_WORK_ID));
+                command.Parameters.Add(new OracleParameter("POSITION_WORK_NAME", POSITION_WORK_NAME));
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeletePositionWork()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_POSITION_WORK where POSITION_WORK_ID = :POSITION_WORK_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("POSITION_WORK_ID", POSITION_WORK_ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+        public bool CheckUsePositionWorkID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(POSITION_WORK_ID) FROM TB_POSITION_WORK WHERE POSITION_WORK_ID = :POSITION_WORK_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("POSITION_WORK_ID", POSITION_WORK_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
+
+    public class ClassDepartment
+    {
+        public string DEPARTMENT_ID { get; set; }
+        public string DEPARTMENT_NAME { get; set; }
+
+        public ClassDepartment() { }
+        public ClassDepartment(string DEPARTMENT_ID, string DEPARTMENT_NAME)
+        {
+            this.DEPARTMENT_ID = DEPARTMENT_ID;
+            this.DEPARTMENT_NAME = DEPARTMENT_NAME;
+        }
+
+        public DataTable GetDepartment(string DEPARTMENT_ID, string DEPARTMENT_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_DEPARTMENT order by DEPARTMENT_ID asc ";
+            if (!string.IsNullOrEmpty(DEPARTMENT_ID) || !string.IsNullOrEmpty(DEPARTMENT_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(DEPARTMENT_ID))
+                {
+                    query += " and DEPARTMENT_ID like :DEPARTMENT_ID ";
+                }
+                if (!string.IsNullOrEmpty(DEPARTMENT_NAME))
+                {
+                    query += " and DEPARTMENT_NAME like :DEPARTMENT_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(DEPARTMENT_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("DEPARTMENT_ID", DEPARTMENT_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(DEPARTMENT_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("DEPARTMENT_NAME", "%" + DEPARTMENT_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetDepartmentSearch(string DEPARTMENT_ID, string DEPARTMENT_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_DEPARTMENT";
+            if (!string.IsNullOrEmpty(DEPARTMENT_ID) || !string.IsNullOrEmpty(DEPARTMENT_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(DEPARTMENT_ID))
+                {
+                    query += " and DEPARTMENT_ID like :DEPARTMENT_ID ";
+                }
+                if (!string.IsNullOrEmpty(DEPARTMENT_NAME))
+                {
+                    query += " and DEPARTMENT_NAME like :DEPARTMENT_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(DEPARTMENT_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("DEPARTMENT_ID", DEPARTMENT_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(DEPARTMENT_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("DEPARTMENT_NAME", "%" + DEPARTMENT_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertDepartment()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_DEPARTMENT (DEPARTMENT_ID,DEPARTMENT_NAME) VALUES (:DEPARTMENT_ID,:DEPARTMENT_NAME)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("DEPARTMENT_ID", DEPARTMENT_ID));
+                command.Parameters.Add(new OracleParameter("DEPARTMENT_NAME", DEPARTMENT_NAME));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateDepartment()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_DEPARTMENT Set ";
+            query += " DEPARTMENT_ID = :DEPARTMENT_ID,";
+            query += " DEPARTMENT_NAME = :DEPARTMENT_NAME";
+            query += " where DEPARTMENT_ID = :DEPARTMENT_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("DEPARTMENT_ID", DEPARTMENT_ID));
+                command.Parameters.Add(new OracleParameter("DEPARTMENT_NAME", DEPARTMENT_NAME));
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteDepartment()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_DEPARTMENT where DEPARTMENT_ID = :DEPARTMENT_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("DEPARTMENT_ID", DEPARTMENT_ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+        public bool CheckUseDepartmentID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(DEPARTMENT_ID) FROM TB_DEPARTMENT WHERE DEPARTMENT_ID = :DEPARTMENT_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("DEPARTMENT_ID", DEPARTMENT_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
 
 }

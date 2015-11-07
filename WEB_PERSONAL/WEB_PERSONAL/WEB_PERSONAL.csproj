@@ -131,6 +131,7 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Default.aspx" />
+    <Content Include="Department-ADMIN.aspx" />
     <Content Include="Entities\bnn.mp3" />
     <Content Include="Error-Member.aspx" />
     <Content Include="Gender-ADMIN.aspx" />
@@ -179,6 +180,7 @@
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
     <Content Include="Position-ADMIN.aspx" />
+    <Content Include="PositionWork-ADMIN.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TimeContact-ADMIN.aspx" />
@@ -247,6 +249,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Department-ADMIN.aspx.cs">
+      <DependentUpon>Department-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Department-ADMIN.aspx.designer.cs">
+      <DependentUpon>Department-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Personnel.cs" />
     <Compile Include="Entities\Seminar.cs" />
@@ -381,6 +390,13 @@
     </Compile>
     <Compile Include="Position-ADMIN.aspx.designer.cs">
       <DependentUpon>Position-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PositionWork-ADMIN.aspx.cs">
+      <DependentUpon>PositionWork-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PositionWork-ADMIN.aspx.designer.cs">
+      <DependentUpon>PositionWork-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Salary-report.aspx.cs">
       <DependentUpon>Salary-report.aspx</DependentUpon>
