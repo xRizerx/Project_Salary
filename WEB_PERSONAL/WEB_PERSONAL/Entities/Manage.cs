@@ -2366,7 +2366,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_ADMIN_POSITION order by ADMIN_POSITION_ID asc ";
+            string query = "SELECT * FROM TB_POSITION order by POSITION_ID asc ";
             if (!string.IsNullOrEmpty(POSITION_ID) || !string.IsNullOrEmpty(POSITION_NAME) || SUBSTAFFTYPE_ID != 0)
             {
                 query += " where 1=1 ";
@@ -2423,7 +2423,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_ADMIN_POSITION";
+            string query = "SELECT * FROM TB_POSITION";
             if (!string.IsNullOrEmpty(POSITION_ID) || !string.IsNullOrEmpty(POSITION_NAME) || SUBSTAFFTYPE_ID != 0)
             {
                 query += " where 1=1 ";
@@ -2509,7 +2509,7 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_POSITION Set ";
-            query += " POSITION_ID = :ADMIN_POSITION_ID,";
+            query += " POSITION_ID = :POSITION_ID,";
             query += " POSITION_NAME = :POSITION_NAME,";
             query += " SUBSTAFFTYPE_ID = :SUBSTAFFTYPE_ID";
             query += " where POSITION_ID = :POSITION_ID";
@@ -2622,7 +2622,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_POSITION_WORK order by ADMIN_POSITION_ID asc ";
+            string query = "SELECT * FROM TB_POSITION_WORK order by POSITION_WORK_ID asc ";
             if (!string.IsNullOrEmpty(POSITION_WORK_ID) || !string.IsNullOrEmpty(POSITION_WORK_NAME))
             {
                 query += " where 1=1 ";
