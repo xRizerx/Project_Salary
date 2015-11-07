@@ -122,7 +122,7 @@ namespace WEB_PERSONAL.Entities
             }
             return id;
         }
-        
+
         public bool UpdateTITLENAME()
         {
             bool result = false;
@@ -1830,7 +1830,7 @@ namespace WEB_PERSONAL.Entities
         public int SUBSTAFFTYPE_SEQ { get; set; }
         public int SUBSTAFFTYPE_ID { get; set; }
         public string SUBSTAFFTYPE_NAME { get; set; }
-        
+
 
         public ClassSubStaffType() { }
         public ClassSubStaffType(int SUBSTAFFTYPE_SEQ, int SUBSTAFFTYPE_ID, string SUBSTAFFTYPE_NAME)
@@ -1838,7 +1838,7 @@ namespace WEB_PERSONAL.Entities
             this.SUBSTAFFTYPE_SEQ = SUBSTAFFTYPE_SEQ;
             this.SUBSTAFFTYPE_ID = SUBSTAFFTYPE_ID;
             this.SUBSTAFFTYPE_NAME = SUBSTAFFTYPE_NAME;
-            
+
         }
 
         public DataTable GetSubStaffType(string SUBSTAFFTYPE_NAME)
@@ -1988,7 +1988,7 @@ namespace WEB_PERSONAL.Entities
                     conn.Open();
                 }
                 command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID));
-                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_NAME", SUBSTAFFTYPE_NAME));  
+                command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_NAME", SUBSTAFFTYPE_NAME));
                 id = command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -2105,5 +2105,242 @@ namespace WEB_PERSONAL.Entities
 
     }
 
+    public class ClassAdminPosition
+    {
+        public string ADMIN_POSITION_ID { get; set; }
+        public string ADMIN_POSITION_NAME { get; set; }
+
+        public ClassAdminPosition() { }
+        public ClassAdminPosition(string ADMIN_POSITION_ID, string ADMIN_POSITION_NAME)
+        {
+            this.ADMIN_POSITION_ID = ADMIN_POSITION_ID;
+            this.ADMIN_POSITION_NAME = ADMIN_POSITION_NAME;
+        }
+
+        public DataTable GetAdminPosition(string ADMIN_POSITION_ID, string ADMIN_POSITION_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_ADMIN_POSITION order by ADMIN_POSITION_ID asc ";
+            if (!string.IsNullOrEmpty(ADMIN_POSITION_ID) || !string.IsNullOrEmpty(ADMIN_POSITION_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(ADMIN_POSITION_ID))
+                {
+                    query += " and ADMIN_POSITION_ID like :ADMIN_POSITION_ID ";
+                }
+                if (!string.IsNullOrEmpty(ADMIN_POSITION_NAME))
+                {
+                    query += " and ADMIN_POSITION_NAME like :ADMIN_POSITION_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(ADMIN_POSITION_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(ADMIN_POSITION_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("ADMIN_POSITION_NAME", "%" + ADMIN_POSITION_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetAdminPositionSearch(string ADMIN_POSITION_ID, string ADMIN_POSITION_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_ADMIN_POSITION";
+            if (!string.IsNullOrEmpty(ADMIN_POSITION_ID) || !string.IsNullOrEmpty(ADMIN_POSITION_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(ADMIN_POSITION_ID))
+                {
+                    query += " and ADMIN_POSITION_ID like :ADMIN_POSITION_ID ";
+                }
+                if (!string.IsNullOrEmpty(ADMIN_POSITION_NAME))
+                {
+                    query += " and ADMIN_POSITION_NAME like :ADMIN_POSITION_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(ADMIN_POSITION_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(ADMIN_POSITION_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("ADMIN_POSITION_NAME", "%" + ADMIN_POSITION_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertAdminPosition()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_ADMIN_POSITION (ADMIN_POSITION_ID,ADMIN_POSITION_NAME) VALUES (:ADMIN_POSITION_ID,:ADMIN_POSITION_NAME)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID));
+                command.Parameters.Add(new OracleParameter("ADMIN_POSITION_NAME", ADMIN_POSITION_NAME));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateAdminPosition()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_ADMIN_POSITION Set ";
+            query += " ADMIN_POSITION_ID = :ADMIN_POSITION_ID,";
+            query += " ADMIN_POSITION_NAME = :ADMIN_POSITION_NAME";
+            query += " where ADMIN_POSITION_ID = :ADMIN_POSITION_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID));
+                command.Parameters.Add(new OracleParameter("ADMIN_POSITION_NAME", ADMIN_POSITION_NAME));
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteAdminPosition()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_ADMIN_POSITION where ADMIN_POSITION_ID = :ADMIN_POSITION_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+        public bool CheckUseAdminPositionID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(ADMIN_POSITION_ID) FROM TB_ADMIN_POSITION WHERE ADMIN_POSITION_ID = :ADMIN_POSITION_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("ADMIN_POSITION_ID", ADMIN_POSITION_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
+
+        
 }
- 
