@@ -34,6 +34,7 @@
         <fieldset>
             <legend>Search</legend>
             <div>
+                รหัสประเภทของบุคลากร :&nbsp<asp:TextBox ID="txtSearchStaffID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
                 ชื่อประเภทของบุคลากร :&nbsp<asp:TextBox ID="txtSearchStaffName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchStaff" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchStaff_Click" />
             </div>

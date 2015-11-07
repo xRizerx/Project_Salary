@@ -39,7 +39,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType("");
+            DataTable dt = sst.GetSubStaffType(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -47,6 +47,7 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
+            txtSearchSubStaffTypeID.Text = "";
             txtSearchSubStaffTypeName.Text = "";
             txtInsertSubStaffTypeID.Text = "";
             txtInsertSubStaffTypeName.Text = "";
@@ -140,7 +141,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType("");
+            DataTable dt = sst.GetSubStaffType(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -149,7 +150,7 @@ namespace WEB_PERSONAL
         protected void SearchSubStaffType_Click(object sender, EventArgs e)
         {
             ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffTypeSearch(txtSearchSubStaffTypeName.Text);
+            DataTable dt = sst.GetSubStaffTypeSearch(Convert.ToInt32(txtSearchSubStaffTypeID.Text), txtSearchSubStaffTypeName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

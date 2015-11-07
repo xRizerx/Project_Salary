@@ -39,7 +39,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassStaffType s = new ClassStaffType();
-            DataTable dt = s.GetStaffType("");
+            DataTable dt = s.GetStaffType(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -47,6 +47,7 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
+            txtSearchStaffID.Text = "";
             txtSearchStaffName.Text = "";
             txtInsertStaffID.Text = "";
             txtInsertStaffName.Text = "";
@@ -138,7 +139,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassStaffType s = new ClassStaffType();
-            DataTable dt = s.GetStaffType("");
+            DataTable dt = s.GetStaffType(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -147,7 +148,7 @@ namespace WEB_PERSONAL
         protected void btnSearchStaff_Click(object sender, EventArgs e)
         {
             ClassStaffType s = new ClassStaffType();
-            DataTable dt = s.GetStaffTypeSearch(txtSearchStaffName.Text);
+            DataTable dt = s.GetStaffTypeSearch(Convert.ToInt32(txtSearchStaffID.Text), txtSearchStaffName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

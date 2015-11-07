@@ -34,6 +34,7 @@
         <fieldset>
             <legend>Search</legend>
             <div>
+                รหัสเพศ :&nbsp<asp:TextBox ID="txtSearchGenderID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
                 ชื่อเพศ :&nbsp<asp:TextBox ID="txtSearchGenderName" runat="server" CssClass="tb5" Width="230px" MaxLength="20"></asp:TextBox>
                 <asp:Button ID="btnSearchGender" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchGender_Click" />
             </div>

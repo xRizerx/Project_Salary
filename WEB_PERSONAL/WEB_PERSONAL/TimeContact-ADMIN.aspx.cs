@@ -39,7 +39,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassTimeContact tc = new ClassTimeContact();
-            DataTable dt = tc.GetTimeContact("");
+            DataTable dt = tc.GetTimeContact(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -47,6 +47,7 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
+            txtSearchTimeContactID.Text = "";
             txtSearchTimeContactName.Text = "";
             txtInsertTimeContactID.Text = "";
             txtInsertTimeContactName.Text = "";
@@ -138,7 +139,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassTimeContact tc = new ClassTimeContact();
-            DataTable dt = tc.GetTimeContact("");
+            DataTable dt = tc.GetTimeContact(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -147,7 +148,7 @@ namespace WEB_PERSONAL
         protected void btnSearchTimeContact_Click(object sender, EventArgs e)
         {
             ClassTimeContact tc = new ClassTimeContact();
-            DataTable dt = tc.GetTimeContactSearch(txtSearchTimeContactName.Text);
+            DataTable dt = tc.GetTimeContactSearch(Convert.ToInt32(txtSearchTimeContactID.Text), txtSearchTimeContactName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

@@ -39,7 +39,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassGender g = new ClassGender();
-            DataTable dt = g.GetGender("");
+            DataTable dt = g.GetGender(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -47,6 +47,7 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
+            txtSearchGenderID.Text = "";
             txtSearchGenderName.Text = "";
             txtInsertGenderID.Text = "";
             txtInsertGenderName.Text = "";
@@ -138,7 +139,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassGender g = new ClassGender();
-            DataTable dt = g.GetGender("");
+            DataTable dt = g.GetGender(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -147,7 +148,7 @@ namespace WEB_PERSONAL
         protected void btnSearchGender_Click(object sender, EventArgs e)
         {
             ClassGender g = new ClassGender();
-            DataTable dt = g.GetGenderSearch(txtSearchGenderName.Text);
+            DataTable dt = g.GetGenderSearch(Convert.ToInt32(txtSearchGenderID.Text), txtSearchGenderName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

@@ -34,6 +34,7 @@
         <fieldset>
             <legend>Search</legend>
             <div>
+                ชื่อระยะเวลาการจ้างงาน :&nbsp<asp:TextBox ID="txtSearchTimeContactID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
                 ชื่อระยะเวลาการจ้างงาน :&nbsp<asp:TextBox ID="txtSearchTimeContactName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchTimeContact" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchTimeContact_Click" />
             </div>
