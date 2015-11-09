@@ -61,22 +61,22 @@ namespace WEB_PERSONAL
         {
             if (string.IsNullOrEmpty(txtTitleNameTh.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อภาษาไทย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อภาษาไทย')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtTitleNameThMin.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อย่อภาษาไทย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อย่อภาษาไทย')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtTitleNameEn.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อภาษาอังกฤษ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อภาษาอังกฤษ')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtTitleNameEnMin.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ชื่อย่อภาษาอังกฤษ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อย่อภาษาอังกฤษ')", true);
                 return;
             }
 
@@ -88,6 +88,7 @@ namespace WEB_PERSONAL
 
             ptn.InsertTITLENAME();
             BindData();
+            ClearData();
         }
      
 
@@ -107,6 +108,7 @@ namespace WEB_PERSONAL
             TITLENAME ptn = new TITLENAME();
             ptn.TITLE_ID = id;
             ptn.DeleteTITLENAME();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
@@ -130,6 +132,7 @@ namespace WEB_PERSONAL
                 , txtTitleNameEnMin.Text);
 
             ptn.UpdateTITLENAME();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();

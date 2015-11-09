@@ -31,11 +31,11 @@
             text-align:center;
         }
         .divpan {
-            background-image: url("Image/sky.jpg");
+
             text-align: center;
         }
          body {
-            background-image: url("Image/444.jpg");
+            background-image: url("Image/444.png");
         }
           .tb5 {
 	        background-repeat:repeat-x;
@@ -53,7 +53,7 @@
             color:red;
         }
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1605px" CssClass="divpan">
+    <asp:Panel ID="Panel1" runat="server" Height="1605px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
    <div>
         <fieldset>
             <legend>เพิ่มข้อมูลการฝึกอบรม/สัมมนา/ดูงาน</legend>

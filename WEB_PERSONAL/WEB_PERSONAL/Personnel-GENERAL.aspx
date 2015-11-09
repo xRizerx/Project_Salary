@@ -27,11 +27,8 @@
             text-decoration:none;
             color:black;
         }
-         .divpan{
-            background-image: url("Image/sky.jpg");
-        }
          body {
-            background-image: url("Image/444.jpg");
+            background-image: url("Image/444.png");
         }
         .tb5 {
             background-image: url(images/form_bg.jpg);
@@ -50,7 +47,7 @@
             color:red;
         }
     </style>
-    <asp:Panel runat="server" CssClass="divpan" Height="900px">
+    <asp:Panel runat="server" CssClass="divpan" Height="900px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
     <div>
 
         <fieldset>
@@ -69,7 +66,7 @@
                      <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; width: 80px;">
-                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_YEAR" DataTextField="YEAR_NAME" DataValueField="YEAR_NAME"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownYEAR" runat="server" Width="257px" CssClass="tb5" DataSourceID="TB_YEAR" DataTextField="YEAR_NAME" DataValueField="YEAR_NAME" ></asp:DropDownList>
                             <asp:SqlDataSource ID="TB_YEAR" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_YEAR&quot; ORDER BY &quot;YEAR_NAME&quot;"></asp:SqlDataSource>
                          </td> 
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -214,8 +211,8 @@
                         </td>   
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                             <asp:DropDownList ID="DropDownNATION_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_NATIONALS" DataTextField="NATIONAL_NAME_THA" DataValueField="NATIONAL_ID"></asp:DropDownList>
-                             <asp:SqlDataSource ID="TB_NATIONALS" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_NATIONALS&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
+                             <asp:DropDownList ID="DropDownNATION_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_NATIONAL" DataTextField="NATION_THA" DataValueField="NATION_ID"></asp:DropDownList>
+                             <asp:SqlDataSource ID="TB_NATIONAL" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_NATIONAL&quot; ORDER BY &quot;NATION_ENG&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
@@ -296,7 +293,7 @@
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">หมู่</td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                         <td style="text-align: left; margin-right: 5px; ">ประเภทตำแหน่ง <span class="textred">*</span></td> 
+                         <td style="text-align: left; margin-right: 5px; ">ประเภทบุคลากรย่อย <span class="textred">*</span></td> 
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ประเทศที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
                      </tr>
@@ -331,8 +328,8 @@
                         </td>   
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;">
-                             <asp:DropDownList ID="DropDownADMIN_POSITION_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_ADMIN" DataTextField="ADMIN_POSITION_NAME" DataValueField="ADMIN_POSITION_ID"></asp:DropDownList>
-                             <asp:SqlDataSource ID="TB_ADMIN" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT &quot;ADMIN_POSITION_ID&quot;, &quot;ADMIN_POSITION_NAME&quot; FROM &quot;TB_ADMIN&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
+                             <asp:DropDownList ID="DropDownADMIN_POSITION_ID" runat="server" CssClass="tb5" Width="257px" DataSourceID="TB_ADMIN_POSITION" DataTextField="ADMIN_POSITION_NAME" DataValueField="ADMIN_POSITION_ID"></asp:DropDownList>
+                             <asp:SqlDataSource ID="TB_ADMIN_POSITION" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM &quot;TB_ADMIN_POSITION&quot; ORDER BY &quot;ADMIN_POSITION_ID&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; width: 170px;"> </td>
