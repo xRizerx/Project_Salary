@@ -207,7 +207,7 @@ win=window.open(mypage,myname,settings);}
             </tr>
             <tr>
                 <td colspan="4" class="auto-style14">
-                    <asp:Label ID="Label55" runat="server" Text="รายละเอียดการบริหารวงเงินร้อยละ 2.9"></asp:Label>
+                    <asp:Label ID="Label55" runat="server" Text="รายละเอียดการบริหารวงเงินร้อยละ 4.1"></asp:Label>
                 </td>
             </tr>
             <tr>
