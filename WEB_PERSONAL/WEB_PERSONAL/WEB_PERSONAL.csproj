@@ -87,6 +87,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.aspx" />
+    <Content Include="AdminPosition-ADMIN.aspx" />
+    <Content Include="Budget-ADMIN.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -130,9 +132,11 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Default.aspx" />
+    <Content Include="Department-ADMIN.aspx" />
     <Content Include="Entities\bnn.mp3" />
     <Content Include="Error-Member.aspx" />
-    <Content Include="Image\444.jpg" />
+    <Content Include="Gender-ADMIN.aspx" />
+    <Content Include="Image\444.png" />
     <Content Include="Image\555.jpg" />
     <Content Include="Image\bg5.jpg" />
     <Content Include="Image\DORAEMON.jpg" />
@@ -166,6 +170,7 @@
     <Content Include="insignia_user.aspx" />
     <Content Include="Leave.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="National-ADMIN.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
     <Content Include="Font\THSarabun Bold.ttf" />
@@ -175,6 +180,11 @@
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Position-ADMIN.aspx" />
+    <Content Include="PositionWork-ADMIN.aspx" />
+    <Content Include="StaffType-ADMIN.aspx" />
+    <Content Include="SubStaffType-ADMIN.aspx" />
+    <Content Include="TimeContact-ADMIN.aspx" />
     <Content Include="UNIVERSITY-ADMIN.aspx" />
     <Content Include="Year-ADMIN.aspx" />
     <None Include="personalDataSet.xsd">
@@ -219,6 +229,20 @@
     <Compile Include="404.aspx.designer.cs">
       <DependentUpon>404.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminPosition-ADMIN.aspx.cs">
+      <DependentUpon>AdminPosition-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPosition-ADMIN.aspx.designer.cs">
+      <DependentUpon>AdminPosition-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Budget-ADMIN.aspx.cs">
+      <DependentUpon>Budget-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Budget-ADMIN.aspx.designer.cs">
+      <DependentUpon>Budget-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Connection\ConnectionDB.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -226,6 +250,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Department-ADMIN.aspx.cs">
+      <DependentUpon>Department-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Department-ADMIN.aspx.designer.cs">
+      <DependentUpon>Department-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Personnel.cs" />
     <Compile Include="Entities\Seminar.cs" />
@@ -236,6 +267,13 @@
     </Compile>
     <Compile Include="Error-Member.aspx.designer.cs">
       <DependentUpon>Error-Member.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gender-ADMIN.aspx.cs">
+      <DependentUpon>Gender-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gender-ADMIN.aspx.designer.cs">
+      <DependentUpon>Gender-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_from_edit.aspx.cs">
       <DependentUpon>insignia_from_edit.aspx</DependentUpon>
@@ -321,6 +359,13 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="National-ADMIN.aspx.cs">
+      <DependentUpon>National-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="National-ADMIN.aspx.designer.cs">
+      <DependentUpon>National-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="personalDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -339,6 +384,20 @@
     </Compile>
     <Compile Include="Personnel-GENERAL.aspx.designer.cs">
       <DependentUpon>Personnel-GENERAL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Position-ADMIN.aspx.cs">
+      <DependentUpon>Position-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Position-ADMIN.aspx.designer.cs">
+      <DependentUpon>Position-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PositionWork-ADMIN.aspx.cs">
+      <DependentUpon>PositionWork-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PositionWork-ADMIN.aspx.designer.cs">
+      <DependentUpon>PositionWork-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Salary-report.aspx.cs">
       <DependentUpon>Salary-report.aspx</DependentUpon>
@@ -389,12 +448,33 @@
     <Compile Include="SEMINAR-GENERAL.aspx.designer.cs">
       <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
     </Compile>
+    <Compile Include="StaffType-ADMIN.aspx.cs">
+      <DependentUpon>StaffType-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaffType-ADMIN.aspx.designer.cs">
+      <DependentUpon>StaffType-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Study-IN.aspx.cs">
       <DependentUpon>Study-IN.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Study-IN.aspx.designer.cs">
       <DependentUpon>Study-IN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubStaffType-ADMIN.aspx.cs">
+      <DependentUpon>SubStaffType-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubStaffType-ADMIN.aspx.designer.cs">
+      <DependentUpon>SubStaffType-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimeContact-ADMIN.aspx.cs">
+      <DependentUpon>TimeContact-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimeContact-ADMIN.aspx.designer.cs">
+      <DependentUpon>TimeContact-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="TitleName-ADMIN.aspx.cs">
       <DependentUpon>TitleName-ADMIN.aspx</DependentUpon>
@@ -432,6 +512,15 @@
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>

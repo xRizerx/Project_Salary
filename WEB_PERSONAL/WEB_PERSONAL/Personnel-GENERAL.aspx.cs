@@ -193,17 +193,17 @@ namespace WEB_PERSONAL
             }
             if (string.IsNullOrEmpty(txtBIRTHDAY.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุล')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันเกิด')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtZIPCODE.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก บ้านเลขที่')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสไปรษณีย์')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtDATETIME_INWORRK.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชน')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่เข้าทำงาน ณ สถานที่ปัจจุบัน')", true);
                 return;
             }
             Personnel P = new Personnel();
@@ -246,11 +246,19 @@ namespace WEB_PERSONAL
             string[] splitDate2 = txtDATETIME_INWORRK.Text.Split('/');
             P.BIRTHDAY = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
             P.DATETIME_INWORK = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
-        
-            P.InsertPersonnel();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
-            ClearData();
-        }
 
+            if (P.CheckUseCitizenID())
+            {
+                P.InsertPersonnel();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสประจำตัวประชาชนอยู่ในระบบแล้ว !')", true);
+            }
+        }
     }
+
+    
 }

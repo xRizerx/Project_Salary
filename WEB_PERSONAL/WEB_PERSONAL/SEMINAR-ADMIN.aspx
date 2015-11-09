@@ -2,12 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <style type="text/css">
-         .divpan{
-            background-image: url("Image/sky.jpg");     
-
-        }
          body {
-            background-image: url("Image/444.jpg");
+            background-image: url("Image/444.png");
         }
           .tb5 {
 	        background-repeat:repeat-x;
@@ -24,7 +20,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan">
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
         <div class="divover">
         <fieldset>
             <legend>Search</legend>
@@ -48,10 +44,10 @@
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewSEMINARADMIN_PageIndexChanging" PageSize="10">
+                OnPageIndexChanging="myGridViewSEMINARADMIN_PageIndexChanging" PageSize="10" BackColor="White" BorderColor="#999999">
                 <Columns>
-                        <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" />
-                    	<asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" />
+                        <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
+                    	<asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
                     	<asp:TemplateField HeaderText="ID" Visible="false">
                        		 <ItemTemplate>
                             		<asp:Label ID="lblSEMINAR_ID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_ID") %>'></asp:Label>
@@ -59,7 +55,7 @@
                   	    </asp:TemplateField>
 
 
-                    	<asp:TemplateField HeaderText="ชื่อ" ControlStyle-Width="150">
+                    	<asp:TemplateField HeaderText="ชื่อ" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	 <ItemTemplate>
                             	 <asp:Label ID="lblSEMINAR_NAME" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_NAME") %>'></asp:Label>
                        		 </ItemTemplate>
@@ -69,7 +65,7 @@
                    	</asp:TemplateField>
 
 
-                   	<asp:TemplateField HeaderText="นามสกุล" ControlStyle-Width="150">
+                   	<asp:TemplateField HeaderText="นามสกุล" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                        		 <ItemTemplate>
                            	 <asp:Label ID="lblSEMINAR_LASTNAME" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_LASTNAME") %>'></asp:Label>
                        		 </ItemTemplate>
@@ -79,7 +75,7 @@
                     	</asp:TemplateField>
 
 
-                    	<asp:TemplateField HeaderText="ตำแหน่ง" ControlStyle-Width="150">
+                    	<asp:TemplateField HeaderText="ตำแหน่ง" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                             	<asp:Label ID="lblSEMINAR_POSITION" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_POSITION") %>'></asp:Label>
                       		</ItemTemplate>
@@ -89,7 +85,7 @@
                     	</asp:TemplateField>
 
 
-                    	<asp:TemplateField HeaderText="ระดับ" ControlStyle-Width="150">
+                    	<asp:TemplateField HeaderText="ระดับ" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                             	<asp:Label ID="lblSEMINAR_DEGREE" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DEGREE") %>'></asp:Label>
                        	 	</ItemTemplate>
@@ -99,7 +95,7 @@
                     	</asp:TemplateField>
 
 
-                    	<asp:TemplateField HeaderText="สังกัด" ControlStyle-Width="150">
+                    	<asp:TemplateField HeaderText="สังกัด" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                             	<asp:Label ID="lblSEMINAR_CAMPUS" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_CAMPUS") %>'></asp:Label>
                         	</ItemTemplate>
@@ -108,7 +104,7 @@
                         		</EditItemTemplate>
                     	</asp:TemplateField>
 
-                    	<asp:TemplateField HeaderText="ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="300">
+                    	<asp:TemplateField HeaderText="ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_NAMEOFPROJECT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_NAMEOFPROJECT") %>'></asp:Label>
                         	</ItemTemplate> 
@@ -117,7 +113,7 @@
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="สถานที่ฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="300">
+                    <asp:TemplateField HeaderText="สถานที่ฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_PLACE" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_PLACE") %>'></asp:Label>
                         	</ItemTemplate>
@@ -126,7 +122,7 @@
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="วันที่เริ่ม" ControlStyle-Width="180">
+                    <asp:TemplateField HeaderText="วันที่เริ่ม" ControlStyle-Width="180" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_DATETIME_FROM" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_FROM","{0:dd/MM/yyyy}") %>'></asp:Label>
                         	</ItemTemplate>
@@ -135,7 +131,7 @@
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="วันที่สิ้นสุด" ControlStyle-Width="180">
+                    <asp:TemplateField HeaderText="วันที่สิ้นสุด" ControlStyle-Width="180" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_DATETIME_TO" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_TO","{0:dd/MM/yyyy}") %>'></asp:Label>
                         	</ItemTemplate>
@@ -144,7 +140,7 @@
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="รวมระยะเวลา : วัน " ControlStyle-Width="200">
+                    <asp:TemplateField HeaderText="รวมระยะเวลา : วัน " ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_DAY" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DAY") %>'></asp:Label>
                         	</ItemTemplate>
@@ -153,7 +149,7 @@
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="รวมระยะเวลา : เดือน " ControlStyle-Width="200">
+                    <asp:TemplateField HeaderText="รวมระยะเวลา : เดือน " ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_MONTH" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_MONTH") %>'></asp:Label>
                         	</ItemTemplate>
@@ -162,7 +158,7 @@
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="รวมระยะเวลา : ปี " ControlStyle-Width="200">
+                    <asp:TemplateField HeaderText="รวมระยะเวลา : ปี " ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
                         	</ItemTemplate>
@@ -172,7 +168,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ค่าใช้จ่ายตลอดโครงการ" ControlStyle-Width="200">
+                    <asp:TemplateField HeaderText="ค่าใช้จ่ายตลอดโครงการ" ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_BUDGET" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_BUDGET") %>'></asp:Label>
                         	</ItemTemplate>
@@ -182,7 +178,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="แหล่งงบประมาณที่ได้รับการสนับสนุน" ControlStyle-Width="300">
+                    <asp:TemplateField HeaderText="แหล่งงบประมาณที่ได้รับการสนับสนุน" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_SUPPORT_BUDGET" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SUPPORT_BUDGET") %>'></asp:Label>
                         	</ItemTemplate>
@@ -192,7 +188,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ประกาศนียบัตรที่ได้รับ" ControlStyle-Width="300">
+                    <asp:TemplateField HeaderText="ประกาศนียบัตรที่ได้รับ" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_CERTIFICATE" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_CERTIFICATE") %>'></asp:Label>
                         	</ItemTemplate>
@@ -202,7 +198,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="สรุปผลการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="400">
+                    <asp:TemplateField HeaderText="สรุปผลการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_ABSTRACT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_ABSTRACT") %>'></asp:Label>
                         	</ItemTemplate>
@@ -212,7 +208,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="400">
+                    <asp:TemplateField HeaderText="ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_RESULT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_RESULT") %>'></asp:Label>
                         	</ItemTemplate>
@@ -222,7 +218,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ด้านการเรียนการสอน" ControlStyle-Width="400">
+                    <asp:TemplateField HeaderText="ด้านการเรียนการสอน" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_SHOW_1" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_1") %>'></asp:Label>
                         	</ItemTemplate>
@@ -232,7 +228,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ด้านการวิจัย" ControlStyle-Width="400">
+                    <asp:TemplateField HeaderText="ด้านการวิจัย" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_SHOW_2" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_2") %>'></asp:Label>
                         	</ItemTemplate>
@@ -242,7 +238,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ด้านการบริการวิชาการ" ControlStyle-Width="400">
+                    <asp:TemplateField HeaderText="ด้านการบริการวิชาการ" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_SHOW_3" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_3") %>'></asp:Label>
                         	</ItemTemplate>
@@ -252,7 +248,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ด้านอื่นๆ" ControlStyle-Width="400">
+                    <asp:TemplateField HeaderText="ด้านอื่นๆ" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_SHOW_4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_4") %>'></asp:Label>
                         	</ItemTemplate>
@@ -262,7 +258,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="400">
+                    <asp:TemplateField HeaderText="ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_PROBLEM" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_PROBLEM") %>'></asp:Label>
                         	</ItemTemplate>
@@ -272,7 +268,7 @@
                    	 </asp:TemplateField>
 
 
-                    <asp:TemplateField HeaderText="ความคิดเห็น/ข้อเสนอแนะอื่นๆ" ControlStyle-Width="400">
+                    <asp:TemplateField HeaderText="ความคิดเห็น/ข้อเสนอแนะอื่นๆ" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
                            	<asp:Label ID="lblSEMINAR_COMMENT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_COMMENT") %>'></asp:Label>
                         	</ItemTemplate>
@@ -281,7 +277,7 @@
                         		</EditItemTemplate>
                    	 </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="วันที่กรอกฟรอม" Visible="True" ControlStyle-Width="200">
+                        <asp:TemplateField HeaderText="วันที่กรอกฟรอม" Visible="True" ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                        		 <ItemTemplate>
                             		<asp:Label ID="lblSEMINAR_SIGNED_DATETIME" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SIGNED_DATETIME") %>'></asp:Label>
                        		 </ItemTemplate>

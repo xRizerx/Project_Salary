@@ -180,7 +180,8 @@
                     <asp:Label ID="Label11" runat="server" Text="ชื่อหน่วยงานที่ขอพระราชทาน"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox1" runat="server" Width="269px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList11" runat="server" AppendDataBoundItems="True" AutoPostBack="True" DataSourceID="SqlDataSource10" DataTextField="FACULTY_NAME" DataValueField="FACULTY_ID" Width="269px"></asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;FACULTY_ID&quot;, &quot;FACULTY_NAME&quot; FROM &quot;TB_FACULTY&quot;"></asp:SqlDataSource>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -222,8 +223,8 @@
                     <asp:Label ID="Label15" runat="server" Text="ชั้นนี้เป็นการขอพระราชทาน"></asp:Label>
                 </td>
                 <td>
-                    <asp:RadioButton ID="RadioButton5" runat="server" Text="ไม่ซ้ำ" />
-                    &nbsp;<asp:RadioButton ID="RadioButton6" runat="server" Text="ซ้ำ กับปีที่แล้วมา" />
+                    <asp:RadioButton ID="RadioButton5" runat="server" Text="ไม่ซ้ำ" Checked="True" />
+                    &nbsp;<asp:RadioButton ID="RadioButton6" runat="server" Text="ซ้ำ กับปีที่แล้วมา" Enabled="False" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -257,7 +258,7 @@
                     <asp:Label ID="Label19" runat="server" Text="ชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox4" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Width="269px" MaxLength="100"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -266,7 +267,7 @@
                     <asp:Label ID="Label20" runat="server" Text="นามสกุล"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox5" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" Width="269px" MaxLength="100"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -312,7 +313,8 @@
                     <asp:Label ID="Label25" runat="server" Text="ตำแหน่งและระดับที่เริ่มรับราชการ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px" DataSourceID="SqlDataSource7" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px" DataSourceID="SqlDataSource11" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID"></asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;POSITION_WORK_ID&quot;, &quot;POSITION_WORK_NAME&quot; FROM &quot;TB_POSITION_WORK&quot;"></asp:SqlDataSource>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -351,7 +353,7 @@
                     <asp:Label ID="Label29" runat="server" Text="เงินเดือนปัจจุบัน"></asp:Label>
                 </td>
                 <td class="auto-style11">
-                    <asp:TextBox ID="TextBox14" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox14" runat="server" Width="269px" Enabled="False"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
                     <asp:Label ID="Label30" runat="server" Text="บาท"></asp:Label>

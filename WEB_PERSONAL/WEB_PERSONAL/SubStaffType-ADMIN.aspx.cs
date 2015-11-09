@@ -9,17 +9,14 @@ using System.Web.UI.WebControls;
 
 namespace WEB_PERSONAL
 {
-    public partial class UNIV_ADMIN : System.Web.UI.Page
+    public partial class SubStaffType_ADMIN : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 BindData();
-                txtSearchUnivID.Attributes.Add("onkeypress", "return allowOnlyNumber(this)");
-                txtInsertUnivID.Attributes.Add("onkeypress", "return allowOnlyNumber(this)");
-                GridView1.AllowPaging = true;
-                GridView1.AllowSorting = true;
+                txtInsertSubStaffTypeID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
 
@@ -28,21 +25,21 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["UNIVERSITY"];
+            return (DataTable)ViewState["SUBSTAFFTYPE"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["UNIVERSITY"] = data;
+            ViewState["SUBSTAFFTYPE"] = data;
         }
 
         #endregion
 
         void BindData()
         {
-            ClassUniversity u = new ClassUniversity();
-            DataTable dt = u.GetUniversity("","");
+            ClassSubStaffType sst = new ClassSubStaffType();
+            DataTable dt = sst.GetSubStaffType(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -50,39 +47,38 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
-            txtSearchUnivID.Text = "";
-            txtSearchUnivName.Text = "";
-            txtInsertUnivID.Text = "";
-            txtInsertUnivName.Text = "";
+            txtSearchSubStaffTypeID.Text = "";
+            txtSearchSubStaffTypeName.Text = "";
+            txtInsertSubStaffTypeID.Text = "";
+            txtInsertSubStaffTypeName.Text = "";
         }
 
-        protected void btnSubmitUNIVERSITY_Click(object sender, EventArgs e)
+        protected void btnSubmitSubStaffType_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtInsertUnivID.Text))
+            if (string.IsNullOrEmpty(txtInsertSubStaffTypeID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสมหาวิทยาลัย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสประเภทบุคลากรย่อย')", true);
                 return;
             }
-            
-            if (string.IsNullOrEmpty(txtInsertUnivName.Text))
+            if (string.IsNullOrEmpty(txtInsertSubStaffTypeName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อมหาวิทยาลัย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อประเภทบุคลากรย่อย')", true);
                 return;
             }
-            ClassUniversity u = new ClassUniversity();
-            u.UNIV_ID = txtInsertUnivID.Text;
-            u.UNIV_NAME = txtInsertUnivName.Text;
+            ClassSubStaffType sst = new ClassSubStaffType();
+            sst.SUBSTAFFTYPE_ID = Convert.ToInt32(txtInsertSubStaffTypeID.Text);
+            sst.SUBSTAFFTYPE_NAME = txtInsertSubStaffTypeName.Text;
 
-            if (u.CheckUseUniversityID())
+            if (sst.CheckUseSubStaffTypeID())
             {
-                u.InsertUniversity();
+                sst.InsertSubStaffType();
                 BindData();
                 ClearData();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสมหาวิทยาลัยนี้ อยู่ในระบบแล้ว !')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสประเภทบุคลากรย่อยนี้ อยู่ในระบบแล้ว !')", true);
             }
         }
 
@@ -99,9 +95,9 @@ namespace WEB_PERSONAL
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            ClassUniversity y = new ClassUniversity();
-            y.UNIV_SEQ = id;
-            y.DeleteUniversity();
+            ClassSubStaffType sst = new ClassSubStaffType();
+            sst.SUBSTAFFTYPE_ID = id;
+            sst.DeleteSubStaffType();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
@@ -109,18 +105,18 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblUnivSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblUnivSEQ");
-            TextBox txtUnivIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtUnivIDEdit");
-            TextBox txtUnivNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtUnivNameEdit");
 
-            ClassUniversity u = new ClassUniversity(Convert.ToInt32(lblUnivSEQ.Text)
-                , txtUnivIDEdit.Text
-                , txtUnivNameEdit.Text);
+            TextBox txtSubStaffTypeIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffTypeIDEdit");
+            TextBox txtSubStaffTypeNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffTypeNameEdit");
 
-            u.UpdateUniversity();
+            ClassSubStaffType sst = new ClassSubStaffType(Convert.ToInt32(txtSubStaffTypeIDEdit.Text), txtSubStaffTypeNameEdit.Text);
+
+            sst.UpdateSubStaffType();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData();
+
+
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -129,32 +125,32 @@ namespace WEB_PERSONAL
             {
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
-                    TextBox txt = (TextBox)e.Row.FindControl("txtUnivIDEdit");
+                    TextBox txt = (TextBox)e.Row.FindControl("txtSubStaffTypeIDEdit");
                     txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 }
             }
         }
-        protected void myGridViewUNIVERSITY_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void myGridViewSubStaffType_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataSource = GetViewState();
             GridView1.DataBind();
         }
 
-        protected void btnCancelUNIVERSITY_Click(object sender, EventArgs e)
+        protected void btnCancelSubStaffType_Click(object sender, EventArgs e)
         {
             ClearData();
-            ClassUniversity y = new ClassUniversity();
-            DataTable dt = y.GetUniversity("","");
+            ClassSubStaffType sst = new ClassSubStaffType();
+            DataTable dt = sst.GetSubStaffType(0,"");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
         }
 
-        protected void btnSearchUniv_Click(object sender, EventArgs e)
+        protected void SearchSubStaffType_Click(object sender, EventArgs e)
         {
-            ClassUniversity y = new ClassUniversity();
-            DataTable dt = y.GetUniversitySearch(txtSearchUnivID.Text, txtSearchUnivName.Text);
+            ClassSubStaffType sst = new ClassSubStaffType();
+            DataTable dt = sst.GetSubStaffTypeSearch(Convert.ToInt32(txtSearchSubStaffTypeID.Text), txtSearchSubStaffTypeName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

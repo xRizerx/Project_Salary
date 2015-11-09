@@ -300,5 +300,39 @@ namespace WEB_PERSONAL.Entities
             return result;
         }
 
+        public bool CheckUseCitizenID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(CITIZEN_ID) FROM TB_PERSONAL WHERE CITIZEN_ID = :CITIZEN_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
 }
