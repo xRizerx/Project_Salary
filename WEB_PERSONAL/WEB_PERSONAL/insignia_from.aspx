@@ -221,8 +221,8 @@
                     <asp:Label ID="Label15" runat="server" Text="ชั้นนี้เป็นการขอพระราชทาน"></asp:Label>
                 </td>
                 <td>
-                    <asp:RadioButton ID="RadioButton5" runat="server" Text="ไม่ซ้ำ" />
-                    &nbsp;<asp:RadioButton ID="RadioButton6" runat="server" Text="ซ้ำ กับปีที่แล้วมา" />
+                    <asp:RadioButton ID="RadioButton5" runat="server" Text="ไม่ซ้ำ" Checked="True" />
+                    &nbsp;<asp:RadioButton ID="RadioButton6" runat="server" Text="ซ้ำ กับปีที่แล้วมา" Enabled="False" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -388,7 +388,7 @@
                     <asp:Label ID="Label38" runat="server" Text="คำนำหน้าชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="TextBox18" runat="server" Width="269px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList4" runat="server" Width="269px"></asp:DropDownList>  
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -582,7 +582,7 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style55">
-                    <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="109px" />
+                    <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="109px" OnClick="Button1_Click" />
                 </td>
                 <td class="auto-style56">
                     <asp:Button ID="Button2" runat="server" Text="แก้ไข" Width="109px" OnClick="Button2_Click1" />

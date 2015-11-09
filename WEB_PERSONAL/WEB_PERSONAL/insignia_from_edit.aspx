@@ -223,8 +223,8 @@
                     <asp:Label ID="Label15" runat="server" Text="ชั้นนี้เป็นการขอพระราชทาน"></asp:Label>
                 </td>
                 <td>
-                    <asp:RadioButton ID="RadioButton5" runat="server" Text="ไม่ซ้ำ" />
-                    &nbsp;<asp:RadioButton ID="RadioButton6" runat="server" Text="ซ้ำ กับปีที่แล้วมา" />
+                    <asp:RadioButton ID="RadioButton5" runat="server" Text="ไม่ซ้ำ" Checked="True" />
+                    &nbsp;<asp:RadioButton ID="RadioButton6" runat="server" Text="ซ้ำ กับปีที่แล้วมา" Enabled="False" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -313,7 +313,8 @@
                     <asp:Label ID="Label25" runat="server" Text="ตำแหน่งและระดับที่เริ่มรับราชการ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px" DataSourceID="SqlDataSource7" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px" DataSourceID="SqlDataSource11" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID"></asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;POSITION_WORK_ID&quot;, &quot;POSITION_WORK_NAME&quot; FROM &quot;TB_POSITION_WORK&quot;"></asp:SqlDataSource>
                 </td>
                 <td>&nbsp;</td>
             </tr>
