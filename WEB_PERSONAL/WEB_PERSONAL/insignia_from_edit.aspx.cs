@@ -28,7 +28,7 @@ namespace WEB_PERSONAL
                 {
                     con.Open();
                     {
-                        string Oracle = "SELECT STAFFTYPE_ID,RANK_ID,title_id,STF_NAME,STF_LNAME,GENDER_ID "
+                        string Oracle = "SELECT STAFFTYPE_ID,RANK_ID,title_id,GENDER_ID,POSITION_WORK_ID,GOT_ID,POSITION_ID "
                             + "FROM TB_PERSONAL "
                             +"WHERE CITIZEN_ID = " + citizen_id;
                         using (OracleCommand command = new OracleCommand(Oracle, con))
@@ -39,11 +39,11 @@ namespace WEB_PERSONAL
                                 {
                                     staff_type_id = reader.GetInt32(0);
                                     DropDownList4.SelectedValue = "" + reader.GetInt32(1); /*RANK_ID*/
-                                    DropDownList5.SelectedValue = ""+reader.GetInt32(2); /*title_id*/
-                                    /*TextBox4 STF_NAME(3)*/
-                                    /*TextBox5 STF_LNAME(4)*/
-                                    DropDownList6.SelectedValue = "" + reader.GetInt32(5);
-
+                                    DropDownList5.SelectedValue = "" + reader.GetInt32(2); /*title_id*/
+                                    DropDownList6.SelectedValue = "" + reader.GetInt32(3); /*GENDER_ID*/
+                                    DropDownList8.SelectedValue = "" + reader.GetString(4); /*POSITION_WORK_ID*/
+                                    DropDownList9.SelectedValue = "" + reader.GetInt32(5);  /*GOT_ID*/
+                                    DropDownList10.SelectedValue = "" + reader.GetString(6); /*POSITION_ID*/
                                 }
                             }
                         }
@@ -64,13 +64,11 @@ namespace WEB_PERSONAL
                                 {
                                     while (reader.Read())
                                     {
-                                        /*TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
-                                                                                         /*TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
-                                                                                         /*TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy"); /*tb_personal.birthday*/
-                                                                                         /*TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
-
-
-                                    /* TextBox9.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy"); /*tb_personal.datetime_inwork*/
+                                        TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
+                                    TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
+                                        TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy"); /*tb_personal.birthday*/
+                                        TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
+                                        TextBox9.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy"); /*tb_personal.datetime_inwork*/
 
 
 
@@ -102,7 +100,7 @@ namespace WEB_PERSONAL
             //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             //S }
             if (!IsPostBack) {
-                DropDownList11.Items.Add("--กรุณาเลือกหน่วยงาน--");
+                DropDownList11.Items.Add("--ยังไม่สมบูรณ์--");
             }
         }
 
@@ -126,5 +124,7 @@ namespace WEB_PERSONAL
             Response.Redirect("insignia_user.aspx");
 
         }
+
+        
     }
 }

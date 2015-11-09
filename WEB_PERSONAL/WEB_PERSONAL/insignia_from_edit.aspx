@@ -258,7 +258,7 @@
                     <asp:Label ID="Label19" runat="server" Text="ชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox4" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Width="269px" MaxLength="100"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -267,7 +267,7 @@
                     <asp:Label ID="Label20" runat="server" Text="นามสกุล"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox5" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" Width="269px" MaxLength="100"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -352,7 +352,7 @@
                     <asp:Label ID="Label29" runat="server" Text="เงินเดือนปัจจุบัน"></asp:Label>
                 </td>
                 <td class="auto-style11">
-                    <asp:TextBox ID="TextBox14" runat="server" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox14" runat="server" Width="269px" Enabled="False"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
                     <asp:Label ID="Label30" runat="server" Text="บาท"></asp:Label>

@@ -189,9 +189,9 @@
                     <asp:Label ID="Label12" runat="server" Text="มาช่วยราชการจากที่ใด (ถ้ามี)"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NAME_COMM" DataValueField="NAME_COMM" Width="269px">
+                    <asp:DropDownList ID="DropDownList1" runat="server" Width="269px">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT &quot;NAME_COMM&quot; FROM &quot;AA_COMMAND&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
+                    <asp:Label ID="Label59" runat="server" BorderColor="Red" Text="หมายเหตุ: ในกรณีที่มาช่วยราชการจากที่ใด (ถ้ามี) โปรดเลือกหัวข้อ"></asp:Label>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -200,9 +200,8 @@
                     <asp:Label ID="Label13" runat="server" Text="เครื่องราชฯ ที่ขอพระราชทาน ประจำปี"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="ID_BBE" DataValueField="ID_BBE" Width="269px">
+                    <asp:DropDownList ID="DropDownList2" runat="server" Width="269px">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT &quot;ID_BBE&quot; FROM &quot;AA_BUDDHISTERA&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -211,9 +210,9 @@
                     <asp:Label ID="Label14" runat="server" Text="คือชั้น"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="NAME_GRADEINSIGNIA_THA" DataValueField="NAME_GRADEINSIGNIA_THA" Width="269px">
+                    <asp:DropDownList ID="DropDownList3" runat="server" Width="269px">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT &quot;NAME_GRADEINSIGNIA_THA&quot;, &quot;ABBREVIATIONS_THA&quot; FROM &quot;TB_GRADEINSIGNIA&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
+                    
                 </td>
                 <td>&nbsp;</td>
             </tr>
