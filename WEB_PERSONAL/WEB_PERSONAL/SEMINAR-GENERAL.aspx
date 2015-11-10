@@ -12,7 +12,7 @@
                         changeYear: true,
                         dayNamesMin: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
                         monthNamesShort: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
-                        yearRange: "-60:+30",
+                        yearRange: "-60:+40",
                         beforeShow: function () {
                             $(".ui-datepicker").css('font-size', 14)
                             if ($(this).val() != "") {
