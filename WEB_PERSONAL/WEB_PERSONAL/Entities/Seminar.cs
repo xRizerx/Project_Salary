@@ -70,8 +70,66 @@ namespace WEB_PERSONAL.Entities
             this.SEMINAR_SIGNED_DATETIME = SEMINAR_SIGNED_DATETIME;
         }
 
+        public DataTable GetSEMINAR(string SEMINAR_NAME, string SEMINAR_DATETIME_FROM, string SEMINAR_DATETIME_TO)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_SEMINAR ";
+            if (!string.IsNullOrEmpty(SEMINAR_NAME) || !string.IsNullOrEmpty(SEMINAR_DATETIME_FROM) || !string.IsNullOrEmpty(SEMINAR_DATETIME_TO))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(SEMINAR_NAME))
+                {
+                    query += " and SEMINAR_NAME like :SEMINAR_NAME ";
+                }
+                if (!string.IsNullOrEmpty(SEMINAR_DATETIME_FROM))
+                {
+                    query += " and CONVERT(varchar(10),LP_Date,103) = @SEMINAR_DATETIME_FROM ";
+                }
+                if (!string.IsNullOrEmpty(SEMINAR_DATETIME_TO))
+                {
+                    query += " and CONVERT(varchar(10),LP_Date,103) = @SEMINAR_DATETIME_TO ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
 
-        public DataTable GetSEMINAR(string SEMINAR_NAME)
+                if (!string.IsNullOrEmpty(SEMINAR_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("SEMINAR_NAME", SEMINAR_NAME + "%"));
+                }
+                if (!string.IsNullOrEmpty(SEMINAR_DATETIME_FROM))
+                {
+                    command.Parameters.Add(new OracleParameter("SEMINAR_DATETIME_FROM", SEMINAR_DATETIME_FROM));
+                }
+                if (!string.IsNullOrEmpty(SEMINAR_DATETIME_TO))
+                {
+                    command.Parameters.Add(new OracleParameter("SEMINAR_DATETIME_TO", SEMINAR_DATETIME_TO));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+        public DataTable GetSEMINARSearch(string SEMINAR_NAME)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();

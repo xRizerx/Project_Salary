@@ -175,11 +175,10 @@ namespace WEB_PERSONAL
             S.SEMINAR_COMMENT = txtComment.Text;
             S.SEMINAR_SIGNED_DATETIME = DateTime.Now;
 
-            string[] splitDate1 = txtDateFrom.Text.Split('/');
-            string[] splitDate2 = txtDateTO.Text.Split('/');
+            string[] splitDate1 = txtDateFrom.Text.Split('-');
+            string[] splitDate2 = txtDateTO.Text.Split('-');
             S.SEMINAR_DATETIME_FROM = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
             S.SEMINAR_DATETIME_TO = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
-
 
             DateTime SEMINAR_SIGNED_DATETIME = DateTime.Now;            
             S.InsertSEMINAR();
@@ -207,12 +206,6 @@ namespace WEB_PERSONAL
             txtYear.Text = "" + year;
             txtMonth.Text = "" + month;
             txtDay.Text = "" + day;
-        }
-        private string toDate(String str)
-        {
-            string[] paper_date_s = str.Split('/');
-            int paper_date_y = Convert.ToInt32(paper_date_s[2]) - 543;
-            return paper_date_y + paper_date_s[1] + paper_date_s[0];
         }
 
         protected void Button1_Click(object sender, EventArgs e)
