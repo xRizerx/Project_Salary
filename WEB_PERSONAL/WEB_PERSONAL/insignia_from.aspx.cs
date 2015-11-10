@@ -31,6 +31,8 @@ namespace WEB_PERSONAL
                 BindDropDown2();
                 BindDropDown3();
                 BindDropDown4();
+                BindDropDown5();
+                BindDropDown6();
             }
 
             // try
@@ -199,7 +201,7 @@ namespace WEB_PERSONAL
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownList2.DataSource = dt;
-                        DropDownList2.DataValueField = "ID";
+                        DropDownList2.DataValueField = "ID_BBE";
                         DropDownList2.DataTextField = "ID_BBE";
                         DropDownList2.DataBind();
                         sqlConn.Close();
@@ -268,6 +270,76 @@ namespace WEB_PERSONAL
             catch { }
         }
 
+        private void BindDropDown5()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_POSITION";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownList5.DataSource = dt;
+                        DropDownList5.DataValueField = "POSITION_ID";
+                        DropDownList5.DataTextField = "POSITION_NAME";
+                        DropDownList5.DataBind();
+
+                        DropDownList6.DataSource = dt;
+                        DropDownList6.DataValueField = "POSITION_ID";
+                        DropDownList6.DataTextField = "POSITION_NAME";
+                        DropDownList6.DataBind();
+
+                        sqlConn.Close();
+
+                        DropDownList5.Items.Insert(0, new ListItem("-- กรุณาเลือก --", "0"));
+                        DropDownList6.Items.Insert(0, new ListItem("-- กรุณาเลือก --", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void BindDropDown6()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_POSITION_WORK";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownList7.DataSource = dt;
+                        DropDownList7.DataValueField = "POSITION_WORK_ID";
+                        DropDownList7.DataTextField = "POSITION_WORK_NAME";
+                        DropDownList7.DataBind();
+
+                        DropDownList8.DataSource = dt;
+                        DropDownList8.DataValueField = "POSITION_WORK_ID";
+                        DropDownList8.DataTextField = "POSITION_WORK_NAME";
+                        DropDownList8.DataBind();
+
+                        sqlConn.Close();
+
+                        DropDownList7.Items.Insert(0, new ListItem("-- กรุณาเลือก --", "0"));
+                        DropDownList8.Items.Insert(0, new ListItem("-- กรุณาเลือก --", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
 
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -293,7 +365,7 @@ namespace WEB_PERSONAL
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            /*// try
+            // try
             {
                 string connectionString = "Data Source=ORCL_RMUTTO;User ID=rmutto;Password=Zxcvbnm";
                 using (OracleConnection con = new OracleConnection(connectionString))
@@ -301,21 +373,53 @@ namespace WEB_PERSONAL
                     con.Open();
                     //Select 1
                     {
-                        string Oracle = "insert into  STAFFTYPE_ID,RANK_ID,title_id,GENDER_ID,POSITION_WORK_ID,GOT_ID,POSITION_ID "
-                            + "FROM TB_PERSONAL "
-                            + "WHERE CITIZEN_ID = '" + citizen_id + "'";
+                        string Oracle = "insert into AA_REQUEST_INSIGNIA values (SEQ_REQUEST_INSIGNIA_id.nextval,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14,:15,:16,:17,:18,:19)";
+
                         using (OracleCommand command = new OracleCommand(Oracle, con))
                         {
-                            using (OracleDataReader reader = command.ExecuteReader())
-                            {
+                            command.Parameters.AddWithValue("2", Session["insignia_citizen_id"].ToString());
+                            command.Parameters.AddWithValue("3", DropDownList1.SelectedValue); /*ID_COMM*/
+                            command.Parameters.AddWithValue("4", DropDownList2.SelectedValue); /*YEAR*/
+                            command.Parameters.AddWithValue("5", DropDownList3.SelectedValue); /*ID_GRADEINSIGNIA*/
+                            command.Parameters.AddWithValue("6", RadioButton5.Checked ? "1":"0"); /*REPEAT_REQUEST*/
+                            command.Parameters.AddWithValue("7", TextBox17.Text); /*SALARY_BACK5Y*/
+                            command.Parameters.AddWithValue("8", DropDownList4.SelectedValue); /*OLD_TITLE_ID*/
+                            command.Parameters.AddWithValue("9", TextBox19.Text); /*OLD_NAME*/
+                            command.Parameters.AddWithValue("10", TextBox20.Text); /*OLD_LASTNAME*/
+                            command.Parameters.AddWithValue("11", DropDownList5.SelectedValue); /*H1_POSITION_ID_1*/
+                            command.Parameters.AddWithValue("12", Util.toOracleDateTime(TextBox25.Text)); /*H1_DATE_1*/
+                            command.Parameters.AddWithValue("13", DropDownList6.SelectedValue); /*H1_POSITION_ID_2*/
+                            command.Parameters.AddWithValue("14", Util.toOracleDateTime(TextBox26.Text)); /*H1_DATE_2*/
+                            command.Parameters.AddWithValue("15", DropDownList7.SelectedValue); /*H2_OLD_POSITION_WORK_ID*/
+                            command.Parameters.AddWithValue("16", DropDownList8.SelectedValue); /*H2_NEW_POSITION_WORK_ID*/
 
+                            int g2id = 1;
+                            if (CheckBox2.Checked)
+                            {
+                                g2id = 2;
                             }
+
+                            int g2id2 = 3;
+                            if (CheckBox4.Checked)
+                            {
+                                g2id2 = 4;
+                            }
+                            else
+                            {
+                                g2id2 = 5;
+                            }
+
+                            command.Parameters.AddWithValue("17", g2id);
+                            command.Parameters.AddWithValue("18", g2id2);
+                            command.Parameters.AddWithValue("19", TextBox16.Text); /*YEAR_BACK5Y*/
+                            command.ExecuteNonQuery();
+                            Util.Alert(this, "บันทีกเรียบร้อย");
                         }
                     }
                    
                     
                 }
-            }*/
+            }
         }
 
         
