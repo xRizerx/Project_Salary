@@ -5,133 +5,113 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Data.OracleClient;
 
-namespace WEB_PERSONAL
-{
-    public partial class Study_IN : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+namespace WEB_PERSONAL {
+    public partial class Study_IN : System.Web.UI.Page {
+        protected void Page_Load(object sender, EventArgs e) {
 
         }
 
-        protected void LinkButton15_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
+        protected void LinkButton15_Click(object sender, EventArgs e) {
+            //try
+            //{
+            using (OracleConnection con = Util.OC()) {
                 {
-                    con.Open();
                     {
-                        {
-                            string sql = "select ID, DATE, CITIZEN_ID, LEVEL, BRANCH_NAME, LOCATION_NAME, FROM_DATE, TO_DATE, CONTRACT_GIVER_NAME, CONTRACT_RECEIVER_NAME, CONTRACT_WITNESS1_NAME, CONTRACT_WITNESS2_NAME, MATE_NAME, MATE_WITNESS1_NAME, MATE_WITNESS2_NAME, LAWYER_NAME, DEPARTMENT_OFFICIAL_NAME, DIRECTOR_NAME, DEPUTY_DIRECTOR_NAME, TYPE_ID, ISNULL(FUND_TYPE,''), ISNULL(COUNTRY_NAME,'') from TB_STUDY where id = " + TextBox1.Text;
-                            using (SqlCommand command = new SqlCommand(sql, con))
-                            {
-                                using (SqlDataReader reader = command.ExecuteReader())
-                                {
-                                    while (reader.Read())
-                                    {
-                                        TextBox1.Text = reader.GetInt32(0).ToString();
-                                        TextBox2.Text = reader.GetDateTime(1).ToString("dd/MM/yyyy");
-                                        TextBox3.Text = reader.GetString(2);
-                                        TextBox4.Text = reader.GetString(3);
-                                        TextBox5.Text = reader.GetString(4);
-                                        TextBox6.Text = reader.GetString(5);
-                                        TextBox7.Text = reader.GetDateTime(6).ToString("dd/MM/yyyy");
-                                        TextBox8.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy");
-                                        TextBox9.Text = reader.GetString(8);
-                                        TextBox10.Text = reader.GetString(9);
-                                        TextBox11.Text = reader.GetString(10);
-                                        TextBox12.Text = reader.GetString(11);
-                                        TextBox13.Text = reader.GetString(12);
-                                        TextBox14.Text = reader.GetString(13);
-                                        TextBox15.Text = reader.GetString(14);
-                                        TextBox16.Text = reader.GetString(15);
-                                        TextBox17.Text = reader.GetString(16);
-                                        TextBox18.Text = reader.GetString(17);
-                                        TextBox19.Text = reader.GetString(18);
-                                        DropDownList1.SelectedValue = reader.GetInt32(19).ToString();
-                                        TextBox20.Text = reader.GetString(20);
-                                        TextBox21.Text = reader.GetString(21);
+                        string sql = "select ID, CITIZEN_ID, STUDY_YEAR, STUDY_DEGREE_ID, STUDY_BRANCH_ID, STUDY_LOCATION, STUDY_COURSE_ID, STUDY_TIME, STUDY_TIME_YEAR, TO_CHAR(STUDY_FROM_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), TO_CHAR(STUDY_TO_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), STUDY_TIME_EXT, \"COMMENT\" from TB_STUDY where id = " + TextBox23.Text;
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            using (OracleDataReader reader = command.ExecuteReader()) {
+                                while (reader.Read()) {
+                                    TextBox1.Text = reader.GetInt32(0).ToString();
+                                    TextBox3.Text = reader.GetString(1);
+                                    TextBox28.Text = reader.GetInt32(2).ToString();
+                                    DropDownList1.SelectedValue = reader.GetInt32(3).ToString();
+                                    DropDownList2.SelectedValue = reader.GetString(4);
+                                    TextBox6.Text = reader.GetString(5);
+                                    DropDownList3.SelectedValue = reader.GetInt32(6).ToString();
+                                    TextBox24.Text = reader.GetFloat(7).ToString();
+                                    TextBox25.Text = reader.GetFloat(8).ToString();
+                                    TextBox7.Text = reader.GetString(9);
+                                    TextBox8.Text = reader.GetString(10);
+                                    TextBox26.Text = reader.GetFloat(11).ToString();
+                                    TextBox27.Text = reader.GetString(12);
+                                }
+                            }
 
+                        }
+                    }
+
+                    {
+                        string sql = "SELECT TB_PERSONAL.STF_NAME || ' ' || TB_PERSONAL.STF_LNAME, TB_POSITION.POSITION_NAME, TB_POSITION_WORK.POSITION_WORK_NAME FROM TB_PERSONAL, TB_POSITION, TB_POSITION_WORK WHERE CITIZEN_ID = '" + TextBox3.Text + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID";
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            using (OracleDataReader reader = command.ExecuteReader()) {
+                                if (reader.HasRows) {
+                                    while (reader.Read()) {
+                                        Label37.Text = reader.GetString(0);
+                                        Label39.Text = reader.GetString(1);
+                                        Label41.Text = reader.GetString(2);
                                     }
+                                } else {
+                                    Util.Alert(this, "ไม่พบรหัสพนักงาน");
                                 }
 
                             }
+
                         }
-
-                        {
-                            string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox3.Text + "'";
-                            using (SqlCommand command = new SqlCommand(sql, con))
-                            {
-                                using (SqlDataReader reader = command.ExecuteReader())
-                                {
-                                    if(reader.HasRows)
-                                    {
-                                        while (reader.Read())
-                                        {
-                                            TextBox22.Text = reader.GetString(0);
-                                        }
-                                    } else
-                                    {
-                                        string script = "alert('ไม่พบรหัสพนักงาน')";
-                                        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                                    }
-                                    
-                                }
-
-                            }
-                        }
-
-
                     }
+
+
                 }
             }
-            catch (Exception e2)
-            {
-                string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
+            //}
+            //catch (Exception e2)
+            //{
+            //    string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
+            //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            //}
         }
 
-        protected void LinkButton16_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
+        protected void LinkButton16_Click(object sender, EventArgs e) {
+            //try
+            //{
+            using (OracleConnection con = Util.OC()) {
                 {
-                    con.Open();
-                    {
-                        string sql = "insert into TB_STUDY values({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}',{19},'{20}','{21}')";
-                        sql = String.Format(sql, TextBox1.Text, toDate(TextBox2.Text), TextBox3.Text, TextBox4.Text, TextBox5.Text, TextBox6.Text, toDate(TextBox7.Text), toDate(TextBox8.Text), TextBox9.Text, TextBox10.Text, TextBox11.Text, TextBox12.Text, TextBox13.Text, TextBox14.Text, TextBox15.Text, TextBox16.Text, TextBox17.Text, TextBox18.Text, TextBox19.Text, DropDownList1.SelectedValue, TextBox20.Text, TextBox21.Text);
-                        using (SqlCommand command = new SqlCommand(sql, con))
-                        {
-                            command.ExecuteNonQuery();
-                            string script = "alert('เพิ่มข้อมูลสำเร็จ!');";
-                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                        }
+                    string sql = "insert into TB_STUDY values(SEQ_STUDY_ID.NEXTVAL,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13)";
+                    using (OracleCommand command = new OracleCommand(sql, con)) {
+                        command.Parameters.AddWithValue("2", TextBox3.Text);
+                        command.Parameters.AddWithValue("3", TextBox28.Text);
+                        command.Parameters.AddWithValue("4", DropDownList1.SelectedValue);
+                        command.Parameters.AddWithValue("5", DropDownList2.SelectedValue);
+                        command.Parameters.AddWithValue("6", TextBox6.Text);
+                        command.Parameters.AddWithValue("7", DropDownList3.SelectedValue);
+                        command.Parameters.AddWithValue("8", TextBox24.Text);
+                        command.Parameters.AddWithValue("9", TextBox25.Text);
+                        command.Parameters.AddWithValue("10", Util.toOracleDateTime(TextBox7.Text));
+                        command.Parameters.AddWithValue("11", Util.toOracleDateTime(TextBox8.Text));
+                        command.Parameters.AddWithValue("12", TextBox26.Text);
+                        command.Parameters.AddWithValue("13", TextBox27.Text);
+                        command.ExecuteNonQuery();
+                        Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
                     }
                 }
             }
-            catch (Exception e2)
-            {
-                string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
+            //}
+            //catch (Exception e2)
+            //{
+            //  string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
+            //   ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            //}
         }
 
-        private string toDate(String str)
-        {
+        private string toDate(String str) {
             string[] paper_date_s = str.Split('/');
             int paper_date_y = Convert.ToInt32(paper_date_s[2]) - 543;
             return paper_date_y + paper_date_s[1] + paper_date_s[0];
         }
 
-        protected void LinkButton17_Click(object sender, EventArgs e)
-        {
-            try
+        protected void LinkButton17_Click(object sender, EventArgs e) {
+            /*try
             {
                 string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -153,32 +133,24 @@ namespace WEB_PERSONAL
             {
                 string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
+            }*/
         }
 
-        protected void LinkButton18_Click(object sender, EventArgs e)
-        {
-            try
+        protected void LinkButton18_Click(object sender, EventArgs e) {
+            //try
             {
-                string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
-                using (SqlConnection con = new SqlConnection(connectionString))
-                {
-                    con.Open();
+                using (OracleConnection con = Util.OC()) {
                     {
-                        string sql = "SELECT STF_NAME + ' ' + STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox3.Text + "'";
-                        using (SqlCommand command = new SqlCommand(sql, con))
-                        {
-                            using (SqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        TextBox22.Text = reader.GetString(0);
+                        string sql = "SELECT TB_PERSONAL.STF_NAME || ' ' || STF_LNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION_WORK.POSITION_WORK_NAME FROM TB_PERSONAL, TB_STAFFTYPE, TB_POSITION_WORK WHERE TB_PERSONAL.CITIZEN_ID = '" + TextBox3.Text + "' AND TB_PERSONAL.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSONAL.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID";
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            using (OracleDataReader reader = command.ExecuteReader()) {
+                                if (reader.HasRows) {
+                                    while (reader.Read()) {
+                                        Label37.Text = reader.GetString(0);
+                                        Label39.Text = reader.GetString(1);
+                                        Label41.Text = reader.GetString(2);
                                     }
-                                }
-                                else
-                                {
+                                } else {
                                     string script = "alert('ไม่พบรหัสพนักงาน')";
                                     ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                                 }
@@ -189,11 +161,11 @@ namespace WEB_PERSONAL
                     }
                 }
             }
-            catch (Exception e2)
-            {
-                string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
+            //catch (Exception e2)
+            //{
+            //   string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
+            //   ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            //}
         }
     }
 }
