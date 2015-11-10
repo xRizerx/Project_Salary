@@ -159,11 +159,19 @@ namespace WEB_PERSONAL
 
         protected void btnSearchTitleName_Click(object sender, EventArgs e)
         {
-            TITLENAME ptn = new TITLENAME();
-            DataTable dt = ptn.GetTITLENAME(txtSearchTH.Text, txtSearchTHmin.Text, txtSearchEN.Text, txtSearchENmin.Text);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            SetViewState(dt);
+            if (string.IsNullOrEmpty(txtSearchTH.Text) && string.IsNullOrEmpty(txtSearchTHmin.Text) && string.IsNullOrEmpty(txtSearchEN.Text) && string.IsNullOrEmpty(txtSearchENmin.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                TITLENAME ptn = new TITLENAME();
+                DataTable dt = ptn.GetTITLENAME(txtSearchTH.Text, txtSearchTHmin.Text, txtSearchEN.Text, txtSearchENmin.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
         }
     }
 }

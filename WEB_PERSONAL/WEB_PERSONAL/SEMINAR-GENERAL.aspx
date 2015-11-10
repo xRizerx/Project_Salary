@@ -91,7 +91,7 @@
             color:red;
         }
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1605px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+    <asp:Panel ID="Panel1" runat="server" Height="1605px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSaveSeminar">
    <div>
         <fieldset>
             <legend>เพิ่มข้อมูลการฝึกอบรม/สัมมนา/ดูงาน</legend>

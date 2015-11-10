@@ -921,11 +921,11 @@ namespace WEB_PERSONAL.Entities
                 query += " where 1=1 ";
                 if (!string.IsNullOrEmpty(NATION_ID))
                 {
-                    query += " and NATION_ID like :NATION_ID ";
+                    query += " and lower(NATION_ID) like lower (:NATION_ID) ";
                 }
                 if (!string.IsNullOrEmpty(NATION_ENG))
                 {
-                    query += " and NATION_ENG like :NATION_ENG ";
+                    query += " and lower(NATION_ENG) like lower (:NATION_ENG) ";
                 }
                 if (!string.IsNullOrEmpty(NATION_THA))
                 {
@@ -980,11 +980,11 @@ namespace WEB_PERSONAL.Entities
                 query += " where 1=1 ";
                 if (!string.IsNullOrEmpty(NATION_ID))
                 {
-                    query += " and NATION_ID like :NATION_ID ";
+                    query += " and lower(NATION_ID) like lower (:NATION_ID) ";
                 }
                 if (!string.IsNullOrEmpty(NATION_ENG))
                 {
-                    query += " and NATION_ENG like :NATION_ENG ";
+                    query += " and lower(NATION_ENG) like lower (:NATION_ENG) ";
                 }
                 if (!string.IsNullOrEmpty(NATION_THA))
                 {

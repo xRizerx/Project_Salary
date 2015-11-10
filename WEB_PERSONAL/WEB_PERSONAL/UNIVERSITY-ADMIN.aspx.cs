@@ -153,11 +153,19 @@ namespace WEB_PERSONAL
 
         protected void btnSearchUniv_Click(object sender, EventArgs e)
         {
-            ClassUniversity y = new ClassUniversity();
-            DataTable dt = y.GetUniversitySearch(txtSearchUnivID.Text, txtSearchUnivName.Text);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            SetViewState(dt);
+            if (string.IsNullOrEmpty(txtSearchUnivID.Text) && string.IsNullOrEmpty(txtSearchUnivName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassUniversity y = new ClassUniversity();
+                DataTable dt = y.GetUniversitySearch(txtSearchUnivID.Text, txtSearchUnivName.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
         }
     }
 }

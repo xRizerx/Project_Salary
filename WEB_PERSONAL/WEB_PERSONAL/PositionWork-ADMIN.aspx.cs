@@ -147,11 +147,19 @@ namespace WEB_PERSONAL
 
         protected void btnSearchPositionWork_Click(object sender, EventArgs e)
         {
-            ClassPositionWork pw = new ClassPositionWork();
-            DataTable dt = pw.GetPositionWorkSearch(txtSearchPositionWorkID.Text, txtSearchPositionWorkName.Text);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            SetViewState(dt);
+            if (string.IsNullOrEmpty(txtSearchPositionWorkID.Text) && string.IsNullOrEmpty(txtSearchPositionWorkName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassPositionWork pw = new ClassPositionWork();
+                DataTable dt = pw.GetPositionWorkSearch(txtSearchPositionWorkID.Text, txtSearchPositionWorkName.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
         }
     }
 }

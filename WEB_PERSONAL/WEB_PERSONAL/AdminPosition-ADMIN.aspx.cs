@@ -145,11 +145,19 @@ namespace WEB_PERSONAL
 
         protected void btnSearchAdminPosition_Click(object sender, EventArgs e)
         {
-            ClassAdminPosition ap = new ClassAdminPosition();
-            DataTable dt = ap.GetAdminPositionSearch(txtSearchAdminPositionID.Text, txtSearchAdminPositionName.Text);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            SetViewState(dt);
+            if (string.IsNullOrEmpty(txtSearchAdminPositionID.Text) && string.IsNullOrEmpty(txtSearchAdminPositionName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassAdminPosition ap = new ClassAdminPosition();
+                DataTable dt = ap.GetAdminPositionSearch(txtSearchAdminPositionID.Text, txtSearchAdminPositionName.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
         }
     }
 }

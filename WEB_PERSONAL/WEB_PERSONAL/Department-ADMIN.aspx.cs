@@ -147,11 +147,19 @@ namespace WEB_PERSONAL
 
         protected void btnSearchDepartment_Click(object sender, EventArgs e)
         {
-            ClassDepartment d = new ClassDepartment();
-            DataTable dt = d.GetDepartmentSearch(txtSearchDepartmentID.Text, txtSearchDepartmentName.Text);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            SetViewState(dt);
+            if (string.IsNullOrEmpty(txtSearchDepartmentID.Text) && string.IsNullOrEmpty(txtSearchDepartmentName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassDepartment d = new ClassDepartment();
+                DataTable dt = d.GetDepartmentSearch(txtSearchDepartmentID.Text, txtSearchDepartmentName.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
         }
     }
 }

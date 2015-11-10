@@ -148,11 +148,19 @@ namespace WEB_PERSONAL
 
         protected void btnSearchBudgetName_Click(object sender, EventArgs e)
         {
-            ClassBudget b = new ClassBudget();
-            DataTable dt = b.GetBudgetSearch(Convert.ToInt32(txtSearchBudgetID.Text), txtSearchBudgetName.Text);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            SetViewState(dt);
+            if (string.IsNullOrEmpty(txtSearchBudgetID.Text) && string.IsNullOrEmpty(txtSearchBudgetName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            { 
+                ClassBudget b = new ClassBudget();
+                DataTable dt = b.GetBudgetSearch(Convert.ToInt32(txtSearchBudgetID.Text), txtSearchBudgetName.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
         }
     }
 }

@@ -162,11 +162,19 @@ namespace WEB_PERSONAL
 
         protected void btnSearchPosition_Click(object sender, EventArgs e)
         {
-            ClassPosition p = new ClassPosition();
-            DataTable dt = p.GetPositionSearch(txtSearchPositionID.Text, txtSearchPositionName.Text, Convert.ToInt32(txtSearchSubStaffName.Text));
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            SetViewState(dt);
+            if (string.IsNullOrEmpty(txtSearchPositionID.Text) && string.IsNullOrEmpty(txtSearchPositionName.Text) && string.IsNullOrEmpty(txtSearchSubStaffName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassPosition p = new ClassPosition();
+                DataTable dt = p.GetPositionSearch(txtSearchPositionID.Text, txtSearchPositionName.Text, Convert.ToInt32(txtSearchSubStaffName.Text));
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
         }
     }
 }

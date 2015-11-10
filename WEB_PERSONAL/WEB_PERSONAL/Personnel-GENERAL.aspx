@@ -90,7 +90,7 @@
             color:red;
         }
     </style>
-    <asp:Panel runat="server" CssClass="divpan" Height="1200px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+    <asp:Panel runat="server" CssClass="divpan" Height="1200px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSavePersonnel">
     <div>
 
         <fieldset>

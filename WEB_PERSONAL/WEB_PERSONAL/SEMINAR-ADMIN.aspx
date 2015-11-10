@@ -20,7 +20,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchNameSeminar">
         <div class="divover">
         <fieldset>
             <legend>Search</legend>
