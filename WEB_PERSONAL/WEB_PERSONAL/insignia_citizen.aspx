@@ -77,7 +77,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" class="auto-style3">
-                                    <asp:TextBox ID="TextBox1" runat="server" Width="340px" Height="32px" MaxLength="13" ToolTip="กรอกเลขประจำตัวประชาชน 13 หลัก" CssClass="center"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox1" runat="server" Width="340px" Height="32px" MaxLength="13" ToolTip="กรอกเลขประจำตัวประชาชน 13 หลัก" CssClass="center" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>

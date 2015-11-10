@@ -17,10 +17,6 @@
     </script>
     <style type="text/css">
                 
-        .auto-style5 {
-            width: 189px;
-        }
-
         .sin_a {
             font-size: 32px;
         }
@@ -77,6 +73,30 @@
             padding-right: 5px;
         }
 
+        .auto-style13 {
+            width: 125px;
+        }
+        .auto-style14 {
+            width: 293px;
+        }
+        .auto-style15 {
+            width: 280px;
+            text-align: right;
+            padding-right: 5px;
+            height: 28px;
+        }
+        .auto-style16 {
+            width: 293px;
+            height: 28px;
+        }
+        .auto-style17 {
+            width: 125px;
+            height: 28px;
+        }
+        .auto-style18 {
+            height: 28px;
+        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -89,322 +109,195 @@
         <br />
 
         <div class="tb">
+
             <table style="width: 100%;">
+                <tr>
+                    <td class="auto-style6">
+                        <asp:Label ID="Label36" runat="server" Text="ค้นหาเอกสาร"></asp:Label>
+                    </td>
+                    <td class="auto-style14">
+                        <asp:TextBox ID="TextBox23" runat="server"></asp:TextBox>
+                        <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_default_button" OnClick="LinkButton15_Click">ดึง</asp:LinkButton>
+                    </td>
+                    <td class="auto-style13">
+                        &nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
                 <tr>
                     <td class="auto-style6">
                         <asp:Label ID="Label8" runat="server" Text="รหัสเอกสาร"></asp:Label>
                     </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <td class="auto-style14">
+                        <asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox>
                     </td>
-                    <td>
-                        <asp:LinkButton ID="LinkButton15" runat="server" OnClick="LinkButton15_Click" CssClass="master_default_button">ดึง</asp:LinkButton>
-                    </td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">
-                        <asp:Label ID="Label9" runat="server" Text="วันที่เอกสาร"></asp:Label>
+                        <asp:Label ID="Label10" runat="server" Text="รหัสผู้ลาศึกษา"></asp:Label>
                     </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label10" runat="server" Text="รหัสพนักงาน"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
+                    <td class="auto-style14">
                         <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                        <asp:LinkButton ID="LinkButton18" runat="server" CssClass="master_default_button" OnClick="LinkButton18_Click">ตรวจสอบ</asp:LinkButton>
                     </td>
-                    <td>
-                        <asp:LinkButton ID="LinkButton18" runat="server" CssClass="master_default_button" OnClick="LinkButton18_Click">ดึง</asp:LinkButton>
-                    </td>
+                    <td class="auto-style13">
+                        &nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">
-                        <asp:Label ID="Label35" runat="server" Text="ชื่อพนักงาน"></asp:Label>
+                        <asp:Label ID="Label35" runat="server" Text="ชื่อผู้ลาศึกษา"></asp:Label>
                     </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox22" runat="server"></asp:TextBox>
+                    <td class="auto-style14">
+                        <asp:Label ID="Label37" runat="server" Text="Label"></asp:Label>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">
-                        <asp:Label ID="Label31" runat="server" Text="ประเภท"></asp:Label>
+                        <asp:Label ID="Label38" runat="server" Text="ประเภทผู้ลาศึกษา"></asp:Label>
                     </td>
-                    <td class="auto-style5">
-                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="ID">
-                        </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_STUDY_TYPE]"></asp:SqlDataSource>
+                    <td class="auto-style14">
+                        <asp:Label ID="Label39" runat="server" Text="Label"></asp:Label>
                     </td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style15">
+                        <asp:Label ID="Label40" runat="server" Text="ตำแหน่งผู้ลาศึกษา"></asp:Label>
+                    </td>
+                    <td class="auto-style16">
+                        <asp:Label ID="Label41" runat="server" Text="Label"></asp:Label>
+                    </td>
+                    <td class="auto-style17"></td>
+                    <td class="auto-style18"></td>
                 </tr>
                 <tr>
                     <td class="auto-style6">&nbsp;</td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style14">&nbsp;</td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">
-                        <asp:Label ID="Label11" runat="server" Text="ศึกษาต่อ" CssClass="bold"></asp:Label>
+                        <asp:Label ID="Label47" runat="server" Text="ปีที่ศึกษา"></asp:Label>
                     </td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style14">
+                        <asp:TextBox ID="TextBox28" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">
                         <asp:Label ID="Label12" runat="server" Text="ระดับ"></asp:Label>
                     </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    <td class="auto-style14">
+                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NAME" DataValueField="ID">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_STUDY_DEGREE&quot;"></asp:SqlDataSource>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">
                         <asp:Label ID="Label13" runat="server" Text="สาขา"></asp:Label>
                     </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                    <td class="auto-style14">
+                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="DEPARTMENT_NAME" DataValueField="DEPARTMENT_ID">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_DEPARTMENT&quot; ORDER BY DEPARTMENT_NAME"></asp:SqlDataSource>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">
                         <asp:Label ID="Label14" runat="server" Text="สถานที่"></asp:Label>
                     </td>
-                    <td class="auto-style5">
+                    <td class="auto-style14">
                         <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
                     </td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style6">
+                        <asp:Label ID="Label42" runat="server" Text="หลักสูตร"></asp:Label>
+                    </td>
+                    <td class="auto-style14">
+                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="NAME" DataValueField="ID">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_STUDY_COURSE&quot;"></asp:SqlDataSource>
+                    </td>
+                    <td class="auto-style13">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style6">
+                        <asp:Label ID="Label43" runat="server" Text="ระยะเวลาที่ศึกษา"></asp:Label>
+                    </td>
+                    <td class="auto-style14">
+                        <asp:TextBox ID="TextBox24" runat="server" Width="50px"></asp:TextBox>
+                        <asp:Label ID="Label44" runat="server" Text="ทั้งสิ้น"></asp:Label>
+                        <asp:TextBox ID="TextBox25" runat="server" Width="50px"></asp:TextBox>
+                    </td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">
                         <asp:Label ID="Label15" runat="server" Text="จากวันที่"></asp:Label>
                     </td>
-                    <td class="auto-style5">
+                    <td class="auto-style14">
                         <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">
                         <asp:Label ID="Label16" runat="server" Text="ถึงวันที่"></asp:Label>
                     </td>
-                    <td class="auto-style5">
+                    <td class="auto-style14">
                         <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
                     </td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style6">
+                        <asp:Label ID="Label45" runat="server" Text="ระยะเวลาที่ศึกษาตาม..."></asp:Label>
+                    </td>
+                    <td class="auto-style14">
+                        <asp:TextBox ID="TextBox26" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style13">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style6">
+                        <asp:Label ID="Label46" runat="server" Text="หมายเหตุ"></asp:Label>
+                    </td>
+                    <td class="auto-style14">
+                        <asp:TextBox ID="TextBox27" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">&nbsp;</td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label32" runat="server" Text="กรณีต่างประเทศ" CssClass="bold"></asp:Label>
-                    </td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label33" runat="server" Text="ทุนประเภท"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox20" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label34" runat="server" Text="ประเทศ"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox21" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style14">&nbsp;</td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td class="auto-style6">&nbsp;</td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label17" runat="server" Text="สัญญา" CssClass="bold"></asp:Label>
-                    </td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label18" runat="server" Text="ผู้รับสัญญา"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label19" runat="server" Text="ผู้ให้สัญญา"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label20" runat="server" Text="พยาน 1"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label21" runat="server" Text="พยาน 2"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">&nbsp;</td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label22" runat="server" Text="คู่สมรส (ถ้ามี)" CssClass="bold"></asp:Label>
-                    </td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label23" runat="server" Text="ชื่อคู่สมรส"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox13" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label24" runat="server" Text="พยาน 1"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox14" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label25" runat="server" Text="พยาน 2"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox15" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">&nbsp;</td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label26" runat="server" Text="ผู้รับรอง" CssClass="bold"></asp:Label>
-                    </td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label27" runat="server" Text="นิติกร/ผู้ปฏิบัติงานกฎหมาย"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox16" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label28" runat="server" Text="ฝ่ายการเจ้าหน้าที่"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox17" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label29" runat="server" Text="ผู้อำนวยการสำนักงานอธิการบดี"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox18" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Label ID="Label30" runat="server" Text="รองอธิการบดีฝ่ายบริหาร"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:TextBox ID="TextBox19" runat="server"></asp:TextBox>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">&nbsp;</td>
-                    <td class="auto-style5">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">&nbsp;</td>
-                    <td class="auto-style5">
+                    <td class="auto-style14">
                         <div class="login_button_div">
                             <ul>
                                 <li>
@@ -419,7 +312,7 @@
 
 
                     </td>
-                    <td>&nbsp;</td>
+                    <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
@@ -427,33 +320,6 @@
 
         <asp:Panel ID="Panel3" runat="server" CssClass="leave_sec2">
             <asp:Panel ID="Panel2" runat="server" ScrollBars="Both" CssClass="leave_grid_view">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource2">
-                <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
-                    <asp:BoundField DataField="DATE" HeaderText="DATE" SortExpression="DATE" />
-                    <asp:BoundField DataField="CITIZEN_ID" HeaderText="CITIZEN_ID" SortExpression="CITIZEN_ID" />
-                    <asp:BoundField DataField="LEVEL" HeaderText="LEVEL" SortExpression="LEVEL" />
-                    <asp:BoundField DataField="BRANCH_NAME" HeaderText="BRANCH_NAME" SortExpression="BRANCH_NAME" />
-                    <asp:BoundField DataField="LOCATION_NAME" HeaderText="LOCATION_NAME" SortExpression="LOCATION_NAME" />
-                    <asp:BoundField DataField="FROM_DATE" HeaderText="FROM_DATE" SortExpression="FROM_DATE" />
-                    <asp:BoundField DataField="TO_DATE" HeaderText="TO_DATE" SortExpression="TO_DATE" />
-                    <asp:BoundField DataField="CONTRACT_GIVER_NAME" HeaderText="CONTRACT_GIVER_NAME" SortExpression="CONTRACT_GIVER_NAME" />
-                    <asp:BoundField DataField="CONTRACT_RECEIVER_NAME" HeaderText="CONTRACT_RECEIVER_NAME" SortExpression="CONTRACT_RECEIVER_NAME" />
-                    <asp:BoundField DataField="CONTRACT_WITNESS1_NAME" HeaderText="CONTRACT_WITNESS1_NAME" SortExpression="CONTRACT_WITNESS1_NAME" />
-                    <asp:BoundField DataField="CONTRACT_WITNESS2_NAME" HeaderText="CONTRACT_WITNESS2_NAME" SortExpression="CONTRACT_WITNESS2_NAME" />
-                    <asp:BoundField DataField="MATE_NAME" HeaderText="MATE_NAME" SortExpression="MATE_NAME" />
-                    <asp:BoundField DataField="MATE_WITNESS1_NAME" HeaderText="MATE_WITNESS1_NAME" SortExpression="MATE_WITNESS1_NAME" />
-                    <asp:BoundField DataField="MATE_WITNESS2_NAME" HeaderText="MATE_WITNESS2_NAME" SortExpression="MATE_WITNESS2_NAME" />
-                    <asp:BoundField DataField="LAWYER_NAME" HeaderText="LAWYER_NAME" SortExpression="LAWYER_NAME" />
-                    <asp:BoundField DataField="DEPARTMENT_OFFICIAL_NAME" HeaderText="DEPARTMENT_OFFICIAL_NAME" SortExpression="DEPARTMENT_OFFICIAL_NAME" />
-                    <asp:BoundField DataField="DIRECTOR_NAME" HeaderText="DIRECTOR_NAME" SortExpression="DIRECTOR_NAME" />
-                    <asp:BoundField DataField="DEPUTY_DIRECTOR_NAME" HeaderText="DEPUTY_DIRECTOR_NAME" SortExpression="DEPUTY_DIRECTOR_NAME" />
-                    <asp:BoundField DataField="TYPE_ID" HeaderText="TYPE_ID" SortExpression="TYPE_ID" />
-                    <asp:BoundField DataField="FUND_TYPE" HeaderText="FUND_TYPE" SortExpression="FUND_TYPE" />
-                    <asp:BoundField DataField="COUNTRY_NAME" HeaderText="COUNTRY_NAME" SortExpression="COUNTRY_NAME" />
-                </Columns>
-            </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:personalConnectionString %>" SelectCommand="SELECT * FROM [TB_STUDY]"></asp:SqlDataSource>
         </asp:Panel>
         </asp:Panel>
         

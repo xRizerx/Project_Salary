@@ -10,7 +10,7 @@ using OfficeOpenXml.Style;
 namespace WEB_PERSONAL
 {
     public partial class SalaryByID_Report : System.Web.UI.Page
-    {
+	{
         protected void Page_Load(object sender, EventArgs e)
 
         {
@@ -100,7 +100,7 @@ namespace WEB_PERSONAL
 
         }
 
-
+       
 
 
     }

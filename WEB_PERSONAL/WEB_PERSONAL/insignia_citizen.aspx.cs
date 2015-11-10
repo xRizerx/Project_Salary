@@ -38,7 +38,15 @@ namespace WEB_PERSONAL
                             if(reader.GetInt32(0) == 1)
                             {
                                 Session["insignia_citizen_id"] = TextBox1.Text;
-                                Response.Redirect("insignia_user.aspx");
+                                if (Session["login_system_status"] != null && Session["login_system_status"].ToString() == "Admin")
+                                {
+                                    Response.Redirect("insignia_admin.aspx");
+                                }
+                                else
+                                {
+                                    Response.Redirect("insignia_user.aspx");
+                                }
+                                
                             } else
                             {
                                 string script = "alert(\"ไม่พบผู้ใช้งาน\");";
@@ -57,5 +65,12 @@ namespace WEB_PERSONAL
             
         }
 
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (TextBox1.Text.Contains("\n"))
+            {
+                Util.Alert(this, "55");
+            }
+        }
     }
 }

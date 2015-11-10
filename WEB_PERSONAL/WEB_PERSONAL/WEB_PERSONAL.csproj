@@ -162,6 +162,7 @@
     <Content Include="Image\insignia01.jpg" />
     <Content Include="Image\nopm.jpg" />
     <Content Include="Image\sky.jpg" />
+    <Content Include="Image\users6.png" />
     <Content Include="insignia_from_edit.aspx" />
     <Content Include="insignia_recordnote 2.aspx" />
     <Content Include="insignia_recordnote.aspx" />

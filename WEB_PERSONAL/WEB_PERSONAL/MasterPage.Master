@@ -3,13 +3,16 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
+    
 <head runat="server">
     <title></title>
+    
     <link rel="stylesheet" type="text/css" href="CSS/Master.css" />
     <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
     <link href="Content/themes/base/jquery.ui.theme.css" rel="stylesheet" />
-
+   
 
 
     <script src="Script/jquery-1.7.1.min.js"></script>
@@ -35,7 +38,6 @@
     </style>
 </head>
 <body>
-
     
     <form id="form1" runat="server" onload="form1_Load">
         
