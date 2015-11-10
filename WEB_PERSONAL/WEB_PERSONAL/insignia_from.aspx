@@ -449,7 +449,7 @@
                                 <asp:Label ID="Label46" runat="server" Text="1. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style38">
-                                <asp:TextBox ID="TextBox23" runat="server" Width="269px"></asp:TextBox>
+                                <asp:DropDownList ID="DropDownList5" runat="server" Width="269px"></asp:DropDownList>
                             </td>
                             <td class="auto-style40">
                                 <asp:Label ID="Label50" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
@@ -464,7 +464,7 @@
                                 <asp:Label ID="Label49" runat="server" Text="2. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style39">
-                                <asp:TextBox ID="TextBox24" runat="server" Width="269px"></asp:TextBox>
+                                <asp:DropDownList ID="DropDownList6" runat="server" Width="269px"></asp:DropDownList>
                             </td>
                             <td class="auto-style41">
                                 <asp:Label ID="Label55" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
@@ -490,10 +490,10 @@
             <tr>
                 <td class="auto-style34"></td>
                 <td class="auto-style36">
-                    <asp:Label ID="Label52" runat="server" Text="1. ระดับ"></asp:Label>
+                    <asp:Label ID="Label52" runat="server" Text="1. ชื่อตำแหน่งเดิม"></asp:Label>
                 </td>
                 <td class="auto-style38">
-                    <asp:TextBox ID="TextBox27" runat="server" Width="269px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px"></asp:DropDownList>
                 </td>
                 <td class="auto-style40">&nbsp;</td>
                 <td class="auto-style33">&nbsp;</td>
@@ -501,10 +501,11 @@
             <tr>
                 <td class="auto-style35">&nbsp;</td>
                 <td class="auto-style37">
-                    <asp:Label ID="Label54" runat="server" Text="2. ระดับ"></asp:Label>
+                    <asp:Label ID="Label54" runat="server" Text="2. ชื่อตำแหน่งใหม่"></asp:Label>
                 </td>
                 <td class="auto-style39">
-                    <asp:TextBox ID="TextBox29" runat="server" Width="269px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList8" runat="server" Width="269px">
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style41">&nbsp;</td>
                 <td>&nbsp;</td>
