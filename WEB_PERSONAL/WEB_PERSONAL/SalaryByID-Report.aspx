@@ -26,14 +26,14 @@
     <div>
         <br />
         <asp:Panel ID="Panel1" runat="server">
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM (SELECT ROWNUM,TB_PERSONAL.CITIZEN_ID,TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_POSITION_WORK.POSITION_WORK_NAME,TB_ADMIN.ADMIN_POSITION_NAME,
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM (SELECT ROWNUM,TB_PERSONAL.CITIZEN_ID,TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_POSITION_WORK.POSITION_WORK_NAME,TB_ADMIN_POSITION.ADMIN_POSITION_NAME,
 TB_SALARY_UP.detail_salary,TB_SALARY_UP.detail_maxsalary,TB_SALARY_UP.detail_basemoney,TB_SALARY_UP.detail_percent_rate,TB_SALARY_UP.detail_moneynotround,TB_SALARY_UP.detail_moneyround,
 TB_SALARY_UP.detail_moneyup,TB_SALARY_UP.detail_moneybonus,TB_SALARY_UP.detail_sum_money,TB_SALARY_UP.detail_new_salary,TB_SALARY_UP.detail_score_test,TB_SALARY_UP.detail_level_test,
 TB_SALARY_UP.admin_ratesum,TB_SALARY_UP.admin_rate,TB_SALARY_UP.admin_money_add,TB_SALARY_UP.sum_percent_rate2,TB_SALARY_UP.sum_moneynotround,TB_SALARY_UP.sum_moneyround,
 TB_SALARY_UP.sum_moneyup,TB_SALARY_UP.sum_moneybonus,TB_SALARY_UP.sum_moneyuptotal,TB_SALARY_UP.sum_newsalary,TB_SALARY_UP.&quot;COMMENT&quot;
-FROM TB_PERSONAL,TB_POSITION,TB_POSITION_WORK,TB_ADMIN,TB_SALARY_UP
+FROM TB_PERSONAL,TB_POSITION,TB_POSITION_WORK,TB_ADMIN_POSITION,TB_SALARY_UP
 WHERE TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID 
-AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN.ADMIN_POSITION_ID AND TB_PERSONAL.citizen_id = TB_SALARY_UP.citizen_id ORDER BY TB_SALARY_UP.ID DESC ) WHERE ROWNUM =1" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>">
+AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN_POSITION.ADMIN_POSITION_ID AND TB_PERSONAL.citizen_id = TB_SALARY_UP.citizen_id ORDER BY TB_SALARY_UP.ID DESC ) WHERE ROWNUM =1" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>">
             </asp:SqlDataSource>
             <div class="auto-style1">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None">
