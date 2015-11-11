@@ -68,15 +68,16 @@
             border: 1px solid black;
         }
         .panin{
-            background-color:rgba(255,255,255,0.8);
+            background-color:white;
             border-radius: 5px;
-            border: 2px solid white;
+            border: 2px solid black;
+            padding: 5px;
         }
         .panout {
             padding: 20px;
             text-align: center;
-            background-image: url("Image/bgbyid.jpg");
-            background-size:100%;
+            border-radius:5px;
+            border: 5px solid black
         }
         body {
             background-image: url("Image/ef333.jpg");
@@ -118,7 +119,7 @@
      Featured on Dynamic Drive script library (http://www.dynamicdrive.com)
 ****************************************************/
 var win=null;
-function NewWindow(mypage,myname,w,h,scroll,pos){
+function Popup(mypage,myname,w,h,scroll,pos){
 if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
 if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
 else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
@@ -150,8 +151,10 @@ win=window.open(mypage,myname,settings);}
                 </td>
                 <td class="auto-style14">
                     <asp:Button ID="Button1" runat="server" Height="24px" OnClick="Button1_Click" Text="ค้นหา" Width="100px" />
-                    <a href="Salary_Basesalary.aspx" onclick="NewWindow(this.href,'ปรับฐานเงินเดือน','320','320','yes','center');return false" onfocus="this.blur()" class="button_ui_edit">ปรับฐานเงินเดือน</a>
                     <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="ออกรายงาน" CssClass="button_ui_edit" />
+                    <a href="Salary_Basesalary.aspx" onclick="Popup(this.href, 'Base_salary', '350', '310', 'no', 'center'); return false;" class="button_ui">ปรับฐานเงินเดือน</a>
+
+
                 </td>
             </tr>
             <tr>
@@ -405,7 +408,7 @@ win=window.open(mypage,myname,settings);}
             <tr>
                 <td class="auto-style4">หมายเหตุ</td>
                 <td colspan="2">
-                    <asp:TextBox ID="TextBox9" runat="server" Height="50px" TextMode="MultiLine" Width="500px" Font-Size="14pt"></asp:TextBox>
+                    <asp:TextBox ID="TextBox9" runat="server" Height="50px" TextMode="Multiline" Width="500px" Font-Size="14pt" style = "resize:none" ></asp:TextBox>
                 </td>
                 <td>
                     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui" OnClick="LinkButton1_Click">คำนวณเงินเดือน</asp:LinkButton>
@@ -428,7 +431,7 @@ win=window.open(mypage,myname,settings);}
                         <asp:LinkButton ID="LinkButton2" runat="server" CssClass="button_ui" OnClick="LinkButton2_Click" Font-Size="14px">บันทึก</asp:LinkButton>
                     </td>
                     <td class="auto-style15">
-                        <a href="SalarybyID-Edit.aspx" onclick="NewWindow(this.href,'แก้ไขข้อมูลบุคคล','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui">แก้ไขข้อมูล</a>
+                        <a href="SalarybyID-Edit.aspx" onclick="Popup(this.href,'แก้ไขข้อมูลบุคคล','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui">แก้ไขข้อมูล</a>
                     </td>
                     <tr>
                         <td class="auto-style18">&nbsp;</td>

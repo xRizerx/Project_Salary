@@ -59,13 +59,10 @@
         .pancen {
             text-align: center;
         }
-
-        body {
-            background-image: url("Image/333.jpg");
-        }
         .panin{
             border:1px solid black;
             margin: 20px;
+            padding: 10px;
             background-color:rgba(255,255,255,0.6);
             border-radius: 5px;
         }
@@ -107,7 +104,7 @@
             <asp:Label ID="Label1" runat="server" CssClass="textmodeb" Text="รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุคมศึกษา"></asp:Label><br />
             <asp:Label ID="Label3" runat="server" CssClass="textmodeb" Text="ครั้งที่ 1 วันที่ 1 เมษายน 2558"></asp:Label><br />
             <asp:Label ID="Label21" runat="server" CssClass="textmodeb" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก"></asp:Label><br />
-            <asp:Panel ID="Panel2" runat="server" Height="650px" CssClass="panin">
+            <asp:Panel ID="Panel2" runat="server" Height="685px" CssClass="panin">
                 <table style="width: 100%;" border="0">
 
                     <tr>
@@ -251,7 +248,7 @@
                             <asp:Label ID="Label22" runat="server" Text="Comment"></asp:Label>
                         </td>
                         <td class="auto-style31">
-                            <asp:TextBox ID="TextBox18" runat="server" Height="50px" TextMode="MultiLine" Width="500px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox18" runat="server" Height="50px" TextMode="MultiLine" Width="500px" style = "resize:none" ></asp:TextBox>
                             <br />
                             <br />
                         </td>
@@ -268,7 +265,6 @@
                     </tr>
                 </table>
             </asp:Panel>
-        <br />
             <asp:Panel ID="Panel3" runat="server" CssClass="panin">
         <table style="width: 100%;">
             <tr>

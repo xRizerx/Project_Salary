@@ -39,6 +39,8 @@ namespace WEB_PERSONAL
                         {
                             var cell_head1 = ws.Cells[1, 1];
                             var fill = cell_head1.Style.Fill;
+                            var exfont = cell_head1.Style.Font;
+                            exfont.SetFromFont(new System.Drawing.Font("TH SarabunPSK", 16));
                             fill.PatternType = ExcelFillStyle.Solid;
                             fill.BackgroundColor.SetColor(System.Drawing.Color.Yellow);
                             cell_head1.Value = "รหัสประชาชน";
@@ -46,6 +48,8 @@ namespace WEB_PERSONAL
                         {
                             var cell_head2 = ws.Cells[1, 2];
                             var fill = cell_head2.Style.Fill;
+                            var exfont = cell_head2.Style.Font;
+                            exfont.SetFromFont(new System.Drawing.Font("TH SarabunPSK", 16));
                             fill.PatternType = ExcelFillStyle.Solid;
                             fill.BackgroundColor.SetColor(System.Drawing.Color.Yellow);
                             cell_head2.Value = "ชื่อ - นามสกุล";
@@ -53,6 +57,8 @@ namespace WEB_PERSONAL
                         {
                             var cell_head3 = ws.Cells[1, 3];
                             var fill = cell_head3.Style.Fill;
+                            var exfont = cell_head3.Style.Font;
+                            exfont.SetFromFont(new System.Drawing.Font("TH SarabunPSK", 16));
                             fill.PatternType = ExcelFillStyle.Solid;
                             fill.BackgroundColor.SetColor(System.Drawing.Color.Yellow);
                             cell_head3.Value = "รหัสเลขที่ตำแหน่ง";
@@ -72,6 +78,8 @@ namespace WEB_PERSONAL
                                 // Set the background colours
                                 var cell = ws.Cells[rowIndex, colIndex];
                                 var fill1 = cell.Style.Fill;
+                                var exfont = cell.Style.Font;
+                                exfont.SetFromFont(new System.Drawing.Font("TH SarabunPSK", 16));
                                 fill1.PatternType = ExcelFillStyle.Solid;
                                 fill1.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
                                 colIndex++;

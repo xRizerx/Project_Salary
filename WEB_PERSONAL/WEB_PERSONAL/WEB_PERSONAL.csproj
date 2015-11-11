@@ -163,9 +163,11 @@
     <Content Include="Image\nopm.jpg" />
     <Content Include="Image\sky.jpg" />
     <Content Include="Image\users6.png" />
+    <Content Include="Image\X.png" />
     <Content Include="insignia_from_edit.aspx" />
     <Content Include="insignia_recordnote 2.aspx" />
     <Content Include="insignia_recordnote.aspx" />
+    <Content Include="insignia_recordnote3.aspx" />
     <Content Include="js\index.js" />
     <Content Include="Leave-Report1.aspx" />
     <Content Include="M-Admin.aspx" />
@@ -302,6 +304,13 @@
     </Compile>
     <Compile Include="insignia_recordnote.aspx.designer.cs">
       <DependentUpon>insignia_recordnote.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_recordnote3.aspx.cs">
+      <DependentUpon>insignia_recordnote3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_recordnote3.aspx.designer.cs">
+      <DependentUpon>insignia_recordnote3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Leave-Report1.aspx.cs">
       <DependentUpon>Leave-Report1.aspx</DependentUpon>

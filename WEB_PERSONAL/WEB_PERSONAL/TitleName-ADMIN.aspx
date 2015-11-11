@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="TitleName-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.pre_title_name" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
+        .divpan{
+             text-align: center;
+        }
         .panin{
             border:1px solid black;
             margin: 20px;
@@ -37,22 +40,42 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <asp:Panel ID="Panel1" runat="server" Height="110px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchTitleName">
-    <div>
+     <div>
         <fieldset>
             <legend>Search</legend>
             <div>
-                ชื่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
-                ชื่อย่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTHmin" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
-               
-            </div>
-            <div>
-                 ชื่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchEN" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
-                ชื่อย่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchENmin" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
-                <asp:Button ID="btnSearchTitleName" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchTitleName_Click" />
-                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
+                <table>
+                    <tr>
+                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: right; margin-right: 5px; ">ชื่อภาษาไทย :&nbsp;</td>
+                        <td style="text-align: left; width: 120px;">
+                            <asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb5" MaxLength="6"></asp:TextBox>
+                        </td>
+                        <td style="text-align: left; width: 50px;"> </td> 
+                        <td style="text-align: right; margin-right: 5px; ">ชื่อย่อภาษาไทย :&nbsp;</td>
+                        <td style="text-align: left; ">
+                            <asp:TextBox ID="txtSearchTHmin" runat="server" CssClass="tb5" MaxLength="10"></asp:TextBox></td>  
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: right; margin-right: 5px;">ชื่อภาษาอังกฤษ :&nbsp;</td>
+                        <td style="text-align: left;">
+                            <asp:TextBox ID="txtSearchEN" runat="server" CssClass="tb5"></asp:TextBox>
+                        </td>
+                        <td style="text-align: left; width: 50px;"> </td> 
+                        <td style="text-align: right; margin-right: 5px;">ชื่อย่อภาษาอังกฤษ :&nbsp;</td>
+                        <td style="text-align: left; "">
+                            <asp:TextBox ID="txtSearchENmin" runat="server" MaxLength="10" CssClass="tb5"></asp:TextBox></td>
+                        <td style="text-align: right; margin-right: 5px;"></td>
+                        <td style="text-align: left;">
+                            <asp:Button ID="btnSearchTitleName" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSearchTitleName_Click" /></td>
+                        <td style="text-align: left;">
+                            <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick = "btnSearchRefresh_Click" /></td>
+                    </tr>
+                </table>
             </div>
         </fieldset>
-    </div>
+    </div>	
     </asp:Panel>
 <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPretitle">
     <div>
@@ -151,9 +174,12 @@
                         		    </EditItemTemplate>
                     </asp:TemplateField>
 
-
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
-                    <asp:CommandField ShowDeleteButton="True" HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
+                    <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                         <ItemTemplate>
+                         <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/Image/x.png" CommandName="Delete" OnClientClick="return confirm('คุณต้องการที่จะลบจริงๆใช่ไหม ?');" AlternateText="Delete" />               
+                    </ItemTemplate>
+                    </asp:TemplateField>  
                 </Columns>
             </asp:GridView>
 

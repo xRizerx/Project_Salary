@@ -45,11 +45,11 @@ namespace WEB_PERSONAL.Entities
                 }
                 if (!string.IsNullOrEmpty(TITLE_NAME_EN))
                 {
-                    query += " and TITLE_NAME_EN like :TITLE_NAME_EN ";
+                    query += " and lower(TITLE_NAME_EN) like lower (:TITLE_NAME_EN) ";
                 }
                 if (!string.IsNullOrEmpty(TITLE_NAME_EN_MIN))
                 {
-                    query += " and TITLE_NAME_EN_MIN like :TITLE_NAME_EN_MIN ";
+                    query += " and lower(TITLE_NAME_EN_MIN) like lower (:TITLE_NAME_EN_MIN) ";
                 }
             }
             OracleCommand command = new OracleCommand(query, conn);
