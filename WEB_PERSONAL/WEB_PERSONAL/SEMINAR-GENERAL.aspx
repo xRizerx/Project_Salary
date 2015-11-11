@@ -7,11 +7,49 @@
             $(function () {
                 $(document).ready(function () {
                     $("#ContentPlaceHolder1_txtDateFrom,#ContentPlaceHolder1_txtDateTO").datepicker({
-                        dateFormat: 'dd/mm/yy',
+                        dateFormat: 'dd-mm-yy',
                         changeMonth: true,
                         changeYear: true,
+                        dayNamesMin: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+                        monthNamesShort: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
+                        yearRange: "-60:+40",
                         beforeShow: function () {
                             $(".ui-datepicker").css('font-size', 14)
+                            if ($(this).val() != "") {
+                                var arrayDate = $(this).val().split("-");
+                                arrayDate[2] = parseInt(arrayDate[2]) - 543;
+                                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                            }
+                            setTimeout(function () {
+                                $.each($(".ui-datepicker-year option"), function (j, k) {
+                                    var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
+                                    $(".ui-datepicker-year option").eq(j).text(textYear);
+                                });
+                            }, 50);
+                        },
+                        onChangeMonthYear: function () {
+                            setTimeout(function () {
+                                $.each($(".ui-datepicker-year option"), function (j, k) {
+                                    var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
+                                    $(".ui-datepicker-year option").eq(j).text(textYear);
+                                });
+                            }, 50);
+                        },
+                        onClose: function () {
+                            if (dateBefore == null) {
+                                dateBefore = $(this).val();
+                            }
+                            if ($(this).val() != "" && $(this).val() == dateBefore) {
+                                var arrayDate = dateBefore.split("-");
+                                arrayDate[2] = parseInt(arrayDate[2]) + 543;
+                                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
+                            }
+                        },
+                        onSelect: function (dateText, inst) {
+                            dateBefore = $(this).val();
+                            var arrayDate = dateText.split("-");
+                            arrayDate[2] = parseInt(arrayDate[2]) + 543;
+                            $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
                         }
                     });
                 });
@@ -53,7 +91,7 @@
             color:red;
         }
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1605px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+    <asp:Panel ID="Panel1" runat="server" Height="1605px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSaveSeminar">
    <div>
         <fieldset>
             <legend>เพิ่มข้อมูลการฝึกอบรม/สัมมนา/ดูงาน</legend>

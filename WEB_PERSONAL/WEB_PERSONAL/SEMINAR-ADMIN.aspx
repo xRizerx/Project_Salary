@@ -20,7 +20,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchNameSeminar">
         <div class="divover">
         <fieldset>
             <legend>Search</legend>
@@ -124,7 +124,7 @@
 
                     <asp:TemplateField HeaderText="วันที่เริ่ม" ControlStyle-Width="180" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_DATETIME_FROM" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_FROM","{0:dd/MM/yyyy}") %>'></asp:Label>
+                           	<asp:Label ID="lblSEMINAR_DATETIME_FROM" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_FROM","{0:MM-dd-yyyy}") %>'></asp:Label>
                         	</ItemTemplate>
                         		<EditItemTemplate>
                             		<asp:TextBox ID="txtDateFrom"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_FROM") %>'></asp:TextBox>
@@ -133,7 +133,7 @@
 
                     <asp:TemplateField HeaderText="วันที่สิ้นสุด" ControlStyle-Width="180" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                         	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_DATETIME_TO" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_TO","{0:dd/MM/yyyy}") %>'></asp:Label>
+                           	<asp:Label ID="lblSEMINAR_DATETIME_TO" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_TO","{0:MM-dd-yyyy}") %>'></asp:Label>
                         	</ItemTemplate>
                         		<EditItemTemplate>
                             		<asp:TextBox ID="txtDateTO"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_TO") %>'></asp:TextBox>

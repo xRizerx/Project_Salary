@@ -29,25 +29,27 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+<asp:Panel ID="Panel1" runat="server" Height="70px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchPosition">
     <div>
         <fieldset>
             <legend>Search</legend>
             <div>
-                รหัสตำแหน่งทางวิชาการ :&nbsp<asp:TextBox ID="txtSearchPositionID" runat="server" CssClass="tb5" Width="120px" MaxLength="4"></asp:TextBox>
-                ชื่อตำแหน่งทางวิชาการ  :&nbsp<asp:TextBox ID="txtSearchPositionName" runat="server" CssClass="tb5" Width="120px" MaxLength="100"></asp:TextBox>
-                รหัสประเภทบุคลากรย่อย  :&nbsp<asp:TextBox ID="txtSearchSubStaffName" runat="server" CssClass="tb5" Width="120px" MaxLength="4"></asp:TextBox>
+                รหัสตำแหน่งทางวิชาการ :&nbsp<asp:TextBox ID="txtSearchPositionID" runat="server" CssClass="tb5" Width="100px" MaxLength="4"></asp:TextBox>
+                ชื่อตำแหน่งทางวิชาการ  :&nbsp<asp:TextBox ID="txtSearchPositionName" runat="server" CssClass="tb5" Width="100px" MaxLength="100"></asp:TextBox>
+                รหัสประเภทบุคลากรย่อย  :&nbsp<asp:TextBox ID="txtSearchSubStaffName" runat="server" CssClass="tb5" Width="100px" MaxLength="4"></asp:TextBox>
                 <asp:Button ID="btnSearchPosition" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchPosition_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>
+    </asp:Panel>
+<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPosition">
     <div>
         <fieldset>
             <legend>Insert</legend>
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width: 10px;"></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสตำแหน่งทางวิชาการ :</td>
                         <td style="text-align: left; width: 80px;"><asp:TextBox ID="txtInsertPositionID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อตำแหน่งทางวิชาการ :</td>

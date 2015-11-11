@@ -131,6 +131,13 @@
         .auto-style58 {
             width: 120px;
         }
+        .auto-style59 {
+            height: 23px;
+            width: 124px;
+        }
+        .auto-style60 {
+            width: 124px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -489,7 +496,7 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style34"></td>
-                <td class="auto-style36">
+                <td class="auto-style59">
                     <asp:Label ID="Label52" runat="server" Text="1. ชื่อตำแหน่งเดิม"></asp:Label>
                 </td>
                 <td class="auto-style38">
@@ -500,7 +507,7 @@
             </tr>
             <tr>
                 <td class="auto-style35">&nbsp;</td>
-                <td class="auto-style37">
+                <td class="auto-style60">
                     <asp:Label ID="Label54" runat="server" Text="2. ชื่อตำแหน่งใหม่"></asp:Label>
                 </td>
                 <td class="auto-style39">

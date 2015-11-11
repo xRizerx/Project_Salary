@@ -29,7 +29,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+<asp:Panel ID="Panel1" runat="server" Height="70px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchBudgetName">
     <div>
         <fieldset>
             <legend>Search</legend>
@@ -37,9 +37,12 @@
                 รหัสประเภทเงินจ้างงาน :&nbsp<asp:TextBox ID="txtSearchBudgetID" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 ชื่อประเภทเงินจ้างงาน :&nbsp<asp:TextBox ID="txtSearchBudgetName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchBudgetName" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchBudgetName_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>
+    </asp:Panel>
+<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitBudget">
     <div>
         <fieldset>
             <legend>Insert</legend>
