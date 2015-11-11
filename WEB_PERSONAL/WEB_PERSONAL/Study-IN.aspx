@@ -27,10 +27,13 @@
         }
 
         .tb {
+            padding: 20px 0px;
+            margin: 20px 0;
+            margin-top: 0;
+            border-bottom: 1px solid #C8C8C8;
+            background-color: #F8F8F8;
+            border-radius: 32px;
             text-align: left;
-            border: 1px solid #808080;
-            margin: 0 auto;
-            padding: 20px;
         }
 
         .login_button_div ul {
@@ -116,7 +119,7 @@
                         <asp:Label ID="Label36" runat="server" Text="ค้นหาเอกสาร"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox23" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox23" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_default_button" OnClick="LinkButton15_Click">ดึง</asp:LinkButton>
                     </td>
                     <td class="auto-style13">
@@ -128,7 +131,7 @@
                         <asp:Label ID="Label8" runat="server" Text="รหัสเอกสาร"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" Enabled="False" CssClass="master_default_textbox"></asp:TextBox>
                     </td>
                     <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -138,7 +141,7 @@
                         <asp:Label ID="Label10" runat="server" Text="รหัสผู้ลาศึกษา"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         <asp:LinkButton ID="LinkButton18" runat="server" CssClass="master_default_button" OnClick="LinkButton18_Click">ตรวจสอบ</asp:LinkButton>
                     </td>
                     <td class="auto-style13">
@@ -186,7 +189,7 @@
                         <asp:Label ID="Label47" runat="server" Text="ปีที่ศึกษา"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox28" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox28" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                     </td>
                     <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -196,7 +199,7 @@
                         <asp:Label ID="Label12" runat="server" Text="ระดับ"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NAME" DataValueField="ID">
+                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NAME" DataValueField="ID" CssClass="master_default_dropdown">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_STUDY_DEGREE&quot;"></asp:SqlDataSource>
                     </td>
@@ -208,7 +211,7 @@
                         <asp:Label ID="Label13" runat="server" Text="สาขา"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="DEPARTMENT_NAME" DataValueField="DEPARTMENT_ID">
+                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="DEPARTMENT_NAME" DataValueField="DEPARTMENT_ID" CssClass="master_default_dropdown">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_DEPARTMENT&quot; ORDER BY DEPARTMENT_NAME"></asp:SqlDataSource>
                     </td>
@@ -220,7 +223,7 @@
                         <asp:Label ID="Label14" runat="server" Text="สถานที่"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                     </td>
                     <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -230,7 +233,7 @@
                         <asp:Label ID="Label42" runat="server" Text="หลักสูตร"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="NAME" DataValueField="ID">
+                        <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="NAME" DataValueField="ID" CssClass="master_default_dropdown">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_STUDY_COURSE&quot;"></asp:SqlDataSource>
                     </td>
@@ -242,9 +245,9 @@
                         <asp:Label ID="Label43" runat="server" Text="ระยะเวลาที่ศึกษา"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox24" runat="server" Width="50px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox24" runat="server" Width="50px" CssClass="master_default_textbox"></asp:TextBox>
                         <asp:Label ID="Label44" runat="server" Text="ทั้งสิ้น"></asp:Label>
-                        <asp:TextBox ID="TextBox25" runat="server" Width="50px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox25" runat="server" Width="50px" CssClass="master_default_textbox"></asp:TextBox>
                     </td>
                     <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -254,7 +257,7 @@
                         <asp:Label ID="Label15" runat="server" Text="จากวันที่"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                     </td>
                     <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -264,7 +267,7 @@
                         <asp:Label ID="Label16" runat="server" Text="ถึงวันที่"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox8" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                     </td>
                     <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -274,7 +277,7 @@
                         <asp:Label ID="Label45" runat="server" Text="ระยะเวลาที่ศึกษาตาม..."></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox26" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox26" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                     </td>
                     <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -284,7 +287,7 @@
                         <asp:Label ID="Label46" runat="server" Text="หมายเหตุ"></asp:Label>
                     </td>
                     <td class="auto-style14">
-                        <asp:TextBox ID="TextBox27" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox27" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                     </td>
                     <td class="auto-style13">&nbsp;</td>
                     <td>&nbsp;</td>

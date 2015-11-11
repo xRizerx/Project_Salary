@@ -377,6 +377,24 @@ form {
     color: #ffffff;
     background-color: #404040;
 }
+.master_default_textbox {
+    border: 1px solid #C8C8C8;
+    background-color: #FFFFFF;
+    padding: 2px 5px;
+    border-radius: 24px;
+}
+.master_default_textbox_multi_line {
+    border: 1px solid #C8C8C8;
+    background-color: #FFFFFF;
+    padding: 2px 5px;
+    border-radius: 12px;
+}
+.master_default_dropdown {
+    border: 1px solid #C8C8C8;
+    background-color: #FFFFFF;
+    padding: 2px 5px;
+    border-radius: 24px;
+}
 .master_OAT_button {
     background-color: rgba(0, 114, 255, 0.90);
     background-repeat:repeat-x;
