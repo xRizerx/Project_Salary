@@ -116,14 +116,17 @@
         }
 
         .div_sec {
-            margin: 20px 0;
+            margin: 50px 0;
             margin-top: 0;
-            border-bottom: 1px solid #C8C8C8;
-            
+            /*border-bottom: 1px solid #C8C8C8;*/
+            box-shadow: #C8C8C8 0px 5px 5px;
         }
-
-        .div_sec_in {
+        .div_sec_header {
             background-color: rgba(255,255,255,0.9);
+            padding: 20px 25px;
+        }
+        .div_sec_in {
+            background-color: rgba(255,255,255,0.8);
             padding: 20px 0px;
             /*transition: background-color, ease, 0.25s;*/
         }
@@ -133,19 +136,31 @@
         }
             */
         #sec1 {
-            background-image: url("Image/anime1.jpg");
+            background-image: url("Image/ef333.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
 
         #sec2 {
-            background-image: url("Image/anime2.jpg");
+            background-image: url("Image/ef333.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
 
         #sec3 {
-            background-image: url("Image/anime3.jpg");
+            background-image: url("Image/ef333.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #sec4 {
+            background-image: url("Image/ef333.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #sec5 {
+            background-image: url("Image/ef333.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -247,15 +262,18 @@
             height: 28px;
         }
     </style>
-    <asp:Panel ID="Panel2" runat="server" Height="2515px" CssClass="mp">
+    <asp:Panel ID="Panel2" runat="server" CssClass="mp">
         <br />
         <div class="c1">
             <asp:Label ID="Label1" runat="server" Text="การลา"></asp:Label>
 
         </div>
         <br />
-        <asp:Label ID="Label36" runat="server" Text="เพิ่มเวลาเข้างาน" Font-Bold="True"></asp:Label>
+        
         <div class="div_sec" id="sec1">
+            <div class="div_sec_header">
+                <asp:Label ID="Label36" runat="server" Text="เพิ่มเวลาเข้างาน" Font-Bold="True"></asp:Label>
+            </div>
             <div class="div_sec_in">
 
 
@@ -364,8 +382,11 @@
             </div>
         </div>
 
-        <asp:Label ID="Label22" runat="server" Text="เพิ่มเอกสาร" Font-Bold="True"></asp:Label>
+        
         <div class="div_sec" id="sec2">
+            <div class="div_sec_header">
+                <asp:Label ID="Label22" runat="server" Text="เพิ่มเอกสาร" Font-Bold="True"></asp:Label>
+            </div>
             <div class="div_sec_in">
 
                 <table style="width: 100%;">
@@ -455,8 +476,11 @@
             </div>
         </div>
 
-        <asp:Label ID="Label30" runat="server" Text="แก้ไขเอกสาร" Font-Bold="True"></asp:Label>
+        
         <div class="div_sec" id="sec3">
+            <div class="div_sec_header">
+                <asp:Label ID="Label30" runat="server" Text="แก้ไขเอกสาร" Font-Bold="True"></asp:Label>
+            </div>
             <div class="div_sec_in">
 
                 <table style="width: 100%;">
@@ -623,121 +647,128 @@
             </div>
         </div>
 
-        <asp:Label ID="Label34" runat="server" Text="ข้อมูลเอกสาร" Font-Bold="True"></asp:Label>
-        <div class="div_sec">
+        
+        <div class="div_sec" id="sec4">
+            <div class="div_sec_header">
+                <asp:Label ID="Label34" runat="server" Text="ข้อมูลเอกสาร" Font-Bold="True"></asp:Label>
+            </div>
+            <div class="div_sec_in">
 
+                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="Button1_Click1" CssClass="master_default_button">ทดสอบ</asp:LinkButton>
 
-            <asp:LinkButton ID="LinkButton2" runat="server" OnClick="Button1_Click1" CssClass="master_default_button">ทดสอบ</asp:LinkButton>
+                <table>
+                    <tr>
+                        <td class="auto-style58">
+                            <asp:Label ID="Label2" runat="server" Text="ค้นหาตามสถานะ"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" CssClass="master_default_button">ทั้งหมด</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton4" runat="server" OnClick="Button3_Click" CssClass="master_default_button">ยังไม่ตรวจสอบ</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton5" runat="server" OnClick="Button4_Click" CssClass="master_default_button">อนุมัติ</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton6" runat="server" OnClick="Button5_Click" CssClass="master_default_button">ไม่อนุมัติ</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style58">
+                            <asp:Label ID="Label18" runat="server" Text="ค้นหาตามประเภท"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged" CssClass="master_default_dropdown"></asp:DropDownList>
+                        </td>
+                    </tr>
+                </table>
 
-            <table>
-                <tr>
-                    <td class="auto-style58">
-                        <asp:Label ID="Label2" runat="server" Text="ค้นหาตามสถานะ"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" CssClass="master_default_button">ทั้งหมด</asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton4" runat="server" OnClick="Button3_Click" CssClass="master_default_button">ยังไม่ตรวจสอบ</asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton5" runat="server" OnClick="Button4_Click" CssClass="master_default_button">อนุมัติ</asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton6" runat="server" OnClick="Button5_Click" CssClass="master_default_button">ไม่อนุมัติ</asp:LinkButton>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style58">
-                        <asp:Label ID="Label18" runat="server" Text="ค้นหาตามประเภท"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged" CssClass="master_default_dropdown"></asp:DropDownList>
-                    </td>
-                </tr>
-            </table>
+                <table>
+                    <tr>
+                        <td class="auto-style58">
+                            <asp:Label ID="Label3" runat="server" Text="ค้นหาตามรหัสผู้ลา"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TextBox4" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton7" runat="server" CssClass="master_default_button" OnClick="LinkButton7_Click">ค้นหา</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style58">
+                            <asp:Label ID="Label5" runat="server" Text="ค้นหาตามชื่อผู้ลา"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TextBox12" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton9" runat="server" CssClass="master_default_button" OnClick="LinkButton9_Click">ค้นหา</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style58">
+                            <asp:Label ID="Label4" runat="server" Text="ค้นหาตามรหัสผู้อนุมัติ"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton8" runat="server" CssClass="master_default_button" OnClick="LinkButton8_Click">ค้นหา</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style58">
+                            <asp:Label ID="Label6" runat="server" Text="ค้นหาตามชื่อผู้อนุมัติ"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="TextBox14" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton10" runat="server" CssClass="master_default_button" OnClick="LinkButton10_Click">ค้นหา</asp:LinkButton>
+                        </td>
+                    </tr>
+                </table>
 
-            <table>
-                <tr>
-                    <td class="auto-style58">
-                        <asp:Label ID="Label3" runat="server" Text="ค้นหาตามรหัสผู้ลา"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="TextBox4" runat="server" CssClass="master_default_textbox"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:LinkButton ID="LinkButton7" runat="server" CssClass="master_default_button" OnClick="LinkButton7_Click">ค้นหา</asp:LinkButton>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style58">
-                        <asp:Label ID="Label5" runat="server" Text="ค้นหาตามชื่อผู้ลา"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="TextBox12" runat="server" CssClass="master_default_textbox"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:LinkButton ID="LinkButton9" runat="server" CssClass="master_default_button" OnClick="LinkButton9_Click">ค้นหา</asp:LinkButton>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style58">
-                        <asp:Label ID="Label4" runat="server" Text="ค้นหาตามรหัสผู้อนุมัติ"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:LinkButton ID="LinkButton8" runat="server" CssClass="master_default_button" OnClick="LinkButton8_Click">ค้นหา</asp:LinkButton>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style58">
-                        <asp:Label ID="Label6" runat="server" Text="ค้นหาตามชื่อผู้อนุมัติ"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="TextBox14" runat="server" CssClass="master_default_textbox"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:LinkButton ID="LinkButton10" runat="server" CssClass="master_default_button" OnClick="LinkButton10_Click">ค้นหา</asp:LinkButton>
-                    </td>
-                </tr>
-            </table>
-
-            <asp:Panel ID="Panel8" runat="server" ScrollBars="Both" CssClass="leave_grid_view" Height="800px">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging">
-                    <AlternatingRowStyle BackColor="White" />
-                    <EditRowStyle BackColor="#2461BF" />
-                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#EFF3FB" />
-                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                </asp:GridView>
-            </asp:Panel>
+                <asp:Panel ID="Panel8" runat="server" ScrollBars="Both" CssClass="leave_grid_view" Height="800px">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging">
+                        <AlternatingRowStyle BackColor="White" />
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                    </asp:GridView>
+                </asp:Panel>
+            </div>
         </div>
 
-        <asp:Label ID="Label35" runat="server" Text="ออกรายงาน" Font-Bold="True"></asp:Label>
-        <div class="div_sec">
-
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <asp:LinkButton ID="LinkButton19" runat="server" CssClass="master_default_button" OnClick="LinkButton1_Click">ออกรายงาน 1</asp:LinkButton>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
-
+        
+        <div class="div_sec" id="sec5">
+            <div class="div_sec_header">
+                <asp:Label ID="Label35" runat="server" Text="ออกรายงาน" Font-Bold="True"></asp:Label>
+            </div>
+            <div class="div_sec_in">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <asp:LinkButton ID="LinkButton19" runat="server" CssClass="master_default_button" OnClick="LinkButton1_Click">ออกรายงาน 1</asp:LinkButton>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
     </asp:Panel>
