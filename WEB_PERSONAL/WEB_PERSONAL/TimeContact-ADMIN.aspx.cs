@@ -147,8 +147,26 @@ namespace WEB_PERSONAL
 
         protected void btnSearchTimeContact_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtSearchTimeContactID.Text) && string.IsNullOrEmpty(txtSearchTimeContactName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassTimeContact tc = new ClassTimeContact();
+                DataTable dt = tc.GetTimeContactSearch(Convert.ToInt32(txtSearchTimeContactID.Text), txtSearchTimeContactName.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
+        }
+
+        protected void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData();
             ClassTimeContact tc = new ClassTimeContact();
-            DataTable dt = tc.GetTimeContactSearch(Convert.ToInt32(txtSearchTimeContactID.Text), txtSearchTimeContactName.Text);
+            DataTable dt = tc.GetTimeContact(0, "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

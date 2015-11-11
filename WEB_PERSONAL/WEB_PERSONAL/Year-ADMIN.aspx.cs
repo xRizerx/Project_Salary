@@ -141,8 +141,26 @@ namespace WEB_PERSONAL
 
         protected void btnSearchYear_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtSearchTH.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassYear y = new ClassYear();
+                DataTable dt = y.GetYearSearch(txtSearchTH.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
+        }
+
+        protected void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData();
             ClassYear y = new ClassYear();
-            DataTable dt = y.GetYearSearch(txtSearchTH.Text);
+            DataTable dt = y.GetYear("");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

@@ -147,8 +147,26 @@ namespace WEB_PERSONAL
 
         protected void btnSearchGender_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtSearchGenderID.Text) && string.IsNullOrEmpty(txtSearchGenderName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassGender g = new ClassGender();
+                DataTable dt = g.GetGenderSearch(Convert.ToInt32(txtSearchGenderID.Text), txtSearchGenderName.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
+        }
+
+        protected void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData();
             ClassGender g = new ClassGender();
-            DataTable dt = g.GetGenderSearch(Convert.ToInt32(txtSearchGenderID.Text), txtSearchGenderName.Text);
+            DataTable dt = g.GetGender(0, "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

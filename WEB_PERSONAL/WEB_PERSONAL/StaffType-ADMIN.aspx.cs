@@ -147,8 +147,26 @@ namespace WEB_PERSONAL
 
         protected void btnSearchStaff_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtSearchStaffID.Text) && string.IsNullOrEmpty(txtSearchStaffName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassStaffType s = new ClassStaffType();
+                DataTable dt = s.GetStaffTypeSearch(Convert.ToInt32(txtSearchStaffID.Text), txtSearchStaffName.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
+        }
+
+        protected void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData();
             ClassStaffType s = new ClassStaffType();
-            DataTable dt = s.GetStaffTypeSearch(Convert.ToInt32(txtSearchStaffID.Text), txtSearchStaffName.Text);
+            DataTable dt = s.GetStaffType(0, "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

@@ -47,6 +47,7 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
+            txtSearchAdminPositionID.Text = "";
             txtSearchAdminPositionName.Text = "";
             txtInsertAdminPositionID.Text = "";
             txtInsertAdminPositionName.Text = "";
@@ -145,8 +146,26 @@ namespace WEB_PERSONAL
 
         protected void btnSearchAdminPosition_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtSearchAdminPositionID.Text) && string.IsNullOrEmpty(txtSearchAdminPositionName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassAdminPosition ap = new ClassAdminPosition();
+                DataTable dt = ap.GetAdminPositionSearch(txtSearchAdminPositionID.Text, txtSearchAdminPositionName.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
+        }
+
+        protected void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData();
             ClassAdminPosition ap = new ClassAdminPosition();
-            DataTable dt = ap.GetAdminPositionSearch(txtSearchAdminPositionID.Text, txtSearchAdminPositionName.Text);
+            DataTable dt = ap.GetAdminPosition("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

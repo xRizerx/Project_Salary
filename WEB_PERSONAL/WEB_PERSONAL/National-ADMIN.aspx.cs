@@ -153,8 +153,28 @@ namespace WEB_PERSONAL
 
         protected void btnSearchNATIONAL_Click(object sender, EventArgs e)
         {
+            
+            if (string.IsNullOrEmpty(txtSearchNationID.Text) && string.IsNullOrEmpty(txtSearchNationENG.Text) && string.IsNullOrEmpty(txtSearchNationTHA.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+
+                return;
+            }
+            else
+            {
+                ClassNational n = new ClassNational();
+                DataTable dt = n.GetNationalSearch(txtSearchNationID.Text, txtSearchNationENG.Text, txtSearchNationTHA.Text);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                SetViewState(dt);
+            }
+        }
+
+        protected void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData();
             ClassNational n = new ClassNational();
-            DataTable dt = n.GetNationalSearch(txtSearchNationID.Text, txtSearchNationENG.Text, txtSearchNationTHA.Text);
+            DataTable dt = n.GetNational("", "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

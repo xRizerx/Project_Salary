@@ -38,7 +38,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             Seminar ptn = new Seminar();
-            DataTable dt = ptn.GetSEMINAR("");
+            DataTable dt = ptn.GetSEMINAR("","","");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -96,7 +96,8 @@ namespace WEB_PERSONAL
             DateTime SEMINAR_DATETIME_TO = DateTime.Parse(lblSEMINAR_DATETIME_TO.Text);
             DateTime SEMINAR_SIGNED_DATETIME = DateTime.Now;
 
-            
+
+
             Seminar S = new Seminar(Convert.ToInt32(lblSEMINAR_ID.Text)
                 , txtName.Text
                 , txtLastName.Text
@@ -153,7 +154,7 @@ namespace WEB_PERSONAL
         protected void btnSearchNameSeminar_Click(object sender, EventArgs e)
         {
             Seminar S = new Seminar();
-            DataTable dt = S.GetSEMINAR(txtSearchNameSeminar.Text);
+            DataTable dt = S.GetSEMINARSearch(txtSearchNameSeminar.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

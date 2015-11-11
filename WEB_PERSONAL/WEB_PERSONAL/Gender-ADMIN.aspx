@@ -29,7 +29,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+<asp:Panel ID="Panel1" runat="server" Height="70px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchGender">
     <div>
         <fieldset>
             <legend>Search</legend>
@@ -37,16 +37,19 @@
                 รหัสเพศ :&nbsp<asp:TextBox ID="txtSearchGenderID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
                 ชื่อเพศ :&nbsp<asp:TextBox ID="txtSearchGenderName" runat="server" CssClass="tb5" Width="230px" MaxLength="20"></asp:TextBox>
                 <asp:Button ID="btnSearchGender" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchGender_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>
+    </asp:Panel>
+<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitGender">
     <div>
         <fieldset>
             <legend>Insert</legend>
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width:140px"></td>
+                        <td style="text-align: left; width:117px"></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสเพศ :</td>
                         <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertGenderID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อเพศ :</td>

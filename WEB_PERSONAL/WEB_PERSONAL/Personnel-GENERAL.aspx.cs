@@ -702,7 +702,7 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPersonnel_Click(object sender, EventArgs e)
         {
-            /*if (DropDownYEAR.SelectedIndex == 0)
+            if (DropDownYEAR.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลปีการศึกษา')", true);
                 return;
@@ -861,39 +861,7 @@ namespace WEB_PERSONAL
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเทศที่จบการศึกษาสูงสุด')", true);
                 return;
-            }*/
-
-            if (string.IsNullOrEmpty(txtCITIZEN_ID.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชน')", true);
-                return;
             }
-            if (string.IsNullOrEmpty(txtSTF_NAME.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อ')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtSTF_LNAME.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุล')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtBIRTHDAY.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันเกิด')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtZIPCODE.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสไปรษณีย์')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtDATETIME_INWORRK.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่เข้าทำงาน ณ สถานที่ปัจจุบัน')", true);
-                return;
-            }
-
 
             Personnel P = new Personnel(); 
             P.YEAR = Convert.ToInt32(DropDownYEAR.SelectedValue);
@@ -931,8 +899,8 @@ namespace WEB_PERSONAL
             P.GRAD_UNIV = txtGRAD_UNIV.Text;
             P.GRAD_COUNTRY_ID = Convert.ToInt32(DropDownGRAD_COUNTRY.SelectedValue.ToString());
 
-            string[] splitDate1 = txtBIRTHDAY.Text.Split('/');
-            string[] splitDate2 = txtDATETIME_INWORRK.Text.Split('/');
+            string[] splitDate1 = txtBIRTHDAY.Text.Split('-');
+            string[] splitDate2 = txtDATETIME_INWORRK.Text.Split('-');
             P.BIRTHDAY = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
             P.DATETIME_INWORK = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
 

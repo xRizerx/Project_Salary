@@ -29,7 +29,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+<asp:Panel ID="Panel1" runat="server" Height="70px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchUniv">
     <div>
         <fieldset>
             <legend>Search</legend>
@@ -37,19 +37,22 @@
                 รหัสมหาวิทยาลัย :&nbsp<asp:TextBox ID="txtSearchUnivID" runat="server" CssClass="tb5" Width="230px" MaxLength="5"></asp:TextBox>
                 ชื่อมหาวิทยาลัย :&nbsp<asp:TextBox ID="txtSearchUnivName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchUniv" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchUniv_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>
+    </asp:Panel>
+<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitUNIVERSITY">
     <div>
         <fieldset>
             <legend>Insert</legend>
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width: 89px;"></td>
-                        <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสมหาวิทยาลัย :&nbsp;</td>
+                        <td style="text-align: left; width: 60px;"></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสมหาวิทยาลัย :</td>
                         <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertUnivID" runat="server" CssClass="tb5" MaxLength="5"></asp:TextBox></td>
-                        <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อมหาวิทยาลัย :&nbsp;</td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อมหาวิทยาลัย :</td>
                         <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertUnivName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
                         <td style="text-align: left;"><asp:Button ID="btnSubmitUNIVERSITY" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitUNIVERSITY_Click" /></td>
                         <td style="text-align: left;"><asp:Button ID="btnCancelUNIVERSITY" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelUNIVERSITY_Click" /></td>
