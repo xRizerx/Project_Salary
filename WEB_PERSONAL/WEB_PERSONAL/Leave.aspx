@@ -123,7 +123,7 @@
         }
 
         .div_sec_in {
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(255,255,255,0.9);
             padding: 20px 0px;
             /*transition: background-color, ease, 0.25s;*/
         }
@@ -133,7 +133,7 @@
         }
             */
         #sec1 {
-            background-image: url("Image/bg2.jpg");
+            background-image: url("Image/anime1.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }

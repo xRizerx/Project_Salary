@@ -4,15 +4,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-    
+
 <head runat="server">
     <title></title>
-    
+
     <link rel="stylesheet" type="text/css" href="CSS/Master.css" />
     <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
     <link href="Content/themes/base/jquery.ui.theme.css" rel="stylesheet" />
-   
+
 
 
     <script src="Script/jquery-1.7.1.min.js"></script>
@@ -29,23 +29,18 @@
             height: 24px;
         }
 
-        
+
         .auto-style2 {
             height: 50px;
         }
-
-        
     </style>
 </head>
 <body>
-    
+
     <form id="form1" runat="server" onload="form1_Load">
-        
         <div class="master_login">
-
-
+            <div class="master_login_in">
                 <ul class="master_login_left">
-      
                 </ul>
 
                 <ul class="master_login_right">
@@ -58,16 +53,9 @@
                     <li>
                         <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click">ออกจากระบบ</asp:LinkButton>
                     </li>
-
                 </ul>
-
-
-
- 
-            
+            </div>
         </div>
-
-
 
         <div class="master_header">
             <div>
@@ -102,7 +90,7 @@
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">การลา</asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton ID="LinkButton11" runat="server" OnClick="LinkButton11_Click">ศึกษาต่อ</asp:LinkButton> 
+                    <asp:LinkButton ID="LinkButton11" runat="server" OnClick="LinkButton11_Click">ศึกษาต่อ</asp:LinkButton>
                 </li>
                 <li>
                     <asp:LinkButton ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">การสัมมนา</asp:LinkButton>
@@ -116,7 +104,7 @@
             </ul>
         </div>
 
-        
+
         <div class="wrapper">
 
             <div>
@@ -133,7 +121,7 @@
             </div>
         </div>
         <footer>
-           
+
             <div class="master_footer">
 
 
@@ -168,7 +156,7 @@
             </div>
 
         </footer>
-     
+
     </form>
 </body>
 </html>

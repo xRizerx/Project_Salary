@@ -39,7 +39,7 @@
             width: 100%;
         }
         .p1 {
-            background-color: #000000;
+            background-color: #202020;
             padding: 20px 0;
             margin: 0;
         }
@@ -55,11 +55,12 @@
     </style>
     <div class="mp">
 
-        
-
         <div>
             <asp:Label ID="Label1" runat="server" Text="ทดสอบหน้าหลัก อิอิ" CssClass="t1"></asp:Label>
         </div>
+
+        <div style="height:50px"></div>
+
         <div>
             <p>
                 wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
@@ -78,9 +79,7 @@
             </p>
         </div>
 
-        <br />
-        <br />
-        <br />
+        <div style="height:100px"></div>
 
         <div class="p1">
             <img src="Image/i3.jpg"/>
@@ -94,9 +93,7 @@
             </p>
         </div>
 
-        <br />
-        <br />
-        <br />
+        <div style="height:100px"></div>
 
         <div class="p1">
             <img src="Image/i2.jpg"/>
@@ -110,6 +107,7 @@
             </p>
         </div>
 
+        <div style="height:100px"></div>
    
 
     </div>
