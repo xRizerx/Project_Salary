@@ -2350,19 +2350,21 @@ namespace WEB_PERSONAL.Entities
 
     public class ClassPosition
     {
+        public int SUBSTAFFTYPE_ID { get; set; }
         public string POSITION_ID { get; set; }
         public string POSITION_NAME { get; set; }
-        public int SUBSTAFFTYPE_ID { get; set; }
+        
 
         public ClassPosition() { }
         public ClassPosition(string POSITION_ID, string POSITION_NAME, int SUBSTAFFTYPE_ID)
         {
+            this.SUBSTAFFTYPE_ID = SUBSTAFFTYPE_ID;
             this.POSITION_ID = POSITION_ID;
             this.POSITION_NAME = POSITION_NAME;
-            this.SUBSTAFFTYPE_ID = SUBSTAFFTYPE_ID;
+            
         }
 
-        public DataTable GetPosition(string POSITION_ID, string POSITION_NAME, int SUBSTAFFTYPE_ID)
+        public DataTable GetPosition(int SUBSTAFFTYPE_ID, string POSITION_ID, string POSITION_NAME)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
@@ -2370,6 +2372,10 @@ namespace WEB_PERSONAL.Entities
             if (!string.IsNullOrEmpty(POSITION_ID) || !string.IsNullOrEmpty(POSITION_NAME) || SUBSTAFFTYPE_ID != 0)
             {
                 query += " where 1=1 ";
+                if (SUBSTAFFTYPE_ID != 0)
+                {
+                    query += " and SUBSTAFFTYPE_ID like :SUBSTAFFTYPE_ID ";
+                }
                 if (!string.IsNullOrEmpty(POSITION_ID))
                 {
                     query += " and POSITION_ID like :POSITION_ID ";
@@ -2378,10 +2384,7 @@ namespace WEB_PERSONAL.Entities
                 {
                     query += " and POSITION_NAME like :POSITION_NAME ";
                 }
-                if (SUBSTAFFTYPE_ID != 0)
-                {
-                    query += " and SUBSTAFFTYPE_ID like :SUBSTAFFTYPE_ID ";
-                }
+               
             }
             OracleCommand command = new OracleCommand(query, conn);
             // Create the command
@@ -2391,6 +2394,10 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
+                if (SUBSTAFFTYPE_ID != 0)
+                {
+                    command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID + "%"));
+                }
                 if (!string.IsNullOrEmpty(POSITION_ID))
                 {
                     command.Parameters.Add(new OracleParameter("POSITION_ID", POSITION_ID + "%"));
@@ -2399,10 +2406,7 @@ namespace WEB_PERSONAL.Entities
                 {
                     command.Parameters.Add(new OracleParameter("POSITION_NAME", "%" + POSITION_NAME + "%"));
                 }
-                if (SUBSTAFFTYPE_ID != 0)
-                {
-                    command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID + "%"));
-                }
+                
                 OracleDataAdapter sd = new OracleDataAdapter(command);
                 sd.Fill(dt);
             }
@@ -2419,14 +2423,18 @@ namespace WEB_PERSONAL.Entities
             return dt;
         }
 
-        public DataTable GetPositionSearch(string POSITION_ID, string POSITION_NAME, int SUBSTAFFTYPE_ID)
+        public DataTable GetPositionSearch(string SUBSTAFFTYPE_ID, string POSITION_ID, string POSITION_NAME)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "SELECT * FROM TB_POSITION";
-            if (!string.IsNullOrEmpty(POSITION_ID) || !string.IsNullOrEmpty(POSITION_NAME) || SUBSTAFFTYPE_ID != 0)
+            if (!string.IsNullOrEmpty(POSITION_ID) || !string.IsNullOrEmpty(POSITION_NAME) || !string.IsNullOrEmpty(SUBSTAFFTYPE_ID))
             {
                 query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(SUBSTAFFTYPE_ID))
+                {
+                    query += " and SUBSTAFFTYPE_ID like :SUBSTAFFTYPE_ID ";
+                }
                 if (!string.IsNullOrEmpty(POSITION_ID))
                 {
                     query += " and POSITION_ID like :POSITION_ID ";
@@ -2435,10 +2443,7 @@ namespace WEB_PERSONAL.Entities
                 {
                     query += " and POSITION_NAME like :POSITION_NAME ";
                 }
-                if (SUBSTAFFTYPE_ID != 0)
-                {
-                    query += " and SUBSTAFFTYPE_ID like :SUBSTAFFTYPE_ID ";
-                }
+               
             }
             OracleCommand command = new OracleCommand(query, conn);
             // Create the command
@@ -2448,6 +2453,10 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
+                if (!string.IsNullOrEmpty(SUBSTAFFTYPE_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID + "%"));
+                }
                 if (!string.IsNullOrEmpty(POSITION_ID))
                 {
                     command.Parameters.Add(new OracleParameter("POSITION_ID", POSITION_ID + "%"));
@@ -2456,10 +2465,7 @@ namespace WEB_PERSONAL.Entities
                 {
                     command.Parameters.Add(new OracleParameter("POSITION_NAME", "%" + POSITION_NAME + "%"));
                 }
-                if (SUBSTAFFTYPE_ID != 0)
-                {
-                    command.Parameters.Add(new OracleParameter("SUBSTAFFTYPE_ID", SUBSTAFFTYPE_ID + "%"));
-                }
+                
                 OracleDataAdapter sd = new OracleDataAdapter(command);
                 sd.Fill(dt);
             }

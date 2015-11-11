@@ -43,7 +43,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassPosition p = new ClassPosition();
-            DataTable dt = p.GetPosition("","", 0);
+            DataTable dt = p.GetPosition(0, "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -154,7 +154,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassPosition p = new ClassPosition();
-            DataTable dt = p.GetPosition("", "",0);
+            DataTable dt = p.GetPosition(0, "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -170,7 +170,7 @@ namespace WEB_PERSONAL
             else
             {
                 ClassPosition p = new ClassPosition();
-                DataTable dt = p.GetPositionSearch(txtSearchPositionID.Text, txtSearchPositionName.Text, Convert.ToInt32(txtSearchSubStaffName.Text));
+                DataTable dt = p.GetPositionSearch(txtSearchSubStaffName.Text,txtSearchPositionID.Text, txtSearchPositionName.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);
@@ -181,7 +181,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassPosition p = new ClassPosition();
-            DataTable dt = p.GetPosition("", "", 0);
+            DataTable dt = p.GetPosition(0, "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
