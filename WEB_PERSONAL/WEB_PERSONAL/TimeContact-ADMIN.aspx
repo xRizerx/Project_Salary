@@ -34,9 +34,10 @@
         <fieldset>
             <legend>Search</legend>
             <div>
-                ชื่อระยะเวลาการจ้างงาน :&nbsp<asp:TextBox ID="txtSearchTimeContactID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
+                รหัสระยะเวลาการจ้างงาน :&nbsp<asp:TextBox ID="txtSearchTimeContactID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
                 ชื่อระยะเวลาการจ้างงาน :&nbsp<asp:TextBox ID="txtSearchTimeContactName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchTimeContact" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchTimeContact_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>
@@ -47,7 +48,7 @@
             <legend>Insert</legend>
             <div>
                 <table>
-                    <tr><td style="text-align: left; width:20px"></td>
+                    <tr><td style="text-align: left; width:10px"></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสระยะเวลาการจ้างงาน :</td>
                         <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertTimeContactID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อระยะเวลาการจ้างงาน :</td>

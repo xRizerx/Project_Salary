@@ -47,6 +47,7 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
+            txtSearchAdminPositionID.Text = "";
             txtSearchAdminPositionName.Text = "";
             txtInsertAdminPositionID.Text = "";
             txtInsertAdminPositionName.Text = "";
@@ -158,6 +159,16 @@ namespace WEB_PERSONAL
                 GridView1.DataBind();
                 SetViewState(dt);
             }
+        }
+
+        protected void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData();
+            ClassAdminPosition ap = new ClassAdminPosition();
+            DataTable dt = ap.GetAdminPosition("", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
         }
     }
 }

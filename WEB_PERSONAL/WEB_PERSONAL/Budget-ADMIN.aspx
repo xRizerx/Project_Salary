@@ -37,6 +37,7 @@
                 รหัสประเภทเงินจ้างงาน :&nbsp<asp:TextBox ID="txtSearchBudgetID" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 ชื่อประเภทเงินจ้างงาน :&nbsp<asp:TextBox ID="txtSearchBudgetName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchBudgetName" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchBudgetName_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>

@@ -34,10 +34,11 @@
         <fieldset>
             <legend>Search</legend>
             <div>
-                รหัสสัญชาติ :&nbsp<asp:TextBox ID="txtSearchNationID" runat="server" CssClass="tb5" Width="150px" MaxLength="2"></asp:TextBox>
+                รหัสสัญชาติ :&nbsp<asp:TextBox ID="txtSearchNationID" runat="server" CssClass="tb5" Width="50px" MaxLength="2"></asp:TextBox>
                 ชื่อสัญชาติภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchNationENG" runat="server" CssClass="tb5" Width="150px" MaxLength="100"></asp:TextBox>
                 ชื่อสัญชาติภาษาไทย :&nbsp<asp:TextBox ID="txtSearchNationTHA" runat="server" CssClass="tb5" Width="150px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchNATIONAL" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchNATIONAL_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>
@@ -49,12 +50,13 @@
             <div>
                 <table>
                     <tr>
-                        <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสสัญชาติ :&nbsp;</td>
-                        <td style="text-align: left; width: 80px;"><asp:TextBox ID="txtInsertNationID" runat="server" CssClass="tb5" MaxLength="2"></asp:TextBox></td>
-                        <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อสัญชาติภาษาอังกฤษ :&nbsp;</td>
-                        <td style="text-align: left; width: 80px;"><asp:TextBox ID="txtInsertNationENG" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
-                        <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อสัญชาติภาษาไทย :&nbsp;</td>
-                        <td style="text-align: left; width: 80px;"><asp:TextBox ID="txtInsertNationTHA" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
+                        <td style="text-align: left; width:25px"></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสสัญชาติ :</td>
+                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="txtInsertNationID" runat="server" CssClass="tb5" MaxLength="2" Width="50px"></asp:TextBox></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อสัญชาติภาษาอังกฤษ :</td>
+                        <td style="text-align: left; width: 90px;"><asp:TextBox ID="txtInsertNationENG" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อสัญชาติภาษาไทย :</td>
+                        <td style="text-align: left; width: 80px;"><asp:TextBox ID="txtInsertNationTHA" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
                         <td style="text-align: left;"><asp:Button ID="btnSubmitNATIONAL" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitNATIONAL_Click" /></td>
                         <td style="text-align: left;"><asp:Button ID="btnCancelNATIONAL" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelNATIONAL_Click" /></td>
                     </tr>

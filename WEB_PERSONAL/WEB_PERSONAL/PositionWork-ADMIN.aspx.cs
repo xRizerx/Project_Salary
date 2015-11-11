@@ -161,5 +161,15 @@ namespace WEB_PERSONAL
                 SetViewState(dt);
             }
         }
+
+        protected void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+            ClearData();
+            ClassPositionWork pw = new ClassPositionWork();
+            DataTable dt = pw.GetPositionWork("", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
     }
 }

@@ -36,16 +36,20 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" Height="70px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchTitleName">
+<asp:Panel ID="Panel1" runat="server" Height="110px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchTitleName">
     <div>
         <fieldset>
             <legend>Search</legend>
             <div>
                 ชื่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
                 ชื่อย่อภาษาไทย :&nbsp<asp:TextBox ID="txtSearchTHmin" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
-                ชื่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchEN" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
+               
+            </div>
+            <div>
+                 ชื่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchEN" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
                 ชื่อย่อภาษาอังกฤษ :&nbsp<asp:TextBox ID="txtSearchENmin" runat="server" CssClass="tb6" Width="90px"></asp:TextBox>
                 <asp:Button ID="btnSearchTitleName" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchTitleName_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>

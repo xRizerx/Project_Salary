@@ -37,6 +37,7 @@
                 รหัสตำแหน่งในสายงาน :&nbsp<asp:TextBox ID="txtSearchPositionWorkID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
                 ชื่อตำแหน่งในสายงาน :&nbsp<asp:TextBox ID="txtSearchPositionWorkName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchPositionWork" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchPositionWork_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>

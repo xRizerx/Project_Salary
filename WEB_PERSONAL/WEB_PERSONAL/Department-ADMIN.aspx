@@ -37,6 +37,7 @@
                 รหัสคณะ/หน่วยงานที่สังกัด หรือเทียบเท่า :&nbsp<asp:TextBox ID="txtSearchDepartmentID" runat="server" CssClass="tb5" Width="130px" MaxLength="5"></asp:TextBox>
                 ชื่อคณะ/หน่วยงานที่สังกัด หรือเทียบเท่า :&nbsp<asp:TextBox ID="txtSearchDepartmentName" runat="server" CssClass="tb5" Width="130px" MaxLength="100"></asp:TextBox>
                 <asp:Button ID="btnSearchDepartment" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchDepartment_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>
@@ -47,7 +48,7 @@
             <legend>Insert</legend>
             <div>
                 <table>
-                    <tr><td style="text-align: left; width:20px"></td>
+                    <tr><td style="text-align: left; width:5px"></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสคณะ/หน่วยงานที่สังกัด หรือเทียบเท่า :</td>
                         <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertDepartmentID" runat="server" CssClass="tb5" MaxLength="5"></asp:TextBox></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อคณะ/หน่วยงานที่สังกัด หรือเทียบเท่า :</td>
