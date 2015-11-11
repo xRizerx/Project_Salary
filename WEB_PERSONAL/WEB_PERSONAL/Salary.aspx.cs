@@ -94,11 +94,12 @@ namespace WEB_PERSONAL
                     String j = Label19.Text;
                     String k = Label20.Text;
                     String l = TextBox18.Text;
-                    string sql = "INSERT INTO TB_DPIS (DPIS_ID,BRANCH_ID, COUNT_PEOPLE, SUM_SALARY, RATE_SUMSALARY, RATE_MONEY_UP, RATE_BALANCE, SUM_PRE_MONTH, ADMIN_MONEY_ADD, SUM_MONEY_UP, SUM_MONEY_TOTAL, SUM_BALANCE, COMMENT) VALUES (DPIS_ID.NEXTVAL,{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},'{11}');";
+                    string sql = "INSERT INTO TB_DPIS (DPIS_ID,BRANCH_ID, COUNT_PEOPLE, SUM_SALARY, RATE_SUMSALARY, RATE_MONEY_UP, RATE_BALANCE, SUM_PRE_MONTH, ADMIN_MONEY_ADD, SUM_MONEY_UP, SUM_MONEY_TOTAL, SUM_BALANCE, \"COMMENT\") VALUES (SEQ_DPIS_ID.NEXTVAL,{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},'{11}')";
                     sql = string.Format(sql, a, b, c, d, e, f, g, h, i, j, k, l);
                     using (OracleCommand command = new OracleCommand(sql, conn))
                     {
                         command.ExecuteNonQuery();
+                        Util.Alert(this,"SAVE SUCCESSFUL");
                     }
                 }
             }

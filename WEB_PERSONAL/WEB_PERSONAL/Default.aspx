@@ -4,7 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
-       
+        .wrapper {
+            width: unset;
+        }
         .c1 {
             height: 640px;
             margin: 0 auto;
@@ -17,16 +19,12 @@
         }
 
         .mp {
-            padding: 20px;
+            padding: 20px 0;
             text-align: center;
         }
 
         .t1 {
             font-size: 32px;
-        }
-
-        .i80p {
-            width: 80%;
         }
 
         .i90p {
@@ -40,53 +38,77 @@
         .i100p {
             width: 100%;
         }
-
+        .p1 {
+            background-color: #202020;
+            padding: 20px 0;
+            margin: 0;
+        }
+        .p1 img {
+            height: 320px;
+            padding: 0;
+            margin: 0;
+        }
     
 
 
         
     </style>
-    <asp:Panel ID="Panel5" runat="server" Height="2825px" CssClass="mp">
-
-        
+    <div class="mp">
 
         <div>
             <asp:Label ID="Label1" runat="server" Text="ทดสอบหน้าหลัก อิอิ" CssClass="t1"></asp:Label>
         </div>
+
+        <div style="height:50px"></div>
+
         <div>
             <p>
                 wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
             </p>
         </div>
 
-        
-
-        <div>
-            <img src="Image/i1.jpg" class="i80p" />
+        <div class="p1">
+            <img src="Image/i1.jpg"/>
+            <img src="Image/i2.jpg"/>
+            <img src="Image/i3.jpg"/>
         </div>
+
         <div>
             <p>
                 wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw sdjfl sdjf lsdkjf lsdkjf lskdjf lsdkfj slkf jsdlkf jsldfk jsdlf kdsf lsf sldkf sdjf lksjdf lksdf sljkdf sjdlkf jsldf jslf jsdlf kjslfdkjs lksfj sdlfkj sldk fjsdlfkj sdlksdflsdfjslkdfjslkdfjlsdkflskksdfsdfsdlkf jkl
             </p>
         </div>
-        <br />
-        <div>
-            <img src="Image/i2.jpg" class="i80p" />
+
+        <div style="height:100px"></div>
+
+        <div class="p1">
+            <img src="Image/i3.jpg"/>
+            <img src="Image/i1.jpg"/>
+            <img src="Image/i2.jpg"/>
         </div>
+
         <div>
             <p>
                 wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw sdjfl sdjf lsdkjf lsdkjf lskdjf lsdkfj slkf jsdlkf jsldfk jsdlf kdsf lsf sldkf sdjf lksjdf lksdf sljkdf sjdlkf jsldf jslf jsdlf kjslfdkjs lksfj sdlfkj sldk fjsdlfkj sdlksdflsdfjslkdfjslkdfjlsdkflskksdfsdfsdlkf jkl
             </p>
         </div>
-        <br />
-        <div>
-            <img src="Image/i3.jpg" class="i80p" />
+
+        <div style="height:100px"></div>
+
+        <div class="p1">
+            <img src="Image/i2.jpg"/>
+            <img src="Image/i3.jpg"/>
+            <img src="Image/i1.jpg"/>
         </div>
+
         <div>
             <p>
-                wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw sdjfl sdjf lsdkjf lsdkjf lskdjf lsdkfj slkf jsdlkf jsldfk jsdlf kdsf lsf sldkf sdjf lksjdf lksdf sljkdf sjdlkf jsldf jslf jsdlf kjslfdkjs lksfj sdlfkj sldk fjsdlfkj sdlksdflsdfjslkdfjslkdfjlsdkflskksdfsdfsdlkf jkl pwoeirpowei pw pwe wpeo we wopriowp wirp weipweirpewi rpowri pwoeriewp roweirpoewi pweoriwep oweiproeri weporeiw oweip roewirpweor iwepriw eopewir poweir ewpor isfkdsf;lsdfksldf ksd;lf ks;lfsd kfs;ld ks;df sf lsdkf ;sdlf sdlkfjsldfj sldf jsdlf skjfl sjf lsdkjfs lflsdf ksld fjsldf sdk fsldfk sldf jlsdf kjlsdf lskdf jlsdf jlsdfj ;sdfj lskdf jskldf jsldkf jlsdf jlksdf slkdf jklsdf ldflkjfd jklsdf jlsd fjlksdf kjsd ljksdf jlksd fjklsdf jklsd fjklsdf klsd sdf jlsdf jlsdf kjl
+                wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw sdjfl sdjf lsdkjf lsdkjf lskdjf lsdkfj slkf jsdlkf jsldfk jsdlf kdsf lsf sldkf sdjf lksjdf lksdf sljkdf sjdlkf jsldf jslf jsdlf kjslfdkjs lksfj sdlfkj sldk fjsdlfkj sdlksdflsdfjslkdfjslkdfjlsdkflskksdfsdfsdlkf jkl
             </p>
         </div>
 
-    </asp:Panel>
+        <div style="height:100px"></div>
+   
+
+    </div>
 </asp:Content>
