@@ -38,19 +38,39 @@
         .i100p {
             width: 100%;
         }
-        .p1 {
+        .div_sec {
             background-color: #202020;
-            padding: 20px 0;
             margin: 0;
         }
-        .p1 img {
+        .div_sec_in {
+            /*background-color: rgba(128,128,128,0.6);*/
+            padding: 20px 0px;
+        }
+        .div_sec_in span {
+            color: #FFFFFF;
+            text-shadow: 1px 1px 1px #000000;
+        }
+        .div_sec img {
             height: 320px;
             padding: 0;
             margin: 0;
         }
-    
-
-
+        #sec1 {
+            background-color: #202020;
+            background-image: url("Image/333.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #sec2 {
+            background-color: #404040;
+        }
+        #sec3 {
+            background-color: #606060;
+        }
+        .para {
+            width: 1024px;
+            margin: 0 auto;
+        }
         
     </style>
     <div class="mp">
@@ -61,50 +81,18 @@
 
         <div style="height:50px"></div>
 
-        <div>
+        <div class="para">
             <p>
                 wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
             </p>
         </div>
 
-        <div class="p1">
-            <img src="Image/i1.jpg"/>
-            <img src="Image/i2.jpg"/>
-            <img src="Image/i3.jpg"/>
-        </div>
-
-        <div>
-            <p>
-                wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw sdjfl sdjf lsdkjf lsdkjf lskdjf lsdkfj slkf jsdlkf jsldfk jsdlf kdsf lsf sldkf sdjf lksjdf lksdf sljkdf sjdlkf jsldf jslf jsdlf kjslfdkjs lksfj sdlfkj sldk fjsdlfkj sdlksdflsdfjslkdfjslkdfjlsdkflskksdfsdfsdlkf jkl
-            </p>
-        </div>
-
-        <div style="height:100px"></div>
-
-        <div class="p1">
-            <img src="Image/i3.jpg"/>
-            <img src="Image/i1.jpg"/>
-            <img src="Image/i2.jpg"/>
-        </div>
-
-        <div>
-            <p>
-                wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw sdjfl sdjf lsdkjf lsdkjf lskdjf lsdkfj slkf jsdlkf jsldfk jsdlf kdsf lsf sldkf sdjf lksjdf lksdf sljkdf sjdlkf jsldf jslf jsdlf kjslfdkjs lksfj sdlfkj sldk fjsdlfkj sdlksdflsdfjslkdfjslkdfjlsdkflskksdfsdfsdlkf jkl
-            </p>
-        </div>
-
-        <div style="height:100px"></div>
-
-        <div class="p1">
-            <img src="Image/i2.jpg"/>
-            <img src="Image/i3.jpg"/>
-            <img src="Image/i1.jpg"/>
-        </div>
-
-        <div>
-            <p>
-                wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw sdjfl sdjf lsdkjf lsdkjf lskdjf lsdkfj slkf jsdlkf jsldfk jsdlf kdsf lsf sldkf sdjf lksjdf lksdf sljkdf sjdlkf jsldf jslf jsdlf kjslfdkjs lksfj sdlfkj sldk fjsdlfkj sdlksdflsdfjslkdfjslkdfjlsdkflskksdfsdfsdlkf jkl
-            </p>
+        <div class="div_sec" id="sec1">
+            <div class="div_sec_in">
+                <img src="Image/i1.jpg"/>
+                <img src="Image/i2.jpg"/>
+                <img src="Image/i3.jpg"/>
+            </div>
         </div>
 
         <div style="height:100px"></div>

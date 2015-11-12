@@ -143,6 +143,7 @@
     <Content Include="Image\444.png" />
     <Content Include="Image\555.jpg" />
     <Content Include="Image\bg5.jpg" />
+    <Content Include="Image\books.jpg" />
     <Content Include="Image\DORAEMON.jpg" />
     <Content Include="Image\ef333.jpg" />
     <Content Include="Image\i1.jpg" />
@@ -160,13 +161,20 @@
     <Content Include="Image\i3.jpg" />
     <Content Include="Image\insignia.jpg" />
     <Content Include="Image\insignia01.jpg" />
+    <Content Include="Image\log-keyboard.jpg" />
     <Content Include="Image\nopm.jpg" />
+    <Content Include="Image\paper.jpg" />
+    <Content Include="Image\papers.jpg" />
+    <Content Include="Image\report-writing.jpg" />
     <Content Include="Image\sky.jpg" />
+    <Content Include="Image\time_check_in.jpg" />
     <Content Include="Image\users6.png" />
+    <Content Include="Image\writing-on-paper.jpg" />
     <Content Include="Image\X.png" />
     <Content Include="insignia_from_edit.aspx" />
     <Content Include="insignia_recordnote 2.aspx" />
     <Content Include="insignia_recordnote.aspx" />
+    <Content Include="insignia_recordnote3.aspx" />
     <Content Include="js\index.js" />
     <Content Include="Leave-Report1.aspx" />
     <Content Include="M-Admin.aspx" />
@@ -304,6 +312,13 @@
     </Compile>
     <Compile Include="insignia_recordnote.aspx.designer.cs">
       <DependentUpon>insignia_recordnote.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_recordnote3.aspx.cs">
+      <DependentUpon>insignia_recordnote3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_recordnote3.aspx.designer.cs">
+      <DependentUpon>insignia_recordnote3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Leave-Report1.aspx.cs">
       <DependentUpon>Leave-Report1.aspx</DependentUpon>
