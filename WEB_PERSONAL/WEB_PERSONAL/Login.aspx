@@ -99,9 +99,6 @@
             width: 141px;
             text-align: right;
         }
-        .auto-style16 {
-            width: 207px;
-        }
         .auto-style17 {
             width: 146px;
         }
@@ -138,6 +135,19 @@
                         </td>
                         <td class="auto-style17">
                             <asp:TextBox ID="TextBox2" runat="server" TextMode="Password" CssClass="master_default_textbox"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style15">
+                            <asp:Label ID="Label10" runat="server" CssClass="c10" Text="คงอยู่ในระบบ"></asp:Label>
+                        </td>
+                        <td class="auto-style17">
+                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="master_default_dropdown">
+                                <asp:ListItem Value="300">5 นาที</asp:ListItem>
+                                <asp:ListItem Value="1800">30 นาที</asp:ListItem>
+                                <asp:ListItem Value="3600">1 ชั่วโมง</asp:ListItem>
+                                <asp:ListItem Value="999999999">จนกว่าจะปิดเบราเซอร์</asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>

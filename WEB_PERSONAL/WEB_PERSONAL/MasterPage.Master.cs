@@ -49,6 +49,19 @@ namespace WEB_PERSONAL
 
             if (Session["login_id"] != null)
             {
+                
+                if ((DateTime.Now - (DateTime)Session["login_date_time"]).TotalSeconds > Int32.Parse(Session["login_total_second"].ToString())) {
+                    Session["login_date_time"] = null;
+                    Logout();
+                    Label7.Text = "ยังไม่ได้เข้าสู่ระบบ";
+                    LinkButton9.Visible = true;
+                    LinkButton10.Visible = false;
+                    Label7.ForeColor = System.Drawing.Color.FromArgb(128, 128, 128);
+                    return;
+                }
+                
+               
+                
                 /*Label7.Text = Session["login_id"].ToString();*/
                 string name = Session["login_name"].ToString() + " " + Session["login_lastname"];
                 string systemRank = "(" + Session["login_system_status"].ToString() + ")";
@@ -76,10 +89,7 @@ namespace WEB_PERSONAL
         protected void LinkButton10_Click(object sender, EventArgs e)
         {
             //log out
-            Session.Remove("login_id");
-            Session.Remove("login_system_status");
-            Session.Remove("login_name");
-            Session.Remove("login_lastname");
+            Logout();
             Response.Redirect("Default.aspx");
         }
 
@@ -106,6 +116,13 @@ namespace WEB_PERSONAL
         protected void LinkButton12_Click(object sender, EventArgs e)
         {
             Response.Redirect("M-Admin.aspx");
+        }
+
+        private void Logout() {
+            Session.Remove("login_id");
+            Session.Remove("login_system_status");
+            Session.Remove("login_name");
+            Session.Remove("login_lastname");
         }
 
     }

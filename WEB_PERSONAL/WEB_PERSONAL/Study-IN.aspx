@@ -95,18 +95,12 @@
             font-weight: bold;
         }
 
-        .auto-style6 {
-            width: 280px;
-            text-align: right;
-            padding-right: 5px;
-        }
-
         .auto-style14 {
             width: 293px;
         }
 
         .auto-style15 {
-            width: 125px;
+            width: 200px;
             text-align: right;
             padding-right: 5px;
             height: 28px;
@@ -118,7 +112,7 @@
         }
 
         .auto-style19 {
-            width: 125px;
+            width: 200px;
             text-align: right;
             padding-right: 5px;
             height: 33px;
@@ -127,8 +121,13 @@
             width: 293px;
             height: 33px;
         }
-        .auto-style21 {
-            width: 125px;
+        .auto-style23 {
+            width: 180px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        .auto-style24 {
+            width: 200px;
             text-align: right;
             padding-right: 5px;
         }
@@ -161,7 +160,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label8" runat="server" Text="รหัสเอกสาร"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -169,7 +168,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label10" runat="server" Text="รหัสผู้ลาศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -178,7 +177,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label35" runat="server" Text="ชื่อผู้ลาศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -186,7 +185,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label38" runat="server" Text="ประเภทผู้ลาศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -202,11 +201,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">&nbsp;</td>
+                        <td class="auto-style24">&nbsp;</td>
                         <td class="auto-style14">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label47" runat="server" Text="ปีที่ศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -214,27 +213,27 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label12" runat="server" Text="ระดับ"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NAME" DataValueField="ID" CssClass="master_default_dropdown">
+                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NAME" DataValueField="ID" CssClass="master_default_dropdown" OnDataBound="DropDownList1_DataBound">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_STUDY_DEGREE&quot;"></asp:SqlDataSource>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label13" runat="server" Text="สาขา"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="DEPARTMENT_NAME" DataValueField="DEPARTMENT_ID" CssClass="master_default_dropdown">
+                            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="DEPARTMENT_NAME" DataValueField="DEPARTMENT_ID" CssClass="master_default_dropdown" OnDataBound="DropDownList2_DataBound">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_DEPARTMENT&quot; ORDER BY DEPARTMENT_NAME"></asp:SqlDataSource>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label14" runat="server" Text="สถานที่"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -242,17 +241,17 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label42" runat="server" Text="หลักสูตร"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="NAME" DataValueField="ID" CssClass="master_default_dropdown">
+                            <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="NAME" DataValueField="ID" CssClass="master_default_dropdown" OnDataBound="DropDownList3_DataBound">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_STUDY_COURSE&quot;"></asp:SqlDataSource>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label43" runat="server" Text="ระยะเวลาที่ศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -262,7 +261,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label15" runat="server" Text="จากวันที่"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -270,7 +269,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label16" runat="server" Text="ถึงวันที่"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -278,15 +277,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
-                            <asp:Label ID="Label45" runat="server" Text="ระยะเวลาที่ศึกษาตาม..."></asp:Label>
+                        <td class="auto-style24">
+                            <asp:Label ID="Label45" runat="server" Text="ระยะเวลาที่ศึกษาตามหลักสูตร"></asp:Label>
                         </td>
                         <td class="auto-style14">
                             <asp:TextBox ID="TextBox26" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">
+                        <td class="auto-style24">
                             <asp:Label ID="Label46" runat="server" Text="หมายเหตุ"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -294,11 +293,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">&nbsp;</td>
+                        <td class="auto-style24">&nbsp;</td>
                         <td class="auto-style14">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style21">&nbsp;</td>
+                        <td class="auto-style24">&nbsp;</td>
                         <td class="auto-style14">
                             <div class="login_button_div">
                                 <ul>

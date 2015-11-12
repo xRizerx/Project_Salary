@@ -166,6 +166,7 @@
     <Content Include="Image\paper.jpg" />
     <Content Include="Image\papers.jpg" />
     <Content Include="Image\report-writing.jpg" />
+    <Content Include="Image\RMUTTO.png" />
     <Content Include="Image\sky.jpg" />
     <Content Include="Image\time_check_in.jpg" />
     <Content Include="Image\users6.png" />
