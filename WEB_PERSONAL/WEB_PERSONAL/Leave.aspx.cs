@@ -91,7 +91,6 @@ namespace WEB_PERSONAL {
         protected void LinkButton15_Click(object sender, EventArgs e) {
             try {
                 using (OracleConnection con = Util.OC()) {
-                    con.Open();
                     {
                         string sql = "SELECT STF_NAME || ' ' || STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox8.Text + "'";
                         using (OracleCommand command = new OracleCommand(sql, con)) {

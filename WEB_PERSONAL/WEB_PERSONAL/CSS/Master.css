@@ -393,6 +393,13 @@ form {
     background-color: #FFFFFF;
     padding: 2px 10px;
     border-radius: 24px;
+    transition: border ease 0.5s;
+}
+.master_default_textbox:hover {
+    border: 1px solid rgb(0,162,232);
+}
+.master_default_textbox:focus {
+    border: 1px solid rgb(0,162,232);
 }
 .master_default_textbox_multi_line {
     border: 1px solid #C8C8C8;

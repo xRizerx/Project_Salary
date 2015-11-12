@@ -68,6 +68,13 @@
         });
     </script>
     <style type="text/css">
+        .wrapper {
+            /*width: unset;*/
+        }
+        .mp {
+            padding: 20px 0;
+            padding: 20px;
+        }
         .c1 {
             font-family: ths;
             font-size: 32px;
@@ -104,10 +111,10 @@
             border-radius: 24px;
         }
 
-            .leave_paper_pull:hover {
-                color: #000000;
-                background-color: #c0c0c0;
-            }
+        .leave_paper_pull:hover {
+            color: #000000;
+            background-color: #c0c0c0;
+        }
 
         .leave_grid_view {
             margin: 0 auto;
@@ -118,49 +125,51 @@
         .div_sec {
             margin: 50px 0;
             margin-top: 0;
-            /*border-bottom: 1px solid #C8C8C8;*/
-            box-shadow: #C8C8C8 0px 5px 5px;
+            box-shadow: #808080 0px 5px 5px;
         }
         .div_sec_header {
-            background-color: rgba(255,255,255,0.9);
+            background-color: rgba(128,128,128,0.8);
             padding: 20px 25px;
+            font-weight: bold;
+        }
+        .div_sec_header span {
+            color: #FFFFFF;
+            text-shadow: 1px 1px 1px #000000;
         }
         .div_sec_in {
-            background-color: rgba(255,255,255,0.8);
+            background-color: rgba(128,128,128,0.6);
             padding: 20px 0px;
-            /*transition: background-color, ease, 0.25s;*/
         }
-        /*
-        .div_sec_in:hover {
-            background-color: rgba(255,255,255,0.5);
+        .div_sec_in span {
+            color: #FFFFFF;
+            text-shadow: 1px 1px 1px #000000;
         }
-            */
         #sec1 {
-            background-image: url("Image/ef333.jpg");
+            background-image: url("Image/time_check_in.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
 
         #sec2 {
-            background-image: url("Image/ef333.jpg");
+            background-image: url("Image/paper.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
 
         #sec3 {
-            background-image: url("Image/ef333.jpg");
+            background-image: url("Image/writing-on-paper.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
 
         #sec4 {
-            background-image: url("Image/ef333.jpg");
+            background-image: url("Image/papers.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
 
         #sec5 {
-            background-image: url("Image/ef333.jpg");
+            background-image: url("Image/report-writing.jpg");
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -182,35 +191,14 @@
             margin: 20px 0;
             border-bottom: 1px solid #808080;
         }
-
-        .mp {
-            padding: 20px;
-        }
+        
 
         .auto-style58 {
             width: 180px;
         }
 
-        .auto-style60 {
-            width: 134px;
-            text-align: right;
-        }
-
-        .auto-style62 {
-            width: 123px;
-        }
-
         .auto-style64 {
             width: 298px;
-            height: 28px;
-        }
-
-        .auto-style65 {
-            width: 123px;
-            height: 28px;
-        }
-
-        .auto-style66 {
             height: 28px;
         }
 
@@ -220,15 +208,6 @@
 
         .auto-style69 {
             width: 298px;
-            height: 95px;
-        }
-
-        .auto-style70 {
-            width: 123px;
-            height: 95px;
-        }
-
-        .auto-style71 {
             height: 95px;
         }
 
@@ -242,7 +221,7 @@
         }
 
         .auto-style78 {
-            width: 192px;
+            width: 77px;
             text-align: right;
             height: 29px;
         }
@@ -252,14 +231,22 @@
             height: 29px;
         }
 
-        .auto-style80 {
-            height: 29px;
-        }
-
         .auto-style81 {
-            width: 134px;
+            width: 50px;
             text-align: right;
             height: 28px;
+        }
+        .auto-style83 {
+            width: 50px;
+            text-align: right;
+        }
+        .auto-style92 {
+            width: 79px;
+            text-align: right;
+        }
+        .auto-style93 {
+            width: 77px;
+            text-align: right;
         }
     </style>
     <asp:Panel ID="Panel2" runat="server" CssClass="mp">
@@ -272,79 +259,62 @@
         
         <div class="div_sec" id="sec1">
             <div class="div_sec_header">
-                <asp:Label ID="Label36" runat="server" Text="เพิ่มเวลาเข้างาน" Font-Bold="True"></asp:Label>
+                <asp:Label ID="Label36" runat="server" Text="เพิ่มเวลาเข้างาน"></asp:Label>
             </div>
             <div class="div_sec_in">
-
-
-
                 <table style="width: 100%;">
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label41" runat="server" Text="วันที่"></asp:Label>
                         </td>
                         <td class="auto-style67">
                             <asp:TextBox ID="TextBox11" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
-                        <td class="auto-style62"></td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label44" runat="server" Text="รหัสพนักงาน"></asp:Label>
                         </td>
                         <td class="auto-style67">
                             <asp:TextBox ID="TextBox21" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton20" runat="server" CssClass="master_default_button" OnClick="LinkButton20_Click">ตรวจสอบ</asp:LinkButton>
                         </td>
-                        <td class="auto-style62">&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label47" runat="server" Text="ชื่อพนักงาน"></asp:Label>
                         </td>
                         <td class="auto-style67">
                             <asp:Label ID="Label45" runat="server"></asp:Label>
                         </td>
-                        <td class="auto-style62">&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label39" runat="server" Text="เวลาเข้า"></asp:Label>
                         </td>
                         <td class="auto-style64">
                             <asp:TextBox ID="TextBox22" runat="server" Width="50px" placeholder="ชั่วโมง" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:TextBox ID="TextBox23" runat="server" Width="50px" placeholder="นาที" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
-                        <td class="auto-style65"></td>
-                        <td class="auto-style66"></td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label40" runat="server" Text="เวลาออก"></asp:Label>
                         </td>
                         <td class="auto-style67">
                             <asp:TextBox ID="TextBox24" runat="server" placeholder="ชั่วโมง" Width="50px" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:TextBox ID="TextBox25" runat="server" placeholder="นาที" Width="50px" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
-                        <td class="auto-style62">&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <td class="auto-style81"></td>
                         <td class="auto-style64">
                             <asp:LinkButton ID="LinkButton11" runat="server" CssClass="master_default_button" OnClick="LinkButton11_Click">เพิ่ม</asp:LinkButton>
                         </td>
-                        <td class="auto-style65"></td>
-                        <td class="auto-style66"></td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">&nbsp;</td>
+                        <td class="auto-style83">&nbsp;</td>
                         <td class="auto-style67">&nbsp;</td>
-                        <td class="auto-style62">&nbsp;</td>
-                        <td></td>
                     </tr>
                 </table>
                 <asp:Label ID="Label37" runat="server" Text="รายชื่อการเข้างาน" Font-Bold="True"></asp:Label>
@@ -385,91 +355,75 @@
         
         <div class="div_sec" id="sec2">
             <div class="div_sec_header">
-                <asp:Label ID="Label22" runat="server" Text="เพิ่มเอกสาร" Font-Bold="True"></asp:Label>
+                <asp:Label ID="Label22" runat="server" Text="เพิ่มเอกสารการลา" Font-Bold="True"></asp:Label>
             </div>
             <div class="div_sec_in">
 
                 <table style="width: 100%;">
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label23" runat="server" Text="รหัสผู้ลา"></asp:Label>
                         </td>
                         <td class="auto-style67">
                             <asp:TextBox ID="TextBox16" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton17" runat="server" CssClass="master_default_button" OnClick="Button1_Click2">ตรวจสอบ</asp:LinkButton>
                         </td>
-                        <td class="auto-style62"></td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label46" runat="server" Text="ชื่อผู้ลา"></asp:Label>
                         </td>
                         <td class="auto-style67">
                             <asp:Label ID="Label24" runat="server"></asp:Label>
                         </td>
-                        <td class="auto-style62">&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label25" runat="server" Text="ประเภทการลา"></asp:Label>
                         </td>
                         <td class="auto-style64">
                             <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" CssClass="master_default_dropdown">
                             </asp:DropDownList>
                         </td>
-                        <td class="auto-style65"></td>
-                        <td class="auto-style66"></td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label26" runat="server" Text="สถานะการลา"></asp:Label>
                         </td>
                         <td class="auto-style67">
                             <asp:DropDownList ID="DropDownList6" runat="server" DataSourceID="SqlDataSource1" DataTextField="LEAVE_STATUS_NAME" DataValueField="LEAVE_STATUS_ID" CssClass="master_default_dropdown">
                             </asp:DropDownList>
                         </td>
-                        <td class="auto-style62">&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label27" runat="server" Text="จากวันที่"></asp:Label>
                         </td>
                         <td class="auto-style67">
                             <asp:TextBox ID="TextBox17" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
-                        <td class="auto-style62">&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label28" runat="server" Text="ถึงวันที่"></asp:Label>
                         </td>
                         <td class="auto-style67">
                             <asp:TextBox ID="TextBox18" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
-                        <td class="auto-style62">&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">
+                        <td class="auto-style83">
                             <asp:Label ID="Label29" runat="server" Text="เหตุผล"></asp:Label>
                         </td>
                         <td class="auto-style69">
                             <asp:TextBox ID="TextBox19" runat="server" Height="85px" TextMode="MultiLine" Width="298px" CssClass="master_default_textbox_multi_line"></asp:TextBox>
                         </td>
-                        <td class="auto-style70"></td>
-                        <td class="auto-style71"></td>
                     </tr>
                     <tr>
-                        <td class="auto-style60">&nbsp;</td>
+                        <td class="auto-style83">&nbsp;</td>
                         <td class="auto-style67">
                             <asp:LinkButton ID="LinkButton16" runat="server" CssClass="master_default_button" OnClick="LinkButton16_Click">เพิ่ม</asp:LinkButton>
                         </td>
-                        <td class="auto-style62">&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                 </table>
 
@@ -479,7 +433,7 @@
         
         <div class="div_sec" id="sec3">
             <div class="div_sec_header">
-                <asp:Label ID="Label30" runat="server" Text="แก้ไขเอกสาร" Font-Bold="True"></asp:Label>
+                <asp:Label ID="Label30" runat="server" Text="แก้ไขเอกสารการลา" Font-Bold="True"></asp:Label>
             </div>
             <div class="div_sec_in">
 
@@ -504,14 +458,12 @@
                 </table>
                 <table style="width: 100%;">
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label7" runat="server" Text="รหัสเอกสาร"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:Label ID="Label33" runat="server"></asp:Label>
                         </td>
-                        <td></td>
-                        <td></td>
                     </tr>
                     <tr>
                         <td class="auto-style78">
@@ -520,108 +472,82 @@
                         <td class="auto-style79">
                             <asp:TextBox ID="TextBox2" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
-                        <td class="auto-style80"></td>
-                        <td class="auto-style80"></td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label9" runat="server" Text="รหัสผู้ลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton14" runat="server" CssClass="master_default_button" OnClick="LinkButton14_Click">ตรวจสอบ</asp:LinkButton>
                         </td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label17" runat="server" Text="ชื่อผู้ลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:Label ID="Label31" runat="server"></asp:Label>
                         </td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label14" runat="server" Text="รหัสผู้อนุมัติ"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:TextBox ID="TextBox8" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_default_button" OnClick="LinkButton15_Click">ตรวจสอบ</asp:LinkButton>
                         </td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label19" runat="server" Text="ชื่อผู้อนุมัติ"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:Label ID="Label32" runat="server"></asp:Label>
                         </td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label15" runat="server" Text="วันที่อนุมัติ"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:TextBox ID="TextBox9" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label10" runat="server" Text="ประเภทการลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" CssClass="master_default_dropdown">
                             </asp:DropDownList>
                         </td>
-                        <td>
-                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE_TYPE&quot;"></asp:SqlDataSource>
-                        </td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label13" runat="server" Text="สถานะการลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource1" DataTextField="LEAVE_STATUS_NAME" DataValueField="LEAVE_STATUS_ID" CssClass="master_default_dropdown">
                             </asp:DropDownList>
                         </td>
-                        <td>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE_STATUS&quot;"></asp:SqlDataSource>
-                        </td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label11" runat="server" Text="จากวันที่"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:TextBox ID="TextBox5" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
-                        <td>
-                            <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE&quot;"></asp:SqlDataSource>
-                        </td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style93">
                             <asp:Label ID="Label12" runat="server" Text="ถึงวันที่"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
                     </tr>
                 </table>
 
@@ -633,16 +559,18 @@
                         <td>
                             <asp:TextBox ID="TextBox10" runat="server" Height="74px" TextMode="MultiLine" Width="584px" CssClass="master_default_textbox_multi_line"></asp:TextBox>
                         </td>
-                        <td>&nbsp;</td>
                     </tr>
                     <tr>
                         <td class="auto-style75">&nbsp;</td>
                         <td>
                             <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_default_button" OnClick="LinkButton13_Click">แก้ไข</asp:LinkButton>
                         </td>
-                        <td>&nbsp;</td>
                     </tr>
                 </table>
+
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE_STATUS&quot;"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE_TYPE&quot;"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_LEAVE&quot;"></asp:SqlDataSource>
 
             </div>
         </div>
@@ -650,7 +578,7 @@
         
         <div class="div_sec" id="sec4">
             <div class="div_sec_header">
-                <asp:Label ID="Label34" runat="server" Text="ข้อมูลเอกสาร" Font-Bold="True"></asp:Label>
+                <asp:Label ID="Label34" runat="server" Text="ข้อมูลเอกสารการลา" Font-Bold="True"></asp:Label>
             </div>
             <div class="div_sec_in">
 
@@ -746,7 +674,7 @@
         
         <div class="div_sec" id="sec5">
             <div class="div_sec_header">
-                <asp:Label ID="Label35" runat="server" Text="ออกรายงาน" Font-Bold="True"></asp:Label>
+                <asp:Label ID="Label35" runat="server" Text="ออกรายงานการลา" Font-Bold="True"></asp:Label>
             </div>
             <div class="div_sec_in">
                 <table style="width: 100%;">

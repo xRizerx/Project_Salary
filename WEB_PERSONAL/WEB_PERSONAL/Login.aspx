@@ -10,7 +10,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
-
+        .c1 {
+            font-family: ths;
+            font-size: 32px;
+            text-align: center;
+        }
         .c2 {
             text-align: center;
         }
@@ -41,8 +45,7 @@
         }
         .bb {
             margin: 0 auto;
-            text-align: center;
-            padding: 20px 0;
+            padding: 20px;
             /*background-color: #c8c8c8;
             background-image: url("Image/DORAEMON.jpg");
             background-size: cover;
@@ -56,6 +59,34 @@
         .c11 {
             color: #ff0000;
             text-shadow: 1px 1px 1px #000000;
+        }
+
+        .div_sec {
+            margin: 50px 0;
+            margin-top: 0;
+            box-shadow: #808080 0px 5px 5px;
+        }
+        .div_sec_header {
+            background-color: rgba(128,128,128,0.8);
+            padding: 20px 25px;
+            font-weight: bold;
+        }
+        .div_sec_header span {
+            color: #FFFFFF;
+            text-shadow: 1px 1px 1px #000000;
+        }
+        .div_sec_in {
+            background-color: rgba(128,128,128,0.6);
+            padding: 20px 0px;
+        }
+        .div_sec_in span {
+            color: #FFFFFF;
+            text-shadow: 1px 1px 1px #000000;
+        }
+        #sec1 {
+            background-image: url("Image/log-keyboard.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
         }
         
 
@@ -76,15 +107,16 @@
         }
     </style>
     <asp:Panel ID="Panel8" runat="server" Height="800px" CssClass="bb">
-
-
-
         <br />
-        <asp:Label ID="Label1" runat="server" Text="เข้าสู่ระบบ" Font-Size="32"></asp:Label>
+        <div class="c1">
+            <asp:Label ID="Label1" runat="server" Text="เข้าสู่ระบบ" Font-Size="32"></asp:Label>
+        </div>
         <br />
-        <br />
-        <div class="login_pan">
-            <div class="fade">
+        <div class="div_sec" id="sec1">
+            <div class="div_sec_header">
+                <asp:Label ID="Label2" runat="server" Text="เข้าสู่ระบบ"></asp:Label>
+            </div>
+            <div class="div_sec_in" style="height:400px">
                 <table class="auto-style7">
                     <tr>
                         <td class="auto-style5"></td>
@@ -116,10 +148,6 @@
 
 
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style15">&nbsp;</td>
-                        <td class="auto-style17">&nbsp;</td>
                     </tr>
                 </table>
             </div>
