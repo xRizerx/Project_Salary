@@ -53,7 +53,7 @@ form {
     
     
     z-index: 999;
-    /*border-bottom: 1px solid #f0f0f0;*/
+    border-bottom: 1px solid #00a2e8;
     
     /*background-image: url("../Image/ef333.jpg");
     background-position: center;*/
@@ -74,6 +74,7 @@ form {
     float: left;
     height: 32px;
     line-height: 32px;
+    margin-left: 20px;
 }
 .master_login_right {
     float: right;
@@ -143,8 +144,8 @@ form {
 }
 .master_header_pre_in {
     /*background-color: rgba(128,128,128,0.5);*/
-    padding: 20px 0px;
-    padding-top: 30px;
+    padding: 20px;
+    padding-top: 40px;
     height: 170px;
     height: 80px;
     width: 1024px;
@@ -152,7 +153,8 @@ form {
     text-align: left;
 }
 .master_header_in {
-
+    margin: 0 20px;
+    
 }
 
 
