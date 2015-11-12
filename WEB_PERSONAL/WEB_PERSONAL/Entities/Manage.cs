@@ -3086,4 +3086,216 @@ namespace WEB_PERSONAL.Entities
         }
     }
 
+    public class ClassTeachISCED
+    {
+        public string ISCED_ID { get; set; }
+        public int ISCED_ID_OLD { get; set; }
+        public string ISCED_NAME_TH { get; set; }
+        public string ISCED_NAME_ENG { get; set; }
+        public int GROUP_ISCED_ID { get; set; }
+        public string GROUP_ISCED_NAME { get; set; }
+        public int ISCED_SEQ { get; set; }
+
+
+        public ClassTeachISCED() { }
+        public ClassTeachISCED(string ISCED_ID, int ISCED_ID_OLD, string ISCED_NAME_TH, string ISCED_NAME_ENG, int GROUP_ISCED_ID, string GROUP_ISCED_NAME, int ISCED_SEQ)
+        {
+            this.ISCED_ID = ISCED_ID;
+            this.ISCED_ID_OLD = ISCED_ID_OLD;
+            this.ISCED_NAME_TH = ISCED_NAME_TH;
+            this.ISCED_NAME_ENG = ISCED_NAME_ENG;
+            this.GROUP_ISCED_ID = GROUP_ISCED_ID;
+            this.GROUP_ISCED_NAME = GROUP_ISCED_NAME;
+            this.ISCED_SEQ = ISCED_SEQ;
+        }
+
+        public DataTable GetTeachISCED(string ISCED_ID, string ISCED_ID_OLD, string ISCED_NAME_TH, string ISCED_NAME_ENG, string GROUP_ISCED_ID, string GROUP_ISCED_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_TEACH_ISCED ";
+            if (!string.IsNullOrEmpty(ISCED_ID) || !string.IsNullOrEmpty(ISCED_ID_OLD) || !string.IsNullOrEmpty(ISCED_NAME_TH) || !string.IsNullOrEmpty(ISCED_NAME_ENG) || !string.IsNullOrEmpty(GROUP_ISCED_ID) || !string.IsNullOrEmpty(GROUP_ISCED_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(ISCED_ID))
+                {
+                    query += " and ISCED_ID like :ISCED_ID ";
+                }
+                if (!string.IsNullOrEmpty(ISCED_ID_OLD))
+                {
+                    query += " and ISCED_ID_OLD like :ISCED_ID_OLD ";
+                }
+                if (!string.IsNullOrEmpty(ISCED_NAME_TH))
+                {
+                    query += " and ISCED_NAME_TH like :ISCED_NAME_TH ";
+                }
+                if (!string.IsNullOrEmpty(ISCED_NAME_ENG))
+                {
+                    query += " and lower(ISCED_NAME_ENG) like lower (:ISCED_NAME_ENG) ";
+                }
+                if (!string.IsNullOrEmpty(GROUP_ISCED_ID))
+                {
+                    query += " and GROUP_ISCED_ID like :GROUP_ISCED_ID ";
+                }
+                if (!string.IsNullOrEmpty(GROUP_ISCED_NAME))
+                {
+                    query += " and GROUP_ISCED_NAME like :GROUP_ISCED_NAME ";
+                }
+
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(ISCED_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("ISCED_ID", "%" + ISCED_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(ISCED_ID_OLD))
+                {
+                    command.Parameters.Add(new OracleParameter("ISCED_ID_OLD", ISCED_ID_OLD + "%"));
+                }
+                if (!string.IsNullOrEmpty(ISCED_NAME_TH))
+                {
+                    command.Parameters.Add(new OracleParameter("ISCED_NAME_TH", "%" + ISCED_NAME_TH + "%"));
+                }
+                if (!string.IsNullOrEmpty(ISCED_NAME_ENG))
+                {
+                    command.Parameters.Add(new OracleParameter("ISCED_NAME_ENG", "%" + ISCED_NAME_ENG + "%"));
+                }
+                if (!string.IsNullOrEmpty(GROUP_ISCED_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("GROUP_ISCED_ID", GROUP_ISCED_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(GROUP_ISCED_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("GROUP_ISCED_NAME", "%" + GROUP_ISCED_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertTeachISCED()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_TEACH_ISCED (ISCED_ID,ISCED_ID_OLD,ISCED_NAME_TH,ISCED_NAME_ENG,GROUP_ISCED_ID,GROUP_ISCED_NAME) VALUES (:ISCED_ID,:ISCED_ID_OLD,:ISCED_NAME_TH,:ISCED_NAME_ENG,:GROUP_ISCED_ID,:GROUP_ISCED_NAME)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("ISCED_ID", ISCED_ID));
+                command.Parameters.Add(new OracleParameter("ISCED_ID_OLD", ISCED_ID_OLD));
+                command.Parameters.Add(new OracleParameter("ISCED_NAME_TH", ISCED_NAME_TH));
+                command.Parameters.Add(new OracleParameter("ISCED_NAME_ENG", ISCED_NAME_ENG));
+                command.Parameters.Add(new OracleParameter("GROUP_ISCED_ID", GROUP_ISCED_ID));
+                command.Parameters.Add(new OracleParameter("GROUP_ISCED_NAME", GROUP_ISCED_NAME));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateTeachISCED()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_TEACH_ISCED Set ";
+            query += " ISCED_ID = :ISCED_ID,";
+            query += " ISCED_ID_OLD = :ISCED_ID_OLD,";
+            query += " ISCED_NAME_TH = :ISCED_NAME_TH,";
+            query += " ISCED_NAME_ENG = :ISCED_NAME_ENG,";
+            query += " GROUP_ISCED_ID = :GROUP_ISCED_ID,";
+            query += " GROUP_ISCED_NAME = :GROUP_ISCED_NAME";
+            query += " where ISCED_SEQ = :ISCED_SEQ";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("ISCED_ID", ISCED_ID));
+                command.Parameters.Add(new OracleParameter("ISCED_ID_OLD", ISCED_ID_OLD));
+                command.Parameters.Add(new OracleParameter("ISCED_NAME_TH", ISCED_NAME_TH));
+                command.Parameters.Add(new OracleParameter("ISCED_NAME_ENG", ISCED_NAME_ENG));
+                command.Parameters.Add(new OracleParameter("GROUP_ISCED_ID", GROUP_ISCED_ID));
+                command.Parameters.Add(new OracleParameter("GROUP_ISCED_NAME", GROUP_ISCED_NAME));
+                command.Parameters.Add(new OracleParameter("ISCED_SEQ", ISCED_SEQ));
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteTeachISCED()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_TEACH_ISCED where ISCED_SEQ = :ISCED_SEQ", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("ISCED_SEQ", ISCED_SEQ));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
+
+
 }
