@@ -31,7 +31,7 @@
     <div>
         <br />
         <asp:Panel ID="Panel1" runat="server">
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM (SELECT ROWNUM,TB_PERSONAL.CITIZEN_ID,TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_POSITION_WORK.POSITION_WORK_NAME,TB_ADMIN_POSITION.ADMIN_POSITION_NAME,
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM (SELECT ROWNUM,TB_PERSONAL.CITIZEN_ID,TB_PERSONAL.STF_NAME || '    ' || TB_PERSONAL.STF_LNAME as &quot;NAME_LNAME&quot;,TB_POSITION.POSITION_NAME,TB_POSITION_WORK.POSITION_WORK_NAME,TB_ADMIN_POSITION.ADMIN_POSITION_NAME,
 TB_SALARY_UP.detail_salary,TB_SALARY_UP.detail_maxsalary,TB_SALARY_UP.detail_basemoney,TB_SALARY_UP.detail_percent_rate,TB_SALARY_UP.detail_moneynotround,TB_SALARY_UP.detail_moneyround,
 TB_SALARY_UP.detail_moneyup,TB_SALARY_UP.detail_moneybonus,TB_SALARY_UP.detail_sum_money,TB_SALARY_UP.detail_new_salary,TB_SALARY_UP.detail_score_test,TB_SALARY_UP.detail_level_test,
 TB_SALARY_UP.admin_ratesum,TB_SALARY_UP.admin_rate,TB_SALARY_UP.admin_money_add,TB_SALARY_UP.sum_percent_rate2,TB_SALARY_UP.sum_moneynotround,TB_SALARY_UP.sum_moneyround,
@@ -41,14 +41,12 @@ WHERE TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.POSITION
 AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN_POSITION.ADMIN_POSITION_ID AND TB_PERSONAL.citizen_id = TB_SALARY_UP.citizen_id ORDER BY TB_SALARY_UP.ID DESC ) WHERE ROWNUM =1" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>">
             </asp:SqlDataSource>
             <div class="auto-style1">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" Font-Names="THS" Width="3000px">
-                    <AlternatingRowStyle BackColor="White" />
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Font-Names="THS" Width="3000px" OnRowCreated="GridView1_RowCreated">
                     <Columns>
                         <asp:BoundField DataField="ROWNUM" HeaderText="ลำดับที่" SortExpression="ROWNUM" />
                         <asp:BoundField DataField="CITIZEN_ID" HeaderText="เลขประจำตัวประชาชน" SortExpression="CITIZEN_ID" />
-                        <asp:BoundField DataField="STF_NAME" HeaderText="ชื่อ" SortExpression="STF_NAME" />
-                        <asp:BoundField DataField="STF_LNAME" HeaderText="นามสกุล" SortExpression="STF_LNAME" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="NAME_LNAME" HeaderText="ชื่อ นามสกุล" SortExpression="STF_NAME" >
+                        <ItemStyle Width="250px" />
                         </asp:BoundField>
                         <asp:BoundField DataField="POSITION_NAME" HeaderText="ชื่อตำแหน่งในสายงาน" SortExpression="POSITION_NAME" >
                         <ItemStyle Width="150px" />
@@ -92,10 +90,10 @@ AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN_POSITION.ADMIN_POSITION_ID AND TB_P
                         <asp:BoundField DataField="DETAIL_SCORE_TEST" HeaderText="คะแนนผลการประเมิน" SortExpression="DETAIL_SCORE_TEST" >
                         <ItemStyle Width="100px" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_SCORE_TEST" HeaderText="ระดับผลการประเมิน" SortExpression="DETAIL_LEVEL_TEST" >
+                        <asp:BoundField DataField="DETAIL_LEVEL_TEST" HeaderText="ระดับผลการประเมิน" SortExpression="DETAIL_LEVEL_TEST" >
                         <ItemStyle Width="100px" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_SCORE_TEST" HeaderText="ร้อยละที่ได้เลื่อนตามสัดส่วน" SortExpression="ADMIN_RATESUM" >
+                        <asp:BoundField DataField="ADMIN_RATESUM" HeaderText="ร้อยละที่ได้เลื่อนตามสัดส่วน" SortExpression="ADMIN_RATESUM" >
                         <ItemStyle Width="100px" />
                         </asp:BoundField>
                         <asp:BoundField DataField="ADMIN_RATE" HeaderText="ร้อยละที่ได้เลื่อน(อธิการบดีเพิ่ม)" SortExpression="ADMIN_RATE" >
@@ -129,16 +127,6 @@ AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN_POSITION.ADMIN_POSITION_ID AND TB_P
                         <ItemStyle Width="100px" />
                         </asp:BoundField>
                     </Columns>
-                    <EditRowStyle BackColor="#2461BF" />
-                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#EFF3FB" />
-                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
             </div>
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Export To Excel" CssClass="button" />
