@@ -90,7 +90,7 @@
             color:red;
         }
     </style>
-    <asp:Panel runat="server" CssClass="divpan" Height="1200px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" >
+    <asp:Panel runat="server" CssClass="divpan" Height="1200px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson" >
     <div>
 
         <fieldset>
@@ -130,7 +130,7 @@
                             <asp:DropDownList ID="DropDownTitle" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtCitizen" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtCitizen" runat="server" MaxLength="13" Width="425px" CssClass="tb5"></asp:TextBox></td>
                      </tr>
                </table>
 
@@ -177,25 +177,6 @@
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">วัน เดือน ปีเกิด (dd/mm/yyyy)</td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; ">นามสกุลบิดาเดิม</td>
-                        
-                   </tr>
-                   <tr>
-                         <td style="text-align: left; width: 30px;"> </td>
-                       
-                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        <td style="text-align: left; width: 10px;"> </td> 
-                       <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtFatherLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                     </tr>
-               </table>
-
-                <table>
-                   <tr>
-                        <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">วัน เดือน ปีเกิด (ตัวบรรจง เต็มบรรทัด)</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ชื่อมารดา</td>
                         
                    </tr>
@@ -203,7 +184,7 @@
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtBirthDayChar" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMotherName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -213,7 +194,7 @@
                 <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">วันที่บรรจุ (dd/mm/yyyy)</td>
+                        <td style="text-align: left; margin-right: 5px; ">วัน เดือน ปีเกิด (ตัวบรรจง เต็มบรรทัด)</td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">นามสกุลมารดา</td>
                         
@@ -222,7 +203,7 @@
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtDateInWork" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtBirthDayChar" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMotherLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -232,7 +213,7 @@
                 <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">ประเภทข้าราชการ</td>
+                        <td style="text-align: left; margin-right: 5px; ">วันที่บรรจุ (dd/mm/yyyy)</td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">นามสกุลมารดาเดิม</td>
                         
@@ -241,7 +222,7 @@
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownStaffType" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
+                            <asp:TextBox ID="txtDateInWork" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMotherLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -251,26 +232,26 @@
                 <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">วันครบเกษียณอายุ (dd/mm/yyyy)</td>
+                        <td style="text-align: left; margin-right: 5px; ">ประเภทข้าราชการ</td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; "> ชื่อคู่สมรส</td>
+                        <td style="text-align: left; margin-right: 5px; ">ชื่อคู่สมรส</td>
                         
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:DropDownList ID="DropDownStaffType" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMarriedName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
                      </tr>
                </table>
 
-                 <table>
+                <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">วันครบเกษียณอายุ (ตัวบรรจง เต็มบรรทัด)</td>
+                        <td style="text-align: left; margin-right: 5px; ">วันครบเกษียณอายุ (dd/mm/yyyy)</td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; "> นามสกุลคู่สมรส</td>
                         
@@ -279,7 +260,7 @@
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtAge60Char" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMarriedLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -289,7 +270,7 @@
                  <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">&nbsp;</td>
+                        <td style="text-align: left; margin-right: 5px; ">วันครบเกษียณอายุ (ตัวบรรจง เต็มบรรทัด)</td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; "> นามสกุลเดิมคู่สมรสเดิม</td>
                         
@@ -298,31 +279,21 @@
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox20" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtAge60Char" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMarriedLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
                      </tr>
                </table>
 
-                 <table>
-                   <tr>
-                        <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">&nbsp;</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; "> </td>
-                        
-                   </tr>
-                  </table>
-
                 <table>
                           <tr>
                             <td style="text-align: left; width:350px; height:50px;"> </td> 
                             <td style="text-align: left; width: 50px;"> 
-                            <asp:Button ID="btnCancelPersonnel" Text="Cancel" runat="server" OnClick="btnCancelPersonnel_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                            <asp:Button ID="btnCancelPerson" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
                             <td style="text-align: left; width: 50px;"> </td> 
                             <td style="text-align: right; margin-right: 5px; ">  
-                            <asp:Button ID="btnSavePersonnel" Text="OK" runat="server" OnClick="btnSubmitPersonnel_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                            <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
                            </tr>               
                 </table>
 

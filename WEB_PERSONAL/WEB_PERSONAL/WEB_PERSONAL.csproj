@@ -280,6 +280,7 @@
       <DependentUpon>Department-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Personnel.cs" />
+    <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Seminar.cs" />
     <Compile Include="Entities\Manage.cs" />
     <Compile Include="Error-Member.aspx.cs">

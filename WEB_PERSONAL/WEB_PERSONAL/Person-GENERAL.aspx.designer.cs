@@ -94,13 +94,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtBirthDayNumber;
         
         /// <summary>
-        /// txtFatherLastNameOld control.
+        /// txtMotherName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFatherLastNameOld;
+        protected global::System.Web.UI.WebControls.TextBox txtMotherName;
         
         /// <summary>
         /// txtBirthDayChar control.
@@ -112,13 +112,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtBirthDayChar;
         
         /// <summary>
-        /// txtMotherName control.
+        /// txtMotherLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMotherName;
+        protected global::System.Web.UI.WebControls.TextBox txtMotherLastName;
         
         /// <summary>
         /// txtDateInWork control.
@@ -130,13 +130,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtDateInWork;
         
         /// <summary>
-        /// txtMotherLastName control.
+        /// txtMotherLastNameOld control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMotherLastName;
+        protected global::System.Web.UI.WebControls.TextBox txtMotherLastNameOld;
         
         /// <summary>
         /// DropDownStaffType control.
@@ -148,13 +148,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownStaffType;
         
         /// <summary>
-        /// txtMotherLastNameOld control.
+        /// txtMarriedName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMotherLastNameOld;
+        protected global::System.Web.UI.WebControls.TextBox txtMarriedName;
         
         /// <summary>
         /// txtAge60Number control.
@@ -166,13 +166,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtAge60Number;
         
         /// <summary>
-        /// txtMarriedName control.
+        /// txtMarriedLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMarriedName;
+        protected global::System.Web.UI.WebControls.TextBox txtMarriedLastName;
         
         /// <summary>
         /// txtAge60Char control.
@@ -184,24 +184,6 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtAge60Char;
         
         /// <summary>
-        /// txtMarriedLastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMarriedLastName;
-        
-        /// <summary>
-        /// TextBox20 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox20;
-        
-        /// <summary>
         /// txtMarriedLastNameOld control.
         /// </summary>
         /// <remarks>
@@ -211,21 +193,21 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtMarriedLastNameOld;
         
         /// <summary>
-        /// btnCancelPersonnel control.
+        /// btnCancelPerson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelPersonnel;
+        protected global::System.Web.UI.WebControls.Button btnCancelPerson;
         
         /// <summary>
-        /// btnSavePersonnel control.
+        /// btnSubmitPerson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSavePersonnel;
+        protected global::System.Web.UI.WebControls.Button btnSubmitPerson;
     }
 }
