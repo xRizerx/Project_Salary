@@ -191,6 +191,7 @@
     <Content Include="Font\THSarabun BoldItalic.ttf" />
     <Content Include="Font\THSarabun Italic.ttf" />
     <Content Include="Font\THSarabun.ttf" />
+    <Content Include="Person-GENERAL.aspx" />
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
@@ -389,6 +390,13 @@
     </Compile>
     <Compile Include="National-ADMIN.aspx.designer.cs">
       <DependentUpon>National-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Person-GENERAL.aspx.cs">
+      <DependentUpon>Person-GENERAL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person-GENERAL.aspx.designer.cs">
+      <DependentUpon>Person-GENERAL.aspx</DependentUpon>
     </Compile>
     <Compile Include="personalDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
