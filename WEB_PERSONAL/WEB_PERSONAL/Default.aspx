@@ -10,6 +10,7 @@
 			    $(".div_sec_in").mCustomScrollbar({
 			        axis: "x",
 			        theme: "white-thin",
+			        //theme: "minimal-dark",
 			        autoExpandScrollbar: true,
 			        advanced: { autoExpandHorizontalScroll: true }
 			    });
@@ -146,6 +147,9 @@
 
         <div style="height: 50px"></div>
 
+        <asp:Panel ID="Panel1" runat="server" style="width:1024px">
+            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+        </asp:Panel>
 
     </div>
 </asp:Content>

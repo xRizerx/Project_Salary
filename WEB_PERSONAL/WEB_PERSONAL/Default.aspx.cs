@@ -13,5 +13,13 @@ namespace WEB_PERSONAL
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e) {
+            /*TextBox tb = new TextBox();
+            Panel1.Controls.Add(new LiteralControl("<br/>"));
+            Panel1.Controls.Add(tb);
+            Panel1.Controls.Add(new LiteralControl("<br/>"));*/
+            Util.Alert(this, Util.NormalizeThaiWord(Util.NumberToThaiWord("10095")));
+        }
     }
 }

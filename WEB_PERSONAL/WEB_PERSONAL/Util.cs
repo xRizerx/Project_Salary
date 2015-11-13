@@ -92,7 +92,8 @@ namespace WEB_PERSONAL {
         public static string NumberToThaiWord(string s) {
             string sout = "";
             for (int i = 0; i < s.Length; ++i) {
-                sout += SingleNumberToThaiWord(s[i]) + ColumnNumberToThaiWord(s.Length-i-1);
+                if(s[i] != '0')
+                    sout += SingleNumberToThaiWord(s[i]) + ColumnNumberToThaiWord(s.Length-i-1);
             }
             return sout;
         }
