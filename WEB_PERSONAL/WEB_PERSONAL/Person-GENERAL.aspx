@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
         function pageLoad(sender, args) {
-            $("#ContentPlaceHolder1_txtBIRTHDAY,#ContentPlaceHolder1_txtDATETIME_INWORRK").datepicker({
+            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number").datepicker({
                 dateFormat: 'dd-mm-yy',
                 changeMonth: true,
                 changeYear: true,
@@ -175,7 +175,7 @@
                 <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">วัน เดือน ปีเกิด (dd/mm/yyyy)</td>
+                        <td style="text-align: left; margin-right: 5px; ">วัน เดือน ปีเกิด (dd-mm-yyyy)</td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ชื่อมารดา</td>
                         
@@ -213,7 +213,7 @@
                 <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">วันที่บรรจุ (dd/mm/yyyy)</td>
+                        <td style="text-align: left; margin-right: 5px; ">วันที่บรรจุ (dd-mm-yyyy)</td>
                         <td style="text-align: left; width: 80px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">นามสกุลมารดาเดิม</td>
                         
@@ -251,9 +251,9 @@
                 <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; margin-right: 5px; ">วันครบเกษียณอายุ (dd/mm/yyyy)</td>
+                        <td style="text-align: left; margin-right: 5px; ">วันครบเกษียณอายุ (dd-mm-yyyy)</td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; "> นามสกุลคู่สมรส</td>
+                        <td style="text-align: left; margin-right: 5px; ">นามสกุลคู่สมรส</td>
                         
                    </tr>
                    <tr>
@@ -272,7 +272,7 @@
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">วันครบเกษียณอายุ (ตัวบรรจง เต็มบรรทัด)</td>
                         <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: left; margin-right: 5px; "> นามสกุลเดิมคู่สมรสเดิม</td>
+                        <td style="text-align: left; margin-right: 5px; ">นามสกุลเดิมคู่สมรสเดิม</td>
                         
                    </tr>
                    <tr>

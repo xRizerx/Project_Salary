@@ -187,6 +187,7 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new OracleParameter("MOTHER_OLD_LASTNAME", MOTHER_OLD_LASTNAME));
                 command.Parameters.Add(new OracleParameter("COUPLE_NAME", COUPLE_NAME));
                 command.Parameters.Add(new OracleParameter("COUPLE_LASTNAME", COUPLE_LASTNAME));
+                command.Parameters.Add(new OracleParameter("COUPLE_OLD_LASTNAME", COUPLE_OLD_LASTNAME));
                 command.Parameters.Add(new OracleParameter("BIRTHDATE", BIRTHDATE));
                 command.Parameters.Add(new OracleParameter("BIRTHDATE_LONG", BIRTHDATE_LONG));
                 command.Parameters.Add(new OracleParameter("INWORK_DATE", INWORK_DATE));
@@ -206,115 +207,6 @@ namespace WEB_PERSONAL.Entities
                 conn.Close();
             }
             return id;
-        }
-        //get ไว้ก่อนยังไม่ได้ทำ
-        public bool UpdateSEMINAR()
-        {
-            bool result = false;
-            OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "Update TB_SEMINAR Set ";
-            query += " SEMINAR_NAME = :SEMINAR_NAME ,";
-            query += " SEMINAR_LASTNAME = :SEMINAR_LASTNAME ,";
-            query += " SEMINAR_POSITION = :SEMINAR_POSITION ,";
-            query += " SEMINAR_DEGREE = :SEMINAR_DEGREE ,";
-            query += " SEMINAR_CAMPUS = :SEMINAR_CAMPUS ,";
-            query += " SEMINAR_NAMEOFPROJECT = :SEMINAR_NAMEOFPROJECT ,";
-            query += " SEMINAR_PLACE = :SEMINAR_PLACE ,";
-            query += " SEMINAR_DATETIME_FROM = :SEMINAR_DATETIME_FROM ,";
-            query += " SEMINAR_DATETIME_TO = :SEMINAR_DATETIME_TO ,";
-            query += " SEMINAR_DAY = :SEMINAR_DAY ,";
-            query += " SEMINAR_MONTH = :SEMINAR_MONTH ,";
-            query += " SEMINAR_YEAR = :SEMINAR_YEAR ,";
-            query += " SEMINAR_BUDGET = :SEMINAR_BUDGET ,";
-            query += " SEMINAR_SUPPORT_BUDGET = :SEMINAR_SUPPORT_BUDGET ,";
-            query += " SEMINAR_CERTIFICATE = :SEMINAR_CERTIFICATE ,";
-            query += " SEMINAR_ABSTRACT = :SEMINAR_ABSTRACT ,";
-            query += " SEMINAR_RESULT = :SEMINAR_RESULT ,";
-            query += " SEMINAR_SHOW_1 = :SEMINAR_SHOW_1 ,";
-            query += " SEMINAR_SHOW_2 = :SEMINAR_SHOW_2 ,";
-            query += " SEMINAR_SHOW_3 = :SEMINAR_SHOW_3 ,";
-            query += " SEMINAR_SHOW_4 = :SEMINAR_SHOW_4 ,";
-            query += " SEMINAR_PROBLEM = :SEMINAR_PROBLEM ,";
-            query += " SEMINAR_COMMENT = :SEMINAR_COMMENT ,";
-            query += " SEMINAR_SIGNED_DATETIME = :SEMINAR_SIGNED_DATETIME ";
-            query += " where SEMINAR_ID  = :SEMINAR_ID";
-
-            OracleCommand command = new OracleCommand(query, conn);
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-                command.Parameters.Add(new OracleParameter("SEMINAR_NAME", SEMINAR_NAME));
-                command.Parameters.Add(new OracleParameter("SEMINAR_LASTNAME", SEMINAR_LASTNAME));
-                command.Parameters.Add(new OracleParameter("SEMINAR_POSITION", SEMINAR_POSITION));
-                command.Parameters.Add(new OracleParameter("SEMINAR_DEGREE", SEMINAR_DEGREE));
-                command.Parameters.Add(new OracleParameter("SEMINAR_CAMPUS", SEMINAR_CAMPUS));
-                command.Parameters.Add(new OracleParameter("SEMINAR_NAMEOFPROJECT", SEMINAR_NAMEOFPROJECT));
-                command.Parameters.Add(new OracleParameter("SEMINAR_PLACE", SEMINAR_PLACE));
-                command.Parameters.Add(new OracleParameter("SEMINAR_DATETIME_FROM", SEMINAR_DATETIME_FROM));
-                command.Parameters.Add(new OracleParameter("SEMINAR_DATETIME_TO", SEMINAR_DATETIME_TO));
-                command.Parameters.Add(new OracleParameter("SEMINAR_DAY", SEMINAR_DAY));
-                command.Parameters.Add(new OracleParameter("SEMINAR_MONTH", SEMINAR_MONTH));
-                command.Parameters.Add(new OracleParameter("SEMINAR_YEAR", SEMINAR_YEAR));
-                command.Parameters.Add(new OracleParameter("SEMINAR_BUDGET", SEMINAR_BUDGET));
-                command.Parameters.Add(new OracleParameter("SEMINAR_SUPPORT_BUDGET", SEMINAR_SUPPORT_BUDGET));
-                command.Parameters.Add(new OracleParameter("SEMINAR_CERTIFICATE", SEMINAR_CERTIFICATE));
-                command.Parameters.Add(new OracleParameter("SEMINAR_ABSTRACT", SEMINAR_ABSTRACT));
-                command.Parameters.Add(new OracleParameter("SEMINAR_RESULT", SEMINAR_RESULT));
-                command.Parameters.Add(new OracleParameter("SEMINAR_SHOW_1", SEMINAR_SHOW_1));
-                command.Parameters.Add(new OracleParameter("SEMINAR_SHOW_2", SEMINAR_SHOW_2));
-                command.Parameters.Add(new OracleParameter("SEMINAR_SHOW_3", SEMINAR_SHOW_3));
-                command.Parameters.Add(new OracleParameter("SEMINAR_SHOW_4", SEMINAR_SHOW_4));
-                command.Parameters.Add(new OracleParameter("SEMINAR_PROBLEM", SEMINAR_PROBLEM));
-                command.Parameters.Add(new OracleParameter("SEMINAR_COMMENT", SEMINAR_COMMENT));
-                command.Parameters.Add(new OracleParameter("SEMINAR_SIGNED_DATETIME", SEMINAR_SIGNED_DATETIME));
-                command.Parameters.Add(new OracleParameter("SEMINAR_ID", SEMINAR_ID));
-                if (command.ExecuteNonQuery() > 0)
-                {
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                command.Dispose();
-                conn.Close();
-            }
-            return result;
-        }
-        //get ไว้ก่อนยังไม่ได้ทำ
-        public bool DeleteSEMINAR()
-        {
-            bool result = false;
-            OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_SEMINAR where SEMINAR_ID = :SEMINAR_ID", conn);
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-                command.Parameters.Add(new OracleParameter("SEMINAR_ID", SEMINAR_ID));
-                if (command.ExecuteNonQuery() >= 0)
-                {
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                command.Dispose();
-                conn.Close();
-            }
-            return result;
         }
     }
 }
