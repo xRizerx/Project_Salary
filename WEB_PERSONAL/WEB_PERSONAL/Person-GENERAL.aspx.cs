@@ -320,7 +320,9 @@ namespace WEB_PERSONAL
         
         protected void txtBirthDayNumber_TextChanged(object sender, EventArgs e)
         {
+            
             txtBirthDayChar.Text = Util.ToThaiWord(txtBirthDayNumber.Text);
+
         }
 
         protected void txtAge60Number_TextChanged(object sender, EventArgs e)
