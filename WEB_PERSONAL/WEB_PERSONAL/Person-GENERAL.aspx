@@ -97,6 +97,7 @@
         <fieldset>
             <legend style="margin-left: auto; margin-right: auto; text-align: center;">เพิ่มข้อมูลบุคลากร</legend>
             <div>
+                 <asp:ScriptManager ID="ScriptManager1" runat="server" />
                <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
@@ -185,7 +186,7 @@
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="10" Width="425px" CssClass="tb5" OnTextChanged="txtBirthDayNumber_TextChanged"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMotherName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -204,7 +205,14 @@
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtBirthDayChar" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtBirthDayChar" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox>
+                                       </ContentTemplate>
+                                  
+                             </asp:UpdatePanel>
+                            </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMotherLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -261,7 +269,7 @@
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="10" Width="425px" CssClass="tb5" OnTextChanged="txtAge60Number_TextChanged"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMarriedLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -280,7 +288,13 @@
                          <td style="text-align: left; width: 30px;"> </td>
                        
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtAge60Char" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtAge60Char" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox>
+                                        </ContentTemplate>
+                                  
+                             </asp:UpdatePanel>
+                        </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMarriedLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -297,6 +311,19 @@
                             <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
                            </tr>               
                 </table>
+
+                <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                 <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanel2">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
 
             </div>
         </fieldset>

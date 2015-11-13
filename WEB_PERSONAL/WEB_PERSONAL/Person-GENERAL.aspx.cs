@@ -316,5 +316,16 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
           
         }
+
+        
+        protected void txtBirthDayNumber_TextChanged(object sender, EventArgs e)
+        {
+            txtBirthDayChar.Text = Util.ToThaiWord(txtBirthDayNumber.Text);
+        }
+
+        protected void txtAge60Number_TextChanged(object sender, EventArgs e)
+        {
+            txtAge60Char.Text = Util.ToThaiWord(txtAge60Number.Text);
+        }
     }
 }
