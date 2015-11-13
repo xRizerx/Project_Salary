@@ -56,6 +56,8 @@ namespace WEB_PERSONAL.CSS
                                         Session["login_system_status"] = reader.GetString(1);
                                         Session["login_name"] = reader.GetString(2);
                                         Session["login_lastname"] = reader.GetString(3);
+                                        Session["login_date_time"] = DateTime.Now;
+                                        Session["login_total_second"] = DropDownList1.SelectedValue;
                                         Response.Redirect("Default.aspx");
                                     }
                                     else

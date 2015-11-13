@@ -139,6 +139,7 @@ namespace WEB_PERSONAL
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            
         }
         protected void myGridViewPRETITLE_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

@@ -11,7 +11,10 @@ using System.Drawing;
 
 namespace WEB_PERSONAL {
     public partial class Leave : System.Web.UI.Page {
-        //pull from paper_id
+
+        protected void Page_Load(object sender, EventArgs e) {
+            
+        }
 
         private string toDate(String str) {
             string[] paper_date_s = str.Split('/');
@@ -91,7 +94,6 @@ namespace WEB_PERSONAL {
         protected void LinkButton15_Click(object sender, EventArgs e) {
             try {
                 using (OracleConnection con = Util.OC()) {
-                    con.Open();
                     {
                         string sql = "SELECT STF_NAME || ' ' || STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox8.Text + "'";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
@@ -152,7 +154,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void Button3_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'PAPER_DATE',tb_leave.CITIZEN_ID as 'CITIZEN_ID',a.stf_name + ' ' + a.STF_LNAME as 'STF_NAME',tb_leave_type.LEAVE_TYPE_NAME as 'LEAVE_TYPE_NAME',tb_leave.LEAVE_FROM_DATE as 'LEAVE_FROM_DATE',tb_leave.LEAVE_TO_DATE as 'LEAVE_TO_DATE',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'LEAVE_STATUS',TB_LEAVE.APPROVER_ID as 'APPROVER_ID',b.stf_name + ' ' + b.STF_LNAME as 'STF_NAME2',TB_LEAVE.APPROVE_DATE as 'APPROVE_DATE',TB_LEAVE.REASON as 'REASON' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 1 order by tb_leave.paper_id desc;");
+            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 1 order by tb_leave.paper_id desc");
         }
 
         private void pullSql(string sql) {
@@ -243,11 +245,11 @@ namespace WEB_PERSONAL {
         }
 
         protected void Button4_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 2 order by tb_leave.paper_id desc;");
+            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 2 order by tb_leave.paper_id desc");
         }
 
         protected void Button5_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 3 order by tb_leave.paper_id desc;");
+            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 3 order by tb_leave.paper_id desc");
         }
 
         protected void LinkButton7_Click(object sender, EventArgs e) {
@@ -273,7 +275,8 @@ namespace WEB_PERSONAL {
         }
 
         protected void DropDownList4_SelectedIndexChanged(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_type_id = " + DropDownList4.SelectedValue + " order by tb_leave.paper_id desc;");
+            if(DropDownList4.SelectedIndex != 0)
+                pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_type_id = " + DropDownList4.SelectedValue + " order by tb_leave.paper_id desc");
         }
 
         protected void Button1_Click2(object sender, EventArgs e) {
@@ -541,6 +544,15 @@ namespace WEB_PERSONAL {
             SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "select tb_work_check_in.id , to_char(tb_work_check_in.ddate,'dd mon yyyy','NLS_DATE_LANGUAGE=THAI') as \"ddate\", tb_work_check_in.citizen_id, tb_personal.stf_name || ' ' || tb_personal.stf_lname as \"name\", tb_work_check_in.hour_in || ':' || tb_work_check_in.minute_in as \"time_in\", tb_work_check_in.hour_out || ':' || tb_work_check_in.minute_out as \"time_out\" from tb_work_check_in, tb_personal where tb_work_check_in.citizen_id = tb_personal.citizen_id");
             GridView2.DataSource = sds;
             GridView2.DataBind();
+
+            //Util.Alert(this, GridView2.Rows[1].Cells[5].Controls.Count + "");
+            //GridView2.Rows[GridView2.Rows.Count-1].Cells[2].Text = "test";
+
+            //string s = "21/04/2537";
+            //Util.Alert(this,Util.ToThaiWord(s));
+            
+
+
         }
 
         protected void LinkButton1_Click1(object sender, EventArgs e) {
@@ -589,6 +601,32 @@ namespace WEB_PERSONAL {
             SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "select tb_work_check_in.id , to_char(tb_work_check_in.ddate,'dd mon yyyy','NLS_DATE_LANGUAGE=THAI') as \"ddate\", tb_work_check_in.citizen_id, tb_personal.stf_name || ' ' || tb_personal.stf_lname as \"name\", tb_work_check_in.hour_in || ':' || tb_work_check_in.minute_in as \"time_in\", tb_work_check_in.hour_out || ':' || tb_work_check_in.minute_out as \"time_out\" from tb_work_check_in, tb_personal where tb_work_check_in.citizen_id = tb_personal.citizen_id AND tb_work_check_in.hour_in*60 + tb_work_check_in.minute_in > 510");
             GridView3.DataSource = sds;
             GridView3.DataBind();
+        }
+
+        protected void DropDownList4_DataBound(object sender, EventArgs e) {
+            DropDownList4.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทการลา--", String.Empty));
+            DropDownList4.SelectedIndex = 0;
+        }
+
+        protected void DropDownList5_DataBound(object sender, EventArgs e) {
+            DropDownList5.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทการลา--", String.Empty));
+            DropDownList5.SelectedIndex = 0;
+        }
+
+        protected void DropDownList6_DataBound(object sender, EventArgs e) {
+            DropDownList6.Items.Insert(0, new ListItem("--กรุณาเลือกสถานะการลา--", String.Empty));
+            DropDownList6.SelectedIndex = 0;
+        }
+
+        protected void DropDownList1_DataBound(object sender, EventArgs e) {
+            DropDownList1.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทการลา--", String.Empty));
+            DropDownList1.SelectedIndex = 0;
+        }
+
+        protected void DropDownList2_DataBound(object sender, EventArgs e) {
+            DropDownList2.Items.Insert(0, new ListItem("--กรุณาเลือกสถานะการลา--", String.Empty));
+            DropDownList2.SelectedIndex = 0;
+            
         }
     }
 }
