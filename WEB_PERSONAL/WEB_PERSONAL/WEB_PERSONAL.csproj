@@ -193,6 +193,7 @@
     <Content Include="Font\THSarabun BoldItalic.ttf" />
     <Content Include="Font\THSarabun Italic.ttf" />
     <Content Include="Font\THSarabun.ttf" />
+    <Content Include="Person-GENERAL.aspx" />
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
     </Content>
@@ -279,6 +280,7 @@
       <DependentUpon>Department-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Personnel.cs" />
+    <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Seminar.cs" />
     <Compile Include="Entities\Manage.cs" />
     <Compile Include="Error-Member.aspx.cs">
@@ -392,6 +394,13 @@
     </Compile>
     <Compile Include="National-ADMIN.aspx.designer.cs">
       <DependentUpon>National-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Person-GENERAL.aspx.cs">
+      <DependentUpon>Person-GENERAL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person-GENERAL.aspx.designer.cs">
+      <DependentUpon>Person-GENERAL.aspx</DependentUpon>
     </Compile>
     <Compile Include="personalDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
