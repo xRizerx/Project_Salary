@@ -300,17 +300,8 @@ namespace WEB_PERSONAL
             P.COUPLE_NAME = txtMarriedName.Text;
             P.COUPLE_LASTNAME = txtMarriedLastName.Text;
             P.COUPLE_OLD_LASTNAME = txtMarriedLastNameOld.Text;
-            //P.NAME = txtName.Text;
-            //P.LASTNAME = txtLastName.Text;
-
-
-
-
-
-
-
-
-
+            P.PERSON_LASTNAME = txtLastName.Text;
+            P.PERSON_NAME = txtName.Text;
 
             string[] splitDate1 = txtBirthDayNumber.Text.Split('-');
             string[] splitDate2 = txtDateInWork.Text.Split('-');
