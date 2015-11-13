@@ -135,6 +135,7 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="CSS\jquery.mCustomScrollbar.css" />
     <Content Include="Default.aspx" />
     <Content Include="Department-ADMIN.aspx" />
     <Content Include="Entities\bnn.mp3" />
@@ -199,6 +200,7 @@
     <Content Include="Plugins\EPPlus.XML" />
     <Content Include="Position-ADMIN.aspx" />
     <Content Include="PositionWork-ADMIN.aspx" />
+    <Content Include="Script\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="StaffType-ADMIN.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TeachISCED-ADMIN.aspx" />

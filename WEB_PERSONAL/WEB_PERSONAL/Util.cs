@@ -58,6 +58,75 @@ namespace WEB_PERSONAL {
                     return "ธ.ค.";
             }
         }
+        public static string ToThaiWord(string s) {
+            string[] ss = s.Split('/');
+            string s_day = ss[0];
+            string s_month = ss[1];
+            string s_year = ss[2];
+            return "วันที่" + NormalizeThaiWord(NumberToThaiWord(s_day)) + "เดือน" + ToThaiMonth(s_month) + "ปี" + NormalizeThaiWord(NumberToThaiWord(s_year));
+        }
+        public static string ToThaiMonth(string s) {
+            int month = Int32.Parse(s.Trim());
+            switch(month) {
+                case 1: return "มกราคม";
+                case 2: return "กุมภาพันธ์";
+                case 3: return "มีนาคม";
+                case 4: return "เมษายน";
+                case 5: return "พฤษภาคม";
+                case 6: return "มิถุนายน";
+                case 7: return "กรกฎาคม";
+                case 8: return "สิงหาคม";
+                case 9: return "กันยายน";
+                case 10: return "ตุลาคม";
+                case 11: return "พฤศจิกายน";
+                case 12: return "ธันวาคม";
+                default: return "[ERROR]";
+            }
+        }
+        public static string NormalizeThaiWord(string s) {
+            s = s.Replace("หนึ่งสิบ","สิบ");
+            s = s.Replace("สองสิบ", "ยี่สิบ");
+            s = s.Replace("สิบหนึ่ง", "สิบเอ็ด");
+            return s;
+        }
+        public static string NumberToThaiWord(string s) {
+            string sout = "";
+            for (int i = 0; i < s.Length; ++i) {
+                sout += SingleNumberToThaiWord(s[i]) + ColumnNumberToThaiWord(s.Length-i-1);
+            }
+            return sout;
+        }
+        public static string SingleNumberToThaiWord(char c) {
+            switch(c) {
+                case '0': return "ศูนย์";
+                case '1': return "หนึ่ง";
+                case '2': return "สอง";
+                case '3': return "สาม";
+                case '4': return "สี่";
+                case '5': return "ห้า";
+                case '6': return "หก";
+                case '7': return "เจ็ด";
+                case '8': return "แปด";
+                case '9': return "เก้า";
+                default: return "[ERROR]";
+            }
+        }
+        public static string ColumnNumberToThaiWord(int column) {
+            if(column == 0) {
+                return "";
+            } else {
+                column = column % 6;
+            }
+            switch (column) {
+                case 0: return "ล้าน";
+                case 1: return "สิบ";
+                case 2: return "ร้อย";
+                case 3: return "พัน";
+                case 4: return "หมื่น";
+                case 5: return "แสน";
+                default: return "[ERROR]";
+            }
+        }
         public static OracleConnection OC() {
             OracleConnection con = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;");
             con.Open();
@@ -71,6 +140,6 @@ namespace WEB_PERSONAL {
             ScriptManager.RegisterStartupScript(page, page.GetType(), "ServerControlScript", script2, true);
         }
     }
-    
+
 
 }

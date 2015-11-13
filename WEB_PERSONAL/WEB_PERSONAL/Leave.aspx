@@ -69,11 +69,11 @@
     </script>
     <style type="text/css">
         .wrapper {
-            /*width: unset;*/
+            /*width: auto;
+            background-color: #f0f0f0;*/
         }
 
         .mp {
-            padding: 20px 0;
             padding: 20px;
         }
 
@@ -125,8 +125,7 @@
         }
 
         .div_sec {
-            margin: 50px 0;
-            margin-top: 0;
+            margin: 50px auto;
             box-shadow: #808080 0px 5px 5px;
         }
 
@@ -371,9 +370,6 @@
                 </asp:GridView>
             </div>
         </div>
-
-
-
 
         <div class="div_sec" id="sec2">
             <div class="div_sec_header">

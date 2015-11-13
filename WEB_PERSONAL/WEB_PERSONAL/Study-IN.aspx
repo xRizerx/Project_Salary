@@ -26,7 +26,6 @@
         }
         .div_sec {
             margin: 50px 0;
-            margin-top: 0;
             box-shadow: #808080 0px 5px 5px;
         }
         .div_sec_header {

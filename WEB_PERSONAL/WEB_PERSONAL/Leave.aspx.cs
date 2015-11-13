@@ -546,6 +546,12 @@ namespace WEB_PERSONAL {
             GridView2.DataBind();
 
             //Util.Alert(this, GridView2.Rows[1].Cells[5].Controls.Count + "");
+            //GridView2.Rows[GridView2.Rows.Count-1].Cells[2].Text = "test";
+
+            //string s = "21/04/2537";
+            //Util.Alert(this,Util.ToThaiWord(s));
+            
+
 
         }
 
@@ -620,6 +626,7 @@ namespace WEB_PERSONAL {
         protected void DropDownList2_DataBound(object sender, EventArgs e) {
             DropDownList2.Items.Insert(0, new ListItem("--กรุณาเลือกสถานะการลา--", String.Empty));
             DropDownList2.SelectedIndex = 0;
+            
         }
     }
 }
