@@ -59,7 +59,7 @@ namespace WEB_PERSONAL {
             }
         }
         public static string ToThaiWord(string s) {
-            string[] ss = s.Split('/');
+            string[] ss = s.Split('-');
             string s_day = ss[0];
             string s_month = ss[1];
             string s_year = ss[2];

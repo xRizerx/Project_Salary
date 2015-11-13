@@ -12,8 +12,8 @@ namespace WEB_PERSONAL.Entities
     {
 
         public int MINISTRY_ID { get; set; }
-        public string DEPARTMENT_ID { get; set; }
-        public int TITLE_ID { get; set; }
+        public string DEPARTMENT_NAME { get; set; }
+        public string TITLE_ID { get; set; }
         public string CITIZEN_ID { get; set; }
         public string NAME { get; set; }
         public string LASTNAME { get; set; }
@@ -34,10 +34,10 @@ namespace WEB_PERSONAL.Entities
 
 
         public ClassPerson() { }
-        public ClassPerson(int MINISTRY_ID, string DEPARTMENT_ID, int TITLE_ID, string CITIZEN_ID, string NAME, string LASTNAME, string FATHER_NAME, string FATHER_LASTNAME, string MOTHER_NAME, string MOTHER_LASTNAME, string MOTHER_OLD_LASTNAME, string COUPLE_NAME, string COUPLE_LASTNAME, string COUPLE_OLD_LASTNAME, DateTime BIRTHDATE, string BIRTHDATE_LONG, DateTime INWORK_DATE, int STAFFTYPE_ID, DateTime RETIRE_DATE, string RETIRE_DATE_LONG)
+        public ClassPerson(int MINISTRY_ID, string DEPARTMENT_NAME, string TITLE_ID, string CITIZEN_ID, string NAME, string LASTNAME, string FATHER_NAME, string FATHER_LASTNAME, string MOTHER_NAME, string MOTHER_LASTNAME, string MOTHER_OLD_LASTNAME, string COUPLE_NAME, string COUPLE_LASTNAME, string COUPLE_OLD_LASTNAME, DateTime BIRTHDATE, string BIRTHDATE_LONG, DateTime INWORK_DATE, int STAFFTYPE_ID, DateTime RETIRE_DATE, string RETIRE_DATE_LONG)
         {
             this.MINISTRY_ID = MINISTRY_ID;
-            this.DEPARTMENT_ID = DEPARTMENT_ID;
+            this.DEPARTMENT_NAME = DEPARTMENT_NAME;
             this.TITLE_ID = TITLE_ID;
             this.CITIZEN_ID = CITIZEN_ID;
             this.NAME = NAME;
@@ -62,7 +62,7 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_PERSON (MINISTRY_ID, DEPARTMENT_ID, TITLE_ID, CITIZEN_ID, NAME, LASTNAME, FATHER_NAME, FATHER_LASTNAME, MOTHER_NAME, MOTHER_LASTNAME, MOTHER_OLD_LASTNAME, COUPLE_NAME, COUPLE_LASTNAME, COUPLE_OLD_LASTNAME, BIRTHDATE, BIRTHDATE_LONG, INWORK_DATE, STAFFTYPE_ID, RETIRE_DATE, RETIRE_DATE_LONG) VALUES (:MINISTRY_ID, :DEPARTMENT_ID, :TITLE_ID, :CITIZEN_ID, :NAME, :LASTNAME, :FATHER_NAME, :FATHER_LASTNAME, :MOTHER_NAME, :MOTHER_LASTNAME, :MOTHER_OLD_LASTNAME, :COUPLE_NAME, :COUPLE_LASTNAME, :COUPLE_OLD_LASTNAME, :BIRTHDATE, :BIRTHDATE_LONG, :INWORK_DATE, :STAFFTYPE_ID, :RETIRE_DATE, :RETIRE_DATE_LONG)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_PERSON (CITIZEN_ID,BIRTHDATE,INWORK_DATE,RETIRE_DATE,DEPARTMENT_NAME,MINISTRY_ID,TITLE_ID,BIRTHDATE_LONG,RETIRE_DATE_LONG,STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME) VALUES (:CITIZEN_ID,:BIRTHDATE,:INWORK_DATE,:RETIRE_DATE,:DEPARTMENT_NAME,:MINISTRY_ID,:TITLE_ID,:BIRTHDATE_LONG,:RETIRE_DATE_LONG,:STAFFTYPE_ID,:FATHER_NAME,:FATHER_LASTNAME,:MOTHER_NAME,:MOTHER_LASTNAME,:MOTHER_OLD_LASTNAME,:COUPLE_NAME,:COUPLE_LASTNAME,:COUPLE_OLD_LASTNAME)", conn);
 
             try
             {
@@ -70,26 +70,33 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("MINISTRY_ID", MINISTRY_ID));
-                command.Parameters.Add(new OracleParameter("DEPARTMENT_ID", DEPARTMENT_ID));
-                command.Parameters.Add(new OracleParameter("TITLE_ID", TITLE_ID));
                 command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
-                command.Parameters.Add(new OracleParameter("NAME;", NAME));
-                command.Parameters.Add(new OracleParameter("LASTNAME", LASTNAME));
+                command.Parameters.Add(new OracleParameter("BIRTHDATE", BIRTHDATE));
+                command.Parameters.Add(new OracleParameter("INWORK_DATE", INWORK_DATE));
+                command.Parameters.Add(new OracleParameter("RETIRE_DATE", RETIRE_DATE));
+                command.Parameters.Add(new OracleParameter("DEPARTMENT_NAME", DEPARTMENT_NAME));
+                command.Parameters.Add(new OracleParameter("MINISTRY_ID", MINISTRY_ID));
+                command.Parameters.Add(new OracleParameter("TITLE_ID", TITLE_ID));
+                command.Parameters.Add(new OracleParameter("BIRTHDATE_LONG", BIRTHDATE_LONG));
+                command.Parameters.Add(new OracleParameter("RETIRE_DATE_LONG", RETIRE_DATE_LONG));
+                command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
                 command.Parameters.Add(new OracleParameter("FATHER_NAME", FATHER_NAME));
                 command.Parameters.Add(new OracleParameter("FATHER_LASTNAME", FATHER_LASTNAME));
+
                 command.Parameters.Add(new OracleParameter("MOTHER_NAME", MOTHER_NAME));
                 command.Parameters.Add(new OracleParameter("MOTHER_LASTNAME", MOTHER_LASTNAME));
                 command.Parameters.Add(new OracleParameter("MOTHER_OLD_LASTNAME", MOTHER_OLD_LASTNAME));
                 command.Parameters.Add(new OracleParameter("COUPLE_NAME", COUPLE_NAME));
                 command.Parameters.Add(new OracleParameter("COUPLE_LASTNAME", COUPLE_LASTNAME));
                 command.Parameters.Add(new OracleParameter("COUPLE_OLD_LASTNAME", COUPLE_OLD_LASTNAME));
-                command.Parameters.Add(new OracleParameter("BIRTHDATE", BIRTHDATE));
-                command.Parameters.Add(new OracleParameter("BIRTHDATE_LONG", BIRTHDATE_LONG));
-                command.Parameters.Add(new OracleParameter("INWORK_DATE", INWORK_DATE));
-                command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
-                command.Parameters.Add(new OracleParameter("RETIRE_DATE", RETIRE_DATE));
-                command.Parameters.Add(new OracleParameter("RETIRE_DATE_LONG", RETIRE_DATE_LONG));
+                //command.Parameters.Add(new OracleParameter("NAME;", NAME));
+                //command.Parameters.Add(new OracleParameter("LASTNAME", LASTNAME));
+
+
+
+
+
+
 
                 id = command.ExecuteNonQuery();
             }

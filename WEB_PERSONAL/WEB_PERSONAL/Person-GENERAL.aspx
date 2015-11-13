@@ -97,7 +97,6 @@
         <fieldset>
             <legend style="margin-left: auto; margin-right: auto; text-align: center;">เพิ่มข้อมูลบุคลากร</legend>
             <div>
-                 <asp:ScriptManager ID="ScriptManager1" runat="server" />
                <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
@@ -112,7 +111,8 @@
                             <asp:DropDownList ID="DropDownMinistry" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownDepart" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
+                            <asp:TextBox ID="txtDepart" runat="server" MaxLength="13" Width="425px" CssClass="tb5">มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก</asp:TextBox>
+                            <!--<asp:DropDownList ID="DropDownDepart" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>-->
                      </tr>
                </table>
 

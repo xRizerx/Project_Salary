@@ -144,7 +144,8 @@ namespace WEB_PERSONAL
         protected void ClearData()
         {
             DropDownMinistry.SelectedIndex = 0;
-            DropDownDepart.SelectedIndex = 0;
+            txtDepart.Text = "มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก";
+            //DropDownDepart.SelectedIndex = 0;
             DropDownTitle.SelectedIndex = 0;
             txtCitizen.Text = "";
             txtName.Text = "";
@@ -173,16 +174,16 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-            if (DropDownMinistry.SelectedIndex == 0)
+         /*   if (DropDownMinistry.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กระทรวง')", true);
                 return;
             }
-            /*  if (DropDownDepart.SelectedIndex == 0)
-              {
-                  ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กรม')", true);
-                  return;
-             }*/
+            //  if (DropDownDepart.SelectedIndex == 0)
+            //  {
+            //      ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กรม')", true);
+            //      return;
+            //  }
             if (DropDownTitle.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก คำนำหน้านาม')", true);
@@ -277,16 +278,20 @@ namespace WEB_PERSONAL
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันครบเกษียณอายุ (ตัวบรรจง เต็มบรรทัด)')", true);
                 return;
-            }
+            }*/
 
 
-            ClassPerson P = new ClassPerson(); 
-            P.MINISTRY_ID = Convert.ToInt32(DropDownMinistry.SelectedValue);
-            P.DEPARTMENT_ID = Convert.ToString(DropDownDepart.SelectedValue.ToString());
-            P.TITLE_ID = Convert.ToInt32(DropDownTitle.SelectedValue);
+            ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
-            P.NAME = txtName.Text;
-            P.LASTNAME = txtLastName.Text;
+            P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
+            P.INWORK_DATE = DateTime.Parse(txtDateInWork.Text);
+            P.RETIRE_DATE = DateTime.Parse(txtAge60Number.Text);
+            P.DEPARTMENT_NAME = txtDepart.Text;
+            P.MINISTRY_ID = Convert.ToInt32(DropDownMinistry.SelectedValue);
+            P.TITLE_ID = DropDownTitle.SelectedValue;
+            P.BIRTHDATE_LONG = txtBirthDayChar.Text;
+            P.RETIRE_DATE_LONG = txtAge60Char.Text;
+            P.STAFFTYPE_ID = Convert.ToInt32(DropDownStaffType.SelectedValue);
             P.FATHER_NAME = txtFatherName.Text;
             P.FATHER_LASTNAME = txtFatherLastName.Text;
             P.MOTHER_NAME = txtMotherName.Text;
@@ -295,12 +300,16 @@ namespace WEB_PERSONAL
             P.COUPLE_NAME = txtMarriedName.Text;
             P.COUPLE_LASTNAME = txtMarriedLastName.Text;
             P.COUPLE_OLD_LASTNAME = txtMarriedLastNameOld.Text;
-            P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
-            P.BIRTHDATE_LONG = txtBirthDayChar.Text;
-            P.INWORK_DATE = DateTime.Parse(txtDateInWork.Text);
-            P.STAFFTYPE_ID = Convert.ToInt32(DropDownStaffType.SelectedValue);
-            P.RETIRE_DATE = DateTime.Parse(txtAge60Number.Text);
-            P.RETIRE_DATE_LONG = txtAge60Char.Text;
+            //P.NAME = txtName.Text;
+            //P.LASTNAME = txtLastName.Text;
+
+
+
+
+
+
+
+
 
 
             string[] splitDate1 = txtBirthDayNumber.Text.Split('-');
