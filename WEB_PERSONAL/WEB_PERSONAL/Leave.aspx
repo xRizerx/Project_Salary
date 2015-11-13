@@ -69,12 +69,14 @@
     </script>
     <style type="text/css">
         .wrapper {
-            /*width: unset;*/
+            /*width: auto;
+            background-color: #f0f0f0;*/
         }
+
         .mp {
-            padding: 20px 0;
             padding: 20px;
         }
+
         .c1 {
             font-family: ths;
             font-size: 32px;
@@ -111,10 +113,10 @@
             border-radius: 24px;
         }
 
-        .leave_paper_pull:hover {
-            color: #000000;
-            background-color: #c0c0c0;
-        }
+            .leave_paper_pull:hover {
+                color: #000000;
+                background-color: #c0c0c0;
+            }
 
         .leave_grid_view {
             margin: 0 auto;
@@ -123,27 +125,31 @@
         }
 
         .div_sec {
-            margin: 50px 0;
-            margin-top: 0;
+            margin: 50px auto;
             box-shadow: #808080 0px 5px 5px;
         }
+
         .div_sec_header {
             background-color: rgba(128,128,128,0.8);
             padding: 20px 25px;
             font-weight: bold;
         }
+
         .div_sec_header span {
             color: #FFFFFF;
             text-shadow: 1px 1px 1px #000000;
         }
+
         .div_sec_in {
             background-color: rgba(128,128,128,0.6);
-            padding: 20px 0px;
+            padding: 20px 20px;
         }
+
         .div_sec_in span {
             color: #FFFFFF;
             text-shadow: 1px 1px 1px #000000;
         }
+
         #sec1 {
             background-image: url("Image/time_check_in.jpg");
             background-size: cover;
@@ -191,7 +197,7 @@
             margin: 20px 0;
             border-bottom: 1px solid #808080;
         }
-        
+
 
         .auto-style58 {
             width: 180px;
@@ -236,14 +242,17 @@
             text-align: right;
             height: 28px;
         }
+
         .auto-style83 {
             width: 50px;
             text-align: right;
         }
+
         .auto-style92 {
             width: 79px;
             text-align: right;
         }
+
         .auto-style93 {
             width: 77px;
             text-align: right;
@@ -256,7 +265,7 @@
 
         </div>
         <br />
-        
+
         <div class="div_sec" id="sec1">
             <div class="div_sec_header">
                 <asp:Label ID="Label36" runat="server" Text="เพิ่มเวลาเข้างาน"></asp:Label>
@@ -317,8 +326,13 @@
                         <td class="auto-style67">&nbsp;</td>
                     </tr>
                 </table>
+
+            </div>
+            <div class="div_sec_header">
                 <asp:Label ID="Label37" runat="server" Text="รายชื่อการเข้างาน" Font-Bold="True"></asp:Label>
-                <br />
+                
+            </div>
+            <div class="div_sec_in">
                 <asp:LinkButton ID="LinkButton21" runat="server" CssClass="master_default_button" OnClick="LinkButton21_Click">ดูรายชื่อการเข้างาน</asp:LinkButton>
                 <asp:GridView ID="GridView2" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
@@ -333,8 +347,13 @@
                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
+
+            </div>
+            <div class="div_sec_header">
                 <asp:Label ID="Label38" runat="server" Text="รายชื่อการมาสาย" Font-Bold="True"></asp:Label>
-                <br />
+                
+            </div>
+            <div class="div_sec_in">
                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_default_button" OnClick="LinkButton1_Click1">ดูรายชื่อการลา</asp:LinkButton>
                 <asp:GridView ID="GridView3" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
@@ -352,7 +371,6 @@
             </div>
         </div>
 
-        
         <div class="div_sec" id="sec2">
             <div class="div_sec_header">
                 <asp:Label ID="Label22" runat="server" Text="เพิ่มเอกสารการลา" Font-Bold="True"></asp:Label>
@@ -382,7 +400,7 @@
                             <asp:Label ID="Label25" runat="server" Text="ประเภทการลา"></asp:Label>
                         </td>
                         <td class="auto-style64">
-                            <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" CssClass="master_default_dropdown">
+                            <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" CssClass="master_default_dropdown" OnDataBound="DropDownList5_DataBound">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -391,7 +409,7 @@
                             <asp:Label ID="Label26" runat="server" Text="สถานะการลา"></asp:Label>
                         </td>
                         <td class="auto-style67">
-                            <asp:DropDownList ID="DropDownList6" runat="server" DataSourceID="SqlDataSource1" DataTextField="LEAVE_STATUS_NAME" DataValueField="LEAVE_STATUS_ID" CssClass="master_default_dropdown">
+                            <asp:DropDownList ID="DropDownList6" runat="server" DataSourceID="SqlDataSource1" DataTextField="LEAVE_STATUS_NAME" DataValueField="LEAVE_STATUS_ID" CssClass="master_default_dropdown" OnDataBound="DropDownList6_DataBound">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -520,7 +538,7 @@
                             <asp:Label ID="Label10" runat="server" Text="ประเภทการลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
-                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" CssClass="master_default_dropdown">
+                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" CssClass="master_default_dropdown" OnDataBound="DropDownList1_DataBound">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -529,7 +547,7 @@
                             <asp:Label ID="Label13" runat="server" Text="สถานะการลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
-                            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource1" DataTextField="LEAVE_STATUS_NAME" DataValueField="LEAVE_STATUS_ID" CssClass="master_default_dropdown">
+                            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource1" DataTextField="LEAVE_STATUS_NAME" DataValueField="LEAVE_STATUS_ID" CssClass="master_default_dropdown" OnDataBound="DropDownList2_DataBound">
                             </asp:DropDownList>
                         </td>
                     </tr>
@@ -601,7 +619,7 @@
                             <asp:Label ID="Label18" runat="server" Text="ค้นหาตามประเภท"></asp:Label>
                         </td>
                         <td>
-                            <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged" CssClass="master_default_dropdown"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="LEAVE_TYPE_NAME" DataValueField="LEAVE_TYPE_ID" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged" CssClass="master_default_dropdown" OnDataBound="DropDownList4_DataBound"></asp:DropDownList>
                         </td>
                     </tr>
                 </table>

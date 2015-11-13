@@ -49,8 +49,11 @@ form {
     height: 32px;
     position: fixed;
     width: 100%;
+    background-color: rgba(255,255,255,0.5);
+    
+    
     z-index: 999;
-    /*border-bottom: 1px solid #f0f0f0;*/
+    border-bottom: 1px solid #00a2e8;
     
     /*background-image: url("../Image/ef333.jpg");
     background-position: center;*/
@@ -58,13 +61,20 @@ form {
     /*background-attachment: fixed;*/
     /*background-size: 100% auto;*/
 }
+.master_login_pre_in {
+    width: 1024px;
+    margin: 0 auto;
+}
 .master_login_in {
-    background-color: rgba(255,255,255,0.9);
+    
     height: 32px;
 }
 
 .master_login_left {
     float: left;
+    height: 32px;
+    line-height: 32px;
+    margin-left: 20px;
 }
 .master_login_right {
     float: right;
@@ -89,14 +99,16 @@ form {
     margin-top: 5px;
     width: 60px;
     color: #000000;
+     color: #FFFFFF;
     background-color: #e0e0e0;
+    background-color: #00a2e8;
+    
     border-radius: 24px;
-    transition: color 0.25s ease, background-color 0.25s ease;
+    transition: background-color 0.25s ease;
 }
 
 .master_login a:hover {
-    color: #ffffff;
-    background-color: #404040;
+    background-color: #65c1e9;
 }
 .master_login button {
     text-decoration: none;
@@ -121,38 +133,58 @@ form {
 }
 
 .master_header {
-    background-image: url("../Image/bg5.jpg");
+    /*background-image: url("../Image/bg5.jpg");*/
     background-position: center;
     /*background-position-y: 750px;*/
     /*background-attachment: fixed;*/
     background-size: 100% auto;
-    
-    background-color: #000000;
-    background-color: #202020;
-    text-align: center;
-    padding: 20px 0px;
-    padding-top: 64px;
+    background-color: #FFFFFF;
+    text-align: left;
+    /*padding: 20px 0px;*/
+    /*padding-top: 40px;*/
+    /*height: 170px;*/
 }
-
+.master_header_pre_in {
+    /*background-color: rgba(128,128,128,0.5);*/
+    padding: 20px;
+    padding-top: 40px;
+    height: 170px;
+    height: 80px;
+    width: 1024px;
+    margin: 0 auto;
+    text-align: left;
+}
+.master_header_in {
+    margin: 0 20px;
+    
+}
 
 
 .master_header_label {
-    font-size: 40px;
-    color: #ffffff;
-    text-shadow: 0px 0px 8px #404040;
+    font-size: 24px;
+    color: #000000;
 }
 .master_header_label2 {
-    font-size: 24px;
-    color: #ffffff;
-    text-shadow: 0px 0px 8px #000000;
+    font-size: 16px;
+    color: #00a2e8;
 }
-
+.master_header_label3 {
+    font-size: 16px;
+    color: #808080;
+}
+.master_header_label4 {
+    font-size: 24px;
+    color: #FF0000;
+}
 .master_nav {
     background-color: #000000;
     margin: 0;
     text-align: center;
-
     background-color: #e0e0e0;
+    background-color: #00caff;
+    background-color: #FFFFFF;
+    background-color: #00a2e8;
+    /*border-bottom: 1px solid #00a2e8;*/
 }
 
 .master_nav ul {
@@ -171,17 +203,15 @@ form {
     padding: 3px 20px;
     margin: 0 1px;
 
-    border-radius: 24px;
-
-    color: #000000;
-    background-color: #e0e0e0;
-    transition: color 0.25s ease, background-color 0.25s ease;
+    color: #FFFFFF;
+    background-color: #00a2e8;
+    
+    transition: background-color 0.25s ease;
 }
 
 
 .master_nav a:hover {
-    color: #ffffff;
-    background-color: #404040;
+    background-color: #65c1e9;
 }
 
 
@@ -265,12 +295,11 @@ form {
 .master_nav ul ul li .nav_a {
     margin-top: -1px;
 	padding: 3px 20px;
-	color: #000000;
-    background-color: #e0e0e0;
+	color: #FFFFFF;
+    background-color: #00a2e8;
 }	
 .master_nav ul ul li .nav_a:hover {
-    color: #ffffff;
-    background: #404040;
+    background-color: #65c1e9;
 
 }
 .master_nav ul ul ul {
@@ -287,24 +316,26 @@ form {
     /*background: linear-gradient(#ffaf22, #ffc051);*/
     background-color: #202020;
     background-color: #e0e0e0;
+    /*background-color: #FFFFFF;*/
     text-align: center;
     /*box-shadow: 0px 0px 16px #c0c0c0;*/
     /*box-shadow: 0px 0px 8px #000000;*/
-    padding: 10px 20px;
+    padding: 20px 20px;
     /*background-image: url("../Image/bg4.jpg");
     background-position: center;
     background-attachment: fixed;*/
     /*background-size: 100% auto;*/
+    /*border-top: 1px solid #00a2e8;*/
 
     
 }
 .master_footer_label {
     font-size: 18px;
-    color: #404040;
+    color: #000000;
 }
 .master_footer_label2 {
     font-size: 14px;
-    color: #808080;
+    color: #404040;
 }
 .master_footer_label3 {
     font-size: 14px;
@@ -320,7 +351,7 @@ form {
     padding: 3px 30px;
     border-radius: 24px;*/
     font-size: 14px;
-    color: #808080;
+    color: #FF0000;
     padding-bottom: 15px;
 }
 .master_footer_separate {
@@ -328,8 +359,9 @@ form {
     width: 1024px;
     height: 0px;
     /*background-color: #c0c0c0;*/
-    border-top: 1px solid #c0c0c0;
-    border-bottom: 1px solid #f0f0f0;
+    /*border-top: 1px solid #00a2e8;
+    border-bottom: 1px solid #65c1e9;*/
+    border-bottom: 1px solid #808080;
 }
 
 
@@ -386,7 +418,7 @@ form {
 
 .master_default_button:hover {
     color: #ffffff;
-    background-color: #404040;
+    background-color: #00a2e8;
 }
 .master_default_textbox {
     border: 1px solid #C8C8C8;
@@ -406,6 +438,13 @@ form {
     background-color: #FFFFFF;
     padding: 2px 5px;
     border-radius: 12px;
+    transition: border ease 0.5s;
+}
+.master_default_textbox_multi_line:hover {
+    border: 1px solid rgb(0,162,232);
+}
+.master_default_textbox_multi_line:focus {
+    border: 1px solid rgb(0,162,232);
 }
 .master_default_dropdown {
     border: 1px solid #C8C8C8;

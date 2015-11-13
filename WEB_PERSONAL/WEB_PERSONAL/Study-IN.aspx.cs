@@ -167,5 +167,20 @@ namespace WEB_PERSONAL {
             //   ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             //}
         }
+
+        protected void DropDownList1_DataBound(object sender, EventArgs e) {
+            DropDownList1.Items.Insert(0, new ListItem("--กรุณาเลือกระดับการศึกษา--", String.Empty));
+            DropDownList1.SelectedIndex = 0;
+        }
+
+        protected void DropDownList2_DataBound(object sender, EventArgs e) {
+            DropDownList2.Items.Insert(0, new ListItem("--กรุณาเลือกสาขา--", String.Empty));
+            DropDownList2.SelectedIndex = 0;
+        }
+
+        protected void DropDownList3_DataBound(object sender, EventArgs e) {
+            DropDownList3.Items.Insert(0, new ListItem("--กรุณาเลือกหลักสูตร--", String.Empty));
+            DropDownList3.SelectedIndex = 0;
+        }
     }
 }
