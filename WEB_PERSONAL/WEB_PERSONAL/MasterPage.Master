@@ -19,6 +19,16 @@
     <script src="Script/JSFunction.js"></script>
     <script src="Script/Master.js"></script>
     <script src="Script/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            /*$(".master_nav").mouseover(function () {
+                $(".master_header").css("background-color", "#00a2e8");
+            });
+            $(".master_nav").mouseout(function () {
+                $(".master_header").css("background-color", "white");
+            });*/
+        });
+    </script>
 
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 
@@ -50,9 +60,7 @@
             <div class="master_login_pre_in">
                 <div class="master_login_in">
                     <ul class="master_login_left">
-                        <li>
-                            
-                        </li>
+                        <li></li>
                     </ul>
 
                     <ul class="master_login_right">
@@ -72,25 +80,28 @@
         </div>
 
         <div class="master_header">
-            <div class="master_header_pre_in">
-                <div class="master_header_in">
-                    <table style="width: 100%;">
-                        <tr>
-                            <td class="mt1">
-                                <img src="Image/RMUTTO.png" style="height: 80px;" />
-                            </td>
-                            <td class="mt2">
-                                <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
-                                <asp:Label ID="LabelX1" runat="server" CssClass="master_header_label4" Text="(เวอร์ชั่น ทดสอบ)"></asp:Label>
-                                <br />
-                                <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก" CssClass="master_header_label2"></asp:Label>
-                                <br />
-                                <asp:Label ID="Label4" runat="server" Text="วิทยาเขตบางพระ" CssClass="master_header_label3"></asp:Label>
-                            </td>
-                        </tr>
-                    </table>
+            <div class="master_header_over">
+                <div class="master_header_pre_in">
+                    <div class="master_header_in">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td class="mt1">
+                                    <img src="Image/RMUTTO.png" style="height: 80px;" />
+                                </td>
+                                <td class="mt2">
+                                    <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
+                                    <asp:Label ID="LabelX1" runat="server" CssClass="master_header_label4" Text="(เวอร์ชั่น ทดสอบ)"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก" CssClass="master_header_label2"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="Label4" runat="server" Text="วิทยาเขตบางพระ" CssClass="master_header_label3"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
+
 
         </div>
 
@@ -151,26 +162,15 @@
         <footer>
 
             <div class="master_footer">
-
-
                 <div>
-                    <div>
-                        <table style="width: 100%;">
-                            <tr>
-                                <td>
-                                    <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="ออกแบบระบบโดยนักศึกษาสหกิจศึกษา ปีการศึกษา 2558"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style2">
-                                    <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ สาขาวิทยาการคอมพิวเตอร์<br>มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตจักรพงษภูวนารถ"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
+                    <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="กองบริหารงานบุคคล สำนักงาน... มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="43  หมู่ 6   ตำบลบางพระ  อำเภอศรีราชา  จังหวัดชลบุรี  20110"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label6" runat="server" CssClass="master_footer_label2" Text="โทรศัพท์ 0-3835-8137,0-3835-8201 โทรสาร 0-3834-1808-9"></asp:Label>
+                    <br />
+                    <asp:Label ID="Label8" runat="server" CssClass="master_footer_label2" Text="เว็บไซต์   www.rmutto.ac.th"></asp:Label>
                 </div>
-
             </div>
 
         </footer>

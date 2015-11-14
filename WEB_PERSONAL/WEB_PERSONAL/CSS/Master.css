@@ -1,4 +1,8 @@
 ﻿/*1*/
+@font-face {
+    font-family: 'bangna-new';
+    src: url('../Font/bangna-new.ttf') format('truetype');
+}
 * {
     margin: 0;
 }
@@ -11,7 +15,7 @@ body {
     /*background-image: url("../Image/bg3.jpg");*/
     background-attachment: fixed;
     /*background-color: #d6ff81;*/
-
+    font-family: bangna-new;
     
     /*background-size: 100% auto;*/
 
@@ -94,15 +98,12 @@ form {
 .master_login a {
     text-decoration: none;
     display: inline;
-    padding: 3px 20px;
+    padding: 0px 20px;
     margin: 0 20px;
     margin-top: 5px;
     width: 60px;
-    color: #000000;
-     color: #FFFFFF;
-    background-color: #e0e0e0;
+    color: #FFFFFF;
     background-color: #00a2e8;
-    
     border-radius: 24px;
     transition: background-color 0.25s ease;
 }
@@ -133,35 +134,35 @@ form {
 }
 
 .master_header {
-    /*background-image: url("../Image/bg5.jpg");*/
+    background-image: url("../Image/bg5.jpg");
     background-position: center;
     /*background-position-y: 750px;*/
     /*background-attachment: fixed;*/
     background-size: 100% auto;
-    background-color: #FFFFFF;
     text-align: left;
     /*padding: 20px 0px;*/
     /*padding-top: 40px;*/
     /*height: 170px;*/
+    transition: background-color ease 0.25s;
+}
+.master_header_over {
+    background-color: rgba(255,255,255,0.9);
+    
 }
 .master_header_pre_in {
-    /*background-color: rgba(128,128,128,0.5);*/
     padding: 20px;
     padding-top: 40px;
-    height: 170px;
-    height: 80px;
+    height: 90px;
     width: 1024px;
     margin: 0 auto;
     text-align: left;
 }
 .master_header_in {
     margin: 0 20px;
-    
 }
-
-
 .master_header_label {
     font-size: 24px;
+    font-weight: bold;
     color: #000000;
 }
 .master_header_label2 {
@@ -179,6 +180,8 @@ form {
 .master_nav {
     background-color: #000000;
     margin: 0;
+    line-height: 24px;
+    padding-top:6px;
     text-align: center;
     background-color: #e0e0e0;
     background-color: #00caff;
@@ -243,6 +246,7 @@ form {
 /*-START-A--------------------------------*/
 .master_nav ul ul {
     display: none;
+    margin-top: 6px;
 }
 
 .master_nav ul li:hover > ul {
@@ -250,7 +254,7 @@ form {
 }
 .master_nav ul {
 
-	padding: 3px 20px;
+	padding: 0px 20px;
 
 	list-style: none;
 	position: relative;
@@ -271,7 +275,7 @@ form {
 
 .master_nav ul li .nav_a {
 	display: block;
-    padding: 1px 20px;
+    padding: 0px 20px;
 	color: #000000;
     text-decoration: none;
 }
@@ -316,6 +320,7 @@ form {
     /*background: linear-gradient(#ffaf22, #ffc051);*/
     background-color: #202020;
     background-color: #e0e0e0;
+    background-color: #00a2e8;
     /*background-color: #FFFFFF;*/
     text-align: center;
     /*box-shadow: 0px 0px 16px #c0c0c0;*/
@@ -326,16 +331,20 @@ form {
     background-attachment: fixed;*/
     /*background-size: 100% auto;*/
     /*border-top: 1px solid #00a2e8;*/
-
+    
     
 }
 .master_footer_label {
     font-size: 18px;
+    font-weight: bold;
     color: #000000;
+    color: #FFFFFF;
 }
+
 .master_footer_label2 {
     font-size: 14px;
     color: #404040;
+    color: #F0F0F0;
 }
 .master_footer_label3 {
     font-size: 14px;
@@ -399,14 +408,14 @@ form {
 
 
 .footer, .push {
-    height: 120px; /* .push must be the same height as .footer */
+    /*height: 100px; /* .push must be the same height as .footer */
 }
 
 .master_default_button {
     text-decoration: none;
     display: inline;
-    padding: 2px 20px;
-    margin: 0 0px;
+    padding: 0px 20px;
+    margin: 0px 0px;
     /*margin-top: 5px;*/
     /*width: 60px;*/
     border: none;
@@ -458,7 +467,7 @@ form {
     border:1px solid #d1c7ac;
     text-shadow: 0px 0px 0px #000000;
     width: 60px;
-    color: #ffc300;
+    color: #FFFFFF;
     padding:3px;
     margin-right:4px;
     margin-bottom:8px;
@@ -467,7 +476,8 @@ form {
     transition: color 0.5s ease, background-color 0.5s ease, text-shadow 0.5s ease;
 }
 .master_OAT_button:hover {
-    color: rgb(0, 68, 255);
+    /*color: rgb(0, 68, 255);
     background-color: #2edce8;
-    text-shadow: 1px 1px 16px #ffffff;
+    text-shadow: 1px 1px 16px #ffffff;*/
+    background-color: #65c1e9;
 }

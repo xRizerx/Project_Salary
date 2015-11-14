@@ -9,7 +9,7 @@ using System.Globalization;
 namespace WEB_PERSONAL {
 
     public class Util {
-
+        public static System.Data.DataTable dt;
         /*public static string YearDown543(DateTime date) {
 
         }*/

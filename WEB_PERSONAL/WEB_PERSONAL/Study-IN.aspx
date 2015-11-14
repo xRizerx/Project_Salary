@@ -20,7 +20,6 @@
             padding: 20px;
         }
         .c1 {
-            font-family: ths;
             font-size: 32px;
             text-align: center;
         }
@@ -135,12 +134,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <asp:Panel ID="Panel8" runat="server" CssClass="pan">
-        <br />
         <div class="c1">
             <asp:Label ID="Label1" runat="server" Text="การลาศึกษาต่อภายในและภายนอกประเทศ"></asp:Label>
         </div>
-        <br />
-
         <div class="div_sec" id="sec1">
             <div class="div_sec_header">
                 <asp:Label ID="Label2" runat="server" Text="เพิ่มข้อมูลการลาศึกษาต่อ"></asp:Label>
