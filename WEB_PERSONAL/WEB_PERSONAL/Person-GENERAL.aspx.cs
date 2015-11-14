@@ -184,7 +184,13 @@ namespace WEB_PERSONAL
         protected void btnCancelPerson_Click(object sender, EventArgs e)
         {
             ClearData();
-            Session.Remove("StudyHis");
+            Session["StudyHis"] = new DataTable();
+            ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
+            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
+            ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
+            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
+            GridView1.DataBind();
+
         }
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
@@ -374,7 +380,12 @@ namespace WEB_PERSONAL
 
             ClearData();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
-            Session.Remove("StudyHis");
+            Session["StudyHis"] = new DataTable();
+            ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
+            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
+            ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
+            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
+            GridView1.DataBind();
 
 
         }
@@ -382,9 +393,7 @@ namespace WEB_PERSONAL
 
         protected void txtBirthDayNumber_TextChanged(object sender, EventArgs e)
         {
-
             txtBirthDayChar.Text = Util.ToThaiWord(txtBirthDayNumber.Text);
-
         }
 
         protected void txtAge60Number_TextChanged(object sender, EventArgs e)

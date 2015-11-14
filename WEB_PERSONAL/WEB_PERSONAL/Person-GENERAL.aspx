@@ -417,7 +417,10 @@
                           <tr>
                             <td style="text-align: left; width:350px; height:50px;"> </td> 
                             <td style="text-align: left; width: 50px;"> 
-                            <asp:Button ID="btnCancelPerson" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                            
+                            <asp:Button ID="btnCancelPerson" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" />
+                                       
+                                       </td>
                             <td style="text-align: left; width: 50px;"> </td> 
                             <td style="text-align: right; margin-right: 5px; ">  
                             <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
