@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.OracleClient;
 
 namespace WEB_PERSONAL
 {
@@ -84,6 +85,30 @@ namespace WEB_PERSONAL
                 Label7.ForeColor = System.Drawing.Color.FromArgb(128, 128, 128);
             }
 
+           
+            if(!IsPostBack) {
+                using (OracleConnection con = Util.OC()) {
+                    {
+                        string sql = "UPDATE TB_WEB SET COUNTER = COUNTER+1 WHERE ID = 1";
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    {
+                        string sql = "SELECT COUNTER FROM TB_WEB WHERE ID = 1";
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            using (OracleDataReader reader = command.ExecuteReader()) {
+                                if (reader.HasRows) {
+                                    reader.Read();
+                                    LabelCounter.Text = "จำนวนผู้เข้าชม : " + reader.GetInt32(0).ToString("#,###") + " ครั้ง";
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            
         }
 
         protected void LinkButton10_Click(object sender, EventArgs e)
