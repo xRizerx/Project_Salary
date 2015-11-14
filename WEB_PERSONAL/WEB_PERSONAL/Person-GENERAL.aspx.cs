@@ -24,6 +24,13 @@ namespace WEB_PERSONAL
                 DDLStaffType();
                 txtCitizen.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
+                Session["StudyHis"] = new DataTable();
+                ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
+                ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
+                ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
+                GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
+                GridView1.DataBind();
+
             }
 
         }
@@ -166,6 +173,13 @@ namespace WEB_PERSONAL
             txtAge60Char.Text = "";
         }
 
+        protected void ClearDataGridViewNumber10()
+        {
+            txtGrad_Univ.Text = "";
+            txtDate_From.Text = "";
+            txtDate_To.Text = "";
+            txtMajor.Text = "";
+        }
 
         protected void btnCancelPerson_Click(object sender, EventArgs e)
         {
@@ -310,10 +324,9 @@ namespace WEB_PERSONAL
             P.INWORK_DATE = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
             P.RETIRE_DATE = new DateTime(Convert.ToInt32(splitDate3[2]), Convert.ToInt32(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
 
-            
-                P.InsertPerson();
-                ClearData();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            P.InsertPerson();
+            ClearData();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
           
         }
 
@@ -328,6 +341,42 @@ namespace WEB_PERSONAL
         protected void txtAge60Number_TextChanged(object sender, EventArgs e)
         {
             txtAge60Char.Text = Util.ToThaiWord(txtAge60Number.Text);
+        }
+
+        protected void ButtonPlus_Click(object sender, EventArgs e)
+        {
+            
+            if (string.IsNullOrEmpty(txtGrad_Univ.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDate_From.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ตั้งแต่ - ถึง (เดือน ปี) ให้ครบ')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDate_To.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ตั้งแต่ - ถึง (เดือน ปี) ให้ครบ')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtMajor.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วุฒิ(สาาขาาวิชาเอก)')", true);
+                return;
+            }
+            
+            DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
+            dr[0] = txtGrad_Univ.Text;
+            dr[1] = txtDate_From.Text + " - " + txtDate_To.Text;
+            dr[2] = txtMajor.Text;
+            ((DataTable)(Session["StudyHis"])).Rows.Add(dr); 
+            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
+            GridView1.DataBind();
+            ClearDataGridViewNumber10();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการศึกษาเรียบร้อย')", true);
+
         }
     }
 }
