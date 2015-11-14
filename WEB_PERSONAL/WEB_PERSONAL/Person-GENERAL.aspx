@@ -361,13 +361,37 @@
                    </tr>
                    <tr>
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtGrad_Univ" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:UpdatePanel ID="Update10One" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtGrad_Univ" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox>
+                                       </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtGrad_Univ" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                            </td>
                         <td style="text-align: left; width: 1px;"> </td> 
                         <td style="text-align: left; ">
-                            <asp:TextBox ID="txtDate_From" runat="server" MaxLength="100" Width="136px" CssClass="tb5"></asp:TextBox> <asp:TextBox ID="txtDate_To" runat="server" MaxLength="100" Width="136px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:UpdatePanel ID="Update10Two" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtDate_From" runat="server" MaxLength="100" Width="136px" CssClass="tb5"></asp:TextBox> <asp:TextBox ID="txtDate_To" runat="server" MaxLength="100" Width="136px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtDate_From" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                            </td>
                         <td style="text-align: left; width: 1px;"> </td> 
                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtMajor" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                           <asp:UpdatePanel ID="Update10Three" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtMajor" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox>
+                                       </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="ButtonPlus10" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
                        <td style="text-align: right; margin-right: 5px; ">  
                             <asp:UpdatePanel ID="UpdateButtonPlus10" runat="server">
                                    <ContentTemplate>
@@ -401,9 +425,6 @@
                 </table>
                 
                 
-                
-                
-
             </div>
         </fieldset>
     </div>

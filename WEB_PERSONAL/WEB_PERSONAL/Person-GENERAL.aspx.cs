@@ -345,14 +345,38 @@ namespace WEB_PERSONAL
 
         protected void ButtonPlus_Click(object sender, EventArgs e)
         {
+            
+            if (string.IsNullOrEmpty(txtGrad_Univ.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDate_From.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ตั้งแต่ - ถึง (เดือน ปี) ให้ครบ')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDate_To.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ตั้งแต่ - ถึง (เดือน ปี) ให้ครบ')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtMajor.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วุฒิ(สาาขาาวิชาเอก)')", true);
+                return;
+            }
+            
             DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
             dr[0] = txtGrad_Univ.Text;
             dr[1] = txtDate_From.Text + " - " + txtDate_To.Text;
             dr[2] = txtMajor.Text;
-            ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
+            ((DataTable)(Session["StudyHis"])).Rows.Add(dr); 
             GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
             GridView1.DataBind();
             ClearDataGridViewNumber10();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการศึกษาเรียบร้อย')", true);
+
         }
     }
 }
