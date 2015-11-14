@@ -118,7 +118,7 @@
                             <asp:DropDownList ID="DropDownMinistry" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtDepart" runat="server" MaxLength="13" Width="425px" CssClass="tb5">มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก</asp:TextBox>
+                            <asp:TextBox ID="txtDepart" runat="server" MaxLength="100" Width="425px" CssClass="tb5">มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก</asp:TextBox>
                             <!--<asp:DropDownList ID="DropDownDepart" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>-->
                         </td>
                      </tr>

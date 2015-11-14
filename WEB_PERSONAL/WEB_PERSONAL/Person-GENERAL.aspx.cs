@@ -43,8 +43,8 @@ namespace WEB_PERSONAL
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownMinistry.DataSource = dt;
-                        DropDownMinistry.DataValueField = "ID";
-                        DropDownMinistry.DataTextField = "NAME";
+                        DropDownMinistry.DataValueField = "MINISTRY_ID";
+                        DropDownMinistry.DataTextField = "MINISTRY_NAME";
                         DropDownMinistry.DataBind();
                         sqlConn.Close();
 
