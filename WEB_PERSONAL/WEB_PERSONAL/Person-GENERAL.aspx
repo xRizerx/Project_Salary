@@ -414,6 +414,38 @@
                                      <asp:AsyncPostBackTrigger ControlID="GridView1" />
                                   </Triggers>
                              </asp:UpdatePanel>
+                
+            </div>
+        </fieldset>
+    </div>
+        </asp:Panel>
+<asp:Panel ID="Panel3" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+    <div>
+        <fieldset>
+            <legend>ใบอนุญาตประกอบวิชาชีพ</legend>
+            <div>
+                    <table>
+                   <tr>
+                        <td style="text-align: center; margin-right: 5px; ">สถานศึกษา</td>
+                        <td style="text-align: left; width: 20px;"> </td> 
+                        <td style="text-align: center; margin-right: 5px; ">ตั้งแต่ - ถึง (เดือน ปี)</td>
+                        <td style="text-align: left; width: 20px;"> </td> 
+                        <td style="text-align: center; margin-right: 5px; ">วุฒิ(สาาขาาวิชาเอก)</td>
+                   </tr>
+                   <tr>
+                        <td style="text-align: left; width: 170px;">
+                            <asp:TextBox ID="TextBox3" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                        <td style="text-align: left; width: 1px;"> </td> 
+                        <td style="text-align: left; width: 170px;">
+                            <asp:TextBox ID="TextBox4" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                        <td style="text-align: left; width: 1px;"> </td> 
+                       <td style="text-align: left; width: 170px;">
+                            <asp:TextBox ID="TextBox5" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                       <td style="text-align: right; margin-right: 5px; ">  
+                            <asp:Button ID="Button1" Text="+" runat="server" OnClick="btnSubmitPerson_Click" Width="40px" CssClass="master_OAT_button" /></td>
+                     </tr>
+               </table>
+
                 <table>
                           <tr>
                             <td style="text-align: left; width:350px; height:50px;"> </td> 
@@ -427,8 +459,7 @@
                             <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
                            </tr>               
                 </table>
-                
-                
+
             </div>
         </fieldset>
     </div>

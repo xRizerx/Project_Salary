@@ -459,8 +459,8 @@ namespace WEB_PERSONAL
                     using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY VALUES (SEQ_STUDY_HISTORY_ID.NEXTVAL,:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn))
                     {
 
-                        //try
-                        //{
+                        try
+                        {
                         if (conn.State != ConnectionState.Open)
                         {
                             conn.Open();
@@ -482,7 +482,7 @@ namespace WEB_PERSONAL
 
 
                         id = command.ExecuteNonQuery();
-                        /*}
+                        /
                         catch (Exception ex)
                         {
                             throw ex;
@@ -524,12 +524,12 @@ namespace WEB_PERSONAL
         protected void ButtonPlus_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(txtGrad_Univ.Text))
+            /*if (string.IsNullOrEmpty(txtGrad_Univ.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา')", true);
                 return;
             }
-            /*if (DropDownMonth10From.SelectedIndex == 0)
+            if (DropDownMonth10From.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก เดือน (ประวัติการศึกษา ตั้งแต่)')", true);
                 return;
@@ -548,12 +548,12 @@ namespace WEB_PERSONAL
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปี (ประวัติการศึกษา ถึง)')", true);
                 return;
-            } */
+            }
             if (string.IsNullOrEmpty(txtMajor.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วุฒิ(สาาขาาวิชาเอก)')", true);
                 return;
-            }
+            }*/
 
             DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
             dr[0] = txtGrad_Univ.Text;
