@@ -12,11 +12,9 @@ namespace WEB_PERSONAL.Entities
     {
 
         public int MINISTRY_ID { get; set; }
-        public string DEPARTMENT_ID { get; set; }
-        public int TITLE_ID { get; set; }
+        public string DEPARTMENT_NAME { get; set; }
+        public string TITLE_ID { get; set; }
         public string CITIZEN_ID { get; set; }
-        public string NAME { get; set; }
-        public string LASTNAME { get; set; }
         public string FATHER_NAME { get; set; }
         public string FATHER_LASTNAME { get; set; }
         public string MOTHER_NAME { get; set; }
@@ -31,17 +29,17 @@ namespace WEB_PERSONAL.Entities
         public int STAFFTYPE_ID { get; set; }
         public DateTime RETIRE_DATE { get; set; }
         public string RETIRE_DATE_LONG { get; set; }
+        public string PERSON_NAME { get; set; }
+        public string PERSON_LASTNAME { get; set; }
 
 
         public ClassPerson() { }
-        public ClassPerson(int MINISTRY_ID, string DEPARTMENT_ID, int TITLE_ID, string CITIZEN_ID, string NAME, string LASTNAME, string FATHER_NAME, string FATHER_LASTNAME, string MOTHER_NAME, string MOTHER_LASTNAME, string MOTHER_OLD_LASTNAME, string COUPLE_NAME, string COUPLE_LASTNAME, string COUPLE_OLD_LASTNAME, DateTime BIRTHDATE, string BIRTHDATE_LONG, DateTime INWORK_DATE, int STAFFTYPE_ID, DateTime RETIRE_DATE, string RETIRE_DATE_LONG)
+        public ClassPerson(int MINISTRY_ID, string DEPARTMENT_NAME, string TITLE_ID, string CITIZEN_ID, string FATHER_NAME, string FATHER_LASTNAME, string MOTHER_NAME, string MOTHER_LASTNAME, string MOTHER_OLD_LASTNAME, string COUPLE_NAME, string COUPLE_LASTNAME, string COUPLE_OLD_LASTNAME, DateTime BIRTHDATE, string BIRTHDATE_LONG, DateTime INWORK_DATE, int STAFFTYPE_ID, DateTime RETIRE_DATE, string RETIRE_DATE_LONG, string PERSON_NAME, string PERSON_LASTNAME)
         {
             this.MINISTRY_ID = MINISTRY_ID;
-            this.DEPARTMENT_ID = DEPARTMENT_ID;
+            this.DEPARTMENT_NAME = DEPARTMENT_NAME;
             this.TITLE_ID = TITLE_ID;
             this.CITIZEN_ID = CITIZEN_ID;
-            this.NAME = NAME;
-            this.LASTNAME = LASTNAME;
             this.FATHER_NAME = FATHER_NAME;
             this.FATHER_LASTNAME = FATHER_LASTNAME;
             this.MOTHER_NAME = MOTHER_NAME;
@@ -55,118 +53,16 @@ namespace WEB_PERSONAL.Entities
             this.STAFFTYPE_ID = STAFFTYPE_ID;
             this.RETIRE_DATE = RETIRE_DATE;
             this.RETIRE_DATE_LONG = RETIRE_DATE_LONG;
+            this.PERSON_NAME = PERSON_NAME;
+            this.PERSON_LASTNAME = PERSON_LASTNAME;
 
-        }
-        //get ไว้ก่อนยังไม่ได้ทำ
-        public DataTable GetPerson(string SEMINAR_NAME, string SEMINAR_DATETIME_FROM, string SEMINAR_DATETIME_TO)
-        {
-            DataTable dt = new DataTable();
-            OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_SEMINAR ";
-            if (!string.IsNullOrEmpty(SEMINAR_NAME) || !string.IsNullOrEmpty(SEMINAR_DATETIME_FROM) || !string.IsNullOrEmpty(SEMINAR_DATETIME_TO))
-            {
-                query += " where 1=1 ";
-                if (!string.IsNullOrEmpty(SEMINAR_NAME))
-                {
-                    query += " and SEMINAR_NAME like :SEMINAR_NAME ";
-                }
-                if (!string.IsNullOrEmpty(SEMINAR_DATETIME_FROM))
-                {
-                    query += " and CONVERT(varchar(10),LP_Date,103) = @SEMINAR_DATETIME_FROM ";
-                }
-                if (!string.IsNullOrEmpty(SEMINAR_DATETIME_TO))
-                {
-                    query += " and CONVERT(varchar(10),LP_Date,103) = @SEMINAR_DATETIME_TO ";
-                }
-            }
-            OracleCommand command = new OracleCommand(query, conn);
-            // Create the command
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-
-                if (!string.IsNullOrEmpty(SEMINAR_NAME))
-                {
-                    command.Parameters.Add(new OracleParameter("SEMINAR_NAME", SEMINAR_NAME + "%"));
-                }
-                if (!string.IsNullOrEmpty(SEMINAR_DATETIME_FROM))
-                {
-                    command.Parameters.Add(new OracleParameter("SEMINAR_DATETIME_FROM", SEMINAR_DATETIME_FROM));
-                }
-                if (!string.IsNullOrEmpty(SEMINAR_DATETIME_TO))
-                {
-                    command.Parameters.Add(new OracleParameter("SEMINAR_DATETIME_TO", SEMINAR_DATETIME_TO));
-                }
-                OracleDataAdapter sd = new OracleDataAdapter(command);
-                sd.Fill(dt);
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                command.Dispose();
-                conn.Close();
-            }
-
-            return dt;
-        }
-        //get ไว้ก่อนยังไม่ได้ทำ
-        public DataTable GetPersonSearch(string SEMINAR_NAME)
-        {
-            DataTable dt = new DataTable();
-            OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_SEMINAR ";
-            if (!string.IsNullOrEmpty(SEMINAR_NAME))
-            {
-                query += " where 1=1 ";
-                if (!string.IsNullOrEmpty(SEMINAR_NAME))
-                {
-                    query += " and SEMINAR_NAME like :SEMINAR_NAME ";
-                }
-            }
-            OracleCommand command = new OracleCommand(query, conn);
-            // Create the command
-            try
-            {
-                if (conn.State != ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-
-                if (!string.IsNullOrEmpty(SEMINAR_NAME))
-                {
-                    command.Parameters.Add(new OracleParameter("SEMINAR_NAME", SEMINAR_NAME + "%"));
-                }
-                OracleDataAdapter sd = new OracleDataAdapter(command);
-                sd.Fill(dt);
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                command.Dispose();
-                conn.Close();
-            }
-
-            return dt;
         }
 
         public int InsertPerson()
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_PERSON (MINISTRY_ID, DEPARTMENT_ID, TITLE_ID, CITIZEN_ID, NAME, LASTNAME, FATHER_NAME, FATHER_LASTNAME, MOTHER_NAME, MOTHER_LASTNAME, MOTHER_OLD_LASTNAME, COUPLE_NAME, COUPLE_LASTNAME, COUPLE_OLD_LASTNAME, BIRTHDATE, BIRTHDATE_LONG, INWORK_DATE, STAFFTYPE_ID, RETIRE_DATE, RETIRE_DATE_LONG) VALUES (:MINISTRY_ID, :DEPARTMENT_ID, :TITLE_ID, :CITIZEN_ID, :NAME, :LASTNAME, :FATHER_NAME, :FATHER_LASTNAME, :MOTHER_NAME, :MOTHER_LASTNAME, :MOTHER_OLD_LASTNAME, :COUPLE_NAME, :COUPLE_LASTNAME, :COUPLE_OLD_LASTNAME, :BIRTHDATE, :BIRTHDATE_LONG, :INWORK_DATE, :STAFFTYPE_ID, :RETIRE_DATE, :RETIRE_DATE_LONG)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_PERSON (CITIZEN_ID,BIRTHDATE,INWORK_DATE,RETIRE_DATE,DEPARTMENT_NAME,MINISTRY_ID,TITLE_ID,BIRTHDATE_LONG,RETIRE_DATE_LONG,STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,PERSON_LASTNAME,PERSON_NAME) VALUES (:CITIZEN_ID,:BIRTHDATE,:INWORK_DATE,:RETIRE_DATE,:DEPARTMENT_NAME,:MINISTRY_ID,:TITLE_ID,:BIRTHDATE_LONG,:RETIRE_DATE_LONG,:STAFFTYPE_ID,:FATHER_NAME,:FATHER_LASTNAME,:MOTHER_NAME,:MOTHER_LASTNAME,:MOTHER_OLD_LASTNAME,:COUPLE_NAME,:COUPLE_LASTNAME,:COUPLE_OLD_LASTNAME,:PERSON_LASTNAME,:PERSON_NAME)", conn);
 
             try
             {
@@ -174,12 +70,16 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("MINISTRY_ID", MINISTRY_ID));
-                command.Parameters.Add(new OracleParameter("DEPARTMENT_ID", DEPARTMENT_ID));
-                command.Parameters.Add(new OracleParameter("TITLE_ID", TITLE_ID));
                 command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
-                command.Parameters.Add(new OracleParameter("NAME;", NAME));
-                command.Parameters.Add(new OracleParameter("LASTNAME", LASTNAME));
+                command.Parameters.Add(new OracleParameter("BIRTHDATE", BIRTHDATE));
+                command.Parameters.Add(new OracleParameter("INWORK_DATE", INWORK_DATE));
+                command.Parameters.Add(new OracleParameter("RETIRE_DATE", RETIRE_DATE));
+                command.Parameters.Add(new OracleParameter("DEPARTMENT_NAME", DEPARTMENT_NAME));
+                command.Parameters.Add(new OracleParameter("MINISTRY_ID", MINISTRY_ID));
+                command.Parameters.Add(new OracleParameter("TITLE_ID", TITLE_ID));
+                command.Parameters.Add(new OracleParameter("BIRTHDATE_LONG", BIRTHDATE_LONG));
+                command.Parameters.Add(new OracleParameter("RETIRE_DATE_LONG", RETIRE_DATE_LONG));
+                command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
                 command.Parameters.Add(new OracleParameter("FATHER_NAME", FATHER_NAME));
                 command.Parameters.Add(new OracleParameter("FATHER_LASTNAME", FATHER_LASTNAME));
                 command.Parameters.Add(new OracleParameter("MOTHER_NAME", MOTHER_NAME));
@@ -188,12 +88,9 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new OracleParameter("COUPLE_NAME", COUPLE_NAME));
                 command.Parameters.Add(new OracleParameter("COUPLE_LASTNAME", COUPLE_LASTNAME));
                 command.Parameters.Add(new OracleParameter("COUPLE_OLD_LASTNAME", COUPLE_OLD_LASTNAME));
-                command.Parameters.Add(new OracleParameter("BIRTHDATE", BIRTHDATE));
-                command.Parameters.Add(new OracleParameter("BIRTHDATE_LONG", BIRTHDATE_LONG));
-                command.Parameters.Add(new OracleParameter("INWORK_DATE", INWORK_DATE));
-                command.Parameters.Add(new OracleParameter("STAFFTYPE_ID", STAFFTYPE_ID));
-                command.Parameters.Add(new OracleParameter("RETIRE_DATE", RETIRE_DATE));
-                command.Parameters.Add(new OracleParameter("RETIRE_DATE_LONG", RETIRE_DATE_LONG));
+                command.Parameters.Add(new OracleParameter("PERSON_LASTNAME", PERSON_LASTNAME));
+                command.Parameters.Add(new OracleParameter("PERSON_NAME", PERSON_NAME));
+
 
                 id = command.ExecuteNonQuery();
             }

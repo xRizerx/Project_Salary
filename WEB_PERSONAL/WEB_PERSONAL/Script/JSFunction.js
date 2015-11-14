@@ -13,5 +13,9 @@ function maxBuy(max, evt) {
         alert("ไม่สามารถระบุจำนวนมากกว่า : " + max);
         evt.value = max;
     }
+function reFocus(id) {
+        document.getElementById(id).blur();
+        document.getElementById(id).focus();
+    }
 
 }

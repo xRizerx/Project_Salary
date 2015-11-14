@@ -3,6 +3,11 @@
  <script src="Script/jquery-ui-1.8.20.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script type="text/javascript">
+    function RefreshUpdatePanel() {
+        __doPostBack('<%= txtCitizen.ClientID %>', '');
+    };
+    </script>
     <script>
             $(function () {
                 $(document).ready(function () {
@@ -54,6 +59,7 @@
                     });
                 });
             });
+        
   </script>
     <style type="text/CSS">
         .ui-datepicker{  
@@ -97,6 +103,7 @@
         <fieldset>
             <legend style="margin-left: auto; margin-right: auto; text-align: center;">เพิ่มข้อมูลบุคลากร</legend>
             <div>
+                <asp:ScriptManager ID="ScriptManager1" runat="server" />
                <table>
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
@@ -107,12 +114,13 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
                             <asp:DropDownList ID="DropDownMinistry" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
-                            <asp:DropDownList ID="DropDownDepart" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
+                            <asp:TextBox ID="txtDepart" runat="server" MaxLength="100" Width="425px" CssClass="tb5">มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก</asp:TextBox>
+                            <!--<asp:DropDownList ID="DropDownDepart" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>-->
+                        </td>
                      </tr>
                </table>
 
@@ -126,7 +134,6 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
                             <asp:DropDownList ID="DropDownTitle" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -145,7 +152,6 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -164,7 +170,6 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -183,9 +188,16 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="10" Width="425px" CssClass="tb5" OnTextChanged="txtBirthDayNumber_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                   </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtBirthDayNumber" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                            </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMotherName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -202,9 +214,14 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtBirthDayChar" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtBirthDayChar" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True" onkeyup="RefreshUpdatePanel();"></asp:TextBox>
+                                   </ContentTemplate>
+                            </asp:UpdatePanel>
+                            </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMotherLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -221,7 +238,6 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtDateInWork" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -240,7 +256,6 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
                             <asp:DropDownList ID="DropDownStaffType" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
                         <td style="text-align: left; width: 10px;"> </td> 
@@ -259,9 +274,16 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="10" Width="425px" CssClass="tb5" OnTextChanged="txtAge60Number_TextChanged" AutoPostBack="True" CausesValidation="False"></asp:TextBox>
+                                   </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtAge60Number" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMarriedLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -278,9 +300,13 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                       
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtAge60Char" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtAge60Char" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                   </ContentTemplate>
+                            </asp:UpdatePanel>
+                         </td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMarriedLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -297,6 +323,31 @@
                             <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
                            </tr>               
                 </table>
+  
+                <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanel2">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                <asp:UpdateProgress ID="UpdateProgress3" runat="server" AssociatedUpdatePanelID="UpdatePanel3">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                <asp:UpdateProgress ID="UpdateProgress4" runat="server" AssociatedUpdatePanelID="UpdatePanel4">
+                    <ProgressTemplate>
+                        <div id="ajaxloader">
+                            Loading..</div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
 
             </div>
         </fieldset>
