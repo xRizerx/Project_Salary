@@ -461,28 +461,29 @@ namespace WEB_PERSONAL
 
                         try
                         {
-                        if (conn.State != ConnectionState.Open)
-                        {
-                            conn.Open();
+                            if (conn.State != ConnectionState.Open)
+                            {
+                                conn.Open();
+                            }
+                            string[] ss = GridView1.Rows[i].Cells[1].Text.Split('-');
+                            for (int j = 0; j < ss.Length; ++j)
+                            {
+                                ss[j] = ss[j].Trim();
+                            }
+
+                            DateTime dt_to = new DateTime(Convert.ToInt32(ss[3]), Util.MonthToNumber(ss[2]), 1);
+                            DateTime dt_from = new DateTime(Convert.ToInt32(ss[1]), Util.MonthToNumber(ss[0]), 1);
+
+                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
+                            command.Parameters.Add(new OracleParameter("GRAD_UNIV", GridView1.Rows[i].Cells[0].Text));
+                            command.Parameters.Add(new OracleParameter("DATE_FROM", dt_from));
+                            command.Parameters.Add(new OracleParameter("DATE_TO", dt_to));
+                            command.Parameters.Add(new OracleParameter("MAJOR", GridView1.Rows[i].Cells[2].Text));
+
+
+                            id = command.ExecuteNonQuery();
                         }
-                        string[] ss = GridView1.Rows[i].Cells[1].Text.Split('-');
-                        for (int j = 0; j < ss.Length; ++j)
-                        {
-                            ss[j] = ss[j].Trim();
-                        }
 
-                        DateTime dt_to = new DateTime(Convert.ToInt32(ss[3]), Util.MonthToNumber(ss[2]), 1);
-                        DateTime dt_from = new DateTime(Convert.ToInt32(ss[1]), Util.MonthToNumber(ss[0]), 1);
-
-                        command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
-                        command.Parameters.Add(new OracleParameter("GRAD_UNIV", GridView1.Rows[i].Cells[0].Text));
-                        command.Parameters.Add(new OracleParameter("DATE_FROM", dt_from));
-                        command.Parameters.Add(new OracleParameter("DATE_TO", dt_to));
-                        command.Parameters.Add(new OracleParameter("MAJOR", GridView1.Rows[i].Cells[2].Text));
-
-
-                        id = command.ExecuteNonQuery();
-                        /
                         catch (Exception ex)
                         {
                             throw ex;
@@ -491,7 +492,7 @@ namespace WEB_PERSONAL
                         {
                             command.Dispose();
                             conn.Close();
-                        }*/
+                        }
                     }
                 }
 
