@@ -319,22 +319,40 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.UpdatePanel Update10Two;
         
         /// <summary>
-        /// txtDate_From control.
+        /// DropDownMonth10From control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate_From;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownMonth10From;
         
         /// <summary>
-        /// txtDate_To control.
+        /// DropDownYear10From control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate_To;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownYear10From;
+        
+        /// <summary>
+        /// DropDownMonth10To control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownMonth10To;
+        
+        /// <summary>
+        /// DropDownYear10To control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownYear10To;
         
         /// <summary>
         /// Update10Three control.

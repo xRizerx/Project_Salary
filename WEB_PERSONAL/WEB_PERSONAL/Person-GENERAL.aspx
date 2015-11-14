@@ -374,10 +374,11 @@
                         <td style="text-align: left; ">
                             <asp:UpdatePanel ID="Update10Two" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtDate_From" runat="server" MaxLength="100" Width="136px" CssClass="tb5"></asp:TextBox> <asp:TextBox ID="txtDate_To" runat="server" MaxLength="100" Width="136px" CssClass="tb5"></asp:TextBox>
+                            <asp:DropDownList ID="DropDownMonth10From" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList> <asp:DropDownList ID="DropDownYear10From" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownMonth10To" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList> <asp:DropDownList ID="DropDownYear10To" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList>
                                     </ContentTemplate>
                                   <Triggers>
-                                     <asp:AsyncPostBackTrigger ControlID="txtDate_From" />
+                                     <asp:AsyncPostBackTrigger ControlID="DropDownMonth10From" />
                                   </Triggers>
                              </asp:UpdatePanel>
                             </td>

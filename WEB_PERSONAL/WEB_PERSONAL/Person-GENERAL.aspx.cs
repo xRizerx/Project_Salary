@@ -22,6 +22,10 @@ namespace WEB_PERSONAL
                 DDLDepart();
                 DDLTitle();
                 DDLStaffType();
+                DDLMONTH10From();
+                DDLYEAR10From();
+                DDLMONTH10To();
+                DDLYEAR10To();
                 txtCitizen.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
                 Session["StudyHis"] = new DataTable();
@@ -55,7 +59,7 @@ namespace WEB_PERSONAL
                         DropDownMinistry.DataBind();
                         sqlConn.Close();
 
-                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือก กระทรวง--", "0"));
+                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "0"));
 
                     }
                 }
@@ -84,7 +88,7 @@ namespace WEB_PERSONAL
                         DropDownDepart.DataBind();
                         sqlConn.Close();
 
-                        // DropDownDepart.Items.Insert(0, new ListItem("--กรุณาเลือก กรม--", "0"));
+                        // DropDownDepart.Items.Insert(0, new ListItem("--กรุณาเลือกกรม--", "0"));
 
                     }
                 }
@@ -112,7 +116,7 @@ namespace WEB_PERSONAL
                         DropDownTitle.DataBind();
                         sqlConn.Close();
 
-                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือก คำนำหน้านาม--", "0"));
+                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือกคำนำหน้านาม--", "0"));
 
                     }
                 }
@@ -140,7 +144,119 @@ namespace WEB_PERSONAL
                         DropDownStaffType.DataBind();
                         sqlConn.Close();
 
-                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือก ประเภทข้าราชการ--", "0"));
+                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทข้าราชการ--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLMONTH10From()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownMonth10From.DataSource = dt;
+                        DropDownMonth10From.DataValueField = "MONTH_SHORT";
+                        DropDownMonth10From.DataTextField = "MONTH_SHORT";
+                        DropDownMonth10From.DataBind();
+                        sqlConn.Close();
+
+                        DropDownMonth10From.Items.Insert(0, new ListItem("--กรุณาเลือกเดือน--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLMONTH10To()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownMonth10To.DataSource = dt;
+                        DropDownMonth10To.DataValueField = "MONTH_SHORT";
+                        DropDownMonth10To.DataTextField = "MONTH_SHORT";
+                        DropDownMonth10To.DataBind();
+                        sqlConn.Close();
+
+                        DropDownMonth10To.Items.Insert(0, new ListItem("--กรุณาเลือกเดือน--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLYEAR10From()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownYear10From.DataSource = dt;
+                        DropDownYear10From.DataValueField = "YEAR_NAME";
+                        DropDownYear10From.DataTextField = "YEAR_NAME";
+                        DropDownYear10From.DataBind();
+                        sqlConn.Close();
+
+                        DropDownYear10From.Items.Insert(0, new ListItem("--กรุณาเลือกปี--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLYEAR10To()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownYear10To.DataSource = dt;
+                        DropDownYear10To.DataValueField = "YEAR_NAME";
+                        DropDownYear10To.DataTextField = "YEAR_NAME";
+                        DropDownYear10To.DataBind();
+                        sqlConn.Close();
+
+                        DropDownYear10To.Items.Insert(0, new ListItem("--กรุณาเลือกปี--", "0"));
 
                     }
                 }
@@ -176,8 +292,10 @@ namespace WEB_PERSONAL
         protected void ClearDataGridViewNumber10()
         {
             txtGrad_Univ.Text = "";
-            txtDate_From.Text = "";
-            txtDate_To.Text = "";
+            DropDownMonth10From.SelectedIndex = 0;
+            DropDownYear10From.SelectedIndex = 0;
+            DropDownMonth10To.SelectedIndex = 0;
+            DropDownYear10To.SelectedIndex = 0;
             txtMajor.Text = "";
         }
 
@@ -340,29 +458,31 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY VALUES (SEQ_STUDY_HISTORY_ID.NEXTVAL,:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn))
                     {
-                        
-                        try
+
+                        //try
+                        //{
+                        if (conn.State != ConnectionState.Open)
                         {
-                            if (conn.State != ConnectionState.Open)
-                            {
-                                conn.Open();
-                            }
-                            string[] ss = GridView1.Rows[i].Cells[1].Text.Split('-');
-                            for(int j=0;j<ss.Length;++j)
-                            {
-                                ss[i] = ss[i].Trim();
-                            }
-                            DateTime dt_from = new DateTime(Convert.ToInt32(ss[2]), Convert.ToInt32(ss[1]), Convert.ToInt32(ss[0]));
-                            DateTime dt_to = new DateTime(Convert.ToInt32(ss[5]), Convert.ToInt32(ss[4]), Convert.ToInt32(ss[3]));
-                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
-                            command.Parameters.Add(new OracleParameter("GRAD_UNIV", GridView1.Rows[i].Cells[0].Text));
-                            command.Parameters.Add(new OracleParameter("DATE_FROM", dt_from));
-                            command.Parameters.Add(new OracleParameter("DATE_TO", dt_to));
-                            command.Parameters.Add(new OracleParameter("MAJOR", GridView1.Rows[i].Cells[2].Text));
-
-
-                            id = command.ExecuteNonQuery();
+                            conn.Open();
                         }
+                        string[] ss = GridView1.Rows[i].Cells[1].Text.Split('-');
+                        for (int j = 0; j < ss.Length; ++j)
+                        {
+                            ss[j] = ss[j].Trim();
+                        }
+
+                        DateTime dt_to = new DateTime(Convert.ToInt32(ss[3]), Util.MonthToNumber(ss[2]), 1);
+                        DateTime dt_from = new DateTime(Convert.ToInt32(ss[1]), Util.MonthToNumber(ss[0]), 1);
+
+                        command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
+                        command.Parameters.Add(new OracleParameter("GRAD_UNIV", GridView1.Rows[i].Cells[0].Text));
+                        command.Parameters.Add(new OracleParameter("DATE_FROM", dt_from));
+                        command.Parameters.Add(new OracleParameter("DATE_TO", dt_to));
+                        command.Parameters.Add(new OracleParameter("MAJOR", GridView1.Rows[i].Cells[2].Text));
+
+
+                        id = command.ExecuteNonQuery();
+                        /*}
                         catch (Exception ex)
                         {
                             throw ex;
@@ -371,7 +491,7 @@ namespace WEB_PERSONAL
                         {
                             command.Dispose();
                             conn.Close();
-                        }
+                        }*/
                     }
                 }
 
@@ -409,14 +529,24 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา')", true);
                 return;
             }
-            if (string.IsNullOrEmpty(txtDate_From.Text))
+            if (DropDownMonth10From.SelectedIndex == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ตั้งแต่ - ถึง (เดือน ปี) ให้ครบ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก เดือน (ประวัติการศึกษา ตั้งแต่)')", true);
                 return;
             }
-            if (string.IsNullOrEmpty(txtDate_To.Text))
+            if (DropDownYear10From.SelectedIndex == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ตั้งแต่ - ถึง (เดือน ปี) ให้ครบ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปี (ประวัติการศึกษา ตั้งแต่)')", true);
+                return;
+            }
+            if (DropDownMonth10To.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก เดือน (ประวัติการศึกษา ถึง)')", true);
+                return;
+            }
+            if (DropDownYear10To.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปี (ประวัติการศึกษา ถึง)')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtMajor.Text))
@@ -427,7 +557,7 @@ namespace WEB_PERSONAL
 
             DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
             dr[0] = txtGrad_Univ.Text;
-            dr[1] = txtDate_From.Text + " - " + txtDate_To.Text;
+            dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
             dr[2] = txtMajor.Text;
             ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
             GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
