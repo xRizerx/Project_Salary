@@ -208,6 +208,7 @@
     <Content Include="TimeContact-ADMIN.aspx" />
     <Content Include="UNIVERSITY-ADMIN.aspx" />
     <Content Include="Year-ADMIN.aspx" />
+    <Content Include="Font\bangna-new.ttf" />
     <None Include="personalDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>personalDataSet.Designer.cs</LastGenOutput>

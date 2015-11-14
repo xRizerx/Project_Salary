@@ -151,5 +151,9 @@
             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         </asp:Panel>
 
+        <div>
+            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+        </div>
+
     </div>
 </asp:Content>

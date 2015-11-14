@@ -78,7 +78,6 @@
         }
 
         .c1 {
-            font-family: ths;
             font-size: 32px;
             text-align: center;
         }
@@ -259,13 +258,10 @@
         }
     </style>
     <asp:Panel ID="Panel2" runat="server" CssClass="mp">
-        <br />
         <div class="c1">
             <asp:Label ID="Label1" runat="server" Text="การลา"></asp:Label>
 
         </div>
-        <br />
-
         <div class="div_sec" id="sec1">
             <div class="div_sec_header">
                 <asp:Label ID="Label36" runat="server" Text="เพิ่มเวลาเข้างาน"></asp:Label>
