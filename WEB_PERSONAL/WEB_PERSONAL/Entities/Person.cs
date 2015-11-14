@@ -32,9 +32,13 @@ namespace WEB_PERSONAL.Entities
         public string PERSON_NAME { get; set; }
         public string PERSON_LASTNAME { get; set; }
 
+        public string GRAD_UNIV { get; set; }
+        public string DATE_FROM { get; set; }
+        public string DATE_TO { get; set; }
+        public string MAJOR { get; set; }
 
         public ClassPerson() { }
-        public ClassPerson(int MINISTRY_ID, string DEPARTMENT_NAME, string TITLE_ID, string CITIZEN_ID, string FATHER_NAME, string FATHER_LASTNAME, string MOTHER_NAME, string MOTHER_LASTNAME, string MOTHER_OLD_LASTNAME, string COUPLE_NAME, string COUPLE_LASTNAME, string COUPLE_OLD_LASTNAME, DateTime BIRTHDATE, string BIRTHDATE_LONG, DateTime INWORK_DATE, int STAFFTYPE_ID, DateTime RETIRE_DATE, string RETIRE_DATE_LONG, string PERSON_NAME, string PERSON_LASTNAME)
+        public ClassPerson(int MINISTRY_ID, string DEPARTMENT_NAME, string TITLE_ID, string CITIZEN_ID, string FATHER_NAME, string FATHER_LASTNAME, string MOTHER_NAME, string MOTHER_LASTNAME, string MOTHER_OLD_LASTNAME, string COUPLE_NAME, string COUPLE_LASTNAME, string COUPLE_OLD_LASTNAME, DateTime BIRTHDATE, string BIRTHDATE_LONG, DateTime INWORK_DATE, int STAFFTYPE_ID, DateTime RETIRE_DATE, string RETIRE_DATE_LONG, string PERSON_NAME, string PERSON_LASTNAME, string GRAD_UNIV, string DATE_FROM, string DATE_TO, string MAJOR)
         {
             this.MINISTRY_ID = MINISTRY_ID;
             this.DEPARTMENT_NAME = DEPARTMENT_NAME;
@@ -55,6 +59,11 @@ namespace WEB_PERSONAL.Entities
             this.RETIRE_DATE_LONG = RETIRE_DATE_LONG;
             this.PERSON_NAME = PERSON_NAME;
             this.PERSON_LASTNAME = PERSON_LASTNAME;
+
+            this.GRAD_UNIV = GRAD_UNIV;
+            this.DATE_FROM = DATE_FROM;
+            this.DATE_TO = DATE_TO;
+            this.MAJOR = MAJOR;
 
         }
 
@@ -90,6 +99,38 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new OracleParameter("COUPLE_OLD_LASTNAME", COUPLE_OLD_LASTNAME));
                 command.Parameters.Add(new OracleParameter("PERSON_LASTNAME", PERSON_LASTNAME));
                 command.Parameters.Add(new OracleParameter("PERSON_NAME", PERSON_NAME));
+
+
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public int InsertStudyHis()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY VALUES (SEQ_STUDY_HISTORY_ID.NEXTVAL,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn);
+
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("GRAD_UNIV", GRAD_UNIV));
+                command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
+                command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO)); 
+                command.Parameters.Add(new OracleParameter("MAJOR", MAJOR));
 
 
                 id = command.ExecuteNonQuery();
