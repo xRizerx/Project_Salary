@@ -6,8 +6,9 @@
 
 
 <head runat="server">
-    <title></title>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="Image/favicon.ico" />
+    <title>ระบบบุคลากร - มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</title>
     <link rel="stylesheet" type="text/css" href="CSS/Master.css" />
     <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
     <link href="Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
@@ -92,9 +93,7 @@
                                     <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
                                     <asp:Label ID="LabelX1" runat="server" CssClass="master_header_label4" Text="(เวอร์ชั่น ทดสอบ)"></asp:Label>
                                     <br />
-                                    <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก" CssClass="master_header_label2"></asp:Label>
-                                    <br />
-                                    <asp:Label ID="Label4" runat="server" Text="วิทยาเขตบางพระ" CssClass="master_header_label3"></asp:Label>
+                                    <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_label2"></asp:Label>
                                 </td>
                             </tr>
                         </table>
@@ -163,13 +162,20 @@
 
             <div class="master_footer">
                 <div>
-                    <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="กองบริหารงานบุคคล สำนักงาน... มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="กองบริหารงานบุคคล สำนักงานอธิการบดี มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ"></asp:Label>
                     <br />
                     <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="43  หมู่ 6   ตำบลบางพระ  อำเภอศรีราชา  จังหวัดชลบุรี  20110"></asp:Label>
                     <br />
-                    <asp:Label ID="Label6" runat="server" CssClass="master_footer_label2" Text="โทรศัพท์ 0-3835-8137,0-3835-8201 โทรสาร 0-3834-1808-9"></asp:Label>
+                    <asp:Label ID="Label6" runat="server" CssClass="master_footer_label2" Text="โทรศัพท์ <strong>0-3835-8137, 0-3835-8201</strong> โทรสาร <strong>0-3834-1808-9</strong>"></asp:Label>
                     <br />
-                    <asp:Label ID="Label8" runat="server" CssClass="master_footer_label2" Text="เว็บไซต์   www.rmutto.ac.th"></asp:Label>
+                    <asp:Label ID="Label8" runat="server" CssClass="master_footer_label2" Text="เว็บไซต์ "></asp:Label>
+                    <a href="http://www.rmutto.ac.th">www.rmutto.ac.th</a>
+                </div>
+
+            </div>
+            <div class="master_footer_under">
+                <div class="master_footer_under_inner">
+                    <asp:Label ID="LabelCounter" runat="server"></asp:Label>
                 </div>
             </div>
 

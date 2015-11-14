@@ -5,20 +5,20 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <script>
-		(function($){
-			$(window).load(function(){
-			    $(".div_sec_in").mCustomScrollbar({
-			        axis: "x",
-			        theme: "white-thin",
-			        //theme: "minimal-dark",
-			        autoExpandScrollbar: true,
-			        advanced: { autoExpandHorizontalScroll: true }
-			    });
-			   
-				
-			});
-		})(jQuery);
-	</script>
+        (function ($) {
+            $(window).load(function () {
+                $(".div_sec_in").mCustomScrollbar({
+                    axis: "x",
+                    theme: "white-thin",
+                    //theme: "minimal-dark",
+                    autoExpandScrollbar: true,
+                    advanced: { autoExpandHorizontalScroll: true }
+                });
+
+
+            });
+        })(jQuery);
+    </script>
 
     <style type="text/css">
         .wrapper {
@@ -37,8 +37,15 @@
         }
 
         .mp {
-            padding: 20px 0;
+            /*background-image: url("../Image/anime2.jpg");
+            background-size: 100% auto;
+            background-attachment: fixed;*/
+            
             text-align: center;
+        }
+        .mp2 {
+            /*background-color: rgba(255,255,255,0.9);*/
+            padding: 20px 0;
         }
 
         .i90p {
@@ -64,8 +71,6 @@
             padding-bottom: 0px;
             /*width: 80%;*/
             /*overflow-x: scroll;*/
-
-
         }
 
         .div_sec_in2 {
@@ -86,9 +91,9 @@
 
         #sec1 {
             background-color: #202020;
-            background-image: url("Image/333.jpg");
+            /*background-image: url("Image/333.jpg");
             background-size: cover;
-            background-repeat: no-repeat;
+            background-repeat: no-repeat;*/
         }
 
         #sec2 {
@@ -117,43 +122,43 @@
     </script>
 
     <div class="mp">
+        <div class="mp2">
 
+            <div style="height: 50px;"></div>
 
-        <div style="height: 50px;"></div>
+            <div class="div_sec" id="sec1">
+                <div class="div_sec_in">
+                    <div class="div_sec_in2">
+                        <img src="Image/i1.jpg" />
+                        <img src="Image/i2.jpg" />
+                        <img src="Image/i3.jpg" />
+                        <img src="Image/i3.jpg" />
+                        <img src="Image/i3.jpg" />
+                        <img src="Image/i3.jpg" />
+                        <img src="Image/i3.jpg" />
+                        <img src="Image/i3.jpg" />
+                        <img src="Image/i3.jpg" />
+                        <img src="Image/i3.jpg" />
+                    </div>
 
-        <div class="div_sec" id="sec1">
-            <div class="div_sec_in">
-                <div class="div_sec_in2">
-                    <img src="Image/i1.jpg" />
-                    <img src="Image/i2.jpg" />
-                    <img src="Image/i3.jpg" />
-                    <img src="Image/i3.jpg" />
-                    <img src="Image/i3.jpg" />
-                    <img src="Image/i3.jpg" />
-                    <img src="Image/i3.jpg" />
-                    <img src="Image/i3.jpg" />
-                    <img src="Image/i3.jpg" />
-                    <img src="Image/i3.jpg" />
                 </div>
+            </div>
 
+            <div class="para">
+                <p>
+                    wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
+                </p>
+            </div>
+
+            <div style="height: 50px"></div>
+
+            <asp:Panel ID="Panel1" runat="server" Style="width: 1024px">
+                <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+            </asp:Panel>
+
+            <div>
+                <asp:GridView ID="GridView1" runat="server"></asp:GridView>
             </div>
         </div>
-
-        <div class="para">
-            <p>
-                wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
-            </p>
-        </div>
-
-        <div style="height: 50px"></div>
-
-        <asp:Panel ID="Panel1" runat="server" style="width:1024px">
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-        </asp:Panel>
-
-        <div>
-            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-        </div>
-
     </div>
 </asp:Content>

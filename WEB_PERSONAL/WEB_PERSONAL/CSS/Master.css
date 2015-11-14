@@ -1,25 +1,20 @@
 ﻿/*1*/
 @font-face {
-    font-family: 'bangna-new';
-    src: url('../Font/bangna-new.ttf') format('truetype');
+    font-family: 'WDB_Bangna';
+    src: url('../Font/WDB_Bangna.ttf') format('truetype');
 }
 * {
     margin: 0;
 }
 html, body {
     height: 100%;
-    
 }
 
 body {
-    /*background-image: url("../Image/bg3.jpg");*/
-    background-attachment: fixed;
-    /*background-color: #d6ff81;*/
-    font-family: bangna-new;
-    
-    /*background-size: 100% auto;*/
-
-    /*background-color: #e9ffa3;*/
+    /*background-image: url("../Image/anime2.jpg");
+    background-size: 100% auto;
+    background-attachment: fixed;*/
+    font-family: WDB_Bangna;
     background-color: #f0f0f0;
 }
 
@@ -53,7 +48,7 @@ form {
     height: 32px;
     position: fixed;
     width: 100%;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.8);
     
     
     z-index: 999;
@@ -152,7 +147,7 @@ form {
 .master_header_pre_in {
     padding: 20px;
     padding-top: 40px;
-    height: 90px;
+    height: 75px;
     width: 1024px;
     margin: 0 auto;
     text-align: left;
@@ -167,14 +162,18 @@ form {
 }
 .master_header_label2 {
     font-size: 16px;
+    font-weight: bold;
     color: #00a2e8;
+    color: #808080;
 }
 .master_header_label3 {
     font-size: 16px;
+    font-weight: bold;
     color: #808080;
 }
 .master_header_label4 {
     font-size: 24px;
+    font-weight: bold;
     color: #FF0000;
 }
 .master_nav {
@@ -334,31 +333,35 @@ form {
     
     
 }
+.master_footer a {
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px #006591;
+    text-decoration: none;
+}
+.master_footer a:hover {
+    text-decoration: underline;
+}
 .master_footer_label {
     font-size: 18px;
     font-weight: bold;
     color: #000000;
     color: #FFFFFF;
+    text-shadow: 1px 1px 1px #006591;
 }
 
 .master_footer_label2 {
     font-size: 14px;
     color: #404040;
     color: #F0F0F0;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px #006591;
 }
 .master_footer_label3 {
     font-size: 14px;
     color: #909090;
-    text-shadow: 1px 1px 1px #000000;
+    text-shadow: 1px 1px 1px #006591;
 }
 .master_footer_label4 {
-    /*font-size: 14px;
-    color: #ffcc00;
-    background-color: #000000;
-    text-shadow: 1px 1px 1px #000000;
-    background-color: #808080;
-    padding: 3px 30px;
-    border-radius: 24px;*/
     font-size: 14px;
     color: #FF0000;
     padding-bottom: 15px;
@@ -372,7 +375,17 @@ form {
     border-bottom: 1px solid #65c1e9;*/
     border-bottom: 1px solid #808080;
 }
-
+.master_footer_under {
+    background-color:#FFFFFF;
+}
+.master_footer_under_inner {
+    width: 1024px;
+    margin: 0 auto;
+    height: 32px;
+    background-color:#FFFFFF;
+    text-align: left;
+    font-weight: bold;
+}
 
 .dpl {
     background-color: #2270ff;
