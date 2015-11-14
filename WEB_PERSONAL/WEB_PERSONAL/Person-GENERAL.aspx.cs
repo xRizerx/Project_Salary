@@ -172,7 +172,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10From.Items.Insert(0, new ListItem("--กรุณาเลือกเดือน--", "0"));
+                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -200,7 +200,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10To.Items.Insert(0, new ListItem("--กรุณาเลือกเดือน--", "0"));
+                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -228,7 +228,7 @@ namespace WEB_PERSONAL
                         DropDownYear10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10From.Items.Insert(0, new ListItem("--กรุณาเลือกปี--", "0"));
+                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -256,7 +256,7 @@ namespace WEB_PERSONAL
                         DropDownYear10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10To.Items.Insert(0, new ListItem("--กรุณาเลือกปี--", "0"));
+                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -529,7 +529,7 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา')", true);
                 return;
             }
-            if (DropDownMonth10From.SelectedIndex == 0)
+            /*if (DropDownMonth10From.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก เดือน (ประวัติการศึกษา ตั้งแต่)')", true);
                 return;
@@ -548,7 +548,7 @@ namespace WEB_PERSONAL
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปี (ประวัติการศึกษา ถึง)')", true);
                 return;
-            }
+            } */
             if (string.IsNullOrEmpty(txtMajor.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วุฒิ(สาาขาาวิชาเอก)')", true);

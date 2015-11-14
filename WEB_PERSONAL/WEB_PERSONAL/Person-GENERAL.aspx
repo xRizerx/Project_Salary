@@ -354,9 +354,9 @@
                 <table>
                    <tr>
                         <td style="text-align: center; margin-right: 5px; ">สถานศึกษา</td>
-                        <td style="text-align: left; width: 20px;"> </td> 
+                        <td style="text-align: left; width: 1px;"> </td> 
                         <td style="text-align: center; margin-right: 5px; width:500px">ตั้งแต่ - ถึง (เดือน ปี)</td>
-                        <td style="text-align: left; width: 20px;"> </td> 
+                        <td style="text-align: left; width: 1px;"> </td> 
                         <td style="text-align: center; margin-right: 5px; ">วุฒิ(สาาขาาวิชาเอก)</td>
                    </tr>
                    <tr>
@@ -374,8 +374,8 @@
                         <td style="text-align: left; ">
                             <asp:UpdatePanel ID="Update10Two" runat="server">
                                    <ContentTemplate>
-                            <asp:DropDownList ID="DropDownMonth10From" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList> <asp:DropDownList ID="DropDownYear10From" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList>
-                            <asp:DropDownList ID="DropDownMonth10To" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList> <asp:DropDownList ID="DropDownYear10To" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownMonth10From" runat="server" CssClass="tb5" Width="80px"></asp:DropDownList> <asp:DropDownList ID="DropDownYear10From" runat="server" CssClass="tb5" Width="65"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownMonth10To" runat="server" CssClass="tb5" Width="80px"></asp:DropDownList> <asp:DropDownList ID="DropDownYear10To" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList>
                                     </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="DropDownMonth10From" />
@@ -396,7 +396,7 @@
                        <td style="text-align: right; margin-right: 5px; ">  
                             <asp:UpdatePanel ID="UpdateButtonPlus10" runat="server">
                                    <ContentTemplate>
-                            <asp:Button ID="ButtonPlus10" Text="+" runat="server" Width="40px" CssClass="master_OAT_button" OnClick="ButtonPlus_Click" />
+                            <asp:Button ID="ButtonPlus10" Text="+" runat="server" Width="35px" CssClass="master_OAT_button" OnClick="ButtonPlus_Click" />
                                     </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="ButtonPlus10" />
