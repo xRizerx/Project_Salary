@@ -96,8 +96,11 @@
         .textred{
             color:red;
         }
+        .divpan{
+            text-align:center;
+        }
     </style>
-    <asp:Panel runat="server" CssClass="divpan" Height="1200px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson" >
+    <asp:Panel runat="server" CssClass="divpan" Height="900px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson" >
     <div>
 
         <fieldset>
@@ -313,17 +316,6 @@
                      </tr>
                </table>
 
-                <table>
-                          <tr>
-                            <td style="text-align: left; width:350px; height:50px;"> </td> 
-                            <td style="text-align: left; width: 50px;"> 
-                            <asp:Button ID="btnCancelPerson" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
-                            <td style="text-align: left; width: 50px;"> </td> 
-                            <td style="text-align: right; margin-right: 5px; ">  
-                            <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
-                           </tr>               
-                </table>
-  
                 <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                     <ProgressTemplate>
                         <div id="ajaxloader">
@@ -348,6 +340,54 @@
                             Loading..</div>
                     </ProgressTemplate>
                 </asp:UpdateProgress>
+
+                </div>
+        </fieldset>
+    </div>
+        </asp:Panel>
+<asp:Panel ID="Panel2" runat="server" Height="400px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
+    <div>
+        <fieldset>
+            <legend>ประวัติการศึกษา</legend>
+            <div>
+                <!-- FOR TABLE 3 ROW -->
+                <table>
+                   <tr>
+                        <td style="text-align: center; margin-right: 5px; ">สถานศึกษา</td>
+                        <td style="text-align: left; width: 20px;"> </td> 
+                        <td style="text-align: center; margin-right: 5px; ">ตั้งแต่ - ถึง (เดือน ปี)</td>
+                        <td style="text-align: left; width: 20px;"> </td> 
+                        <td style="text-align: center; margin-right: 5px; ">วุฒิ(สาาขาาวิชาเอก)</td>
+                   </tr>
+                   <tr>
+                        <td style="text-align: left; width: 170px;">
+                            <asp:TextBox ID="TextBox3" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                        <td style="text-align: left; width: 1px;"> </td> 
+                        <td style="text-align: left; width: 170px;">
+                            <asp:TextBox ID="TextBox4" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                        <td style="text-align: left; width: 1px;"> </td> 
+                       <td style="text-align: left; width: 170px;">
+                            <asp:TextBox ID="TextBox5" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                       <td style="text-align: right; margin-right: 5px; ">  
+                            <asp:Button ID="Button1" Text="+" runat="server" OnClick="btnSubmitPerson_Click" Width="40px" CssClass="master_OAT_button" /></td>
+                     </tr>
+               </table>
+
+
+
+
+                <table>
+                          <tr>
+                            <td style="text-align: left; width:350px; height:50px;"> </td> 
+                            <td style="text-align: left; width: 50px;"> 
+                            <asp:Button ID="btnCancelPerson" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                            <td style="text-align: left; width: 50px;"> </td> 
+                            <td style="text-align: right; margin-right: 5px; ">  
+                            <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                           </tr>               
+                </table>
+  
+                
 
             </div>
         </fieldset>
