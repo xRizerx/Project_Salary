@@ -186,6 +186,7 @@
     <Content Include="insignia_user.aspx" />
     <Content Include="Leave.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Ministry-GENERAL.aspx" />
     <Content Include="National-ADMIN.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
@@ -279,6 +280,7 @@
     <Compile Include="Department-ADMIN.aspx.designer.cs">
       <DependentUpon>Department-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Ministry.cs" />
     <Compile Include="Entities\Personnel.cs" />
     <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\Seminar.cs" />
@@ -387,6 +389,13 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Ministry-GENERAL.aspx.cs">
+      <DependentUpon>Ministry-GENERAL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ministry-GENERAL.aspx.designer.cs">
+      <DependentUpon>Ministry-GENERAL.aspx</DependentUpon>
     </Compile>
     <Compile Include="National-ADMIN.aspx.cs">
       <DependentUpon>National-ADMIN.aspx</DependentUpon>
