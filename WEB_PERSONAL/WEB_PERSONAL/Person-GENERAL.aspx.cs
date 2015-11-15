@@ -62,6 +62,17 @@ namespace WEB_PERSONAL
                 GridView4.DataSource = ((DataTable)(Session["Punished"]));
                 GridView4.DataBind();
 
+                Session["PositionAndSalary"] = new DataTable();
+                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
+                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
+                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
+                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
+                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
+                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
+                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
+                GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
+                GridView5.DataBind();
+
             }
         }
 
@@ -486,8 +497,19 @@ namespace WEB_PERSONAL
         protected void ClearDataGridViewNumber13()
         {
             DropDownYear13.SelectedIndex = 0;
-            txtList.Text = "";
-            txtRefDoc.Text = "";
+            txtList13.Text = "";
+            txtRefDoc13.Text = "";
+        }
+
+        protected void ClearDataGridViewNumber14()
+        {
+            txtDate14.Text = "";
+            txtPosition14.Text = "";
+            txtNo_Position14.Text = "";
+            txtDegree14.Text = "";
+            txtSalary14.Text = "";
+            txtSalaryForPosition14.Text = "";
+            txtRefDoc14.Text = "";
         }
 
         public bool NeedData1To9()
@@ -702,14 +724,54 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก พ.ศ.<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtList.Text))
+            if (string.IsNullOrEmpty(txtList13.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รายการ<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtRefDoc.Text))
+            if (string.IsNullOrEmpty(txtRefDoc13.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เอกสารอ้างอิง<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>')", true);
+                return true;
+            }
+            return false;
+        }
+
+        public bool NeedData14()
+        {
+            if (string.IsNullOrEmpty(txtDate14.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปี<ในส่วนตำแหน่งและเงินเดือน>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtPosition14.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ตำแหน่ง<ในส่วนตำแหน่งและเงินเดือน>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtNo_Position14.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เลขที่ตำแหน่ง<ในส่วนตำแหน่งและเงินเดือน>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtDegree14.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ระดับ<ในส่วนตำแหน่งและเงินเดือน>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtSalary14.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เงินเดือน<ในส่วนตำแหน่งและเงินเดือน>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtSalaryForPosition14.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เงินประจำตำแหน่ง<ในส่วนตำแหน่งและเงินเดือน>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtRefDoc14.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เอกสารอ้างอิง<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
             return false;
@@ -722,6 +784,7 @@ namespace WEB_PERSONAL
             ClearDataGridViewNumber11();
             ClearDataGridViewNumber12();
             ClearDataGridViewNumber13();
+            ClearDataGridViewNumber14();
 
             Session["StudyHis"] = new DataTable();
             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
@@ -752,11 +815,22 @@ namespace WEB_PERSONAL
             GridView4.DataSource = ((DataTable)(Session["Punished"]));
             GridView4.DataBind();
 
+            Session["PositionAndSalary"] = new DataTable();
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
+            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
+            GridView5.DataBind();
+
         }
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-            //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()) { return; }
+            //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
 
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
@@ -957,11 +1031,56 @@ namespace WEB_PERSONAL
                 }
             }
 
+           /* for (int i = 0; i < GridView5.Rows.Count; ++i)
+            {
+                int id = 0;
+                using (OracleConnection conn = Util.OC())
+                {
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_xxx VALUES (xxx.NEXTVAL,:xxx,:xxx,:xxx,:xxx,:xxx)", conn))
+                    {
+
+                        try
+                        {
+                            if (conn.State != ConnectionState.Open)
+                            {
+                                conn.Open();
+                            }
+                            string[] ss5 = GridView5.Rows[i].Cells[0].Text.Split('-');
+                            for (int j = 0; j < ss5.Length; ++j)
+                            {
+                                ss5[j] = ss5[j].Trim();
+                            }
+                            DateTime DATE_11 = new DateTime(Convert.ToInt32(ss5[2]), Convert.ToInt32(ss5[1]), Convert.ToInt32(ss5[0]));
+
+                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
+                            command.Parameters.Add(new OracleParameter("xxx", GridView2.Rows[i].Cells[0].Text));
+                            command.Parameters.Add(new OracleParameter("xxx", GridView2.Rows[i].Cells[1].Text));
+                            command.Parameters.Add(new OracleParameter("xxx", GridView2.Rows[i].Cells[2].Text));
+                            command.Parameters.Add(new OracleParameter("xxx", DATE_11));
+
+                            id = command.ExecuteNonQuery();
+
+                        }
+
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                        finally
+                        {
+                            command.Dispose();
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+            */
             ClearData();
             ClearDataGridViewNumber10();
             ClearDataGridViewNumber11();
             ClearDataGridViewNumber12();
             ClearDataGridViewNumber13();
+            ClearDataGridViewNumber14();
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
             Session["StudyHis"] = new DataTable();
@@ -992,6 +1111,17 @@ namespace WEB_PERSONAL
             ((DataTable)(Session["Punished"])).Columns.Add("เอกสารอ้างอิง");
             GridView4.DataSource = ((DataTable)(Session["Punished"]));
             GridView4.DataBind();
+
+            Session["PositionAndSalary"] = new DataTable();
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
+            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
+            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
+            GridView5.DataBind();
 
         }
 
@@ -1055,13 +1185,30 @@ namespace WEB_PERSONAL
             
             DataRow dr = ((DataTable)(Session["Punished"])).NewRow();
             dr[0] = DropDownYear13.SelectedValue;
-            dr[1] = txtList.Text;
-            dr[2] = txtRefDoc.Text;
+            dr[1] = txtList13.Text;
+            dr[2] = txtRefDoc13.Text;
             ((DataTable)(Session["Punished"])).Rows.Add(dr);
             GridView4.DataSource = ((DataTable)(Session["Punished"]));
             GridView4.DataBind();
             ClearDataGridViewNumber13();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลการได้รับโทษทางวินัยและการนิรโทษกรรมเรียบร้อย')", true);
+        }
+
+        protected void ButtonPlus14_Click(object sender, EventArgs e)
+        {
+            DataRow dr = ((DataTable)(Session["PositionAndSalary"])).NewRow();
+            dr[0] = txtDate14.Text;
+            dr[1] = txtPosition14.Text;
+            dr[2] = txtNo_Position14.Text;
+            dr[3] = txtDegree14.Text;
+            dr[4] = txtSalary14.Text;
+            dr[5] = txtSalaryForPosition14.Text;
+            dr[6] = txtRefDoc14.Text;
+            ((DataTable)(Session["PositionAndSalary"])).Rows.Add(dr);
+            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
+            GridView5.DataBind();
+            ClearDataGridViewNumber14();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลตำแหน่งและเงินเดือนเรียบร้อย')", true);
         }
     }
 }

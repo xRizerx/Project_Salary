@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript"> 
         function pageLoad(sender, args) {
-                    $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11").datepicker({
+            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11,#ContentPlaceHolder1_txtDate14").datepicker({
                         dateFormat: 'dd-mm-yy',
                         changeMonth: true,
                         changeYear: true,
@@ -561,16 +561,6 @@
                                      <asp:AsyncPostBackTrigger ControlID="GridView3" />
                                   </Triggers>
                              </asp:UpdatePanel>
-                        <table>
-                           <tr>
-                            <td style="text-align: left; width:350px; height:50px;"> </td> 
-                            <td style="text-align: left; width: 50px;"> 
-                            <asp:Button ID="btnCancelPerson" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
-                            <td style="text-align: left; width: 50px;"> </td> 
-                            <td style="text-align: right; margin-right: 5px; ">  
-                            <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
-                           </tr>               
-                </table>
             </div>
         </fieldset>
     </div>
@@ -602,23 +592,23 @@
                             </td>
                         <td style="text-align: left; width: 1px;"> </td> 
                         <td style="text-align: left; ">
-                            <asp:UpdatePanel ID="UpdatetxtList" runat="server">
+                            <asp:UpdatePanel ID="UpdatetxtList13" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtList" runat="server" MaxLength="100" Width="550px" CssClass="tb5"></asp:TextBox>
+                            <asp:TextBox ID="txtList13" runat="server" MaxLength="100" Width="550px" CssClass="tb5"></asp:TextBox>
                                     </ContentTemplate>
                                   <Triggers>
-                                     <asp:AsyncPostBackTrigger ControlID="txtList" />
+                                     <asp:AsyncPostBackTrigger ControlID="txtList13" />
                                   </Triggers>
                              </asp:UpdatePanel>
                             </td>
                         <td style="text-align: left; width: 1px;"> </td> 
                        <td style="text-align: left; width: 170px;">
-                           <asp:UpdatePanel ID="UpdatetxtRefDoc" runat="server">
+                           <asp:UpdatePanel ID="UpdatetxtRefDoc13" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtRefDoc" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox>
+                            <asp:TextBox ID="txtRefDoc13" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox>
                                        </ContentTemplate>
                                   <Triggers>
-                                     <asp:AsyncPostBackTrigger ControlID="txtRefDoc" />
+                                     <asp:AsyncPostBackTrigger ControlID="txtRefDoc13" />
                                   </Triggers>
                              </asp:UpdatePanel>
                                        </td>
@@ -643,18 +633,131 @@
                                      <asp:AsyncPostBackTrigger ControlID="GridView4" />
                                   </Triggers>
                              </asp:UpdatePanel>
+            </div>
+        </fieldset>
+    </div>
+        </asp:Panel>
+<asp:Panel ID="Panel6" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="ButtonPlus14">
+    <div>
+        <fieldset>
+            <legend>ตำแหน่งและเงินเดือน</legend>
+            <div>
+                    <table>
+                   <tr>
+                        <td style="text-align: center; margin-right: 5px; ">วัน เดือน ปี</td>
+                        <td style="text-align: center; margin-right: 5px; ">ตำแหน่ง</td>
+                        <td style="text-align: center; margin-right: 5px; ">เลขที่ตำแหน่ง</td>
+                        <td style="text-align: center; margin-right: 5px; ">ระดับ</td>
+                        <td style="text-align: center; margin-right: 5px; ">เงินเดือน</td>
+                        <td style="text-align: center; margin-right: 5px; ">เงินประจำตำแหน่ง</td>
+                        <td style="text-align: center; margin-right: 5px; ">เอกสารอ้างอิง</td>
 
+                   </tr>
+                   <tr>
+                        <td style="text-align: left; width: 50px;">
+                            <asp:UpdatePanel ID="UpdatetxtDate14" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtDate14" runat="server" MaxLength="100" Width="90px" CssClass="tb5"></asp:TextBox>
+                                   </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtDate14" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
+                        <td style="text-align: left; width: 50px;">
+                            <asp:UpdatePanel ID="UpdatetxtPosition14" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtPosition14" runat="server" MaxLength="110" Width="350px" CssClass="tb5"></asp:TextBox>
+                                   </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtPosition14" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
+                       <td style="text-align: left; width: 50px;">
+                           <asp:UpdatePanel ID="UpdatetxtNo_Position14" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtNo_Position14" runat="server" MaxLength="100" Width="52px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtNo_Position14" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
+                       <td style="text-align: left; width: 50px;">
+                           <asp:UpdatePanel ID="UpdatetxtDegree14" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtDegree14" runat="server" MaxLength="100" Width="52px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtDegree14" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
+                         <td style="text-align: left; width: 50px;">
+                           <asp:UpdatePanel ID="UpdatetxtSalary14" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtSalary14" runat="server" MaxLength="100" Width="52px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtSalary14" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
+                         <td style="text-align: left; width: 50px;">
+                           <asp:UpdatePanel ID="UpdatetxtSalaryForPosition14" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtSalaryForPosition14" runat="server" MaxLength="100" Width="52px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtSalaryForPosition14" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
+                         <td style="text-align: left; width: 50px;">
+                           <asp:UpdatePanel ID="UpdatetxtRefDoc14" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtRefDoc14" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtRefDoc14" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
+                       <td style="text-align: right; margin-right: 5px; ">  
+                           <asp:UpdatePanel ID="UpdateButtonPlus14" runat="server">
+                                   <ContentTemplate>
+                            <asp:Button ID="ButtonPlus14" Text="+" runat="server" Width="36px" CssClass="master_OAT_button" OnClick="ButtonPlus14_Click" />
+                                   </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="ButtonPlus14" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                            
+                       </td>
+                     </tr>
+               </table>
 
-                        <table>
+                <asp:UpdatePanel ID="UpdateGridView5" runat="server">
+                                   <ContentTemplate>
+                <asp:GridView ID="GridView5" runat="server" Width="998px"></asp:GridView>
+                                        </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="GridView5" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+
+                       <table>
                            <tr>
                             <td style="text-align: left; width:350px; height:50px;"> </td> 
                             <td style="text-align: left; width: 50px;"> 
-                            <asp:Button ID="Button2" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                            <asp:Button ID="btnCancelPerson" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
                             <td style="text-align: left; width: 50px;"> </td> 
                             <td style="text-align: right; margin-right: 5px; ">  
-                            <asp:Button ID="Button3" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                            <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
                            </tr>               
-                </table>
+                       </table>
+
             </div>
         </fieldset>
     </div>

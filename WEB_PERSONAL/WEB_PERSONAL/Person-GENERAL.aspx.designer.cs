@@ -652,24 +652,6 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.GridView GridView3;
         
         /// <summary>
-        /// btnCancelPerson control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelPerson;
-        
-        /// <summary>
-        /// btnSubmitPerson control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmitPerson;
-        
-        /// <summary>
         /// Panel5 control.
         /// </summary>
         /// <remarks>
@@ -697,40 +679,40 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownYear13;
         
         /// <summary>
-        /// UpdatetxtList control.
+        /// UpdatetxtList13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatetxtList;
+        protected global::System.Web.UI.UpdatePanel UpdatetxtList13;
         
         /// <summary>
-        /// txtList control.
+        /// txtList13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtList;
+        protected global::System.Web.UI.WebControls.TextBox txtList13;
         
         /// <summary>
-        /// UpdatetxtRefDoc control.
+        /// UpdatetxtRefDoc13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatetxtRefDoc;
+        protected global::System.Web.UI.UpdatePanel UpdatetxtRefDoc13;
         
         /// <summary>
-        /// txtRefDoc control.
+        /// txtRefDoc13 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRefDoc;
+        protected global::System.Web.UI.WebControls.TextBox txtRefDoc13;
         
         /// <summary>
         /// UpdateButtonPlus13 control.
@@ -769,21 +751,192 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.GridView GridView4;
         
         /// <summary>
-        /// Button2 control.
+        /// Panel6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Panel Panel6;
         
         /// <summary>
-        /// Button3 control.
+        /// UpdatetxtDate14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.UpdatePanel UpdatetxtDate14;
+        
+        /// <summary>
+        /// txtDate14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDate14;
+        
+        /// <summary>
+        /// UpdatetxtPosition14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtPosition14;
+        
+        /// <summary>
+        /// txtPosition14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPosition14;
+        
+        /// <summary>
+        /// UpdatetxtNo_Position14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtNo_Position14;
+        
+        /// <summary>
+        /// txtNo_Position14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNo_Position14;
+        
+        /// <summary>
+        /// UpdatetxtDegree14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtDegree14;
+        
+        /// <summary>
+        /// txtDegree14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDegree14;
+        
+        /// <summary>
+        /// UpdatetxtSalary14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtSalary14;
+        
+        /// <summary>
+        /// txtSalary14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSalary14;
+        
+        /// <summary>
+        /// UpdatetxtSalaryForPosition14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtSalaryForPosition14;
+        
+        /// <summary>
+        /// txtSalaryForPosition14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSalaryForPosition14;
+        
+        /// <summary>
+        /// UpdatetxtRefDoc14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtRefDoc14;
+        
+        /// <summary>
+        /// txtRefDoc14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRefDoc14;
+        
+        /// <summary>
+        /// UpdateButtonPlus14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdateButtonPlus14;
+        
+        /// <summary>
+        /// ButtonPlus14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonPlus14;
+        
+        /// <summary>
+        /// UpdateGridView5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdateGridView5;
+        
+        /// <summary>
+        /// GridView5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView5;
+        
+        /// <summary>
+        /// btnCancelPerson control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelPerson;
+        
+        /// <summary>
+        /// btnSubmitPerson control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmitPerson;
     }
 }
