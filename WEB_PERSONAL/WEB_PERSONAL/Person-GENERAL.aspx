@@ -419,7 +419,7 @@
         </fieldset>
     </div>
         </asp:Panel>
-<asp:Panel ID="Panel3" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
+<asp:Panel ID="Panel3" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="ButtonPlus11">
     <div>
         <fieldset>
             <legend>ใบอนุญาตประกอบวิชาชีพ</legend>
@@ -427,22 +427,22 @@
                     <table>
                    <tr>
                         <td style="text-align: center; margin-right: 5px; ">สถานศึกษา</td>
-                        <td style="text-align: left; width: 20px;"> </td> 
-                        <td style="text-align: center; margin-right: 5px; ">ตั้งแต่ - ถึง (เดือน ปี)</td>
-                        <td style="text-align: left; width: 20px;"> </td> 
-                        <td style="text-align: center; margin-right: 5px; ">วุฒิ(สาาขาาวิชาเอก)</td>
+                        <td style="text-align: center; margin-right: 5px; ">หน่วยงาน</td>
+                        <td style="text-align: center; margin-right: 5px; ">เลขที่ใบอนุญาต</td>
+                        <td style="text-align: center; margin-right: 5px; ">วันที่มีผลบังคับใช้ (วัน เดือน ปี)</td>
+
                    </tr>
                    <tr>
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox3" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
-                        <td style="text-align: left; width: 1px;"> </td> 
+                            <asp:TextBox ID="txtGrad_Univ11" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox4" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
-                        <td style="text-align: left; width: 1px;"> </td> 
+                            <asp:TextBox ID="TextBox4" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox5" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="TextBox5" runat="server" MaxLength="100" Width="155px" CssClass="tb5"></asp:TextBox></td>
+                       <td style="text-align: left; width: 170px;">
+                            <asp:TextBox ID="TextBox1" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox></td>
                        <td style="text-align: right; margin-right: 5px; ">  
-                            <asp:Button ID="Button1" Text="+" runat="server" OnClick="btnSubmitPerson_Click" Width="40px" CssClass="master_OAT_button" /></td>
+                            <asp:Button ID="ButtonPlus11" Text="+" runat="server" Width="38px" CssClass="master_OAT_button" /></td>
                      </tr>
                </table>
 
