@@ -104,7 +104,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">กระทรวง</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">กรม</td>
                         
                    </tr>
@@ -124,7 +124,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">คำนำหน้านาม</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">เลขบัตรประจำตัวประชาชน</td>
                         
                    </tr>
@@ -142,7 +142,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">ชื่อ</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ชื่อบิดา</td>
                         
                    </tr>
@@ -160,7 +160,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">นามสกุล</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">นามสกุลบิดา</td>
                         
                    </tr>
@@ -178,7 +178,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">วัน เดือน ปีเกิด (dd-mm-yyyy)</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ชื่อมารดา</td>
                         
                    </tr>
@@ -204,7 +204,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">วัน เดือน ปีเกิด (ตัวบรรจง เต็มบรรทัด)</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">นามสกุลมารดา</td>
                         
                    </tr>
@@ -228,7 +228,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">วันที่บรรจุ (dd-mm-yyyy)</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">นามสกุลมารดาเดิม</td>
                         
                    </tr>
@@ -246,7 +246,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">ประเภทข้าราชการ</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ชื่อคู่สมรส</td>
                         
                    </tr>
@@ -264,7 +264,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">วันครบเกษียณอายุ (dd-mm-yyyy)</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">นามสกุลคู่สมรส</td>
                         
                    </tr>
@@ -290,7 +290,7 @@
                    <tr>
                         <td style="text-align: left; width: 30px;"> </td>
                         <td style="text-align: left; margin-right: 5px; ">วันครบเกษียณอายุ (ตัวบรรจง เต็มบรรทัด)</td>
-                        <td style="text-align: left; width: 80px;"> </td> 
+                        <td style="text-align: left; width: 30px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">นามสกุลเดิมคู่สมรสเดิม</td>
                         
                    </tr>
@@ -308,31 +308,6 @@
                             <asp:TextBox ID="txtMarriedLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
                      </tr>
                </table>
-
-                <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
-                    <ProgressTemplate>
-                        <div id="ajaxloader">
-                            Loading..</div>
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
-                <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanel2">
-                    <ProgressTemplate>
-                        <div id="ajaxloader">
-                            Loading..</div>
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
-                <asp:UpdateProgress ID="UpdateProgress3" runat="server" AssociatedUpdatePanelID="UpdatePanel3">
-                    <ProgressTemplate>
-                        <div id="ajaxloader">
-                            Loading..</div>
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
-                <asp:UpdateProgress ID="UpdateProgress4" runat="server" AssociatedUpdatePanelID="UpdatePanel4">
-                    <ProgressTemplate>
-                        <div id="ajaxloader">
-                            Loading..</div>
-                    </ProgressTemplate>
-                </asp:UpdateProgress>
 
                 </div>
         </fieldset>
