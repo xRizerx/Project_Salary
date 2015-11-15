@@ -30,6 +30,7 @@ namespace WEB_PERSONAL
                 DDLYEAR12From();
                 DDLMONTH12To();
                 DDLYEAR12To();
+                DDLYEAR13();
                 txtCitizen.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
                 Session["StudyHis"] = new DataTable();
@@ -54,8 +55,14 @@ namespace WEB_PERSONAL
                 GridView3.DataSource = ((DataTable)(Session["Trainning"]));
                 GridView3.DataBind();
 
-            }
+                Session["Punished"] = new DataTable();
+                ((DataTable)(Session["Punished"])).Columns.Add("พ.ศ.");
+                ((DataTable)(Session["Punished"])).Columns.Add("รายการ");
+                ((DataTable)(Session["Punished"])).Columns.Add("เอกสารอ้างอิง");
+                GridView4.DataSource = ((DataTable)(Session["Punished"]));
+                GridView4.DataBind();
 
+            }
         }
 
         private void DDLMisnistry()
@@ -395,6 +402,34 @@ namespace WEB_PERSONAL
             catch { }
         }
 
+        private void DDLYEAR13()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownYear13.DataSource = dt;
+                        DropDownYear13.DataValueField = "YEAR_NAME";
+                        DropDownYear13.DataTextField = "YEAR_NAME";
+                        DropDownYear13.DataBind();
+                        sqlConn.Close();
+
+                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
         protected void ClearData()
         {
             DropDownMinistry.SelectedIndex = 0;
@@ -446,6 +481,13 @@ namespace WEB_PERSONAL
             DropDownMonth12To.SelectedIndex = 0;
             DropDownYear12To.SelectedIndex = 0;
             txtBranchTrainning.Text = "";
+        }
+
+        protected void ClearDataGridViewNumber13()
+        {
+            DropDownYear13.SelectedIndex = 0;
+            txtList.Text = "";
+            txtRefDoc.Text = "";
         }
 
         public bool NeedData1To9()
@@ -653,12 +695,33 @@ namespace WEB_PERSONAL
             return false;
         }
 
+        public bool NeedData13()
+        {
+            if (DropDownYear13.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก พ.ศ.<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtList.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รายการ<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtRefDoc.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เอกสารอ้างอิง<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>')", true);
+                return true;
+            }
+            return false;
+        }
+
         protected void btnCancelPerson_Click(object sender, EventArgs e)
         {
             ClearData();
             ClearDataGridViewNumber10();
             ClearDataGridViewNumber11();
             ClearDataGridViewNumber12();
+            ClearDataGridViewNumber13();
 
             Session["StudyHis"] = new DataTable();
             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
@@ -682,11 +745,18 @@ namespace WEB_PERSONAL
             GridView3.DataSource = ((DataTable)(Session["Trainning"]));
             GridView3.DataBind();
 
+            Session["Punished"] = new DataTable();
+            ((DataTable)(Session["Punished"])).Columns.Add("พ.ศ.");
+            ((DataTable)(Session["Punished"])).Columns.Add("รายการ");
+            ((DataTable)(Session["Punished"])).Columns.Add("เอกสารอ้างอิง");
+            GridView4.DataSource = ((DataTable)(Session["Punished"]));
+            GridView4.DataBind();
+
         }
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-            //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12()) { return; }
+            //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()) { return; }
 
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
@@ -851,10 +921,47 @@ namespace WEB_PERSONAL
                 }
             }
 
+            for (int i = 0; i < GridView4.Rows.Count; ++i)
+            {
+                int id = 0;
+                using (OracleConnection conn = Util.OC())
+                {
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_DISCIPLINARY_AND_AMNESTY VALUES (SEQ_DISCIPLINARY_ID.NEXTVAL,:CITIZEN_ID,:YEAR,:MENU,:REF_DOC)", conn))
+                    {
+
+                        try
+                        {
+                            if (conn.State != ConnectionState.Open)
+                            {
+                                conn.Open();
+                            }
+
+                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
+                            command.Parameters.Add(new OracleParameter("YEAR", GridView4.Rows[i].Cells[0].Text));
+                            command.Parameters.Add(new OracleParameter("MENU", GridView4.Rows[i].Cells[1].Text));
+                            command.Parameters.Add(new OracleParameter("REF_DOC", GridView4.Rows[i].Cells[2].Text));
+
+                            id = command.ExecuteNonQuery();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                        finally
+                        {
+                            command.Dispose();
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+
             ClearData();
             ClearDataGridViewNumber10();
             ClearDataGridViewNumber11();
             ClearDataGridViewNumber12();
+            ClearDataGridViewNumber13();
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
             Session["StudyHis"] = new DataTable();
@@ -878,6 +985,13 @@ namespace WEB_PERSONAL
             ((DataTable)(Session["Trainning"])).Columns.Add("หน่วยงานที่จัดฝึกอบรม");
             GridView3.DataSource = ((DataTable)(Session["Trainning"]));
             GridView3.DataBind();
+
+            Session["Punished"] = new DataTable();
+            ((DataTable)(Session["Punished"])).Columns.Add("พ.ศ.");
+            ((DataTable)(Session["Punished"])).Columns.Add("รายการ");
+            ((DataTable)(Session["Punished"])).Columns.Add("เอกสารอ้างอิง");
+            GridView4.DataSource = ((DataTable)(Session["Punished"]));
+            GridView4.DataBind();
 
         }
 
@@ -934,6 +1048,20 @@ namespace WEB_PERSONAL
             GridView3.DataBind();
             ClearDataGridViewNumber12();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการฝึกอบรมเรียบร้อย')", true);
+        }
+
+        protected void ButtonPlus13_Click(object sender, EventArgs e)
+        {
+            
+            DataRow dr = ((DataTable)(Session["Punished"])).NewRow();
+            dr[0] = DropDownYear13.SelectedValue;
+            dr[1] = txtList.Text;
+            dr[2] = txtRefDoc.Text;
+            ((DataTable)(Session["Punished"])).Rows.Add(dr);
+            GridView4.DataSource = ((DataTable)(Session["Punished"]));
+            GridView4.DataBind();
+            ClearDataGridViewNumber13();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลการได้รับโทษทางวินัยและการนิรโทษกรรมเรียบร้อย')", true);
         }
     }
 }
