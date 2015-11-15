@@ -3,14 +3,8 @@
  <script src="Script/jquery-ui-1.8.20.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript">
-    function RefreshUpdatePanel() {
-        __doPostBack('<%= txtCitizen.ClientID %>', '');
-    };
-    </script>
-    <script> 
-            $(function () {
-                $(document).ready(function () {
+    <script type="text/javascript"> 
+        function pageLoad(sender, args) {
                     $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11").datepicker({
                         dateFormat: 'dd-mm-yy',
                         changeMonth: true,
@@ -57,8 +51,7 @@
                             $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
                         }
                     });
-                });
-            });
+                };
         
   </script>
     <style type="text/CSS">

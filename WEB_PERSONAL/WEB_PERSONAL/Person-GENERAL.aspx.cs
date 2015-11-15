@@ -316,6 +316,176 @@ namespace WEB_PERSONAL
             txtDateEnable11.Text = "";
         }
 
+        public bool NeedData1To9()
+        {
+            if (DropDownMinistry.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กระทรวง')", true);
+                return true;
+            }
+            if (DropDownDepart.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กรม')", true);
+                return true;
+            }
+            if (DropDownTitle.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก คำนำหน้านาม')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtCitizen.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชน')", true);
+                return true;
+            }
+            if (txtCitizen.Text.Length < 13)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชนให้ครบ 13 หลัก')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อ')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtLastName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุล')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtFatherName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อบิดา')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtFatherLastName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลบิดา')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtMotherName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อมารดา')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtMotherLastName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลมารดา')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtMotherLastNameOld.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลมารดาเดิม')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtMarriedName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อคู่สมรส')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtMarriedLastName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลคู่สมรส')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtMarriedLastNameOld.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลเดิมคู่สมรสเดิม')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtBirthDayNumber.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปีเกิด (dd-mm-yyyy)')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtBirthDayChar.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปีเกิด (ตัวบรรจง เต็มบรรทัด)')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtDateInWork.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่บรรจุ (dd-mm-yyyy)')", true);
+                return true;
+            }
+            if (DropDownStaffType.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเภทข้าราชการ')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtAge60Number.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันครบเกษียณอายุ (dd-mm-yyyy)')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtAge60Char.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันครบเกษียณอายุ (ตัวบรรจง เต็มบรรทัด)')", true);
+                return true;
+            }
+            return false;
+        }
+
+        public bool NeedData10()
+        {
+            if (string.IsNullOrEmpty(txtGrad_Univ.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา<ในส่วนประวัติการศึกษา>')", true);
+                return true;
+            }
+            if (DropDownMonth10From.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
+                return true;
+            }
+            if (DropDownYear10From.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
+                return true;
+            }
+            if (DropDownMonth10To.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
+                return true;
+            }
+            if (DropDownYear10To.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtMajor.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วุฒิ(สาาขาาวิชาเอก)<ในส่วนประวัติการศึกษา>')", true);
+                return true;
+            }
+            return false;
+        }
+
+        public bool NeedData11()
+        {
+            if (string.IsNullOrEmpty(txtGrad_Univ11.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อใบอนุญาต<ใบอนุญาตประกอบวิชาชีพ>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtDepart11.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หน่วยงาน<ใบอนุญาตประกอบวิชาชีพ>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtNolicense11.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เลขที่ใบอนุญาต<ใบอนุญาตประกอบวิชาชีพ>')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtDateEnable11.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่มีผลบังคับใช้(วัน เดือน ปี)<ใบอนุญาตประกอบวิชาชีพ>')", true);
+                return true;
+            }
+            return false;
+        }
+
         protected void btnCancelPerson_Click(object sender, EventArgs e)
         {
             ClearData();
@@ -340,113 +510,8 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-            /*   if (DropDownMinistry.SelectedIndex == 0)
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กระทรวง')", true);
-                   return;
-               }
-               //  if (DropDownDepart.SelectedIndex == 0)
-               //  {
-               //      ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กรม')", true);
-               //      return;
-               //  }
-               if (DropDownTitle.SelectedIndex == 0)
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก คำนำหน้านาม')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtCitizen.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชน')", true);
-                   return;
-               }
-               if (txtCitizen.Text.Length < 13)
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชนให้ครบ 13 หลัก')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtName.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อ')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtLastName.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุล')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtFatherName.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อบิดา')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtFatherLastName.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลบิดา')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtMotherName.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อมารดา')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtMotherLastName.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลมารดา')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtMotherLastNameOld.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลมารดาเดิม')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtMarriedName.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อคู่สมรส')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtMarriedLastName.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลคู่สมรส')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtMarriedLastNameOld.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลเดิมคู่สมรสเดิม')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtBirthDayNumber.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปีเกิด (dd-mm-yyyy)')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtBirthDayChar.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปีเกิด (ตัวบรรจง เต็มบรรทัด)')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtDateInWork.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่บรรจุ (dd-mm-yyyy)')", true);
-                   return;
-               }
-               if (DropDownStaffType.SelectedIndex == 0)
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเภทข้าราชการ')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtAge60Number.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันครบเกษียณอายุ (dd-mm-yyyy)')", true);
-                   return;
-               }
-               if (string.IsNullOrEmpty(txtAge60Char.Text))
-               {
-                   ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันครบเกษียณอายุ (ตัวบรรจง เต็มบรรทัด)')", true);
-                   return;
-               }*/
-
-
+            //if (NeedData1To9() || NeedData10() || NeedData11()) { return; }
+            
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
             P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
@@ -492,21 +557,19 @@ namespace WEB_PERSONAL
                             {
                                 conn.Open();
                             }
-                            string[] ss = GridView1.Rows[i].Cells[1].Text.Split('-');
-                            for (int j = 0; j < ss.Length; ++j)
+                            string[] ss1 = GridView1.Rows[i].Cells[1].Text.Split('-');
+                            for (int j = 0; j < ss1.Length; ++j)
                             {
-                                ss[j] = ss[j].Trim();
+                                ss1[j] = ss1[j].Trim();
                             }
-
-                            DateTime dt_to = new DateTime(Convert.ToInt32(ss[3]), Util.MonthToNumber(ss[2]), 1);
-                            DateTime dt_from = new DateTime(Convert.ToInt32(ss[1]), Util.MonthToNumber(ss[0]), 1);
+                            DateTime dt_from = new DateTime(Convert.ToInt32(ss1[1]), Util.MonthToNumber(ss1[0]), 1);
+                            DateTime dt_to = new DateTime(Convert.ToInt32(ss1[3]), Util.MonthToNumber(ss1[2]), 1);
 
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
                             command.Parameters.Add(new OracleParameter("GRAD_UNIV", GridView1.Rows[i].Cells[0].Text));
                             command.Parameters.Add(new OracleParameter("DATE_FROM", dt_from));
                             command.Parameters.Add(new OracleParameter("DATE_TO", dt_to));
                             command.Parameters.Add(new OracleParameter("MAJOR", GridView1.Rows[i].Cells[2].Text));
-
 
                             id = command.ExecuteNonQuery();
                         }
@@ -522,11 +585,56 @@ namespace WEB_PERSONAL
                         }
                     }
                 }
+            }
 
+            for (int i = 0; i < GridView2.Rows.Count; ++i)
+            {
+                int id = 0;
+                using (OracleConnection conn = Util.OC())
+                {
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_JOB_LICENSE VALUES (SEQ_JOB_LICENSE_ID.NEXTVAL,:CITIZEN_ID,:LICENCE_NAME,:BRANCH,:LICENCE_NO,:DDATE)", conn))
+                    {
 
+                        //try
+                        //{
+                            if (conn.State != ConnectionState.Open)
+                            {
+                                conn.Open();
+                            }
+                            string[] ss2 = GridView2.Rows[i].Cells[3].Text.Split('-');
+                            for (int j = 0; j < ss2.Length; ++j)
+                            {
+                                ss2[j] = ss2[j].Trim();
+                            }
+                            DateTime DATE_11 = new DateTime(Convert.ToInt32(ss2[2]), Convert.ToInt32(ss2[1]), Convert.ToInt32(ss2[0]));
+
+                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
+                            command.Parameters.Add(new OracleParameter("LICENCE_NAME", GridView2.Rows[i].Cells[0].Text));
+                            command.Parameters.Add(new OracleParameter("BRANCH", GridView2.Rows[i].Cells[1].Text));
+                            command.Parameters.Add(new OracleParameter("LICENCE_NO", GridView2.Rows[i].Cells[2].Text));
+                            command.Parameters.Add(new OracleParameter("DDATE", DATE_11));
+
+                            id = command.ExecuteNonQuery();
+
+                        /*}
+
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                        finally
+                        {
+                            command.Dispose();
+                            conn.Close();
+                        }*/
+                    }
+                }
             }
 
             ClearData();
+            ClearDataGridViewNumber10();
+            ClearDataGridViewNumber11();
+
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
             Session["StudyHis"] = new DataTable();
             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
@@ -559,37 +667,6 @@ namespace WEB_PERSONAL
         protected void ButtonPlus10_Click(object sender, EventArgs e)
         {
 
-            /*if (string.IsNullOrEmpty(txtGrad_Univ.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา<ในส่วนประวัติการศึกษา>')", true);
-                return;
-            }
-            if (DropDownMonth10From.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
-                return;
-            }
-            if (DropDownYear10From.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
-                return;
-            }
-            if (DropDownMonth10To.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
-                return;
-            }
-            if (DropDownYear10To.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtMajor.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วุฒิ(สาาขาาวิชาเอก)<ในส่วนประวัติการศึกษา>')", true);
-                return;
-            }*/
-
             DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
             dr[0] = txtGrad_Univ.Text;
             dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
@@ -604,27 +681,7 @@ namespace WEB_PERSONAL
 
         protected void ButtonPlus11_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtGrad_Univ11.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อใบอนุญาต<ใบอนุญาตประกอบวิชาชีพ>')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtDepart11.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หน่วยงาน<ใบอนุญาตประกอบวิชาชีพ>')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtNolicense11.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เลขที่ใบอนุญาต<ใบอนุญาตประกอบวิชาชีพ>')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtDateEnable11.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่มีผลบังคับใช้(วัน เดือน ปี)<ใบอนุญาตประกอบวิชาชีพ>')", true);
-                return;
-            }
-
+            
             DataRow dr = ((DataTable)(Session["JobLisence"])).NewRow();
             dr[0] = txtGrad_Univ11.Text;
             dr[1] = txtDepart11.Text;
