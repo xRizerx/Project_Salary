@@ -436,24 +436,30 @@
                         <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtGrad_Univ11" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox4" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtDepart11" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox5" runat="server" MaxLength="100" Width="155px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtNolicense11" runat="server" MaxLength="100" Width="155px" CssClass="tb5"></asp:TextBox></td>
                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="TextBox1" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtDateEnable11" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox></td>
                        <td style="text-align: right; margin-right: 5px; ">  
                             <asp:Button ID="ButtonPlus11" Text="+" runat="server" Width="38px" CssClass="master_OAT_button" /></td>
                      </tr>
                </table>
 
+                <asp:UpdatePanel ID="UpdateGridView2" runat="server">
+                                   <ContentTemplate>
+                <asp:GridView ID="GridView2" runat="server" Width="998px"></asp:GridView>
+                                        </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="GridView2" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+
                 <table>
-                          <tr>
+                           <tr>
                             <td style="text-align: left; width:350px; height:50px;"> </td> 
                             <td style="text-align: left; width: 50px;"> 
-                            
-                            <asp:Button ID="btnCancelPerson" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" />
-                                       
-                                       </td>
+                            <asp:Button ID="btnCancelPerson" Text="Cancel" runat="server" OnClick="btnCancelPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
                             <td style="text-align: left; width: 50px;"> </td> 
                             <td style="text-align: right; margin-right: 5px; ">  
                             <asp:Button ID="btnSubmitPerson" Text="OK" runat="server" OnClick="btnSubmitPerson_Click" Width="140px" CssClass="master_OAT_button" /></td>
