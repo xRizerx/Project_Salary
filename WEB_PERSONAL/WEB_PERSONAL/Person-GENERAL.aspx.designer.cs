@@ -292,13 +292,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// Update10One control.
+        /// UpdatetxtGrad_Univ control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel Update10One;
+        protected global::System.Web.UI.UpdatePanel UpdatetxtGrad_Univ;
         
         /// <summary>
         /// txtGrad_Univ control.
@@ -310,13 +310,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtGrad_Univ;
         
         /// <summary>
-        /// Update10Two control.
+        /// UpdateDropDownMonth10From control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel Update10Two;
+        protected global::System.Web.UI.UpdatePanel UpdateDropDownMonth10From;
         
         /// <summary>
         /// DropDownMonth10From control.
@@ -355,13 +355,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownYear10To;
         
         /// <summary>
-        /// Update10Three control.
+        /// UpdatetxtMajor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel Update10Three;
+        protected global::System.Web.UI.UpdatePanel UpdatetxtMajor;
         
         /// <summary>
         /// txtMajor control.
@@ -418,6 +418,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel3;
         
         /// <summary>
+        /// UpdatetxtGrad_Univ11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtGrad_Univ11;
+        
+        /// <summary>
         /// txtGrad_Univ11 control.
         /// </summary>
         /// <remarks>
@@ -425,6 +434,15 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtGrad_Univ11;
+        
+        /// <summary>
+        /// UpdatetxtDepart11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtDepart11;
         
         /// <summary>
         /// txtDepart11 control.
@@ -436,6 +454,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtDepart11;
         
         /// <summary>
+        /// UpdatetxtNolicense11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtNolicense11;
+        
+        /// <summary>
         /// txtNolicense11 control.
         /// </summary>
         /// <remarks>
@@ -445,6 +472,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtNolicense11;
         
         /// <summary>
+        /// UpdatetxtDateEnable11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtDateEnable11;
+        
+        /// <summary>
         /// txtDateEnable11 control.
         /// </summary>
         /// <remarks>
@@ -452,6 +488,15 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateEnable11;
+        
+        /// <summary>
+        /// UpdateButtonPlus11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdateButtonPlus11;
         
         /// <summary>
         /// ButtonPlus11 control.

@@ -8,10 +8,10 @@
         __doPostBack('<%= txtCitizen.ClientID %>', '');
     };
     </script>
-    <script>
+    <script> 
             $(function () {
                 $(document).ready(function () {
-                    $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number").datepicker({
+                    $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11").datepicker({
                         dateFormat: 'dd-mm-yy',
                         changeMonth: true,
                         changeYear: true,
@@ -361,7 +361,7 @@
                    </tr>
                    <tr>
                         <td style="text-align: left; width: 170px;">
-                            <asp:UpdatePanel ID="Update10One" runat="server">
+                            <asp:UpdatePanel ID="UpdatetxtGrad_Univ" runat="server">
                                    <ContentTemplate>
                             <asp:TextBox ID="txtGrad_Univ" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox>
                                        </ContentTemplate>
@@ -372,7 +372,7 @@
                             </td>
                         <td style="text-align: left; width: 1px;"> </td> 
                         <td style="text-align: left; ">
-                            <asp:UpdatePanel ID="Update10Two" runat="server">
+                            <asp:UpdatePanel ID="UpdateDropDownMonth10From" runat="server">
                                    <ContentTemplate>
                             <asp:DropDownList ID="DropDownMonth10From" runat="server" CssClass="tb5" Width="80px"></asp:DropDownList> <asp:DropDownList ID="DropDownYear10From" runat="server" CssClass="tb5" Width="65"></asp:DropDownList>
                             <asp:DropDownList ID="DropDownMonth10To" runat="server" CssClass="tb5" Width="80px"></asp:DropDownList> <asp:DropDownList ID="DropDownYear10To" runat="server" CssClass="tb5" Width="65px"></asp:DropDownList>
@@ -384,19 +384,19 @@
                             </td>
                         <td style="text-align: left; width: 1px;"> </td> 
                        <td style="text-align: left; width: 170px;">
-                           <asp:UpdatePanel ID="Update10Three" runat="server">
+                           <asp:UpdatePanel ID="UpdatetxtMajor" runat="server">
                                    <ContentTemplate>
                             <asp:TextBox ID="txtMajor" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox>
                                        </ContentTemplate>
                                   <Triggers>
-                                     <asp:AsyncPostBackTrigger ControlID="ButtonPlus10" />
+                                     <asp:AsyncPostBackTrigger ControlID="txtMajor" />
                                   </Triggers>
                              </asp:UpdatePanel>
                                        </td>
                        <td style="text-align: right; margin-right: 5px; ">  
                             <asp:UpdatePanel ID="UpdateButtonPlus10" runat="server">
                                    <ContentTemplate>
-                            <asp:Button ID="ButtonPlus10" Text="+" runat="server" Width="35px" CssClass="master_OAT_button" OnClick="ButtonPlus_Click" />
+                            <asp:Button ID="ButtonPlus10" Text="+" runat="server" Width="35px" CssClass="master_OAT_button" OnClick="ButtonPlus10_Click" />
                                     </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="ButtonPlus10" />
@@ -434,15 +434,56 @@
                    </tr>
                    <tr>
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtGrad_Univ11" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:UpdatePanel ID="UpdatetxtGrad_Univ11" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtGrad_Univ11" runat="server" MaxLength="100" Width="290px" CssClass="tb5"></asp:TextBox>
+                                   </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtGrad_Univ11" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
                         <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtDepart11" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:UpdatePanel ID="UpdatetxtDepart11" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtDepart11" runat="server" MaxLength="100" Width="250px" CssClass="tb5"></asp:TextBox>
+                                   </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtDepart11" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtNolicense11" runat="server" MaxLength="100" Width="155px" CssClass="tb5"></asp:TextBox></td>
+                           <asp:UpdatePanel ID="UpdatetxtNolicense11" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtNolicense11" runat="server" MaxLength="100" Width="155px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtNolicense11" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtDateEnable11" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox></td>
+                           <asp:UpdatePanel ID="UpdatetxtDateEnable11" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtDateEnable11" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtDateEnable11" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
                        <td style="text-align: right; margin-right: 5px; ">  
-                            <asp:Button ID="ButtonPlus11" Text="+" runat="server" Width="38px" CssClass="master_OAT_button" /></td>
+                           <asp:UpdatePanel ID="UpdateButtonPlus11" runat="server">
+                                   <ContentTemplate>
+                            <asp:Button ID="ButtonPlus11" Text="+" runat="server" Width="38px" CssClass="master_OAT_button" OnClick="ButtonPlus11_Click" />
+                                   </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="ButtonPlus11" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                            
+                       </td>
                      </tr>
                </table>
 

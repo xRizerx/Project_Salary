@@ -35,6 +35,15 @@ namespace WEB_PERSONAL
                 GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
                 GridView1.DataBind();
 
+                Session["JobLisence"] = new DataTable();
+                ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
+                ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
+                ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
+                ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
+                GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
+                GridView2.DataBind();
+
+
             }
 
         }
@@ -299,15 +308,33 @@ namespace WEB_PERSONAL
             txtMajor.Text = "";
         }
 
+        protected void ClearDataGridViewNumber11()
+        {
+            txtGrad_Univ11.Text = "";
+            txtDepart11.Text = "";
+            txtNolicense11.Text = "";
+            txtDateEnable11.Text = "";
+        }
+
         protected void btnCancelPerson_Click(object sender, EventArgs e)
         {
             ClearData();
+            ClearDataGridViewNumber10();
+            ClearDataGridViewNumber11();
             Session["StudyHis"] = new DataTable();
             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
             ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
             ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
             GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
             GridView1.DataBind();
+
+            Session["JobLisence"] = new DataTable();
+            ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
+            ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
+            ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
+            ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
+            GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
+            GridView2.DataBind();
 
         }
 
@@ -508,6 +535,13 @@ namespace WEB_PERSONAL
             GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
             GridView1.DataBind();
 
+            Session["JobLisence"] = new DataTable();
+            ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
+            ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
+            ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
+            ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
+            GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
+            GridView2.DataBind();
 
         }
 
@@ -522,37 +556,37 @@ namespace WEB_PERSONAL
             txtAge60Char.Text = Util.ToThaiWord(txtAge60Number.Text);
         }
 
-        protected void ButtonPlus_Click(object sender, EventArgs e)
+        protected void ButtonPlus10_Click(object sender, EventArgs e)
         {
 
             /*if (string.IsNullOrEmpty(txtGrad_Univ.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา<ในส่วนประวัติการศึกษา>')", true);
                 return;
             }
             if (DropDownMonth10From.SelectedIndex == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก เดือน (ประวัติการศึกษา ตั้งแต่)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
                 return;
             }
             if (DropDownYear10From.SelectedIndex == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปี (ประวัติการศึกษา ตั้งแต่)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
                 return;
             }
             if (DropDownMonth10To.SelectedIndex == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก เดือน (ประวัติการศึกษา ถึง)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
                 return;
             }
             if (DropDownYear10To.SelectedIndex == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปี (ประวัติการศึกษา ถึง)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtMajor.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วุฒิ(สาาขาาวิชาเอก)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วุฒิ(สาาขาาวิชาเอก)<ในส่วนประวัติการศึกษา>')", true);
                 return;
             }*/
 
@@ -565,6 +599,42 @@ namespace WEB_PERSONAL
             GridView1.DataBind();
             ClearDataGridViewNumber10();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการศึกษาเรียบร้อย')", true);
+
+        }
+
+        protected void ButtonPlus11_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtGrad_Univ11.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อใบอนุญาต<ใบอนุญาตประกอบวิชาชีพ>')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDepart11.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หน่วยงาน<ใบอนุญาตประกอบวิชาชีพ>')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtNolicense11.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เลขที่ใบอนุญาต<ใบอนุญาตประกอบวิชาชีพ>')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDateEnable11.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่มีผลบังคับใช้(วัน เดือน ปี)<ใบอนุญาตประกอบวิชาชีพ>')", true);
+                return;
+            }
+
+            DataRow dr = ((DataTable)(Session["JobLisence"])).NewRow();
+            dr[0] = txtGrad_Univ11.Text;
+            dr[1] = txtDepart11.Text;
+            dr[2] = txtNolicense11.Text;
+            dr[3] = txtDateEnable11.Text;
+            ((DataTable)(Session["JobLisence"])).Rows.Add(dr);
+            GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
+            GridView2.DataBind();
+            ClearDataGridViewNumber11();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลใบประกอบวิชาชีพเรียบร้อย')", true);
 
         }
     }
