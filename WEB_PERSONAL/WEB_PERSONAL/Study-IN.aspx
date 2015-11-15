@@ -3,17 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
         $(function () {
-            $(document).ready(function () {
-                $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox7,#ContentPlaceHolder1_TextBox8").datepicker({
-                    dateFormat: 'dd/mm/yy',
-                    changeMonth: true,
-                    changeYear: true,
-                    beforeShow: function () {
-                        $(".ui-datepicker").css('font-size', 14)
-                    }
-                });
-            });
-        });
+            $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox7,#ContentPlaceHolder1_TextBox8").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+        }); 
     </script>
     <style type="text/css">
         .pan {
@@ -135,7 +126,7 @@
 
     <asp:Panel ID="Panel8" runat="server" CssClass="pan">
         <div class="c1">
-            <asp:Label ID="Label1" runat="server" Text="การลาศึกษาต่อภายในและภายนอกประเทศ"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="การลาศึกษาต่อภายในและภายนอกประเทศ" Font-Size="32"></asp:Label>
         </div>
         <div class="div_sec" id="sec1">
             <div class="div_sec_header">

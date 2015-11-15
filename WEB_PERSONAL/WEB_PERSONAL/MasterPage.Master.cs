@@ -150,5 +150,12 @@ namespace WEB_PERSONAL
             Session.Remove("login_lastname");
         }
 
+        protected void LinkButton13_Click(object sender, EventArgs e) {
+            Response.Redirect("Personnel-General.aspx");
+        }
+
+        protected void LinkButton14_Click(object sender, EventArgs e) {
+            Response.Redirect("Person-General.aspx");
+        }
     }
 }

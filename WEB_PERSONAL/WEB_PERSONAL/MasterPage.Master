@@ -10,16 +10,50 @@
     <link rel="icon" href="Image/favicon.ico" />
     <title>ระบบบุคลากร - มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</title>
     <link rel="stylesheet" type="text/css" href="CSS/Master.css" />
-    <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
-    <link href="Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
-    <link href="Content/themes/base/jquery.ui.theme.css" rel="stylesheet" />
-    <link rel="stylesheet" href="CSS/jquery.mCustomScrollbar.css" />
 
-    <script src="Script/jquery-1.7.1.min.js"></script>
-    <script src="Script/jquery-ui-1.8.20.min.js"></script>
+    <link rel="stylesheet" href="CSS/jquery.mCustomScrollbar.css" />
+    <link href="jQueryCalendarThai/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+    <link href="jQueryCalendarThai/SpecialDateSheet.css" rel="stylesheet" />
+
     <script src="Script/JSFunction.js"></script>
-    <script src="Script/Master.js"></script>
     <script src="Script/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="jQueryCalendarThai/jquery-1.9.0.min.js"></script>
+    <script src="jQueryCalendarThai/jquery-ui-1.10.3.custom.js"></script>
+    <script>
+        $.datepicker.regional['th'] = {
+            changeMonth: true,
+            changeYear: true,
+
+            //defaultDate: GetFxupdateDate(FxRateDateAndUpdate.d[0].Day),
+            yearOffSet: 543,
+            showOn: "button",
+            buttonImage: 'jQueryCalendarThai/images/calendar.gif',
+            buttonImageOnly: true,
+            dateFormat: 'dd M yy',
+            dayNames: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'],
+            dayNamesMin: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
+            monthNames: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
+            monthNamesShort: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'],
+            constrainInput: true,
+
+            prevText: 'ก่อนหน้า',
+            nextText: 'ถัดไป',
+            yearRange: '-100:+60',
+            buttonText: 'เลือก',
+            beforeShow: function () {
+                if ($(this).val() != "") {
+                    var arrayDate = $(this).val().split(" ");
+                    if (arrayDate.length == 4) {
+                        arrayDate[2] = arrayDate[3];
+                    }
+                    $(this).val(arrayDate[0] + " " + arrayDate[1] + " " + arrayDate[2]);
+                } else {
+                    $(this).datepicker("setDate", new Date()); //Set ค่าวันปัจจุบัน
+                }
+            }
+        };
+        $.datepicker.setDefaults($.datepicker.regional['th']);
+    </script>
     <script>
         $(document).ready(function () {
             /*$(".master_nav").mouseover(function () {
@@ -111,10 +145,18 @@
                     <asp:LinkButton ID="LinkButton5" runat="server" OnClick="LinkButton5_Click">หน้าหลัก</asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">บุคลากร</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" CssClass="master_nav_multi">บุคลากร</asp:LinkButton>
+                    <ul>
+                        <li>
+                            <asp:LinkButton ID="LinkButton13" runat="server" CssClass="nav_a" OnClick="LinkButton13_Click">Personnel</asp:LinkButton>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton14" runat="server" CssClass="nav_a" OnClick="LinkButton14_Click">Person</asp:LinkButton>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click">เงินเดือน</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton4" runat="server" OnClick="LinkButton4_Click" CssClass="master_nav_multi">เงินเดือน</asp:LinkButton>
                     <ul>
                         <li>
                             <asp:LinkButton ID="LinkButton7" runat="server" CssClass="nav_a" OnClick="LinkButton7_Click">DPIS</asp:LinkButton>

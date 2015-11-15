@@ -13,7 +13,7 @@ namespace WEB_PERSONAL {
     public partial class Leave : System.Web.UI.Page {
 
         protected void Page_Load(object sender, EventArgs e) {
-            
+
         }
 
         private string toDate(String str) {
@@ -30,14 +30,14 @@ namespace WEB_PERSONAL {
                     string sql = "UPDATE TB_LEAVE SET PAPER_ID = :1, PAPER_DATE = :2, CITIZEN_ID = :3, LEAVE_TYPE_ID = :4, LEAVE_FROM_DATE = :5, LEAVE_TO_DATE = :6, LEAVE_STATUS_ID = :7, APPROVER_ID = :8, APPROVE_DATE = :9, REASON = :10 WHERE PAPER_ID = :1";
                     using (OracleCommand command = new OracleCommand(sql, con)) {
                         command.Parameters.AddWithValue("1", Label33.Text);
-                        command.Parameters.AddWithValue("2", Util.toOracleDateTime(TextBox2.Text));
+                        command.Parameters.AddWithValue("2", Util.ODT(TextBox2.Text));
                         command.Parameters.AddWithValue("3", TextBox3.Text);
                         command.Parameters.AddWithValue("4", DropDownList1.SelectedValue);
-                        command.Parameters.AddWithValue("5", Util.toOracleDateTime(TextBox5.Text));
-                        command.Parameters.AddWithValue("6", Util.toOracleDateTime(TextBox6.Text));
+                        command.Parameters.AddWithValue("5", Util.ODT(TextBox5.Text));
+                        command.Parameters.AddWithValue("6", Util.ODT(TextBox6.Text));
                         command.Parameters.AddWithValue("7", DropDownList2.SelectedValue);
                         command.Parameters.AddWithValue("8", TextBox8.Text);
-                        command.Parameters.AddWithValue("9", Util.toOracleDateTime(TextBox9.Text));
+                        command.Parameters.AddWithValue("9", Util.ODT(TextBox9.Text));
                         command.Parameters.AddWithValue("10", TextBox10.Text);
                         command.ExecuteNonQuery();
                         Util.Alert(this, "บันทึกสำเร็จ!");
@@ -239,7 +239,7 @@ namespace WEB_PERSONAL {
                 GridView1.Columns.Add(test);
             }
 
-            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient","DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", sql);
+            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", sql);
             GridView1.DataSource = sds;
             GridView1.DataBind();
         }
@@ -257,25 +257,25 @@ namespace WEB_PERSONAL {
                 string script = "alert('กรุณาป้อนข้อมูล!');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             } else {
-                pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.CITIZEN_ID = '" + TextBox4.Text + "' order by tb_leave.paper_id desc;");
+                pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.CITIZEN_ID = '" + TextBox4.Text + "' order by tb_leave.paper_id desc");
             }
 
         }
 
         protected void LinkButton8_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.APPROVER_ID = '" + TextBox7.Text + "' order by tb_leave.paper_id desc;");
+            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.APPROVER_ID = '" + TextBox7.Text + "' order by tb_leave.paper_id desc");
         }
 
         protected void LinkButton9_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND a.STF_NAME like '%" + TextBox12.Text + "%' order by tb_leave.paper_id desc;");
+            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND LOWER(a.STF_NAME) like '%" + TextBox12.Text.ToLower() + "%' order by tb_leave.paper_id desc");
         }
 
         protected void LinkButton10_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as 'รหัสเอกสาร',tb_leave.PAPER_DATE as 'วันที่เอกสาร',tb_leave.CITIZEN_ID as 'รหัสผู้ลา',a.stf_name + ' ' + a.STF_LNAME as 'ชื่อผู้ลา',tb_leave_type.LEAVE_TYPE_NAME as 'ประเภท',tb_leave.LEAVE_FROM_DATE as 'จากวันที่',tb_leave.LEAVE_TO_DATE as 'ถึงวันที่',TB_LEAVE_STATUS.LEAVE_STATUS_NAME as 'สถานะ',TB_LEAVE.APPROVER_ID as 'รหัสผู้อนุมัติ',b.stf_name + ' ' + b.STF_LNAME as 'ชื่อผู้อนุมัติ',TB_LEAVE.APPROVE_DATE as 'วันที่อนุมัติ',TB_LEAVE.REASON as 'เหตุผล' from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND b.STF_NAME like '%" + TextBox14.Text + "%' order by tb_leave.paper_id desc;");
+            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND LOWER(b.STF_NAME) like '%" + TextBox14.Text.ToLower() + "%' order by tb_leave.paper_id desc");
         }
 
         protected void DropDownList4_SelectedIndexChanged(object sender, EventArgs e) {
-            if(DropDownList4.SelectedIndex != 0)
+            if (DropDownList4.SelectedIndex != 0)
                 pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_type_id = " + DropDownList4.SelectedValue + " order by tb_leave.paper_id desc");
         }
 
@@ -290,7 +290,7 @@ namespace WEB_PERSONAL {
                                 if (reader.HasRows) {
                                     reader.Read();
                                     Label24.Text = reader.GetString(0);
-                                    Label24.ForeColor = Color.Black;
+                                    Label24.ForeColor = Color.White;
                                 } else {
                                     Label24.Text = "ไม่พบรหัสพนักงาน";
                                     Label24.ForeColor = Color.Red;
@@ -325,14 +325,14 @@ namespace WEB_PERSONAL {
 
                     using (OracleCommand command = new OracleCommand(sql, con)) {
                         //command.Parameters.AddWithValue("1", "SEQ_LEAVE_ID.NEXTVAL");
-                        command.Parameters.AddWithValue("2", Util.toOracleDateTime(DateTime.Today.AddYears(-543)));
+                        command.Parameters.AddWithValue("2", Util.ODTT());
                         command.Parameters.AddWithValue("3", TextBox16.Text);
                         command.Parameters.AddWithValue("4", DropDownList5.SelectedValue);
-                        command.Parameters.AddWithValue("5", Util.toOracleDateTime(TextBox17.Text));
-                        command.Parameters.AddWithValue("6", Util.toOracleDateTime(TextBox18.Text));
+                        command.Parameters.AddWithValue("5", Util.ODT(TextBox17.Text));
+                        command.Parameters.AddWithValue("6", Util.ODT(TextBox18.Text));
                         command.Parameters.AddWithValue("7", DropDownList6.SelectedValue);
                         command.Parameters.AddWithValue("8", Session["login_id"].ToString());
-                        command.Parameters.AddWithValue("9", Util.toOracleDateTime(DateTime.Today.AddYears(-543)));
+                        command.Parameters.AddWithValue("9", Util.ODTT());
                         command.Parameters.AddWithValue("10", TextBox19.Text);
 
                         command.ExecuteNonQuery();
@@ -428,7 +428,7 @@ namespace WEB_PERSONAL {
                                 if (reader.HasRows) {
                                     reader.Read();
                                     Label45.Text = reader.GetString(0);
-                                    Label45.ForeColor = Color.Black;
+                                    Label45.ForeColor = Color.White;
                                 } else {
                                     Label45.Text = "ไม่พบรหัสพนักงาน";
                                     Label45.ForeColor = Color.Red;
@@ -475,28 +475,28 @@ namespace WEB_PERSONAL {
                 Util.Alert(this, "เกิดข้อผิดพลาด");
                 return;
             }
-            
+
 
             try {
-            using (OracleConnection con = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;")) {
-                con.Open();
-                {
-                    string sql = "INSERT INTO TB_WORK_CHECK_IN VALUES(SEQ_WORK_CHECK_IN_ID.NEXTVAL,:1,:2,:3,:4,:5,:6)";
+                using (OracleConnection con = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;")) {
+                    con.Open();
+                    {
+                        string sql = "INSERT INTO TB_WORK_CHECK_IN VALUES(SEQ_WORK_CHECK_IN_ID.NEXTVAL,:1,:2,:3,:4,:5,:6)";
 
-                    using (OracleCommand command = new OracleCommand(sql, con)) {
-                        command.Parameters.AddWithValue("1", Util.toOracleDateTime(TextBox11.Text));
-                        command.Parameters.AddWithValue("2", TextBox21.Text);
-                        command.Parameters.AddWithValue("3", TextBox22.Text);
-                        command.Parameters.AddWithValue("4", TextBox23.Text);
-                        command.Parameters.AddWithValue("5", TextBox24.Text);
-                        command.Parameters.AddWithValue("6", TextBox25.Text);
-                        command.ExecuteNonQuery();
-                        Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            command.Parameters.AddWithValue("1", Util.ODT(TextBox11.Text));
+                            command.Parameters.AddWithValue("2", TextBox21.Text);
+                            command.Parameters.AddWithValue("3", TextBox22.Text);
+                            command.Parameters.AddWithValue("4", TextBox23.Text);
+                            command.Parameters.AddWithValue("5", TextBox24.Text);
+                            command.Parameters.AddWithValue("6", TextBox25.Text);
+                            command.ExecuteNonQuery();
+                            Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
+                        }
                     }
                 }
-            }
             } catch (Exception e2) {
-                Util.Alert(this,"เกิดข้อผิดพลาด! " + e2.Message);
+                Util.Alert(this, "เกิดข้อผิดพลาด! " + e2.Message);
             }
         }
 
@@ -540,7 +540,7 @@ namespace WEB_PERSONAL {
                 test.HeaderText = "เวลาออก";
                 GridView2.Columns.Add(test);
             }
-           
+
             SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "select tb_work_check_in.id , to_char(tb_work_check_in.ddate,'dd mon yyyy','NLS_DATE_LANGUAGE=THAI') as \"ddate\", tb_work_check_in.citizen_id, tb_personal.stf_name || ' ' || tb_personal.stf_lname as \"name\", tb_work_check_in.hour_in || ':' || tb_work_check_in.minute_in as \"time_in\", tb_work_check_in.hour_out || ':' || tb_work_check_in.minute_out as \"time_out\" from tb_work_check_in, tb_personal where tb_work_check_in.citizen_id = tb_personal.citizen_id");
             GridView2.DataSource = sds;
             GridView2.DataBind();
@@ -550,7 +550,7 @@ namespace WEB_PERSONAL {
 
             //string s = "21/04/2537";
             //Util.Alert(this,Util.ToThaiWord(s));
-            
+
 
 
         }
@@ -558,7 +558,7 @@ namespace WEB_PERSONAL {
         protected void LinkButton1_Click1(object sender, EventArgs e) {
             GridView3.AutoGenerateColumns = false;
             GridView3.AllowPaging = true;
-            
+
             GridView3.Controls.Clear();
             GridView3.Columns.Clear();
             {
@@ -626,7 +626,7 @@ namespace WEB_PERSONAL {
         protected void DropDownList2_DataBound(object sender, EventArgs e) {
             DropDownList2.Items.Insert(0, new ListItem("--กรุณาเลือกสถานะการลา--", String.Empty));
             DropDownList2.SelectedIndex = 0;
-            
+
         }
     }
 }

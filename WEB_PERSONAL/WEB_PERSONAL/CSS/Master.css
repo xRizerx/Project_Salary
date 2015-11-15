@@ -210,6 +210,10 @@ form {
     
     transition: background-color 0.25s ease;
 }
+.master_nav_multi:after {
+	content: ' v';
+    
+}
 
 
 .master_nav a:hover {
@@ -294,6 +298,7 @@ form {
 }
 .master_nav ul li ul li .nav_a {
     padding: 3px 20px;
+    text-align:left;
 }
 .master_nav ul ul li .nav_a {
     margin-top: -1px;

@@ -11,7 +11,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
         .c1 {
-            font-family: ths;
             font-size: 32px;
             text-align: center;
         }
@@ -56,8 +55,8 @@
             color: #ffffff;
             text-shadow: 1px 1px 1px #000000;
         }
-        .c11 {
-            color: #ff0000;
+        .cerror {
+            color: #ffb55e;
             text-shadow: 1px 1px 1px #000000;
         }
 
@@ -79,10 +78,6 @@
             background-color: rgba(128,128,128,0.6);
             padding: 20px 0px;
         }
-        .div_sec_in span {
-            color: #FFFFFF;
-            text-shadow: 1px 1px 1px #000000;
-        }
         #sec1 {
             background-image: url("Image/log-keyboard.jpg");
             background-size: cover;
@@ -103,8 +98,7 @@
             width: 146px;
         }
     </style>
-    <asp:Panel ID="Panel8" runat="server" Height="800px" CssClass="bb">
-        <br />
+    <asp:Panel ID="Panel8" runat="server" CssClass="bb">
         <div class="c1">
             <asp:Label ID="Label1" runat="server" Text="เข้าสู่ระบบ" Font-Size="32"></asp:Label>
         </div>
@@ -113,12 +107,12 @@
             <div class="div_sec_header">
                 <asp:Label ID="Label2" runat="server" Text="เข้าสู่ระบบ"></asp:Label>
             </div>
-            <div class="div_sec_in" style="height:400px">
+            <div class="div_sec_in" style="height:400px;">
                 <table class="auto-style7">
                     <tr>
                         <td class="auto-style5"></td>
                         <td class="auto-style9">
-                            <asp:Label ID="Label9" runat="server" CssClass="c11"></asp:Label>
+                            <asp:Label ID="Label9" runat="server" CssClass="cerror"></asp:Label>
                         </td>
                     </tr>
                     <tr>

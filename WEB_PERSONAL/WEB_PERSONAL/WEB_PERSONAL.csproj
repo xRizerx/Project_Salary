@@ -178,6 +178,72 @@
     <Content Include="insignia_recordnote 2.aspx" />
     <Content Include="insignia_recordnote.aspx" />
     <Content Include="insignia_recordnote3.aspx" />
+    <Content Include="jQueryCalendarThai\images\add.gif" />
+    <Content Include="jQueryCalendarThai\images\ajax-loader.gif" />
+    <Content Include="jQueryCalendarThai\images\ajax-loader_blue.gif" />
+    <Content Include="jQueryCalendarThai\images\animated-overlay.gif" />
+    <Content Include="jQueryCalendarThai\images\arrow-left.png" />
+    <Content Include="jQueryCalendarThai\images\arrows-ffffff.png" />
+    <Content Include="jQueryCalendarThai\images\asc.gif" />
+    <Content Include="jQueryCalendarThai\images\bg.gif" />
+    <Content Include="jQueryCalendarThai\images\calendar.gif" />
+    <Content Include="jQueryCalendarThai\images\calendar.png" />
+    <Content Include="jQueryCalendarThai\images\Contact\blog-21x17-left-BW.gif" />
+    <Content Include="jQueryCalendarThai\images\Contact\Facebook-21x17-left-BW.gif" />
+    <Content Include="jQueryCalendarThai\images\Contact\foursquare-21x17-left-BW.gif" />
+    <Content Include="jQueryCalendarThai\images\Contact\JavaScriptThaiLogo.png" />
+    <Content Include="jQueryCalendarThai\images\Contact\LinkedIn-21x17-left-BW %281%29.gif" />
+    <Content Include="jQueryCalendarThai\images\Contact\LinkedIn-21x17-left-BW.gif" />
+    <Content Include="jQueryCalendarThai\images\Contact\Logo_JavaScriptThai3.png" />
+    <Content Include="jQueryCalendarThai\images\Contact\Pinterest-21x17-left-BW.gif" />
+    <Content Include="jQueryCalendarThai\images\Contact\Twitter-21x17-left-BW.gif" />
+    <Content Include="jQueryCalendarThai\images\Contact\VitalDesign-logo-148x26.gif" />
+    <Content Include="jQueryCalendarThai\images\del.png" />
+    <Content Include="jQueryCalendarThai\images\delete.png" />
+    <Content Include="jQueryCalendarThai\images\desc.gif" />
+    <Content Include="jQueryCalendarThai\images\down.gif" />
+    <Content Include="jQueryCalendarThai\images\empty.gif" />
+    <Content Include="jQueryCalendarThai\images\error.png" />
+    <Content Include="jQueryCalendarThai\images\fill.gif" />
+    <Content Include="jQueryCalendarThai\images\hd-bg.png" />
+    <Content Include="jQueryCalendarThai\images\icon_close.png" />
+    <Content Include="jQueryCalendarThai\images\info.png" />
+    <Content Include="jQueryCalendarThai\images\loadingAnimation.gif" />
+    <Content Include="jQueryCalendarThai\images\Logo.gif" />
+    <Content Include="jQueryCalendarThai\images\Logo.jpg" />
+    <Content Include="jQueryCalendarThai\images\logo.png" />
+    <Content Include="jQueryCalendarThai\images\Logo_JavaScriptThai3.png" />
+    <Content Include="jQueryCalendarThai\images\minus %281%29.gif" />
+    <Content Include="jQueryCalendarThai\images\minus.gif" />
+    <Content Include="jQueryCalendarThai\images\personal-information.png" />
+    <Content Include="jQueryCalendarThai\images\set.gif" />
+    <Content Include="jQueryCalendarThai\images\sort_asc.png" />
+    <Content Include="jQueryCalendarThai\images\sort_both.png" />
+    <Content Include="jQueryCalendarThai\images\sort_desc.png" />
+    <Content Include="jQueryCalendarThai\images\success.png" />
+    <Content Include="jQueryCalendarThai\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="jQueryCalendarThai\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="jQueryCalendarThai\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="jQueryCalendarThai\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="jQueryCalendarThai\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="jQueryCalendarThai\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="jQueryCalendarThai\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="jQueryCalendarThai\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="jQueryCalendarThai\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="jQueryCalendarThai\images\ui-icons_222222_256x240.png" />
+    <Content Include="jQueryCalendarThai\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="jQueryCalendarThai\images\ui-icons_888888_256x240.png" />
+    <Content Include="jQueryCalendarThai\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="jQueryCalendarThai\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="jQueryCalendarThai\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="jQueryCalendarThai\images\up.gif" />
+    <Content Include="jQueryCalendarThai\images\validation.png" />
+    <Content Include="jQueryCalendarThai\images\warning.png" />
+    <Content Include="jQueryCalendarThai\images\webbg.gif" />
+    <Content Include="jQueryCalendarThai\jquery-1.9.0.min.js" />
+    <Content Include="jQueryCalendarThai\jquery-ui-1.10.3.custom.css" />
+    <Content Include="jQueryCalendarThai\jquery-ui-1.10.3.custom.js" />
+    <Content Include="jQueryCalendarThai\SpecialDateSheet.css" />
     <Content Include="js\index.js" />
     <Content Include="Leave-Report1.aspx" />
     <Content Include="M-Admin.aspx" />
@@ -575,6 +641,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

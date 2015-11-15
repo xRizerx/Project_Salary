@@ -16,55 +16,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script>
         $(function () {
-            $(document).ready(function () {
-                $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox5,#ContentPlaceHolder1_TextBox6,#ContentPlaceHolder1_TextBox9,#ContentPlaceHolder1_TextBox17,#ContentPlaceHolder1_TextBox18,#ContentPlaceHolder1_TextBox11").datepicker({
-                    dateFormat: 'dd-mm-yy',
-                    changeMonth: true,
-                    changeYear: true,
-                    dayNamesMin: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
-                    monthNamesShort: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
-                    yearRange: "-60:+40",
-                    beforeShow: function () {
-                        $(".ui-datepicker").css('font-size', 14)
-                        if ($(this).val() != "") {
-                            var arrayDate = $(this).val().split("-");
-                            arrayDate[2] = parseInt(arrayDate[2]) - 543;
-                            $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                        }
-                        setTimeout(function () {
-                            $.each($(".ui-datepicker-year option"), function (j, k) {
-                                var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
-                                $(".ui-datepicker-year option").eq(j).text(textYear);
-                            });
-                        }, 50);
-                    },
-                    onChangeMonthYear: function () {
-                        setTimeout(function () {
-                            $.each($(".ui-datepicker-year option"), function (j, k) {
-                                var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
-                                $(".ui-datepicker-year option").eq(j).text(textYear);
-                            });
-                        }, 50);
-                    },
-                    onClose: function () {
-                        if (dateBefore == null) {
-                            dateBefore = $(this).val();
-                        }
-                        if ($(this).val() != "" && $(this).val() == dateBefore) {
-                            var arrayDate = dateBefore.split("-");
-                            arrayDate[2] = parseInt(arrayDate[2]) + 543;
-                            $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                        }
-                    },
-                    onSelect: function (dateText, inst) {
-                        dateBefore = $(this).val();
-                        var arrayDate = dateText.split("-");
-                        arrayDate[2] = parseInt(arrayDate[2]) + 543;
-                        $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-
-                    }
-                });
-            });
+            $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox5,#ContentPlaceHolder1_TextBox6,#ContentPlaceHolder1_TextBox9,#ContentPlaceHolder1_TextBox17,#ContentPlaceHolder1_TextBox18,#ContentPlaceHolder1_TextBox11").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
         });
     </script>
     <style type="text/css">
@@ -259,7 +211,7 @@
     </style>
     <asp:Panel ID="Panel2" runat="server" CssClass="mp">
         <div class="c1">
-            <asp:Label ID="Label1" runat="server" Text="การลา"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="การลา" Font-Size="32"></asp:Label>
 
         </div>
         <div class="div_sec" id="sec1">
@@ -288,6 +240,7 @@
                     <tr>
                         <td class="auto-style83">
                             <asp:Label ID="Label47" runat="server" Text="ชื่อพนักงาน"></asp:Label>
+                            
                         </td>
                         <td class="auto-style67">
                             <asp:Label ID="Label45" runat="server"></asp:Label>

@@ -26,6 +26,31 @@ namespace WEB_PERSONAL {
         public static DateTime toOracleDateTime(DateTime date) {
             return DateTime.ParseExact(date.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
+        public static DateTime ODT(string date) {
+
+            string[] ss = date.Split(' ');
+
+            switch (ss[1]) {
+                case "ม.ค.": ss[1] = "01"; break;
+                case "ก.พ.": ss[1] = "02"; break;
+                case "มี.ค.": ss[1] = "03"; break;
+                case "เม.ย.": ss[1] = "04"; break;
+                case "พ.ค.": ss[1] = "05"; break;
+                case "มิ.ย.": ss[1] = "06"; break;
+                case "ก.ค.": ss[1] = "07"; break;
+                case "ส.ค.": ss[1] = "08"; break;
+                case "ก.ย.": ss[1] = "09"; break;
+                case "ต.ค.": ss[1] = "10"; break;
+                case "พ.ย.": ss[1] = "11"; break;
+                case "ธ.ค.": ss[1] = "12"; break;
+            }
+            string d1 = ss[0] + "/" + ss[1] + "/" + ss[2];
+
+            return DateTime.ParseExact(d1, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+        }
+        public static DateTime ODTT() {
+            return DateTime.ParseExact(DateTime.Today.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+        }
         public static string ToOracleMonth(string month) {
             return ToOracleMonth(Int32.Parse(month));
         }
