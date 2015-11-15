@@ -32,7 +32,6 @@ namespace WEB_PERSONAL.Entities
         public string PERSON_NAME { get; set; }
         public string PERSON_LASTNAME { get; set; }
 
-
         public ClassPerson() { }
         public ClassPerson(int MINISTRY_ID, string DEPARTMENT_NAME, string TITLE_ID, string CITIZEN_ID, string FATHER_NAME, string FATHER_LASTNAME, string MOTHER_NAME, string MOTHER_LASTNAME, string MOTHER_OLD_LASTNAME, string COUPLE_NAME, string COUPLE_LASTNAME, string COUPLE_OLD_LASTNAME, DateTime BIRTHDATE, string BIRTHDATE_LONG, DateTime INWORK_DATE, int STAFFTYPE_ID, DateTime RETIRE_DATE, string RETIRE_DATE_LONG, string PERSON_NAME, string PERSON_LASTNAME)
         {
@@ -105,5 +104,7 @@ namespace WEB_PERSONAL.Entities
             }
             return id;
         }
+
+        
     }
 }

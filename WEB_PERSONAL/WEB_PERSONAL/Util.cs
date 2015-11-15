@@ -108,6 +108,26 @@ namespace WEB_PERSONAL {
                 default: return "[ERROR]";
             }
         }
+        public static int MonthToNumber(string s)
+        {
+           
+            switch (s)
+            {
+                case "ม.ค.": return 1;
+                case "ก.พ.": return 2;
+                case "มี.ค.": return 3;
+                case "เม.ย.": return 4;
+                case "พ.ค.": return 5;
+                case "มิ.ย.": return 6;
+                case "ก.ค.": return 7;
+                case "ส.ค.": return 8;
+                case "ก.ย.": return 9;
+                case "ต.ค.": return 10;
+                case "พ.ย.": return 11;
+                case "ธ.ค.": return 12;
+                default: return -1;
+            }
+        }
         public static string NormalizeThaiWord(string s) {
             s = s.Replace("หนึ่งสิบ","สิบ");
             s = s.Replace("สองสิบ", "ยี่สิบ");
