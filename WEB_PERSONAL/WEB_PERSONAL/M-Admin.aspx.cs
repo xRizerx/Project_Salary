@@ -16,15 +16,14 @@ namespace WEB_PERSONAL
         }
 
         protected void LinkButton13_Click(object sender, EventArgs e) {
-            if(Session["login_id"] == null) {
-                Util.Alert(this, "กรุณาเข้าสู่ระบบก่อน");
-                return;
+            string citizen_id = null;
+            if(Session["login_id"] != null) {
+                citizen_id = Session["login_id"].ToString();
             }
-
             using(OracleConnection con = Util.OC()) {
                 using(OracleCommand command = new OracleCommand("insert into TB_COMMENT values(SEQ_COMMENT_ID.NEXTVAL,:2,:3,:4)", con)) {
-                    command.Parameters.AddWithValue("2",1);
-                    command.Parameters.AddWithValue("3", Util.toOracleDateTime(DateTime.Now));
+                    command.Parameters.AddWithValue("2", citizen_id == null ? DBNull.Value.ToString() : citizen_id);
+                    command.Parameters.AddWithValue("3", Util.ODTN());
                     command.Parameters.AddWithValue("4", TextBox1.Text);
                     command.ExecuteNonQuery();
                     Util.Alert(this, "ส่งข้อเสนอแนะเรียบร้อนแบ้ว");

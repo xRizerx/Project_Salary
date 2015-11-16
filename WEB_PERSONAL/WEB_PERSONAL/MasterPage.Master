@@ -57,14 +57,58 @@
         $.datepicker.setDefaults($.datepicker.regional['th']);
     </script>
     <script>
-        $(document).ready(function () {
-            /*$(".master_nav").mouseover(function () {
-                $(".master_header").css("background-color", "#00a2e8");
+        /*(function ($) {
+            $(window).load(function () {
+                $(".master_header_under").mCustomScrollbar({
+                    axis: "x",
+                    theme: "white-thin",
+                    //theme: "minimal-dark",
+                    autoExpandScrollbar: true,
+                    advanced: { autoExpandHorizontalScroll: true }
+                });
             });
-            $(".master_nav").mouseout(function () {
-                $(".master_header").css("background-color", "white");
-            });*/
+        })(jQuery);*/
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#i2").hide();
         });
+        function mover(target) {
+            var v = document.getElementById('master_header_under_id');
+            v.src = target;
+        }
+        function tg() {
+
+           /* if ($("#i2").is(":visible")) {
+
+            } else {
+                var v = document.getElementById('master_header_under_id');
+                if (Math.random() < 0.5) {
+                    v.src = 'image/anime_p1.png';
+                } else {
+                    v.src = 'image/anime_p2.png';
+                }
+            }*/
+
+             if ($("#i2").is(":visible")) {
+
+            } else {
+                var v = document.getElementById('master_header_under_id');
+                if (Math.random() < 0.5) {
+                    
+                } else {
+                    var v = document.getElementById('master_header_under_id');
+                    v.src = 'image/anime_p1.png';
+                }
+            }
+
+            
+            
+            $("#i2").slideToggle(500);
+            //$("#i2").fadeToggle(250);
+
+
+        }
     </script>
 
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
@@ -72,21 +116,16 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
-        .auto-style1 {
-            height: 24px;
-        }
-
-
-        .auto-style2 {
-            height: 50px;
-        }
-
         .mt2 {
             width: 643px;
         }
 
         .mt1 {
             width: 50px;
+        }
+
+        .mt3 {
+            width: 446px;
         }
     </style>
 </head>
@@ -97,7 +136,11 @@
             <div class="master_login_pre_in">
                 <div class="master_login_in">
                     <ul class="master_login_left">
-                        <li></li>
+                        <li>
+                            <div class="master_header_under_toggle" onclick="tg();">
+                                <span>เมนู</span>
+                            </div>
+                        </li>
                     </ul>
 
                     <ul class="master_login_right">
@@ -114,6 +157,105 @@
                 </div>
             </div>
 
+            <div class="master_header_under" id="i2">
+
+                <div style="float:left;">
+                    <table>
+                        <tr>
+                            <td style="width: 50px;">
+                                <img src="Image/RMUTTO.png" style="height: 80px;" />
+                            </td>
+                            <td style="width: 400px;">
+                                <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
+                                <asp:Label ID="Label9" runat="server" CssClass="master_header_label4" Text="(เวอร์ชั่น ทดสอบ)"></asp:Label>
+                                <br />
+                                <asp:Label ID="Label10" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_label2"></asp:Label>
+                            </td>
+                            <td>
+                                <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td class="master_header_under_left">
+                                <span class="master_header_under_header">เมนู</span>
+                            </td>
+                            <td>
+                                <span class="master_header_under_header">การขึ้นเงินเดือน</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="master_header_under_left">
+                                <a href="Default.aspx" onmouseover="mover('image/RMUTTO.png')">หน้าหลัก</a>
+                            </td>
+                            <td>
+                                <a href="Salary.aspx" onmouseover="mover('image/anime_p2.png')">DPIS</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="master_header_under_left">
+                                <a href="Person-GENERAL.aspx" onmouseover="mover('image/anime_p2.png')">บุคลากร</a>
+                            </td>
+                            <td>
+                                <a href="SalarybyID.aspx" onmouseover="mover('image/anime_p2.png')">การขึ้นเงินเดือนรายบุคคล</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="master_header_under_left">
+                                <a href="Leave.aspx" onmouseover="mover('image/anime_p2.png')">การลา</a>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="master_header_under_left">
+                                <a href="Study-IN.aspx" onmouseover="mover('image/anime_p2.png')">ศึกษาต่อ</a>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="master_header_under_left">
+                                <a href="SEMINAR-GENERAL.aspx" onmouseover="mover('image/anime_p2.png')">การสัมมนา</a>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="master_header_under_left">
+                                <a href="insignia_citizen.aspx" onmouseover="mover('image/anime_p2.png')">เครื่องราชอิสริยาภรณ์</a>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="master_header_under_left">
+                                <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+              
+                    <img src="Image/anime_p1.png" id="master_header_under_id" />
+               
+                
+                
+                
+                
+                <!--
+            <img src="Image/love_live_chibi/Eli_Ayase.png" />
+            <img src="Image/love_live_chibi/Hanayo_Koizumi.png" />
+            <img src="Image/love_live_chibi/Honoka_Kousaka.png" />
+            <img src="Image/love_live_chibi/Kotori_Minami.png" />
+            <img src="Image/love_live_chibi/Maki_Nishikino.png" />
+            <img src="Image/love_live_chibi/Nico_Yazawa.png" />
+            <img src="Image/love_live_chibi/Nozomi_Toujou.png" />
+            <img src="Image/love_live_chibi/Rin_Hoshizora.png" />
+            <img src="Image/love_live_chibi/Umi_Sonoda.png" />
+            -->
+            </div>
+
         </div>
 
         <div class="master_header">
@@ -125,22 +267,30 @@
                                 <td class="mt1">
                                     <img src="Image/RMUTTO.png" style="height: 80px;" />
                                 </td>
-                                <td class="mt2">
+                                <td class="mt3">
                                     <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
                                     <asp:Label ID="LabelX1" runat="server" CssClass="master_header_label4" Text="(เวอร์ชั่น ทดสอบ)"></asp:Label>
                                     <br />
                                     <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_label2"></asp:Label>
                                 </td>
+                                <td>
+                                    <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
+                                </td>
                             </tr>
                         </table>
                     </div>
+
                 </div>
+
             </div>
+
 
 
         </div>
 
-        <div class="master_nav">
+
+
+        <!--div class="master_nav">
 
             <ul>
                 <li>
@@ -184,7 +334,7 @@
                     <asp:LinkButton ID="LinkButton12" runat="server" OnClick="LinkButton12_Click">ติดต่อผู้ดูแลระบบ</asp:LinkButton>
                 </li>
             </ul>
-        </div>
+        </!--div-->
 
 
         <div class="wrapper">
@@ -221,6 +371,7 @@
                 <div class="master_footer_under_inner">
                     <asp:Label ID="LabelCounter" runat="server"></asp:Label>
                 </div>
+
             </div>
 
         </footer>
