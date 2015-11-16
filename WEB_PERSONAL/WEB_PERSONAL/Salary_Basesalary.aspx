@@ -18,18 +18,26 @@
         }
         .button_ui{
             border-radius: 2px;
-            padding:5px 8px;
+            padding:2px 8px;
             background-color:rgb(200, 125, 0);
             border-color:black;
             color:white;
             text-decoration:none;
         }
+        @font-face{
+            font-family:'WDB_BANGNA';
+            src:url('../Font/WDB_Bangna.ttf') format('truetype');
+        }
+        .bigtuu{
+            font-family:WDB_BANGNA;
+        }
     </style>
+    <link href="CSS/Master.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:Panel ID="Panel1" runat="server" CssClass="panout" Height="250px">
+    <div class="bigtuu">
+        <asp:Panel ID="Panel1" runat="server" CssClass="panout" Height="300px">
             <asp:Panel ID="Panel2" runat="server" CssClass="panin" Width="100%" Height="100%">
 
                 <table style="width:100%;">

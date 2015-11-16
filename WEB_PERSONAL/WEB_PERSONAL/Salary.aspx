@@ -36,23 +36,19 @@
             text-align: center;
         }
         .textmode {
-            font-family: ths;
             font-size: 16px;
         }
 
         .textmodeb {
-            font-family: thsb;
             font-size: 24px;
             padding: 20px;
         }
 
         .textmodebi {
-            font-family: thsbi;
             font-size: 20px;
         }
 
         .textmodei {
-            font-family: thsi;
             font-size: 20px;
         }
 
@@ -96,15 +92,15 @@
         }
         </style>
 
-    <div class="divover">
-        <asp:Panel ID="Panel1" runat="server" Height="1024px" CssClass="divpan">
+    <div>
+        <asp:Panel ID="Panel1" runat="server" CssClass="divpan">
 
             <asp:Label ID="Label2" runat="server" Text="Salary System" CssClass="textmode" Font-Size="40pt"></asp:Label><br />
             <br />
             <asp:Label ID="Label1" runat="server" CssClass="textmodeb" Text="รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุคมศึกษา"></asp:Label><br />
             <asp:Label ID="Label3" runat="server" CssClass="textmodeb" Text="ครั้งที่ 1 วันที่ 1 เมษายน 2558"></asp:Label><br />
             <asp:Label ID="Label21" runat="server" CssClass="textmodeb" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก"></asp:Label><br />
-            <asp:Panel ID="Panel2" runat="server" Height="685px" CssClass="panin">
+            <asp:Panel ID="Panel2" runat="server" CssClass="panin">
                 <table style="width: 100%;" border="0">
 
                     <tr>
