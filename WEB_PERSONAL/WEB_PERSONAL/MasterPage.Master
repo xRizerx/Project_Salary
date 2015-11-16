@@ -11,14 +11,16 @@
     <title>ระบบบุคลากร - มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</title>
     <link rel="stylesheet" type="text/css" href="CSS/Master.css" />
 
-    <link rel="stylesheet" href="CSS/jquery.mCustomScrollbar.css" />
     <link href="jQueryCalendarThai/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
     <link href="jQueryCalendarThai/SpecialDateSheet.css" rel="stylesheet" />
 
     <script src="Script/JSFunction.js"></script>
-    <script src="Script/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="jQueryCalendarThai/jquery-1.9.0.min.js"></script>
     <script src="jQueryCalendarThai/jquery-ui-1.10.3.custom.js"></script>
+
+    <script src="jquery.mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <link href="jquery.mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+
     <script>
         $.datepicker.regional['th'] = {
             changeMonth: true,
@@ -38,7 +40,7 @@
 
             prevText: 'ก่อนหน้า',
             nextText: 'ถัดไป',
-            yearRange: '-100:+60',
+            yearRange: '-100:+100',
             buttonText: 'เลือก',
             beforeShow: function () {
                 if ($(this).val() != "") {

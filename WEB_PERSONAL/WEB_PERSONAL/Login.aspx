@@ -9,11 +9,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <style type="text/css">
-        .c1 {
-            font-size: 32px;
-            text-align: center;
-        }
         .c2 {
             text-align: center;
         }
@@ -99,15 +96,14 @@
         }
     </style>
     <asp:Panel ID="Panel8" runat="server" CssClass="bb">
-        <div class="c1">
+        <div class="master_default_page_header">
             <asp:Label ID="Label1" runat="server" Text="เข้าสู่ระบบ" Font-Size="32"></asp:Label>
         </div>
-        <br />
-        <div class="div_sec" id="sec1">
-            <div class="div_sec_header">
+        <div class="master_default_div_sec" id="sec1">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label2" runat="server" Text="เข้าสู่ระบบ"></asp:Label>
             </div>
-            <div class="div_sec_in" style="height:400px;">
+            <div class="master_default_div_sec_in" style="height:400px;">
                 <table class="auto-style7">
                     <tr>
                         <td class="auto-style5"></td>

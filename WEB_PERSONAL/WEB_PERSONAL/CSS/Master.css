@@ -429,6 +429,8 @@ form {
     /*height: 100px; /* .push must be the same height as .footer */
 }
 
+/*--DEFAULT COMPONENT--*/
+
 .master_default_button {
     text-decoration: none;
     display: inline;
@@ -478,6 +480,31 @@ form {
     background-color: #FFFFFF;
     padding: 2px 5px;
     border-radius: 24px;
+}
+.master_default_div_sec {
+    margin: 20px auto;
+    box-shadow: #808080 0px 5px 5px;
+}
+.master_default_div_sec_header {
+    background-color: rgba(128,128,128,0.8);
+    padding: 20px 25px;
+    font-weight: bold;
+}
+.master_default_div_sec_header span {
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px #000000;
+}
+.master_default_div_sec_in {
+    background-color: rgba(128,128,128,0.6);
+    padding: 20px 20px;
+}
+.master_default_div_sec_in span {
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px #000000;
+}
+.master_default_page_header {
+    font-size: 32px;
+    text-align: center;
 }
 .master_OAT_button {
     background-color: rgba(0, 114, 255, 0.90);

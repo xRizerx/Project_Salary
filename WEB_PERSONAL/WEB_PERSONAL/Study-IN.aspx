@@ -10,31 +10,6 @@
         .pan {
             padding: 20px;
         }
-        .c1 {
-            font-size: 32px;
-            text-align: center;
-        }
-        .div_sec {
-            margin: 50px 0;
-            box-shadow: #808080 0px 5px 5px;
-        }
-        .div_sec_header {
-            background-color: rgba(128,128,128,0.8);
-            padding: 20px 25px;
-            font-weight: bold;
-        }
-        .div_sec_header span {
-            color: #FFFFFF;
-            text-shadow: 1px 1px 1px #000000;
-        }
-        .div_sec_in {
-            background-color: rgba(128,128,128,0.6);
-            padding: 20px 0px;
-        }
-        .div_sec_in span {
-            color: #FFFFFF;
-            text-shadow: 1px 1px 1px #000000;
-        }
         #sec1 {
             background-image: url("Image/books.jpg");
             background-size: cover;
@@ -125,14 +100,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <asp:Panel ID="Panel8" runat="server" CssClass="pan">
-        <div class="c1">
+        <div class="master_default_page_header">
             <asp:Label ID="Label1" runat="server" Text="การลาศึกษาต่อภายในและภายนอกประเทศ" Font-Size="32"></asp:Label>
         </div>
-        <div class="div_sec" id="sec1">
-            <div class="div_sec_header">
+        <div class="master_default_div_sec" id="sec1">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label2" runat="server" Text="เพิ่มข้อมูลการลาศึกษาต่อ"></asp:Label>
             </div>
-            <div class="div_sec_in">
+            <div class="master_default_div_sec_in">
 
 
                 <table style="width: 100%;">
@@ -304,11 +279,11 @@
             </div>
         </div>
 
-        <div class="div_sec" id="sec2">
-            <div class="div_sec_header">
+        <div class="master_default_div_sec" id="sec2">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label3" runat="server" Text="ข้อมูลการลาศึกษาต่อ"></asp:Label>
             </div>
-            <div class="div_sec_in">
+            <div class="master_default_div_sec_in">
                 <div style="height:800px">
                     <asp:Panel ID="Panel2" runat="server" ScrollBars="Both" CssClass="leave_grid_view">
                         </asp:Panel>

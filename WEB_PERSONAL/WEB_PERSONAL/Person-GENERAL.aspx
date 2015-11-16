@@ -1,59 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Person-GENERAL.aspx.cs" Inherits="WEB_PERSONAL.Person_GENERAL" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
- <script src="Script/jquery-ui-1.8.20.min.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript"> 
-        function pageLoad(sender, args) {
-            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11,#ContentPlaceHolder1_txtDate14").datepicker({
-                        dateFormat: 'dd-mm-yy',
-                        changeMonth: true,
-                        changeYear: true,
-                        dayNamesMin: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
-                        monthNamesShort: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
-                        yearRange: "-60:+40",
-                        beforeShow: function () {
-                            $(".ui-datepicker").css('font-size', 14)
-                            if ($(this).val() != "") {
-                                var arrayDate = $(this).val().split("-");
-                                arrayDate[2] = parseInt(arrayDate[2]) - 543;
-                                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                            }
-                            setTimeout(function () {
-                                $.each($(".ui-datepicker-year option"), function (j, k) {
-                                    var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
-                                    $(".ui-datepicker-year option").eq(j).text(textYear);
-                                });
-                            }, 50);
-                        },
-                        onChangeMonthYear: function () {
-                            setTimeout(function () {
-                                $.each($(".ui-datepicker-year option"), function (j, k) {
-                                    var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
-                                    $(".ui-datepicker-year option").eq(j).text(textYear);
-                                });
-                            }, 50);
-                        },
-                        onClose: function () {
-                            if (dateBefore == null) {
-                                dateBefore = $(this).val();
-                            }
-                            if ($(this).val() != "" && $(this).val() == dateBefore) {
-                                var arrayDate = dateBefore.split("-");
-                                arrayDate[2] = parseInt(arrayDate[2]) + 543;
-                                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                            }
-                        },
-                        onSelect: function (dateText, inst) {
-                            dateBefore = $(this).val();
-                            var arrayDate = dateText.split("-");
-                            arrayDate[2] = parseInt(arrayDate[2]) + 543;
-                            $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                        }
-                    });
-                };
-        
-  </script>
+     <script type="text/javascript">
+        function pageLoad(sender , args) {
+            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+        };
+    </script>
     <style type="text/CSS">
         .ui-datepicker{  
         font-family:tahoma;  
@@ -94,8 +48,7 @@
         }
     </style>
     <asp:Panel runat="server" CssClass="divpan" Height="780px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson" >
-    <div>
-
+    <div>                          
         <fieldset>
             <legend style="margin-left: auto; margin-right: auto; text-align: center;">เพิ่มข้อมูลบุคลากร</legend>
             <div>
@@ -184,17 +137,17 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; width: 170px;">
+                        <td style="text-align: left; width: 435px;">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="10" Width="425px" CssClass="tb5" OnTextChanged="txtBirthDayNumber_TextChanged" AutoPostBack="True"></asp:TextBox>
+                            <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="10" Width="400px" CssClass="tb5" OnTextChanged="txtBirthDayNumber_TextChanged" AutoPostBack="True"></asp:TextBox>
                                    </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="txtBirthDayNumber" />
                                   </Triggers>
                              </asp:UpdatePanel>
                             </td>
-                        <td style="text-align: left; width: 10px;"> </td> 
+                        <td style="text-align: left; width: 1px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMotherName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
                      </tr>
@@ -234,8 +187,8 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtDateInWork" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                        <td style="text-align: left; width: 435px;">
+                            <asp:TextBox ID="txtDateInWork" runat="server" MaxLength="10" Width="400px" CssClass="tb5"></asp:TextBox></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
                             <asp:TextBox ID="txtMotherLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -270,10 +223,10 @@
                    </tr>
                    <tr>
                          <td style="text-align: left; width: 30px;"> </td>
-                        <td style="text-align: left; width: 170px;">
+                        <td style="text-align: left; width: 435px;">
                             <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="10" Width="425px" CssClass="tb5" OnTextChanged="txtAge60Number_TextChanged" AutoPostBack="True" CausesValidation="False"></asp:TextBox>
+                            <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="10" Width="400px" CssClass="tb5" OnTextChanged="txtAge60Number_TextChanged" AutoPostBack="True" CausesValidation="False"></asp:TextBox>
                                    </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="txtAge60Number" />
@@ -555,10 +508,10 @@
                         <td style="text-align: center; margin-right: 5px; ">เอกสารอ้างอิง</td>
                    </tr>
                    <tr>
-                        <td style="text-align: left; width: 170px;">
+                        <td style="text-align: left; width: 100px;">
                             <asp:UpdatePanel ID="UpdateDropDownYear13" runat="server">
                                    <ContentTemplate>
-                                       <asp:DropDownList ID="DropDownYear13" runat="server" CssClass="tb5" Width="160px"></asp:DropDownList>
+                                       <asp:DropDownList ID="DropDownYear13" runat="server" CssClass="tb5" Width="100px"></asp:DropDownList>
                                    </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="DropDownYear13" />
@@ -569,7 +522,7 @@
                         <td style="text-align: left; ">
                             <asp:UpdatePanel ID="UpdatetxtList13" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtList13" runat="server" MaxLength="100" Width="550px" CssClass="tb5"></asp:TextBox>
+                            <asp:TextBox ID="txtList13" runat="server" MaxLength="100" Width="580px" CssClass="tb5"></asp:TextBox>
                                     </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="txtList13" />
@@ -580,7 +533,7 @@
                        <td style="text-align: left; width: 170px;">
                            <asp:UpdatePanel ID="UpdatetxtRefDoc13" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtRefDoc13" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox>
+                            <asp:TextBox ID="txtRefDoc13" runat="server" MaxLength="100" Width="220px" CssClass="tb5"></asp:TextBox>
                                        </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="txtRefDoc13" />
@@ -629,7 +582,7 @@
 
                    </tr>
                    <tr>
-                        <td style="text-align: left; width: 50px;">
+                        <td style="text-align: left; width: 200px;">
                             <asp:UpdatePanel ID="UpdatetxtDate14" runat="server">
                                    <ContentTemplate>
                             <asp:TextBox ID="txtDate14" runat="server" MaxLength="100" Width="90px" CssClass="tb5"></asp:TextBox>
@@ -692,7 +645,7 @@
                          <td style="text-align: left; width: 50px;">
                            <asp:UpdatePanel ID="UpdatetxtRefDoc14" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtRefDoc14" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox>
+                            <asp:TextBox ID="txtRefDoc14" runat="server" MaxLength="100" Width="170px" CssClass="tb5"></asp:TextBox>
                                     </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="txtRefDoc14" />

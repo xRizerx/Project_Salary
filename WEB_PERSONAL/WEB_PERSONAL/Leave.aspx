@@ -29,10 +29,6 @@
             padding: 20px;
         }
 
-        .c1 {
-            font-size: 32px;
-            text-align: center;
-        }
 
         .leave_button_div ul {
             list-style-type: none;
@@ -73,32 +69,6 @@
             margin: 0 auto;
             text-align: center;
             border: 1px solid #808080;
-        }
-
-        .div_sec {
-            margin: 50px auto;
-            box-shadow: #808080 0px 5px 5px;
-        }
-
-        .div_sec_header {
-            background-color: rgba(128,128,128,0.8);
-            padding: 20px 25px;
-            font-weight: bold;
-        }
-
-        .div_sec_header span {
-            color: #FFFFFF;
-            text-shadow: 1px 1px 1px #000000;
-        }
-
-        .div_sec_in {
-            background-color: rgba(128,128,128,0.6);
-            padding: 20px 20px;
-        }
-
-        .div_sec_in span {
-            color: #FFFFFF;
-            text-shadow: 1px 1px 1px #000000;
         }
 
         #sec1 {
@@ -210,15 +180,15 @@
         }
     </style>
     <asp:Panel ID="Panel2" runat="server" CssClass="mp">
-        <div class="c1">
+        <div class="master_default_page_header">
             <asp:Label ID="Label1" runat="server" Text="การลา" Font-Size="32"></asp:Label>
 
         </div>
-        <div class="div_sec" id="sec1">
-            <div class="div_sec_header">
+        <div class="master_default_div_sec" id="sec1">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label36" runat="server" Text="เพิ่มเวลาเข้างาน"></asp:Label>
             </div>
-            <div class="div_sec_in">
+            <div class="master_default_div_sec_in">
                 <table style="width: 100%;">
                     <tr>
                         <td class="auto-style83">
@@ -277,11 +247,11 @@
                 </table>
 
             </div>
-            <div class="div_sec_header">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label37" runat="server" Text="รายชื่อการเข้างาน" Font-Bold="True"></asp:Label>
                 
             </div>
-            <div class="div_sec_in">
+            <div class="master_default_div_sec_in">
                 <asp:LinkButton ID="LinkButton21" runat="server" CssClass="master_default_button" OnClick="LinkButton21_Click">ดูรายชื่อการเข้างาน</asp:LinkButton>
                 <asp:GridView ID="GridView2" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
@@ -298,11 +268,11 @@
                 </asp:GridView>
 
             </div>
-            <div class="div_sec_header">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label38" runat="server" Text="รายชื่อการมาสาย" Font-Bold="True"></asp:Label>
                 
             </div>
-            <div class="div_sec_in">
+            <div class="master_default_div_sec_in">
                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_default_button" OnClick="LinkButton1_Click1">ดูรายชื่อการลา</asp:LinkButton>
                 <asp:GridView ID="GridView3" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
@@ -320,11 +290,11 @@
             </div>
         </div>
 
-        <div class="div_sec" id="sec2">
-            <div class="div_sec_header">
+        <div class="master_default_div_sec" id="sec2">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label22" runat="server" Text="เพิ่มเอกสารการลา" Font-Bold="True"></asp:Label>
             </div>
-            <div class="div_sec_in">
+            <div class="master_default_div_sec_in">
 
                 <table style="width: 100%;">
                     <tr>
@@ -398,11 +368,11 @@
         </div>
 
         
-        <div class="div_sec" id="sec3">
-            <div class="div_sec_header">
+        <div class="master_default_div_sec" id="sec3">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label30" runat="server" Text="แก้ไขเอกสารการลา" Font-Bold="True"></asp:Label>
             </div>
-            <div class="div_sec_in">
+            <div class="master_default_div_sec_in">
 
                 <table style="width: 100%;">
                     <tr>
@@ -543,11 +513,11 @@
         </div>
 
         
-        <div class="div_sec" id="sec4">
-            <div class="div_sec_header">
+        <div class="master_default_div_sec" id="sec4">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label34" runat="server" Text="ข้อมูลเอกสารการลา" Font-Bold="True"></asp:Label>
             </div>
-            <div class="div_sec_in">
+            <div class="master_default_div_sec_in">
 
                 <asp:LinkButton ID="LinkButton2" runat="server" OnClick="Button1_Click1" CssClass="master_default_button">ทดสอบ</asp:LinkButton>
 
@@ -639,11 +609,11 @@
         </div>
 
         
-        <div class="div_sec" id="sec5">
-            <div class="div_sec_header">
+        <div class="master_default_div_sec" id="sec5">
+            <div class="master_default_div_sec_header">
                 <asp:Label ID="Label35" runat="server" Text="ออกรายงานการลา" Font-Bold="True"></asp:Label>
             </div>
-            <div class="div_sec_in">
+            <div class="master_default_div_sec_in">
                 <table style="width: 100%;">
                     <tr>
                         <td>
