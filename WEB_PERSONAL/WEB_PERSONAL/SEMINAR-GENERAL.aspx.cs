@@ -46,109 +46,114 @@ namespace WEB_PERSONAL
             txtComment.Text = "";
         }
 
-        protected void btnSubmitSeminar_Click(object sender, EventArgs e)
+        protected bool NeedData()
         {
             if (string.IsNullOrEmpty(txtName.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อ')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtLastName.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุล')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtPosition.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ตำแหน่ง')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtDegree.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ระดับ')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtCampus.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สังกัด')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtNameOfProject.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtPlace.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานที่ฝึกอบรม/สัมมนา/ดูงาน')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtDateFrom.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่เริ่ม')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtDateTO.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่สิ้นสุด')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtBudget.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ค่าใช้จ่ายตลอดโครงการ')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtSupportBudget.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก แหล่งงบประมาณที่ได้รับการสนับสนุน')", true);
-                return;
+                return true;
             }
             if (string.IsNullOrEmpty(txtCertificate.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ประกาศนียบัตรที่ได้รับ')", true);
-                return;
+                return true;
             }
-            /* if (string.IsNullOrEmpty(txtAbstract.Text))
-             {
-                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สรุปผลการฝึกอบรม/สัมมนา/ดูงาน')", true);
-                 return;
-             }
-             if (string.IsNullOrEmpty(txtResult.Text))
-             {
-                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน')", true);
-                 return;
-             }
-               if (string.IsNullOrEmpty(txtShow1.Text))
-                {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการเรียนการสอน')", true);
-                    return;
-                }
-                if (string.IsNullOrEmpty(txtShow2.Text))
-                {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการวิจัย')", true);
-                    return;
-                }
-                if (string.IsNullOrEmpty(txtShow3.Text))
-                {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการบริการวิชาการ')", true);
-                    return;
-                }
-                if (string.IsNullOrEmpty(txtShow4.Text))
-                {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านอื่นๆ')", true);
-                    return;
-                }
-                if (string.IsNullOrEmpty(txtProblem.Text))
-                {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน')", true);
-                    return;
-                }
-                if (string.IsNullOrEmpty(txtComment.Text))
-                {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ความคิดเห็น/ข้อเสนอแนะอื่นๆ')", true);
-                    return;
-                }
-                */
+            if (string.IsNullOrEmpty(txtAbstract.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สรุปผลการฝึกอบรม/สัมมนา/ดูงาน')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtResult.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtShow1.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการเรียนการสอน')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtShow2.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการวิจัย')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtShow3.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านการบริการวิชาการ')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtShow4.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน : ด้านอื่นๆ')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtProblem.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtComment.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ความคิดเห็น/ข้อเสนอแนะอื่นๆ')", true);
+                return true;
+            }
+            return false;
+        }
+        protected void btnSubmitSeminar_Click(object sender, EventArgs e)
+        {
+           // if (NeedData()) { return; };
+                
             Seminar S = new Seminar();
             S.SEMINAR_NAME = txtName.Text;
             S.SEMINAR_LASTNAME = txtLastName.Text;
@@ -230,14 +235,11 @@ namespace WEB_PERSONAL
             {
                 txtCertificate.Enabled = true;
                 txtCertificate.Text = "";
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('T')", true);
-
             }
             else
             {
                 txtCertificate.Enabled = false;
                 txtCertificate.Text = "ไม่มี";
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('F')", true);
             }
         }
 

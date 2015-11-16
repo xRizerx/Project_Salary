@@ -1,61 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SEMINAR-GENERAL.aspx.cs" Inherits="WEB_PERSONAL.SEMINAR_GENERAL" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="Script/jquery-ui-1.8.20.min.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script>
-            $(function () {
-                $(document).ready(function () {
-                    $("#ContentPlaceHolder1_txtDateFrom,#ContentPlaceHolder1_txtDateTO").datepicker({
-                        dateFormat: 'dd-mm-yy',
-                        changeMonth: true,
-                        changeYear: true,
-                        dayNamesMin: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
-                        monthNamesShort: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
-                        yearRange: "-60:+40",
-                        beforeShow: function () {
-                            $(".ui-datepicker").css('font-size', 14)
-                            if ($(this).val() != "") {
-                                var arrayDate = $(this).val().split("-");
-                                arrayDate[2] = parseInt(arrayDate[2]) - 543;
-                                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                            }
-                            setTimeout(function () {
-                                $.each($(".ui-datepicker-year option"), function (j, k) {
-                                    var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
-                                    $(".ui-datepicker-year option").eq(j).text(textYear);
-                                });
-                            }, 50);
-                        },
-                        onChangeMonthYear: function () {
-                            setTimeout(function () {
-                                $.each($(".ui-datepicker-year option"), function (j, k) {
-                                    var textYear = parseInt($(".ui-datepicker-year option").eq(j).val()) + 543;
-                                    $(".ui-datepicker-year option").eq(j).text(textYear);
-                                });
-                            }, 50);
-                        },
-                        onClose: function () {
-                            if (dateBefore == null) {
-                                dateBefore = $(this).val();
-                            }
-                            if ($(this).val() != "" && $(this).val() == dateBefore) {
-                                var arrayDate = dateBefore.split("-");
-                                arrayDate[2] = parseInt(arrayDate[2]) + 543;
-                                $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                            }
-                        },
-                        onSelect: function (dateText, inst) {
-                            dateBefore = $(this).val();
-                            var arrayDate = dateText.split("-");
-                            arrayDate[2] = parseInt(arrayDate[2]) + 543;
-                            $(this).val(arrayDate[0] + "-" + arrayDate[1] + "-" + arrayDate[2]);
-                        }
-                    });
-                });
-            });
-  </script>
-
+        $(function () {
+            $("#ContentPlaceHolder1_txtDateFrom,#ContentPlaceHolder1_txtDateTO").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+        });
+    </script>
     <style type="text/CSS">
         .multext{
             resize:none;
@@ -91,11 +43,12 @@
             color:red;
         }
     </style>
-    <asp:Panel ID="Panel1" runat="server" Height="1605px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSaveSeminar">
+    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSaveSeminar">
    <div>
         <fieldset>
             <legend>เพิ่มข้อมูลการฝึกอบรม/สัมมนา/ดูงาน</legend>
             <div>
+                <asp:ScriptManager ID="ScriptManager1" runat="server" />
                 <table>
                     <tr>
                         <td style="text-align: right; margin-right: 5px; ">1. </td>
@@ -145,17 +98,17 @@
                        <td style="text-align: right; margin-right: 5px; ">ระยะเวลาการฝึกอบรม/สัมมนา/ดูงาน</td>
                          <td style="text-align: left; width: 10px;"> </td> 
                         <td style="text-align: left; margin-right: 5px; ">ตั้งแต่วันที่<span class="textred">*</span> </td>
-                            <td style="text-align: left; width: 120px;">
+                            <td style="text-align: left; width: 190px;">
 
                             <asp:TextBox ID="txtDateFrom" runat="server" Width="155px" CssClass="tb5"></asp:TextBox></td>
                             <td style="text-align: left; width: 10px;"> </td> 
                              <td style="text-align: left; margin-right: 5px;">ถึงวันที่<span class="textred">*</span></td>
-                            <td style="text-align: left; width: 120px;">
+                            <td style="text-align: left; width: 190px;">
                                 
                             <asp:TextBox ID="txtDateTO" runat="server" Width="155px" OnTextChanged="txtDateTO_TextChanged" CssClass="tb5"></asp:TextBox></td>
                           <td style="text-align: left; width: 10px;"></td>
                                 <td style="text-align: left; width: 120px;">
-                         <asp:Button ID="Button1" runat="server" Text="คำนวณวัน/เดือน/ปี" Width="180px" CssClass="master_OAT_button" /></td>
+                         <asp:Button ID="Button1" runat="server" Text="คำนวณวัน/เดือน/ปี" Width="170px" CssClass="master_OAT_button" /></td>
 
 
                       </tr>
@@ -203,10 +156,25 @@
                     <tr>
                         <td style="text-align: right; margin-right: 5px; "> 4. ประกาศนียบัตรที่ได้รับ </td>
                         <td style="text-align: left; width: 40px;"> 
-                            <asp:CheckBox ID="chkBox" runat="server" Text="ถ้ามี" OnCheckedChanged="chkBox_CheckedChanged" /> 
+                            <asp:UpdatePanel ID="UpdatechkBox" runat="server">
+                                   <ContentTemplate>
+                            <asp:CheckBox ID="chkBox" runat="server" Text="ถ้ามี" OnCheckedChanged="chkBox_CheckedChanged" AutoPostBack="True" /> 
+                                       </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="chkBox" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
                         </td>
                         <td style="text-align: left; width: 50px;">
-                            <asp:TextBox ID="txtCertificate" runat="server" MaxLength="100" Width="739px" Enabled="False" Text="ไม่มี" CssClass="tb5"></asp:TextBox></td>
+                             <asp:UpdatePanel ID="UpdatetxtCertificate" runat="server">
+                                   <ContentTemplate>
+                            <asp:TextBox ID="txtCertificate" runat="server" MaxLength="100" Width="739px" Enabled="False" Text="ไม่มี" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                       </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="txtCertificate" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
                     </tr>
                 </table>
 
