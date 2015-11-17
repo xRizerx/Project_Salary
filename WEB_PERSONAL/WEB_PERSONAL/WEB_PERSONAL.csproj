@@ -246,6 +246,7 @@
     <Content Include="jQueryCalendarThai\jquery-ui-1.10.3.custom.js" />
     <Content Include="jQueryCalendarThai\SpecialDateSheet.css" />
     <Content Include="js\index.js" />
+    <Content Include="Late.aspx" />
     <Content Include="Leave-Report1.aspx" />
     <Content Include="M-Admin.aspx" />
     <Content Include="insignia_admin.aspx" />
@@ -381,6 +382,13 @@
     </Compile>
     <Compile Include="insignia_recordnote2.aspx.designer.cs">
       <DependentUpon>insignia_recordnote2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Late.aspx.cs">
+      <DependentUpon>Late.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Late.aspx.designer.cs">
+      <DependentUpon>Late.aspx</DependentUpon>
     </Compile>
     <Compile Include="Leave-Report1.aspx.cs">
       <DependentUpon>Leave-Report1.aspx</DependentUpon>

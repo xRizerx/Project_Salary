@@ -147,6 +147,8 @@ form {
     background-repeat: no-repeat;
     background-position: top right;
     background-size: contain;
+    border-radius: 32px;
+    
 }
 .master_login_popup_div_sec {
     margin: 0px auto;
@@ -158,6 +160,8 @@ form {
     padding: 20px 25px;
 
     font-weight: bold;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
 }
 .master_login_popup_div_sec_header span {
     color: #000000;
@@ -254,10 +258,19 @@ form {
     display: none;
 }
 .master_header_under_in {
+    /*background-image: url(../Image/anime_p1.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: contain;*/
     /*background-color: #00a2e8;*/
     width: 1024px;
     height: 100vh;
     margin: 0 auto;
+}
+.master_header_under_in2 {
+    /*background-color: rgba(0,0,0,0.5);*/
+    padding: 20px;
+    max-height: 95vh;
 }
 .master_header_under table {
     
