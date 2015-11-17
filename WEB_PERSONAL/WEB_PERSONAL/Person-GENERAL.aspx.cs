@@ -33,6 +33,8 @@ namespace WEB_PERSONAL
                 DDLYEAR13();
                 DDLSTAFFTYPE14();
                 txtCitizen.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtSalary14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtSalaryForPosition14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
                 Session["StudyHis"] = new DataTable();
                 ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
