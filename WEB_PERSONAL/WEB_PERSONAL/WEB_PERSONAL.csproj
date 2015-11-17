@@ -178,9 +178,7 @@
     <Content Include="Image\writing-on-paper.jpg" />
     <Content Include="Image\X.png" />
     <Content Include="insignia_from_edit.aspx" />
-    <Content Include="insignia_recordnote 2.aspx" />
-    <Content Include="insignia_recordnote.aspx" />
-    <Content Include="insignia_recordnote3.aspx" />
+    <Content Include="insignia_recordnote2.aspx" />
     <Content Include="jQueryCalendarThai\images\add.gif" />
     <Content Include="jQueryCalendarThai\images\ajax-loader.gif" />
     <Content Include="jQueryCalendarThai\images\ajax-loader_blue.gif" />
@@ -377,26 +375,12 @@
     <Compile Include="insignia_from_edit.aspx.designer.cs">
       <DependentUpon>insignia_from_edit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="insignia_recordnote 2.aspx.cs">
-      <DependentUpon>insignia_recordnote 2.aspx</DependentUpon>
+    <Compile Include="insignia_recordnote2.aspx.cs">
+      <DependentUpon>insignia_recordnote2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="insignia_recordnote 2.aspx.designer.cs">
-      <DependentUpon>insignia_recordnote 2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="insignia_recordnote.aspx.cs">
-      <DependentUpon>insignia_recordnote.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="insignia_recordnote.aspx.designer.cs">
-      <DependentUpon>insignia_recordnote.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="insignia_recordnote3.aspx.cs">
-      <DependentUpon>insignia_recordnote3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="insignia_recordnote3.aspx.designer.cs">
-      <DependentUpon>insignia_recordnote3.aspx</DependentUpon>
+    <Compile Include="insignia_recordnote2.aspx.designer.cs">
+      <DependentUpon>insignia_recordnote2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Leave-Report1.aspx.cs">
       <DependentUpon>Leave-Report1.aspx</DependentUpon>

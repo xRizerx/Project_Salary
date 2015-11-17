@@ -91,7 +91,7 @@ namespace WEB_PERSONAL {
             string s_day = ss[0];
             string s_month = ss[1];
             string s_year = ss[2];
-            return "วันที่" + NormalizeThaiWord(NumberToThaiWord(s_day)) + "เดือน" + ToThaiMonth(s_month) + "ปี" + NormalizeThaiWord(NumberToThaiWord(s_year));
+            return "วันที่" + NormalizeThaiWord(NumberToThaiWord(s_day)) + "เดือน" + shortToLong(s_month) + "ปี" + NormalizeThaiWord(NumberToThaiWord(s_year));
         }
         public static string ToThaiMonth(string s) {
             int month = Int32.Parse(s.Trim());
@@ -108,6 +108,25 @@ namespace WEB_PERSONAL {
                 case 10: return "ตุลาคม";
                 case 11: return "พฤศจิกายน";
                 case 12: return "ธันวาคม";
+                default: return "[ERROR]";
+            }
+        }
+        public static string shortToLong(string s)
+        {
+            switch (s)
+            {
+                case "ม.ค.": return "มกราคม";
+                case "ก.พ.": return "กุมภาพันธ์";
+                case "มี.ค.": return "มีนาคม";
+                case "เม.ย.": return "เมษายน";
+                case "พ.ค.": return "พฤษภาคม";
+                case "มิ.ย.": return "มิถุนายน";
+                case "ก.ค.": return "กรกฎาคม";
+                case "ส.ค.": return "สิงหาคม";
+                case "ก.ย.": return "กันยายน";
+                case "ต.ค.": return "ตุลาคม";
+                case "พ.ย.": return "พฤศจิกายน";
+                case "ธ.ค.": return "ธันวาคม";
                 default: return "[ERROR]";
             }
         }

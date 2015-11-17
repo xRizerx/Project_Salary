@@ -46,6 +46,9 @@
         .divpan{
             text-align:center;
         }
+        .auto-style3 {
+            width: 266px;
+        }
     </style>
     <asp:Panel runat="server" CssClass="divpan" Height="780px" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson" >
     <div>                          
@@ -572,9 +575,10 @@
             <div>
                     <table>
                    <tr>
-                        <td style="text-align: center; margin-right: 5px; ">วัน เดือน ปี</td>
+                        <td style="text-align: center; margin-right: 5px; " class="auto-style3">วัน เดือน ปี</td>
                         <td style="text-align: center; margin-right: 5px; ">ตำแหน่ง</td>
                         <td style="text-align: center; margin-right: 5px; ">เลขที่ตำแหน่ง</td>
+                        <td style="text-align: center; margin-right: 5px; ">ตำแหน่งประเภท</td>
                         <td style="text-align: center; margin-right: 5px; ">ระดับ</td>
                         <td style="text-align: center; margin-right: 5px; ">เงินเดือน</td>
                         <td style="text-align: center; margin-right: 5px; ">เงินประจำตำแหน่ง</td>
@@ -582,10 +586,10 @@
 
                    </tr>
                    <tr>
-                        <td style="text-align: left; width: 200px;">
+                        <td style="text-align: left; " class="auto-style3">
                             <asp:UpdatePanel ID="UpdatetxtDate14" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtDate14" runat="server" MaxLength="100" Width="90px" CssClass="tb5"></asp:TextBox>
+                            <asp:TextBox ID="txtDate14" runat="server" MaxLength="50" Width="90px" CssClass="tb5"></asp:TextBox>
                                    </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="txtDate14" />
@@ -595,7 +599,7 @@
                         <td style="text-align: left; width: 50px;">
                             <asp:UpdatePanel ID="UpdatetxtPosition14" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtPosition14" runat="server" MaxLength="110" Width="350px" CssClass="tb5"></asp:TextBox>
+                            <asp:TextBox ID="txtPosition14" runat="server" MaxLength="100" Width="280" CssClass="tb5"></asp:TextBox>
                                    </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="txtPosition14" />
@@ -612,13 +616,23 @@
                                   </Triggers>
                              </asp:UpdatePanel>
                                        </td>
-                       <td style="text-align: left; width: 50px;">
-                           <asp:UpdatePanel ID="UpdatetxtDegree14" runat="server">
+                        <td style="text-align: left; width: 50px;">
+                           <asp:UpdatePanel ID="UpdateDropDownType_Position14" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtDegree14" runat="server" MaxLength="100" Width="52px" CssClass="tb5"></asp:TextBox>
+                            <asp:DropDownList ID="DropDownType_Position14" runat="server" CssClass="tb5" Width="57px" AutoPostBack="True" OnSelectedIndexChanged="DropDownType_Position14_SelectedIndexChanged"></asp:DropDownList>
                                     </ContentTemplate>
                                   <Triggers>
-                                     <asp:AsyncPostBackTrigger ControlID="txtDegree14" />
+                                     <asp:AsyncPostBackTrigger ControlID="DropDownType_Position14" />
+                                  </Triggers>
+                             </asp:UpdatePanel>
+                                       </td>
+                       <td style="text-align: left; width: 50px;">
+                           <asp:UpdatePanel ID="UpdatetxtDropDownDegree14" runat="server">
+                                   <ContentTemplate>
+                            <asp:DropDownList ID="DropDownDegree14" runat="server" CssClass="tb5" Width="57px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                  <Triggers>
+                                     <asp:AsyncPostBackTrigger ControlID="DropDownDegree14" />
                                   </Triggers>
                              </asp:UpdatePanel>
                                        </td>
