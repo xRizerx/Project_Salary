@@ -55,7 +55,7 @@ namespace WEB_PERSONAL
                     Session["login_date_time"] = null;
                     Logout();
                     Label7.Text = "ยังไม่ได้เข้าสู่ระบบ";
-                    LinkButton9.Visible = true;
+                    FindControl("master_login_button").Visible = true;
                     LinkButton10.Visible = false;
                     Label7.ForeColor = System.Drawing.Color.FromArgb(128, 128, 128);
                     return;
@@ -67,7 +67,7 @@ namespace WEB_PERSONAL
                 string name = Session["login_name"].ToString() + " " + Session["login_lastname"];
                 string systemRank = "(" + Session["login_system_status"].ToString() + ")";
                 Label7.Text = name + " " + systemRank;
-                LinkButton9.Visible = false;
+                FindControl("master_login_button").Visible = false;
                 LinkButton10.Visible = true;
                 if(Session["login_system_status"].ToString() == "Admin")
                 {
@@ -80,10 +80,17 @@ namespace WEB_PERSONAL
             } else
             {
                 Label7.Text = "ยังไม่ได้เข้าสู่ระบบ";
-                LinkButton9.Visible = true;
+                FindControl("master_login_button").Visible = true;
                 LinkButton10.Visible = false;
                 Label7.ForeColor = System.Drawing.Color.FromArgb(128, 128, 128);
             }
+
+           /* if(Session["login_bad"] != null) {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "toggleLoginPopup();", true);
+                Session.Remove("login_bad");
+            } else {
+                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert('nul');", true);
+            }*/
 
            
             if(!IsPostBack) {
@@ -156,6 +163,58 @@ namespace WEB_PERSONAL
 
         protected void LinkButton14_Click(object sender, EventArgs e) {
             Response.Redirect("Person-General.aspx");
+        }
+
+        protected void LinkButton1X_Click(object sender, EventArgs e) {
+            Label12X.Text = "";
+            //try
+            {
+                using (OracleConnection con = Util.OC()) {
+                    {
+                        string sql = "SELECT count(*) FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox1X.Text + "'";
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            using (OracleDataReader reader = command.ExecuteReader()) {
+                                while (reader.Read()) {
+                                    if (reader.GetInt32(0) == 0) {
+                                        Label12X.Text = "ไม่พบผู้ใช้งาน!";
+                                        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "toggleLoginPopup();", true);
+                                        return;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+                    {
+                        string sql = "SELECT TB_PERSONAL.PASSWORD, TB_SYSTEM_STATUS.NAME, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME FROM TB_PERSONAL, TB_SYSTEM_STATUS WHERE TB_PERSONAL.CITIZEN_ID = '" + TextBox1X.Text + "' AND TB_PERSONAL.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID";
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            using (OracleDataReader reader = command.ExecuteReader()) {
+                                while (reader.Read()) {
+                                    if (reader.GetString(0) == TextBox2X.Text) {
+                                        Session["login_id"] = TextBox1X.Text;
+                                        Session["login_system_status"] = reader.GetString(1);
+                                        Session["login_name"] = reader.GetString(2);
+                                        Session["login_lastname"] = reader.GetString(3);
+                                        Session["login_date_time"] = DateTime.Now;
+                                        Session["login_total_second"] = DropDownList1X.SelectedValue;
+                                        Response.Redirect("Default.aspx");
+                                    } else {
+
+                                        Label12X.Text = "รหัสผ่านไม่ถูกต้อง!";
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            //catch (Exception e2)
+            //{
+            //   string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
+            //   ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            //}
         }
     }
 }
