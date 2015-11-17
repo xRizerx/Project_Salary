@@ -79,19 +79,10 @@
 
             //$("#i2").css('background-image', 'url(../' + target + ')');
         }
-        function tg() {
-            //$("#i2").fadeToggle(500);
-
+        function toggleMenu() {
             $("#i2").slideToggle(500);
-            $("#pu").fadeOut(500);
-            /*setTimeout(function () {
-                if ($('#i2').is(":visible")) {
-                    
-                } else {
-                    $("#i2").css('background-image', 'url(../image/anime_p1.png)');
-                }
-                
-            }, 550)*/
+            //$("#pu").slideUp(500);
+            $("#pu").fadeOut(1);
         }
     </script>
     <script>
@@ -101,9 +92,11 @@
             //Set the popup window to center
             $('#pu').css('top', winH / 2 - $('#pu').height() / 2);
             $('#pu').css('left', winW / 2 - $('#pu').width() / 2);
-            $('#pu').fadeToggle();
+            //$('#pu').slideToggle(500);
+            $("#pu").fadeToggle(1);
             $("#i2").slideUp(500);
             
+
         }
 
     </script>
@@ -132,7 +125,8 @@
   
                 <div class="master_login_popup" id="pu">
 
-                    <div class="master_login_popup_div_sec">
+                    <div class="master_login_popup_in" id="pu2">
+                        <div class="master_login_popup_div_sec">
                         <div class="master_login_popup_div_sec_header">
                             <asp:Label ID="Label11" runat="server" Text="เข้าสู่ระบบ"></asp:Label>
                         </div>
@@ -185,6 +179,9 @@
                             </table>
                         </div>
                     </div>
+                    </div>
+
+                    
                 </div>
    
 
@@ -195,16 +192,15 @@
                 <div class="master_login_in">
                     <ul class="master_login_left">
                         <li>
-                            <span class="master_header_under_toggle" onclick="tg();">เมนู</span>
+                            <span class="master_header_under_toggle" onclick="toggleMenu();">เมนู</span>
                         </li>
                     </ul>
-
                     <ul class="master_login_right">
                         <li>
                             <asp:Label ID="Label7" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
                         </li>
                         <li>
-                            <span id="master_login_button" class="master_header_under_toggle" onclick="toggleLoginPopup();" runat="server">Login</span>
+                            <span id="master_login_button" class="master_header_under_toggle" onclick="toggleLoginPopup();" runat="server">เข้าสู่ระบบ</span>
                         </li>
                         <li>
                             <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click">ออกจากระบบ</asp:LinkButton>
