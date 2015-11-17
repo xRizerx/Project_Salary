@@ -629,7 +629,7 @@
                        <td style="text-align: left; width: 50px;">
                            <asp:UpdatePanel ID="UpdatetxtDropDownDegree14" runat="server">
                                    <ContentTemplate>
-                            <asp:DropDownList ID="DropDownDegree14" runat="server" CssClass="tb5" Width="57px" AutoPostBack="True"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownDegree14" runat="server" CssClass="tb5" Width="57px"></asp:DropDownList>
                                     </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="DropDownDegree14" />
