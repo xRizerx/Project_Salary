@@ -171,7 +171,7 @@ namespace WEB_PERSONAL
             {
                 using (OracleConnection con = Util.OC()) {
                     {
-                        string sql = "SELECT count(*) FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox1X.Text + "'";
+                        string sql = "SELECT count(*) FROM TB_PERSON WHERE CITIZEN_ID = '" + TextBox1X.Text + "'";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 while (reader.Read()) {
@@ -187,7 +187,7 @@ namespace WEB_PERSONAL
                     }
 
                     {
-                        string sql = "SELECT TB_PERSONAL.PASSWORD, TB_SYSTEM_STATUS.NAME, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME FROM TB_PERSONAL, TB_SYSTEM_STATUS WHERE TB_PERSONAL.CITIZEN_ID = '" + TextBox1X.Text + "' AND TB_PERSONAL.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID";
+                        string sql = "SELECT TB_PERSON.PASSWORD, TB_SYSTEM_STATUS.NAME, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME FROM TB_PERSON, TB_SYSTEM_STATUS WHERE TB_PERSON.CITIZEN_ID = '" + TextBox1X.Text + "' AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 while (reader.Read()) {
@@ -200,7 +200,7 @@ namespace WEB_PERSONAL
                                         Session["login_total_second"] = DropDownList1X.SelectedValue;
                                         Response.Redirect("Default.aspx");
                                     } else {
-
+                                        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "toggleLoginPopup();", true);
                                         Label12X.Text = "รหัสผ่านไม่ถูกต้อง!";
                                     }
                                 }
