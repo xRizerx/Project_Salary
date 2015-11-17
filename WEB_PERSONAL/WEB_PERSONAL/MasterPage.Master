@@ -144,10 +144,10 @@
             <div class="master_header_under" id="i2">
                 <div class="master_header_under_in">
                     <div style="float:left;">
-                    <table style="background-color:#00b3ff; border-radius: 64px;">
+                    <table style="background-color:#FFFFFF; border-radius: 64px;">
                         <tr>
                             <td style="width: 70px;">
-                                <img src="Image/RMUTTO.png" style="height: 80px; background-color:#00b3ff; border-radius: 64px;" />
+                                <img src="Image/RMUTTO.png" style="height: 80px; background-color:#FFFFFF; border-radius: 64px;" />
                             </td>
                             <td style="width: 400px;">
                                 <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
