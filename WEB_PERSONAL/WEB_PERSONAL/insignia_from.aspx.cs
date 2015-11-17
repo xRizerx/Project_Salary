@@ -58,7 +58,7 @@ namespace WEB_PERSONAL
                     {
                         //select 1
                         {
-                            string Oracle = "select tb_personal.stf_name, tb_personal.stf_lname, tb_gender.gender_name, tb_personal.birthday, tb_personal.citizen_id, tb_rank.rank_name_th, tb_titlename.title_name_th, tb_personal.datetime_inwork, tb_position_work.position_work_name, AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO, tb_position.position_name, tb_salary.salary, tb_faculty.faculty_name " +
+                            string Oracle = "select tb_personal.stf_name, tb_personal.stf_lname, tb_gender.gender_name, TO_CHAR(tb_personal.birthday,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), tb_personal.citizen_id, tb_rank.rank_name_th, tb_titlename.title_name_th, TO_CHAR(tb_personal.datetime_inwork,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), tb_position_work.position_work_name, AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO, tb_position.position_name, tb_salary.salary, tb_faculty.faculty_name " +
                             " from tb_personal, tb_gender, tb_rank, tb_department, tb_titlename, tb_position_work, tb_position,AA_GOVERNMENTOFFICER_TYPE, tb_salary, tb_faculty " +
                             " where tb_personal.citizen_id = '" + citizen_id + "' AND tb_personal.gender_id = tb_gender.gender_id AND tb_personal.rank_id = tb_rank.seq AND tb_personal.department_id = tb_department.department_id AND tb_personal.title_id = tb_titlename.title_id AND tb_personal.position_work_id = tb_position_work.position_work_id AND tb_personal.got_id = AA_GOVERNMENTOFFICER_TYPE.id_got AND tb_personal.position_id = tb_position.position_id AND tb_personal.citizen_id = tb_salary.citizen_id AND tb_personal.faculty_id = tb_faculty.faculty_id ";
 
@@ -71,11 +71,11 @@ namespace WEB_PERSONAL
                                         TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
                                         TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
                                         TextBox6.Text = reader.GetString(2); /*tb_gender.gender_name*/
-                                        TextBox7.Text = reader.GetDateTime(3).ToString("dd/MM/yyyy"); /*tb_personal.birthday*/
+                                        TextBox7.Text = reader.GetString(3); /*tb_personal.birthday*/
                                         TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
                                         TextBox2.Text = reader.GetString(5); /*tb_rank.rank_name_th*/
                                         TextBox3.Text = reader.GetString(6); /*tb_titlename.title_name_th*/
-                                        TextBox9.Text = reader.GetDateTime(7).ToString("dd/MM/yyyy"); /*tb_personal.datetime_inwork*/
+                                        TextBox9.Text = reader.GetString(7);/*tb_personal.datetime_inwork*/
                                         TextBox11.Text = reader.GetString(8); /*tb_position_work.position_work_name*/
                                         TextBox12.Text = reader.GetString(9); /*AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO*/
                                         TextBox13.Text = reader.GetString(10); /*tb_position.position_name*/

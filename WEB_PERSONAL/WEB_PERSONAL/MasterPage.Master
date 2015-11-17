@@ -79,20 +79,26 @@
 
             //$("#i2").css('background-image', 'url(../' + target + ')');
         }
-        function tg() {
-            //$("#i2").fadeToggle(500);
-
+        function toggleMenu() {
             $("#i2").slideToggle(500);
-
-            /*setTimeout(function () {
-                if ($('#i2').is(":visible")) {
-                    
-                } else {
-                    $("#i2").css('background-image', 'url(../image/anime_p1.png)');
-                }
-                
-            }, 550)*/
+            //$("#pu").slideUp(500);
+            $("#pu").fadeOut(1);
         }
+    </script>
+    <script>
+        function toggleLoginPopup() {
+            var winH = $(window).height();
+            var winW = $(window).width();
+            //Set the popup window to center
+            $('#pu').css('top', winH / 2 - $('#pu').height() / 2);
+            $('#pu').css('left', winW / 2 - $('#pu').width() / 2);
+            //$('#pu').slideToggle(500);
+            $("#pu").fadeToggle(1);
+            $("#i2").slideUp(500);
+            
+
+        }
+
     </script>
 
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
@@ -116,23 +122,85 @@
 <body>
 
     <form id="form1" runat="server" onload="form1_Load">
+  
+                <div class="master_login_popup" id="pu">
+
+                    <div class="master_login_popup_in" id="pu2">
+                        <div class="master_login_popup_div_sec">
+                        <div class="master_login_popup_div_sec_header">
+                            <asp:Label ID="Label11" runat="server" Text="เข้าสู่ระบบ"></asp:Label>
+                        </div>
+                        <div class="master_login_popup_div_sec_in">
+                            <table class="auto-style7">
+                                <tr>
+                                    <td class="auto-style5"></td>
+                                    <td class="auto-style9">
+                                        <asp:Label ID="Label12X" runat="server" CssClass="cerror"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style15">
+                                        <asp:Label ID="Label13X" runat="server" Text="รหัสบัตรประชาชน" CssClass="c10"></asp:Label>
+                                    </td>
+                                    <td class="auto-style17">
+                                        <asp:TextBox ID="TextBox1X" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style15">
+                                        <asp:Label ID="Label14X" runat="server" Text="รหัสผ่าน" CssClass="c10"></asp:Label>
+                                    </td>
+                                    <td class="auto-style17">
+                                        <asp:TextBox ID="TextBox2X" runat="server" TextMode="Password" CssClass="master_default_textbox"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style15">
+                                        <asp:Label ID="Label15X" runat="server" CssClass="c10" Text="คงอยู่ในระบบ"></asp:Label>
+                                    </td>
+                                    <td class="auto-style17">
+                                        <asp:DropDownList ID="DropDownList1X" runat="server" CssClass="master_default_dropdown">
+                                            <asp:ListItem Value="300">5 นาที</asp:ListItem>
+                                            <asp:ListItem Value="1800">30 นาที</asp:ListItem>
+                                            <asp:ListItem Value="3600">1 ชั่วโมง</asp:ListItem>
+                                            <asp:ListItem Value="999999999">จนกว่าจะปิดเบราเซอร์</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style15">&nbsp;</td>
+                                    <td class="auto-style17">
+
+                                        <asp:LinkButton ID="LinkButton1X" runat="server" OnClick="LinkButton1X_Click">เข้าสู่ระบบ</asp:LinkButton>
+
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+
+                    
+                </div>
+   
+
+
+
         <div class="master_login">
             <div class="master_login_pre_in">
                 <div class="master_login_in">
                     <ul class="master_login_left">
                         <li>
-                            <div class="master_header_under_toggle" onclick="tg();">
-                                <span>เมนู</span>
-                            </div>
+                            <span class="master_header_under_toggle" onclick="toggleMenu();">เมนู</span>
                         </li>
                     </ul>
-
                     <ul class="master_login_right">
                         <li>
                             <asp:Label ID="Label7" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
                         </li>
                         <li>
-                            <asp:LinkButton ID="LinkButton9" runat="server" OnClick="LinkButton9_Click">เข้าสู่ระบบ</asp:LinkButton>
+                            <span id="master_login_button" class="master_header_under_toggle" onclick="toggleLoginPopup();" runat="server">เข้าสู่ระบบ</span>
                         </li>
                         <li>
                             <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click">ออกจากระบบ</asp:LinkButton>
@@ -143,92 +211,92 @@
 
             <div class="master_header_under" id="i2">
                 <div class="master_header_under_in">
-                    <div style="float:left;">
-                    <table style="background-color:#FFFFFF; border-radius: 64px;">
-                        <tr>
-                            <td style="width: 70px;">
-                                <img src="Image/RMUTTO.png" style="height: 80px; background-color:#FFFFFF; border-radius: 64px;" />
-                            </td>
-                            <td style="width: 400px;">
-                                <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
-                                <asp:Label ID="Label9" runat="server" CssClass="master_header_label4" Text="(เวอร์ชั่น ทดสอบ)"></asp:Label>
-                                <br />
-                                <asp:Label ID="Label10" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_label2"></asp:Label>
-                            </td>
-                            <td>
-                                <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
-                            </td>
-                        </tr>
-                    </table>
+                    <div style="float: left;">
+                        <table style="background-color: #FFFFFF; border-radius: 64px;">
+                            <tr>
+                                <td style="width: 70px;">
+                                    <img src="Image/RMUTTO.png" style="height: 80px; background-color: #FFFFFF; border-radius: 64px;" />
+                                </td>
+                                <td style="width: 400px;">
+                                    <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
+                                    <asp:Label ID="Label9" runat="server" CssClass="master_header_label4" Text="(เวอร์ชั่น ทดสอบ)"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="Label10" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_label2"></asp:Label>
+                                </td>
+                                <td>
+                                    <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
+                                </td>
+                            </tr>
+                        </table>
 
-                    <table>
-                        <tr>
-                            <td class="master_header_under_left">
-                                <span class="master_header_under_header">เมนู</span>
-                            </td>
-                            <td>
-                                <span class="master_header_under_header">การขึ้นเงินเดือน</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="master_header_under_left">
-                                <a href="Default.aspx" onmouseover="mover('image/RMUTTO.png')">หน้าหลัก</a>
-                            </td>
-                            <td>
-                                <a href="Salary.aspx" onmouseover="mover('image/anime_p2.png')">DPIS</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="master_header_under_left">
-                                <a href="Person-GENERAL.aspx" onmouseover="mover('image/stickman.png')">บุคลากร</a>
-                            </td>
-                            <td>
-                                <a href="SalarybyID.aspx" onmouseover="mover('image/anime_p2.png')">การขึ้นเงินเดือนรายบุคคล</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="master_header_under_left">
-                                <a href="Leave.aspx" onmouseover="mover('image/anime_p2.png')">การลา</a>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="master_header_under_left">
-                                <a href="Study-IN.aspx" onmouseover="mover('image/anime_p2.png')">ศึกษาต่อ</a>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="master_header_under_left">
-                                <a href="SEMINAR-GENERAL.aspx" onmouseover="mover('image/anime_p2.png')">การสัมมนา</a>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="master_header_under_left">
-                                <a href="insignia_citizen.aspx" onmouseover="mover('image/anime_p2.png')">เครื่องราชอิสริยาภรณ์</a>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="master_header_under_left">
-                                <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    </table>
+                        <table>
+                            <tr>
+                                <td class="master_header_under_left">
+                                    <span class="master_header_under_header">เมนู</span>
+                                </td>
+                                <td>
+                                    <span class="master_header_under_header">การขึ้นเงินเดือน</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="master_header_under_left">
+                                    <a href="Default.aspx" onmouseover="mover('image/RMUTTO.png')">หน้าหลัก</a>
+                                </td>
+                                <td>
+                                    <a href="Salary.aspx" onmouseover="mover('image/anime_p2.png')">DPIS</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="master_header_under_left">
+                                    <a href="Person-GENERAL.aspx" onmouseover="mover('image/stickman.png')">บุคลากร</a>
+                                </td>
+                                <td>
+                                    <a href="SalarybyID.aspx" onmouseover="mover('image/anime_p2.png')">การขึ้นเงินเดือนรายบุคคล</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="master_header_under_left">
+                                    <a href="Leave.aspx" onmouseover="mover('image/anime_p2.png')">การลา</a>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="master_header_under_left">
+                                    <a href="Study-IN.aspx" onmouseover="mover('image/anime_p2.png')">ศึกษาต่อ</a>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="master_header_under_left">
+                                    <a href="SEMINAR-GENERAL.aspx" onmouseover="mover('image/anime_p2.png')">การสัมมนา</a>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="master_header_under_left">
+                                    <a href="insignia_citizen.aspx" onmouseover="mover('image/anime_p2.png')">เครื่องราชอิสริยาภรณ์</a>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="master_header_under_left">
+                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
 
+                    </div>
                 </div>
-                </div>
-                
 
-              
-                    <!--img src="Image/anime_p1.png" id="master_header_under_id" /-->
-               
-                
-                
-                
-                
+
+
+                <!--img src="Image/anime_p1.png" id="master_header_under_id" /-->
+
+
+
+
+
                 <!--
             <img src="Image/love_live_chibi/Eli_Ayase.png" />
             <img src="Image/love_live_chibi/Hanayo_Koizumi.png" />
