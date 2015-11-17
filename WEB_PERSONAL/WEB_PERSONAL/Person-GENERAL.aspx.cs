@@ -463,7 +463,7 @@ namespace WEB_PERSONAL
                         DropDownType_Position14.DataBind();
                         sqlConn.Close();
 
-                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
+                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "-1"));
                         DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
                     }
                 }
@@ -471,7 +471,7 @@ namespace WEB_PERSONAL
             catch { }
         }
 
-        protected void DropDownDegree14_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DropDownType_Position14_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -479,7 +479,7 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = 0 ";
+                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = " + DropDownType_Position14.SelectedValue ;
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);

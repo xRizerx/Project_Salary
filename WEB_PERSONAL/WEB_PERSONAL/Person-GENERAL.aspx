@@ -619,7 +619,7 @@
                         <td style="text-align: left; width: 50px;">
                            <asp:UpdatePanel ID="UpdateDropDownType_Position14" runat="server">
                                    <ContentTemplate>
-                            <asp:DropDownList ID="DropDownType_Position14" runat="server" CssClass="tb5" Width="57px" AutoPostBack="True"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownType_Position14" runat="server" CssClass="tb5" Width="57px" AutoPostBack="True" OnSelectedIndexChanged="DropDownType_Position14_SelectedIndexChanged"></asp:DropDownList>
                                     </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="DropDownType_Position14" />
@@ -629,7 +629,7 @@
                        <td style="text-align: left; width: 50px;">
                            <asp:UpdatePanel ID="UpdatetxtDropDownDegree14" runat="server">
                                    <ContentTemplate>
-                            <asp:DropDownList ID="DropDownDegree14" runat="server" CssClass="tb5" Width="57px" AutoPostBack="True" OnSelectedIndexChanged="DropDownDegree14_SelectedIndexChanged"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownDegree14" runat="server" CssClass="tb5" Width="57px" AutoPostBack="True"></asp:DropDownList>
                                     </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="DropDownDegree14" />
