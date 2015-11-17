@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <script type="text/javascript">
         function pageLoad(sender , args) {
-            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
         };
     </script>
     <style type="text/CSS">
@@ -269,7 +269,7 @@
         </fieldset>
     </div>
         </asp:Panel>
-<asp:Panel ID="Panel2" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="ButtonPlus10">
+<asp:Panel ID="Panel2" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
     <div>
         <fieldset>
             <legend>ประวัติการศึกษา</legend>
@@ -343,7 +343,7 @@
         </fieldset>
     </div>
         </asp:Panel>
-<asp:Panel ID="Panel3" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="ButtonPlus11">
+<asp:Panel ID="Panel3" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
     <div>
         <fieldset>
             <legend>ใบอนุญาตประกอบวิชาชีพ</legend>
@@ -387,10 +387,10 @@
                                   </Triggers>
                              </asp:UpdatePanel>
                                        </td>
-                       <td style="text-align: left; width: 170px;">
+                       <td style="text-align: left; width: 220px;">
                            <asp:UpdatePanel ID="UpdatetxtDateEnable11" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtDateEnable11" runat="server" MaxLength="100" Width="190px" CssClass="tb5"></asp:TextBox>
+                            <asp:TextBox ID="txtDateEnable11" runat="server" MaxLength="100" Width="160" CssClass="tb5"></asp:TextBox>
                                     </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="txtDateEnable11" />
@@ -423,7 +423,7 @@
         </fieldset>
     </div>
         </asp:Panel>
-<asp:Panel ID="Panel4" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="ButtonPlus12">
+<asp:Panel ID="Panel4" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
     <div>
         <fieldset>
             <legend>ประวัติการฝึกอบรม</legend>
@@ -496,7 +496,7 @@
         </fieldset>
     </div>
         </asp:Panel>
-<asp:Panel ID="Panel5" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="ButtonPlus13">
+<asp:Panel ID="Panel5" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
     <div>
         <fieldset>
             <legend>การได้รับโทษทางวินัยและการนิรโทษกรรม</legend>
@@ -568,7 +568,7 @@
         </fieldset>
     </div>
         </asp:Panel>
-<asp:Panel ID="Panel6" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="ButtonPlus14">
+<asp:Panel ID="Panel6" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
     <div>
         <fieldset>
             <legend>ตำแหน่งและเงินเดือน</legend>

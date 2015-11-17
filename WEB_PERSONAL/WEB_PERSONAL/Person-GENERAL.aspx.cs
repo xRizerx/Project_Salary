@@ -33,6 +33,8 @@ namespace WEB_PERSONAL
                 DDLYEAR13();
                 DDLSTAFFTYPE14();
                 txtCitizen.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtSalary14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtSalaryForPosition14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
                 Session["StudyHis"] = new DataTable();
                 ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
@@ -211,7 +213,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "0"));
+                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "-1"));
 
                     }
                 }
@@ -239,7 +241,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "0"));
+                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "-1"));
 
                     }
                 }
@@ -267,7 +269,7 @@ namespace WEB_PERSONAL
                         DropDownYear10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "0"));
+                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "-1"));
 
                     }
                 }
@@ -295,7 +297,7 @@ namespace WEB_PERSONAL
                         DropDownYear10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "0"));
+                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "-1"));
 
                     }
                 }
@@ -323,7 +325,7 @@ namespace WEB_PERSONAL
                         DropDownMonth12From.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "0"));
+                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "-1"));
 
                     }
                 }
@@ -351,7 +353,7 @@ namespace WEB_PERSONAL
                         DropDownMonth12To.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "0"));
+                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "-1"));
 
                     }
                 }
@@ -379,7 +381,7 @@ namespace WEB_PERSONAL
                         DropDownYear12From.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "0"));
+                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "-1"));
 
                     }
                 }
@@ -407,7 +409,7 @@ namespace WEB_PERSONAL
                         DropDownYear12To.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "0"));
+                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "-1"));
 
                     }
                 }
@@ -435,7 +437,7 @@ namespace WEB_PERSONAL
                         DropDownYear13.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "0"));
+                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "-1"));
 
                     }
                 }
@@ -463,8 +465,8 @@ namespace WEB_PERSONAL
                         DropDownType_Position14.DataBind();
                         sqlConn.Close();
 
-                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
+                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "-1"));
+                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "-1"));
                     }
                 }
             }
@@ -479,7 +481,7 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = " + DropDownType_Position14.SelectedValue ;
+                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = " + DropDownType_Position14.SelectedValue;
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
@@ -491,8 +493,8 @@ namespace WEB_PERSONAL
                         DropDownDegree14.DataBind();
                         sqlConn.Close();
 
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
-                        
+                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "-1"));
+
                     }
                 }
             }
@@ -578,7 +580,8 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กระทรวง')", true);
                 return true;
             }
-            if (DropDownDepart.SelectedIndex == 0)
+
+            if (string.IsNullOrEmpty(txtDepart.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กรม')", true);
                 return true;
@@ -683,32 +686,32 @@ namespace WEB_PERSONAL
 
         public bool NeedData10()
         {
-            if (string.IsNullOrEmpty(txtGrad_Univ.Text))
+            if (GridView1.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา<ในส่วนประวัติการศึกษา>')", true);
                 return true;
             }
-            if (DropDownMonth10From.SelectedIndex == 0)
+            if (DropDownMonth10From.SelectedIndex == 0 && GridView1.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
                 return true;
             }
-            if (DropDownYear10From.SelectedIndex == 0)
+            if (DropDownYear10From.SelectedIndex == 0 && GridView1.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
                 return true;
             }
-            if (DropDownMonth10To.SelectedIndex == 0)
+            if (DropDownMonth10To.SelectedIndex == 0 && GridView1.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
                 return true;
             }
-            if (DropDownYear10To.SelectedIndex == 0)
+            if (DropDownYear10To.SelectedIndex == 0 && GridView1.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtMajor.Text))
+            if (GridView1.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วุฒิ(สาาขาาวิชาเอก)<ในส่วนประวัติการศึกษา>')", true);
                 return true;
@@ -718,22 +721,22 @@ namespace WEB_PERSONAL
 
         public bool NeedData11()
         {
-            if (string.IsNullOrEmpty(txtGrad_Univ11.Text))
+            if (string.IsNullOrEmpty(txtGrad_Univ11.Text) && GridView2.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อใบอนุญาต<ใบอนุญาตประกอบวิชาชีพ>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtDepart11.Text))
+            if (string.IsNullOrEmpty(txtDepart11.Text) && GridView2.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หน่วยงาน<ใบอนุญาตประกอบวิชาชีพ>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtNolicense11.Text))
+            if (string.IsNullOrEmpty(txtNolicense11.Text) && GridView2.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เลขที่ใบอนุญาต<ใบอนุญาตประกอบวิชาชีพ>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtDateEnable11.Text))
+            if (string.IsNullOrEmpty(txtDateEnable11.Text) && GridView2.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่มีผลบังคับใช้(วัน เดือน ปี)<ใบอนุญาตประกอบวิชาชีพ>')", true);
                 return true;
@@ -743,32 +746,32 @@ namespace WEB_PERSONAL
 
         public bool NeedData12()
         {
-            if (string.IsNullOrEmpty(txtCourse.Text))
+            if (string.IsNullOrEmpty(txtCourse.Text) && GridView3.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หลักสูตรฝึกอบรม<ในส่วนประวัติการฝึกอบรม>')", true);
                 return true;
             }
-            if (DropDownMonth12From.SelectedIndex == 0)
+            if (DropDownMonth12From.SelectedIndex == 0 && GridView3.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการฝึกอบรม>')", true);
                 return true;
             }
-            if (DropDownYear12From.SelectedIndex == 0)
+            if (DropDownYear12From.SelectedIndex == 0 && GridView3.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการฝึกอบรม>')", true);
                 return true;
             }
-            if (DropDownMonth12To.SelectedIndex == 0)
+            if (DropDownMonth12To.SelectedIndex == 0 && GridView3.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการฝึกอบรม>')", true);
                 return true;
             }
-            if (DropDownYear12To.SelectedIndex == 0)
+            if (DropDownYear12To.SelectedIndex == 0 && GridView3.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการฝึกอบรม>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtBranchTrainning.Text))
+            if (string.IsNullOrEmpty(txtBranchTrainning.Text) && GridView3.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หน่วยงานที่จัดฝึกอบรม<ในส่วนประวัติการฝึกอบรม>')", true);
                 return true;
@@ -778,17 +781,17 @@ namespace WEB_PERSONAL
 
         public bool NeedData13()
         {
-            if (DropDownYear13.SelectedIndex == 0)
+            if (DropDownYear13.SelectedIndex == 0 && GridView4.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก พ.ศ.<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtList13.Text))
+            if (string.IsNullOrEmpty(txtList13.Text) && GridView4.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รายการ<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtRefDoc13.Text))
+            if (string.IsNullOrEmpty(txtRefDoc13.Text) && GridView4.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เอกสารอ้างอิง<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>')", true);
                 return true;
@@ -798,42 +801,42 @@ namespace WEB_PERSONAL
 
         public bool NeedData14()
         {
-            if (string.IsNullOrEmpty(txtDate14.Text))
+            if (string.IsNullOrEmpty(txtDate14.Text) && GridView5.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปี<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtPosition14.Text))
+            if (string.IsNullOrEmpty(txtPosition14.Text) && GridView5.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ตำแหน่ง<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtNo_Position14.Text))
+            if (string.IsNullOrEmpty(txtNo_Position14.Text) && GridView5.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เลขที่ตำแหน่ง<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
-            if (DropDownType_Position14.SelectedIndex == 0)
+            if (DropDownType_Position14.SelectedIndex == 0 && GridView5.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งประเภท<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
-            if (DropDownDegree14.SelectedIndex == 0)
+            if (DropDownDegree14.SelectedIndex == 0 && GridView5.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระดับ<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtSalary14.Text))
+            if (string.IsNullOrEmpty(txtSalary14.Text) && GridView5.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เงินเดือน<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtSalaryForPosition14.Text))
+            if (string.IsNullOrEmpty(txtSalaryForPosition14.Text) && GridView5.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เงินประจำตำแหน่ง<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtRefDoc14.Text))
+            if (string.IsNullOrEmpty(txtRefDoc14.Text) && GridView5.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เอกสารอ้างอิง<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
@@ -895,8 +898,7 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-            //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
-
+            if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
             P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
@@ -922,9 +924,9 @@ namespace WEB_PERSONAL
             string[] splitDate1 = txtBirthDayNumber.Text.Split(' ');
             string[] splitDate2 = txtDateInWork.Text.Split(' ');
             string[] splitDate3 = txtAge60Number.Text.Split(' ');
-            P.BIRTHDATE = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
-            P.INWORK_DATE = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
-            P.RETIRE_DATE = new DateTime(Convert.ToInt32(splitDate3[2]), Convert.ToInt32(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
+            P.BIRTHDATE = new DateTime(Convert.ToInt32(splitDate1[2]), Util.MonthToNumber(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
+            P.INWORK_DATE = new DateTime(Convert.ToInt32(splitDate2[2]), Util.MonthToNumber(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
+            P.RETIRE_DATE = new DateTime(Convert.ToInt32(splitDate3[2]), Util.MonthToNumber(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
 
             P.InsertPerson();
 
@@ -942,7 +944,7 @@ namespace WEB_PERSONAL
                             {
                                 conn.Open();
                             }
-                            string[] ss1 = GridView1.Rows[i].Cells[1].Text.Split(' ');
+                            string[] ss1 = GridView1.Rows[i].Cells[1].Text.Split('-');
                             for (int j = 0; j < ss1.Length; ++j)
                             {
                                 ss1[j] = ss1[j].Trim();
@@ -991,7 +993,7 @@ namespace WEB_PERSONAL
                             {
                                 ss2[j] = ss2[j].Trim();
                             }
-                            DateTime DATE_11 = new DateTime(Convert.ToInt32(ss2[2]), Convert.ToInt32(ss2[1]), Convert.ToInt32(ss2[0]));
+                            DateTime DATE_11 = new DateTime(Convert.ToInt32(ss2[2]), Util.MonthToNumber(ss2[1]), Convert.ToInt32(ss2[0]));
 
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
                             command.Parameters.Add(new OracleParameter("LICENCE_NAME", GridView2.Rows[i].Cells[0].Text));
@@ -1030,7 +1032,7 @@ namespace WEB_PERSONAL
                             {
                                 conn.Open();
                             }
-                            string[] ss3 = GridView3.Rows[i].Cells[1].Text.Split(' ');
+                            string[] ss3 = GridView3.Rows[i].Cells[1].Text.Split('-');
                             for (int j = 0; j < ss3.Length; ++j)
                             {
                                 ss3[j] = ss3[j].Trim();
@@ -1115,22 +1117,22 @@ namespace WEB_PERSONAL
                             {
                                 ss5[j] = ss5[j].Trim();
                             }
-                            DateTime DATE_11 = new DateTime(Convert.ToInt32(ss5[2]), Convert.ToInt32(ss5[1]), Convert.ToInt32(ss5[0]));
+                            DateTime DATE_11 = new DateTime(Convert.ToInt32(ss5[2]), Util.MonthToNumber(ss5[1]), Convert.ToInt32(ss5[0]));
 
                             command.Parameters.Add(new OracleParameter("DDATE", DATE_11));
-                            command.Parameters.Add(new OracleParameter("POSITION_NAME", GridView2.Rows[i].Cells[1].Text));
-                            command.Parameters.Add(new OracleParameter("PERSON_ID", GridView2.Rows[i].Cells[2].Text));
-                            command.Parameters.Add(new OracleParameter("ST_ID", GridView2.Rows[i].Cells[3].Text));
-                            command.Parameters.Add(new OracleParameter("POSITION_ID", GridView2.Rows[i].Cells[4].Text));
-                            command.Parameters.Add(new OracleParameter("SALARY", GridView2.Rows[i].Cells[5].Text));
-                            command.Parameters.Add(new OracleParameter("POSITION_SALARY", GridView2.Rows[i].Cells[6].Text));
-                            command.Parameters.Add(new OracleParameter("REFERENCE_DOCUMENT", GridView2.Rows[i].Cells[7].Text));
+                            command.Parameters.Add(new OracleParameter("POSITION_NAME", GridView5.Rows[i].Cells[1].Text));
+                            command.Parameters.Add(new OracleParameter("PERSON_ID", GridView5.Rows[i].Cells[2].Text));
+                            command.Parameters.Add(new OracleParameter("ST_ID", GridView5.Rows[i].Cells[3].Text));
+                            command.Parameters.Add(new OracleParameter("POSITION_ID", GridView5.Rows[i].Cells[4].Text));
+                            command.Parameters.Add(new OracleParameter("SALARY", GridView5.Rows[i].Cells[5].Text));
+                            command.Parameters.Add(new OracleParameter("POSITION_SALARY", GridView5.Rows[i].Cells[6].Text));
+                            command.Parameters.Add(new OracleParameter("REFERENCE_DOCUMENT", GridView5.Rows[i].Cells[7].Text));
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
 
                             id = command.ExecuteNonQuery();
 
                         }
-
+                    
                         catch (Exception ex)
                         {
                             throw ex;
@@ -1213,11 +1215,23 @@ namespace WEB_PERSONAL
             dr[0] = txtGrad_Univ.Text;
             dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
             dr[2] = txtMajor.Text;
-            ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
-            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
-            GridView1.DataBind();
-            ClearDataGridViewNumber10();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการศึกษาเรียบร้อย')", true);
+            if (DropDownMonth10From.SelectedValue == "-1" || DropDownYear10From.SelectedValue == "-1" || DropDownMonth10To.SelectedValue == "-1" || DropDownYear10To.SelectedValue == "-1")
+            {
+                Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการศึกษา>");
+                return;
+            }
+            if (txtGrad_Univ.Text != "" && txtMajor.Text != "")
+            {
+                ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
+                GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
+                GridView1.DataBind();
+                ClearDataGridViewNumber10();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการศึกษาเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนประวัติการศึกษา>')", true);
+            }
 
         }
 
@@ -1229,11 +1243,18 @@ namespace WEB_PERSONAL
             dr[1] = txtDepart11.Text;
             dr[2] = txtNolicense11.Text;
             dr[3] = txtDateEnable11.Text;
-            ((DataTable)(Session["JobLisence"])).Rows.Add(dr);
-            GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
-            GridView2.DataBind();
-            ClearDataGridViewNumber11();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลใบประกอบวิชาชีพเรียบร้อย')", true);
+            if (txtGrad_Univ11.Text != "" && txtDepart11.Text != "" && txtNolicense11.Text != "" && txtDateEnable11.Text != "")
+            {
+                ((DataTable)(Session["JobLisence"])).Rows.Add(dr);
+                GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
+                GridView2.DataBind();
+                ClearDataGridViewNumber11();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลใบประกอบวิชาชีพเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบถ้วน<ส่วนใบประกอบวิชาชีพ>')", true);
+            }
 
         }
 
@@ -1243,11 +1264,23 @@ namespace WEB_PERSONAL
             dr[0] = txtCourse.Text;
             dr[1] = DropDownMonth12From.SelectedValue + "-" + DropDownYear12From.SelectedValue + " - " + DropDownMonth12To.SelectedValue + "-" + DropDownYear12To.SelectedValue;
             dr[2] = txtBranchTrainning.Text;
-            ((DataTable)(Session["Trainning"])).Rows.Add(dr);
-            GridView3.DataSource = ((DataTable)(Session["Trainning"]));
-            GridView3.DataBind();
-            ClearDataGridViewNumber12();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการฝึกอบรมเรียบร้อย')", true);
+            if (DropDownMonth12From.SelectedValue == "-1" || DropDownYear12From.SelectedValue == "-1" || DropDownMonth12To.SelectedValue == "-1" || DropDownYear12To.SelectedValue == "-1")
+            {
+                Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการฝึกอบรม>");
+                return;
+            }
+            if (txtCourse.Text != "" && txtBranchTrainning.Text != "")
+            {
+                ((DataTable)(Session["Trainning"])).Rows.Add(dr);
+                GridView3.DataSource = ((DataTable)(Session["Trainning"]));
+                GridView3.DataBind();
+                ClearDataGridViewNumber12();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการฝึกอบรมเรียบร้อย')", true);
+            }
+            else
+            {
+                Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนประวัติการฝึกอบรม>");
+            }
         }
 
         protected void ButtonPlus13_Click(object sender, EventArgs e)
@@ -1257,11 +1290,24 @@ namespace WEB_PERSONAL
             dr[0] = DropDownYear13.SelectedValue;
             dr[1] = txtList13.Text;
             dr[2] = txtRefDoc13.Text;
-            ((DataTable)(Session["Punished"])).Rows.Add(dr);
-            GridView4.DataSource = ((DataTable)(Session["Punished"]));
-            GridView4.DataBind();
-            ClearDataGridViewNumber13();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลการได้รับโทษทางวินัยและการนิรโทษกรรมเรียบร้อย')", true);
+            if (DropDownYear13.SelectedValue == "-1")
+            {
+                Util.Alert(this, "กรุณาเลือก พ.ศ. ให้ถูกต้อง<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>");
+                return;
+            }
+            if (txtList13.Text != "" && txtRefDoc13.Text != "")
+            {
+                ((DataTable)(Session["Punished"])).Rows.Add(dr);
+                GridView4.DataSource = ((DataTable)(Session["Punished"]));
+                GridView4.DataBind();
+                ClearDataGridViewNumber13();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลการได้รับโทษทางวินัยและการนิรโทษกรรมเรียบร้อย')", true);
+            }
+            else
+            {
+                Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>");
+            }
+
         }
 
         protected void ButtonPlus14_Click(object sender, EventArgs e)
@@ -1275,11 +1321,23 @@ namespace WEB_PERSONAL
             dr[5] = txtSalary14.Text;
             dr[6] = txtSalaryForPosition14.Text;
             dr[7] = txtRefDoc14.Text;
-            ((DataTable)(Session["PositionAndSalary"])).Rows.Add(dr);
-            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
-            GridView5.DataBind();
-            ClearDataGridViewNumber14();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลตำแหน่งและเงินเดือนเรียบร้อย')", true);
+            if (DropDownType_Position14.SelectedValue == "-1" || DropDownDegree14.SelectedValue == "-1")
+            {
+                Util.Alert(this, "กรุณาเลือก ตำแหน่งประเภทและระดับ ให้ถูกต้อง<ในส่วนตำแหน่งและเงินเดือน>");
+                return;
+            }
+            if (txtDate14.Text != "" && txtPosition14.Text != "" && txtNo_Position14.Text != "" && txtSalary14.Text != "" && txtSalaryForPosition14.Text != "" && txtRefDoc14.Text != "")
+            {
+                ((DataTable)(Session["PositionAndSalary"])).Rows.Add(dr);
+                GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
+                GridView5.DataBind();
+                ClearDataGridViewNumber14();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลตำแหน่งและเงินเดือนเรียบร้อย')", true);
+            }
+            else
+            {
+                Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนตำแหน่งและเงินเดือน>");
+            }
         }
     }
 }
