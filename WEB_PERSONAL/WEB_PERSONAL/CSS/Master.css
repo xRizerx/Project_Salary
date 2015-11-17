@@ -180,10 +180,13 @@ form {
 .master_header_under {
     background-color: #00a2e8;
     text-align: center;
-    /*background-image: url(../Image/anime_p1.png);
+    background-image: url(../Image/anime_p1.png);
     background-repeat: no-repeat;
-    background-position-x: right;*/
+    background-position: top right;
+    /*background-size: contain;
+    background-attachment: fixed;*/
     height: 100vh;
+    display: none;
 }
 .master_header_under table {
     
@@ -411,7 +414,7 @@ form {
     background-attachment: fixed;*/
     /*background-size: 100% auto;*/
     /*border-top: 1px solid #00a2e8;*/
-    
+    border-bottom: 20px solid #006692;
     
 }
 .master_footer a {

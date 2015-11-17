@@ -74,40 +74,24 @@
             $("#i2").hide();
         });
         function mover(target) {
-            var v = document.getElementById('master_header_under_id');
-            v.src = target;
+            //var v = document.getElementById('master_header_under_id');
+            //v.src = target;
+
+            //$("#i2").css('background-image', 'url(../' + target + ')');
         }
         function tg() {
+            //$("#i2").fadeToggle(500);
 
-           /* if ($("#i2").is(":visible")) {
+            $("#i2").slideToggle(500);
 
-            } else {
-                var v = document.getElementById('master_header_under_id');
-                if (Math.random() < 0.5) {
-                    v.src = 'image/anime_p1.png';
-                } else {
-                    v.src = 'image/anime_p2.png';
-                }
-            }*/
-
-             if ($("#i2").is(":visible")) {
-
-            } else {
-                var v = document.getElementById('master_header_under_id');
-                if (Math.random() < 0.5) {
+            /*setTimeout(function () {
+                if ($('#i2').is(":visible")) {
                     
                 } else {
-                    var v = document.getElementById('master_header_under_id');
-                    v.src = 'image/anime_p1.png';
+                    $("#i2").css('background-image', 'url(../image/anime_p1.png)');
                 }
-            }
-
-            
-            
-            $("#i2").slideToggle(500);
-            //$("#i2").fadeToggle(250);
-
-
+                
+            }, 550)*/
         }
     </script>
 
@@ -160,10 +144,10 @@
             <div class="master_header_under" id="i2">
 
                 <div style="float:left;">
-                    <table>
+                    <table style="background-color:#00b3ff; border-radius: 64px;">
                         <tr>
-                            <td style="width: 50px;">
-                                <img src="Image/RMUTTO.png" style="height: 80px;" />
+                            <td style="width: 70px;">
+                                <img src="Image/RMUTTO.png" style="height: 80px; background-color:#00b3ff; border-radius: 64px;" />
                             </td>
                             <td style="width: 400px;">
                                 <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
@@ -196,7 +180,7 @@
                         </tr>
                         <tr>
                             <td class="master_header_under_left">
-                                <a href="Person-GENERAL.aspx" onmouseover="mover('image/anime_p2.png')">บุคลากร</a>
+                                <a href="Person-GENERAL.aspx" onmouseover="mover('image/stickman.png')">บุคลากร</a>
                             </td>
                             <td>
                                 <a href="SalarybyID.aspx" onmouseover="mover('image/anime_p2.png')">การขึ้นเงินเดือนรายบุคคล</a>
@@ -237,7 +221,7 @@
                 </div>
 
               
-                    <img src="Image/anime_p1.png" id="master_header_under_id" />
+                    <!--img src="Image/anime_p1.png" id="master_header_under_id" /-->
                
                 
                 
