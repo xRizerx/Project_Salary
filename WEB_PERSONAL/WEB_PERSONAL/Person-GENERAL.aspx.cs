@@ -486,12 +486,13 @@ namespace WEB_PERSONAL
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownDegree14.DataSource = dt;
-                        DropDownDegree14.DataValueField = "ST_ID";
+                        DropDownDegree14.DataValueField = "ID";
                         DropDownDegree14.DataTextField = "NAME";
                         DropDownDegree14.DataBind();
                         sqlConn.Close();
 
                         DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
+                        
                     }
                 }
             }
