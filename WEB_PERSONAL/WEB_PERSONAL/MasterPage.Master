@@ -142,8 +142,8 @@
             </div>
 
             <div class="master_header_under" id="i2">
-
-                <div style="float:left;">
+                <div class="master_header_under_in">
+                    <div style="float:left;">
                     <table style="background-color:#00b3ff; border-radius: 64px;">
                         <tr>
                             <td style="width: 70px;">
@@ -219,6 +219,8 @@
                     </table>
 
                 </div>
+                </div>
+                
 
               
                     <!--img src="Image/anime_p1.png" id="master_header_under_id" /-->
