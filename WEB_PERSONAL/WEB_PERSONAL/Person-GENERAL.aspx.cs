@@ -896,7 +896,7 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-           // if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
+            if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
             P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
@@ -1104,8 +1104,8 @@ namespace WEB_PERSONAL
                     using (OracleCommand command = new OracleCommand("INSERT INTO TB_POSITION_AND_SALARY VALUES (SEQ_posiNsalary_ID.NEXTVAL,:DDATE,:POSITION_NAME,:PERSON_ID,:ST_ID,:POSITION_ID,:SALARY,:POSITION_SALARY,:REFERENCE_DOCUMENT,:CITIZEN_ID)", conn))
                     {
 
-                       // try
-                       // {
+                        try
+                        {
                             if (conn.State != ConnectionState.Open)
                             {
                                 conn.Open();
@@ -1130,8 +1130,8 @@ namespace WEB_PERSONAL
                             id = command.ExecuteNonQuery();
 
                         }
-                    //
-                      /*  catch (Exception ex)
+                    
+                        catch (Exception ex)
                         {
                             throw ex;
                         }
@@ -1140,7 +1140,7 @@ namespace WEB_PERSONAL
                             command.Dispose();
                             conn.Close();
                         }
-                    }*/
+                    }
                 }
             }
 
