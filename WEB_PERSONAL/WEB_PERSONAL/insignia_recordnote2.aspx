@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="insignia_recordnote 2.aspx.cs" Inherits="WEB_PERSONAL.insignia_recordnote_2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="insignia_recordnote2.aspx.cs" Inherits="WEB_PERSONAL.insignia_recordnote_2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" runat="server" contentplaceholderid="ContentPlaceHolder1">
     <asp:Panel ID="Panel2" runat="server" Height="925px">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="CITIZEN_ID" DataSourceID="SqlDataSource1" AutoGenerateEditButton="True">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="CITIZEN_ID" DataSourceID="SqlDataSource1" AutoGenerateEditButton="True" OnRowCreated="GridView1_RowCreated">
             <Columns>
                 <asp:BoundField DataField="CITIZEN_ID" HeaderText="CITIZEN_ID" ReadOnly="True" SortExpression="CITIZEN_ID" />
                 <asp:BoundField DataField="DATE" HeaderText="DATE" SortExpression="DATE" />
