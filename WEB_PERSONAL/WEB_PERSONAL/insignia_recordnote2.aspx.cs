@@ -44,22 +44,22 @@ namespace WEB_PERSONAL
                 GridViewRow HeaderGridRow = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Insert);
                 TableCell HeaderCell = new TableCell();
                 HeaderCell.Text = " ";
-                HeaderCell.ColumnSpan = 2;
+                HeaderCell.ColumnSpan = 6;
                 HeaderGridRow.Cells.Add(HeaderCell);
 
                 HeaderCell = new TableCell();
-                HeaderCell.Text = "รายละเอียดการขึ้นเงินเดือนร้อยละ 2.9";
+                HeaderCell.Text = "ราชกิจจานุเบกษา";
+                HeaderCell.ColumnSpan = 4;
+                HeaderGridRow.Cells.Add(HeaderCell);
+
+                HeaderCell = new TableCell();
+                HeaderCell.Text = "ใบกำกับ";
                 HeaderCell.ColumnSpan = 1;
                 HeaderGridRow.Cells.Add(HeaderCell);
 
                 HeaderCell = new TableCell();
-                HeaderCell.Text = "อธิการบดีเพิ่มให้";
+                HeaderCell.Text = "เหรียญตราฯ";
                 HeaderCell.ColumnSpan = 1;
-                HeaderGridRow.Cells.Add(HeaderCell);
-
-                HeaderCell = new TableCell();
-                HeaderCell.Text = "รวมได้เลื่อนทั้งสิ้น";
-                HeaderCell.ColumnSpan = 7;
                 HeaderGridRow.Cells.Add(HeaderCell);
 
                 HeaderCell = new TableCell();

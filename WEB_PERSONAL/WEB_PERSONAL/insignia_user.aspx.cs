@@ -23,7 +23,7 @@ namespace WEB_PERSONAL
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("insignia_recordnote.aspx");
+            Response.Redirect("insignia_recordnote2.aspx");
         }
     }
 }
