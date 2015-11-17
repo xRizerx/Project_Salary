@@ -130,7 +130,7 @@ win=window.open(mypage,myname,settings);}
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel6" runat="server" Height="1024px" CssClass="panout">
+    <asp:Panel ID="Panel6" runat="server" CssClass="panout">
         <asp:Label ID="Label7" runat="server" Text="การขึ้นเงินเดือนรายบุคคล" Font-Bold="True" Font-Size="20pt" CssClass="header-text"></asp:Label><br /><br /><br />
         <asp:Panel ID="Panel1" runat="server" CssClass="panin">
         <table style="width: 100%;">
@@ -152,7 +152,7 @@ win=window.open(mypage,myname,settings);}
                 <td class="auto-style14">
                     <asp:Button ID="Button1" runat="server" Height="24px" OnClick="Button1_Click" Text="ค้นหา" Width="100px" />
                     <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="ออกรายงาน" CssClass="button_ui_edit" />
-                    <a href="Salary_Basesalary.aspx" onclick="Popup(this.href, 'Base_salary', '350', '310', 'no', 'center'); return false;" class="button_ui">ปรับฐานเงินเดือน</a>
+                    <a href="Salary_Basesalary.aspx" onclick="Popup(this.href, 'Base_salary', '350', '350', 'no', 'center'); return false;" class="button_ui">ปรับฐานเงินเดือน</a>
 
 
                 </td>
