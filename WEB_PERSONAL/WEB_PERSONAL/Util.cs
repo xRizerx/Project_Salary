@@ -51,6 +51,9 @@ namespace WEB_PERSONAL {
         public static DateTime ODTT() {
             return DateTime.ParseExact(DateTime.Today.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
+        public static DateTime ODTN() {
+            return DateTime.ParseExact(DateTime.Now.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+        }
         public static string ToOracleMonth(string month) {
             return ToOracleMonth(Int32.Parse(month));
         }
@@ -84,7 +87,7 @@ namespace WEB_PERSONAL {
             }
         }
         public static string ToThaiWord(string s) {
-            string[] ss = s.Split('-');
+            string[] ss = s.Split(' ');
             string s_day = ss[0];
             string s_month = ss[1];
             string s_year = ss[2];

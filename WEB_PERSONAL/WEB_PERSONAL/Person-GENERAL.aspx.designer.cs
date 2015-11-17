@@ -778,22 +778,40 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtNo_Position14;
         
         /// <summary>
-        /// UpdatetxtDegree14 control.
+        /// UpdateDropDownType_Position14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatetxtDegree14;
+        protected global::System.Web.UI.UpdatePanel UpdateDropDownType_Position14;
         
         /// <summary>
-        /// txtDegree14 control.
+        /// DropDownType_Position14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDegree14;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownType_Position14;
+        
+        /// <summary>
+        /// UpdatetxtDropDownDegree14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatetxtDropDownDegree14;
+        
+        /// <summary>
+        /// DropDownDegree14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownDegree14;
         
         /// <summary>
         /// UpdatetxtSalary14 control.
