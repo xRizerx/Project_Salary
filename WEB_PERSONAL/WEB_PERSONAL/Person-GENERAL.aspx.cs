@@ -463,7 +463,7 @@ namespace WEB_PERSONAL
                         DropDownType_Position14.DataBind();
                         sqlConn.Close();
 
-                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "-1"));
+                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
                         DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
                     }
                 }
