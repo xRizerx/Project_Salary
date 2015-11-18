@@ -137,7 +137,8 @@
                             <asp:Label ID="Label11" runat="server" Text="เข้าสู่ระบบ"></asp:Label>
                         </div>
                         <div class="master_login_popup_div_sec_in">
-                            <table class="auto-style7">
+                            <asp:Panel ID="Panel1" runat="server" DefaultButton="LinkButton1X">
+                                <table class="auto-style7">
                                 <tr>
                                     <td class="auto-style5"></td>
                                     <td class="auto-style9">
@@ -157,7 +158,7 @@
                                         <asp:Label ID="Label14X" runat="server" Text="รหัสผ่าน" CssClass="c10"></asp:Label>
                                     </td>
                                     <td class="auto-style17">
-                                        <asp:TextBox ID="TextBox2X" runat="server" TextMode="Password" CssClass="master_default_textbox"></asp:TextBox>
+                                        <asp:TextBox ID="TextBox2X" runat="server" TextMode="Password" CssClass="master_default_textbox" OnTextChanged="TextBox2X_TextChanged"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -183,6 +184,8 @@
                                     </td>
                                 </tr>
                             </table>
+                            </asp:Panel>
+                            
                         </div>
                     </div>
                     </div>
