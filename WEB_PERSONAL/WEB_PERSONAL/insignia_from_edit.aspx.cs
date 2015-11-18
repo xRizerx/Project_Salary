@@ -16,7 +16,7 @@ namespace WEB_PERSONAL
         public static string strConn = @"Data Source = ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["insignia_citizen_id"] == null)
+            if (Session["insignia_citizen_id"] == null)
             {
                 Response.Redirect("insignia_citizen.aspx");
                 return;
@@ -60,9 +60,10 @@ namespace WEB_PERSONAL
                     {
                         //select 1
                         {
-                            string Oracle = "select tb_personal.stf_name, tb_personal.stf_lname, tb_gender.gender_name, TO_CHAR(tb_personal.birthday,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), tb_personal.citizen_id, tb_rank.rank_name_th, tb_titlename.title_name_th, TO_CHAR(tb_personal.datetime_inwork,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), tb_position_work.position_work_name, AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO, tb_position.position_name, tb_salary.salary, tb_faculty.faculty_name " +
-                            " from tb_personal, tb_gender, tb_rank, tb_department, tb_titlename, tb_position_work, tb_position,AA_GOVERNMENTOFFICER_TYPE, tb_salary, tb_faculty " +
-                            " where tb_personal.citizen_id = '" + citizen_id + "' AND tb_personal.gender_id = tb_gender.gender_id AND tb_personal.rank_id = tb_rank.seq AND tb_personal.department_id = tb_department.department_id AND tb_personal.title_id = tb_titlename.title_id AND tb_personal.position_work_id = tb_position_work.position_work_id AND tb_personal.got_id = AA_GOVERNMENTOFFICER_TYPE.id_got AND tb_personal.position_id = tb_position.position_id AND tb_personal.citizen_id = tb_salary.citizen_id AND tb_personal.faculty_id = tb_faculty.faculty_id ";
+                            string Oracle = "select TB_TITLENAME.TITLE_NAME_TH, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TO_CHAR(TB_PERSON.BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_PERSON.CITIZEN_ID,"
+                                + " TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_POSITION_AND_SALARY.POSITION_NAME"
+                                + " from TB_PERSON, TB_TITLENAME, TB_POSITION_AND_SALARY "
+                                + " where tb_person.citizen_id = '" + citizen_id + "' AND TB_PERSON.TITLE_ID = TB_TITLENAME.TITLE_ID order by TB_POSITION_AND_SALARY.DDATE desc";
 
                             using (OracleCommand command = new OracleCommand(Oracle, con))
                             {
@@ -70,19 +71,13 @@ namespace WEB_PERSONAL
                                 {
                                     while (reader.Read())
                                     {
-                                        TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
-                                        TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
-                                        TextBox6.Text = reader.GetString(2); /*tb_gender.gender_name*/
-                                        TextBox7.Text = reader.GetString(3); /*tb_personal.birthday*/
-                                        TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
-                                        /*TextBox2.Text = reader.GetString(5); /*tb_rank.rank_name_th*/
-                                        TextBox3.Text = reader.GetString(6); /*tb_titlename.title_name_th*/
-                                        TextBox9.Text = reader.GetString(7);/*tb_personal.datetime_inwork*/
-                                        TextBox11.Text = reader.GetString(8); /*tb_position_work.position_work_name*/
-                                        TextBox12.Text = reader.GetString(9); /*AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO*/
-                                        TextBox13.Text = reader.GetString(10); /*tb_position.position_name*/
-                                        TextBox14.Text = reader.GetInt32(11).ToString(); /*tb_salary.salary*/
-                                        /*TextBox1.Text = reader.GetString(12); /*tb_faculty.faculty_name*/
+                                        TextBox3.Text = reader.GetString(0); /*TB_TITLENAME.TITLE_NAME_TH*/
+                                        TextBox4.Text = reader.GetString(1); /*TB_PERSON.PERSON_NAME*/
+                                        TextBox5.Text = reader.GetString(2); /*TB_PERSON.PERSON_LASTNAME*/
+                                        TextBox7.Text = reader.GetString(3); /*TB_PERSON.BIRTHDATE*/
+                                        TextBox8.Text = reader.GetString(4); /*TB_PERSON.CITIZEN_ID*/
+                                        TextBox9.Text = reader.GetString(5); /*TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')*/
+                                        TextBox10.Text = reader.GetString(6); /*TB_POSITION_AND_SALARY.POSITION_NAME*/
 
                                     }
                                 }
@@ -150,7 +145,7 @@ namespace WEB_PERSONAL
                             RadioButton4.Checked = true;
                         }
 
-                        
+
 
                     }
 
@@ -161,7 +156,7 @@ namespace WEB_PERSONAL
             //    string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
             //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             //S }
-          
+
         }
 
         private void BindDropDown1()
@@ -428,13 +423,14 @@ namespace WEB_PERSONAL
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            /*--------- ดักช่องว่างที่ยังไม่ได้กรอก ---------*/ 
+            /*--------- ดักช่องว่างที่ยังไม่ได้กรอก ---------*/
             Label60.Text = "";
             Label61.Text = "";
             Label62.Text = "";
-            if (DropDownList9.SelectedIndex == 0 || DropDownList2.SelectedIndex == 0 || DropDownList3.SelectedIndex == 0 ) {
-                Util.Alert(this,"ยังเลือกไม่ครบ");
-                if(DropDownList9.SelectedIndex == 0)
+            if (DropDownList9.SelectedIndex == 0 || DropDownList2.SelectedIndex == 0 || DropDownList3.SelectedIndex == 0)
+            {
+                Util.Alert(this, "ยังเลือกไม่ครบ");
+                if (DropDownList9.SelectedIndex == 0)
                 {
                     Label60.Text = "*";
                 }
@@ -446,7 +442,7 @@ namespace WEB_PERSONAL
                 {
                     Label62.Text = "*";
                 }
-                    return;
+                return;
             }
             /*--------- ดักช่องว่างที่ยังไม่ได้กรอก ---------*/
             // try
@@ -463,9 +459,9 @@ namespace WEB_PERSONAL
                         {
                             command.Parameters.AddWithValue("2", Session["insignia_citizen_id"].ToString());
                             command.Parameters.AddWithValue("3", DropDownList1.SelectedValue); /*ID_COMM*/
-            command.Parameters.AddWithValue("4", DropDownList2.SelectedValue); /*YEAR*/
+                            command.Parameters.AddWithValue("4", DropDownList2.SelectedValue); /*YEAR*/
                             command.Parameters.AddWithValue("5", DropDownList3.SelectedValue); /*ID_GRADEINSIGNIA*/
-                            command.Parameters.AddWithValue("6", RadioButton5.Checked ? "1":"0"); /*REPEAT_REQUEST*/
+                            command.Parameters.AddWithValue("6", RadioButton5.Checked ? "1" : "0"); /*REPEAT_REQUEST*/
                             command.Parameters.AddWithValue("7", TextBox17.Text); /*SALARY_BACK5Y*/
                             command.Parameters.AddWithValue("8", DropDownList4.SelectedValue); /*OLD_TITLE_ID*/
                             command.Parameters.AddWithValue("9", TextBox19.Text); /*OLD_NAME*/
@@ -502,12 +498,12 @@ namespace WEB_PERSONAL
                             Util.Alert(this, "บันทีกเรียบร้อย");
                         }
                     }
-                   
-                    
+
+
                 }
             }
         }
 
-        
+
     }
 }
