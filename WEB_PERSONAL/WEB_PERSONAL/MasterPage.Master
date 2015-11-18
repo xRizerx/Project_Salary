@@ -263,8 +263,7 @@
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
-                                    <a href="Person-GENERAL.aspx" onmouseover="mover('image/stickman.png')">บุคลากร</a>
-                                </td>
+                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a></td>
                                 <td>
                                     <a href="SalarybyID.aspx" onmouseover="mover('image/anime_p2.png')">การขึ้นเงินเดือนรายบุคคล</a>
                                 </td>
@@ -274,123 +273,50 @@
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
-                                    <a href="SEMINAR-GENERAL.aspx" onmouseover="mover('image/anime_p2.png')">การสัมมนา</a>
+                                    <span class="master_header_under_header">บุคลากร</span>
                                 </td>
-                                <td>&nbsp;</td>
+                                <td>
+                                    <span class="master_header_under_header">การสัมมนา</span>
+                                </td>
                                 <td>
                                     <a href="Study-IN.aspx" onmouseover="mover('image/anime_p2.png')">ศึกษาต่อ</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
-                                    <a href="insignia_citizen.aspx" onmouseover="mover('image/anime_p2.png')">เครื่องราชอิสริยาภรณ์</a>
+                                    <a href="Person-GENERAL.aspx" onmouseover="mover('image/stickman.png')">เพิ่มบุคลากร</a>
                                 </td>
-                                <td>&nbsp;</td>
+                                <td>
+                                    <a href="SEMINAR-GENERAL.aspx" onmouseover="mover('image/anime_p2.png')">การสัมมนา</a>
+                                </td>
                                 <td>
                                     <a href="Leave-Report1.aspx" onmouseover="mover('image/anime_p2.png')">ออกรายงานการลา</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
+                                    <a href="Person-ADMIN.aspx" onmouseover="mover('image/stickman.png')">แก้ไขบุคลากร</a>
                                 </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span></td>
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
+                                    &nbsp;</td>
+                                <td>
+                                    
                                 </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
+                                <td>
+                                    <a href="insignia_citizen.aspx" onmouseover="mover('image/anime_p2.png')">เครื่องราชอิสริยาภรณ์</a></td>
                             </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a>
-                                </td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                        </table>
+                            </table>
 
                     </div>
                 </div>
 
-
-
-                <!--img src="Image/anime_p1.png" id="master_header_under_id" /-->
-
-
-
-
-
-                <!--
-            <img src="Image/love_live_chibi/Eli_Ayase.png" />
-            <img src="Image/love_live_chibi/Hanayo_Koizumi.png" />
-            <img src="Image/love_live_chibi/Honoka_Kousaka.png" />
-            <img src="Image/love_live_chibi/Kotori_Minami.png" />
-            <img src="Image/love_live_chibi/Maki_Nishikino.png" />
-            <img src="Image/love_live_chibi/Nico_Yazawa.png" />
-            <img src="Image/love_live_chibi/Nozomi_Toujou.png" />
-            <img src="Image/love_live_chibi/Rin_Hoshizora.png" />
-            <img src="Image/love_live_chibi/Umi_Sonoda.png" />
-            -->
             </div>
 
         </div>
