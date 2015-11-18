@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="insignia_from_edit.aspx.cs" Inherits="WEB_PERSONAL.insignia2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="insignia_from_edit.aspx.cs" Inherits="WEB_PERSONAL.insignia_form" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -131,9 +131,25 @@
         .auto-style58 {
             width: 120px;
         }
+        .auto-style59 {
+            height: 23px;
+            width: 124px;
+        }
+        .auto-style60 {
+            width: 124px;
+        }
+        .auto-style61 {
+            width: 253px;
+            height: 29px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        $(function () {
+            $("#ContentPlaceHolder1_TextBox25,#ContentPlaceHolder1_TextBox26").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+        });
+    </script>
     <asp:Panel ID="Panel6" runat="server" Height="1819px">
         <table style="width:100%;">
             <tr>
@@ -180,8 +196,9 @@
                     <asp:Label ID="Label11" runat="server" Text="ชื่อหน่วยงานที่ขอพระราชทาน"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList11" runat="server" AppendDataBoundItems="True" AutoPostBack="True" DataSourceID="SqlDataSource10" DataTextField="FACULTY_NAME" DataValueField="FACULTY_ID" Width="269px"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource10" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;FACULTY_ID&quot;, &quot;FACULTY_NAME&quot; FROM &quot;TB_FACULTY&quot;"></asp:SqlDataSource>
+                    <asp:DropDownList ID="DropDownList9" runat="server" Width="269px">
+                    </asp:DropDownList>
+                    <asp:Label ID="Label60" runat="server" ForeColor="Red"></asp:Label>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -190,31 +207,33 @@
                     <asp:Label ID="Label12" runat="server" Text="มาช่วยราชการจากที่ใด (ถ้ามี)"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NAME_COMM" DataValueField="NAME_COMM" Width="269px">
+                    <asp:DropDownList ID="DropDownList1" runat="server" Width="269px">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT &quot;NAME_COMM&quot; FROM &quot;AA_COMMAND&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
+                    <asp:Label ID="Label59" runat="server" BorderColor="Red" Text="หมายเหตุ: ในกรณีที่มาช่วยราชการจากที่ใด (ถ้ามี) โปรดเลือกหัวข้อ"></asp:Label>
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td class="auto-style61">
                     <asp:Label ID="Label13" runat="server" Text="เครื่องราชฯ ที่ขอพระราชทาน ประจำปี"></asp:Label>
                 </td>
-                <td>
-                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="ID_BBE" DataValueField="ID_BBE" Width="269px">
+                <td class="auto-style16">
+                    <asp:DropDownList ID="DropDownList2" runat="server" Width="269px">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT &quot;ID_BBE&quot; FROM &quot;AA_BUDDHISTERA&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
+                    <asp:Label ID="Label61" runat="server" ForeColor="Red"></asp:Label>
                 </td>
-                <td>&nbsp;</td>
+                <td class="auto-style16"></td>
             </tr>
             <tr>
                 <td class="auto-style8">
                     <asp:Label ID="Label14" runat="server" Text="คือชั้น"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="NAME_GRADEINSIGNIA_THA" DataValueField="NAME_GRADEINSIGNIA_THA" Width="269px">
+                    <asp:DropDownList ID="DropDownList3" runat="server" Width="269px">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT &quot;NAME_GRADEINSIGNIA_THA&quot;, &quot;ABBREVIATIONS_THA&quot; FROM &quot;TB_GRADEINSIGNIA&quot;" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
+                    
+                    <asp:Label ID="Label62" runat="server" ForeColor="Red"></asp:Label>
+                    
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -238,8 +257,8 @@
                     <asp:Label ID="Label17" runat="server" Text="ยศ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList4" runat="server" Width="269px" DataSourceID="SqlDataSource4" DataTextField="RANK_NAME_TH" DataValueField="SEQ"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;SEQ&quot;, &quot;RANK_NAME_TH&quot; FROM &quot;TB_RANK&quot;"></asp:SqlDataSource>
+                    <asp:DropDownList ID="DropDownList10" runat="server" Width="269px">
+                    </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -248,8 +267,7 @@
                     <asp:Label ID="Label18" runat="server" Text="คำนำหน้าชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList5" runat="server" Width="269px" DataSourceID="SqlDataSource6" DataTextField="TITLE_NAME_TH" DataValueField="TITLE_ID"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;TITLE_ID&quot;, &quot;TITLE_NAME_TH&quot; FROM &quot;TB_TITLENAME&quot;"></asp:SqlDataSource>
+                    <asp:TextBox ID="TextBox3" runat="server" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -258,7 +276,7 @@
                     <asp:Label ID="Label19" runat="server" Text="ชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox4" runat="server" Width="269px" MaxLength="100"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" Width="269px" Enabled="False"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -267,7 +285,7 @@
                     <asp:Label ID="Label20" runat="server" Text="นามสกุล"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox5" runat="server" Width="269px" MaxLength="100"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -276,8 +294,7 @@
                     <asp:Label ID="Label21" runat="server" Text="เพศ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList6" runat="server" Width="269px" DataSourceID="SqlDataSource5" DataTextField="GENDER_NAME" DataValueField="GENDER_ID"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;GENDER_ID&quot;, &quot;GENDER_NAME&quot; FROM &quot;TB_GENDER&quot;"></asp:SqlDataSource>
+                    <asp:TextBox ID="TextBox6" runat="server" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -313,8 +330,7 @@
                     <asp:Label ID="Label25" runat="server" Text="ตำแหน่งและระดับที่เริ่มรับราชการ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px" DataSourceID="SqlDataSource11" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource11" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;POSITION_WORK_ID&quot;, &quot;POSITION_WORK_NAME&quot; FROM &quot;TB_POSITION_WORK&quot;"></asp:SqlDataSource>
+                    <asp:TextBox ID="TextBox10" runat="server" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -323,8 +339,7 @@
                     <asp:Label ID="Label26" runat="server" Text="ชื่อตำแหน่งปัจจุบัน"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList8" runat="server" Width="269px" DataSourceID="SqlDataSource7" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;POSITION_WORK_ID&quot;, &quot;POSITION_WORK_NAME&quot; FROM &quot;TB_POSITION_WORK&quot;"></asp:SqlDataSource>
+                    <asp:TextBox ID="TextBox11" runat="server" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -333,8 +348,7 @@
                     <asp:Label ID="Label27" runat="server" Text="ประเภท"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList9" runat="server" Width="269px" DataSourceID="SqlDataSource8" DataTextField="NAMETYPE_GO" DataValueField="ID_GOT"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;ID_GOT&quot;, &quot;NAMETYPE_GO&quot; FROM &quot;AA_GOVERNMENTOFFICER_TYPE&quot;"></asp:SqlDataSource>
+                    <asp:TextBox ID="TextBox12" runat="server" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -343,8 +357,7 @@
                     <asp:Label ID="Label28" runat="server" Text="ระดับ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList10" runat="server" Width="269px" DataSourceID="SqlDataSource9" DataTextField="POSITION_NAME" DataValueField="POSITION_ID"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource9" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;POSITION_ID&quot;, &quot;POSITION_NAME&quot; FROM &quot;TB_POSITION&quot;"></asp:SqlDataSource>
+                    <asp:TextBox ID="TextBox13" runat="server" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -353,7 +366,7 @@
                     <asp:Label ID="Label29" runat="server" Text="เงินเดือนปัจจุบัน"></asp:Label>
                 </td>
                 <td class="auto-style11">
-                    <asp:TextBox ID="TextBox14" runat="server" Width="269px" Enabled="False"></asp:TextBox>
+                    <asp:TextBox ID="TextBox14" runat="server" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
                     <asp:Label ID="Label30" runat="server" Text="บาท"></asp:Label>
@@ -397,7 +410,7 @@
                     <asp:Label ID="Label38" runat="server" Text="คำนำหน้าชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="TextBox18" runat="server" Width="269px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList4" runat="server" Width="269px"></asp:DropDownList>  
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -458,7 +471,7 @@
                                 <asp:Label ID="Label46" runat="server" Text="1. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style38">
-                                <asp:TextBox ID="TextBox23" runat="server" Width="269px"></asp:TextBox>
+                                <asp:DropDownList ID="DropDownList5" runat="server" Width="269px"></asp:DropDownList>
                             </td>
                             <td class="auto-style40">
                                 <asp:Label ID="Label50" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
@@ -473,7 +486,7 @@
                                 <asp:Label ID="Label49" runat="server" Text="2. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style39">
-                                <asp:TextBox ID="TextBox24" runat="server" Width="269px"></asp:TextBox>
+                                <asp:DropDownList ID="DropDownList6" runat="server" Width="269px"></asp:DropDownList>
                             </td>
                             <td class="auto-style41">
                                 <asp:Label ID="Label55" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
@@ -498,22 +511,23 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style34"></td>
-                <td class="auto-style36">
-                    <asp:Label ID="Label52" runat="server" Text="1. ระดับ"></asp:Label>
+                <td class="auto-style59">
+                    <asp:Label ID="Label52" runat="server" Text="1. ชื่อตำแหน่งเดิม"></asp:Label>
                 </td>
                 <td class="auto-style38">
-                    <asp:TextBox ID="TextBox27" runat="server" Width="269px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px"></asp:DropDownList>
                 </td>
                 <td class="auto-style40">&nbsp;</td>
                 <td class="auto-style33">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style35">&nbsp;</td>
-                <td class="auto-style37">
-                    <asp:Label ID="Label54" runat="server" Text="2. ระดับ"></asp:Label>
+                <td class="auto-style60">
+                    <asp:Label ID="Label54" runat="server" Text="2. ชื่อตำแหน่งใหม่"></asp:Label>
                 </td>
                 <td class="auto-style39">
-                    <asp:TextBox ID="TextBox29" runat="server" Width="269px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList8" runat="server" Width="269px">
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style41">&nbsp;</td>
                 <td>&nbsp;</td>
@@ -591,7 +605,7 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style55">
-                    <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="109px" />
+                    <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="109px" OnClick="Button1_Click" />
                 </td>
                 <td class="auto-style56">
                     <asp:Button ID="Button2" runat="server" Text="แก้ไข" Width="109px" OnClick="Button2_Click1" />
