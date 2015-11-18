@@ -33,6 +33,7 @@ namespace WEB_PERSONAL
                 BindDropDown4();
                 BindDropDown5();
                 BindDropDown6();
+                BindDropDown9();
             }
 
             // try
@@ -80,7 +81,7 @@ namespace WEB_PERSONAL
                                         TextBox12.Text = reader.GetString(9); /*AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO*/
                                         TextBox13.Text = reader.GetString(10); /*tb_position.position_name*/
                                         TextBox14.Text = reader.GetInt32(11).ToString(); /*tb_salary.salary*/
-                                        TextBox1.Text = reader.GetString(12); /*tb_faculty.faculty_name*/
+                                        /*TextBox1.Text = reader.GetString(12); /*tb_faculty.faculty_name*/
 
                                     }
                                 }
@@ -344,6 +345,35 @@ namespace WEB_PERSONAL
             catch { }
         }
 
+        private void BindDropDown9()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_FACULTY";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownList9.DataSource = dt;
+                        DropDownList9.DataValueField = "FACULTY_ID";
+                        DropDownList9.DataTextField = "FACULTY_NAME";
+                        DropDownList9.DataBind();
+                        sqlConn.Close();
+
+                        DropDownList9.Items.Insert(0, new ListItem("-- กรุณาเลือก --", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+
 
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -377,7 +407,7 @@ namespace WEB_PERSONAL
                     con.Open();
                     //Select 1
                     {
-                        string Oracle = "insert into AA_REQUEST_INSIGNIA values (SEQ_REQUEST_INSIGNIA_id.nextval,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14,:15,:16,:17,:18,:19)";
+                        string Oracle = "insert into AA_REQUEST_INSIGNIA values (SEQ_REQUEST_INSIGNIA_id.nextval,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14,:15,:16,:17,:18,:19,:20)";
 
                         using (OracleCommand command = new OracleCommand(Oracle, con))
                         {
@@ -391,11 +421,12 @@ namespace WEB_PERSONAL
                             command.Parameters.AddWithValue("9", TextBox19.Text); /*OLD_NAME*/
                             command.Parameters.AddWithValue("10", TextBox20.Text); /*OLD_LASTNAME*/
                             command.Parameters.AddWithValue("11", DropDownList5.SelectedValue); /*H1_POSITION_ID_1*/
-                            command.Parameters.AddWithValue("12", Util.toOracleDateTime(TextBox25.Text)); /*H1_DATE_1*/
+                            command.Parameters.AddWithValue("12", Util.ODT(TextBox25.Text)); /*H1_DATE_1*/
                             command.Parameters.AddWithValue("13", DropDownList6.SelectedValue); /*H1_POSITION_ID_2*/
-                            command.Parameters.AddWithValue("14", Util.toOracleDateTime(TextBox26.Text)); /*H1_DATE_2*/
+                            command.Parameters.AddWithValue("14", Util.ODT(TextBox26.Text)); /*H1_DATE_2*/
                             command.Parameters.AddWithValue("15", DropDownList7.SelectedValue); /*H2_OLD_POSITION_WORK_ID*/
                             command.Parameters.AddWithValue("16", DropDownList8.SelectedValue); /*H2_NEW_POSITION_WORK_ID*/
+                            command.Parameters.AddWithValue("20", DropDownList9.SelectedValue);
 
                             int g2id = 1;
                             if (CheckBox2.Checked)
