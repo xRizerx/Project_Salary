@@ -141,6 +141,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        $(function () {
+            $("#ContentPlaceHolder1_TextBox25,#ContentPlaceHolder1_TextBox26").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+        });
+    </script>
     <asp:Panel ID="Panel6" runat="server" Height="1819px">
         <table style="width:100%;">
             <tr>
@@ -187,7 +192,8 @@
                     <asp:Label ID="Label11" runat="server" Text="ชื่อหน่วยงานที่ขอพระราชทาน"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox1" runat="server" Enabled="False" Width="269px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList9" runat="server" Width="269px">
+                    </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
