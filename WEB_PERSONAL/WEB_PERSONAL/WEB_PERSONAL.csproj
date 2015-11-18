@@ -263,6 +263,7 @@
     <Content Include="Font\THSarabun BoldItalic.ttf" />
     <Content Include="Font\THSarabun Italic.ttf" />
     <Content Include="Font\THSarabun.ttf" />
+    <Content Include="Person-ADMIN.aspx" />
     <Content Include="Person-GENERAL.aspx" />
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
@@ -295,7 +296,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Personnel-ADMIN.aspx" />
     <Content Include="Personnel-GENERAL.aspx" />
     <Content Include="Salary-report.aspx" />
     <Content Include="SalarybyID-Edit.aspx" />
@@ -467,6 +467,13 @@
     <Compile Include="National-ADMIN.aspx.designer.cs">
       <DependentUpon>National-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Person-ADMIN.aspx.cs">
+      <DependentUpon>Person-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person-ADMIN.aspx.designer.cs">
+      <DependentUpon>Person-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Person-GENERAL.aspx.cs">
       <DependentUpon>Person-GENERAL.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -478,13 +485,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>personalDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Personnel-ADMIN.aspx.cs">
-      <DependentUpon>Personnel-ADMIN.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Personnel-ADMIN.aspx.designer.cs">
-      <DependentUpon>Personnel-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Personnel-GENERAL.aspx.cs">
       <DependentUpon>Personnel-GENERAL.aspx</DependentUpon>
