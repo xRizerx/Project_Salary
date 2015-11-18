@@ -27,39 +27,70 @@ namespace WEB_PERSONAL
                 }
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand cmd = new OracleCommand("select CITIZEN_ID from tb_person where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
+                    using (OracleCommand cmd = new OracleCommand("select CITIZEN_ID,TITLE_ID,PERSON_NAME,PERSON_LASTNAME,TO_CHAR(BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),BIRTHDATE_LONG,TO_CHAR(RETIRE_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),RETIRE_DATE_LONG,TO_CHAR(INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,MINISTRY_ID,DEPARTMENT_NAME from tb_person where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
 
                     {
                         using (OracleDataReader reader = cmd.ExecuteReader())
                         {
-                            while(reader.Read())
-                            { 
+                            while (reader.Read())
+                            {
                                 txtCitizen.Text = reader.GetString(0);
-                                DropDownTitle.SelectedIndex = reader.GetInt32(2);
-                                //txtName.Text = reader.GetString(3);
-                                //txtLastName.Text = reader.GetString(4);
-                                //txtBirthDayNumber.Text = reader.GetString(5);
-                                //txtBirthDayChar.Text = reader.GetString(6);
-                                //txtAge60Number.Text = reader.GetString(7);
-                                //txtAge60Char.Text = reader.GetString(8);
-                                //txtDateInWork.Text = reader.GetString(9);
-                                //DropDownStaffType.SelectedValue = reader.GetString(10);
-                                //txtFatherName.Text = reader.GetString(11);
-                                //txtFatherLastName.Text = reader.GetString(12);
-                                //txtMotherName.Text = reader.GetString(13);
-                                //txtMotherLastName.Text = reader.GetString(14);
-                                //txtMotherLastNameOld.Text = reader.GetString(15);
-                                //txtMarriedName.Text = reader.GetString(16);
-                                //txtMarriedLastName.Text = reader.GetString(17);
-                                //txtMarriedLastNameOld.Text = reader.GetString(18);
-                                //DropDownMinistry.SelectedIndex = reader.GetInt32(19);
+                                DropDownTitle.SelectedValue = reader.IsDBNull(1) ? "-1" : reader.GetInt32(1).ToString();
+                                txtName.Text = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                                txtLastName.Text = reader.IsDBNull(3) ? "" : reader.GetString(3);
+                                txtBirthDayNumber.Text = reader.IsDBNull(4) ? "" : reader.GetString(4);
+                                txtBirthDayChar.Text = reader.IsDBNull(5) ? "" : reader.GetString(5);
+                                txtAge60Number.Text = reader.IsDBNull(6) ? "" : reader.GetString(6);
+                                txtAge60Char.Text = reader.IsDBNull(7) ? "" : reader.GetString(7);
+                                txtDateInWork.Text = reader.IsDBNull(8) ? "" : reader.GetString(8);
+                                DropDownStaffType.SelectedValue = reader.IsDBNull(9) ? "-1" : reader.GetInt32(9).ToString();
+                                txtFatherName.Text = reader.IsDBNull(10) ? "" : reader.GetString(10);
+                                txtFatherLastName.Text = reader.IsDBNull(11) ? "" : reader.GetString(11);
+                                txtMotherName.Text = reader.IsDBNull(12) ? "" : reader.GetString(12);
+                                txtMotherLastName.Text = reader.IsDBNull(13) ? "" : reader.GetString(13);
+                                txtMotherLastNameOld.Text = reader.IsDBNull(14) ? "" : reader.GetString(14);
+                                txtMarriedName.Text = reader.IsDBNull(15) ? "" : reader.GetString(15);
+                                txtMarriedLastName.Text = reader.IsDBNull(16) ? "" : reader.GetString(16);
+                                txtMarriedLastNameOld.Text = reader.IsDBNull(17) ? "" : reader.GetString(17);
+                                DropDownMinistry.SelectedValue = reader.IsDBNull(18) ? "-1" : reader.GetInt32(18).ToString(); ;
+                                txtDepart.Text = reader.IsDBNull(19) ? "" : reader.GetString(19);
                             }
+                        }
+                    } 
+                    using (OracleCommand cmd = new OracleCommand("select * from TB_STUDY_HISTORY", conn))
+                    {
+                        using (OracleDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+
+                            }
+                        }
+                        DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
+                        dr[0] = txtGrad_Univ.Text;
+                        dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
+                        dr[2] = txtMajor.Text;
+                        if (DropDownMonth10From.SelectedValue == "-1" || DropDownYear10From.SelectedValue == "-1" || DropDownMonth10To.SelectedValue == "-1" || DropDownYear10To.SelectedValue == "-1")
+                        {
+                            Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการศึกษา>");
+                            return;
+                        }
+                        if (txtGrad_Univ.Text != "" && txtMajor.Text != "")
+                        {
+                            ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
+                            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
+                            GridView1.DataBind();
+                            ClearDataGridViewNumber10();
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการศึกษาเรียบร้อย')", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนประวัติการศึกษา>')", true);
                         }
                     }
 
                 }
                 DDLMisnistry();
-                DDLDepart();
                 DDLTitle();
                 DDLStaffType();
                 DDLMONTH10From();
@@ -139,36 +170,7 @@ namespace WEB_PERSONAL
                         DropDownMinistry.DataBind();
                         sqlConn.Close();
 
-                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-
-        private void DDLDepart()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_DEPARTMENT_RENEW";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownDepart.DataSource = dt;
-                        DropDownDepart.DataValueField = "ID";
-                        DropDownDepart.DataTextField = "DEPARTMENT_NAME";
-                        DropDownDepart.DataBind();
-                        sqlConn.Close();
-
-                        // DropDownDepart.Items.Insert(0, new ListItem("--กรุณาเลือกกรม--", "0"));
+                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "-1"));
 
                     }
                 }
@@ -196,7 +198,7 @@ namespace WEB_PERSONAL
                         DropDownTitle.DataBind();
                         sqlConn.Close();
 
-                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือกคำนำหน้านาม--", "0"));
+                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือกคำนำหน้านาม--", "-1"));
 
                     }
                 }
@@ -224,7 +226,7 @@ namespace WEB_PERSONAL
                         DropDownStaffType.DataBind();
                         sqlConn.Close();
 
-                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทข้าราชการ--", "0"));
+                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทข้าราชการ--", "-1"));
 
                     }
                 }
