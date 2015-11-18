@@ -489,33 +489,5 @@
             </div>
         </div>
 
-        
-        <div class="master_default_div_sec" id="sec5">
-            <div class="master_default_div_sec_header">
-                <asp:Label ID="Label35" runat="server" Text="ออกรายงานการลา" Font-Bold="True"></asp:Label>
-            </div>
-            <div class="master_default_div_sec_in">
-                <table style="width: 100%;">
-                    <tr>
-                        <td>
-                            <asp:LinkButton ID="LinkButton19" runat="server" CssClass="master_default_button" OnClick="LinkButton1_Click">ออกรายงาน 1</asp:LinkButton>
-                        </td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
     </asp:Panel>
 </asp:Content>

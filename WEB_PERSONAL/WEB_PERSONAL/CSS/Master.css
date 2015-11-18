@@ -89,7 +89,7 @@ form {
 .master_login li {
     display: inline;
 }
-
+/*
 .master_login a {
     text-decoration: none;
     display: inline;
@@ -98,14 +98,14 @@ form {
     margin-top: 5px;
     width: 60px;
     color: #FFFFFF;
-    background-color: #00a2e8;
+
     border-radius: 24px;
-    transition: background-color 0.25s ease;
+    transition: background-color ease 0.25s text-decoration ease 0.25s;
 }
 
 .master_login a:hover {
-    background-color: #65c1e9;
-}
+    /*background-color: #65c1e9;
+}*/
 .master_login button {
     text-decoration: none;
     display: inline;
@@ -249,9 +249,15 @@ form {
     /*background-color: rgba(0,0,0,0.5);*/
     background-color: #00a2e8;
     text-align: center;
+    /*
     background-image: url(../Image/blurred-blue-background.jpg);
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: top;*/
+
+    background-image: url(../Image/anime_p1.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+
     /*background-size: contain;
     background-attachment: fixed;*/
     height: 100vh;
@@ -301,17 +307,24 @@ form {
 }
 
 .master_header_under a {
+
+    display: inline-block;
+    margin: 0 20px;
+
+    border-radius: 24px;
+    transition: background-color ease 0.25s text-decoration ease 0.25s;
+
     text-decoration: none;
     font-size: 20px;
     color: #FFFFFF;
     padding: 0 20px;
-    border-radius: 24px;
-    display: inline-block;
+
     width: 200px;
-    background-color: none;
+    /*background-color: rgba(0,0,0,0);*/
+    /*text-shadow: 1px 1px 1px #808080;*/
 }
 .master_header_under a:hover {
-    background-color: #0083bb;
+    text-decoration: underline;
 }
 .master_header_under img {
     float:right;
