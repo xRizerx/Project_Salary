@@ -140,32 +140,32 @@
                             <asp:Panel ID="Panel1" runat="server" DefaultButton="LinkButton1X">
                                 <table class="auto-style7">
                                 <tr>
-                                    <td class="auto-style5"></td>
-                                    <td class="auto-style9">
+                                    <td class="auto-style5X"></td>
+                                    <td class="auto-style9X">
                                         <asp:Label ID="Label12X" runat="server" CssClass="cerror"></asp:Label>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="auto-style15">
+                                    <td class="auto-style15X">
                                         <asp:Label ID="Label13X" runat="server" Text="รหัสบัตรประชาชน" CssClass="c10"></asp:Label>
                                     </td>
-                                    <td class="auto-style17">
+                                    <td class="auto-style17X">
                                         <asp:TextBox ID="TextBox1X" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="auto-style15">
+                                    <td class="auto-style15X">
                                         <asp:Label ID="Label14X" runat="server" Text="รหัสผ่าน" CssClass="c10"></asp:Label>
                                     </td>
-                                    <td class="auto-style17">
+                                    <td class="auto-style17X">
                                         <asp:TextBox ID="TextBox2X" runat="server" TextMode="Password" CssClass="master_default_textbox" OnTextChanged="TextBox2X_TextChanged"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="auto-style15">
+                                    <td class="auto-style15X">
                                         <asp:Label ID="Label15X" runat="server" CssClass="c10" Text="คงอยู่ในระบบ"></asp:Label>
                                     </td>
-                                    <td class="auto-style17">
+                                    <td class="auto-style17X">
                                         <asp:DropDownList ID="DropDownList1X" runat="server" CssClass="master_default_dropdown">
                                             <asp:ListItem Value="300">5 นาที</asp:ListItem>
                                             <asp:ListItem Value="1800">30 นาที</asp:ListItem>
@@ -175,8 +175,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="auto-style15">&nbsp;</td>
-                                    <td class="auto-style17">
+                                    <td class="auto-style15X">&nbsp;</td>
+                                    <td class="auto-style17X">
 
                                         <asp:LinkButton ID="LinkButton1X" runat="server" OnClick="LinkButton1X_Click">เข้าสู่ระบบ</asp:LinkButton>
 
