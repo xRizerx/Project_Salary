@@ -286,7 +286,9 @@
                                     <a href="insignia_citizen.aspx" onmouseover="mover('image/anime_p2.png')">เครื่องราชอิสริยาภรณ์</a>
                                 </td>
                                 <td>&nbsp;</td>
-                                <td>&nbsp;</td>
+                                <td>
+                                    <a href="Leave-Report1.aspx" onmouseover="mover('image/anime_p2.png')">ออกรายงานการลา</a>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
