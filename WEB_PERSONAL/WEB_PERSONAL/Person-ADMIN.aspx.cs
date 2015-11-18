@@ -33,7 +33,7 @@ namespace WEB_PERSONAL
                         using (OracleDataReader reader = cmd.ExecuteReader())
                         {
                             while(reader.Read())
-                            {
+                            { 
                                 txtCitizen.Text = reader.GetString(0);
                                 DropDownTitle.SelectedIndex = reader.GetInt32(2);
                                 //txtName.Text = reader.GetString(3);
