@@ -249,9 +249,9 @@ form {
     /*background-color: rgba(0,0,0,0.5);*/
     background-color: #00a2e8;
     text-align: center;
-    background-image: url(../Image/anime_p1.png);
+    background-image: url(../Image/blurred-blue-background.jpg);
     background-repeat: no-repeat;
-    background-position: top right;
+    background-position: top;
     /*background-size: contain;
     background-attachment: fixed;*/
     height: 100vh;
@@ -270,7 +270,7 @@ form {
 .master_header_under_in2 {
     /*background-color: rgba(0,0,0,0.5);*/
     padding: 20px;
-    max-height: 95vh;
+    max-height: 85vh;
 }
 .master_header_under table {
     
@@ -308,6 +308,7 @@ form {
     border-radius: 24px;
     display: inline-block;
     width: 200px;
+    background-color: none;
 }
 .master_header_under a:hover {
     background-color: #0083bb;
