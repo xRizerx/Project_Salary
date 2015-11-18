@@ -475,7 +475,6 @@ namespace WEB_PERSONAL
         {
             DropDownMinistry.SelectedIndex = 0;
             txtDepart.Text = "มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก";
-            //DropDownDepart.SelectedIndex = 0;
             DropDownTitle.SelectedIndex = 0;
             txtCitizen.Text = "";
             txtName.Text = "";

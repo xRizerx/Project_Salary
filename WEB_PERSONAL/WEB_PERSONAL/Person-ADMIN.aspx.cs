@@ -159,6 +159,41 @@ namespace WEB_PERSONAL
                             ClearDataGridViewNumber13();
                         }
                     }
+                    using (OracleCommand cmd = new OracleCommand("select to_char(DDATE, 'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),POSITION_NAME,PERSON_ID,ST_ID,POSITION_ID,SALARY,POSITION_SALARY,REFERENCE_DOCUMENT from TB_POSITION_AND_SALARY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
+                    {
+                        using (OracleDataReader reader = cmd.ExecuteReader())
+                        {
+
+                            Session["PositionAndSalary"] = new DataTable();
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่งประเภท");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
+
+                            while (reader.Read())
+                            {
+                                DataRow dr = ((DataTable)(Session["PositionAndSalary"])).NewRow();
+                                dr[0] = reader.GetString(0);
+                                dr[1] = reader.GetString(1);
+                                dr[2] = reader.GetString(2);
+                                dr[3] = reader.GetString(3);
+                                dr[4] = reader.GetInt32(4);
+                                dr[5] = reader.GetInt32(5);
+                                dr[6] = reader.GetInt32(6);
+                                dr[7] = reader.GetString(7);
+
+                                ((DataTable)(Session["PositionAndSalary"])).Rows.Add(dr);
+
+                            }
+                            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
+                            GridView5.DataBind();
+                            ClearDataGridViewNumber14();
+                        }
+                    }
 
                 }
                 DDLMisnistry();
@@ -178,17 +213,6 @@ namespace WEB_PERSONAL
                 txtSalary14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtSalaryForPosition14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
-                Session["PositionAndSalary"] = new DataTable();
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่งประเภท");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
-                GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
-                GridView5.DataBind();
             }
         }
 
@@ -564,7 +588,7 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = " + DropDownType_Position14.SelectedValue;
+                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = " + DropDownType_Position14.SelectedValue + "UNION ALL select * FROM TB_POSITION_PERMANENT_EMP where ST_ID = " + DropDownType_Position14.SelectedValue;
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
@@ -588,7 +612,6 @@ namespace WEB_PERSONAL
         {
             DropDownMinistry.SelectedIndex = 0;
             txtDepart.Text = "มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก";
-            //DropDownDepart.SelectedIndex = 0;
             DropDownTitle.SelectedIndex = 0;
             txtCitizen.Text = "";
             txtName.Text = "";
