@@ -57,36 +57,57 @@ namespace WEB_PERSONAL
                             }
                         }
                     } 
-                    using (OracleCommand cmd = new OracleCommand("select * from TB_STUDY_HISTORY", conn))
+                    using (OracleCommand cmd = new OracleCommand("select GRAD_UNIV,to_char(DATE_FROM, 'Mon', 'NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_FROM),to_char(DATE_TO, 'Mon','NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_TO),MAJOR from TB_STUDY_HISTORY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
                     {
                         using (OracleDataReader reader = cmd.ExecuteReader())
                         {
+
+                            Session["StudyHis"] = new DataTable();
+                            ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
+                            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
+                            ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
+                            
                             while (reader.Read())
                             {
+                                DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
+                                dr[0] = reader.GetString(0);
+                                dr[1] = reader.GetString(1) + "-" + reader.GetInt32(2) + " - " + reader.GetString(3) + "-" + reader.GetInt32(4);
+                                dr[2] = reader.GetString(5);
 
+                                ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
+                                
                             }
-                        }
-                        DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
-                        dr[0] = txtGrad_Univ.Text;
-                        dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
-                        dr[2] = txtMajor.Text;
-                        if (DropDownMonth10From.SelectedValue == "-1" || DropDownYear10From.SelectedValue == "-1" || DropDownMonth10To.SelectedValue == "-1" || DropDownYear10To.SelectedValue == "-1")
-                        {
-                            Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการศึกษา>");
-                            return;
-                        }
-                        if (txtGrad_Univ.Text != "" && txtMajor.Text != "")
-                        {
-                            ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
                             GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
                             GridView1.DataBind();
                             ClearDataGridViewNumber10();
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการศึกษาเรียบร้อย')", true);
                         }
-                        else
+                       
+                    }
+                    using (OracleCommand cmd = new OracleCommand("select GRAD_UNIV,to_char(DATE_FROM, 'Mon', 'NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_FROM),to_char(DATE_TO, 'Mon','NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_TO),MAJOR from TB_STUDY_HISTORY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
+                    {
+                        using (OracleDataReader reader = cmd.ExecuteReader())
                         {
-                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนประวัติการศึกษา>')", true);
+
+                            Session["StudyHis"] = new DataTable();
+                            ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
+                            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
+                            ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
+
+                            while (reader.Read())
+                            {
+                                DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
+                                dr[0] = reader.GetString(0);
+                                dr[1] = reader.GetString(1) + "-" + reader.GetInt32(2) + " - " + reader.GetString(3) + "-" + reader.GetInt32(4);
+                                dr[2] = reader.GetString(5);
+
+                                ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
+
+                            }
+                            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
+                            GridView1.DataBind();
+                            ClearDataGridViewNumber10();
                         }
+
                     }
 
                 }
@@ -107,12 +128,12 @@ namespace WEB_PERSONAL
                 txtSalary14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtSalaryForPosition14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
-                Session["StudyHis"] = new DataTable();
+                /*Session["StudyHis"] = new DataTable();
                 ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
                 ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
                 ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
                 GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
-                GridView1.DataBind();
+                GridView1.DataBind();*/
 
                 Session["JobLisence"] = new DataTable();
                 ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
