@@ -19,7 +19,6 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 DDLMisnistry();
-                DDLDepart();
                 DDLTitle();
                 DDLStaffType();
                 DDLMONTH10From();
@@ -101,35 +100,6 @@ namespace WEB_PERSONAL
                         sqlConn.Close();
 
                         DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-
-        private void DDLDepart()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_DEPARTMENT_RENEW";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownDepart.DataSource = dt;
-                        DropDownDepart.DataValueField = "ID";
-                        DropDownDepart.DataTextField = "DEPARTMENT_NAME";
-                        DropDownDepart.DataBind();
-                        sqlConn.Close();
-
-                        // DropDownDepart.Items.Insert(0, new ListItem("--กรุณาเลือกกรม--", "0"));
 
                     }
                 }
