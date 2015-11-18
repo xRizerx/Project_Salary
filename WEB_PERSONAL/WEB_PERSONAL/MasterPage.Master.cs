@@ -47,7 +47,11 @@ namespace WEB_PERSONAL
 
         protected void form1_Load(object sender, EventArgs e)
         {
-
+            if (Session["show_login"] != null)
+            {
+                Session.Remove("show_login");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "toggleLoginPopup();", true);
+            }
             if (Session["login_id"] != null)
             {
                 
@@ -198,7 +202,7 @@ namespace WEB_PERSONAL
                                         Session["login_lastname"] = reader.GetString(3);
                                         Session["login_date_time"] = DateTime.Now;
                                         Session["login_total_second"] = DropDownList1X.SelectedValue;
-                                        Response.Redirect("Default.aspx");
+                                        //Response.Redirect("Default.aspx");
                                     } else {
                                         Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "toggleLoginPopup();", true);
                                         Label12X.Text = "รหัสผ่านไม่ถูกต้อง!";
