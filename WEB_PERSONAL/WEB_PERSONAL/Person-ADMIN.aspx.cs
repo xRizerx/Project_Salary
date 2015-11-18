@@ -56,7 +56,7 @@ namespace WEB_PERSONAL
                                 txtDepart.Text = reader.IsDBNull(19) ? "" : reader.GetString(19);
                             }
                         }
-                    }
+                    } 
                     using (OracleCommand cmd = new OracleCommand("select * from TB_STUDY_HISTORY", conn))
                     {
                         using (OracleDataReader reader = cmd.ExecuteReader())
