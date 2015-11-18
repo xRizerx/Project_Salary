@@ -145,6 +145,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Panel ID="Panel1" runat="server" DefaultButton="Button1">
     <script>
         $(function () {
             $("#ContentPlaceHolder1_TextBox25,#ContentPlaceHolder1_TextBox26").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
@@ -260,7 +261,9 @@
                     <asp:DropDownList ID="DropDownList10" runat="server" Width="269px">
                     </asp:DropDownList>
                 </td>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:Label ID="Label63" runat="server" ForeColor="Red"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style8">
@@ -622,4 +625,5 @@
             </tr>
         </table>
     </asp:Panel>
+        </asp:Panel>
 </asp:Content>
