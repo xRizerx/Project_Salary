@@ -284,7 +284,7 @@ namespace WEB_PERSONAL {
 
                 using (OracleConnection con = Util.OC()) {
                     {
-                        string sql = "SELECT STF_NAME || ' ' || STF_LNAME FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox16.Text + "'";
+                        string sql = "SELECT PERSON_NAME || ' ' || PERSON_LASTNAME FROM TB_PERSON WHERE CITIZEN_ID = '" + TextBox16.Text + "'";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 if (reader.HasRows) {
@@ -382,9 +382,9 @@ namespace WEB_PERSONAL {
                             TextBox3.Text = reader.GetString(1);
                             Label31.Text = reader.GetString(2) + " " + reader.GetString(3);
                             TextBox10.Text = reader.IsDBNull(4) ? "" : reader.GetString(4);
-                            TextBox5.Text = reader.GetString(5);
-                            TextBox6.Text = reader.GetString(6);
-                            TextBox2.Text = reader.GetString(7);
+                            TextBox5.Text = Util.NDT(reader.GetString(5));
+                            TextBox6.Text = Util.NDT(reader.GetString(6));
+                            TextBox2.Text = Util.NDT(reader.GetString(7));
                             DropDownList2.SelectedValue = reader.GetInt32(8).ToString();
                             Label33.Text = "" + reader.GetInt32(9);
                         }
@@ -398,7 +398,7 @@ namespace WEB_PERSONAL {
                         while (reader.Read()) {
                             TextBox8.Text = reader.GetString(0);
                             Label32.Text = reader.GetString(1) + " " + reader.GetString(2);
-                            TextBox9.Text = reader.GetString(3);
+                            TextBox9.Text = Util.NDT(reader.GetString(3));
                         }
                     }
                 }
@@ -414,7 +414,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton3_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.stf_name || ' ' || a.STF_LNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.stf_name || ' ' || b.STF_LNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_personal a,tb_personal b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc");
+            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",tb_leave.PAPER_DATE as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",tb_leave.LEAVE_FROM_DATE as \"LEAVE_FROM_DATE\",tb_leave.LEAVE_TO_DATE as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TB_LEAVE.APPROVE_DATE as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc");
         }
 
         

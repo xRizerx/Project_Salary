@@ -54,6 +54,14 @@ namespace WEB_PERSONAL {
         public static DateTime ODTN() {
             return DateTime.ParseExact(DateTime.Now.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
+        public static string NDT(string date) {
+            string[] ss = date.Split(' ');
+            if(ss.Length == 3) {
+                return ss[0] + " " + ss[1] + " " + ss[2];
+            } else {
+                return ss[0] + " " + ss[1] + " " + ss[3];
+            }
+        }
         public static string ToOracleMonth(string month) {
             return ToOracleMonth(Int32.Parse(month));
         }

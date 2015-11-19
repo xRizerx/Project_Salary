@@ -183,7 +183,7 @@
                             <asp:Label ID="Label23" runat="server" Text="รหัสผู้ลา"></asp:Label>
                         </td>
                         <td class="auto-style67">
-                            <asp:TextBox ID="TextBox16" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox16" runat="server" CssClass="master_default_textbox" Enabled="False"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton17" runat="server" CssClass="master_default_button" OnClick="Button1_Click2">ตรวจสอบ</asp:LinkButton>
                         </td>
                     </tr>
