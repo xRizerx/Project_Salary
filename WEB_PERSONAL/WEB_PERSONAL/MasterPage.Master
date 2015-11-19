@@ -158,7 +158,7 @@
                                         <asp:Label ID="Label14X" runat="server" Text="รหัสผ่าน" CssClass="c10"></asp:Label>
                                     </td>
                                     <td class="auto-style17X">
-                                        <asp:TextBox ID="TextBox2X" runat="server" TextMode="Password" CssClass="master_default_textbox" OnTextChanged="TextBox2X_TextChanged"></asp:TextBox>
+                                        <asp:TextBox ID="TextBox2X" runat="server" TextMode="Password" CssClass="master_default_textbox" ></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
