@@ -1030,6 +1030,18 @@ namespace WEB_PERSONAL
             string[] splitDate1 = txtBirthDayNumber.Text.Split(' ');
             string[] splitDate2 = txtDateInWork.Text.Split(' ');
             string[] splitDate3 = txtAge60Number.Text.Split(' ');
+            if(splitDate1.Length == 4)
+            {
+                splitDate1[2] = splitDate1[3];
+            }
+            if (splitDate2.Length == 4)
+            {
+                splitDate2[2] = splitDate2[3];
+            }
+            if (splitDate3.Length == 4)
+            {
+                splitDate3[2] = splitDate3[3];
+            }
             P.BIRTHDATE = new DateTime(Convert.ToInt32(splitDate1[2]), Util.MonthToNumber(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
             P.INWORK_DATE = new DateTime(Convert.ToInt32(splitDate2[2]), Util.MonthToNumber(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
             P.RETIRE_DATE = new DateTime(Convert.ToInt32(splitDate3[2]), Util.MonthToNumber(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
