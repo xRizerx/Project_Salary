@@ -19,13 +19,14 @@ namespace WEB_PERSONAL
         {
             if (!IsPostBack)
             {
+                BindData();
                 if (Session["login_id"] == null)
                 {
                     Session["show_login"] = "1";
                     //Response.Redirect("default.aspx");
                     return;
                 }
-                using (OracleConnection conn = Util.OC())
+                /*using (OracleConnection conn = Util.OC())
                 {
                     using (OracleCommand cmd = new OracleCommand("select CITIZEN_ID,TITLE_ID,PERSON_NAME,PERSON_LASTNAME,TO_CHAR(BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),BIRTHDATE_LONG,TO_CHAR(RETIRE_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),RETIRE_DATE_LONG,TO_CHAR(INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,MINISTRY_ID,DEPARTMENT_NAME from tb_person where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
 
@@ -63,7 +64,6 @@ namespace WEB_PERSONAL
                         {
 
                             Session["StudyHis"] = new DataTable();
-                            ((DataTable)(Session["StudyHis"])).Columns.Add("ID");
                             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
                             ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
                             ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
@@ -195,8 +195,8 @@ namespace WEB_PERSONAL
                             ClearDataGridViewNumber14();
                         }
                     }
-
-                }
+                    
+                }*/
                 DDLMisnistry();
                 DDLTitle();
                 DDLStaffType();
@@ -222,16 +222,81 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["PERSON"];
+            return (DataTable)ViewState["PERSON10"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["PERSON"] = data;
+            ViewState["PERSON10"] = data;
         }
 
         #endregion
+
+        void BindData()
+        {
+            ClassPersonStudyHistory p = new ClassPersonStudyHistory();
+            DataTable dt = p.GetPersonStudyHistory("", "", "", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
+        protected void modEditCommand(Object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+        protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            BindData();
+        }
+        protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            ClassPersonStudyHistory p = new ClassPersonStudyHistory();
+            p.ID = id;
+            p.DeletePersonStudyHistory();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
+
+            GridView1.EditIndex = -1;
+            BindData();
+        }
+        protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
+        {
+            
+            Label lblPersonStudyHistoryID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryID");
+            Label lblPersonStudyHistoryCitizenID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryCitizenID");
+            TextBox txtPersonStudyHistoryGradUNIVEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryGradUNIVEdit");
+            TextBox lblPersonStudyHistoryDateFromEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryDateFromEdit");
+            TextBox lblPersonStudyHistoryDateTOEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryDateTOEdit");
+            TextBox txtPersonStudyHistoryMajorEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMajorEdit");
+            DateTime DATE_FROM = DateTime.Parse(lblPersonStudyHistoryDateFromEdit.Text);
+            DateTime DATE_TO = DateTime.Parse(lblPersonStudyHistoryDateTOEdit.Text);
+
+            ClassPersonStudyHistory p = new ClassPersonStudyHistory(Convert.ToInt32(lblPersonStudyHistoryID.Text), lblPersonStudyHistoryCitizenID.Text
+                , txtPersonStudyHistoryGradUNIVEdit.Text
+                , DATE_FROM
+                , DATE_TO
+                , txtPersonStudyHistoryMajorEdit.Text);
+
+            p.UpdatePersonStudyHistory();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+            GridView1.EditIndex = -1;
+            BindData();
+            
+        }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+        protected void myGridViewPersonStudyHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataSource = GetViewState();
+            GridView1.DataBind();
+        }
 
         private void DDLMisnistry()
         {
@@ -1025,9 +1090,8 @@ namespace WEB_PERSONAL
             P.UpdatePerson();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
 
-            
-           
-            
+
+
         }
         protected void txtBirthDayNumber_TextChanged(object sender, EventArgs e)
         {
@@ -1042,133 +1106,32 @@ namespace WEB_PERSONAL
         protected void ButtonPlus10_Click(object sender, EventArgs e)
         {
 
-            DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
-            dr[0] = txtGrad_Univ.Text;
-            dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
-            dr[2] = txtMajor.Text;
-            if (DropDownMonth10From.SelectedValue == "0" || DropDownYear10From.SelectedValue == "0" || DropDownMonth10To.SelectedValue == "0" || DropDownYear10To.SelectedValue == "0")
-            {
-                Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการศึกษา>");
-                return;
-            }
-            if (txtGrad_Univ.Text != "" && txtMajor.Text != "")
-            {
-                ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
-                GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
-                GridView1.DataBind();
-                ClearDataGridViewNumber10();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการศึกษาเรียบร้อย')", true);
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนประวัติการศึกษา>')", true);
-            }
+
 
         }
 
         protected void ButtonPlus11_Click(object sender, EventArgs e)
         {
 
-            DataRow dr = ((DataTable)(Session["JobLisence"])).NewRow();
-            dr[0] = txtGrad_Univ11.Text;
-            dr[1] = txtDepart11.Text;
-            dr[2] = txtNolicense11.Text;
-            dr[3] = txtDateEnable11.Text;
-            if (txtGrad_Univ11.Text != "" && txtDepart11.Text != "" && txtNolicense11.Text != "" && txtDateEnable11.Text != "")
-            {
-                ((DataTable)(Session["JobLisence"])).Rows.Add(dr);
-                GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
-                GridView2.DataBind();
-                ClearDataGridViewNumber11();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลใบประกอบวิชาชีพเรียบร้อย')", true);
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบถ้วน<ส่วนใบประกอบวิชาชีพ>')", true);
-            }
+
 
         }
 
         protected void ButtonPlus12_Click(object sender, EventArgs e)
         {
-            DataRow dr = ((DataTable)(Session["Trainning"])).NewRow();
-            dr[0] = txtCourse.Text;
-            dr[1] = DropDownMonth12From.SelectedValue + "-" + DropDownYear12From.SelectedValue + " - " + DropDownMonth12To.SelectedValue + "-" + DropDownYear12To.SelectedValue;
-            dr[2] = txtBranchTrainning.Text;
-            if (DropDownMonth12From.SelectedValue == "0" || DropDownYear12From.SelectedValue == "0" || DropDownMonth12To.SelectedValue == "0" || DropDownYear12To.SelectedValue == "0")
-            {
-                Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการฝึกอบรม>");
-                return;
-            }
-            if (txtCourse.Text != "" && txtBranchTrainning.Text != "")
-            {
-                ((DataTable)(Session["Trainning"])).Rows.Add(dr);
-                GridView3.DataSource = ((DataTable)(Session["Trainning"]));
-                GridView3.DataBind();
-                ClearDataGridViewNumber12();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการฝึกอบรมเรียบร้อย')", true);
-            }
-            else
-            {
-                Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนประวัติการฝึกอบรม>");
-            }
+
         }
 
         protected void ButtonPlus13_Click(object sender, EventArgs e)
         {
 
-            DataRow dr = ((DataTable)(Session["Punished"])).NewRow();
-            dr[0] = DropDownYear13.SelectedValue;
-            dr[1] = txtList13.Text;
-            dr[2] = txtRefDoc13.Text;
-            if (DropDownYear13.SelectedValue == "0")
-            {
-                Util.Alert(this, "กรุณาเลือก พ.ศ. ให้ถูกต้อง<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>");
-                return;
-            }
-            if (txtList13.Text != "" && txtRefDoc13.Text != "")
-            {
-                ((DataTable)(Session["Punished"])).Rows.Add(dr);
-                GridView4.DataSource = ((DataTable)(Session["Punished"]));
-                GridView4.DataBind();
-                ClearDataGridViewNumber13();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลการได้รับโทษทางวินัยและการนิรโทษกรรมเรียบร้อย')", true);
-            }
-            else
-            {
-                Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>");
-            }
 
         }
 
         protected void ButtonPlus14_Click(object sender, EventArgs e)
         {
-            DataRow dr = ((DataTable)(Session["PositionAndSalary"])).NewRow();
-            dr[0] = txtDate14.Text;
-            dr[1] = txtPosition14.Text;
-            dr[2] = txtNo_Position14.Text;
-            dr[3] = DropDownType_Position14.SelectedValue;
-            dr[4] = DropDownDegree14.SelectedValue;
-            dr[5] = txtSalary14.Text;
-            dr[6] = txtSalaryForPosition14.Text;
-            dr[7] = txtRefDoc14.Text;
-            if (DropDownType_Position14.SelectedValue == "0" || DropDownDegree14.SelectedValue == "0")
-            {
-                Util.Alert(this, "กรุณาเลือก ตำแหน่งประเภทและระดับ ให้ถูกต้อง<ในส่วนตำแหน่งและเงินเดือน>");
-                return;
-            }
-            if (txtDate14.Text != "" && txtPosition14.Text != "" && txtNo_Position14.Text != "" && txtSalary14.Text != "" && txtSalaryForPosition14.Text != "" && txtRefDoc14.Text != "")
-            {
-                ((DataTable)(Session["PositionAndSalary"])).Rows.Add(dr);
-                GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
-                GridView5.DataBind();
-                ClearDataGridViewNumber14();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลตำแหน่งและเงินเดือนเรียบร้อย')", true);
-            }
-            else
-            {
-                Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนตำแหน่งและเงินเดือน>");
-            }
+
         }
+
     }
 }

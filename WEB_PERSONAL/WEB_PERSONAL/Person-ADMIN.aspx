@@ -331,9 +331,68 @@
 
                 <asp:UpdatePanel ID="UpdateGridView1" runat="server">
                                    <ContentTemplate>
-                <asp:GridView ID="GridView1" runat="server" Width="998px">
-                </asp:GridView>
-                                        </ContentTemplate>
+                <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: left;"
+                AutoGenerateColumns="false"
+                AllowPaging="true"
+                DataKeyNames="CITIZEN_ID"
+                OnRowEditing="modEditCommand"
+                OnRowCancelingEdit="modCancelCommand"
+                OnRowUpdating="modUpdateCommand"
+                OnRowDeleting="modDeleteCommand"
+                OnRowDataBound="GridView1_RowDataBound"
+                OnPageIndexChanging="myGridViewPersonStudyHistory_PageIndexChanging" PageSize="5" BackColor="White" BorderColor="#999999">
+                <Columns>
+                    <asp:TemplateField HeaderText="ID" Visible="false">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonStudyHistoryID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ID") %>'></asp:Label>
+                            </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="CITIZEN_ID" Visible="false">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonStudyHistoryCitizenID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
+                            </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="สถานศึกษา" ControlStyle-Width="340" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonStudyHistoryGradUNIVEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_UNIV") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonStudyHistoryGradUNIVEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_UNIV") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                     <asp:TemplateField HeaderText="ตั้งแต่(เดือน ปี)" ControlStyle-Width="120" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonStudyHistoryDateFromEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM","{0:MM-dd-yyyy}") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonStudyHistoryDateFromEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                     <asp:TemplateField HeaderText="ถึง(เดือน ปี)" ControlStyle-Width="120" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonStudyHistoryDateTOEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_TO","{0:MM-dd-yyyy}") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonStudyHistoryDateTOEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_TO") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                     <asp:TemplateField HeaderText="วุฒิ(สาขาวิชาเอก)" ControlStyle-Width="340" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonStudyHistoryMajorEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MAJOR") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonStudyHistoryMajorEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MAJOR") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
+                    <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                         <ItemTemplate>
+                         <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/Image/x.png" CommandName="Delete" OnClientClick="return confirm('คุณต้องการที่จะลบจริงๆใช่ไหม ?');" AlternateText="Delete" />               
+                    </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+                                  </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="GridView1" />
                                   </Triggers>
