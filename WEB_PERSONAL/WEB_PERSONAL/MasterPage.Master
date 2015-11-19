@@ -310,13 +310,30 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                    <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span></td>
+                                    <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
+                                </td>
                             </tr>
                             <tr>
-                                <td class="master_header_under_left">&nbsp;</td>
-                                <td></td>
+                                <td class="master_header_under_left">
+                                    <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
+                                </td>
                                 <td>
-                                    <a href="insignia_citizen.aspx" onmouseover="mover('image/anime_p2.png')">เครื่องราชอิสริยาภรณ์</a></td>
+
+                                </td>
+                                <td>
+                                    <a href="insignia_citizen.aspx">เครื่องราชอิสริยาภรณ์</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="Admin.aspx">ระบบ</a>
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    
+                                </td>
                             </tr>
                         </table>
                     </div>

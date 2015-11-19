@@ -91,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.aspx" />
+    <Content Include="Access.aspx" />
+    <Content Include="Admin.aspx" />
     <Content Include="AdminPosition-ADMIN.aspx" />
     <Content Include="Budget-ADMIN.aspx" />
     <Content Include="Content\Site.css" />
@@ -135,6 +137,7 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="CSS\Access.css" />
     <Content Include="Image\anime_p1.png" />
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\blurred-blue-background.jpg" />
@@ -321,6 +324,20 @@
     </Compile>
     <Compile Include="404.aspx.designer.cs">
       <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Access.aspx.cs">
+      <DependentUpon>Access.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Access.aspx.designer.cs">
+      <DependentUpon>Access.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPosition-ADMIN.aspx.cs">
       <DependentUpon>AdminPosition-ADMIN.aspx</DependentUpon>

@@ -211,9 +211,9 @@ namespace WEB_PERSONAL {
         public static string CS() {
             return "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;";
         }
-        public static void Alert(Page page, string message) {
+        public static void Alert(Control control, string message) {
             string script2 = "alert('" + message + "');";
-            ScriptManager.RegisterStartupScript(page, page.GetType(), "ServerControlScript", script2, true);
+            ScriptManager.RegisterStartupScript(control, control.GetType(), "ServerControlScript", script2, true);
         }
     }
 

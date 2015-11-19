@@ -1,0 +1,73 @@
+﻿body {
+    background-image: url(../Image/blurred-blue-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.login_popup {
+
+}
+.login_popup_in {
+
+    background-color: rgba(0,0,0,0.25);
+    width: 640px;
+    height: 360px;
+    margin: auto;
+    margin-top: 100px;
+    background-image: url(../Image/anime_p1.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: contain;
+    border-radius: 32px;
+
+}
+.login_popup_div_sec {
+    margin: 0px auto;
+    /*box-shadow: #808080 0px 5px 5px;*/
+}
+.login_popup_div_sec_header {
+    background-color: rgba(0,0,0,0.25);
+    
+    padding: 10px 25px;
+    
+    font-weight: bold;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+}
+.login_popup_div_sec_header span {
+    margin-left: 20px;
+    color: #FFFFFF;
+ font-size: 24px;
+    /*text-shadow: 1px 1px 1px #000000;*/
+}
+.login_popup_div_sec_in {
+    /*background-color: rgba(128,128,128,0.6);*/
+    padding: 20px 20px;
+}
+.login_popup_div_sec_in span {
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px #808080;
+}
+.login_popup_div_sec_in a {
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #00b3ff;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 32px;
+    padding: 2px 20px;
+    transition: background-color ease 0.25s;
+    /*text-shadow: 1px 1px 1px #000000;*/
+}
+.login_popup_div_sec_in a:hover {
+    background-color: #0083bb;
+    background-color: rgba(255,255,255,0.2);
+    /*text-shadow: 1px 1px 1px #000000;*/
+}
+.login_popup_div_sec_in a:active {
+    background-color: rgba(255,255,255,0.05);
+}
+#Label1 {
+    font-size: 16px;
+    color: #e0e0e0;
+}
