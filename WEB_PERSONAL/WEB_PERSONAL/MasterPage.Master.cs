@@ -203,6 +203,7 @@ namespace WEB_PERSONAL
                                         Session["login_date_time"] = DateTime.Now;
                                         Session["login_total_second"] = DropDownList1X.SelectedValue;
                                         //Response.Redirect("Default.aspx");
+                                        Response.Redirect(Request.Url.ToString(), true);
                                     } else {
                                         Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "toggleLoginPopup();", true);
                                         Label12X.Text = "รหัสผ่านไม่ถูกต้อง!";
@@ -254,7 +255,8 @@ namespace WEB_PERSONAL
                                         Session["login_lastname"] = reader.GetString(3);
                                         Session["login_date_time"] = DateTime.Now;
                                         Session["login_total_second"] = DropDownList1X.SelectedValue;
-                                        Response.Redirect("Default.aspx");
+                                        //Response.Redirect("Default.aspx");
+                                        //Response.Redirect(Request.Url.ToString(), true);
                                     } else {
                                         Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "toggleLoginPopup();", true);
                                         Label12X.Text = "รหัสผ่านไม่ถูกต้อง!";
