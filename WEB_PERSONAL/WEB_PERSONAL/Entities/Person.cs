@@ -32,6 +32,8 @@ namespace WEB_PERSONAL.Entities
         public string PERSON_NAME { get; set; }
         public string PERSON_LASTNAME { get; set; }
 
+
+
         public ClassPerson() { }
         public ClassPerson(int ID, int MINISTRY_ID, string DEPARTMENT_NAME, string TITLE_ID, string CITIZEN_ID, string FATHER_NAME, string FATHER_LASTNAME, string MOTHER_NAME, string MOTHER_LASTNAME, string MOTHER_OLD_LASTNAME, string COUPLE_NAME, string COUPLE_LASTNAME, string COUPLE_OLD_LASTNAME, DateTime BIRTHDATE, string BIRTHDATE_LONG, DateTime INWORK_DATE, int STAFFTYPE_ID, DateTime RETIRE_DATE, string RETIRE_DATE_LONG, string PERSON_NAME, string PERSON_LASTNAME)
         {
@@ -55,7 +57,6 @@ namespace WEB_PERSONAL.Entities
             this.RETIRE_DATE_LONG = RETIRE_DATE_LONG;
             this.PERSON_NAME = PERSON_NAME;
             this.PERSON_LASTNAME = PERSON_LASTNAME;
-
         }
 
         public int InsertPerson()
@@ -175,12 +176,104 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+    }
+    public class ClassPersonStudyHistory
+    {
+        public int ID { get; set; }
+        public string CITIZEN_ID { get; set; }
+        public string GRAD_UNIV { get; set; }
+        public DateTime DATE_FROM { get; set; }
+        public DateTime DATE_TO { get; set; }
+        public string MAJOR { get; set; }
 
-        public bool DeletePerson()
+
+
+        public ClassPersonStudyHistory() { }
+        public ClassPersonStudyHistory(int ID, string CITIZEN_ID, string GRAD_UNIV, DateTime DATE_FROM, DateTime DATE_TO, string MAJOR)
         {
-            bool result = false;
+            this.ID = ID;
+            this.CITIZEN_ID = CITIZEN_ID;
+            this.GRAD_UNIV = GRAD_UNIV;
+            this.DATE_FROM = DATE_FROM;
+            this.DATE_TO = DATE_TO;
+            this.MAJOR = MAJOR;
+
+        }
+
+        public DataTable GetPersonStudyHistory(string GRAD_UNIV, string DATE_FROM, string DATE_TO, string MAJOR)
+        {
+            DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_PERSON where CITIZEN_ID = :CITIZEN_ID", conn);
+            string query = "SELECT * FROM TB_STUDY_HISTORY where CITIZEN_ID = 0255304610157";
+            if (!string.IsNullOrEmpty(GRAD_UNIV) || !string.IsNullOrEmpty(DATE_FROM) || !string.IsNullOrEmpty(DATE_TO) || !string.IsNullOrEmpty(MAJOR))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(GRAD_UNIV))
+                {
+                    query += " and SEMINAR_NAME like :SEMINAR_NAME ";
+                }
+                if (!string.IsNullOrEmpty(DATE_FROM))
+                {
+                    query += " and CONVERT(varchar(10),DATE_FROM,103) = @DATE_FROM ";
+                }
+                if (!string.IsNullOrEmpty(DATE_TO))
+                {
+                    query += " and CONVERT(varchar(10),DATE_TO,103) = @DATE_TO ";
+                }
+                if (!string.IsNullOrEmpty(MAJOR))
+                {
+                    query += " and MAJOR like :MAJOR ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(GRAD_UNIV))
+                {
+                    command.Parameters.Add(new OracleParameter("GRAD_UNIV", "%" + GRAD_UNIV + "%"));
+                }
+                if (!string.IsNullOrEmpty(DATE_FROM))
+                {
+                    command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
+                }
+                if (!string.IsNullOrEmpty(DATE_TO))
+                {
+                    command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
+                }
+                if (!string.IsNullOrEmpty(MAJOR))
+                {
+                    command.Parameters.Add(new OracleParameter("MAJOR", "%" + MAJOR + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertPersonStudyHistory()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY (CITIZEN_ID,GRAD_UNIV,DATE_FROM,DATE_TO,MAJOR) VALUES (:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn);
+
             try
             {
                 if (conn.State != ConnectionState.Open)
@@ -188,7 +281,49 @@ namespace WEB_PERSONAL.Entities
                     conn.Open();
                 }
                 command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
-                if (command.ExecuteNonQuery() >= 0)
+                command.Parameters.Add(new OracleParameter("GRAD_UNIV", GRAD_UNIV));
+                command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
+                command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
+                command.Parameters.Add(new OracleParameter("MAJOR", MAJOR));
+
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdatePersonStudyHistory()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_STUDY_HISTORY Set ";
+            query += " GRAD_UNIV = :GRAD_UNIV ,";
+            query += " DATE_FROM = :DATE_FROM ,";
+            query += " DATE_TO = :DATE_TO ,";
+            query += " MAJOR = :MAJOR ";
+            query += " where CITIZEN_ID  = :CITIZEN_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("GRAD_UNIV", GRAD_UNIV));
+                command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
+                command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
+                command.Parameters.Add(new OracleParameter("MAJOR", MAJOR));
+                command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
+                if (command.ExecuteNonQuery() > 0)
                 {
                     result = true;
                 }
@@ -205,5 +340,33 @@ namespace WEB_PERSONAL.Entities
             return result;
         }
 
+        public bool DeletePersonStudyHistory()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_STUDY_HISTORY where ID = :ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("ID", ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
 }

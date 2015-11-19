@@ -56,7 +56,7 @@ namespace WEB_PERSONAL
                                 txtDepart.Text = reader.IsDBNull(19) ? "" : reader.GetString(19);
                             }
                         }
-                    } 
+                    }
                     using (OracleCommand cmd = new OracleCommand("select GRAD_UNIV,to_char(DATE_FROM, 'Mon', 'NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_FROM),to_char(DATE_TO, 'Mon','NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_TO),MAJOR from TB_STUDY_HISTORY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
                     {
                         using (OracleDataReader reader = cmd.ExecuteReader())
@@ -66,7 +66,7 @@ namespace WEB_PERSONAL
                             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
                             ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
                             ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
-                            
+
                             while (reader.Read())
                             {
                                 DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
@@ -75,12 +75,12 @@ namespace WEB_PERSONAL
                                 dr[2] = reader.GetString(5);
 
                                 ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
-                                
+
                             }
                             GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
                             GridView1.DataBind();
                             ClearDataGridViewNumber10();
-                        }  
+                        }
                     }
                     using (OracleCommand cmd = new OracleCommand("select LICENCE_NAME,BRANCH,LICENCE_NO,to_char(DDATE, 'dd MON yyyy','NLS_DATE_LANGUAGE = THAI') from TB_JOB_LICENSE where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
                     {
@@ -215,6 +215,22 @@ namespace WEB_PERSONAL
 
             }
         }
+
+        #region ViewState DataTable
+
+        private DataTable GetViewState()
+        {
+            //Gets the ViewState
+            return (DataTable)ViewState["PERSON"];
+        }
+
+        private void SetViewState(DataTable data)
+        {
+            //Sets the ViewState
+            ViewState["PERSON"] = data;
+        }
+
+        #endregion
 
         private void DDLMisnistry()
         {
@@ -1030,7 +1046,7 @@ namespace WEB_PERSONAL
             string[] splitDate1 = txtBirthDayNumber.Text.Split(' ');
             string[] splitDate2 = txtDateInWork.Text.Split(' ');
             string[] splitDate3 = txtAge60Number.Text.Split(' ');
-            if(splitDate1.Length == 4)
+            if (splitDate1.Length == 4)
             {
                 splitDate1[2] = splitDate1[3];
             }
