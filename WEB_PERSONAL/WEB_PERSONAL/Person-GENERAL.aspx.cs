@@ -898,6 +898,7 @@ namespace WEB_PERSONAL
             P.RETIRE_DATE = new DateTime(Convert.ToInt32(splitDate3[2]), Util.MonthToNumber(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
 
             P.InsertPerson();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
 
             for (int i = 0; i < GridView1.Rows.Count; ++i)
             {
