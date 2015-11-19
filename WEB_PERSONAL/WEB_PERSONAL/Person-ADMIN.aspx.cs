@@ -35,7 +35,7 @@ namespace WEB_PERSONAL
                             while (reader.Read())
                             {
                                 txtCitizen.Text = reader.GetString(0);
-                                DropDownTitle.SelectedValue = reader.IsDBNull(1) ? "-1" : reader.GetInt32(1).ToString();
+                                DropDownTitle.SelectedValue = reader.IsDBNull(1) ? "0" : reader.GetInt32(1).ToString();
                                 txtName.Text = reader.IsDBNull(2) ? "" : reader.GetString(2);
                                 txtLastName.Text = reader.IsDBNull(3) ? "" : reader.GetString(3);
                                 txtBirthDayNumber.Text = reader.IsDBNull(4) ? "" : reader.GetString(4);
@@ -43,7 +43,7 @@ namespace WEB_PERSONAL
                                 txtAge60Number.Text = reader.IsDBNull(6) ? "" : reader.GetString(6);
                                 txtAge60Char.Text = reader.IsDBNull(7) ? "" : reader.GetString(7);
                                 txtDateInWork.Text = reader.IsDBNull(8) ? "" : reader.GetString(8);
-                                DropDownStaffType.SelectedValue = reader.IsDBNull(9) ? "-1" : reader.GetInt32(9).ToString();
+                                DropDownStaffType.SelectedValue = reader.IsDBNull(9) ? "0" : reader.GetInt32(9).ToString();
                                 txtFatherName.Text = reader.IsDBNull(10) ? "" : reader.GetString(10);
                                 txtFatherLastName.Text = reader.IsDBNull(11) ? "" : reader.GetString(11);
                                 txtMotherName.Text = reader.IsDBNull(12) ? "" : reader.GetString(12);
@@ -52,7 +52,7 @@ namespace WEB_PERSONAL
                                 txtMarriedName.Text = reader.IsDBNull(15) ? "" : reader.GetString(15);
                                 txtMarriedLastName.Text = reader.IsDBNull(16) ? "" : reader.GetString(16);
                                 txtMarriedLastNameOld.Text = reader.IsDBNull(17) ? "" : reader.GetString(17);
-                                DropDownMinistry.SelectedValue = reader.IsDBNull(18) ? "-1" : reader.GetInt32(18).ToString(); ;
+                                DropDownMinistry.SelectedValue = reader.IsDBNull(18) ? "0" : reader.GetInt32(18).ToString(); ;
                                 txtDepart.Text = reader.IsDBNull(19) ? "" : reader.GetString(19);
                             }
                         }
@@ -236,7 +236,7 @@ namespace WEB_PERSONAL
                         DropDownMinistry.DataBind();
                         sqlConn.Close();
 
-                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "-1"));
+                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "0"));
 
                     }
                 }
@@ -264,7 +264,7 @@ namespace WEB_PERSONAL
                         DropDownTitle.DataBind();
                         sqlConn.Close();
 
-                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือกคำนำหน้านาม--", "-1"));
+                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือกคำนำหน้านาม--", "0"));
 
                     }
                 }
@@ -292,7 +292,7 @@ namespace WEB_PERSONAL
                         DropDownStaffType.DataBind();
                         sqlConn.Close();
 
-                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทข้าราชการ--", "-1"));
+                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทข้าราชการ--", "0"));
 
                     }
                 }
@@ -320,7 +320,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -348,7 +348,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -376,7 +376,7 @@ namespace WEB_PERSONAL
                         DropDownYear10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -404,7 +404,7 @@ namespace WEB_PERSONAL
                         DropDownYear10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -432,7 +432,7 @@ namespace WEB_PERSONAL
                         DropDownMonth12From.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -460,7 +460,7 @@ namespace WEB_PERSONAL
                         DropDownMonth12To.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -488,7 +488,7 @@ namespace WEB_PERSONAL
                         DropDownYear12From.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -516,7 +516,7 @@ namespace WEB_PERSONAL
                         DropDownYear12To.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -544,7 +544,7 @@ namespace WEB_PERSONAL
                         DropDownYear13.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -572,8 +572,8 @@ namespace WEB_PERSONAL
                         DropDownType_Position14.DataBind();
                         sqlConn.Close();
 
-                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "-1"));
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "-1"));
+                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
+                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
                     }
                 }
             }
@@ -600,7 +600,7 @@ namespace WEB_PERSONAL
                         DropDownDegree14.DataBind();
                         sqlConn.Close();
 
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "-1"));
+                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
 
                     }
                 }
@@ -1321,7 +1321,7 @@ namespace WEB_PERSONAL
             dr[0] = txtGrad_Univ.Text;
             dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
             dr[2] = txtMajor.Text;
-            if (DropDownMonth10From.SelectedValue == "-1" || DropDownYear10From.SelectedValue == "-1" || DropDownMonth10To.SelectedValue == "-1" || DropDownYear10To.SelectedValue == "-1")
+            if (DropDownMonth10From.SelectedValue == "0" || DropDownYear10From.SelectedValue == "0" || DropDownMonth10To.SelectedValue == "0" || DropDownYear10To.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการศึกษา>");
                 return;
@@ -1370,7 +1370,7 @@ namespace WEB_PERSONAL
             dr[0] = txtCourse.Text;
             dr[1] = DropDownMonth12From.SelectedValue + "-" + DropDownYear12From.SelectedValue + " - " + DropDownMonth12To.SelectedValue + "-" + DropDownYear12To.SelectedValue;
             dr[2] = txtBranchTrainning.Text;
-            if (DropDownMonth12From.SelectedValue == "-1" || DropDownYear12From.SelectedValue == "-1" || DropDownMonth12To.SelectedValue == "-1" || DropDownYear12To.SelectedValue == "-1")
+            if (DropDownMonth12From.SelectedValue == "0" || DropDownYear12From.SelectedValue == "0" || DropDownMonth12To.SelectedValue == "0" || DropDownYear12To.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการฝึกอบรม>");
                 return;
@@ -1396,7 +1396,7 @@ namespace WEB_PERSONAL
             dr[0] = DropDownYear13.SelectedValue;
             dr[1] = txtList13.Text;
             dr[2] = txtRefDoc13.Text;
-            if (DropDownYear13.SelectedValue == "-1")
+            if (DropDownYear13.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือก พ.ศ. ให้ถูกต้อง<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>");
                 return;
@@ -1427,7 +1427,7 @@ namespace WEB_PERSONAL
             dr[5] = txtSalary14.Text;
             dr[6] = txtSalaryForPosition14.Text;
             dr[7] = txtRefDoc14.Text;
-            if (DropDownType_Position14.SelectedValue == "-1" || DropDownDegree14.SelectedValue == "-1")
+            if (DropDownType_Position14.SelectedValue == "0" || DropDownDegree14.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือก ตำแหน่งประเภทและระดับ ให้ถูกต้อง<ในส่วนตำแหน่งและเงินเดือน>");
                 return;
