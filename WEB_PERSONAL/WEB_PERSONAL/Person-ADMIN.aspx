@@ -331,7 +331,8 @@
 
                 <asp:UpdatePanel ID="UpdateGridView1" runat="server">
                                    <ContentTemplate>
-                <asp:GridView ID="GridView1" runat="server" Width="998px"></asp:GridView>
+                <asp:GridView ID="GridView1" runat="server" Width="998px">
+                </asp:GridView>
                                         </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="GridView1" />
