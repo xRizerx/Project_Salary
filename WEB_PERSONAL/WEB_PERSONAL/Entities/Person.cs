@@ -111,7 +111,6 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_PERSON Set ";
-            query += " CITIZEN_ID = :CITIZEN_ID ,";
             query += " BIRTHDATE = :BIRTHDATE ,";
             query += " INWORK_DATE = :INWORK_DATE ,";
             query += " RETIRE_DATE = :RETIRE_DATE ,";
@@ -131,7 +130,7 @@ namespace WEB_PERSONAL.Entities
             query += " COUPLE_OLD_LASTNAME = :COUPLE_OLD_LASTNAME ,";
             query += " PERSON_LASTNAME = :PERSON_LASTNAME ,";
             query += " PERSON_NAME = :PERSON_NAME ";
-            query += " where ID  = :ID";
+            query += " where CITIZEN_ID  = :CITIZEN_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -140,7 +139,6 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
                 command.Parameters.Add(new OracleParameter("BIRTHDATE", BIRTHDATE));
                 command.Parameters.Add(new OracleParameter("INWORK_DATE", INWORK_DATE));
                 command.Parameters.Add(new OracleParameter("RETIRE_DATE", RETIRE_DATE));
@@ -160,7 +158,7 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new OracleParameter("COUPLE_OLD_LASTNAME", COUPLE_OLD_LASTNAME));
                 command.Parameters.Add(new OracleParameter("PERSON_LASTNAME", PERSON_LASTNAME));
                 command.Parameters.Add(new OracleParameter("PERSON_NAME", PERSON_NAME));
-                command.Parameters.Add(new OracleParameter("ID", ID));
+                command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
                 if (command.ExecuteNonQuery() > 0)
                 {
                     result = true;

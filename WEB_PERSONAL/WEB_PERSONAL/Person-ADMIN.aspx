@@ -89,7 +89,7 @@
                             <asp:DropDownList ID="DropDownTitle" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
                         <td style="text-align: left; width: 10px;"> </td> 
                        <td style="text-align: left; width: 170px;">
-                            <asp:TextBox ID="txtCitizen" runat="server" MaxLength="13" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                            <asp:TextBox ID="txtCitizen" runat="server" MaxLength="13" Width="425px" CssClass="tb5" Enabled="False"></asp:TextBox></td>
                      </tr>
                </table>
 
