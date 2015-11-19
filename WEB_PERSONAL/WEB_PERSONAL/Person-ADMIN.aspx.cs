@@ -1050,7 +1050,6 @@ namespace WEB_PERSONAL
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
 
 
-
             /*for (int i = 0; i < GridView1.Rows.Count; ++i)
             {
                 int id = 0;
