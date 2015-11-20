@@ -905,7 +905,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY VALUES (SEQ_STUDY_HISTORY_ID.NEXTVAL,:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY (CITIZEN_ID,GRAD_UNIV,DATE_FROM,DATE_TO,MAJOR) VALUES (:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn))
                     {
 
                         try
