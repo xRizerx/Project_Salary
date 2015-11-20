@@ -208,6 +208,10 @@ namespace WEB_PERSONAL.Entities
             if (!string.IsNullOrEmpty(GRAD_UNIV) || !string.IsNullOrEmpty(DATE_FROM) || !string.IsNullOrEmpty(DATE_TO) || !string.IsNullOrEmpty(MAJOR))
             {
                 query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(CITIZEN_ID))
+                {
+                    query += " and CITIZEN_ID like :CITIZEN_ID ";
+                }
                 if (!string.IsNullOrEmpty(GRAD_UNIV))
                 {
                     query += " and SEMINAR_NAME like :SEMINAR_NAME ";
@@ -218,7 +222,7 @@ namespace WEB_PERSONAL.Entities
                 }
                 if (!string.IsNullOrEmpty(DATE_TO))
                 {
-                    query += " and DATE_FROM = @DATE_TO ";
+                    query += " and CONVERT(varchar(10),DATE_TO,110) = @DATE_TO ";
                 }
                 if (!string.IsNullOrEmpty(MAJOR))
                 {
@@ -233,7 +237,10 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-
+                if (!string.IsNullOrEmpty(CITIZEN_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID + "%"));
+                }
                 if (!string.IsNullOrEmpty(GRAD_UNIV))
                 {
                     command.Parameters.Add(new OracleParameter("GRAD_UNIV", "%" + GRAD_UNIV + "%"));

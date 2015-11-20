@@ -362,7 +362,7 @@
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="ตั้งแต่(เดือน ปี)" ControlStyle-Width="120" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryDateFromEdit" runat="server" Text='<%# Convert.ToDateTime(Eval("DATE_FROM")).ToString() %>'></asp:Label>
+                            <asp:Label ID="lblPersonStudyHistoryDateFromEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM","{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
                             		<asp:TextBox ID="txtPersonStudyHistoryDateFromEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM","{0:dd/MM/yyyy}") %>'></asp:TextBox>
