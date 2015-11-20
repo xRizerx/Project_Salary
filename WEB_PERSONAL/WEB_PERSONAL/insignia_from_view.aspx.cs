@@ -48,10 +48,10 @@ namespace WEB_PERSONAL
                     {
                         //select 1
                         {
-                            string Oracle = "select TB_TITLENAME.TITLE_NAME_TH, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TO_CHAR(TB_PERSON.BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_PERSON.CITIZEN_ID,"
-                                + " TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_POSITION_AND_SALARY.POSITION_NAME"
-                                + " from TB_PERSON, TB_TITLENAME, TB_POSITION_AND_SALARY"
-                                + " where tb_person.citizen_id = '" + citizen_id + "' AND TB_PERSON.TITLE_ID = TB_TITLENAME.TITLE_ID order by TB_POSITION_AND_SALARY.DDATE desc";
+                            string Oracle = " Select AA_COMMAND.NAME_COMM, AA_REQUEST_INSIGNIA.YEAR, TB_GRADEINSIGNIA.NAME_GRADEINSIGNIA_THA, TB_RANK.RANK_NAME_TH, TB_TITLENAME.TITLE_NAME_TH,"
+                                + " TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TO_CHAR(TB_PERSON.BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_PERSON.CITIZEN_ID, TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')"
+                                + " from TB_PERSON, AA_REQUEST_INSIGNIA, AA_COMMAND, TB_GRADEINSIGNIA, TB_RANK, TB_TITLENAME"
+                                + " where tb_person.citizen_id = '" + citizen_id + "' AND AA_REQUEST_INSIGNIA.ID_COMM = AA_COMMAND.ID_COMM AND TB_GRADEINSIGNIA.ID_GRADEINSIGNIA = AA_REQUEST_INSIGNIA.ID_GRADEINSIGNIA AND TB_RANK.SEQ = AA_REQUEST_INSIGNIA.RANK_SEQ AND TB_PERSON.TITLE_ID = TB_PERSON.TITLE_ID";
 
                             using (OracleCommand command = new OracleCommand(Oracle, con))
                             {
@@ -59,12 +59,13 @@ namespace WEB_PERSONAL
                                 {
                                     while (reader.Read())
                                     {
-                                        TextBox3.Text = reader.GetString(0); /*TB_TITLENAME.TITLE_NAME_TH*/
-                                        TextBox4.Text = reader.GetString(1); /*TB_PERSON.PERSON_NAME*/
-                                        TextBox5.Text = reader.GetString(2); /*TB_PERSON.PERSON_LASTNAME*/
-                                        TextBox7.Text = reader.GetString(3); /*TB_PERSON.BIRTHDATE*/
-                                        TextBox8.Text = reader.GetString(4); /*TB_PERSON.CITIZEN_ID*/
-                                        TextBox9.Text = reader.GetString(5); /*TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')*/
+                                       /* สร้างใหม่ 
+                                        TextBox3.Text = reader.GetString(0); /*TB_TITLENAME.TITLE_NAME_TH
+                                        TextBox4.Text = reader.GetString(1); /*TB_PERSON.PERSON_NAME
+                                        TextBox5.Text = reader.GetString(2); /*TB_PERSON.PERSON_LASTNAME
+                                        TextBox7.Text = reader.GetString(3); /*TB_PERSON.BIRTHDATE
+                                        TextBox8.Text = reader.GetString(4); /*TB_PERSON.CITIZEN_ID
+                                        TextBox9.Text = reader.GetString(5); /*TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')
                                         TextBox10.Text = reader.GetString(6); /*TB_POSITION_AND_SALARY.POSITION_NAME*/
 
                                     }
@@ -168,7 +169,11 @@ namespace WEB_PERSONAL
             //S }
 
         }
-        
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("insignia_from_edit.aspx");
+        }
     }
 }
 

@@ -476,7 +476,7 @@
                                 <asp:Label ID="Label46" runat="server" Text="1. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style38">
-                                <asp:TextBox ID="TextBox38" runat="server" CssClass="master_default_textbox" Width="269px"></asp:TextBox>
+                                <asp:TextBox ID="TextBox38" runat="server" CssClass="master_default_textbox" Width="269px" Enabled="False"></asp:TextBox>
                             </td>
                             <td class="auto-style40">
                                 <asp:Label ID="Label50" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
@@ -491,7 +491,7 @@
                                 <asp:Label ID="Label49" runat="server" Text="2. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style39">
-                                <asp:TextBox ID="TextBox39" runat="server" CssClass="master_default_textbox" Width="269px"></asp:TextBox>
+                                <asp:TextBox ID="TextBox39" runat="server" CssClass="master_default_textbox" Width="269px" Enabled="False"></asp:TextBox>
                             </td>
                             <td class="auto-style41">
                                 <asp:Label ID="Label55" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
@@ -520,7 +520,7 @@
                     <asp:Label ID="Label52" runat="server" Text="1. ชื่อตำแหน่งเดิม"></asp:Label>
                 </td>
                 <td class="auto-style38">
-                    <asp:TextBox ID="TextBox40" runat="server" CssClass="master_default_textbox" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox40" runat="server" CssClass="master_default_textbox" Width="269px" Enabled="False"></asp:TextBox>
                 </td>
                 <td class="auto-style40">&nbsp;</td>
                 <td class="auto-style33">&nbsp;</td>
@@ -531,7 +531,7 @@
                     <asp:Label ID="Label54" runat="server" Text="2. ชื่อตำแหน่งใหม่"></asp:Label>
                 </td>
                 <td class="auto-style39">
-                    <asp:TextBox ID="TextBox41" runat="server" CssClass="master_default_textbox" Width="269px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox41" runat="server" CssClass="master_default_textbox" Width="269px" Enabled="False"></asp:TextBox>
                 </td>
                 <td class="auto-style41">&nbsp;</td>
                 <td>&nbsp;</td>
@@ -541,14 +541,14 @@
             <tr>
                 <td class="auto-style44">&nbsp;</td>
                 <td>
-                    <asp:CheckBox ID="CheckBox1" runat="server" Text="กลุ่มงานสนับสนุน" />
+                    <asp:CheckBox ID="CheckBox1" runat="server" Text="กลุ่มงานสนับสนุน" Enabled="False" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style44">&nbsp;</td>
                 <td>
-                    <asp:CheckBox ID="CheckBox2" runat="server" Text="กลุ่มงานช่าง" ValidationGroup="rr" />
+                    <asp:CheckBox ID="CheckBox2" runat="server" Text="กลุ่มงานช่าง" ValidationGroup="rr" Enabled="False" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -564,14 +564,14 @@
             <tr>
                 <td class="auto-style44">&nbsp;</td>
                 <td>
-                    <asp:CheckBox ID="CheckBox3" runat="server" Text="กลุ่มงานบริการ" />
+                    <asp:CheckBox ID="CheckBox3" runat="server" Text="กลุ่มงานบริการ" Enabled="False" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style44">&nbsp;</td>
                 <td>
-                    <asp:CheckBox ID="CheckBox4" runat="server" Text="กลุ่มงานเทคนิค" />
+                    <asp:CheckBox ID="CheckBox4" runat="server" Text="กลุ่มงานเทคนิค" Enabled="False" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -580,7 +580,7 @@
             <tr>
                 <td class="auto-style44">&nbsp;</td>
                 <td>
-                    <asp:CheckBox ID="CheckBox5" runat="server" Text="กลุ่มงานบริหารทั่วไป" />
+                    <asp:CheckBox ID="CheckBox5" runat="server" Text="กลุ่มงานบริหารทั่วไป" Enabled="False" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -609,13 +609,13 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style55">
-                    <asp:Button ID="Button1" runat="server" Text="Button" Width="110px" />
+                    <asp:Button ID="Button1" runat="server" CssClass="master_default_textbox" Text="ยกเลิก" Width="110px" />
                 </td>
                 <td class="auto-style56">
-                    <asp:Button ID="Button2" runat="server" Text="Button" Width="110px" />
+                    <asp:Button ID="Button2" runat="server" CssClass="master_default_textbox" OnClick="Button2_Click" Text="แก้ไข" Width="110px" />
                 </td>
                 <td class="auto-style57">
-                    <asp:Button ID="Button3" runat="server" Text="Button" Width="110px" />
+                    <asp:Button ID="Button3" runat="server" CssClass="master_default_textbox" Text="พิมพ์" Width="110px" />
                 </td>
                 <td class="auto-style58">
                     <asp:Button ID="Button4" runat="server" Text="Button" Width="110px" />
