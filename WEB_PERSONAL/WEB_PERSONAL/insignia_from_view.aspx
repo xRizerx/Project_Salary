@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="insignia_from_edit.aspx.cs" Inherits="WEB_PERSONAL.insignia_from_edit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="insignia_from_view.aspx.cs" Inherits="WEB_PERSONAL.insignia_from_view" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -210,9 +210,7 @@
                     <asp:Label ID="Label11" runat="server" Text="ชื่อหน่วยงานที่ขอพระราชทาน"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList9" runat="server" Width="269px" CssClass="master_default_textbox">
-                    </asp:DropDownList>
-                    <asp:Label ID="Label60" runat="server" ForeColor="Red"></asp:Label>
+                    <asp:TextBox ID="TextBox32" runat="server" CssClass="master_default_textbox" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -221,9 +219,7 @@
                     <asp:Label ID="Label12" runat="server" Text="มาช่วยราชการจากที่ใด (ถ้ามี)"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList1" runat="server" Width="269px" CssClass="master_default_textbox">
-                    </asp:DropDownList>
-                    <asp:Label ID="Label59" runat="server" BorderColor="Red" Text="หมายเหตุ: ในกรณีที่มาช่วยราชการจากที่อื่น &quot;ถ้ามี&quot; กรุณาเลือก"></asp:Label>
+                    <asp:TextBox ID="TextBox33" runat="server" CssClass="master_default_textbox" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -232,9 +228,7 @@
                     <asp:Label ID="Label13" runat="server" Text="เครื่องราชฯ ที่ขอพระราชทาน ประจำปี"></asp:Label>
                 </td>
                 <td class="auto-style16">
-                    <asp:DropDownList ID="DropDownList2" runat="server" Width="269px" CssClass="master_default_textbox">
-                    </asp:DropDownList>
-                    <asp:Label ID="Label61" runat="server" ForeColor="Red"></asp:Label>
+                    <asp:TextBox ID="TextBox34" runat="server" CssClass="master_default_textbox" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td class="auto-style16"></td>
             </tr>
@@ -243,10 +237,7 @@
                     <asp:Label ID="Label14" runat="server" Text="คือชั้น"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="DropDownList3" runat="server" Width="269px" CssClass="master_default_textbox">
-                    </asp:DropDownList>
-                    
-                    <asp:Label ID="Label62" runat="server" ForeColor="Red"></asp:Label>
+                    <asp:TextBox ID="TextBox35" runat="server" CssClass="master_default_textbox" Enabled="False" EnableTheming="True" Width="269px"></asp:TextBox>
                     
                 </td>
                 <td>&nbsp;</td>
@@ -271,12 +262,10 @@
                     <asp:Label ID="Label17" runat="server" Text="ยศ"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="DropDownList10" runat="server" Width="269px" CssClass="master_default_textbox">
-                    </asp:DropDownList>
+                    <asp:TextBox ID="TextBox36" runat="server" CssClass="master_default_textbox" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Label ID="Label64" runat="server" BorderColor="Red" Text="หมายเหตุ: ในกรณีที่มีคำนำหน้าเป็น &quot;ยศ&quot; กรุณาเลือก"></asp:Label>
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style8">
@@ -426,7 +415,7 @@
                     <asp:Label ID="Label38" runat="server" Text="คำนำหน้าชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:DropDownList ID="DropDownList4" runat="server" Width="269px" CssClass="master_default_textbox"></asp:DropDownList>  
+                    <asp:TextBox ID="TextBox37" runat="server" CssClass="master_default_textbox" Enabled="False" Width="269px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -439,7 +428,7 @@
                     <asp:Label ID="Label39" runat="server" Text="ชื่อ"></asp:Label>
                 </td>
                 <td class="auto-style63">
-                    <asp:TextBox ID="TextBox19" runat="server" Width="269px" CssClass="master_default_textbox"></asp:TextBox>
+                    <asp:TextBox ID="TextBox19" runat="server" Width="269px" CssClass="master_default_textbox" Enabled="False"></asp:TextBox>
                 </td>
                 <td class="auto-style46"></td>
                 <td class="auto-style46"></td>
@@ -452,7 +441,7 @@
                     <asp:Label ID="Label40" runat="server" Text="นามสกุล"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="TextBox20" runat="server" Width="269px" CssClass="master_default_textbox"></asp:TextBox>
+                    <asp:TextBox ID="TextBox20" runat="server" Width="269px" CssClass="master_default_textbox" Enabled="False"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -470,7 +459,7 @@
                     <asp:Label ID="Label42" runat="server" BackColor="Red" ForeColor="White" Text="กรณีขอเป็นครั้งแรก บรรจุเมื่อ"></asp:Label>
                 </td>
                 <td class="auto-style27">
-                    <asp:TextBox ID="TextBox21" runat="server" Width="269px" CssClass="master_default_textbox"></asp:TextBox>
+                    <asp:TextBox ID="TextBox21" runat="server" Width="269px" CssClass="master_default_textbox" Enabled="False"></asp:TextBox>
                 </td>
                 <td class="auto-style27"></td>
             </tr>
@@ -487,13 +476,13 @@
                                 <asp:Label ID="Label46" runat="server" Text="1. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style38">
-                                <asp:DropDownList ID="DropDownList5" runat="server" Width="269px" CssClass="master_default_textbox"></asp:DropDownList>
+                                <asp:TextBox ID="TextBox38" runat="server" CssClass="master_default_textbox" Width="269px"></asp:TextBox>
                             </td>
                             <td class="auto-style40">
                                 <asp:Label ID="Label50" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
                             </td>
                             <td class="auto-style33">
-                                <asp:TextBox ID="TextBox25" runat="server" Width="269px" CssClass="master_default_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox25" runat="server" Width="269px" CssClass="master_default_textbox" Enabled="False"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -502,13 +491,13 @@
                                 <asp:Label ID="Label49" runat="server" Text="2. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style39">
-                                <asp:DropDownList ID="DropDownList6" runat="server" Width="269px" CssClass="master_default_textbox"></asp:DropDownList>
+                                <asp:TextBox ID="TextBox39" runat="server" CssClass="master_default_textbox" Width="269px"></asp:TextBox>
                             </td>
                             <td class="auto-style41">
                                 <asp:Label ID="Label55" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="TextBox26" runat="server" Width="269px" CssClass="master_default_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox26" runat="server" Width="269px" CssClass="master_default_textbox" Enabled="False"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
@@ -531,7 +520,7 @@
                     <asp:Label ID="Label52" runat="server" Text="1. ชื่อตำแหน่งเดิม"></asp:Label>
                 </td>
                 <td class="auto-style38">
-                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px" CssClass="master_default_textbox"></asp:DropDownList>
+                    <asp:TextBox ID="TextBox40" runat="server" CssClass="master_default_textbox" Width="269px"></asp:TextBox>
                 </td>
                 <td class="auto-style40">&nbsp;</td>
                 <td class="auto-style33">&nbsp;</td>
@@ -542,8 +531,7 @@
                     <asp:Label ID="Label54" runat="server" Text="2. ชื่อตำแหน่งใหม่"></asp:Label>
                 </td>
                 <td class="auto-style39">
-                    <asp:DropDownList ID="DropDownList8" runat="server" Width="269px" CssClass="master_default_textbox">
-                    </asp:DropDownList>
+                    <asp:TextBox ID="TextBox41" runat="server" CssClass="master_default_textbox" Width="269px"></asp:TextBox>
                 </td>
                 <td class="auto-style41">&nbsp;</td>
                 <td>&nbsp;</td>
@@ -621,14 +609,17 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td class="auto-style55">
-                    <asp:Button ID="Button1" runat="server" Text="บันทึก" Width="109px" OnClick="Button1_Click" />
+                    <asp:Button ID="Button1" runat="server" Text="Button" Width="110px" />
                 </td>
                 <td class="auto-style56">
-                    &nbsp;</td>
+                    <asp:Button ID="Button2" runat="server" Text="Button" Width="110px" />
+                </td>
                 <td class="auto-style57">
-                    &nbsp;</td>
+                    <asp:Button ID="Button3" runat="server" Text="Button" Width="110px" />
+                </td>
                 <td class="auto-style58">
-                    &nbsp;</td>
+                    <asp:Button ID="Button4" runat="server" Text="Button" Width="110px" />
+                </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

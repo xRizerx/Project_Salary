@@ -10,7 +10,7 @@
 namespace WEB_PERSONAL {
     
     
-    public partial class insignia_from_edit {
+    public partial class insignia_from_view {
         
         /// <summary>
         /// Panel1 control.
@@ -112,22 +112,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
-        /// DropDownList9 control.
+        /// TextBox32 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList9;
-        
-        /// <summary>
-        /// Label60 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label60;
+        protected global::System.Web.UI.WebControls.TextBox TextBox32;
         
         /// <summary>
         /// Label12 control.
@@ -139,22 +130,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// TextBox33 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
-        /// <summary>
-        /// Label59 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label59;
+        protected global::System.Web.UI.WebControls.TextBox TextBox33;
         
         /// <summary>
         /// Label13 control.
@@ -166,22 +148,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label13;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// TextBox34 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
-        
-        /// <summary>
-        /// Label61 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label61;
+        protected global::System.Web.UI.WebControls.TextBox TextBox34;
         
         /// <summary>
         /// Label14 control.
@@ -193,22 +166,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label14;
         
         /// <summary>
-        /// DropDownList3 control.
+        /// TextBox35 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
-        
-        /// <summary>
-        /// Label62 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label62;
+        protected global::System.Web.UI.WebControls.TextBox TextBox35;
         
         /// <summary>
         /// Label15 control.
@@ -256,22 +220,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label17;
         
         /// <summary>
-        /// DropDownList10 control.
+        /// TextBox36 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList10;
-        
-        /// <summary>
-        /// Label64 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label64;
+        protected global::System.Web.UI.WebControls.TextBox TextBox36;
         
         /// <summary>
         /// Label18 control.
@@ -589,13 +544,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label38;
         
         /// <summary>
-        /// DropDownList4 control.
+        /// TextBox37 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.TextBox TextBox37;
         
         /// <summary>
         /// Label39 control.
@@ -697,13 +652,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label46;
         
         /// <summary>
-        /// DropDownList5 control.
+        /// TextBox38 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::System.Web.UI.WebControls.TextBox TextBox38;
         
         /// <summary>
         /// Label50 control.
@@ -733,13 +688,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label49;
         
         /// <summary>
-        /// DropDownList6 control.
+        /// TextBox39 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
+        protected global::System.Web.UI.WebControls.TextBox TextBox39;
         
         /// <summary>
         /// Label55 control.
@@ -778,13 +733,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label52;
         
         /// <summary>
-        /// DropDownList7 control.
+        /// TextBox40 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList7;
+        protected global::System.Web.UI.WebControls.TextBox TextBox40;
         
         /// <summary>
         /// Label54 control.
@@ -796,13 +751,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label54;
         
         /// <summary>
-        /// DropDownList8 control.
+        /// TextBox41 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList8;
+        protected global::System.Web.UI.WebControls.TextBox TextBox41;
         
         /// <summary>
         /// CheckBox1 control.
@@ -902,5 +857,32 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
+        /// Button3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button3;
+        
+        /// <summary>
+        /// Button4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
     }
 }

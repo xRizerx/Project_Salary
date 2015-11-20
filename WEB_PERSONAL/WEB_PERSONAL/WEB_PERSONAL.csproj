@@ -142,6 +142,7 @@
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\blurred-blue-background.jpg" />
     <Content Include="Image\stickman.png" />
+    <Content Include="insignia_from_view.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.css" />
     <Content Include="Default.aspx" />
     <Content Include="Department-ADMIN.aspx" />
@@ -385,6 +386,13 @@
     </Compile>
     <Compile Include="Gender-ADMIN.aspx.designer.cs">
       <DependentUpon>Gender-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_from_view.aspx.cs">
+      <DependentUpon>insignia_from_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_from_view.aspx.designer.cs">
+      <DependentUpon>insignia_from_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_recordnote2.aspx.cs">
       <DependentUpon>insignia_recordnote2.aspx</DependentUpon>
