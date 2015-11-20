@@ -179,7 +179,7 @@ namespace WEB_PERSONAL.Entities
     }
     public class ClassPersonStudyHistory
     {
-        public int ID { get; set; }
+        public int IDSEQ { get; set; }
         public string CITIZEN_ID { get; set; }
         public string GRAD_UNIV { get; set; }
         public DateTime DATE_FROM { get; set; }
@@ -189,9 +189,9 @@ namespace WEB_PERSONAL.Entities
 
 
         public ClassPersonStudyHistory() { }
-        public ClassPersonStudyHistory(int ID, string CITIZEN_ID, string GRAD_UNIV, DateTime DATE_FROM, DateTime DATE_TO, string MAJOR)
+        public ClassPersonStudyHistory(int IDSEQ, string CITIZEN_ID, string GRAD_UNIV, DateTime DATE_FROM, DateTime DATE_TO, string MAJOR)
         {
-            this.ID = ID;
+            this.IDSEQ = IDSEQ;
             this.CITIZEN_ID = CITIZEN_ID;
             this.GRAD_UNIV = GRAD_UNIV;
             this.DATE_FROM = DATE_FROM;
@@ -204,7 +204,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_STUDY_HISTORY where CITIZEN_ID = 0255304610157";
+            string query = "SELECT IDSEQ,CITIZEN_ID,GRAD_UNIV,DATE_FROM,DATE_TO,MAJOR FROM TB_STUDY_HISTORY where CITIZEN_ID = 0255304610157";
             if (!string.IsNullOrEmpty(GRAD_UNIV) || !string.IsNullOrEmpty(DATE_FROM) || !string.IsNullOrEmpty(DATE_TO) || !string.IsNullOrEmpty(MAJOR))
             {
                 query += " where 1=1 ";
@@ -214,11 +214,11 @@ namespace WEB_PERSONAL.Entities
                 }
                 if (!string.IsNullOrEmpty(DATE_FROM))
                 {
-                    query += " and CONVERT(varchar(10),DATE_FROM,103) = @DATE_FROM ";
+                    query += " and CONVERT(varchar(10),DATE_FROM,110) = @DATE_FROM ";
                 }
                 if (!string.IsNullOrEmpty(DATE_TO))
                 {
-                    query += " and CONVERT(varchar(10),DATE_TO,103) = @DATE_TO ";
+                    query += " and DATE_FROM = @DATE_TO ";
                 }
                 if (!string.IsNullOrEmpty(MAJOR))
                 {
@@ -309,7 +309,7 @@ namespace WEB_PERSONAL.Entities
             query += " DATE_FROM = :DATE_FROM ,";
             query += " DATE_TO = :DATE_TO ,";
             query += " MAJOR = :MAJOR ";
-            query += " where CITIZEN_ID  = :CITIZEN_ID";
+            query += " where IDSEQ  = :IDSEQ";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -322,7 +322,7 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
                 command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
                 command.Parameters.Add(new OracleParameter("MAJOR", MAJOR));
-                command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
+                command.Parameters.Add(new OracleParameter("IDSEQ", IDSEQ));
                 if (command.ExecuteNonQuery() > 0)
                 {
                     result = true;
@@ -344,14 +344,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_STUDY_HISTORY where ID = :ID", conn);
+            OracleCommand command = new OracleCommand("Delete TB_STUDY_HISTORY where IDSEQ = :IDSEQ", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("ID", ID));
+                command.Parameters.Add(new OracleParameter("IDSEQ", IDSEQ));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
