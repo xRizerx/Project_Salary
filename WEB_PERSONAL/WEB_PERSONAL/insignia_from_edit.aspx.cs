@@ -57,6 +57,20 @@ namespace WEB_PERSONAL
                         }
                     }
 
+                    //Select ยศ
+                    {
+                        string Oracle = "SELECT RANK_SEQ FROM AA_REQUEST_INSIGNIA WHERE CITIZEN_ID = '" + citizen_id + "' ORDER BY ID DESC";
+                        using (OracleCommand command = new OracleCommand(Oracle, con))
+                        {
+                            using (OracleDataReader reader = command.ExecuteReader())
+                            {
+                                reader.Read();
+                                {
+                                    DropDownList10.SelectedValue = reader.GetInt32(0).ToString();
+                                }
+                            }
+                        }
+                    }
                     {
                         //select 1
                         {

@@ -59,14 +59,19 @@ namespace WEB_PERSONAL
                                 {
                                     while (reader.Read())
                                     {
-                                       /* สร้างใหม่ 
-                                        TextBox3.Text = reader.GetString(0); /*TB_TITLENAME.TITLE_NAME_TH
-                                        TextBox4.Text = reader.GetString(1); /*TB_PERSON.PERSON_NAME
-                                        TextBox5.Text = reader.GetString(2); /*TB_PERSON.PERSON_LASTNAME
-                                        TextBox7.Text = reader.GetString(3); /*TB_PERSON.BIRTHDATE
-                                        TextBox8.Text = reader.GetString(4); /*TB_PERSON.CITIZEN_ID
-                                        TextBox9.Text = reader.GetString(5); /*TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')
-                                        TextBox10.Text = reader.GetString(6); /*TB_POSITION_AND_SALARY.POSITION_NAME*/
+                                       
+                                        TextBox33.Text = reader.GetString(0); //AA_COMMAND.NAME_COMM
+                                        TextBox34.Text = reader.GetInt32(1).ToString(); //AA_REQUEST_INSIGNIA.YEAR
+                                        TextBox35.Text = reader.GetString(2); //TB_GRADEINSIGNIA.NAME_GRADEINSIGNIA_THA
+                                        TextBox36.Text = reader.GetString(3); //TB_RANK.RANK_NAME_TH
+                                        TextBox3.Text = reader.GetString(4); //TB_TITLENAME.TITLE_NAME_TH
+                                        TextBox4.Text = reader.GetString(5); //TB_PERSON.PERSON_NAME
+                                        TextBox5.Text = reader.GetString(6); //TB_PERSON.PERSON_LASTNAME
+                                        TextBox7.Text = reader.GetString(7); //TO_CHAR(TB_PERSON.BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')
+                                        TextBox8.Text = reader.GetString(8); //TB_PERSON.CITIZEN_ID
+                                        TextBox9.Text = reader.GetString(9); //TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')
+
+
 
                                     }
                                 }

@@ -159,11 +159,6 @@
                 background-color: #FF0000;
             }*/
         </style>
-    <script>
-        $(function () {
-            $("#ContentPlaceHolder1_TextBox25,#ContentPlaceHolder1_TextBox26").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
-        });
-    </script>
     <asp:Panel ID="Panel6" runat="server" Height="1819px">
         <table style="width:100%;">
             <tr>
