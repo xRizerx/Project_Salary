@@ -867,7 +867,7 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-            if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
+            //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
             P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
@@ -993,7 +993,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_TRAINING_HISTORY VALUES (SEQ_TRAINNING_HISTORY_ID.NEXTVAL,:CITIZEN_ID,:COURSE,:DATE_FROM,:DATE_TO,:BRANCH_TRAINING)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_TRAINING_HISTORY (CITIZEN_ID,COURSE,DATE_FROM,DATE_TO,BRANCH_TRAINING) VALUES (:CITIZEN_ID,:COURSE,:DATE_FROM,:DATE_TO,:BRANCH_TRAINING)", conn))
                     {
 
                         try
@@ -1037,7 +1037,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_DISCIPLINARY_AND_AMNESTY VALUES (SEQ_DISCIPLINARY_ID.NEXTVAL,:CITIZEN_ID,:YEAR,:MENU,:REF_DOC)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_DISCIPLINARY_AND_AMNESTY (CITIZEN_ID,YEAR,MENU,REF_DOC) VALUES (:CITIZEN_ID,:YEAR,:MENU,:REF_DOC)", conn))
                     {
 
                         try
@@ -1073,7 +1073,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_POSITION_AND_SALARY VALUES (SEQ_posiNsalary_ID.NEXTVAL,:DDATE,:POSITION_NAME,:PERSON_ID,:ST_ID,:POSITION_ID,:SALARY,:POSITION_SALARY,:REFERENCE_DOCUMENT,:CITIZEN_ID)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_POSITION_AND_SALARY (DDATE,POSITION_NAME,PERSON_ID,ST_ID,POSITION_ID,SALARY,POSITION_SALARY,REFERENCE_DOCUMENT,CITIZEN_ID) VALUES (:DDATE,:POSITION_NAME,:PERSON_ID,:ST_ID,:POSITION_ID,:SALARY,:POSITION_SALARY,:REFERENCE_DOCUMENT,:CITIZEN_ID)", conn))
                     {
 
                         try

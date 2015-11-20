@@ -1106,7 +1106,13 @@ namespace WEB_PERSONAL
         protected void ButtonPlus10_Click(object sender, EventArgs e)
         {
 
-
+          /*  ClassPersonStudyHistory P = new ClassPersonStudyHistory();
+            P.CITIZEN_ID = txtCitizen.Text;
+            P.GRAD_UNIV = DateTime.Parse(DropDownMonth10From.Text);
+            P.DATE_FROM = DateTime.Parse(txtDateInWork.Text);
+            P.DATE_TO = DateTime.Parse(txtAge60Number.Text);
+            P.MAJOR = txtMajor.Text;
+        */
 
         }
 

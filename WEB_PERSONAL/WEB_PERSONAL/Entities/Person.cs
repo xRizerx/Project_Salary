@@ -208,10 +208,6 @@ namespace WEB_PERSONAL.Entities
             if (!string.IsNullOrEmpty(GRAD_UNIV) || !string.IsNullOrEmpty(DATE_FROM) || !string.IsNullOrEmpty(DATE_TO) || !string.IsNullOrEmpty(MAJOR))
             {
                 query += " where 1=1 ";
-                if (!string.IsNullOrEmpty(CITIZEN_ID))
-                {
-                    query += " and CITIZEN_ID like :CITIZEN_ID ";
-                }
                 if (!string.IsNullOrEmpty(GRAD_UNIV))
                 {
                     query += " and SEMINAR_NAME like :SEMINAR_NAME ";
@@ -236,10 +232,6 @@ namespace WEB_PERSONAL.Entities
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
-                }
-                if (!string.IsNullOrEmpty(CITIZEN_ID))
-                {
-                    command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID + "%"));
                 }
                 if (!string.IsNullOrEmpty(GRAD_UNIV))
                 {
