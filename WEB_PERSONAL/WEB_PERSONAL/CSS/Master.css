@@ -7,7 +7,7 @@
     margin: 0;
 }
 html, body {
-    height: 100%;
+    /*height: 100%;*/
 }
 
 body {
@@ -73,7 +73,6 @@ form {
     float: left;
     height: 32px;
     line-height: 32px;
-    margin-left: 20px;
 }
 .master_login_right {
     float: right;
@@ -89,9 +88,9 @@ form {
 .master_login li {
     display: inline;
 }
-
+/**/
 .master_login_right a {
-    text-decoration: none;
+    /*text-decoration: none;
     display: inline;
     padding: 1px 20px;
     margin: 0 20px;
@@ -100,12 +99,26 @@ form {
     color: #FFFFFF;
     background-color: #00a2e8;
     border-radius: 24px;
-    transition: background-color ease 0.25s text-decoration ease 0.25s;
+    transition: background-color ease 0.25s text-decoration ease 0.25s;*/
+    text-decoration: none;
+    background-color: #00a2e8;
+    height: 32px;
+    min-width: 100px;
+    padding: 0 20px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color ease 0.25s;
+    display: inline-block;
 }
 
 .master_login_right a:hover {
     background-color: #65c1e9;
 }
+.master_login_right a:active {
+    background-color: #3d7288;
+}
+/*
 .master_login button {
     text-decoration: none;
     display: inline;
@@ -122,7 +135,7 @@ form {
     color: #ffffff;
     background-color: #404040;
 }
-
+*/
 .master_login_name {
     color: #808080;
 
@@ -230,7 +243,7 @@ form {
     height:100px;
 }
 .master_header_under_toggle {
-    background-color: #00a2e8;
+    /*background-color: #00a2e8;
     height: 30px;
     width: 100px;
     margin: 1px 20px;
@@ -239,12 +252,25 @@ form {
     border-radius: 24px;
     cursor: pointer;
     transition: background-color ease 0.25s;
+    display: inline-block;*/
+    text-decoration: none;
+    background-color: #00a2e8;
+    height: 32px;
+    min-width: 100px;
+    padding: 0 20px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color ease 0.25s;
     display: inline-block;
 }
 .master_header_under_toggle:hover {
     background-color: #65c1e9;
-    
 }
+.master_header_under_toggle:active {
+    background-color: #3d7288;
+}
+
 .master_header_under {
     /*background-color: rgba(0,0,0,0.5);*/
     background-color: #00a2e8;
@@ -325,7 +351,7 @@ form {
     width: 200px;
     transition: background-color ease 0.25s;
     /*background-color: rgba(0,0,0,0);*/
-    /*text-shadow: 1px 1px 1px #808080;*/
+    text-shadow: 1px 1px 1px #000000;
 }
 .master_header_under a:hover {
     background-color: rgba(255,255,255,0.25);
@@ -630,37 +656,68 @@ form {
     color: #ffffff;
     background-color: #00a2e8;
 }
+.master_default_button:active {
+    color: #ffffff;
+    background-color: #3d7288;
+}
 .master_default_textbox {
     border: 1px solid #C8C8C8;
     background-color: #FFFFFF;
     padding: 2px 10px;
     border-radius: 24px;
-    transition: border ease 0.5s;
+    transition: border ease 0.25s;
 }
 .master_default_textbox:hover {
-    border: 1px solid rgb(0,162,232);
+    /*border: 1px solid rgb(0,162,232);*/
+    border: 1px solid rgb(0,0,0);
 }
 .master_default_textbox:focus {
-    border: 1px solid rgb(0,162,232);
+    /*border: 1px solid rgb(0,162,232);*/
+    border: 1px solid rgb(0,0,0);
+}
+.master_default_textbox:disabled {
+    background-color: #d0d0d0;
+}
+.master_default_textbox:disabled:hover {
+    border: 1px solid rgb(192,192,192);
 }
 .master_default_textbox_multi_line {
     border: 1px solid #C8C8C8;
     background-color: #FFFFFF;
     padding: 2px 5px;
     border-radius: 12px;
-    transition: border ease 0.5s;
+    transition: border ease 0.25s;
 }
 .master_default_textbox_multi_line:hover {
-    border: 1px solid rgb(0,162,232);
+    /*border: 1px solid rgb(0,162,232);*/
+    border: 1px solid rgb(0,0,0);
 }
 .master_default_textbox_multi_line:focus {
-    border: 1px solid rgb(0,162,232);
+    /*border: 1px solid rgb(0,162,232);*/
+    border: 1px solid rgb(0,0,0);
+}
+.master_default_textbox_multi_line:disabled {
+    background-color: #d0d0d0;
+}
+.master_default_textbox_multi_line:disabled:hover {
+    border: 1px solid rgb(192,192,192);
 }
 .master_default_dropdown {
     border: 1px solid #C8C8C8;
     background-color: #FFFFFF;
     padding: 2px 5px;
     border-radius: 24px;
+    transition: border ease 0.25s;
+}
+.master_default_dropdown:focus {
+    /*border: 1px solid rgb(0,162,232);*/
+    border: 1px solid rgb(0,0,0);
+}
+.master_default_dropdown:disabled {
+    background-color: #d0d0d0;
+}
+.master_default_dropdown:disabled:hover {
+    border: 1px solid rgb(192,192,192);
 }
 .master_default_div_sec {
     margin: 20px auto;

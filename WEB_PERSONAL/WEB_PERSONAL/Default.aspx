@@ -14,8 +14,6 @@
                     autoExpandScrollbar: true,
                     advanced: { autoExpandHorizontalScroll: true }
                 });
-
-
             });
         })(jQuery);
     </script>

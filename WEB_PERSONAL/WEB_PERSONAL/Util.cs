@@ -54,6 +54,14 @@ namespace WEB_PERSONAL {
         public static DateTime ODTN() {
             return DateTime.ParseExact(DateTime.Now.ToString("dd/MM/yyyy"), "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
+        public static string NDT(string date) {
+            string[] ss = date.Split(' ');
+            if(ss.Length == 3) {
+                return ss[0] + " " + ss[1] + " " + ss[2];
+            } else {
+                return ss[0] + " " + ss[1] + " " + ss[3];
+            }
+        }
         public static string ToOracleMonth(string month) {
             return ToOracleMonth(Int32.Parse(month));
         }
@@ -203,9 +211,9 @@ namespace WEB_PERSONAL {
         public static string CS() {
             return "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;";
         }
-        public static void Alert(Page page, string message) {
+        public static void Alert(Control control, string message) {
             string script2 = "alert('" + message + "');";
-            ScriptManager.RegisterStartupScript(page, page.GetType(), "ServerControlScript", script2, true);
+            ScriptManager.RegisterStartupScript(control, control.GetType(), "ServerControlScript", script2, true);
         }
 
         internal static void Alert(<invalid-global-code> <invalid-global-code>, string v)
