@@ -119,8 +119,7 @@
                         <tr>
                             <td class="auto-style18"></td>
                             <td class="auto-style19">
-                                <asp:ImageButton ID="ImageButton1" runat="server" Height="109px" ImageUrl="~/Image/DOC1.png" Width="121px" />
-                            </td>
+                                &nbsp;</td>
                             <td class="auto-style19"></td>
                         </tr>
                         <tr>

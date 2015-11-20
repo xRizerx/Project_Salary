@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace WEB_PERSONAL
 {
-    public partial class insignia_form : System.Web.UI.Page
+    public partial class insignia_from_edit : System.Web.UI.Page
     {
 
         public static string strConn = @"Data Source = ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm";
@@ -44,7 +44,7 @@ namespace WEB_PERSONAL
                 {
                     con.Open();
                     {
-                        string Oracle = "SELECT STAFFTYPE_ID FROM TB_PERSONAL WHERE CITIZEN_ID = " + citizen_id;
+                        string Oracle = "SELECT STAFFTYPE_ID FROM TB_PERSON WHERE CITIZEN_ID = '" + citizen_id + "'";
                         using (OracleCommand command = new OracleCommand(Oracle, con))
                         {
                             using (OracleDataReader reader = command.ExecuteReader())
@@ -62,7 +62,7 @@ namespace WEB_PERSONAL
                         {
                             string Oracle = "select TB_TITLENAME.TITLE_NAME_TH, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TO_CHAR(TB_PERSON.BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_PERSON.CITIZEN_ID,"
                                 + " TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_POSITION_AND_SALARY.POSITION_NAME"
-                                + " from TB_PERSON, TB_TITLENAME, TB_POSITION_AND_SALARY "
+                                + " from TB_PERSON, TB_TITLENAME, TB_POSITION_AND_SALARY"
                                 + " where tb_person.citizen_id = '" + citizen_id + "' AND TB_PERSON.TITLE_ID = TB_TITLENAME.TITLE_ID order by TB_POSITION_AND_SALARY.DDATE desc";
 
                             using (OracleCommand command = new OracleCommand(Oracle, con))
@@ -84,20 +84,42 @@ namespace WEB_PERSONAL
                             }
                         }
 
-                        //select 2
+                        //select 1.9 ชื่อตำแหน่งปัจจุบัน (เพราะตารางชนกันเลยต้องการอีก Select)
                         {
-                            string Oracle = "select TB_POSITION_WORK.POSITION_WORK_NAME " +
-                            " from TB_POSITION_WORK, tb_personal " +
-                            " where TB_PERSONAL.START_POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID ";
+                            string Oracle = "select TB_POSITION_AND_SALARY.POSITION_NAME" +
+                            " from TB_POSITION_AND_SALARY " +
+                            " where TB_POSITION_AND_SALARY.citizen_id = '" + citizen_id + "'" +
+                            " order by TB_POSITION_AND_SALARY.DDATE";
 
                             using (OracleCommand command = new OracleCommand(Oracle, con))
                             {
                                 using (OracleDataReader reader = command.ExecuteReader())
                                 {
-                                    while (reader.Read())
+                                    reader.Read();
                                     {
                                         TextBox10.Text = reader.GetString(0);
+                                    }
+                                }
+                            }
+                        }
 
+                        //select 2 ชื่อตำแหน่งปัจจุบัน (เพราะตารางชนกันเลยต้องการอีก Select)
+                        {
+                            string Oracle = "select TB_POSITION_AND_SALARY.POSITION_NAME,TB_POSITION_AND_SALARY.SALARY,TB_POSITION_AND_SALARY.POSITION_SALARY " +
+                            " from TB_POSITION_AND_SALARY " +
+                            " where TB_POSITION_AND_SALARY.citizen_id = '" + citizen_id + "'" +
+                            " order by TB_POSITION_AND_SALARY.DDATE desc";
+
+                            using (OracleCommand command = new OracleCommand(Oracle, con))
+                            {
+                                using (OracleDataReader reader = command.ExecuteReader())
+                                {
+
+                                    reader.Read();
+                                    {
+                                        TextBox11.Text = reader.GetString(0);
+                                        TextBox14.Text = reader.GetInt32(1).ToString();
+                                        TextBox15.Text = reader.GetInt32(2).ToString();
                                     }
                                 }
                             }
@@ -397,33 +419,9 @@ namespace WEB_PERSONAL
             catch { }
         }
 
-
-
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("insignia_from");
-        }
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("insignia_from");
-        }
-
-        protected void Button2_Click1(object sender, EventArgs e)
-        {
-            Response.Redirect("insignia_from_edit.aspx");
-        }
-
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("insignia_user.aspx");
-
-        }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
-            /*--------- ดักช่องว่างที่ยังไม่ได้กรอก ---------*/
+            /*ดักช่องว่างที่ยังไม่ได้กรอก*/
             Label60.Text = "";
             Label61.Text = "";
             Label62.Text = "";
@@ -445,6 +443,7 @@ namespace WEB_PERSONAL
                 return;
             }
             /*--------- ดักช่องว่างที่ยังไม่ได้กรอก ---------*/
+
             // try
             {
                 string connectionString = "Data Source=ORCL_RMUTTO;User ID=rmutto;Password=Zxcvbnm";
@@ -458,22 +457,22 @@ namespace WEB_PERSONAL
                         using (OracleCommand command = new OracleCommand(Oracle, con))
                         {
                             command.Parameters.AddWithValue("2", Session["insignia_citizen_id"].ToString());
-                            command.Parameters.AddWithValue("3", DropDownList1.SelectedValue); /*ID_COMM*/
-                            command.Parameters.AddWithValue("4", DropDownList2.SelectedValue); /*YEAR*/
-                            command.Parameters.AddWithValue("5", DropDownList3.SelectedValue); /*ID_GRADEINSIGNIA*/
-                            command.Parameters.AddWithValue("6", RadioButton5.Checked ? "1" : "0"); /*REPEAT_REQUEST*/
-                            command.Parameters.AddWithValue("7", TextBox17.Text); /*SALARY_BACK5Y*/
-                            command.Parameters.AddWithValue("8", DropDownList4.SelectedValue); /*OLD_TITLE_ID*/
-                            command.Parameters.AddWithValue("9", TextBox19.Text); /*OLD_NAME*/
-                            command.Parameters.AddWithValue("10", TextBox20.Text); /*OLD_LASTNAME*/
-                            command.Parameters.AddWithValue("11", DropDownList5.SelectedValue); /*H1_POSITION_ID_1*/
-                            command.Parameters.AddWithValue("12", Util.ODT(TextBox25.Text)); /*H1_DATE_1*/
-                            command.Parameters.AddWithValue("13", DropDownList6.SelectedValue); /*H1_POSITION_ID_2*/
-                            command.Parameters.AddWithValue("14", Util.ODT(TextBox26.Text)); /*H1_DATE_2*/
-                            command.Parameters.AddWithValue("15", DropDownList7.SelectedValue); /*H2_OLD_POSITION_WORK_ID*/
-                            command.Parameters.AddWithValue("16", DropDownList8.SelectedValue); /*H2_NEW_POSITION_WORK_ID*/
-                            command.Parameters.AddWithValue("20", DropDownList9.SelectedValue); /*FACULTY_ID*/
-                            command.Parameters.AddWithValue("21", DropDownList10.SelectedValue); /*RANK_SEQ*/
+                            command.Parameters.AddWithValue("3", DropDownList1.SelectedValue); //ID_COMM
+                            command.Parameters.AddWithValue("4", DropDownList2.SelectedValue); //YEAR
+                            command.Parameters.AddWithValue("5", DropDownList3.SelectedValue); //ID_GRADEINSIGNIA
+                            command.Parameters.AddWithValue("6", RadioButton5.Checked ? "1" : "0"); //REPEAT_REQUEST
+                            command.Parameters.AddWithValue("7", TextBox17.Text); //SALARY_BACK5Y
+                            command.Parameters.AddWithValue("8", DropDownList4.SelectedValue); //OLD_TITLE_ID
+                            command.Parameters.AddWithValue("9", TextBox19.Text); //OLD_NAME
+                            command.Parameters.AddWithValue("10", TextBox20.Text); //OLD_LASTNAME
+                            command.Parameters.AddWithValue("11", DropDownList5.SelectedValue); //H1_POSITION_ID_1
+                            command.Parameters.AddWithValue("12", Util.ODT(TextBox25.Text)); //H1_DATE_1
+                            command.Parameters.AddWithValue("13", DropDownList6.SelectedValue); //H1_POSITION_ID_2
+                            command.Parameters.AddWithValue("14", Util.ODT(TextBox26.Text)); //H1_DATE_2
+                            command.Parameters.AddWithValue("15", DropDownList7.SelectedValue); //H2_OLD_POSITION_WORK_ID
+                            command.Parameters.AddWithValue("16", DropDownList8.SelectedValue); //H2_NEW_POSITION_WORK_ID
+                            command.Parameters.AddWithValue("20", DropDownList9.SelectedValue); //FACULTY_ID
+                            command.Parameters.AddWithValue("21", DropDownList10.SelectedValue); //RANK_SEQ */
 
                             int g2id = 1;
                             if (CheckBox2.Checked)
@@ -493,17 +492,16 @@ namespace WEB_PERSONAL
 
                             command.Parameters.AddWithValue("17", g2id);
                             command.Parameters.AddWithValue("18", g2id2);
-                            command.Parameters.AddWithValue("19", TextBox16.Text); /*YEAR_BACK5Y*/
+                            command.Parameters.AddWithValue("19", TextBox16.Text); //YEAR_BACK5Y
                             command.ExecuteNonQuery();
                             Util.Alert(this, "บันทีกเรียบร้อย");
                         }
                     }
-
-
                 }
             }
         }
-
-
+        
     }
 }
+
+

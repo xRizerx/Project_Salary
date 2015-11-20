@@ -30,7 +30,7 @@ namespace WEB_PERSONAL
                 {
                     con.Open();
                     using (OracleCommand command = new OracleCommand(
-                        "SELECT count(*) FROM TB_PERSONAL WHERE CITIZEN_ID = '" + TextBox1.Text + "'", con))
+                        "SELECT count(*) FROM TB_PERSON WHERE CITIZEN_ID = '" + TextBox1.Text + "'", con))
                     using (OracleDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
