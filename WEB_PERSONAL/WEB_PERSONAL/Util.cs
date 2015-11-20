@@ -207,6 +207,11 @@ namespace WEB_PERSONAL {
             string script2 = "alert('" + message + "');";
             ScriptManager.RegisterStartupScript(page, page.GetType(), "ServerControlScript", script2, true);
         }
+
+        internal static void Alert(<invalid-global-code> <invalid-global-code>, string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

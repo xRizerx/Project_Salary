@@ -178,7 +178,6 @@
     <Content Include="Image\users6.png" />
     <Content Include="Image\writing-on-paper.jpg" />
     <Content Include="Image\X.png" />
-    <Content Include="insignia_from_view.aspx" />
     <Content Include="insignia_recordnote2.aspx" />
     <Content Include="jQueryCalendarThai\images\add.gif" />
     <Content Include="jQueryCalendarThai\images\ajax-loader.gif" />
@@ -369,13 +368,6 @@
     </Compile>
     <Compile Include="Gender-ADMIN.aspx.designer.cs">
       <DependentUpon>Gender-ADMIN.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="insignia_from_view.aspx.cs">
-      <DependentUpon>insignia_from_view.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="insignia_from_view.aspx.designer.cs">
-      <DependentUpon>insignia_from_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_recordnote2.aspx.cs">
       <DependentUpon>insignia_recordnote2.aspx</DependentUpon>
