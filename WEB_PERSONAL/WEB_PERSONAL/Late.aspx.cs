@@ -149,7 +149,7 @@ namespace WEB_PERSONAL {
                 GridView2.Columns.Add(test);
             }
 
-            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "select tb_work_check_in.id , to_char(tb_work_check_in.ddate,'dd mon yyyy','NLS_DATE_LANGUAGE=THAI') as \"ddate\", tb_work_check_in.citizen_id, tb_personal.stf_name || ' ' || tb_personal.stf_lname as \"name\", tb_work_check_in.hour_in || ':' || tb_work_check_in.minute_in as \"time_in\", tb_work_check_in.hour_out || ':' || tb_work_check_in.minute_out as \"time_out\" from tb_work_check_in, tb_personal where tb_work_check_in.citizen_id = tb_personal.citizen_id");
+            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "select tb_work_check_in.id , to_char(tb_work_check_in.ddate,'dd mon yyyy','NLS_DATE_LANGUAGE=THAI') as \"ddate\", tb_work_check_in.citizen_id, TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME as \"name\", tb_work_check_in.hour_in || ':' || tb_work_check_in.minute_in as \"time_in\", tb_work_check_in.hour_out || ':' || tb_work_check_in.minute_out as \"time_out\" from tb_work_check_in, TB_PERSON where tb_work_check_in.citizen_id = TB_PERSON.citizen_id");
             GridView2.DataSource = sds;
             GridView2.DataBind();
         }
@@ -196,7 +196,7 @@ namespace WEB_PERSONAL {
                 GridView3.Columns.Add(test);
             }
 
-            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "select tb_work_check_in.id , to_char(tb_work_check_in.ddate,'dd mon yyyy','NLS_DATE_LANGUAGE=THAI') as \"ddate\", tb_work_check_in.citizen_id, tb_personal.stf_name || ' ' || tb_personal.stf_lname as \"name\", tb_work_check_in.hour_in || ':' || tb_work_check_in.minute_in as \"time_in\", tb_work_check_in.hour_out || ':' || tb_work_check_in.minute_out as \"time_out\" from tb_work_check_in, tb_personal where tb_work_check_in.citizen_id = tb_personal.citizen_id AND tb_work_check_in.hour_in*60 + tb_work_check_in.minute_in > 510");
+            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "select tb_work_check_in.id , to_char(tb_work_check_in.ddate,'dd mon yyyy','NLS_DATE_LANGUAGE=THAI') as \"ddate\", tb_work_check_in.citizen_id, TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME as \"name\", tb_work_check_in.hour_in || ':' || tb_work_check_in.minute_in as \"time_in\", tb_work_check_in.hour_out || ':' || tb_work_check_in.minute_out as \"time_out\" from tb_work_check_in, TB_PERSON where tb_work_check_in.citizen_id = TB_PERSON.citizen_id AND tb_work_check_in.hour_in*60 + tb_work_check_in.minute_in > 510");
             GridView3.DataSource = sds;
             GridView3.DataBind();
         }

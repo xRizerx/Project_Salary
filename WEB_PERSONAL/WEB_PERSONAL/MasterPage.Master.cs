@@ -12,7 +12,8 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
+            
         }
 
         protected void LinkButton4_Click(object sender, EventArgs e)
@@ -47,28 +48,18 @@ namespace WEB_PERSONAL
 
         protected void form1_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack) {
-                if (Session["login_id"] == null) {
-                    Session["redirect_to"] = Request.Url.ToString();
-                    Response.Redirect("Access.aspx");
-                }
-            }
-            
-            if (Session["show_login"] != null)
-            {
-                Session.Remove("show_login");
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "toggleLoginPopup();", true);
-            }
-            if (Session["login_id"] != null)
-            {
+            if (Session["login_id"] == null) {
+                Session["redirect_to"] = Request.Url.ToString();
+                Response.Redirect("Access.aspx");
+                return;
+            } else {
                 
                 if ((DateTime.Now - (DateTime)Session["login_date_time"]).TotalSeconds > Int32.Parse(Session["login_total_second"].ToString())) {
                     Session["login_date_time"] = null;
                     Logout();
-                    Label7.Text = "ยังไม่ได้เข้าสู่ระบบ";
-                    FindControl("master_login_button").Visible = true;
-                    LinkButton10.Visible = false;
-                    Label7.ForeColor = System.Drawing.Color.FromArgb(128, 128, 128);
+
+                    Session["redirect_to"] = Request.Url.ToString();
+                    Response.Redirect("Access.aspx");
                     return;
                 }
                 
@@ -88,22 +79,8 @@ namespace WEB_PERSONAL
                     Label7.ForeColor = System.Drawing.Color.FromArgb(0, 162, 232);
                 }
                 
-            } else
-            {
-                Label7.Text = "ยังไม่ได้เข้าสู่ระบบ";
-                FindControl("master_login_button").Visible = true;
-                LinkButton10.Visible = false;
-                Label7.ForeColor = System.Drawing.Color.FromArgb(128, 128, 128);
             }
 
-           /* if(Session["login_bad"] != null) {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "toggleLoginPopup();", true);
-                Session.Remove("login_bad");
-            } else {
-                //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert('nul');", true);
-            }*/
-
-           
             if(!IsPostBack) {
                 using (OracleConnection con = Util.OC()) {
                     {

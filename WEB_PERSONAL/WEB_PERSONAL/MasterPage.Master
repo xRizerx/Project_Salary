@@ -233,26 +233,29 @@
             <div class="master_header_under" id="i2">
                 <div class="master_header_under_in">
                     <div class="master_header_under_in2">
-                        <table style="background-color: #FFFFFF; border-radius: 64px;">
+                        <div class="master_header_under_in2_head">
+                            <table>
                             <tr>
                                 <td style="width: 70px;">
-                                    <img src="Image/RMUTTO.png" style="height: 80px; background-color: #FFFFFF; border-radius: 64px;" />
+                                    <img src="Image/RMUTTO.png" style="height: 100px; background-color: transparent;" />
                                 </td>
                                 <td style="width: 400px;">
-                                    <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
-                                    <asp:Label ID="Label9" runat="server" CssClass="master_header_label4" Text="(เวอร์ชั่น ทดสอบ)"></asp:Label>
+                                    <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_under_label"></asp:Label>
+                                    
                                     <br />
-                                    <asp:Label ID="Label10" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_label2"></asp:Label>
+                                    <asp:Label ID="Label10" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_under_label2"></asp:Label>
                                 </td>
                                 <td>
                                     <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
                                 </td>
                             </tr>
                         </table>
-                        <table>
+                        </div>
+                        
+                        <table class="master_header_under_table2">
                             <tr>
                                 <td class="master_header_under_left">
-                                    <span class="master_header_under_header">เมนู</span>
+                                    <span class="master_header_under_header">เมนูหลัก</span>
                                 </td>
                                 <td>
                                     <span class="master_header_under_header">การขึ้นเงินเดือน</span>
@@ -352,7 +355,6 @@
                                 </td>
                                 <td class="mt3">
                                     <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
-                                    <asp:Label ID="LabelX1" runat="server" CssClass="master_header_label4" Text="(เวอร์ชั่น ทดสอบ)"></asp:Label>
                                     <br />
                                     <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_label2"></asp:Label>
                                 </td>

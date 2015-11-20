@@ -169,7 +169,7 @@
 
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                    <ContentTemplate>
-                            <asp:TextBox ID="txtBirthDayChar" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True" onkeyup="RefreshUpdatePanel();"></asp:TextBox>
+                            <asp:TextBox ID="txtBirthDayChar" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
                                    </ContentTemplate>
                             </asp:UpdatePanel>
                             </td>
@@ -334,7 +334,7 @@
                 <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: left;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
-                DataKeyNames="CITIZEN_ID"
+                DataKeyNames="IDSEQ"
                 OnRowEditing="modEditCommand"
                 OnRowCancelingEdit="modCancelCommand"
                 OnRowUpdating="modUpdateCommand"
@@ -344,7 +344,7 @@
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ID") %>'></asp:Label>
+                            <asp:Label ID="lblPersonStudyHistoryID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.IDSEQ") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="CITIZEN_ID" Visible="false">
@@ -362,18 +362,18 @@
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="ตั้งแต่(เดือน ปี)" ControlStyle-Width="120" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryDateFromEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM","{0:MM-dd-yyyy}") %>'></asp:Label>
+                            <asp:Label ID="lblPersonStudyHistoryDateFromEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM","{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonStudyHistoryDateFromEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonStudyHistoryDateFromEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM","{0:dd/MM/yyyy}") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="ถึง(เดือน ปี)" ControlStyle-Width="120" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryDateTOEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_TO","{0:MM-dd-yyyy}") %>'></asp:Label>
+                            <asp:Label ID="lblPersonStudyHistoryDateTOEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_TO","{0:dd/MM/yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonStudyHistoryDateTOEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_TO") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonStudyHistoryDateTOEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_TO","{0:dd/MM/yyyy}") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="วุฒิ(สาขาวิชาเอก)" ControlStyle-Width="340" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">

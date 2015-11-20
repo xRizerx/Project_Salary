@@ -19,13 +19,13 @@ namespace WEB_PERSONAL
         {
             if (!IsPostBack)
             {
-                BindData();
-                if (Session["login_id"] == null)
-                {
-                    Session["show_login"] = "1";
+                  BindData();
+               // if (Session["login_id"] == null)
+               // {
+               //     Session["show_login"] = "1";
                     //Response.Redirect("default.aspx");
-                    return;
-                }
+                    //return;
+               // }
                 /*using (OracleConnection conn = Util.OC())
                 {
                     using (OracleCommand cmd = new OracleCommand("select CITIZEN_ID,TITLE_ID,PERSON_NAME,PERSON_LASTNAME,TO_CHAR(BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),BIRTHDATE_LONG,TO_CHAR(RETIRE_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),RETIRE_DATE_LONG,TO_CHAR(INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,MINISTRY_ID,DEPARTMENT_NAME from tb_person where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
@@ -256,7 +256,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassPersonStudyHistory p = new ClassPersonStudyHistory();
-            p.ID = id;
+            p.IDSEQ = id;
             p.DeletePersonStudyHistory();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
@@ -1106,7 +1106,13 @@ namespace WEB_PERSONAL
         protected void ButtonPlus10_Click(object sender, EventArgs e)
         {
 
-
+          /*  ClassPersonStudyHistory P = new ClassPersonStudyHistory();
+            P.CITIZEN_ID = txtCitizen.Text;
+            P.GRAD_UNIV = DateTime.Parse(DropDownMonth10From.Text);
+            P.DATE_FROM = DateTime.Parse(txtDateInWork.Text);
+            P.DATE_TO = DateTime.Parse(txtAge60Number.Text);
+            P.MAJOR = txtMajor.Text;
+        */
 
         }
 
