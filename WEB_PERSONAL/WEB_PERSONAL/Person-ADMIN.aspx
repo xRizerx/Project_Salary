@@ -335,12 +335,12 @@
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="IDSEQ"
-                OnRowEditing="modEditCommand"
-                OnRowCancelingEdit="modCancelCommand"
-                OnRowUpdating="modUpdateCommand"
-                OnRowDeleting="modDeleteCommand"
-                OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewPersonStudyHistory_PageIndexChanging" PageSize="5" BackColor="White" BorderColor="#999999">
+                OnRowEditing="modEditCommand1"
+                OnRowCancelingEdit="modCancelCommand1"
+                OnRowUpdating="modUpdateCommand1"
+                OnRowDeleting="modDeleteCommand1"
+                OnRowDataBound="GridView1_RowDataBound1"
+                OnPageIndexChanging="myGridViewPersonStudyHistory_PageIndexChanging1" PageSize="5" BackColor="White" BorderColor="#999999">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                             <ItemTemplate>
@@ -362,18 +362,18 @@
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="ตั้งแต่(เดือน ปี)" ControlStyle-Width="120" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryDateFromEdit" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DATE_FROM")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US")) %>'></asp:Label>
+                            <asp:Label ID="lblPersonStudyHistoryDateFromEdit" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DATE_FROM")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonStudyHistoryDateFromEdit" MaxLength="100" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DATE_FROM")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US")) %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonStudyHistoryDateFromEdit" MaxLength="100" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DATE_FROM")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="ถึง(เดือน ปี)" ControlStyle-Width="120" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryDateTOEdit" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DATE_TO")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US")) %>'></asp:Label>
+                            <asp:Label ID="lblPersonStudyHistoryDateTOEdit" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DATE_TO")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonStudyHistoryDateTOEdit" MaxLength="100" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DATE_TO")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US")) %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonStudyHistoryDateTOEdit" MaxLength="100" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DATE_TO")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="วุฒิ(สาขาวิชาเอก)" ControlStyle-Width="340" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
@@ -476,53 +476,53 @@
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="ID"
-                OnRowEditing="modEditCommand"
-                OnRowCancelingEdit="modCancelCommand"
-                OnRowUpdating="modUpdateCommand"
-                OnRowDeleting="modDeleteCommand"
-                OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewPersonStudyHistory_PageIndexChanging" PageSize="5" BackColor="White" BorderColor="#999999">
+                OnRowEditing="modEditCommand2"
+                OnRowCancelingEdit="modCancelCommand2"
+                OnRowUpdating="modUpdateCommand2"
+                OnRowDeleting="modDeleteCommand2"
+                OnRowDataBound="GridView2_RowDataBound2"
+                OnPageIndexChanging="myGridViewPersonJobLisence_PageIndexChanging2" PageSize="5" BackColor="White" BorderColor="#999999">
                 <Columns>
                     <asp:TemplateField HeaderText="ID" Visible="false">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.IDSEQ") %>'></asp:Label>
+                            <asp:Label ID="lblPersonJobLisenceID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ID") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="CITIZEN_ID" Visible="false">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryCitizenID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
+                            <asp:Label ID="lblPersonJobLisenceCitizenID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="สถานศึกษา" ControlStyle-Width="340" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                    <asp:TemplateField HeaderText="สถานศึกษา" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryGradUNIVEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_UNIV") %>'></asp:Label>
+                            <asp:Label ID="lblPersonJobLisenceNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.LICENCE_NAME") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonStudyHistoryGradUNIVEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_UNIV") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonJobLisenceNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.LICENCE_NAME") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="ตั้งแต่(เดือน ปี)" ControlStyle-Width="120" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                    <asp:TemplateField HeaderText="หน่วยงาน" ControlStyle-Width="270" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryDateFromEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM","{0:dd/MM/yyyy}") %>'></asp:Label>
+                            <asp:Label ID="lblPersonJobLisenceBranchEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BRANCH") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonStudyHistoryDateFromEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_FROM","{0:dd/MM/yyyy}") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonJobLisenceBranchEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BRANCH") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="ถึง(เดือน ปี)" ControlStyle-Width="120" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                     <asp:TemplateField HeaderText="เลขที่ใบอนุญาติ" ControlStyle-Width="170" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryDateTOEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_TO","{0:dd/MM/yyyy}") %>'></asp:Label>
+                            <asp:Label ID="lblPersonJobLisenceLicenseNOEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.LICENCE_NO") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonStudyHistoryDateTOEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE_TO","{0:dd/MM/yyyy}") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonJobLisenceLicenseNOEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.LICENCE_NO") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="วุฒิ(สาขาวิชาเอก)" ControlStyle-Width="340" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                     <asp:TemplateField HeaderText="วันที่มีผลบังคับใช้ (วัน เดือน ปี)" ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonStudyHistoryMajorEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MAJOR") %>'></asp:Label>
+                            <asp:Label ID="lblPersonJobLisenceDDATEEdit" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonStudyHistoryMajorEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MAJOR") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonJobLisenceDDATEEdit" MaxLength="100" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
