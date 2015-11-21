@@ -205,7 +205,7 @@ namespace WEB_PERSONAL
         }
         protected void modDeleteCommand2(Object sender, GridViewDeleteEventArgs e)
         {
-            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            int id = Convert.ToInt32(GridView2.DataKeys[e.RowIndex].Value);
             ClassPersonJobLisence p2 = new ClassPersonJobLisence();
             p2.ID = id;
             p2.DeletePersonJobLisence();
@@ -1181,7 +1181,8 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-            if (NeedData1To9() || NeedData10() || NeedData11() || NeedData12() || NeedData13() || NeedData14()) { return; }
+            //if (NeedData1To9() || NeedData10() || NeedData11() || NeedData12() || NeedData13() || NeedData14()) { return; }
+            if (NeedData1To9()) { return; }
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
             P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
@@ -1258,7 +1259,7 @@ namespace WEB_PERSONAL
                 P.MAJOR = txtMajor.Text;
                 P.InsertPersonStudyHistory();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ประวัติการศึกษา>เรียบร้อย')", true);
-
+                ClearDataGridViewNumber10();
                 ClassPersonStudyHistory p1 = new ClassPersonStudyHistory();
                 DataTable dt1 = p1.GetPersonStudyHistory("", "", "", "", "", "", Session["login_id"].ToString());
                 GridView1.DataSource = dt1;
@@ -1283,7 +1284,7 @@ namespace WEB_PERSONAL
                 P.DDATE = DateTime.Parse(txtDateEnable11.Text);
                 P.InsertPersonJobLisence();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ใบอนุญาตประกอบวิชาชีพ>เรียบร้อย')", true);
-
+                ClearDataGridViewNumber11();
                 ClassPersonJobLisence p2 = new ClassPersonJobLisence();
                 DataTable dt2 = p2.GetPersonJobLisence("", "", "", "", Session["login_id"].ToString());
                 GridView2.DataSource = dt2;
@@ -1315,7 +1316,7 @@ namespace WEB_PERSONAL
                 P.BRANCH_TRAINING = txtBranchTrainning.Text;
                 P.InsertPersonTraining();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ประวัติการฝึกอบรม>เรียบร้อย')", true);
-
+                ClearDataGridViewNumber12();
                 ClassPersonTraining p3 = new ClassPersonTraining();
                 DataTable dt3 = p3.GetPersonTraining("", "", "", "", "", "", Session["login_id"].ToString());
                 GridView3.DataSource = dt3;
@@ -1342,8 +1343,9 @@ namespace WEB_PERSONAL
                 P.YEAR = DropDownYear13.SelectedValue;
                 P.MENU = txtList13.Text;
                 P.REF_DOC = txtRefDoc13.Text;
+                P.InsertPersonDISCIPLINARY();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<การได้รับโทษทางวินัยและการนิรโทษกรรม>เรียบร้อย')", true);
-
+                ClearDataGridViewNumber13();
                 ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY();
                 DataTable dt4 = p4.GetPersonDISCIPLINARY("", "", "", Session["login_id"].ToString());
                 GridView4.DataSource = dt4;
@@ -1372,11 +1374,12 @@ namespace WEB_PERSONAL
                 P.ST_ID = DropDownType_Position14.SelectedValue;
                 P.POSITION_ID = Convert.ToInt32(DropDownDegree14.SelectedValue);
                 P.SALARY = Convert.ToInt32(txtSalary14.Text);
-                P.POSITION_SALARY = Convert.ToInt32(txtSalaryForPosition14);
+                P.POSITION_SALARY = Convert.ToInt32(txtSalaryForPosition14.Text);
                 P.REFERENCE_DOCUMENT = txtRefDoc14.Text;
                 P.CITIZEN_ID = txtCitizen.Text;
+                P.InsertPersonPosiSalary();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ตำแหน่งและเงินเดือน>เรียบร้อย')", true);
-
+                ClearDataGridViewNumber14();
                 ClassPersonPosiSalary p5 = new ClassPersonPosiSalary();
                 DataTable dt5 = p5.GetPersonPosiSalary("", "", "", "", 0, 0, 0, "", Session["login_id"].ToString());
                 GridView5.DataSource = dt5;

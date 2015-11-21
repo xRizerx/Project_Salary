@@ -873,7 +873,8 @@ namespace WEB_PERSONAL
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-            if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
+            //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
+            if (NeedData1To9()) { return; }
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
             P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
