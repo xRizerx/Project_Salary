@@ -331,7 +331,7 @@
 
                 <asp:UpdatePanel ID="UpdateGridView1" runat="server">
                                    <ContentTemplate>
-                <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: left;"
+                <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center; "
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="IDSEQ"
@@ -352,7 +352,7 @@
                             <asp:Label ID="lblPersonStudyHistoryCitizenID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="สถานศึกษา" ControlStyle-Width="310" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                    <asp:TemplateField HeaderText="สถานศึกษา" ControlStyle-Width="340" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblPersonStudyHistoryGradUNIVEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_UNIV") %>'></asp:Label>
                             </ItemTemplate>
@@ -392,7 +392,7 @@
                             		<asp:TextBox ID="txtPersonStudyHistoryYearTOEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_TO") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="วุฒิ(สาขาวิชาเอก)" ControlStyle-Width="250" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                     <asp:TemplateField HeaderText="วุฒิ(สาขาวิชาเอก)" ControlStyle-Width="270" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblPersonStudyHistoryMajorEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MAJOR") %>'></asp:Label>
                             </ItemTemplate>
@@ -488,7 +488,7 @@
 
                 <asp:UpdatePanel ID="UpdateGridView2" runat="server">
                                    <ContentTemplate>
-                <asp:GridView ID="GridView2" runat="server" style="margin-left: auto; margin-right: auto; text-align: left;"
+                <asp:GridView ID="GridView2" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="ID"
@@ -533,7 +533,7 @@
                             		<asp:TextBox ID="txtPersonJobLisenceLicenseNOEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.LICENCE_NO") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="วันที่มีผลบังคับใช้ (วัน เดือน ปี)" ControlStyle-Width="50" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                     <asp:TemplateField HeaderText="วันที่มีผลบังคับใช้ (วัน เดือน ปี)" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblPersonJobLisenceDDATEEdit" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:Label>
                             </ItemTemplate>
@@ -621,7 +621,7 @@
 
                 <asp:UpdatePanel ID="UpdateGridView3" runat="server">
                                    <ContentTemplate>
-                <asp:GridView ID="GridView3" runat="server" style="margin-left: auto; margin-right: auto; text-align: left;"
+                <asp:GridView ID="GridView3" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="ID"
@@ -642,7 +642,7 @@
                             <asp:Label ID="lblPersonTrainingCitizenID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="หลักสูตรฝึกอบรม" ControlStyle-Width="310" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                    <asp:TemplateField HeaderText="หลักสูตรฝึกอบรม" ControlStyle-Width="340" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblPersonTrainingCourseEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.COURSE") %>'></asp:Label>
                             </ItemTemplate>
@@ -682,7 +682,7 @@
                             		<asp:TextBox ID="txtPersonTrainingYearTOEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_TO") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-                     <asp:TemplateField HeaderText="หน่วยงานที่จัดฝึกอบรม" ControlStyle-Width="250" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                     <asp:TemplateField HeaderText="หน่วยงานที่จัดฝึกอบรม" ControlStyle-Width="270" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
                             <asp:Label ID="lblPersonTrainingBranchEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BRANCH_TRAINING") %>'></asp:Label>
                             </ItemTemplate>
