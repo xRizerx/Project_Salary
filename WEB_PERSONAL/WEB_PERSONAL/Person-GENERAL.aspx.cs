@@ -37,7 +37,10 @@ namespace WEB_PERSONAL
 
                 Session["StudyHis"] = new DataTable();
                 ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
-                ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
+                ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ (เดือน)");
+                ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ (ปี)");
+                ((DataTable)(Session["StudyHis"])).Columns.Add("ถึง (เดือน)");
+                ((DataTable)(Session["StudyHis"])).Columns.Add("ถึง (ปี)");
                 ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
                 GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
                 GridView1.DataBind();
@@ -52,7 +55,10 @@ namespace WEB_PERSONAL
 
                 Session["Trainning"] = new DataTable();
                 ((DataTable)(Session["Trainning"])).Columns.Add("หลักสูตรฝึกอบรม");
-                ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
+                ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ (เดือน)");
+                ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ (ปี)");
+                ((DataTable)(Session["Trainning"])).Columns.Add("ถึง (เดือน)");
+                ((DataTable)(Session["Trainning"])).Columns.Add("ถึง (ปี)");
                 ((DataTable)(Session["Trainning"])).Columns.Add("หน่วยงานที่จัดฝึกอบรม");
                 GridView3.DataSource = ((DataTable)(Session["Trainning"]));
                 GridView3.DataBind();
@@ -905,7 +911,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY (CITIZEN_ID,GRAD_UNIV,DATE_FROM,DATE_TO,MAJOR) VALUES (:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY (CITIZEN_ID,GRAD_UNIV,MONTH_FROM,YEAR_FROM,MONTH_TO,YEAR_TO,MAJOR) VALUES (:CITIZEN_ID,:GRAD_UNIV,:MONTH_FROM,:YEAR_FROM,:MONTH_TO,:YEAR_TO,:MAJOR)", conn))
                     {
 
                         try
@@ -914,19 +920,14 @@ namespace WEB_PERSONAL
                             {
                                 conn.Open();
                             }
-                            string[] ss1 = GridView1.Rows[i].Cells[1].Text.Split('-');
-                            for (int j = 0; j < ss1.Length; ++j)
-                            {
-                                ss1[j] = ss1[j].Trim();
-                            }
-                            DateTime dt_from = new DateTime(Convert.ToInt32(ss1[1]), Util.MonthToNumber(ss1[0]), 1);
-                            DateTime dt_to = new DateTime(Convert.ToInt32(ss1[3]), Util.MonthToNumber(ss1[2]), 1);
 
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
                             command.Parameters.Add(new OracleParameter("GRAD_UNIV", GridView1.Rows[i].Cells[0].Text));
-                            command.Parameters.Add(new OracleParameter("DATE_FROM", dt_from));
-                            command.Parameters.Add(new OracleParameter("DATE_TO", dt_to));
-                            command.Parameters.Add(new OracleParameter("MAJOR", GridView1.Rows[i].Cells[2].Text));
+                            command.Parameters.Add(new OracleParameter("MONTH_FROM", GridView1.Rows[i].Cells[1].Text));
+                            command.Parameters.Add(new OracleParameter("YEAR_FROM", GridView1.Rows[i].Cells[2].Text));
+                            command.Parameters.Add(new OracleParameter("MONTH_TO", GridView1.Rows[i].Cells[3].Text));
+                            command.Parameters.Add(new OracleParameter("YEAR_TO", GridView1.Rows[i].Cells[4].Text));
+                            command.Parameters.Add(new OracleParameter("MAJOR", GridView1.Rows[i].Cells[5].Text));
 
                             id = command.ExecuteNonQuery();
                         }
@@ -993,7 +994,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_TRAINING_HISTORY (CITIZEN_ID,COURSE,DATE_FROM,DATE_TO,BRANCH_TRAINING) VALUES (:CITIZEN_ID,:COURSE,:DATE_FROM,:DATE_TO,:BRANCH_TRAINING)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_TRAINING_HISTORY (CITIZEN_ID,COURSE,MONTH_FROM,YEAR_FROM,MONTH_TO,YEAR_TO,BRANCH_TRAINING) VALUES (:CITIZEN_ID,:COURSE,:MONTH_FROM,:YEAR_FROM,:MONTH_TO,:YEAR_TO,:BRANCH_TRAINING)", conn))
                     {
 
                         try
@@ -1002,19 +1003,14 @@ namespace WEB_PERSONAL
                             {
                                 conn.Open();
                             }
-                            string[] ss3 = GridView3.Rows[i].Cells[1].Text.Split('-');
-                            for (int j = 0; j < ss3.Length; ++j)
-                            {
-                                ss3[j] = ss3[j].Trim();
-                            }
-                            DateTime dt_from = new DateTime(Convert.ToInt32(ss3[1]), Util.MonthToNumber(ss3[0]), 1);
-                            DateTime dt_to = new DateTime(Convert.ToInt32(ss3[3]), Util.MonthToNumber(ss3[2]), 1);
 
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
                             command.Parameters.Add(new OracleParameter("COURSE", GridView3.Rows[i].Cells[0].Text));
-                            command.Parameters.Add(new OracleParameter("DATE_FROM", dt_from));
-                            command.Parameters.Add(new OracleParameter("DATE_TO", dt_to));
-                            command.Parameters.Add(new OracleParameter("BRANCH_TRAINING", GridView3.Rows[i].Cells[2].Text));
+                            command.Parameters.Add(new OracleParameter("MONTH_FROM", GridView3.Rows[i].Cells[1].Text));
+                            command.Parameters.Add(new OracleParameter("YEAR_FROM", GridView3.Rows[i].Cells[2].Text));
+                            command.Parameters.Add(new OracleParameter("MONTH_TO", GridView3.Rows[i].Cells[3].Text));
+                            command.Parameters.Add(new OracleParameter("YEAR_TO", GridView3.Rows[i].Cells[4].Text));
+                            command.Parameters.Add(new OracleParameter("BRANCH_TRAINING", GridView3.Rows[i].Cells[5].Text));
 
                             id = command.ExecuteNonQuery();
                         }
@@ -1124,9 +1120,13 @@ namespace WEB_PERSONAL
             ClearDataGridViewNumber14();
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+             
             Session["StudyHis"] = new DataTable();
             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
-            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
+            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ (เดือน)");
+            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ (ปี)");
+            ((DataTable)(Session["StudyHis"])).Columns.Add("ถึง (เดือน)");
+            ((DataTable)(Session["StudyHis"])).Columns.Add("ถึง (ปี)");
             ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
             GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
             GridView1.DataBind();
@@ -1141,7 +1141,10 @@ namespace WEB_PERSONAL
 
             Session["Trainning"] = new DataTable();
             ((DataTable)(Session["Trainning"])).Columns.Add("หลักสูตรฝึกอบรม");
-            ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
+            ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ (เดือน)");
+            ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ (ปี)");
+            ((DataTable)(Session["Trainning"])).Columns.Add("ถึง (เดือน)");
+            ((DataTable)(Session["Trainning"])).Columns.Add("ถึง (ปี)");
             ((DataTable)(Session["Trainning"])).Columns.Add("หน่วยงานที่จัดฝึกอบรม");
             GridView3.DataSource = ((DataTable)(Session["Trainning"]));
             GridView3.DataBind();
@@ -1183,8 +1186,11 @@ namespace WEB_PERSONAL
 
             DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
             dr[0] = txtGrad_Univ.Text;
-            dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
-            dr[2] = txtMajor.Text;
+            dr[1] = DropDownMonth10From.SelectedValue;
+            dr[2] = DropDownYear10From.SelectedValue;
+            dr[3] = DropDownMonth10To.SelectedValue;
+            dr[4] = DropDownYear10To.SelectedValue;
+            dr[5] = txtMajor.Text;
             if (DropDownMonth10From.SelectedValue == "0" || DropDownYear10From.SelectedValue == "0" || DropDownMonth10To.SelectedValue == "0" || DropDownYear10To.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการศึกษา>");
@@ -1232,8 +1238,11 @@ namespace WEB_PERSONAL
         {
             DataRow dr = ((DataTable)(Session["Trainning"])).NewRow();
             dr[0] = txtCourse.Text;
-            dr[1] = DropDownMonth12From.SelectedValue + "-" + DropDownYear12From.SelectedValue + " - " + DropDownMonth12To.SelectedValue + "-" + DropDownYear12To.SelectedValue;
-            dr[2] = txtBranchTrainning.Text;
+            dr[1] = DropDownMonth12From.SelectedValue;
+            dr[2] = DropDownYear12From.SelectedValue;
+            dr[3] = DropDownMonth12To.SelectedValue;
+            dr[4] = DropDownYear12To.SelectedValue;
+            dr[5] = txtBranchTrainning.Text;
             if (DropDownMonth12From.SelectedValue == "0" || DropDownYear12From.SelectedValue == "0" || DropDownMonth12To.SelectedValue == "0" || DropDownYear12To.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการฝึกอบรม>");
