@@ -147,18 +147,22 @@ namespace WEB_PERSONAL
                         if (staff_type_id == 1)
                         {
                             RadioButton1.Checked = true;
+                            RadioButton1.ForeColor = System.Drawing.Color.Orange;
                         }
                         else if (staff_type_id == 2)
                         {
                             RadioButton2.Checked = true;
+                            RadioButton2.ForeColor = System.Drawing.Color.Orange;
                         }
                         else if (staff_type_id == 5)
                         {
                             RadioButton3.Checked = true;
+                            RadioButton3.ForeColor = System.Drawing.Color.Orange;
                         }
                         else if (staff_type_id == 3)
                         {
                             RadioButton4.Checked = true;
+                            RadioButton4.ForeColor = System.Drawing.Color.Orange;
                         }
 
 

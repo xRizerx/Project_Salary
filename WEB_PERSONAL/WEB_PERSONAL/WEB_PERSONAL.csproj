@@ -258,7 +258,6 @@
     <Content Include="Late.aspx" />
     <Content Include="Leave-Report1.aspx" />
     <Content Include="M-Admin.aspx" />
-    <Content Include="insignia_admin.aspx" />
     <Content Include="insignia_from_edit.aspx" />
     <Content Include="insignia_citizen.aspx" />
     <Content Include="insignia_user.aspx" />
@@ -428,13 +427,6 @@
     </Compile>
     <Compile Include="M-Admin.aspx.designer.cs">
       <DependentUpon>M-Admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="insignia_admin.aspx.cs">
-      <DependentUpon>insignia_admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="insignia_admin.aspx.designer.cs">
-      <DependentUpon>insignia_admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_from_edit.aspx.cs">
       <DependentUpon>insignia_from_edit.aspx</DependentUpon>

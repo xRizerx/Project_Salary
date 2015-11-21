@@ -236,10 +236,10 @@
                             <td>&nbsp;</td>
                             <td class="auto-style2">
                                 <asp:Label ID="Label9" runat="server" Text="ประเภท  "></asp:Label>
-                                <asp:RadioButton ID="RadioButton1" runat="server" Text="ข้าราชการ    " GroupName="sel" />
-                                <asp:RadioButton ID="RadioButton2" runat="server" Text="พนักงานในสถาบันฯ    " GroupName="cal" />
-                                <asp:RadioButton ID="RadioButton3" runat="server" Text="พนักงานราชการ    " GroupName="cal" />
-                                <asp:RadioButton ID="RadioButton4" runat="server" Text="ลูกจ้างประจำ    " GroupName="cal" />
+                                <asp:RadioButton ID="RadioButton1" runat="server" Text="ข้าราชการ    " GroupName="sel" Enabled="False" />
+                                <asp:RadioButton ID="RadioButton2" runat="server" Text="พนักงานในสถาบันฯ    " GroupName="cal" Enabled="False" />
+                                <asp:RadioButton ID="RadioButton3" runat="server" Text="พนักงานราชการ    " GroupName="cal" Enabled="False" />
+                                <asp:RadioButton ID="RadioButton4" runat="server" Text="ลูกจ้างประจำ    " GroupName="cal" Enabled="False" />
                             </td>
                             <td>&nbsp;</td>
                         </tr>
