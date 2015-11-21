@@ -267,14 +267,14 @@
         <br />
         <table style="width:100%;">
             <tr>
-                <td class="auto-style8">
+                <td class="auto-style64">
                     <asp:Label ID="Label17" runat="server" Text="ยศ"></asp:Label>
                 </td>
-                <td class="auto-style9">
+                <td class="auto-style65">
                     <asp:DropDownList ID="DropDownList10" runat="server" Width="269px" CssClass="master_default_textbox">
                     </asp:DropDownList>
                 </td>
-                <td>
+                <td class="auto-style46">
                     <asp:Label ID="Label64" runat="server" BorderColor="Red" Text="หมายเหตุ: ในกรณีที่มีคำนำหน้าเป็น &quot;ยศ&quot; กรุณาเลือก"></asp:Label>
                 </td>
             </tr>
@@ -487,7 +487,7 @@
                                 <asp:Label ID="Label46" runat="server" Text="1. ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style38">
-                                <asp:DropDownList ID="DropDownList5" runat="server" Width="269px" CssClass="master_default_textbox"></asp:DropDownList>
+                                <asp:DropDownList ID="DropDownList11" runat="server" Width="269px" CssClass="master_default_textbox"></asp:DropDownList>
                             </td>
                             <td class="auto-style40">
                                 <asp:Label ID="Label50" runat="server" Text="เมื่อ วัน/เดือน/ปี"></asp:Label>
@@ -531,7 +531,7 @@
                     <asp:Label ID="Label52" runat="server" Text="1. ชื่อตำแหน่งเดิม"></asp:Label>
                 </td>
                 <td class="auto-style38">
-                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px" CssClass="master_default_textbox"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownList7" runat="server" Width="269px" CssClass="master_default_textbox" ></asp:DropDownList>
                 </td>
                 <td class="auto-style40">&nbsp;</td>
                 <td class="auto-style33">&nbsp;</td>

@@ -31,7 +31,7 @@ namespace WEB_PERSONAL
                 BindDropDown2();
                 BindDropDown3();
                 BindDropDown4();
-                BindDropDown5();
+                BindDropDown11();
                 BindDropDown6();
                 BindDropDown9();
                 BindDropDown10();
@@ -57,6 +57,20 @@ namespace WEB_PERSONAL
                         }
                     }
 
+                    //Select ยศ
+                    {
+                        string Oracle = "SELECT RANK_SEQ FROM AA_REQUEST_INSIGNIA WHERE CITIZEN_ID = '" + citizen_id + "' ORDER BY ID DESC";
+                        using (OracleCommand command = new OracleCommand(Oracle, con))
+                        {
+                            using (OracleDataReader reader = command.ExecuteReader())
+                            {
+                                reader.Read();
+                                {
+                                    DropDownList10.SelectedValue = reader.GetInt32(0).ToString();
+                                }
+                            }
+                        }
+                    }
                     {
                         //select 1
                         {
@@ -293,7 +307,7 @@ namespace WEB_PERSONAL
             catch { }
         }
 
-        private void BindDropDown5()
+        private void BindDropDown11()
         {
             try
             {
@@ -307,19 +321,19 @@ namespace WEB_PERSONAL
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
-                        DropDownList5.DataSource = dt;
-                        DropDownList5.DataValueField = "POSITION_ID";
-                        DropDownList5.DataTextField = "POSITION_NAME";
-                        DropDownList5.DataBind();
+                        DropDownList11.DataSource = dt;
+                        DropDownList11.DataValueField = "ID";
+                        DropDownList11.DataTextField = "NAME";
+                        DropDownList11.DataBind();
 
                         DropDownList6.DataSource = dt;
-                        DropDownList6.DataValueField = "POSITION_ID";
-                        DropDownList6.DataTextField = "POSITION_NAME";
+                        DropDownList6.DataValueField = "ID";
+                        DropDownList6.DataTextField = "NAME";
                         DropDownList6.DataBind();
 
                         sqlConn.Close();
 
-                        DropDownList5.Items.Insert(0, new ListItem("-- กรุณาเลือก --", "0"));
+                        DropDownList11.Items.Insert(0, new ListItem("-- กรุณาเลือก --", "0"));
                         DropDownList6.Items.Insert(0, new ListItem("-- กรุณาเลือก --", "0"));
 
                     }
@@ -465,7 +479,7 @@ namespace WEB_PERSONAL
                             command.Parameters.AddWithValue("8", DropDownList4.SelectedValue); //OLD_TITLE_ID
                             command.Parameters.AddWithValue("9", TextBox19.Text); //OLD_NAME
                             command.Parameters.AddWithValue("10", TextBox20.Text); //OLD_LASTNAME
-                            command.Parameters.AddWithValue("11", DropDownList5.SelectedValue); //H1_POSITION_ID_1
+                            command.Parameters.AddWithValue("11", DropDownList11.SelectedValue); //H1_POSITION_ID_1
                             command.Parameters.AddWithValue("12", Util.ODT(TextBox25.Text)); //H1_DATE_1
                             command.Parameters.AddWithValue("13", DropDownList6.SelectedValue); //H1_POSITION_ID_2
                             command.Parameters.AddWithValue("14", Util.ODT(TextBox26.Text)); //H1_DATE_2

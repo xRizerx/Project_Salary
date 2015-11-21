@@ -20,16 +20,11 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                   BindData();
-               // if (Session["login_id"] == null)
-               // {
-               //     Session["show_login"] = "1";
-                    //Response.Redirect("default.aspx");
-                    //return;
-               // }
-                /*using (OracleConnection conn = Util.OC())
+
+                using (OracleConnection conn = Util.OC())
                 {
                     using (OracleCommand cmd = new OracleCommand("select CITIZEN_ID,TITLE_ID,PERSON_NAME,PERSON_LASTNAME,TO_CHAR(BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),BIRTHDATE_LONG,TO_CHAR(RETIRE_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),RETIRE_DATE_LONG,TO_CHAR(INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,MINISTRY_ID,DEPARTMENT_NAME from tb_person where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-
+                        
                     {
                         using (OracleDataReader reader = cmd.ExecuteReader())
                         {
@@ -57,146 +52,9 @@ namespace WEB_PERSONAL
                                 txtDepart.Text = reader.IsDBNull(19) ? "" : reader.GetString(19);
                             }
                         }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select GRAD_UNIV,to_char(DATE_FROM, 'Mon', 'NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_FROM),to_char(DATE_TO, 'Mon','NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_TO),MAJOR from TB_STUDY_HISTORY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["StudyHis"] = new DataTable();
-                            ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
-                            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
-                            ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1) + "-" + reader.GetInt32(2) + " - " + reader.GetString(3) + "-" + reader.GetInt32(4);
-                                dr[2] = reader.GetString(5);
-
-                                ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
-
-                            }
-                            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
-                            GridView1.DataBind();
-                            ClearDataGridViewNumber10();
-                        }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select LICENCE_NAME,BRANCH,LICENCE_NO,to_char(DDATE, 'dd MON yyyy','NLS_DATE_LANGUAGE = THAI') from TB_JOB_LICENSE where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["JobLisence"] = new DataTable();
-                            ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
-                            ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
-                            ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
-                            ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["JobLisence"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1);
-                                dr[2] = reader.GetString(2);
-                                dr[3] = reader.GetString(3);
-
-                                ((DataTable)(Session["JobLisence"])).Rows.Add(dr);
-
-                            }
-                            GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
-                            GridView2.DataBind();
-                            ClearDataGridViewNumber11();
-                        }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select COURSE,to_char(DATE_FROM, 'Mon', 'NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_FROM),to_char(DATE_TO, 'Mon','NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_TO),BRANCH_TRAINING from TB_TRAINING_HISTORY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["Trainning"] = new DataTable();
-                            ((DataTable)(Session["Trainning"])).Columns.Add("หลักสูตรฝึกอบรม");
-                            ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
-                            ((DataTable)(Session["Trainning"])).Columns.Add("หน่วยงานที่จัดฝึกอบรม");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["Trainning"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1) + "-" + reader.GetInt32(2) + " - " + reader.GetString(3) + "-" + reader.GetInt32(4);
-                                dr[2] = reader.GetString(5);
-
-                                ((DataTable)(Session["Trainning"])).Rows.Add(dr);
-
-                            }
-                            GridView3.DataSource = ((DataTable)(Session["Trainning"]));
-                            GridView3.DataBind();
-                            ClearDataGridViewNumber12();
-                        }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select YEAR,MENU,REF_DOC from TB_DISCIPLINARY_AND_AMNESTY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["Punished"] = new DataTable();
-                            ((DataTable)(Session["Punished"])).Columns.Add("พ.ศ.");
-                            ((DataTable)(Session["Punished"])).Columns.Add("รายการ");
-                            ((DataTable)(Session["Punished"])).Columns.Add("เอกสารอ้างอิง");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["Punished"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1);
-                                dr[2] = reader.GetString(2);
-
-                                ((DataTable)(Session["Punished"])).Rows.Add(dr);
-
-                            }
-                            GridView4.DataSource = ((DataTable)(Session["Punished"]));
-                            GridView4.DataBind();
-                            ClearDataGridViewNumber13();
-                        }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select to_char(DDATE, 'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),POSITION_NAME,PERSON_ID,ST_ID,POSITION_ID,SALARY,POSITION_SALARY,REFERENCE_DOCUMENT from TB_POSITION_AND_SALARY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["PositionAndSalary"] = new DataTable();
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่งประเภท");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["PositionAndSalary"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1);
-                                dr[2] = reader.GetString(2);
-                                dr[3] = reader.GetString(3);
-                                dr[4] = reader.GetInt32(4);
-                                dr[5] = reader.GetInt32(5);
-                                dr[6] = reader.GetInt32(6);
-                                dr[7] = reader.GetString(7);
-
-                                ((DataTable)(Session["PositionAndSalary"])).Rows.Add(dr);
-
-                            }
-                            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
-                            GridView5.DataBind();
-                            ClearDataGridViewNumber14();
-                        }
-                    }
+                    } 
                     
-                }*/
+                }
                 DDLMisnistry();
                 DDLTitle();
                 DDLStaffType();
@@ -235,67 +93,345 @@ namespace WEB_PERSONAL
 
         void BindData()
         {
-            ClassPersonStudyHistory p = new ClassPersonStudyHistory();
-            DataTable dt = p.GetPersonStudyHistory("", "", "", "");
-            GridView1.DataSource = dt;
+            if (Session["login_id"] == null)
+                {
+                Response.Redirect("Access.aspx");
+                return;
+                }
+
+            ClassPersonStudyHistory p1 = new ClassPersonStudyHistory();
+            DataTable dt1 = p1.GetPersonStudyHistory("", "", "", "", "", "", Session["login_id"].ToString());
+            GridView1.DataSource = dt1;
             GridView1.DataBind();
-            SetViewState(dt);
+
+            ClassPersonJobLisence p2 = new ClassPersonJobLisence();
+            DataTable dt2 = p2.GetPersonJobLisence("", "", "", "", Session["login_id"].ToString());
+            GridView2.DataSource = dt2;
+            GridView2.DataBind();
+
+            ClassPersonTraining p3 = new ClassPersonTraining();
+            DataTable dt3 = p3.GetPersonTraining("", "", "", "", "", "", Session["login_id"].ToString());
+            GridView3.DataSource = dt3;
+            GridView3.DataBind();
+
+            ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY();
+            DataTable dt4 = p4.GetPersonDISCIPLINARY("", "", "", Session["login_id"].ToString());
+            GridView4.DataSource = dt4;
+            GridView4.DataBind();
+
+            ClassPersonPosiSalary p5 = new ClassPersonPosiSalary();
+            DataTable dt5 = p5.GetPersonPosiSalary("", "", "", "", 0, 0, 0, "", Session["login_id"].ToString());
+            GridView5.DataSource = dt5;
+            GridView5.DataBind();
+
+            SetViewState(dt1);
+            SetViewState(dt2);
+            SetViewState(dt3);
+            SetViewState(dt4);
+            SetViewState(dt5);
         }
 
-        protected void modEditCommand(Object sender, GridViewEditEventArgs e)
+        protected void modEditCommand1(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
             BindData();
         }
-        protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
+        protected void modCancelCommand1(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
             BindData();
         }
-        protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
+        protected void modDeleteCommand1(Object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            ClassPersonStudyHistory p = new ClassPersonStudyHistory();
-            p.IDSEQ = id;
-            p.DeletePersonStudyHistory();
+            ClassPersonStudyHistory p1 = new ClassPersonStudyHistory();
+            p1.IDSEQ = id;
+            p1.DeletePersonStudyHistory();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
             BindData();
         }
-        protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
+        protected void modUpdateCommand1(Object sender, GridViewUpdateEventArgs e)
         {
             
             Label lblPersonStudyHistoryID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryID");
             Label lblPersonStudyHistoryCitizenID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryCitizenID");
             TextBox txtPersonStudyHistoryGradUNIVEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryGradUNIVEdit");
-            TextBox lblPersonStudyHistoryDateFromEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryDateFromEdit");
-            TextBox lblPersonStudyHistoryDateTOEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryDateTOEdit");
+            TextBox txtPersonStudyHistoryMonthFromEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMonthFromEdit");
+            TextBox txtPersonStudyHistoryYearFromEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryYearFromEdit");
+            TextBox txtPersonStudyHistoryMonthTOEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMonthTOEdit");
+            TextBox txtPersonStudyHistoryYearTOEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryYearTOEdit");
             TextBox txtPersonStudyHistoryMajorEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMajorEdit");
-            DateTime DATE_FROM = DateTime.Parse(lblPersonStudyHistoryDateFromEdit.Text);
-            DateTime DATE_TO = DateTime.Parse(lblPersonStudyHistoryDateTOEdit.Text);
 
-            ClassPersonStudyHistory p = new ClassPersonStudyHistory(Convert.ToInt32(lblPersonStudyHistoryID.Text), lblPersonStudyHistoryCitizenID.Text
+            ClassPersonStudyHistory p1 = new ClassPersonStudyHistory(Convert.ToInt32(lblPersonStudyHistoryID.Text), lblPersonStudyHistoryCitizenID.Text
                 , txtPersonStudyHistoryGradUNIVEdit.Text
-                , DATE_FROM
-                , DATE_TO
+                , txtPersonStudyHistoryMonthFromEdit.Text
+                , txtPersonStudyHistoryYearFromEdit.Text
+                , txtPersonStudyHistoryMonthTOEdit.Text
+                , txtPersonStudyHistoryYearTOEdit.Text
                 , txtPersonStudyHistoryMajorEdit.Text);
 
-            p.UpdatePersonStudyHistory();
+            p1.UpdatePersonStudyHistory();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData();
             
         }
-        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void GridView1_RowDataBound1(object sender, GridViewRowEventArgs e)
         {
 
         }
-        protected void myGridViewPersonStudyHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void myGridViewPersonStudyHistory_PageIndexChanging1(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataSource = GetViewState();
             GridView1.DataBind();
+        }
+
+        /// <summary>
+        /// /////////////////////
+        /// </summary>
+
+        protected void modEditCommand2(Object sender, GridViewEditEventArgs e)
+        {
+            GridView2.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+        protected void modCancelCommand2(Object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView2.EditIndex = -1;
+            BindData();
+        }
+        protected void modDeleteCommand2(Object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            ClassPersonJobLisence p2 = new ClassPersonJobLisence();
+            p2.ID = id;
+            p2.DeletePersonJobLisence();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
+
+            GridView2.EditIndex = -1;
+            BindData();
+        }
+        protected void modUpdateCommand2(Object sender, GridViewUpdateEventArgs e)
+        {
+
+            Label lblPersonJobLisenceID = (Label)GridView2.Rows[e.RowIndex].FindControl("lblPersonJobLisenceID");
+            Label lblPersonJobLisenceCitizenID = (Label)GridView2.Rows[e.RowIndex].FindControl("lblPersonJobLisenceCitizenID");
+            TextBox txtPersonJobLisenceNameEdit = (TextBox)GridView2.Rows[e.RowIndex].FindControl("txtPersonJobLisenceNameEdit");
+            TextBox txtPersonJobLisenceBranchEdit = (TextBox)GridView2.Rows[e.RowIndex].FindControl("txtPersonJobLisenceBranchEdit");
+            TextBox txtPersonJobLisenceLicenseNOEdit = (TextBox)GridView2.Rows[e.RowIndex].FindControl("txtPersonJobLisenceLicenseNOEdit");
+            TextBox lblPersonJobLisenceDDATEEdit = (TextBox)GridView2.Rows[e.RowIndex].FindControl("txtPersonJobLisenceDDATEEdit");
+            DateTime DDATE = DateTime.Parse(lblPersonJobLisenceDDATEEdit.Text);
+
+            ClassPersonJobLisence p2 = new ClassPersonJobLisence(Convert.ToInt32(lblPersonJobLisenceID.Text), lblPersonJobLisenceCitizenID.Text
+                , txtPersonJobLisenceNameEdit.Text
+                , txtPersonJobLisenceBranchEdit.Text
+                , txtPersonJobLisenceLicenseNOEdit.Text
+                , DDATE);
+
+            p2.UpdatePersonJobLisence();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+            GridView2.EditIndex = -1;
+            BindData();
+
+        }
+        protected void GridView2_RowDataBound2(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+        protected void myGridViewPersonJobLisence_PageIndexChanging2(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            GridView2.DataSource = GetViewState();
+            GridView2.DataBind();
+        }
+
+        /// <summary>
+        /// /////////////////////
+        /// </summary>
+
+        protected void modEditCommand3(Object sender, GridViewEditEventArgs e)
+        {
+            GridView3.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+        protected void modCancelCommand3(Object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView3.EditIndex = -1;
+            BindData();
+        }
+        protected void modDeleteCommand3(Object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView3.DataKeys[e.RowIndex].Value);
+            ClassPersonTraining p3 = new ClassPersonTraining();
+            p3.ID = id;
+            p3.DeletePersonTraining();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
+
+            GridView3.EditIndex = -1;
+            BindData();
+        }
+        protected void modUpdateCommand3(Object sender, GridViewUpdateEventArgs e)
+        {
+
+            Label lblPersonTrainingID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonTrainingID");
+            Label lblPersonTrainingCitizenID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonTrainingCitizenID");
+            TextBox txtPersonTrainingCourseEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingCourseEdit");
+            TextBox txtPersonTrainingMonthFromEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingMonthFromEdit");
+            TextBox txtPersonTrainingYearFromEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingYearFromEdit");
+            TextBox txtPersonTrainingMonthTOEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingMonthTOEdit");
+            TextBox txtPersonTrainingYearTOEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingYearTOEdit");
+            TextBox txtPersonTrainingBranchEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingBranchEdit");
+
+            ClassPersonTraining p3 = new ClassPersonTraining(Convert.ToInt32(lblPersonTrainingID.Text), lblPersonTrainingCitizenID.Text
+                , txtPersonTrainingCourseEdit.Text
+                , txtPersonTrainingMonthFromEdit.Text
+                , txtPersonTrainingYearFromEdit.Text
+                , txtPersonTrainingMonthTOEdit.Text
+                , txtPersonTrainingYearTOEdit.Text
+                , txtPersonTrainingBranchEdit.Text);
+
+            p3.UpdatePersonTraining();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+            GridView3.EditIndex = -1;
+            BindData();
+
+        }
+        protected void GridView3_RowDataBound3(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+        protected void myGridViewPersonTraining_PageIndexChanging3(object sender, GridViewPageEventArgs e)
+        {
+            GridView3.PageIndex = e.NewPageIndex;
+            GridView3.DataSource = GetViewState();
+            GridView3.DataBind();
+        }
+
+        /// <summary>
+        /// /////////////////////
+        /// </summary>
+
+        protected void modEditCommand4(Object sender, GridViewEditEventArgs e)
+        {
+            GridView4.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+        protected void modCancelCommand4(Object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView4.EditIndex = -1;
+            BindData();
+        }
+        protected void modDeleteCommand4(Object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView4.DataKeys[e.RowIndex].Value);
+            ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY();
+            p4.ID = id;
+            p4.DeletePersonDISCIPLINARY();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
+
+            GridView4.EditIndex = -1;
+            BindData();
+        }
+        protected void modUpdateCommand4(Object sender, GridViewUpdateEventArgs e)
+        {
+
+            Label lblPersonDISCIPLINARYID = (Label)GridView4.Rows[e.RowIndex].FindControl("lblPersonDISCIPLINARYID");
+            Label lblPersonDISCIPLINARYCitizenID = (Label)GridView4.Rows[e.RowIndex].FindControl("lblPersonDISCIPLINARYCitizenID");
+            TextBox txtPersonDISCIPLINARYYearEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYYearEdit");
+            TextBox txtPersonDISCIPLINARYListEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYListEdit");
+            TextBox txtPersonDISCIPLINARYRefEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYRefEdit");
+
+            ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY(Convert.ToInt32(lblPersonDISCIPLINARYID.Text), lblPersonDISCIPLINARYCitizenID.Text
+                , txtPersonDISCIPLINARYYearEdit.Text
+                , txtPersonDISCIPLINARYListEdit.Text
+                , txtPersonDISCIPLINARYRefEdit.Text);
+
+            p4.UpdatePersonDISCIPLINARY();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+            GridView4.EditIndex = -1;
+            BindData();
+
+        }
+        protected void GridView4_RowDataBound4(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+        protected void myGridViewPersonDISCIPLINARY_PageIndexChanging4(object sender, GridViewPageEventArgs e)
+        {
+            GridView4.PageIndex = e.NewPageIndex;
+            GridView4.DataSource = GetViewState();
+            GridView4.DataBind();
+        }
+
+        /// <summary>
+        /// /////////////////////
+        /// </summary>
+
+        protected void modEditCommand5(Object sender, GridViewEditEventArgs e)
+        {
+            GridView5.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+        protected void modCancelCommand5(Object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView5.EditIndex = -1;
+            BindData();
+        }
+        protected void modDeleteCommand5(Object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView5.DataKeys[e.RowIndex].Value);
+            ClassPersonPosiSalary p5 = new ClassPersonPosiSalary();
+            p5.ID = id;
+            p5.DeletePersonPosiSalary();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
+
+            GridView5.EditIndex = -1;
+            BindData();
+        }
+        protected void modUpdateCommand5(Object sender, GridViewUpdateEventArgs e)
+        {
+
+            Label lblPersonPosiSalaryID = (Label)GridView5.Rows[e.RowIndex].FindControl("lblPersonPosiSalaryID");
+            TextBox lblPersonPosiSalaryDateEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryDateEdit");
+            TextBox txtPersonPosiSalaryPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionEdit");
+            TextBox txtPersonPosiSalaryNoPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryNoPositionEdit");
+            TextBox txtPersonPosiSalaryTypePositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryTypePositionEdit");
+            TextBox txtPersonPosiSalaryDegreeEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryDegreeEdit");
+            TextBox txtPersonPosiSalarySALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalarySALARYEdit");
+            TextBox txtPersonPosiSalaryPositionSALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionSALARYEdit");
+            TextBox txtPersonPosiSalaryRefEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryRefEdit");
+            Label lblPersonPosiSalaryCitizenID = (Label)GridView5.Rows[e.RowIndex].FindControl("lblPersonPosiSalaryCitizenID");
+            DateTime DDATE = DateTime.Parse(lblPersonPosiSalaryDateEdit.Text);
+
+            ClassPersonPosiSalary p5 = new ClassPersonPosiSalary(Convert.ToInt32(lblPersonPosiSalaryID.Text)
+                , DDATE
+                , txtPersonPosiSalaryPositionEdit.Text
+                , txtPersonPosiSalaryNoPositionEdit.Text
+                , txtPersonPosiSalaryTypePositionEdit.Text
+                , Convert.ToInt32(txtPersonPosiSalaryDegreeEdit.Text)
+                , Convert.ToInt32(txtPersonPosiSalarySALARYEdit.Text)
+                , Convert.ToInt32(txtPersonPosiSalaryPositionSALARYEdit.Text)
+                , txtPersonPosiSalaryRefEdit.Text
+                , lblPersonPosiSalaryCitizenID.Text);
+
+            p5.UpdatePersonPosiSalary();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+            GridView5.EditIndex = -1;
+            BindData();
+
+        }
+        protected void GridView5_RowDataBound5(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+        protected void myGridViewPersonPosiSalary_PageIndexChanging5(object sender, GridViewPageEventArgs e)
+        {
+            GridView5.PageIndex = e.NewPageIndex;
+            GridView5.DataSource = GetViewState();
+            GridView5.DataBind();
         }
 
         private void DDLMisnistry()
@@ -1106,7 +1242,13 @@ namespace WEB_PERSONAL
         protected void ButtonPlus10_Click(object sender, EventArgs e)
         {
 
-
+          /*  ClassPersonStudyHistory P = new ClassPersonStudyHistory();
+            P.CITIZEN_ID = txtCitizen.Text;
+            P.GRAD_UNIV = DateTime.Parse(DropDownMonth10From.Text);
+            P.DATE_FROM = DateTime.Parse(txtDateInWork.Text);
+            P.DATE_TO = DateTime.Parse(txtAge60Number.Text);
+            P.MAJOR = txtMajor.Text;
+        */
 
         }
 
