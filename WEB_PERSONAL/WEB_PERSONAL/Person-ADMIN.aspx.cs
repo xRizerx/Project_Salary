@@ -1241,38 +1241,67 @@ namespace WEB_PERSONAL
 
         protected void ButtonPlus10_Click(object sender, EventArgs e)
         {
-
-          /*  ClassPersonStudyHistory P = new ClassPersonStudyHistory();
+            ClassPersonStudyHistory P = new ClassPersonStudyHistory();
             P.CITIZEN_ID = txtCitizen.Text;
-            P.GRAD_UNIV = DateTime.Parse(DropDownMonth10From.Text);
-            P.DATE_FROM = DateTime.Parse(txtDateInWork.Text);
-            P.DATE_TO = DateTime.Parse(txtAge60Number.Text);
+            P.GRAD_UNIV = txtGrad_Univ.Text;
+            P.MONTH_FROM = DropDownMonth10From.SelectedValue;
+            P.YEAR_FROM = DropDownYear10From.SelectedValue;
+            P.MONTH_TO = DropDownMonth10To.SelectedValue;
+            P.YEAR_TO = DropDownYear10To.SelectedValue;
             P.MAJOR = txtMajor.Text;
-        */
-
+            P.InsertPersonStudyHistory();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ประวัติการศึกษา>เรียบร้อย')", true);
         }
 
         protected void ButtonPlus11_Click(object sender, EventArgs e)
         {
-
-
-
+            ClassPersonJobLisence P = new ClassPersonJobLisence();
+            P.CITIZEN_ID = txtCitizen.Text;
+            P.LICENCE_NAME = txtGrad_Univ11.Text;
+            P.BRANCH = txtDepart11.Text;
+            P.LICENCE_NO = txtNolicense11.Text;
+            P.DDATE = DateTime.Parse(txtDateEnable11.Text);
+            P.InsertPersonJobLisence();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ใบอนุญาตประกอบวิชาชีพ>เรียบร้อย')", true);
         }
 
         protected void ButtonPlus12_Click(object sender, EventArgs e)
         {
-
+            ClassPersonTraining P = new ClassPersonTraining();
+            P.CITIZEN_ID = txtCitizen.Text;
+            P.COURSE = txtCourse.Text;
+            P.MONTH_FROM = DropDownMonth12From.SelectedValue;
+            P.YEAR_FROM = DropDownYear12From.SelectedValue;
+            P.MONTH_TO = DropDownMonth12To.SelectedValue;
+            P.YEAR_TO = DropDownYear12To.SelectedValue;
+            P.BRANCH_TRAINING = txtBranchTrainning.Text;
+            P.InsertPersonTraining();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ประวัติการฝึกอบรม>เรียบร้อย')", true);
         }
 
         protected void ButtonPlus13_Click(object sender, EventArgs e)
         {
-
-
+            ClassPersonDISCIPLINARY P = new ClassPersonDISCIPLINARY();
+            P.CITIZEN_ID = txtCitizen.Text;
+            P.YEAR = DropDownYear13.SelectedValue;
+            P.MENU = txtList13.Text;
+            P.REF_DOC = txtRefDoc13.Text;
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<การได้รับโทษทางวินัยและการนิรโทษกรรม>เรียบร้อย')", true);
         }
 
         protected void ButtonPlus14_Click(object sender, EventArgs e)
         {
-
+            ClassPersonPosiSalary P = new ClassPersonPosiSalary();
+            P.DDATE = DateTime.Parse(txtDate14.Text);
+            P.POSITION_NAME = txtPosition14.Text;
+            P.PERSON_ID = txtNo_Position14.Text;
+            P.ST_ID = DropDownType_Position14.SelectedValue;
+            P.POSITION_ID = Convert.ToInt32(DropDownDegree14.SelectedValue);
+            P.SALARY = Convert.ToInt32(txtSalary14.Text);
+            P.POSITION_SALARY = Convert.ToInt32(txtSalaryForPosition14);
+            P.REFERENCE_DOCUMENT = txtRefDoc14.Text;
+            P.CITIZEN_ID = txtCitizen.Text;
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ตำแหน่งและเงินเดือน>เรียบร้อย')", true);
         }
 
     }
