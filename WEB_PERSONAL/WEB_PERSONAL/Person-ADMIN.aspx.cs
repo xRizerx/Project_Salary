@@ -20,16 +20,11 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                   BindData();
-               // if (Session["login_id"] == null)
-               // {
-               //     Session["show_login"] = "1";
-                    //Response.Redirect("default.aspx");
-                    //return;
-               // }
-                /*using (OracleConnection conn = Util.OC())
+
+                using (OracleConnection conn = Util.OC())
                 {
                     using (OracleCommand cmd = new OracleCommand("select CITIZEN_ID,TITLE_ID,PERSON_NAME,PERSON_LASTNAME,TO_CHAR(BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),BIRTHDATE_LONG,TO_CHAR(RETIRE_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),RETIRE_DATE_LONG,TO_CHAR(INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,MINISTRY_ID,DEPARTMENT_NAME from tb_person where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-
+                        
                     {
                         using (OracleDataReader reader = cmd.ExecuteReader())
                         {
@@ -57,146 +52,9 @@ namespace WEB_PERSONAL
                                 txtDepart.Text = reader.IsDBNull(19) ? "" : reader.GetString(19);
                             }
                         }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select GRAD_UNIV,to_char(DATE_FROM, 'Mon', 'NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_FROM),to_char(DATE_TO, 'Mon','NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_TO),MAJOR from TB_STUDY_HISTORY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["StudyHis"] = new DataTable();
-                            ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
-                            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
-                            ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1) + "-" + reader.GetInt32(2) + " - " + reader.GetString(3) + "-" + reader.GetInt32(4);
-                                dr[2] = reader.GetString(5);
-
-                                ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
-
-                            }
-                            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
-                            GridView1.DataBind();
-                            ClearDataGridViewNumber10();
-                        }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select LICENCE_NAME,BRANCH,LICENCE_NO,to_char(DDATE, 'dd MON yyyy','NLS_DATE_LANGUAGE = THAI') from TB_JOB_LICENSE where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["JobLisence"] = new DataTable();
-                            ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
-                            ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
-                            ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
-                            ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["JobLisence"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1);
-                                dr[2] = reader.GetString(2);
-                                dr[3] = reader.GetString(3);
-
-                                ((DataTable)(Session["JobLisence"])).Rows.Add(dr);
-
-                            }
-                            GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
-                            GridView2.DataBind();
-                            ClearDataGridViewNumber11();
-                        }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select COURSE,to_char(DATE_FROM, 'Mon', 'NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_FROM),to_char(DATE_TO, 'Mon','NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_TO),BRANCH_TRAINING from TB_TRAINING_HISTORY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["Trainning"] = new DataTable();
-                            ((DataTable)(Session["Trainning"])).Columns.Add("หลักสูตรฝึกอบรม");
-                            ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
-                            ((DataTable)(Session["Trainning"])).Columns.Add("หน่วยงานที่จัดฝึกอบรม");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["Trainning"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1) + "-" + reader.GetInt32(2) + " - " + reader.GetString(3) + "-" + reader.GetInt32(4);
-                                dr[2] = reader.GetString(5);
-
-                                ((DataTable)(Session["Trainning"])).Rows.Add(dr);
-
-                            }
-                            GridView3.DataSource = ((DataTable)(Session["Trainning"]));
-                            GridView3.DataBind();
-                            ClearDataGridViewNumber12();
-                        }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select YEAR,MENU,REF_DOC from TB_DISCIPLINARY_AND_AMNESTY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["Punished"] = new DataTable();
-                            ((DataTable)(Session["Punished"])).Columns.Add("พ.ศ.");
-                            ((DataTable)(Session["Punished"])).Columns.Add("รายการ");
-                            ((DataTable)(Session["Punished"])).Columns.Add("เอกสารอ้างอิง");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["Punished"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1);
-                                dr[2] = reader.GetString(2);
-
-                                ((DataTable)(Session["Punished"])).Rows.Add(dr);
-
-                            }
-                            GridView4.DataSource = ((DataTable)(Session["Punished"]));
-                            GridView4.DataBind();
-                            ClearDataGridViewNumber13();
-                        }
-                    }
-                    using (OracleCommand cmd = new OracleCommand("select to_char(DDATE, 'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),POSITION_NAME,PERSON_ID,ST_ID,POSITION_ID,SALARY,POSITION_SALARY,REFERENCE_DOCUMENT from TB_POSITION_AND_SALARY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
-                    {
-                        using (OracleDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            Session["PositionAndSalary"] = new DataTable();
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่งประเภท");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
-                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
-
-                            while (reader.Read())
-                            {
-                                DataRow dr = ((DataTable)(Session["PositionAndSalary"])).NewRow();
-                                dr[0] = reader.GetString(0);
-                                dr[1] = reader.GetString(1);
-                                dr[2] = reader.GetString(2);
-                                dr[3] = reader.GetString(3);
-                                dr[4] = reader.GetInt32(4);
-                                dr[5] = reader.GetInt32(5);
-                                dr[6] = reader.GetInt32(6);
-                                dr[7] = reader.GetString(7);
-
-                                ((DataTable)(Session["PositionAndSalary"])).Rows.Add(dr);
-
-                            }
-                            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
-                            GridView5.DataBind();
-                            ClearDataGridViewNumber14();
-                        }
-                    }
+                    } 
                     
-                }*/
+                }
                 DDLMisnistry();
                 DDLTitle();
                 DDLStaffType();
