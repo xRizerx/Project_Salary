@@ -147,15 +147,20 @@ win=window.open(mypage,myname,settings);}
                     <asp:Label ID="Label8" runat="server" Text="กรุณาป้อนรหัสบัตรประชาชน"></asp:Label>
                 </td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style1" Height="24px" MaxLength="13" Width="100px"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" CssClass="master_default_textbox" Height="24px" MaxLength="13" Width="100px"></asp:TextBox>
                 </td>
                 <td class="auto-style14">
-                    <asp:Button ID="Button1" runat="server" Height="24px" OnClick="Button1_Click" Text="ค้นหา" Width="100px" />
-                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="ออกรายงาน" CssClass="button_ui_edit" />
+                    <asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui_edit" OnClick="Button1_Click">ค้นหา</asp:LinkButton>
+                    <a href="SalaryByID-Report.aspx" class="button_ui_edit">ออกรายงาน</a>
                     <a href="Salary_Basesalary.aspx" onclick="Popup(this.href, 'Base_salary', '350', '350', 'no', 'center'); return false;" class="button_ui">ปรับฐานเงินเดือน</a>
 
 
                 </td>
+            </tr>
+            <tr>
+                <td class="auto-style21">&nbsp;</td>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style14">&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style14" colspan="3">
@@ -218,7 +223,7 @@ win=window.open(mypage,myname,settings);}
                     <asp:Label ID="Label20" runat="server" Text="เงินเดือนก่อนเลื่อน (ณ 1 มี.ค. 58)"></asp:Label>
                 </td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox2" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label21" runat="server" Text="เงินเดือนสูงสุดแต่ละประเภท"></asp:Label>
@@ -238,7 +243,7 @@ win=window.open(mypage,myname,settings);}
                     <asp:Label ID="Label25" runat="server" Text="ร้อยละที่ได้เลื่อน"></asp:Label>
                 </td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -285,13 +290,13 @@ win=window.open(mypage,myname,settings);}
                     <asp:Label ID="Label36" runat="server" Text="คะแนนผลประเมิน"></asp:Label>
                 </td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox4" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label37" runat="server" Text="ระดับการประเมิน"></asp:Label>
                 </td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -315,13 +320,13 @@ win=window.open(mypage,myname,settings);}
                     <asp:Label ID="Label38" runat="server" Text="ร้อยละได้เลื่อน (ตามสัดส่วน)"></asp:Label>
                 </td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label39" runat="server" Text="ร้อยละที่ได้เลื่อน (อธิการบดีเพิ่มให้)"></asp:Label>
                 </td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -408,7 +413,7 @@ win=window.open(mypage,myname,settings);}
             <tr>
                 <td class="auto-style4">หมายเหตุ</td>
                 <td colspan="2">
-                    <asp:TextBox ID="TextBox9" runat="server" Height="50px" TextMode="Multiline" Width="500px" Font-Size="14pt" style = "resize:none" ></asp:TextBox>
+                    <asp:TextBox ID="TextBox9" runat="server" Height="50px" TextMode="Multiline" Width="500px" Font-Size="14pt" style = "resize:none" CssClass="master_default_textbox_multi_line" ></asp:TextBox>
                 </td>
                 <td>
                     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui" OnClick="LinkButton1_Click">คำนวณเงินเดือน</asp:LinkButton>
