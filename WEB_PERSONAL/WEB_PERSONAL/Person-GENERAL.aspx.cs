@@ -183,7 +183,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -211,7 +211,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -239,7 +239,7 @@ namespace WEB_PERSONAL
                         DropDownYear10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -267,7 +267,7 @@ namespace WEB_PERSONAL
                         DropDownYear10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -295,7 +295,7 @@ namespace WEB_PERSONAL
                         DropDownMonth12From.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -323,7 +323,7 @@ namespace WEB_PERSONAL
                         DropDownMonth12To.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -351,7 +351,7 @@ namespace WEB_PERSONAL
                         DropDownYear12From.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -379,7 +379,7 @@ namespace WEB_PERSONAL
                         DropDownYear12To.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -407,7 +407,7 @@ namespace WEB_PERSONAL
                         DropDownYear13.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -435,8 +435,8 @@ namespace WEB_PERSONAL
                         DropDownType_Position14.DataBind();
                         sqlConn.Close();
 
-                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "-1"));
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "-1"));
+                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
+                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
                     }
                 }
             }
@@ -463,7 +463,7 @@ namespace WEB_PERSONAL
                         DropDownDegree14.DataBind();
                         sqlConn.Close();
 
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "-1"));
+                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
 
                     }
                 }
@@ -475,7 +475,6 @@ namespace WEB_PERSONAL
         {
             DropDownMinistry.SelectedIndex = 0;
             txtDepart.Text = "มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก";
-            //DropDownDepart.SelectedIndex = 0;
             DropDownTitle.SelectedIndex = 0;
             txtCitizen.Text = "";
             txtName.Text = "";
@@ -899,13 +898,14 @@ namespace WEB_PERSONAL
             P.RETIRE_DATE = new DateTime(Convert.ToInt32(splitDate3[2]), Util.MonthToNumber(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
 
             P.InsertPerson();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
 
             for (int i = 0; i < GridView1.Rows.Count; ++i)
             {
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY VALUES (SEQ_STUDY_HISTORY_ID.NEXTVAL,:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY (CITIZEN_ID,GRAD_UNIV,DATE_FROM,DATE_TO,MAJOR) VALUES (:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn))
                     {
 
                         try
@@ -949,7 +949,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_JOB_LICENSE VALUES (SEQ_JOB_LICENSE_ID.NEXTVAL,:CITIZEN_ID,:LICENCE_NAME,:BRANCH,:LICENCE_NO,:DDATE)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_JOB_LICENSE (CITIZEN_ID,LICENCE_NAME,BRANCH,LICENCE_NO,DDATE) VALUES (:CITIZEN_ID,:LICENCE_NAME,:BRANCH,:LICENCE_NO,:DDATE)", conn))
                     {
 
                         try
@@ -993,7 +993,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_TRAINING_HISTORY VALUES (SEQ_TRAINNING_HISTORY_ID.NEXTVAL,:CITIZEN_ID,:COURSE,:DATE_FROM,:DATE_TO,:BRANCH_TRAINING)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_TRAINING_HISTORY (CITIZEN_ID,COURSE,DATE_FROM,DATE_TO,BRANCH_TRAINING) VALUES (:CITIZEN_ID,:COURSE,:DATE_FROM,:DATE_TO,:BRANCH_TRAINING)", conn))
                     {
 
                         try
@@ -1037,7 +1037,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_DISCIPLINARY_AND_AMNESTY VALUES (SEQ_DISCIPLINARY_ID.NEXTVAL,:CITIZEN_ID,:YEAR,:MENU,:REF_DOC)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_DISCIPLINARY_AND_AMNESTY (CITIZEN_ID,YEAR,MENU,REF_DOC) VALUES (:CITIZEN_ID,:YEAR,:MENU,:REF_DOC)", conn))
                     {
 
                         try
@@ -1073,7 +1073,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_POSITION_AND_SALARY VALUES (SEQ_posiNsalary_ID.NEXTVAL,:DDATE,:POSITION_NAME,:PERSON_ID,:ST_ID,:POSITION_ID,:SALARY,:POSITION_SALARY,:REFERENCE_DOCUMENT,:CITIZEN_ID)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_POSITION_AND_SALARY (DDATE,POSITION_NAME,PERSON_ID,ST_ID,POSITION_ID,SALARY,POSITION_SALARY,REFERENCE_DOCUMENT,CITIZEN_ID) VALUES (:DDATE,:POSITION_NAME,:PERSON_ID,:ST_ID,:POSITION_ID,:SALARY,:POSITION_SALARY,:REFERENCE_DOCUMENT,:CITIZEN_ID)", conn))
                     {
 
                         try
@@ -1185,7 +1185,7 @@ namespace WEB_PERSONAL
             dr[0] = txtGrad_Univ.Text;
             dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
             dr[2] = txtMajor.Text;
-            if (DropDownMonth10From.SelectedValue == "-1" || DropDownYear10From.SelectedValue == "-1" || DropDownMonth10To.SelectedValue == "-1" || DropDownYear10To.SelectedValue == "-1")
+            if (DropDownMonth10From.SelectedValue == "0" || DropDownYear10From.SelectedValue == "0" || DropDownMonth10To.SelectedValue == "0" || DropDownYear10To.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการศึกษา>");
                 return;
@@ -1234,7 +1234,7 @@ namespace WEB_PERSONAL
             dr[0] = txtCourse.Text;
             dr[1] = DropDownMonth12From.SelectedValue + "-" + DropDownYear12From.SelectedValue + " - " + DropDownMonth12To.SelectedValue + "-" + DropDownYear12To.SelectedValue;
             dr[2] = txtBranchTrainning.Text;
-            if (DropDownMonth12From.SelectedValue == "-1" || DropDownYear12From.SelectedValue == "-1" || DropDownMonth12To.SelectedValue == "-1" || DropDownYear12To.SelectedValue == "-1")
+            if (DropDownMonth12From.SelectedValue == "0" || DropDownYear12From.SelectedValue == "0" || DropDownMonth12To.SelectedValue == "0" || DropDownYear12To.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการฝึกอบรม>");
                 return;
@@ -1260,7 +1260,7 @@ namespace WEB_PERSONAL
             dr[0] = DropDownYear13.SelectedValue;
             dr[1] = txtList13.Text;
             dr[2] = txtRefDoc13.Text;
-            if (DropDownYear13.SelectedValue == "-1")
+            if (DropDownYear13.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือก พ.ศ. ให้ถูกต้อง<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>");
                 return;
@@ -1291,7 +1291,7 @@ namespace WEB_PERSONAL
             dr[5] = txtSalary14.Text;
             dr[6] = txtSalaryForPosition14.Text;
             dr[7] = txtRefDoc14.Text;
-            if (DropDownType_Position14.SelectedValue == "-1" || DropDownDegree14.SelectedValue == "-1")
+            if (DropDownType_Position14.SelectedValue == "0" || DropDownDegree14.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือก ตำแหน่งประเภทและระดับ ให้ถูกต้อง<ในส่วนตำแหน่งและเงินเดือน>");
                 return;

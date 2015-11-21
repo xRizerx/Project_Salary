@@ -14,8 +14,6 @@
                     autoExpandScrollbar: true,
                     advanced: { autoExpandHorizontalScroll: true }
                 });
-
-
             });
         })(jQuery);
     </script>
@@ -74,7 +72,7 @@
         }
 
         .div_sec_in2 {
-            width: 3500px;
+            width: 2500px;
         }
 
         .div_sec_in span {
@@ -83,7 +81,7 @@
         }
 
         .div_sec img {
-            height: 320px;
+            height: 240px;
             padding: 0;
             margin: 0;
             box-shadow: #000000 0px 1px 10px;
@@ -148,6 +146,7 @@
                 <p>
                     wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
                 </p>
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </div>
 
             <div style="height: 50px"></div>

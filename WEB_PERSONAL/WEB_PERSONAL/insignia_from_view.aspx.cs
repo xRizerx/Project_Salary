@@ -5,11 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OracleClient;
+using System.Data;
+using System.Configuration;
 
 namespace WEB_PERSONAL
 {
-    public partial class insignia2 : System.Web.UI.Page
+    public partial class insignia_from_view : System.Web.UI.Page
     {
+
+        public static string strConn = @"Data Source = ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["insignia_citizen_id"] == null)
@@ -20,18 +24,15 @@ namespace WEB_PERSONAL
             }
             string citizen_id = Session["insignia_citizen_id"].ToString();
             int staff_type_id = 1;
-
+            
             // try
             {
                 string connectionString = "Data Source=ORCL_RMUTTO;User ID=rmutto;Password=Zxcvbnm";
                 using (OracleConnection con = new OracleConnection(connectionString))
                 {
                     con.Open();
-                    //Select 1
                     {
-                        string Oracle = "SELECT STAFFTYPE_ID,RANK_ID,title_id,GENDER_ID,POSITION_WORK_ID,GOT_ID,POSITION_ID "
-                            + "FROM TB_PERSONAL "
-                            + "WHERE CITIZEN_ID = '" + citizen_id+"'";
+                        string Oracle = "SELECT STAFFTYPE_ID FROM TB_PERSON WHERE CITIZEN_ID = '" + citizen_id + "'";
                         using (OracleCommand command = new OracleCommand(Oracle, con))
                         {
                             using (OracleDataReader reader = command.ExecuteReader())
@@ -39,42 +40,18 @@ namespace WEB_PERSONAL
                                 while (reader.Read())
                                 {
                                     staff_type_id = reader.GetInt32(0);
-                                    DropDownList4.SelectedValue = "" + reader.GetInt32(1); /*RANK_ID*/
-                                    DropDownList5.SelectedValue = "" + reader.GetInt32(2); /*title_id*/
-                                    DropDownList6.SelectedValue = "" + reader.GetInt32(3); /*GENDER_ID*/
-                                    DropDownList8.SelectedValue = "" + reader.GetString(4); /*POSITION_WORK_ID*/
-                                    DropDownList9.SelectedValue = "" + reader.GetInt32(5);  /*GOT_ID*/
-                                    DropDownList10.SelectedValue = "" + reader.GetString(6); /*POSITION_ID*/
-                                   
-                                }
-                            }
-                        }
-                    }
-                    //Select 2
-                    {
-                        string Oracle = "SELECT START_POSITION_WORK_ID "
-                            + "FROM TB_PERSONAL "
-                            + "WHERE CITIZEN_ID = '" + citizen_id + "'";
-                        using (OracleCommand command = new OracleCommand(Oracle, con))
-                        {
-                            using (OracleDataReader reader = command.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    DropDownList7.SelectedValue = "" + reader.GetString(0);
                                 }
                             }
                         }
                     }
 
                     {
-                        if (staff_type_id == 1)
+                        //select 1
                         {
-                            RadioButton1.Checked = true;
-
-                            string Oracle = "select tb_personal.stf_name, tb_personal.stf_lname, tb_gender.gender_name, TO_CHAR( tb_personal.birthday,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), tb_personal.citizen_id, tb_rank.rank_name_th, tb_titlename.title_name_th, TO_CHAR( tb_personal.datetime_inwork,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), tb_position_work.position_work_name, AA_GOVERNMENTOFFICER_TYPE.NAMETYPE_GO, tb_position.position_name, tb_salary.salary " +
-                                "from tb_personal, tb_gender , tb_rank, tb_department, tb_faculty, tb_titlename, tb_position_work, tb_position,AA_GOVERNMENTOFFICER_TYPE, tb_salary " +
-                                "where tb_personal.citizen_id = '" + citizen_id + "' AND tb_personal.gender_id = tb_gender.gender_id AND tb_personal.rank_id = tb_rank.seq AND tb_personal.department_id = tb_department.department_id AND tb_personal.faculty_id = tb_faculty.faculty_id AND tb_personal.title_id = tb_titlename.title_id AND tb_personal.position_work_id = tb_position_work.position_work_id AND tb_personal.got_id = AA_GOVERNMENTOFFICER_TYPE.id_got AND tb_personal.position_id = tb_position.position_id AND tb_salary.citizen_id = tb_personal.citizen_id  ";
+                            string Oracle = " Select AA_COMMAND.NAME_COMM, AA_REQUEST_INSIGNIA.YEAR, TB_GRADEINSIGNIA.NAME_GRADEINSIGNIA_THA, TB_RANK.RANK_NAME_TH, TB_TITLENAME.TITLE_NAME_TH,"
+                                + " TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TO_CHAR(TB_PERSON.BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_PERSON.CITIZEN_ID, TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')"
+                                + " from TB_PERSON, AA_REQUEST_INSIGNIA, AA_COMMAND, TB_GRADEINSIGNIA, TB_RANK, TB_TITLENAME"
+                                + " where tb_person.citizen_id = '" + citizen_id + "' AND AA_REQUEST_INSIGNIA.ID_COMM = AA_COMMAND.ID_COMM AND TB_GRADEINSIGNIA.ID_GRADEINSIGNIA = AA_REQUEST_INSIGNIA.ID_GRADEINSIGNIA AND TB_RANK.SEQ = AA_REQUEST_INSIGNIA.RANK_SEQ AND TB_PERSON.TITLE_ID = TB_PERSON.TITLE_ID";
 
                             using (OracleCommand command = new OracleCommand(Oracle, con))
                             {
@@ -82,19 +59,94 @@ namespace WEB_PERSONAL
                                 {
                                     while (reader.Read())
                                     {
-                                        TextBox4.Text = reader.GetString(0); /*tb_personal.stf_name*/
-                                        TextBox5.Text = reader.GetString(1); /* tb_personal.stf_lname*/
-                                        TextBox7.Text = reader.GetString(3).ToString(); /*tb_personal.birthday*/
-                                        TextBox8.Text = reader.GetString(4); /*tb_personal.citizen_id*/
-                                        TextBox9.Text = reader.GetString(7).ToString(); /*tb_personal.datetime_inwork*/
+                                       
+                                        TextBox33.Text = reader.GetString(0); //AA_COMMAND.NAME_COMM
+                                        TextBox34.Text = reader.GetInt32(1).ToString(); //AA_REQUEST_INSIGNIA.YEAR
+                                        TextBox35.Text = reader.GetString(2); //TB_GRADEINSIGNIA.NAME_GRADEINSIGNIA_THA
+                                        TextBox36.Text = reader.GetString(3); //TB_RANK.RANK_NAME_TH
+                                        TextBox3.Text = reader.GetString(4); //TB_TITLENAME.TITLE_NAME_TH
+                                        TextBox4.Text = reader.GetString(5); //TB_PERSON.PERSON_NAME
+                                        TextBox5.Text = reader.GetString(6); //TB_PERSON.PERSON_LASTNAME
+                                        TextBox7.Text = reader.GetString(7); //TO_CHAR(TB_PERSON.BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')
+                                        TextBox8.Text = reader.GetString(8); //TB_PERSON.CITIZEN_ID
+                                        TextBox9.Text = reader.GetString(9); //TO_CHAR(TB_PERSON.INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI')
 
 
 
-                                        /*TextBox14.Text = reader.GetInt32(11).ToString(); /*tb_salary.salary*/
                                     }
                                 }
                             }
+                        }
 
+                        //select 1.9 ชื่อตำแหน่งปัจจุบัน (เพราะตารางชนกันเลยต้องการอีก Select)
+                        {
+                            string Oracle = "select TB_POSITION_AND_SALARY.POSITION_NAME" +
+                            " from TB_POSITION_AND_SALARY " +
+                            " where TB_POSITION_AND_SALARY.citizen_id = '" + citizen_id + "'" +
+                            " order by TB_POSITION_AND_SALARY.DDATE";
+
+                            using (OracleCommand command = new OracleCommand(Oracle, con))
+                            {
+                                using (OracleDataReader reader = command.ExecuteReader())
+                                {
+                                    reader.Read();
+                                    {
+                                        TextBox10.Text = reader.GetString(0);
+                                    }
+                                }
+                            }
+                        }
+
+                        //select 2 ชื่อตำแหน่งปัจจุบัน (เพราะตารางชนกันเลยต้องการอีก Select)
+                        {
+                            string Oracle = "select TB_POSITION_AND_SALARY.POSITION_NAME,TB_POSITION_AND_SALARY.SALARY,TB_POSITION_AND_SALARY.POSITION_SALARY " +
+                            " from TB_POSITION_AND_SALARY " +
+                            " where TB_POSITION_AND_SALARY.citizen_id = '" + citizen_id + "'" +
+                            " order by TB_POSITION_AND_SALARY.DDATE desc";
+
+                            using (OracleCommand command = new OracleCommand(Oracle, con))
+                            {
+                                using (OracleDataReader reader = command.ExecuteReader())
+                                {
+
+                                    reader.Read();
+                                    {
+                                        TextBox11.Text = reader.GetString(0);
+                                        TextBox14.Text = reader.GetInt32(1).ToString();
+                                        TextBox15.Text = reader.GetInt32(2).ToString();
+                                    }
+                                }
+                            }
+                        }
+
+                        //select 3
+                        {
+                            string Oracle = "select count(*) " +
+                            " from AA_REQUEST_INSIGNIA " +
+                            " where citizen_id = '" + citizen_id + "'";
+
+                            using (OracleCommand command = new OracleCommand(Oracle, con))
+                            {
+                                using (OracleDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        if (reader.GetInt32(0) == 0)
+                                        {
+                                            TextBox21.Text = TextBox9.Text;
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                    {
+                        if (staff_type_id == 1)
+                        {
+                            RadioButton1.Checked = true;
                         }
                         else if (staff_type_id == 2)
                         {
@@ -108,6 +160,9 @@ namespace WEB_PERSONAL
                         {
                             RadioButton4.Checked = true;
                         }
+
+
+
                     }
 
                 }
@@ -117,33 +172,14 @@ namespace WEB_PERSONAL
             //    string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
             //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             //S }
-            if (!IsPostBack)
-            {
-                DropDownList11.Items.Add("--ยังไม่สมบูรณ์--");
-            }
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("insignia_from");
+            Response.Redirect("insignia_from_edit.aspx");
         }
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("insignia_from");
-        }
-
-        protected void Button2_Click1(object sender, EventArgs e)
-        {
-            Response.Redirect("insignia_from_edit");
-        }
-
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("insignia_user.aspx");
-
-        }
-
-
     }
 }
+
+

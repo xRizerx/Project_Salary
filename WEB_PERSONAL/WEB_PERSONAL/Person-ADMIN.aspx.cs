@@ -19,13 +19,14 @@ namespace WEB_PERSONAL
         {
             if (!IsPostBack)
             {
-                if (Session["login_id"] == null)
-                {
-                    Session["show_login"] = "1";
+                  BindData();
+               // if (Session["login_id"] == null)
+               // {
+               //     Session["show_login"] = "1";
                     //Response.Redirect("default.aspx");
-                    return;
-                }
-                using (OracleConnection conn = Util.OC())
+                    //return;
+               // }
+                /*using (OracleConnection conn = Util.OC())
                 {
                     using (OracleCommand cmd = new OracleCommand("select CITIZEN_ID,TITLE_ID,PERSON_NAME,PERSON_LASTNAME,TO_CHAR(BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),BIRTHDATE_LONG,TO_CHAR(RETIRE_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),RETIRE_DATE_LONG,TO_CHAR(INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,MINISTRY_ID,DEPARTMENT_NAME from tb_person where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
 
@@ -35,7 +36,7 @@ namespace WEB_PERSONAL
                             while (reader.Read())
                             {
                                 txtCitizen.Text = reader.GetString(0);
-                                DropDownTitle.SelectedValue = reader.IsDBNull(1) ? "-1" : reader.GetInt32(1).ToString();
+                                DropDownTitle.SelectedValue = reader.IsDBNull(1) ? "0" : reader.GetInt32(1).ToString();
                                 txtName.Text = reader.IsDBNull(2) ? "" : reader.GetString(2);
                                 txtLastName.Text = reader.IsDBNull(3) ? "" : reader.GetString(3);
                                 txtBirthDayNumber.Text = reader.IsDBNull(4) ? "" : reader.GetString(4);
@@ -43,7 +44,7 @@ namespace WEB_PERSONAL
                                 txtAge60Number.Text = reader.IsDBNull(6) ? "" : reader.GetString(6);
                                 txtAge60Char.Text = reader.IsDBNull(7) ? "" : reader.GetString(7);
                                 txtDateInWork.Text = reader.IsDBNull(8) ? "" : reader.GetString(8);
-                                DropDownStaffType.SelectedValue = reader.IsDBNull(9) ? "-1" : reader.GetInt32(9).ToString();
+                                DropDownStaffType.SelectedValue = reader.IsDBNull(9) ? "0" : reader.GetInt32(9).ToString();
                                 txtFatherName.Text = reader.IsDBNull(10) ? "" : reader.GetString(10);
                                 txtFatherLastName.Text = reader.IsDBNull(11) ? "" : reader.GetString(11);
                                 txtMotherName.Text = reader.IsDBNull(12) ? "" : reader.GetString(12);
@@ -52,11 +53,11 @@ namespace WEB_PERSONAL
                                 txtMarriedName.Text = reader.IsDBNull(15) ? "" : reader.GetString(15);
                                 txtMarriedLastName.Text = reader.IsDBNull(16) ? "" : reader.GetString(16);
                                 txtMarriedLastNameOld.Text = reader.IsDBNull(17) ? "" : reader.GetString(17);
-                                DropDownMinistry.SelectedValue = reader.IsDBNull(18) ? "-1" : reader.GetInt32(18).ToString(); ;
+                                DropDownMinistry.SelectedValue = reader.IsDBNull(18) ? "0" : reader.GetInt32(18).ToString(); ;
                                 txtDepart.Text = reader.IsDBNull(19) ? "" : reader.GetString(19);
                             }
                         }
-                    } 
+                    }
                     using (OracleCommand cmd = new OracleCommand("select GRAD_UNIV,to_char(DATE_FROM, 'Mon', 'NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_FROM),to_char(DATE_TO, 'Mon','NLS_DATE_LANGUAGE = THAI'),extract(year FROM DATE_TO),MAJOR from TB_STUDY_HISTORY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
                     {
                         using (OracleDataReader reader = cmd.ExecuteReader())
@@ -66,7 +67,7 @@ namespace WEB_PERSONAL
                             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
                             ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
                             ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
-                            
+
                             while (reader.Read())
                             {
                                 DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
@@ -75,12 +76,12 @@ namespace WEB_PERSONAL
                                 dr[2] = reader.GetString(5);
 
                                 ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
-                                
+
                             }
                             GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
                             GridView1.DataBind();
                             ClearDataGridViewNumber10();
-                        }  
+                        }
                     }
                     using (OracleCommand cmd = new OracleCommand("select LICENCE_NAME,BRANCH,LICENCE_NO,to_char(DDATE, 'dd MON yyyy','NLS_DATE_LANGUAGE = THAI') from TB_JOB_LICENSE where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
                     {
@@ -159,8 +160,43 @@ namespace WEB_PERSONAL
                             ClearDataGridViewNumber13();
                         }
                     }
+                    using (OracleCommand cmd = new OracleCommand("select to_char(DDATE, 'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),POSITION_NAME,PERSON_ID,ST_ID,POSITION_ID,SALARY,POSITION_SALARY,REFERENCE_DOCUMENT from TB_POSITION_AND_SALARY where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
+                    {
+                        using (OracleDataReader reader = cmd.ExecuteReader())
+                        {
 
-                }
+                            Session["PositionAndSalary"] = new DataTable();
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่งประเภท");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
+                            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
+
+                            while (reader.Read())
+                            {
+                                DataRow dr = ((DataTable)(Session["PositionAndSalary"])).NewRow();
+                                dr[0] = reader.GetString(0);
+                                dr[1] = reader.GetString(1);
+                                dr[2] = reader.GetString(2);
+                                dr[3] = reader.GetString(3);
+                                dr[4] = reader.GetInt32(4);
+                                dr[5] = reader.GetInt32(5);
+                                dr[6] = reader.GetInt32(6);
+                                dr[7] = reader.GetString(7);
+
+                                ((DataTable)(Session["PositionAndSalary"])).Rows.Add(dr);
+
+                            }
+                            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
+                            GridView5.DataBind();
+                            ClearDataGridViewNumber14();
+                        }
+                    }
+                    
+                }*/
                 DDLMisnistry();
                 DDLTitle();
                 DDLStaffType();
@@ -178,18 +214,160 @@ namespace WEB_PERSONAL
                 txtSalary14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtSalaryForPosition14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
-                Session["PositionAndSalary"] = new DataTable();
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่งประเภท");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
-                ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
-                GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
-                GridView5.DataBind();
             }
+        }
+
+        #region ViewState DataTable
+
+        private DataTable GetViewState()
+        {
+            //Gets the ViewState
+            return (DataTable)ViewState["PERSON10"];
+        }
+
+        private void SetViewState(DataTable data)
+        {
+            //Sets the ViewState
+            ViewState["PERSON10"] = data;
+        }
+
+        #endregion
+
+        void BindData()
+        {
+            if (Session["login_id"] == null)
+                {
+                Response.Redirect("Access.aspx");
+                return;
+                }
+
+            ClassPersonStudyHistory p1 = new ClassPersonStudyHistory();
+            DataTable dt1 = p1.GetPersonStudyHistory("", "", "", "", Session["login_id"].ToString());
+            GridView1.DataSource = dt1;
+            GridView1.DataBind();
+
+            ClassPersonJobLisence p2 = new ClassPersonJobLisence();
+            DataTable dt2 = p2.GetPersonJobLisence("", "", "", "", Session["login_id"].ToString());
+            GridView2.DataSource = dt2;
+            GridView2.DataBind();
+
+            SetViewState(dt1);
+            SetViewState(dt2);
+        }
+
+        protected void modEditCommand1(Object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+        protected void modCancelCommand1(Object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            BindData();
+        }
+        protected void modDeleteCommand1(Object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            ClassPersonStudyHistory p1 = new ClassPersonStudyHistory();
+            p1.IDSEQ = id;
+            p1.DeletePersonStudyHistory();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
+
+            GridView1.EditIndex = -1;
+            BindData();
+        }
+        protected void modUpdateCommand1(Object sender, GridViewUpdateEventArgs e)
+        {
+            
+            Label lblPersonStudyHistoryID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryID");
+            Label lblPersonStudyHistoryCitizenID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryCitizenID");
+            TextBox txtPersonStudyHistoryGradUNIVEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryGradUNIVEdit");
+            TextBox lblPersonStudyHistoryDateFromEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryDateFromEdit");
+            TextBox lblPersonStudyHistoryDateTOEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryDateTOEdit");
+            TextBox txtPersonStudyHistoryMajorEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMajorEdit");
+            DateTime DATE_FROM = DateTime.Parse(lblPersonStudyHistoryDateFromEdit.Text);
+            DateTime DATE_TO = DateTime.Parse(lblPersonStudyHistoryDateTOEdit.Text);
+
+            ClassPersonStudyHistory p1 = new ClassPersonStudyHistory(Convert.ToInt32(lblPersonStudyHistoryID.Text), lblPersonStudyHistoryCitizenID.Text
+                , txtPersonStudyHistoryGradUNIVEdit.Text
+                , DATE_FROM
+                , DATE_TO
+                , txtPersonStudyHistoryMajorEdit.Text);
+
+            p1.UpdatePersonStudyHistory();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+            GridView1.EditIndex = -1;
+            BindData();
+            
+        }
+        protected void GridView1_RowDataBound1(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+        protected void myGridViewPersonStudyHistory_PageIndexChanging1(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            GridView1.DataSource = GetViewState();
+            GridView1.DataBind();
+        }
+
+        /// <summary>
+        /// /////////////////////
+        /// </summary>
+
+        protected void modEditCommand2(Object sender, GridViewEditEventArgs e)
+        {
+            GridView2.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+        protected void modCancelCommand2(Object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView2.EditIndex = -1;
+            BindData();
+        }
+        protected void modDeleteCommand2(Object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            ClassPersonJobLisence p2 = new ClassPersonJobLisence();
+            p2.ID = id;
+            p2.DeletePersonJobLisence();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
+
+            GridView2.EditIndex = -1;
+            BindData();
+        }
+        protected void modUpdateCommand2(Object sender, GridViewUpdateEventArgs e)
+        {
+
+            Label lblPersonJobLisenceID = (Label)GridView2.Rows[e.RowIndex].FindControl("lblPersonJobLisenceID");
+            Label lblPersonJobLisenceCitizenID = (Label)GridView2.Rows[e.RowIndex].FindControl("lblPersonJobLisenceCitizenID");
+            TextBox txtPersonJobLisenceNameEdit = (TextBox)GridView2.Rows[e.RowIndex].FindControl("txtPersonJobLisenceNameEdit");
+            TextBox txtPersonJobLisenceBranchEdit = (TextBox)GridView2.Rows[e.RowIndex].FindControl("txtPersonJobLisenceBranchEdit");
+            TextBox txtPersonJobLisenceLicenseNOEdit = (TextBox)GridView2.Rows[e.RowIndex].FindControl("txtPersonJobLisenceLicenseNOEdit");
+            TextBox lblPersonJobLisenceDDATEEdit = (TextBox)GridView2.Rows[e.RowIndex].FindControl("txtPersonJobLisenceDDATEEdit");
+            DateTime DDATE = DateTime.Parse(lblPersonJobLisenceDDATEEdit.Text);
+
+            ClassPersonJobLisence p2 = new ClassPersonJobLisence(Convert.ToInt32(lblPersonJobLisenceID.Text), lblPersonJobLisenceCitizenID.Text
+                , txtPersonJobLisenceNameEdit.Text
+                , txtPersonJobLisenceBranchEdit.Text
+                , txtPersonJobLisenceLicenseNOEdit.Text
+                , DDATE);
+
+            p2.UpdatePersonJobLisence();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+            GridView2.EditIndex = -1;
+            BindData();
+
+        }
+        protected void GridView2_RowDataBound2(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+        protected void myGridViewPersonJobLisence_PageIndexChanging2(object sender, GridViewPageEventArgs e)
+        {
+            GridView2.PageIndex = e.NewPageIndex;
+            GridView2.DataSource = GetViewState();
+            GridView2.DataBind();
         }
 
         private void DDLMisnistry()
@@ -212,7 +390,7 @@ namespace WEB_PERSONAL
                         DropDownMinistry.DataBind();
                         sqlConn.Close();
 
-                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "-1"));
+                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "0"));
 
                     }
                 }
@@ -240,7 +418,7 @@ namespace WEB_PERSONAL
                         DropDownTitle.DataBind();
                         sqlConn.Close();
 
-                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือกคำนำหน้านาม--", "-1"));
+                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือกคำนำหน้านาม--", "0"));
 
                     }
                 }
@@ -268,7 +446,7 @@ namespace WEB_PERSONAL
                         DropDownStaffType.DataBind();
                         sqlConn.Close();
 
-                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทข้าราชการ--", "-1"));
+                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทข้าราชการ--", "0"));
 
                     }
                 }
@@ -296,7 +474,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -324,7 +502,7 @@ namespace WEB_PERSONAL
                         DropDownMonth10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -352,7 +530,7 @@ namespace WEB_PERSONAL
                         DropDownYear10From.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -380,7 +558,7 @@ namespace WEB_PERSONAL
                         DropDownYear10To.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -408,7 +586,7 @@ namespace WEB_PERSONAL
                         DropDownMonth12From.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -436,7 +614,7 @@ namespace WEB_PERSONAL
                         DropDownMonth12To.DataBind();
                         sqlConn.Close();
 
-                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "-1"));
+                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "0"));
 
                     }
                 }
@@ -464,7 +642,7 @@ namespace WEB_PERSONAL
                         DropDownYear12From.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -492,7 +670,7 @@ namespace WEB_PERSONAL
                         DropDownYear12To.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -520,7 +698,7 @@ namespace WEB_PERSONAL
                         DropDownYear13.DataBind();
                         sqlConn.Close();
 
-                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "-1"));
+                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "0"));
 
                     }
                 }
@@ -548,8 +726,8 @@ namespace WEB_PERSONAL
                         DropDownType_Position14.DataBind();
                         sqlConn.Close();
 
-                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "-1"));
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "-1"));
+                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
+                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
                     }
                 }
             }
@@ -564,7 +742,7 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = " + DropDownType_Position14.SelectedValue;
+                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = " + DropDownType_Position14.SelectedValue + "UNION ALL select * FROM TB_POSITION_PERMANENT_EMP where ST_ID = " + DropDownType_Position14.SelectedValue;
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
@@ -576,7 +754,7 @@ namespace WEB_PERSONAL
                         DropDownDegree14.DataBind();
                         sqlConn.Close();
 
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "-1"));
+                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
 
                     }
                 }
@@ -588,7 +766,6 @@ namespace WEB_PERSONAL
         {
             DropDownMinistry.SelectedIndex = 0;
             txtDepart.Text = "มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก";
-            //DropDownDepart.SelectedIndex = 0;
             DropDownTitle.SelectedIndex = 0;
             txtCitizen.Text = "";
             txtName.Text = "";
@@ -936,47 +1113,6 @@ namespace WEB_PERSONAL
             ClearDataGridViewNumber13();
             ClearDataGridViewNumber14();
 
-            Session["StudyHis"] = new DataTable();
-            ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
-            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
-            ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
-            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
-            GridView1.DataBind();
-
-            Session["JobLisence"] = new DataTable();
-            ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
-            ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
-            ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
-            ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
-            GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
-            GridView2.DataBind();
-
-            Session["Trainning"] = new DataTable();
-            ((DataTable)(Session["Trainning"])).Columns.Add("หลักสูตรฝึกอบรม");
-            ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
-            ((DataTable)(Session["Trainning"])).Columns.Add("หน่วยงานที่จัดฝึกอบรม");
-            GridView3.DataSource = ((DataTable)(Session["Trainning"]));
-            GridView3.DataBind();
-
-            Session["Punished"] = new DataTable();
-            ((DataTable)(Session["Punished"])).Columns.Add("พ.ศ.");
-            ((DataTable)(Session["Punished"])).Columns.Add("รายการ");
-            ((DataTable)(Session["Punished"])).Columns.Add("เอกสารอ้างอิง");
-            GridView4.DataSource = ((DataTable)(Session["Punished"]));
-            GridView4.DataBind();
-
-            Session["PositionAndSalary"] = new DataTable();
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่งประเภท");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
-            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
-            GridView5.DataBind();
-
         }
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
@@ -1007,280 +1143,28 @@ namespace WEB_PERSONAL
             string[] splitDate1 = txtBirthDayNumber.Text.Split(' ');
             string[] splitDate2 = txtDateInWork.Text.Split(' ');
             string[] splitDate3 = txtAge60Number.Text.Split(' ');
+            if (splitDate1.Length == 4)
+            {
+                splitDate1[2] = splitDate1[3];
+            }
+            if (splitDate2.Length == 4)
+            {
+                splitDate2[2] = splitDate2[3];
+            }
+            if (splitDate3.Length == 4)
+            {
+                splitDate3[2] = splitDate3[3];
+            }
             P.BIRTHDATE = new DateTime(Convert.ToInt32(splitDate1[2]), Util.MonthToNumber(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
             P.INWORK_DATE = new DateTime(Convert.ToInt32(splitDate2[2]), Util.MonthToNumber(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
             P.RETIRE_DATE = new DateTime(Convert.ToInt32(splitDate3[2]), Util.MonthToNumber(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
 
-            P.InsertPerson();
+            P.UpdatePerson();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
 
-            for (int i = 0; i < GridView1.Rows.Count; ++i)
-            {
-                int id = 0;
-                using (OracleConnection conn = Util.OC())
-                {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY VALUES (SEQ_STUDY_HISTORY_ID.NEXTVAL,:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn))
-                    {
 
-                        try
-                        {
-                            if (conn.State != ConnectionState.Open)
-                            {
-                                conn.Open();
-                            }
-                            string[] ss1 = GridView1.Rows[i].Cells[1].Text.Split('-');
-                            for (int j = 0; j < ss1.Length; ++j)
-                            {
-                                ss1[j] = ss1[j].Trim();
-                            }
-                            DateTime dt_from = new DateTime(Convert.ToInt32(ss1[1]), Util.MonthToNumber(ss1[0]), 1);
-                            DateTime dt_to = new DateTime(Convert.ToInt32(ss1[3]), Util.MonthToNumber(ss1[2]), 1);
-
-                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
-                            command.Parameters.Add(new OracleParameter("GRAD_UNIV", GridView1.Rows[i].Cells[0].Text));
-                            command.Parameters.Add(new OracleParameter("DATE_FROM", dt_from));
-                            command.Parameters.Add(new OracleParameter("DATE_TO", dt_to));
-                            command.Parameters.Add(new OracleParameter("MAJOR", GridView1.Rows[i].Cells[2].Text));
-
-                            id = command.ExecuteNonQuery();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                        finally
-                        {
-                            command.Dispose();
-                            conn.Close();
-                        }
-                    }
-                }
-            }
-
-            for (int i = 0; i < GridView2.Rows.Count; ++i)
-            {
-                int id = 0;
-                using (OracleConnection conn = Util.OC())
-                {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_JOB_LICENSE VALUES (SEQ_JOB_LICENSE_ID.NEXTVAL,:CITIZEN_ID,:LICENCE_NAME,:BRANCH,:LICENCE_NO,:DDATE)", conn))
-                    {
-
-                        try
-                        {
-                            if (conn.State != ConnectionState.Open)
-                            {
-                                conn.Open();
-                            }
-                            string[] ss2 = GridView2.Rows[i].Cells[3].Text.Split(' ');
-                            for (int j = 0; j < ss2.Length; ++j)
-                            {
-                                ss2[j] = ss2[j].Trim();
-                            }
-                            DateTime DATE_11 = new DateTime(Convert.ToInt32(ss2[2]), Util.MonthToNumber(ss2[1]), Convert.ToInt32(ss2[0]));
-
-                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
-                            command.Parameters.Add(new OracleParameter("LICENCE_NAME", GridView2.Rows[i].Cells[0].Text));
-                            command.Parameters.Add(new OracleParameter("BRANCH", GridView2.Rows[i].Cells[1].Text));
-                            command.Parameters.Add(new OracleParameter("LICENCE_NO", GridView2.Rows[i].Cells[2].Text));
-                            command.Parameters.Add(new OracleParameter("DDATE", DATE_11));
-
-                            id = command.ExecuteNonQuery();
-
-                        }
-
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                        finally
-                        {
-                            command.Dispose();
-                            conn.Close();
-                        }
-                    }
-                }
-            }
-
-            for (int i = 0; i < GridView3.Rows.Count; ++i)
-            {
-                int id = 0;
-                using (OracleConnection conn = Util.OC())
-                {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_TRAINING_HISTORY VALUES (SEQ_TRAINNING_HISTORY_ID.NEXTVAL,:CITIZEN_ID,:COURSE,:DATE_FROM,:DATE_TO,:BRANCH_TRAINING)", conn))
-                    {
-
-                        try
-                        {
-                            if (conn.State != ConnectionState.Open)
-                            {
-                                conn.Open();
-                            }
-                            string[] ss3 = GridView3.Rows[i].Cells[1].Text.Split('-');
-                            for (int j = 0; j < ss3.Length; ++j)
-                            {
-                                ss3[j] = ss3[j].Trim();
-                            }
-                            DateTime dt_from = new DateTime(Convert.ToInt32(ss3[1]), Util.MonthToNumber(ss3[0]), 1);
-                            DateTime dt_to = new DateTime(Convert.ToInt32(ss3[3]), Util.MonthToNumber(ss3[2]), 1);
-
-                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
-                            command.Parameters.Add(new OracleParameter("COURSE", GridView3.Rows[i].Cells[0].Text));
-                            command.Parameters.Add(new OracleParameter("DATE_FROM", dt_from));
-                            command.Parameters.Add(new OracleParameter("DATE_TO", dt_to));
-                            command.Parameters.Add(new OracleParameter("BRANCH_TRAINING", GridView3.Rows[i].Cells[2].Text));
-
-                            id = command.ExecuteNonQuery();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                        finally
-                        {
-                            command.Dispose();
-                            conn.Close();
-                        }
-                    }
-                }
-            }
-
-            for (int i = 0; i < GridView4.Rows.Count; ++i)
-            {
-                int id = 0;
-                using (OracleConnection conn = Util.OC())
-                {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_DISCIPLINARY_AND_AMNESTY VALUES (SEQ_DISCIPLINARY_ID.NEXTVAL,:CITIZEN_ID,:YEAR,:MENU,:REF_DOC)", conn))
-                    {
-
-                        try
-                        {
-                            if (conn.State != ConnectionState.Open)
-                            {
-                                conn.Open();
-                            }
-
-                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
-                            command.Parameters.Add(new OracleParameter("YEAR", GridView4.Rows[i].Cells[0].Text));
-                            command.Parameters.Add(new OracleParameter("MENU", GridView4.Rows[i].Cells[1].Text));
-                            command.Parameters.Add(new OracleParameter("REF_DOC", GridView4.Rows[i].Cells[2].Text));
-
-                            id = command.ExecuteNonQuery();
-                        }
-
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                        finally
-                        {
-                            command.Dispose();
-                            conn.Close();
-                        }
-                    }
-                }
-            }
-
-            for (int i = 0; i < GridView5.Rows.Count; ++i)
-            {
-                int id = 0;
-                using (OracleConnection conn = Util.OC())
-                {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_POSITION_AND_SALARY VALUES (SEQ_posiNsalary_ID.NEXTVAL,:DDATE,:POSITION_NAME,:PERSON_ID,:ST_ID,:POSITION_ID,:SALARY,:POSITION_SALARY,:REFERENCE_DOCUMENT,:CITIZEN_ID)", conn))
-                    {
-
-                        try
-                        {
-                            if (conn.State != ConnectionState.Open)
-                            {
-                                conn.Open();
-                            }
-                            string[] ss5 = GridView5.Rows[i].Cells[0].Text.Split(' ');
-                            for (int j = 0; j < ss5.Length; ++j)
-                            {
-                                ss5[j] = ss5[j].Trim();
-                            }
-                            DateTime DATE_11 = new DateTime(Convert.ToInt32(ss5[2]), Util.MonthToNumber(ss5[1]), Convert.ToInt32(ss5[0]));
-
-                            command.Parameters.Add(new OracleParameter("DDATE", DATE_11));
-                            command.Parameters.Add(new OracleParameter("POSITION_NAME", GridView5.Rows[i].Cells[1].Text));
-                            command.Parameters.Add(new OracleParameter("PERSON_ID", GridView5.Rows[i].Cells[2].Text));
-                            command.Parameters.Add(new OracleParameter("ST_ID", GridView5.Rows[i].Cells[3].Text));
-                            command.Parameters.Add(new OracleParameter("POSITION_ID", GridView5.Rows[i].Cells[4].Text));
-                            command.Parameters.Add(new OracleParameter("SALARY", GridView5.Rows[i].Cells[5].Text));
-                            command.Parameters.Add(new OracleParameter("POSITION_SALARY", GridView5.Rows[i].Cells[6].Text));
-                            command.Parameters.Add(new OracleParameter("REFERENCE_DOCUMENT", GridView5.Rows[i].Cells[7].Text));
-                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
-
-                            id = command.ExecuteNonQuery();
-
-                        }
-
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                        finally
-                        {
-                            command.Dispose();
-                            conn.Close();
-                        }
-                    }
-                }
-            }
-
-            ClearData();
-            ClearDataGridViewNumber10();
-            ClearDataGridViewNumber11();
-            ClearDataGridViewNumber12();
-            ClearDataGridViewNumber13();
-            ClearDataGridViewNumber14();
-
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
-            Session["StudyHis"] = new DataTable();
-            ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
-            ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
-            ((DataTable)(Session["StudyHis"])).Columns.Add("วุฒิ(สาขาวิชาเอก)");
-            GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
-            GridView1.DataBind();
-
-            Session["JobLisence"] = new DataTable();
-            ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
-            ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
-            ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
-            ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
-            GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
-            GridView2.DataBind();
-
-            Session["Trainning"] = new DataTable();
-            ((DataTable)(Session["Trainning"])).Columns.Add("หลักสูตรฝึกอบรม");
-            ((DataTable)(Session["Trainning"])).Columns.Add("ตั้งแต่ - ถึง (เดือน ปี)");
-            ((DataTable)(Session["Trainning"])).Columns.Add("หน่วยงานที่จัดฝึกอบรม");
-            GridView3.DataSource = ((DataTable)(Session["Trainning"]));
-            GridView3.DataBind();
-
-            Session["Punished"] = new DataTable();
-            ((DataTable)(Session["Punished"])).Columns.Add("พ.ศ.");
-            ((DataTable)(Session["Punished"])).Columns.Add("รายการ");
-            ((DataTable)(Session["Punished"])).Columns.Add("เอกสารอ้างอิง");
-            GridView4.DataSource = ((DataTable)(Session["Punished"]));
-            GridView4.DataBind();
-
-            Session["PositionAndSalary"] = new DataTable();
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("วัน เดือน ปี");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่ง");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เลขที่ตำแหน่ง");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ตำแหน่งประเภท");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("ระดับ");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินเดือน");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เงินประจำตำแหน่ง");
-            ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
-            GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
-            GridView5.DataBind();
 
         }
-
-
         protected void txtBirthDayNumber_TextChanged(object sender, EventArgs e)
         {
             txtBirthDayChar.Text = Util.ToThaiWord(txtBirthDayNumber.Text);
@@ -1294,133 +1178,38 @@ namespace WEB_PERSONAL
         protected void ButtonPlus10_Click(object sender, EventArgs e)
         {
 
-            DataRow dr = ((DataTable)(Session["StudyHis"])).NewRow();
-            dr[0] = txtGrad_Univ.Text;
-            dr[1] = DropDownMonth10From.SelectedValue + "-" + DropDownYear10From.SelectedValue + " - " + DropDownMonth10To.SelectedValue + "-" + DropDownYear10To.SelectedValue;
-            dr[2] = txtMajor.Text;
-            if (DropDownMonth10From.SelectedValue == "-1" || DropDownYear10From.SelectedValue == "-1" || DropDownMonth10To.SelectedValue == "-1" || DropDownYear10To.SelectedValue == "-1")
-            {
-                Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการศึกษา>");
-                return;
-            }
-            if (txtGrad_Univ.Text != "" && txtMajor.Text != "")
-            {
-                ((DataTable)(Session["StudyHis"])).Rows.Add(dr);
-                GridView1.DataSource = ((DataTable)(Session["StudyHis"]));
-                GridView1.DataBind();
-                ClearDataGridViewNumber10();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการศึกษาเรียบร้อย')", true);
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนประวัติการศึกษา>')", true);
-            }
+          /*  ClassPersonStudyHistory P = new ClassPersonStudyHistory();
+            P.CITIZEN_ID = txtCitizen.Text;
+            P.GRAD_UNIV = DateTime.Parse(DropDownMonth10From.Text);
+            P.DATE_FROM = DateTime.Parse(txtDateInWork.Text);
+            P.DATE_TO = DateTime.Parse(txtAge60Number.Text);
+            P.MAJOR = txtMajor.Text;
+        */
 
         }
 
         protected void ButtonPlus11_Click(object sender, EventArgs e)
         {
 
-            DataRow dr = ((DataTable)(Session["JobLisence"])).NewRow();
-            dr[0] = txtGrad_Univ11.Text;
-            dr[1] = txtDepart11.Text;
-            dr[2] = txtNolicense11.Text;
-            dr[3] = txtDateEnable11.Text;
-            if (txtGrad_Univ11.Text != "" && txtDepart11.Text != "" && txtNolicense11.Text != "" && txtDateEnable11.Text != "")
-            {
-                ((DataTable)(Session["JobLisence"])).Rows.Add(dr);
-                GridView2.DataSource = ((DataTable)(Session["JobLisence"]));
-                GridView2.DataBind();
-                ClearDataGridViewNumber11();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลใบประกอบวิชาชีพเรียบร้อย')", true);
-            }
-            else
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบถ้วน<ส่วนใบประกอบวิชาชีพ>')", true);
-            }
+
 
         }
 
         protected void ButtonPlus12_Click(object sender, EventArgs e)
         {
-            DataRow dr = ((DataTable)(Session["Trainning"])).NewRow();
-            dr[0] = txtCourse.Text;
-            dr[1] = DropDownMonth12From.SelectedValue + "-" + DropDownYear12From.SelectedValue + " - " + DropDownMonth12To.SelectedValue + "-" + DropDownYear12To.SelectedValue;
-            dr[2] = txtBranchTrainning.Text;
-            if (DropDownMonth12From.SelectedValue == "-1" || DropDownYear12From.SelectedValue == "-1" || DropDownMonth12To.SelectedValue == "-1" || DropDownYear12To.SelectedValue == "-1")
-            {
-                Util.Alert(this, "กรุณาเลือกเดือนและปีให้ถูกต้อง<ในส่วนประวัติการฝึกอบรม>");
-                return;
-            }
-            if (txtCourse.Text != "" && txtBranchTrainning.Text != "")
-            {
-                ((DataTable)(Session["Trainning"])).Rows.Add(dr);
-                GridView3.DataSource = ((DataTable)(Session["Trainning"]));
-                GridView3.DataBind();
-                ClearDataGridViewNumber12();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลประวัติการฝึกอบรมเรียบร้อย')", true);
-            }
-            else
-            {
-                Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนประวัติการฝึกอบรม>");
-            }
+
         }
 
         protected void ButtonPlus13_Click(object sender, EventArgs e)
         {
 
-            DataRow dr = ((DataTable)(Session["Punished"])).NewRow();
-            dr[0] = DropDownYear13.SelectedValue;
-            dr[1] = txtList13.Text;
-            dr[2] = txtRefDoc13.Text;
-            if (DropDownYear13.SelectedValue == "-1")
-            {
-                Util.Alert(this, "กรุณาเลือก พ.ศ. ให้ถูกต้อง<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>");
-                return;
-            }
-            if (txtList13.Text != "" && txtRefDoc13.Text != "")
-            {
-                ((DataTable)(Session["Punished"])).Rows.Add(dr);
-                GridView4.DataSource = ((DataTable)(Session["Punished"]));
-                GridView4.DataBind();
-                ClearDataGridViewNumber13();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลการได้รับโทษทางวินัยและการนิรโทษกรรมเรียบร้อย')", true);
-            }
-            else
-            {
-                Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนการได้รับโทษทางวินัยและการนิรโทษกรรม>");
-            }
 
         }
 
         protected void ButtonPlus14_Click(object sender, EventArgs e)
         {
-            DataRow dr = ((DataTable)(Session["PositionAndSalary"])).NewRow();
-            dr[0] = txtDate14.Text;
-            dr[1] = txtPosition14.Text;
-            dr[2] = txtNo_Position14.Text;
-            dr[3] = DropDownType_Position14.SelectedValue;
-            dr[4] = DropDownDegree14.SelectedValue;
-            dr[5] = txtSalary14.Text;
-            dr[6] = txtSalaryForPosition14.Text;
-            dr[7] = txtRefDoc14.Text;
-            if (DropDownType_Position14.SelectedValue == "-1" || DropDownDegree14.SelectedValue == "-1")
-            {
-                Util.Alert(this, "กรุณาเลือก ตำแหน่งประเภทและระดับ ให้ถูกต้อง<ในส่วนตำแหน่งและเงินเดือน>");
-                return;
-            }
-            if (txtDate14.Text != "" && txtPosition14.Text != "" && txtNo_Position14.Text != "" && txtSalary14.Text != "" && txtSalaryForPosition14.Text != "" && txtRefDoc14.Text != "")
-            {
-                ((DataTable)(Session["PositionAndSalary"])).Rows.Add(dr);
-                GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
-                GridView5.DataBind();
-                ClearDataGridViewNumber14();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลตำแหน่งและเงินเดือนเรียบร้อย')", true);
-            }
-            else
-            {
-                Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนตำแหน่งและเงินเดือน>");
-            }
+
         }
+
     }
 }

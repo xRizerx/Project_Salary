@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Data.OracleClient;
 
 namespace WEB_PERSONAL
 {
@@ -30,7 +31,16 @@ namespace WEB_PERSONAL
                 //Util.dt.Columns.Add("Column1");
             //}
                 
-            
+            using(OracleConnection con = Util.OC()) {
+                using(OracleCommand command = new OracleCommand("SELECT ANNOUNCE_STRING FROM TB_ANNOUNCE WHERE ANNOUNCE_ID = 1", con)) {
+                    using(OracleDataReader reader = command.ExecuteReader()) {
+                        if(reader.HasRows) {
+                            reader.Read();
+                            Label1.Text = reader.GetString(0);
+                        }
+                    }
+                }
+            }
             
             
         }
