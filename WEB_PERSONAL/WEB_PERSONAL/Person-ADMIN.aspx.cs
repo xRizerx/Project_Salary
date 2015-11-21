@@ -256,9 +256,21 @@ namespace WEB_PERSONAL
             GridView3.DataSource = dt3;
             GridView3.DataBind();
 
+            ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY();
+            DataTable dt4 = p4.GetPersonDISCIPLINARY("", "", "", Session["login_id"].ToString());
+            GridView4.DataSource = dt4;
+            GridView4.DataBind();
+
+            ClassPersonPosiSalary p5 = new ClassPersonPosiSalary();
+            DataTable dt5 = p5.GetPersonPosiSalary("", "", "", "", 0, 0, 0, "", Session["login_id"].ToString());
+            GridView5.DataSource = dt5;
+            GridView5.DataBind();
+
             SetViewState(dt1);
             SetViewState(dt2);
             SetViewState(dt3);
+            SetViewState(dt4);
+            SetViewState(dt5);
         }
 
         protected void modEditCommand1(Object sender, GridViewEditEventArgs e)
@@ -406,21 +418,21 @@ namespace WEB_PERSONAL
         protected void modUpdateCommand3(Object sender, GridViewUpdateEventArgs e)
         {
 
-            Label lblPersonStudyHistoryID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryID");
-            Label lblPersonStudyHistoryCitizenID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryCitizenID");
+            Label lblPersonTrainingID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonTrainingID");
+            Label lblPersonTrainingCitizenID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonTrainingCitizenID");
             TextBox txtPersonTrainingCourseEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingCourseEdit");
-            TextBox txtPersonStudyHistoryMonthFromEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMonthFromEdit");
-            TextBox txtPersonStudyHistoryYearFromEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryYearFromEdit");
-            TextBox txtPersonStudyHistoryMonthTOEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMonthTOEdit");
-            TextBox txtPersonStudyHistoryYearTOEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryYearTOEdit");
+            TextBox txtPersonTrainingMonthFromEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingMonthFromEdit");
+            TextBox txtPersonTrainingYearFromEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingYearFromEdit");
+            TextBox txtPersonTrainingMonthTOEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingMonthTOEdit");
+            TextBox txtPersonTrainingYearTOEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingYearTOEdit");
             TextBox txtPersonTrainingBranchEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingBranchEdit");
 
-            ClassPersonTraining p3 = new ClassPersonTraining(Convert.ToInt32(lblPersonStudyHistoryID.Text), lblPersonStudyHistoryCitizenID.Text
+            ClassPersonTraining p3 = new ClassPersonTraining(Convert.ToInt32(lblPersonTrainingID.Text), lblPersonTrainingCitizenID.Text
                 , txtPersonTrainingCourseEdit.Text
-                , txtPersonStudyHistoryMonthFromEdit.Text
-                , txtPersonStudyHistoryYearFromEdit.Text
-                , txtPersonStudyHistoryMonthTOEdit.Text
-                , txtPersonStudyHistoryYearTOEdit.Text
+                , txtPersonTrainingMonthFromEdit.Text
+                , txtPersonTrainingYearFromEdit.Text
+                , txtPersonTrainingMonthTOEdit.Text
+                , txtPersonTrainingYearTOEdit.Text
                 , txtPersonTrainingBranchEdit.Text);
 
             p3.UpdatePersonTraining();
@@ -438,6 +450,130 @@ namespace WEB_PERSONAL
             GridView3.PageIndex = e.NewPageIndex;
             GridView3.DataSource = GetViewState();
             GridView3.DataBind();
+        }
+
+        /// <summary>
+        /// /////////////////////
+        /// </summary>
+
+        protected void modEditCommand4(Object sender, GridViewEditEventArgs e)
+        {
+            GridView4.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+        protected void modCancelCommand4(Object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView4.EditIndex = -1;
+            BindData();
+        }
+        protected void modDeleteCommand4(Object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView4.DataKeys[e.RowIndex].Value);
+            ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY();
+            p4.ID = id;
+            p4.DeletePersonDISCIPLINARY();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
+
+            GridView4.EditIndex = -1;
+            BindData();
+        }
+        protected void modUpdateCommand4(Object sender, GridViewUpdateEventArgs e)
+        {
+
+            Label lblPersonDISCIPLINARYID = (Label)GridView4.Rows[e.RowIndex].FindControl("lblPersonDISCIPLINARYID");
+            Label lblPersonDISCIPLINARYCitizenID = (Label)GridView4.Rows[e.RowIndex].FindControl("lblPersonDISCIPLINARYCitizenID");
+            TextBox txtPersonDISCIPLINARYYearEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYYearEdit");
+            TextBox txtPersonDISCIPLINARYListEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYListEdit");
+            TextBox txtPersonDISCIPLINARYRefEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYRefEdit");
+
+            ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY(Convert.ToInt32(lblPersonDISCIPLINARYID.Text), lblPersonDISCIPLINARYCitizenID.Text
+                , txtPersonDISCIPLINARYYearEdit.Text
+                , txtPersonDISCIPLINARYListEdit.Text
+                , txtPersonDISCIPLINARYRefEdit.Text);
+
+            p4.UpdatePersonDISCIPLINARY();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+            GridView4.EditIndex = -1;
+            BindData();
+
+        }
+        protected void GridView4_RowDataBound4(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+        protected void myGridViewPersonDISCIPLINARY_PageIndexChanging4(object sender, GridViewPageEventArgs e)
+        {
+            GridView4.PageIndex = e.NewPageIndex;
+            GridView4.DataSource = GetViewState();
+            GridView4.DataBind();
+        }
+
+        /// <summary>
+        /// /////////////////////
+        /// </summary>
+
+        protected void modEditCommand5(Object sender, GridViewEditEventArgs e)
+        {
+            GridView5.EditIndex = e.NewEditIndex;
+            BindData();
+        }
+        protected void modCancelCommand5(Object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView5.EditIndex = -1;
+            BindData();
+        }
+        protected void modDeleteCommand5(Object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(GridView5.DataKeys[e.RowIndex].Value);
+            ClassPersonPosiSalary p5 = new ClassPersonPosiSalary();
+            p5.ID = id;
+            p5.DeletePersonPosiSalary();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
+
+            GridView5.EditIndex = -1;
+            BindData();
+        }
+        protected void modUpdateCommand5(Object sender, GridViewUpdateEventArgs e)
+        {
+
+            Label lblPersonPosiSalaryID = (Label)GridView5.Rows[e.RowIndex].FindControl("lblPersonPosiSalaryID");
+            TextBox lblPersonPosiSalaryDateEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryDateEdit");
+            TextBox txtPersonPosiSalaryPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionEdit");
+            TextBox txtPersonPosiSalaryNoPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryNoPositionEdit");
+            TextBox txtPersonPosiSalaryTypePositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryTypePositionEdit");
+            TextBox txtPersonPosiSalaryDegreeEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryDegreeEdit");
+            TextBox txtPersonPosiSalarySALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalarySALARYEdit");
+            TextBox txtPersonPosiSalaryPositionSALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionSALARYEdit");
+            TextBox txtPersonPosiSalaryRefEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryRefEdit");
+            Label lblPersonPosiSalaryCitizenID = (Label)GridView5.Rows[e.RowIndex].FindControl("lblPersonPosiSalaryCitizenID");
+            DateTime DDATE = DateTime.Parse(lblPersonPosiSalaryDateEdit.Text);
+
+            ClassPersonPosiSalary p5 = new ClassPersonPosiSalary(Convert.ToInt32(lblPersonPosiSalaryID.Text)
+                , DDATE
+                , txtPersonPosiSalaryPositionEdit.Text
+                , txtPersonPosiSalaryNoPositionEdit.Text
+                , txtPersonPosiSalaryTypePositionEdit.Text
+                , Convert.ToInt32(txtPersonPosiSalaryDegreeEdit.Text)
+                , Convert.ToInt32(txtPersonPosiSalarySALARYEdit.Text)
+                , Convert.ToInt32(txtPersonPosiSalaryPositionSALARYEdit.Text)
+                , txtPersonPosiSalaryRefEdit.Text
+                , lblPersonPosiSalaryCitizenID.Text);
+
+            p5.UpdatePersonPosiSalary();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+            GridView5.EditIndex = -1;
+            BindData();
+
+        }
+        protected void GridView5_RowDataBound5(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+        protected void myGridViewPersonPosiSalary_PageIndexChanging5(object sender, GridViewPageEventArgs e)
+        {
+            GridView5.PageIndex = e.NewPageIndex;
+            GridView5.DataSource = GetViewState();
+            GridView5.DataBind();
         }
 
         private void DDLMisnistry()

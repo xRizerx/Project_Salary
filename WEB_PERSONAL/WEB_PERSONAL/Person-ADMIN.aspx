@@ -769,7 +769,59 @@
 
                 <asp:UpdatePanel ID="UpdateGridView4" runat="server">
                                    <ContentTemplate>
-                <asp:GridView ID="GridView4" runat="server" Width="998px"></asp:GridView>
+                <asp:GridView ID="GridView4" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
+                AutoGenerateColumns="false"
+                AllowPaging="true"
+                DataKeyNames="ID"
+                OnRowEditing="modEditCommand4"
+                OnRowCancelingEdit="modCancelCommand4"
+                OnRowUpdating="modUpdateCommand4"
+                OnRowDeleting="modDeleteCommand4"
+                OnRowDataBound="GridView4_RowDataBound4"
+                OnPageIndexChanging="myGridViewPersonDISCIPLINARY_PageIndexChanging4" PageSize="5" BackColor="White" BorderColor="#999999">
+                <Columns>
+                    <asp:TemplateField HeaderText="ID" Visible="false">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonDISCIPLINARYID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ID") %>'></asp:Label>
+                            </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="CITIZEN_ID" Visible="false">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonDISCIPLINARYCitizenID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
+                            </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="พ.ศ." ControlStyle-Width="100" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonDISCIPLINARYYearEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonDISCIPLINARYYearEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="รายการ" ControlStyle-Width="500" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonDISCIPLINARYListEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MENU") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonDISCIPLINARYListEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MENU") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                     <asp:TemplateField HeaderText="เอกสารอ้างอิง" ControlStyle-Width="250" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonDISCIPLINARYRefEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.REF_DOC") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonDISCIPLINARYRefEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.REF_DOC") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
+                    <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                         <ItemTemplate>
+                         <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/Image/x.png" CommandName="Delete" OnClientClick="return confirm('คุณต้องการที่จะลบจริงๆใช่ไหม ?');" AlternateText="Delete" />               
+                    </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
                                         </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="GridView4" />
@@ -893,7 +945,99 @@
 
                 <asp:UpdatePanel ID="UpdateGridView5" runat="server">
                                    <ContentTemplate>
-                <asp:GridView ID="GridView5" runat="server" Width="998px"></asp:GridView>
+                <asp:GridView ID="GridView5" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
+                AutoGenerateColumns="false"
+                AllowPaging="true"
+                DataKeyNames="ID"
+                OnRowEditing="modEditCommand5"
+                OnRowCancelingEdit="modCancelCommand5"
+                OnRowUpdating="modUpdateCommand5"
+                OnRowDeleting="modDeleteCommand5"
+                OnRowDataBound="GridView5_RowDataBound5"
+                OnPageIndexChanging="myGridViewPersonPosiSalary_PageIndexChanging5" PageSize="5" BackColor="White" BorderColor="#999999">
+                <Columns>
+                    <asp:TemplateField HeaderText="ID" Visible="false">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalaryID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ID") %>'></asp:Label>
+                            </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="CITIZEN_ID" Visible="false">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalaryCitizenID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
+                            </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="วัน เดือน ปี" ControlStyle-Width="50" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalaryDateEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DDATE") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonPosiSalaryDateEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DDATE") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ตำแหน่ง" ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalaryPositionEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.POSITION_NAME") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonPosiSalaryPositionEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.POSITION_NAME") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                     <asp:TemplateField HeaderText="เลขที่ตำแหน่ง" ControlStyle-Width="50" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalaryNoPositionEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.PERSON_ID") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonPosiSalaryNoPositionEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.PERSON_ID") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ตำแหน่งประเภท" ControlStyle-Width="50" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalaryTypePositionEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ST_ID") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonPosiSalaryTypePositionEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ST_ID") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ระดับ" ControlStyle-Width="50" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalaryDegreeEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.POSITION_ID") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonPosiSalaryDegreeEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.POSITION_ID") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="เงินเดือน" ControlStyle-Width="50" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalarySALARYEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SALARY") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonPosiSalarySALARYEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SALARY") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="เงินประจำตำแหน่ง" ControlStyle-Width="50" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalaryPositionSALARYEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.POSITION_SALARY") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonPosiSalaryPositionSALARYEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.POSITION_SALARY") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="เอกสารอ้างอิง" ControlStyle-Width="50" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                            <ItemTemplate>
+                            <asp:Label ID="lblPersonPosiSalaryRefEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.REFERENCE_DOCUMENT") %>'></asp:Label>
+                            </ItemTemplate>
+                                    <EditItemTemplate>
+                            		<asp:TextBox ID="txtPersonPosiSalaryRefEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.REFERENCE_DOCUMENT") %>'></asp:TextBox>
+                        		    </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
+                    <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                         <ItemTemplate>
+                         <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/Image/x.png" CommandName="Delete" OnClientClick="return confirm('คุณต้องการที่จะลบจริงๆใช่ไหม ?');" AlternateText="Delete" />               
+                    </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
                                         </ContentTemplate>
                                   <Triggers>
                                      <asp:AsyncPostBackTrigger ControlID="GridView5" />
