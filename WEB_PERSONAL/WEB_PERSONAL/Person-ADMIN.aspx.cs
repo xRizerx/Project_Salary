@@ -235,8 +235,14 @@ namespace WEB_PERSONAL
 
         void BindData()
         {
+            if (Session["login_id"] == null)
+                {
+                Response.Redirect("Access.aspx");
+                return;
+                }
+
             ClassPersonStudyHistory p = new ClassPersonStudyHistory();
-            DataTable dt = p.GetPersonStudyHistory("", "", "", "");
+            DataTable dt = p.GetPersonStudyHistory("", "", "", "", Session["login_id"].ToString());
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
