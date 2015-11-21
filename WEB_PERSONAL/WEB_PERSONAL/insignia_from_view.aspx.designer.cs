@@ -202,15 +202,6 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.RadioButton RadioButton6;
         
         /// <summary>
-        /// Label16 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label16;
-        
-        /// <summary>
         /// Label17 control.
         /// </summary>
         /// <remarks>
@@ -517,85 +508,67 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label35;
         
         /// <summary>
-        /// Label36 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label36;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Label37 control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label37;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Label38 control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label38;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// TextBox37 control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox37;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// Label39 control.
+        /// TextBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label39;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
         
         /// <summary>
-        /// TextBox19 control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox19;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// Label40 control.
+        /// TextBox18 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label40;
-        
-        /// <summary>
-        /// TextBox20 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox20;
-        
-        /// <summary>
-        /// Label41 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label41;
+        protected global::System.Web.UI.WebControls.TextBox TextBox18;
         
         /// <summary>
         /// Label42 control.

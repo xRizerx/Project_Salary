@@ -142,6 +142,11 @@
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\blurred-blue-background.jpg" />
     <Content Include="Image\stickman.png" />
+    <Content Include="Image\TUUbg1.jpg" />
+    <Content Include="Image\TUUbg2.jpg" />
+    <Content Include="Image\TUUbg3.jpg" />
+    <Content Include="Image\TUUbg4.jpg" />
+    <Content Include="Image\TUUbg5.jpg" />
     <Content Include="insignia_from_view.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.css" />
     <Content Include="Default.aspx" />

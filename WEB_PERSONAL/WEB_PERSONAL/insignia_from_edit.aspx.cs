@@ -16,6 +16,10 @@ namespace WEB_PERSONAL
         public static string strConn = @"Data Source = ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["login_id"] == null)
+            {
+                return;
+            }
             if (Session["insignia_citizen_id"] == null)
             {
                 Response.Redirect("insignia_citizen.aspx");
