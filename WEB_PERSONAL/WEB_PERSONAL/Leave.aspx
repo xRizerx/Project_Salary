@@ -149,12 +149,6 @@
             height: 29px;
         }
 
-        .auto-style81 {
-            width: 50px;
-            text-align: right;
-            height: 28px;
-        }
-
         .auto-style83 {
             width: 50px;
             text-align: right;
@@ -270,7 +264,7 @@
                         </td>
                         <td>
                             <asp:TextBox ID="TextBox15" runat="server" CssClass="master_default_textbox"></asp:TextBox>
-                            <asp:LinkButton ID="LinkButton18" runat="server" CssClass="master_default_button" OnClick="LinkButton18_Click">ดึง</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton18" runat="server" CssClass="master_default_button" OnClick="LinkButton18_Click">ค้นหา</asp:LinkButton>
                         </td>
                     </tr>
                 </table>
@@ -381,7 +375,7 @@
                     <tr>
                         <td class="auto-style75">&nbsp;</td>
                         <td>
-                            <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_default_button" OnClick="LinkButton13_Click">แก้ไข</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_default_button" OnClick="LinkButton13_Click" Enabled="False">แก้ไข</asp:LinkButton>
                         </td>
                     </tr>
                 </table>
@@ -399,8 +393,6 @@
                 <asp:Label ID="Label34" runat="server" Text="ข้อมูลเอกสารการลา" Font-Bold="True"></asp:Label>
             </div>
             <div class="master_default_div_sec_in">
-
-                <asp:LinkButton ID="LinkButton2" runat="server" OnClick="Button1_Click1" CssClass="master_default_button">ทดสอบ</asp:LinkButton>
 
                 <table>
                     <tr>

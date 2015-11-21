@@ -215,10 +215,15 @@
                     </ul>
                     <ul class="master_login_right">
                         <li>
-                            <asp:Label ID="Label7" runat="server" Text="Label" CssClass="master_login_name"></asp:Label>
+                            <asp:Label ID="Label9" runat="server" Text="ยินดีต้อนรับ" CssClass="master_login_name" style="color:#000000"></asp:Label>
                         </li>
                         <li>
-                            <span style="display: inline-block; width: 20px"></span>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_login_name_link" OnClick="LinkButton1_Click1">LinkButton</asp:LinkButton>
+                            
+                        </li>
+                
+                        <li>
+                            <span style="display: inline-block; width: 5px"></span>
                         </li>
                         <li>
                             <span id="master_login_button" class="master_header_under_toggle" onclick="toggleLoginPopup();" runat="server">เข้าสู่ระบบ</span>
@@ -261,7 +266,7 @@
                                     <span class="master_header_under_header">การขึ้นเงินเดือน</span>
                                 </td>
                                 <td>
-                                    <span class="master_header_under_header">การลา มาสาย ศึกษาต่อ</span>
+                                    <span class="master_header_under_header">การลา | มาสาย | ศึกษาต่อ</span>
                                 </td>
                             </tr>
                             <tr>

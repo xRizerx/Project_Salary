@@ -141,7 +141,7 @@ namespace WEB_PERSONAL {
             {
                 using (OracleConnection con = Util.OC()) {
                     {
-                        string sql = "SELECT TB_PERSONAL.STF_NAME || ' ' || STF_LNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION_WORK.POSITION_WORK_NAME FROM TB_PERSONAL, TB_STAFFTYPE, TB_POSITION_WORK WHERE TB_PERSONAL.CITIZEN_ID = '" + TextBox3.Text + "' AND TB_PERSONAL.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSONAL.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID";
+                        string sql = "SELECT TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION_WORK.POSITION_WORK_NAME FROM TB_PERSON, TB_STAFFTYPE, TB_POSITION_WORK WHERE TB_PERSON.CITIZEN_ID = '" + TextBox3.Text + "' AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSON.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 if (reader.HasRows) {

@@ -68,15 +68,18 @@ namespace WEB_PERSONAL
                 /*Label7.Text = Session["login_id"].ToString();*/
                 string name = Session["login_name"].ToString() + " " + Session["login_lastname"];
                 string systemRank = "(" + Session["login_system_status"].ToString() + ")";
-                Label7.Text = name + " " + systemRank;
+                LinkButton1.Text = name;
+                //Label7.Text = systemRank;
                 FindControl("master_login_button").Visible = false;
                 LinkButton10.Visible = true;
-                if(Session["login_system_status"].ToString() == "Admin")
+                if(Session["login_system_status"].ToString() == "ผู้ดูแลระบบ")
                 {
-                    Label7.ForeColor = System.Drawing.Color.FromArgb(204,41,57);
+                    LinkButton1.ForeColor = System.Drawing.Color.FromArgb(204,41,57);
+                    //Label7.ForeColor = System.Drawing.Color.FromArgb(204, 41, 57);
                 } else
                 {
-                    Label7.ForeColor = System.Drawing.Color.FromArgb(0, 162, 232);
+                    LinkButton1.ForeColor = System.Drawing.Color.FromArgb(0, 162, 232);
+                    //Label7.ForeColor = System.Drawing.Color.FromArgb(0, 162, 232);
                 }
                 
             }
@@ -259,6 +262,10 @@ namespace WEB_PERSONAL
             //   string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
             //   ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             //}
+        }
+
+        protected void LinkButton1_Click1(object sender, EventArgs e) {
+            Response.Redirect("Profile.aspx");
         }
     }
 }
