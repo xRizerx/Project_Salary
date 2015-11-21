@@ -4,10 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.OracleClient;
 
 namespace WEB_PERSONAL {
     public partial class Admin : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
+            if(Session["login_system_status"] != null && Session["login_system_status"].ToString() != "Admin") {
+                Response.Redirect("default.aspx");
+            }
             BindGridView1();
         }
         private void BindGridView1() {
