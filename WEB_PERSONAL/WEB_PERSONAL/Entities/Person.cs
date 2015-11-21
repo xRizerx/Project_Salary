@@ -431,7 +431,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT ID,CITIZEN_ID,LICENCE_NAME,BRANCH,LICENCE_NO,DDATE FROM TB_JOB_LICENSE ";
+            string query = "SELECT * FROM TB_JOB_LICENSE ";
             if (!string.IsNullOrEmpty(LICENCE_NAME) || !string.IsNullOrEmpty(BRANCH) || !string.IsNullOrEmpty(LICENCE_NO) || !string.IsNullOrEmpty(DDATE) || !string.IsNullOrEmpty(CITIZEN_ID))
             {
                 query += " where 1=1 ";
@@ -855,7 +855,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT ID,CITIZEN_ID,YEAR,MENU,REF_DOC FROM TB_DISCIPLINARY_AND_AMNESTY ";
+            string query = "SELECT * FROM TB_DISCIPLINARY_AND_AMNESTY ";
             if (!string.IsNullOrEmpty(YEAR) || !string.IsNullOrEmpty(MENU) || !string.IsNullOrEmpty(REF_DOC) || !string.IsNullOrEmpty(CITIZEN_ID))
             {
                 query += " where 1=1 ";
@@ -1051,7 +1051,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT ID,CITIZEN_ID,YEAR,MENU,REF_DOC FROM TB_POSITION_AND_SALARY ";
+            string query = "SELECT * FROM TB_POSITION_AND_SALARY ";
             if (!string.IsNullOrEmpty(DDATE) || !string.IsNullOrEmpty(POSITION_NAME) || !string.IsNullOrEmpty(PERSON_ID) || !string.IsNullOrEmpty(ST_ID) || POSITION_ID != 0 || SALARY != 0 || POSITION_SALARY != 0 || !string.IsNullOrEmpty(REFERENCE_DOCUMENT) || !string.IsNullOrEmpty(CITIZEN_ID))
             {
                 query += " where 1=1 ";

@@ -88,9 +88,9 @@ form {
 .master_login li {
     display: inline;
 }
-/**/
+/*
 .master_login_right a {
-    /*text-decoration: none;
+    text-decoration: none;
     display: inline;
     padding: 1px 20px;
     margin: 0 20px;
@@ -99,7 +99,8 @@ form {
     color: #FFFFFF;
     background-color: #00a2e8;
     border-radius: 24px;
-    transition: background-color ease 0.25s text-decoration ease 0.25s;*/
+    transition: background-color ease 0.25s text-decoration ease 0.25s;
+    
     text-decoration: none;
     background-color: #00a2e8;
     height: 32px;
@@ -117,7 +118,7 @@ form {
 }
 .master_login_right a:active {
     background-color: #3d7288;
-}
+}*/
 /*
 .master_login button {
     text-decoration: none;
@@ -138,6 +139,16 @@ form {
 */
 .master_login_name {
     color: #808080;
+
+}
+.master_login_name_link {
+    text-decoration: none;
+    color: #808080;
+
+}
+.master_login_name_link:hover {
+    
+    text-decoration: underline;
 
 }
 .master_login_popup {

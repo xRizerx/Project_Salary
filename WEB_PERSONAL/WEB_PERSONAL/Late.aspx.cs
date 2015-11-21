@@ -95,6 +95,8 @@ namespace WEB_PERSONAL {
             //} catch (Exception e2) {
             //    Util.Alert(this, "เกิดข้อผิดพลาด! " + e2.Message);
             //}
+            BindGridView2();
+            BindGridView3();
         }
 
         protected void GridView2_PageIndexChanging(object sender, GridViewPageEventArgs e) {
