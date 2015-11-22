@@ -109,7 +109,9 @@
             margin: 20px 0;
             border-bottom: 1px solid #808080;
         }
-
+        .error_text {
+            font-size: 32px;
+        }
 
         .auto-style58 {
             width: 180px;
@@ -139,7 +141,7 @@
         }
 
         .auto-style78 {
-            width: 77px;
+            width: 120px;
             text-align: right;
             height: 29px;
         }
@@ -154,8 +156,12 @@
             text-align: right;
         }
 
-        .auto-style93 {
-            width: 77px;
+        .auto-style94 {
+            width: 100px;
+            text-align: right;
+        }
+        .auto-style95 {
+            width: 120px;
             text-align: right;
         }
     </style>
@@ -251,26 +257,23 @@
 
                 <table style="width: 100%;">
                     <tr>
-                        <td>
-                            <asp:Label ID="Label20" runat="server" ForeColor="Red"></asp:Label>
+                        <td class="auto-style95">
+                            &nbsp;</td>
+                        <td class="auto-style77">
+                            <asp:Label ID="Label20" runat="server" CssClass="error_text"></asp:Label>
                         </td>
-                        <td></td>
                     </tr>
-                </table>
-                <table style="width: 100%;">
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style95">
                             <asp:Label ID="Label21" runat="server" Text="ค้นหาตามรหัสเอกสาร"></asp:Label>
                         </td>
-                        <td>
+                        <td class="auto-style77">
                             <asp:TextBox ID="TextBox15" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton18" runat="server" CssClass="master_default_button" OnClick="LinkButton18_Click">ค้นหา</asp:LinkButton>
                         </td>
                     </tr>
-                </table>
-                <table style="width: 100%;">
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label7" runat="server" Text="รหัสเอกสาร"></asp:Label>
                         </td>
                         <td class="auto-style77">
@@ -286,7 +289,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label9" runat="server" Text="รหัสผู้ลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
@@ -295,7 +298,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label17" runat="server" Text="ชื่อผู้ลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
@@ -303,7 +306,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label14" runat="server" Text="รหัสผู้อนุมัติ"></asp:Label>
                         </td>
                         <td class="auto-style77">
@@ -312,7 +315,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label19" runat="server" Text="ชื่อผู้อนุมัติ"></asp:Label>
                         </td>
                         <td class="auto-style77">
@@ -320,7 +323,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label15" runat="server" Text="วันที่อนุมัติ"></asp:Label>
                         </td>
                         <td class="auto-style77">
@@ -328,7 +331,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label10" runat="server" Text="ประเภทการลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
@@ -337,7 +340,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label13" runat="server" Text="สถานะการลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
@@ -346,7 +349,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label11" runat="server" Text="จากวันที่"></asp:Label>
                         </td>
                         <td class="auto-style77">
@@ -354,28 +357,25 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style93">
+                        <td class="auto-style95">
                             <asp:Label ID="Label12" runat="server" Text="ถึงวันที่"></asp:Label>
                         </td>
                         <td class="auto-style77">
                             <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
                     </tr>
-                </table>
-
-                <table style="width: 100%;">
                     <tr>
-                        <td class="auto-style75">
+                        <td class="auto-style95">
                             <asp:Label ID="Label16" runat="server" Text="เหตุผลที่ลา"></asp:Label>
                         </td>
-                        <td>
-                            <asp:TextBox ID="TextBox10" runat="server" Height="74px" TextMode="MultiLine" Width="584px" CssClass="master_default_textbox_multi_line"></asp:TextBox>
+                        <td class="auto-style77">
+                            <asp:TextBox ID="TextBox10" runat="server" CssClass="master_default_textbox_multi_line" Height="74px" TextMode="MultiLine" Width="584px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style75">&nbsp;</td>
-                        <td>
-                            <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_default_button" OnClick="LinkButton13_Click" Enabled="False">แก้ไข</asp:LinkButton>
+                        <td class="auto-style95">&nbsp;</td>
+                        <td class="auto-style77">
+                            <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_default_button" Enabled="False" OnClick="LinkButton13_Click">แก้ไข</asp:LinkButton>
                         </td>
                     </tr>
                 </table>

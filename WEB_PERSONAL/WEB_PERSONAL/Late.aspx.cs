@@ -202,5 +202,57 @@ namespace WEB_PERSONAL {
             GridView3.DataSource = sds;
             GridView3.DataBind();
         }
+
+        protected void LinkButton21_Click(object sender, EventArgs e) {
+            TextBox26.Text = "";
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            Label5.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            TextBox5.Text = "";
+            TextBox6.Text = "";
+            Label50.Text = "";
+            using (OracleConnection con = Util.OC()) {
+                using(OracleCommand command = new OracleCommand("SELECT TO_CHAR(TB_WORK_CHECK_IN.DDATE,'DD MON YYYY','NLS_DATE_LANGUAGE = THAI'), TB_WORK_CHECK_IN.CITIZEN_ID, TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME, TB_WORK_CHECK_IN.HOUR_IN, TB_WORK_CHECK_IN.MINUTE_IN, TB_WORK_CHECK_IN.HOUR_OUT, TB_WORK_CHECK_IN.MINUTE_OUT FROM TB_WORK_CHECK_IN, TB_PERSON WHERE TB_WORK_CHECK_IN.ID = :1 AND TB_PERSON.CITIZEN_ID = TB_WORK_CHECK_IN.CITIZEN_ID", con)) {
+                    command.Parameters.AddWithValue("1", TextBox27.Text);
+                    using(OracleDataReader reader = command.ExecuteReader()) {
+                        if(reader.HasRows) {
+                            reader.Read();
+                            TextBox26.Text = TextBox27.Text;
+                            TextBox1.Text = Util.NDT(reader.GetString(0));
+                            TextBox2.Text = reader.GetString(1);
+                            Label5.Text = reader.GetString(2);
+                            TextBox3.Text = reader.GetInt32(3).ToString();
+                            TextBox4.Text = reader.GetInt32(4).ToString();
+                            TextBox5.Text = reader.GetInt32(5).ToString();
+                            TextBox6.Text = reader.GetInt32(6).ToString();
+                        } else {
+                            Label50.Text = "ไม่พบรหัสเอกสาร";
+                            return;
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e) {
+            using(OracleConnection con = Util.OC()) {
+                using(OracleCommand command = new OracleCommand("UPDATE TB_WORK_CHECK_IN SET DDATE = :1, CITIZEN_ID = :2, HOUR_IN = :3, MINUTE_IN = :4, HOUR_OUT = :5, MINUTE_OUT = :6 WHERE ID = :7", con)) {
+                    command.Parameters.AddWithValue("1", Util.ODT(TextBox1.Text));
+                    command.Parameters.AddWithValue("2", TextBox2.Text);
+                    command.Parameters.AddWithValue("3", TextBox3.Text);
+                    command.Parameters.AddWithValue("4", TextBox4.Text);
+                    command.Parameters.AddWithValue("5", TextBox5.Text);
+                    command.Parameters.AddWithValue("6", TextBox6.Text);
+                    command.Parameters.AddWithValue("7", TextBox26.Text);
+                    command.ExecuteNonQuery();
+                    Util.Alert(this, "แก้ไขข้อมูลสำเร็จ");
+                    BindGridView2();
+                    BindGridView3();
+                }
+            }
+        }
     }
 }

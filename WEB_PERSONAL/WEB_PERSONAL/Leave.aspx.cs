@@ -356,16 +356,18 @@ namespace WEB_PERSONAL {
             //try {
             using (OracleConnection con = Util.OC()) {
                 {
-                    using (OracleCommand command = new OracleCommand(
-                    "SELECT COUNT(*) FROM TB_LEAVE WHERE PAPER_ID = " + TextBox15.Text, con))
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        while (reader.Read()) {
-                            if (reader.GetInt32(0) == 0) {
-                                Label20.Text = "ไม่พบรหัสเอกสาร!";
-                                return;
+                    using (OracleCommand command = new OracleCommand("SELECT COUNT(*) FROM TB_LEAVE WHERE PAPER_ID = :1", con)) {
+                        command.Parameters.AddWithValue("1", TextBox15.Text);
+                        using (OracleDataReader reader = command.ExecuteReader()) {
+                            while (reader.Read()) {
+                                if (reader.GetInt32(0) == 0) {
+                                    Label20.Text = "ไม่พบรหัสเอกสาร!";
+                                    return;
+                                }
                             }
                         }
                     }
+                    
                 }
 
                 {

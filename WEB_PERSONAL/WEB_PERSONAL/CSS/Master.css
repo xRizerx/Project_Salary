@@ -53,6 +53,7 @@ form {
     
     z-index: 999;
     border-bottom: 1px solid #00a2e8;
+    border-bottom: 1px solid #f0f0f0;
     
     /*background-image: url("../Image/ef333.jpg");
     background-position: center;*/
@@ -139,12 +140,12 @@ form {
 */
 .master_login_name {
     color: #808080;
-
+    
 }
 .master_login_name_link {
     text-decoration: none;
     color: #808080;
-
+    font-weight: bold;
 }
 .master_login_name_link:hover {
     
@@ -216,8 +217,27 @@ form {
     background-color: #0083bb;
     /*text-shadow: 1px 1px 1px #000000;*/
 }
-
-
+.master_logout {
+    text-decoration: none;
+    background-color: #00a2e8;
+    background-color: #FF0000;
+    height: 32px;
+    min-width: 100px;
+    padding: 0 20px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color ease 0.25s;
+    display: inline-block;
+}
+.master_logout:hover {
+    background-color: #65c1e9;
+    background-color: #ff7070;
+}
+.master_logout:active {
+    background-color: #3d7288;
+    background-color: #870000;
+}
 
 .master_header {
     background-image: url("../Image/bg5.jpg");
@@ -230,7 +250,7 @@ form {
     /*padding-top: 40px;*/
     /*height: 170px;*/
     transition: background-color ease 0.25s;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #f0f0f0;
 }
 .master_header_over {
     background-color: rgba(255,255,255,0.9);
