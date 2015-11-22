@@ -147,6 +147,7 @@ namespace WEB_PERSONAL
             Session.Remove("login_name");
             Session.Remove("login_lastname");
             Session.Remove("redirect_to");
+            Session.Remove("login_system_status_id");
         }
 
         protected void LinkButton13_Click(object sender, EventArgs e) {

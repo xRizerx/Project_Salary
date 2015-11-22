@@ -64,7 +64,7 @@
         }
 
         .auto-style15 {
-            width: 200px;
+            width: 150px;
             text-align: right;
             padding-right: 5px;
             height: 28px;
@@ -76,7 +76,7 @@
         }
 
         .auto-style19 {
-            width: 200px;
+            width: 150px;
             text-align: right;
             padding-right: 5px;
             height: 33px;
@@ -85,13 +85,8 @@
             width: 293px;
             height: 33px;
         }
-        .auto-style23 {
-            width: 180px;
-            text-align: right;
-            padding-right: 5px;
-        }
-        .auto-style24 {
-            width: 200px;
+        .auto-style25 {
+            width: 150px;
             text-align: right;
             padding-right: 5px;
         }
@@ -121,7 +116,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label8" runat="server" Text="รหัสเอกสาร"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -129,7 +124,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label10" runat="server" Text="รหัสผู้ลาศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -138,7 +133,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label35" runat="server" Text="ชื่อผู้ลาศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -146,7 +141,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label38" runat="server" Text="ประเภทผู้ลาศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -162,11 +157,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">&nbsp;</td>
+                        <td class="auto-style25">&nbsp;</td>
                         <td class="auto-style14">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label47" runat="server" Text="ปีที่ศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -174,7 +169,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label12" runat="server" Text="ระดับ"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -184,25 +179,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label13" runat="server" Text="สาขา"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="DEPARTMENT_NAME" DataValueField="DEPARTMENT_ID" CssClass="master_default_dropdown" OnDataBound="DropDownList2_DataBound">
-                            </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_DEPARTMENT&quot; ORDER BY DEPARTMENT_NAME"></asp:SqlDataSource>
+                            <asp:TextBox ID="TextBox29" runat="server" CssClass="master_default_textbox" Width="400px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label14" runat="server" Text="สถานที่"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox" Width="400px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label42" runat="server" Text="หลักสูตร"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -212,41 +205,42 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label43" runat="server" Text="ระยะเวลาที่ศึกษา"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:TextBox ID="TextBox24" runat="server" Width="50px" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox24" runat="server" Width="40px" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:Label ID="Label44" runat="server" Text="ทั้งสิ้น"></asp:Label>
-                            <asp:TextBox ID="TextBox25" runat="server" Width="50px" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox25" runat="server" Width="40px" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:Label ID="Label48" runat="server" Text="ปี"></asp:Label>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label15" runat="server" Text="จากวันที่"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox" Width="100px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label16" runat="server" Text="ถึงวันที่"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:TextBox ID="TextBox8" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox8" runat="server" CssClass="master_default_textbox" Width="100px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label45" runat="server" Text="ระยะเวลาที่ศึกษาตามหลักสูตร"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:TextBox ID="TextBox26" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox26" runat="server" CssClass="master_default_textbox" Width="50px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">
+                        <td class="auto-style25">
                             <asp:Label ID="Label46" runat="server" Text="หมายเหตุ"></asp:Label>
                         </td>
                         <td class="auto-style14">
@@ -254,11 +248,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">&nbsp;</td>
+                        <td class="auto-style25">&nbsp;</td>
                         <td class="auto-style14">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style24">&nbsp;</td>
+                        <td class="auto-style25">&nbsp;</td>
                         <td class="auto-style14">
                             <div class="login_button_div">
                                 <ul>
@@ -284,10 +278,20 @@
                 <asp:Label ID="Label3" runat="server" Text="ข้อมูลการลาศึกษาต่อ"></asp:Label>
             </div>
             <div class="master_default_div_sec_in">
-                <div style="height:800px">
-                    <asp:Panel ID="Panel2" runat="server" ScrollBars="Both" CssClass="leave_grid_view">
-                        </asp:Panel>
-                </div>
+                
+                <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <AlternatingRowStyle BackColor="White" />
+                    <EditRowStyle BackColor="#2461BF" />
+                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#EFF3FB" />
+                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                </asp:GridView>
                 
             
             </div>

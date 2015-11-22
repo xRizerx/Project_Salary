@@ -18,8 +18,8 @@
             float: left;
             width: 200px;
             height: 200px;
-            background-color: #c0c0c0;
-            box-shadow: #808080 0px 5px 5px;
+            background-color: #f0f0f0;
+            box-shadow: #e0e0e0 0px 5px 5px;
         }
 
         .sec1_1 img {
@@ -50,7 +50,7 @@
     <div class="main">
         <div class="sec1">
             <div class="sec1_1">
-                <img src="Image/i1.jpg" />
+                <img src="Image/roka.gif" />
             </div>
             <div class="sec1_2">
                 <div class="master_default_div_sec" id="msec1">
