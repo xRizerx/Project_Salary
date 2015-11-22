@@ -78,5 +78,9 @@ namespace WEB_PERSONAL {
             }
 
         }
+
+        protected void LinkButton11_Click(object sender, EventArgs e) {
+            Response.Redirect("Person-ADMIN.aspx");
+        }
     }
 }

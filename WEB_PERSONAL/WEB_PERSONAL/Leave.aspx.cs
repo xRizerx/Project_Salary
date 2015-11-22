@@ -296,6 +296,14 @@ namespace WEB_PERSONAL {
                 Util.Alert(this, "กรุณาเข้าสู่ระบบก่อน");
                 return;
             }
+            if(
+                TextBox16.Text == null || TextBox16.Text == "" ||
+                DropDownList5.SelectedIndex == 0 || DropDownList6.SelectedIndex == 0 ||
+                TextBox17.Text == null || TextBox17.Text == "" ||
+                TextBox18.Text == null || TextBox18.Text == "") {
+                Util.Alert(this, "กรุณาเลือกข้อมูลให้ครบถ้วน");
+                return;
+            }
 
             // try {
             using (OracleConnection con = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;")) {
@@ -356,16 +364,18 @@ namespace WEB_PERSONAL {
             //try {
             using (OracleConnection con = Util.OC()) {
                 {
-                    using (OracleCommand command = new OracleCommand(
-                    "SELECT COUNT(*) FROM TB_LEAVE WHERE PAPER_ID = " + TextBox15.Text, con))
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        while (reader.Read()) {
-                            if (reader.GetInt32(0) == 0) {
-                                Label20.Text = "ไม่พบรหัสเอกสาร!";
-                                return;
+                    using (OracleCommand command = new OracleCommand("SELECT COUNT(*) FROM TB_LEAVE WHERE PAPER_ID = :1", con)) {
+                        command.Parameters.AddWithValue("1", TextBox15.Text);
+                        using (OracleDataReader reader = command.ExecuteReader()) {
+                            while (reader.Read()) {
+                                if (reader.GetInt32(0) == 0) {
+                                    Label20.Text = "ไม่พบรหัสเอกสาร!";
+                                    return;
+                                }
                             }
                         }
                     }
+                    
                 }
 
                 {
@@ -442,6 +452,5 @@ namespace WEB_PERSONAL {
 
         }
 
-        
     }
 }
