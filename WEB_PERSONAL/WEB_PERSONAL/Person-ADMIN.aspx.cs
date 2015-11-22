@@ -360,6 +360,14 @@ namespace WEB_PERSONAL
             {
                 LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton2");
                 lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "LICENCE_NAME") + " จริงๆใช่ไหม ?');");
+
+                //TextBox txt1 = (e.Row.FindControl("txtPersonJobLisenceDDATEEdit") as TextBox);
+                //txt1.Attributes.Add("onfocus", "ShowDate('" + txt1.ClientID + "')");
+
+               // var DtShmt = (TextBox)e.Row.FindControl("txtPersonJobLisenceDDATEEdit");
+                //ClientScript.RegisterStartupScript(this.GetType(), "datepick",
+                  //   "$(function () { $('#" + DtShmt.ClientID + "').datepicker({ dateFormat: 'dd/mm/yyyy' });  })", true);
+                //$("#ContentPlaceHolder1_txtBirthDayNumber")
             }
         }
         protected void myGridViewPersonJobLisence_PageIndexChanging2(object sender, GridViewPageEventArgs e)
