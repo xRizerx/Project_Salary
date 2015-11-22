@@ -396,10 +396,10 @@ namespace WEB_PERSONAL
             Label lblPersonTrainingID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonTrainingID");
             Label lblPersonTrainingCitizenID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonTrainingCitizenID");
             TextBox txtPersonTrainingCourseEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingCourseEdit");
-            DropDownList ddl_301 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_301");
-            DropDownList ddl_302 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_302");
-            DropDownList ddl_303 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_303");
-            DropDownList ddl_304 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_304");
+            DropDownList ddl_301 = (DropDownList)GridView3.Rows[e.RowIndex].FindControl("ddl_301");
+            DropDownList ddl_302 = (DropDownList)GridView3.Rows[e.RowIndex].FindControl("ddl_302");
+            DropDownList ddl_303 = (DropDownList)GridView3.Rows[e.RowIndex].FindControl("ddl_303");
+            DropDownList ddl_304 = (DropDownList)GridView3.Rows[e.RowIndex].FindControl("ddl_304");
             TextBox txtPersonTrainingBranchEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingBranchEdit");
 
             ClassPersonTraining p3 = new ClassPersonTraining(Convert.ToInt32(lblPersonTrainingID.Text), lblPersonTrainingCitizenID.Text
@@ -571,12 +571,12 @@ namespace WEB_PERSONAL
 
             Label lblPersonDISCIPLINARYID = (Label)GridView4.Rows[e.RowIndex].FindControl("lblPersonDISCIPLINARYID");
             Label lblPersonDISCIPLINARYCitizenID = (Label)GridView4.Rows[e.RowIndex].FindControl("lblPersonDISCIPLINARYCitizenID");
-            TextBox txtPersonDISCIPLINARYYearEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYYearEdit");
+            DropDownList ddl_401 = (DropDownList)GridView4.Rows[e.RowIndex].FindControl("ddl_401");
             TextBox txtPersonDISCIPLINARYListEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYListEdit");
             TextBox txtPersonDISCIPLINARYRefEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYRefEdit");
 
             ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY(Convert.ToInt32(lblPersonDISCIPLINARYID.Text), lblPersonDISCIPLINARYCitizenID.Text
-                , txtPersonDISCIPLINARYYearEdit.Text
+                , ddl_401.SelectedValue
                 , txtPersonDISCIPLINARYListEdit.Text
                 , txtPersonDISCIPLINARYRefEdit.Text);
 
@@ -660,8 +660,8 @@ namespace WEB_PERSONAL
             TextBox lblPersonPosiSalaryDateEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryDateEdit");
             TextBox txtPersonPosiSalaryPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionEdit");
             TextBox txtPersonPosiSalaryNoPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryNoPositionEdit");
-            DropDownList ddl_501 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_501");
-            DropDownList ddl_502 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_502");
+            DropDownList ddl_501 = (DropDownList)GridView5.Rows[e.RowIndex].FindControl("ddl_501");
+            DropDownList ddl_502 = (DropDownList)GridView5.Rows[e.RowIndex].FindControl("ddl_502");
             TextBox txtPersonPosiSalarySALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalarySALARYEdit");
             TextBox txtPersonPosiSalaryPositionSALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionSALARYEdit");
             TextBox txtPersonPosiSalaryRefEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryRefEdit");
