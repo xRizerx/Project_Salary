@@ -158,7 +158,7 @@ namespace WEB_PERSONAL
             Label lblPersonStudyHistoryID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryID");
             Label lblPersonStudyHistoryCitizenID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryCitizenID");
             TextBox txtPersonStudyHistoryGradUNIVEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryGradUNIVEdit");
-            TextBox txtPersonStudyHistoryMonthFromEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMonthFromEdit");
+            DropDownList ddl_101 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_101");
             TextBox txtPersonStudyHistoryYearFromEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryYearFromEdit");
             TextBox txtPersonStudyHistoryMonthTOEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMonthTOEdit");
             TextBox txtPersonStudyHistoryYearTOEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryYearTOEdit");
@@ -166,7 +166,7 @@ namespace WEB_PERSONAL
 
             ClassPersonStudyHistory p1 = new ClassPersonStudyHistory(Convert.ToInt32(lblPersonStudyHistoryID.Text), lblPersonStudyHistoryCitizenID.Text
                 , txtPersonStudyHistoryGradUNIVEdit.Text
-                , txtPersonStudyHistoryMonthFromEdit.Text
+                , ddl_101.SelectedValue
                 , txtPersonStudyHistoryYearFromEdit.Text
                 , txtPersonStudyHistoryMonthTOEdit.Text
                 , txtPersonStudyHistoryYearTOEdit.Text
@@ -178,10 +178,65 @@ namespace WEB_PERSONAL
             BindData();
 
         }
+
+        private DataTable Retrieveddl_101()
+        {
+            //fetch the connection string from web.config
+            string connectionString = ConfigurationManager.ConnectionStrings["RMUTTOORCL"].ToString();
+            //SQL statement to fetch entries from products
+            string sql = @"select * from TB_DDLMONTH";
+            DataTable dtddl_101 = new DataTable();
+            //Open SQL Connection
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+                //Initialize command object
+                using (OracleCommand cmd = new OracleCommand(sql, conn))
+                {
+                    OracleDataAdapter adapter = new OracleDataAdapter(cmd);
+                    //Fill the result set
+                    adapter.Fill(dtddl_101);
+                }
+            }
+            return dtddl_101;
+        }
+
         protected void GridView1_RowDataBound1(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
 
+                    using (OracleConnection sqlConn = new OracleConnection(strConn))
+                    {
+                        using (OracleCommand sqlCmd = new OracleCommand())
+                        {
+                            DropDownList ddl_101 = (DropDownList)e.Row.FindControl("ddl_101");
+                            sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                            sqlCmd.Connection = sqlConn;
+                            sqlConn.Open();
+                            OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+                            ddl_101.DataSource = dt;
+                            
+                            ddl_101.DataValueField = "MONTH_SHORT";
+                            ddl_101.DataTextField = "MONTH_SHORT";
+                            ddl_101.DataBind();
+                            sqlConn.Close();
+
+                            ddl_101.Items.Insert(0, new ListItem("--เดือน--", "0"));
+                            DataRowView dr = e.Row.DataItem as DataRowView;
+                            ddl_101.SelectedValue = "1";
+                            // ddl_101.SelectedValue = value;
+
+                        }
+                    }
+                }
+            }
         }
+
         protected void myGridViewPersonStudyHistory_PageIndexChanging1(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;

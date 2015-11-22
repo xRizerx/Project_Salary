@@ -365,7 +365,8 @@
                             <asp:Label ID="lblPersonStudyHistoryMonthFromEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MONTH_FROM") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonStudyHistoryMonthFromEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MONTH_FROM") %>'></asp:TextBox>
+                                    <asp:DropDownList ID="ddl_101" runat="server" ></asp:DropDownList>
+                            		<!-- <asp:TextBox ID="txtPersonStudyHistoryMonthFromEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.MONTH_FROM") %>'></asp:TextBox>-->
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                      <asp:TemplateField HeaderText="ตั้งแต่(ปี)" ControlStyle-Width="40" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
