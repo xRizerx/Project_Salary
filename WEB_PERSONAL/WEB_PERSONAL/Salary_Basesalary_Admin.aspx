@@ -17,6 +17,14 @@
             text-align: center;
             background-color: pink;
         }
+        .Linkbtn{
+            border-radius:5px;
+            padding: 10px;
+            background-color:#5971ff;
+            text-decoration:none;
+            color:white;
+            
+        }
 
         .mGrid {
             width: 100%;
@@ -103,14 +111,82 @@
                     <table style="width: 100%;">
                         <tr>
                             <td>&nbsp;</td>
-                            <td>
+                            <td colspan="10">
                                 &nbsp;&nbsp;&nbsp;
+                                <asp:Label ID="Label1" runat="server" Text="ปรับฐานเงินเดือน [ผู้ดูแลระบบ]" Font-Size="24pt"></asp:Label>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                <asp:Label ID="Label2" runat="server" Text="ตำแหน่ง"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SQL_TB_POSITION" DataTextField="NAME" DataValueField="ID">
+                                </asp:DropDownList>
+                                <asp:SqlDataSource ID="SQL_TB_POSITION" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;ID&quot;, &quot;NAME&quot; FROM &quot;TB_POSITION&quot;"></asp:SqlDataSource>
+                            </td>
+                            <td>
+                                <asp:Label ID="Label4" runat="server" Text="เงินเดือนสูงสุด"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:Label ID="Label5" runat="server" Text="เงินเดือนต่ำสุด"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:Label ID="Label6" runat="server" Text="เงินเดือนล่างสูงสุด"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:Label ID="Label7" runat="server" Text="เงินเดือนล่างต่ำสุด"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="Linkbtn">เพิ่มข้อมูลฐานเงินเดือน</asp:LinkButton>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style1"></td>
-                            <td class="auto-style1">
+                            <td class="auto-style1" colspan="10">
                                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" DeleteCommand="DELETE FROM &quot;TB_BASESALARY&quot; WHERE &quot;ID&quot; = :ID" InsertCommand="INSERT INTO &quot;TB_BASESALARY&quot; (&quot;ID&quot;, &quot;POSITION_ID&quot;, &quot;MAXSALARY&quot;, &quot;MINSALARY&quot;, &quot;MAXLOWSALARY&quot;, &quot;MINLOWSALARY&quot;) VALUES (:ID, :POSITION_ID, :MAXSALARY, :MINSALARY, :MAXLOWSALARY, :MINLOWSALARY)" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_BASESALARY.ID,TB_POSITION.NAME, TB_BASESALARY.MAXSALARY, TB_BASESALARY.MINSALARY, TB_BASESALARY.MAXLOWSALARY, TB_BASESALARY.MINLOWSALARY FROM TB_BASESALARY, TB_POSITION WHERE TB_BASESALARY.POSITION_ID = TB_POSITION.ID" UpdateCommand="UPDATE &quot;TB_BASESALARY&quot; SET &quot;MAXSALARY&quot; = :MAXSALARY, &quot;MINSALARY&quot; = :MINSALARY, &quot;MAXLOWSALARY&quot; = :MAXLOWSALARY, &quot;MINLOWSALARY&quot; = :MINLOWSALARY WHERE &quot;ID&quot; = :ID">
                                     <DeleteParameters>
                                         <asp:Parameter Name="ID" Type="Decimal" />
@@ -133,7 +209,7 @@
                                 </asp:SqlDataSource>
                                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="mGrid" DataKeyNames="ID" AllowPaging="True" DataMember="DefaultView" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" ShowFooter="True">
                                     <Columns>
-                                        <asp:CommandField ShowEditButton="True" EditText="แก้ไข" UpdateText="อัพเดท" CancelText="ยกเลิก" InsertText="เพิ่ม" NewText="สร้างใหม่" />
+                                        <asp:CommandField ShowEditButton="True" EditText="แก้ไข" UpdateText="อัพเดท" CancelText="ยกเลิก" InsertText="เพิ่ม" NewText="สร้างใหม่" ShowDeleteButton="True" />
                                         <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
                                         <asp:BoundField DataField="NAME" HeaderText="NAME" ReadOnly="True" SortExpression="NAME" />
                                         <asp:BoundField DataField="MAXSALARY" HeaderText="MAXSALARY" SortExpression="MAXSALARY" />
@@ -142,18 +218,10 @@
                                         <asp:BoundField DataField="MINLOWSALARY" HeaderText="MINLOWSALARY" SortExpression="MINLOWSALARY" />
                                         
                                     </Columns>
-                                    <Columns>
-                                        <asp:TemplateField>
-                                            <FooterTemplate>
-                                                <asp:Label ID="Label1" runat="server" Text="ระบบฐานเงินเดือน ส่วนผู้ดูแล"></asp:Label>
-                                            </FooterTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <FooterStyle />
                                 </asp:GridView>
 
                             </td>
-                            <td class="auto-style1"></td>
+                            <td class="auto-style1">&nbsp;</td>
                         </tr>
                     </table>
 
