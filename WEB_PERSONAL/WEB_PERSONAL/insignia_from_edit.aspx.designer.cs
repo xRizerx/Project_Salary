@@ -238,15 +238,6 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.RadioButton RadioButton6;
         
         /// <summary>
-        /// Label16 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label16;
-        
-        /// <summary>
         /// Label17 control.
         /// </summary>
         /// <remarks>
@@ -562,15 +553,6 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label35;
         
         /// <summary>
-        /// Label36 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label36;
-        
-        /// <summary>
         /// Label37 control.
         /// </summary>
         /// <remarks>
@@ -632,15 +614,6 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox20;
-        
-        /// <summary>
-        /// Label41 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label41;
         
         /// <summary>
         /// Label42 control.
