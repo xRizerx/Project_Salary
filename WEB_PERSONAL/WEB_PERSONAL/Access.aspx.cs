@@ -33,12 +33,13 @@ namespace WEB_PERSONAL {
                     }
 
                     {
-                        string sql = "SELECT TB_PERSON.PASSWORD, TB_SYSTEM_STATUS.NAME, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME FROM TB_PERSON, TB_SYSTEM_STATUS WHERE TB_PERSON.CITIZEN_ID = '" + TextBox1X.Text + "' AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID";
+                        string sql = "SELECT TB_PERSON.PASSWORD, TB_SYSTEM_STATUS.NAME, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TB_PERSON.SYSTEM_STATUS_ID FROM TB_PERSON, TB_SYSTEM_STATUS WHERE TB_PERSON.CITIZEN_ID = '" + TextBox1X.Text + "' AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 while (reader.Read()) {
                                     if (reader.GetString(0) == TextBox2X.Text) {
                                         Session["login_id"] = TextBox1X.Text;
+                                        Session["login_system_status_id"] = reader.GetInt32(4).ToString();
                                         Session["login_system_status"] = reader.GetString(1);
                                         Session["login_name"] = reader.GetString(2);
                                         Session["login_lastname"] = reader.GetString(3);

@@ -40,7 +40,7 @@
                                         <asp:Label ID="Label13X" runat="server" Text="รหัสบัตรประชาชน" CssClass="c10"></asp:Label>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TextBox1X" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                                        <asp:TextBox ID="TextBox1X" runat="server" CssClass="master_default_textbox" MaxLength="13"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>

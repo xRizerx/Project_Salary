@@ -142,6 +142,11 @@
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\blurred-blue-background.jpg" />
     <Content Include="Image\stickman.png" />
+    <Content Include="Image\TUUbg1.jpg" />
+    <Content Include="Image\TUUbg2.jpg" />
+    <Content Include="Image\TUUbg3.jpg" />
+    <Content Include="Image\TUUbg4.jpg" />
+    <Content Include="Image\TUUbg5.jpg" />
     <Content Include="insignia_from_view.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.css" />
     <Content Include="Default.aspx" />
@@ -253,7 +258,6 @@
     <Content Include="Late.aspx" />
     <Content Include="Leave-Report1.aspx" />
     <Content Include="M-Admin.aspx" />
-    <Content Include="insignia_admin.aspx" />
     <Content Include="insignia_from_edit.aspx" />
     <Content Include="insignia_citizen.aspx" />
     <Content Include="insignia_user.aspx" />
@@ -278,6 +282,7 @@
     <Content Include="PositionWork-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Salary_Basesalary_Admin.aspx" />
+    <Content Include="Profile.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TeachISCED-ADMIN.aspx" />
@@ -423,13 +428,6 @@
     <Compile Include="M-Admin.aspx.designer.cs">
       <DependentUpon>M-Admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="insignia_admin.aspx.cs">
-      <DependentUpon>insignia_admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="insignia_admin.aspx.designer.cs">
-      <DependentUpon>insignia_admin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="insignia_from_edit.aspx.cs">
       <DependentUpon>insignia_from_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -525,6 +523,13 @@
     </Compile>
     <Compile Include="PositionWork-ADMIN.aspx.designer.cs">
       <DependentUpon>PositionWork-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Salary-report.aspx.cs">
       <DependentUpon>Salary-report.aspx</DependentUpon>

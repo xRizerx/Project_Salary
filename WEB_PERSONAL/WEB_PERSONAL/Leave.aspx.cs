@@ -120,31 +120,6 @@ namespace WEB_PERSONAL {
             Response.Redirect("Leave-Report1.aspx");
         }
 
-        protected void Button1_Click1(object sender, EventArgs e) {
-            string sql = "select citizen_id, stf_name || stf_lname as \"x\" from tb_personal";
-
-            GridView1.AutoGenerateColumns = false;
-            GridView1.Controls.Clear();
-            GridView1.Columns.Clear();
-            {
-                BoundField test = new BoundField();
-                test.DataField = "CITIZEN_ID";
-                test.HeaderText = "CITIZEN ID";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "x";
-                test.HeaderText = "กำ";
-                GridView1.Columns.Add(test);
-            }
-            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", sql);
-            GridView1.DataSource = sds;
-            GridView1.DataBind();
-        }
-
-
-
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e) {
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataBind();
@@ -357,6 +332,21 @@ namespace WEB_PERSONAL {
 
         //pull paper from id
         protected void LinkButton18_Click(object sender, EventArgs e) {
+
+            Label33.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            Label31.Text = "";
+            TextBox8.Text = "";
+            Label32.Text = "";
+            TextBox9.Text = "";
+            DropDownList1.SelectedIndex = 0;
+            DropDownList2.SelectedIndex = 0;
+            TextBox5.Text = "";
+            TextBox6.Text = "";
+            TextBox10.Text = "";
+            LinkButton13.Enabled = false;
+
             Label20.Text = "";
             if (TextBox15.Text == "") {
                 Label20.Text = "กรุณากรอกรหัสเอกสาร!";
@@ -366,21 +356,23 @@ namespace WEB_PERSONAL {
             //try {
             using (OracleConnection con = Util.OC()) {
                 {
-                    using (OracleCommand command = new OracleCommand(
-                    "SELECT COUNT(*) FROM TB_LEAVE WHERE PAPER_ID = " + TextBox15.Text, con))
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        while (reader.Read()) {
-                            if (reader.GetInt32(0) == 0) {
-                                Label20.Text = "ไม่พบรหัสเอกสาร!";
-                                return;
+                    using (OracleCommand command = new OracleCommand("SELECT COUNT(*) FROM TB_LEAVE WHERE PAPER_ID = :1", con)) {
+                        command.Parameters.AddWithValue("1", TextBox15.Text);
+                        using (OracleDataReader reader = command.ExecuteReader()) {
+                            while (reader.Read()) {
+                                if (reader.GetInt32(0) == 0) {
+                                    Label20.Text = "ไม่พบรหัสเอกสาร!";
+                                    return;
+                                }
                             }
                         }
                     }
+                    
                 }
 
                 {
                     using (OracleCommand command = new OracleCommand(
-                    "SELECT TB_LEAVE.Leave_type_id, TB_PERSONAL.CITIZEN_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, NVL(TB_LEAVE.Reason,''), TO_CHAR(TB_LEAVE.LEAVE_FROM_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TO_CHAR(TB_LEAVE.LEAVE_TO_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TO_CHAR(TB_LEAVE.PAPER_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.LEAVE_STATUS_ID, TB_LEAVE.PAPER_ID FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.PAPER_ID = " + TextBox15.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.CITIZEN_ID", con))
+                    "SELECT TB_LEAVE.Leave_type_id, TB_PERSON.CITIZEN_ID, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, NVL(TB_LEAVE.Reason,''), TO_CHAR(TB_LEAVE.LEAVE_FROM_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TO_CHAR(TB_LEAVE.LEAVE_TO_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TO_CHAR(TB_LEAVE.PAPER_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.LEAVE_STATUS_ID, TB_LEAVE.PAPER_ID FROM TB_LEAVE, TB_PERSON WHERE TB_LEAVE.PAPER_ID = " + TextBox15.Text + " AND TB_PERSON.CITIZEN_ID = TB_LEAVE.CITIZEN_ID", con))
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         while (reader.Read()) {
                             DropDownList1.SelectedValue = reader.GetInt32(0).ToString();
@@ -398,7 +390,7 @@ namespace WEB_PERSONAL {
 
                 {
                     using (OracleCommand command = new OracleCommand(
-                    "SELECT TB_LEAVE.APPROVER_ID, TB_PERSONAL.STF_NAME, TB_PERSONAL.STF_LNAME, TO_CHAR(TB_LEAVE.APPROVE_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI') FROM TB_LEAVE, TB_PERSONAL WHERE TB_LEAVE.PAPER_ID = " + TextBox15.Text + " AND TB_PERSONAL.CITIZEN_ID = TB_LEAVE.APPROVER_ID", con))
+                    "SELECT TB_LEAVE.APPROVER_ID, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TO_CHAR(TB_LEAVE.APPROVE_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI') FROM TB_LEAVE, TB_PERSON WHERE TB_LEAVE.PAPER_ID = " + TextBox15.Text + " AND TB_PERSON.CITIZEN_ID = TB_LEAVE.APPROVER_ID", con))
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         while (reader.Read()) {
                             TextBox8.Text = reader.GetString(0);
@@ -407,6 +399,8 @@ namespace WEB_PERSONAL {
                         }
                     }
                 }
+
+                LinkButton13.Enabled = true;
 
             }
 

@@ -177,48 +177,61 @@ namespace WEB_PERSONAL.Entities
             return result;
         }
     }
+
     public class ClassPersonStudyHistory
     {
         public int IDSEQ { get; set; }
         public string CITIZEN_ID { get; set; }
         public string GRAD_UNIV { get; set; }
-        public DateTime DATE_FROM { get; set; }
-        public DateTime DATE_TO { get; set; }
+        public string MONTH_FROM { get; set; }
+        public string YEAR_FROM { get; set; }
+        public string MONTH_TO { get; set; }
+        public string YEAR_TO { get; set; }
         public string MAJOR { get; set; }
 
 
 
         public ClassPersonStudyHistory() { }
-        public ClassPersonStudyHistory(int IDSEQ, string CITIZEN_ID, string GRAD_UNIV, DateTime DATE_FROM, DateTime DATE_TO, string MAJOR)
+        public ClassPersonStudyHistory(int IDSEQ, string CITIZEN_ID, string GRAD_UNIV, string MONTH_FROM, string YEAR_FROM, string MONTH_TO, string YEAR_TO, string MAJOR)
         {
             this.IDSEQ = IDSEQ;
             this.CITIZEN_ID = CITIZEN_ID;
             this.GRAD_UNIV = GRAD_UNIV;
-            this.DATE_FROM = DATE_FROM;
-            this.DATE_TO = DATE_TO;
+            this.MONTH_FROM = MONTH_FROM;
+            this.YEAR_FROM = YEAR_FROM;
+            this.MONTH_TO = MONTH_TO;
+            this.YEAR_TO = YEAR_TO;
             this.MAJOR = MAJOR;
 
         }
 
-        public DataTable GetPersonStudyHistory(string GRAD_UNIV, string DATE_FROM, string DATE_TO, string MAJOR, string CITIZEN_ID)
+        public DataTable GetPersonStudyHistory(string GRAD_UNIV, string MONTH_FROM, string YEAR_FROM, string MONTH_TO, string YEAR_TO, string MAJOR, string CITIZEN_ID)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT IDSEQ,CITIZEN_ID,GRAD_UNIV,DATE_FROM,DATE_TO,MAJOR FROM TB_STUDY_HISTORY ";
-            if (!string.IsNullOrEmpty(GRAD_UNIV) || !string.IsNullOrEmpty(DATE_FROM) || !string.IsNullOrEmpty(DATE_TO) || !string.IsNullOrEmpty(MAJOR) || !string.IsNullOrEmpty(CITIZEN_ID))
+            string query = "SELECT * FROM TB_STUDY_HISTORY ";
+            if (!string.IsNullOrEmpty(GRAD_UNIV) || !string.IsNullOrEmpty(MONTH_FROM) || !string.IsNullOrEmpty(YEAR_FROM) || !string.IsNullOrEmpty(MONTH_TO) || !string.IsNullOrEmpty(YEAR_TO) || !string.IsNullOrEmpty(MAJOR) || !string.IsNullOrEmpty(CITIZEN_ID))
             {
                 query += " where 1=1 ";
                 if (!string.IsNullOrEmpty(GRAD_UNIV))
                 {
                     query += " and GRAD_UNIV like :GRAD_UNIV ";
                 }
-                if (!string.IsNullOrEmpty(DATE_FROM))
+                if (!string.IsNullOrEmpty(MONTH_FROM))
                 {
-                    query += " and CONVERT(varchar(10),DATE_FROM,103) = :DATE_FROM ";
+                    query += " and MONTH_FROM like :MONTH_FROM ";
                 }
-                if (!string.IsNullOrEmpty(DATE_TO))
+                if (!string.IsNullOrEmpty(YEAR_FROM))
                 {
-                    query += " and CONVERT(varchar(10),DATE_TO,103) = :DATE_TO ";
+                    query += " and YEAR_FROM like :YEAR_FROM ";
+                }
+                if (!string.IsNullOrEmpty(MONTH_TO))
+                {
+                    query += " and MONTH_TO like :MONTH_TO ";
+                }
+                if (!string.IsNullOrEmpty(YEAR_TO))
+                {
+                    query += " and YEAR_TO like :YEAR_TO ";
                 }
                 if (!string.IsNullOrEmpty(MAJOR))
                 {
@@ -241,13 +254,21 @@ namespace WEB_PERSONAL.Entities
                 {
                     command.Parameters.Add(new OracleParameter("GRAD_UNIV", "%" + GRAD_UNIV + "%"));
                 }
-                if (!string.IsNullOrEmpty(DATE_FROM))
+                if (!string.IsNullOrEmpty(MONTH_FROM))
                 {
-                    command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
+                    command.Parameters.Add(new OracleParameter("MONTH_FROM", MONTH_FROM + "%"));
                 }
-                if (!string.IsNullOrEmpty(DATE_TO))
+                if (!string.IsNullOrEmpty(YEAR_FROM))
                 {
-                    command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
+                    command.Parameters.Add(new OracleParameter("YEAR_FROM", YEAR_FROM + "%"));
+                }
+                if (!string.IsNullOrEmpty(MONTH_TO))
+                {
+                    command.Parameters.Add(new OracleParameter("MONTH_TO", MONTH_TO + "%"));
+                }
+                if (!string.IsNullOrEmpty(YEAR_TO))
+                {
+                    command.Parameters.Add(new OracleParameter("YEAR_TO", YEAR_TO + "%"));
                 }
                 if (!string.IsNullOrEmpty(MAJOR))
                 {
@@ -279,7 +300,7 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY (CITIZEN_ID,GRAD_UNIV,DATE_FROM,DATE_TO,MAJOR) VALUES (:CITIZEN_ID,:GRAD_UNIV,:DATE_FROM,:DATE_TO,:MAJOR)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_HISTORY (CITIZEN_ID,GRAD_UNIV,MONTH_FROM,YEAR_FROM,MONTH_TO,YEAR_TO,MAJOR) VALUES (:CITIZEN_ID,:GRAD_UNIV,:MONTH_FROM,:YEAR_FROM,:MONTH_TO,:YEAR_TO,:MAJOR)", conn);
 
             try
             {
@@ -289,8 +310,10 @@ namespace WEB_PERSONAL.Entities
                 }
                 command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
                 command.Parameters.Add(new OracleParameter("GRAD_UNIV", GRAD_UNIV));
-                command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
-                command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
+                command.Parameters.Add(new OracleParameter("MONTH_FROM", MONTH_FROM));
+                command.Parameters.Add(new OracleParameter("YEAR_FROM", YEAR_FROM));
+                command.Parameters.Add(new OracleParameter("MONTH_TO", MONTH_TO));
+                command.Parameters.Add(new OracleParameter("YEAR_TO", YEAR_TO));
                 command.Parameters.Add(new OracleParameter("MAJOR", MAJOR));
 
                 id = command.ExecuteNonQuery();
@@ -313,8 +336,10 @@ namespace WEB_PERSONAL.Entities
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_STUDY_HISTORY Set ";
             query += " GRAD_UNIV = :GRAD_UNIV ,";
-            query += " DATE_FROM = :DATE_FROM ,";
-            query += " DATE_TO = :DATE_TO ,";
+            query += " MONTH_FROM = :MONTH_FROM ,";
+            query += " YEAR_FROM = :YEAR_FROM ,";
+            query += " MONTH_TO = :MONTH_TO ,";
+            query += " YEAR_TO = :YEAR_TO ,";
             query += " MAJOR = :MAJOR ";
             query += " where IDSEQ  = :IDSEQ";
 
@@ -326,8 +351,10 @@ namespace WEB_PERSONAL.Entities
                     conn.Open();
                 }
                 command.Parameters.Add(new OracleParameter("GRAD_UNIV", GRAD_UNIV));
-                command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
-                command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
+                command.Parameters.Add(new OracleParameter("MONTH_FROM", MONTH_FROM));
+                command.Parameters.Add(new OracleParameter("YEAR_FROM", YEAR_FROM));
+                command.Parameters.Add(new OracleParameter("MONTH_TO", MONTH_TO));
+                command.Parameters.Add(new OracleParameter("YEAR_TO", YEAR_TO));
                 command.Parameters.Add(new OracleParameter("MAJOR", MAJOR));
                 command.Parameters.Add(new OracleParameter("IDSEQ", IDSEQ));
                 if (command.ExecuteNonQuery() > 0)
@@ -404,7 +431,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT ID,CITIZEN_ID,LICENCE_NAME,BRANCH,LICENCE_NO,DDATE FROM TB_JOB_LICENSE ";
+            string query = "SELECT * FROM TB_JOB_LICENSE ";
             if (!string.IsNullOrEmpty(LICENCE_NAME) || !string.IsNullOrEmpty(BRANCH) || !string.IsNullOrEmpty(LICENCE_NO) || !string.IsNullOrEmpty(DDATE) || !string.IsNullOrEmpty(CITIZEN_ID))
             {
                 query += " where 1=1 ";
@@ -422,7 +449,7 @@ namespace WEB_PERSONAL.Entities
                 }
                 if (!string.IsNullOrEmpty(DDATE))
                 {
-                    query += " and CONVERT(varchar(10),DDATE,110) = @DDATE ";
+                    query += " and CONVERT(varchar(10),DDATE,103) = :DDATE ";
                 }
                 if (!string.IsNullOrEmpty(CITIZEN_ID))
                 {
@@ -582,43 +609,55 @@ namespace WEB_PERSONAL.Entities
         public int ID { get; set; }
         public string CITIZEN_ID { get; set; }
         public string COURSE { get; set; }
-        public DateTime DATE_FROM { get; set; }
-        public DateTime DATE_TO { get; set; }
+        public string MONTH_FROM { get; set; }
+        public string YEAR_FROM { get; set; }
+        public string MONTH_TO { get; set; }
+        public string YEAR_TO { get; set; }
         public string BRANCH_TRAINING { get; set; }
 
 
 
         public ClassPersonTraining() { }
-        public ClassPersonTraining(int ID, string CITIZEN_ID, string COURSE, DateTime DATE_FROM, DateTime DATE_TO, string BRANCH_TRAINING)
+        public ClassPersonTraining(int ID, string CITIZEN_ID, string COURSE, string MONTH_FROM, string YEAR_FROM, string MONTH_TO, string YEAR_TO, string BRANCH_TRAINING)
         {
             this.ID = ID;
             this.CITIZEN_ID = CITIZEN_ID;
             this.COURSE = COURSE;
-            this.DATE_FROM = DATE_FROM;
-            this.DATE_TO = DATE_TO;
+            this.MONTH_FROM = MONTH_FROM;
+            this.YEAR_FROM = YEAR_FROM;
+            this.MONTH_TO = MONTH_TO;
+            this.YEAR_TO = YEAR_TO;
             this.BRANCH_TRAINING = BRANCH_TRAINING;
 
         }
 
-        public DataTable GetPersonTraining(string COURSE, string DATE_FROM, string DATE_TO, string BRANCH_TRAINING, string CITIZEN_ID)
+        public DataTable GetPersonTraining(string COURSE, string MONTH_FROM, string YEAR_FROM, string MONTH_TO, string YEAR_TO, string BRANCH_TRAINING, string CITIZEN_ID)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT ID,CITIZEN_ID,COURSE,DATE_FROM,DATE_TO,BRANCH_TRAINING FROM TB_TRAINING_HISTORY ";
-            if (!string.IsNullOrEmpty(COURSE) || !string.IsNullOrEmpty(DATE_FROM) || !string.IsNullOrEmpty(DATE_TO) || !string.IsNullOrEmpty(BRANCH_TRAINING) || !string.IsNullOrEmpty(CITIZEN_ID))
+            string query = "SELECT * FROM TB_TRAINING_HISTORY ";
+            if (!string.IsNullOrEmpty(COURSE) || !string.IsNullOrEmpty(MONTH_FROM) || !string.IsNullOrEmpty(YEAR_FROM) || !string.IsNullOrEmpty(MONTH_TO) || !string.IsNullOrEmpty(YEAR_TO) || !string.IsNullOrEmpty(BRANCH_TRAINING) || !string.IsNullOrEmpty(CITIZEN_ID))
             {
                 query += " where 1=1 ";
                 if (!string.IsNullOrEmpty(COURSE))
                 {
                     query += " and COURSE like :COURSE ";
                 }
-                if (!string.IsNullOrEmpty(DATE_FROM))
+                if (!string.IsNullOrEmpty(MONTH_FROM))
                 {
-                    query += " and DATE_FROM like = :DATE_FROM ";
+                    query += " and MONTH_FROM like :MONTH_FROM ";
                 }
-                if (!string.IsNullOrEmpty(DATE_TO))
+                if (!string.IsNullOrEmpty(YEAR_FROM))
                 {
-                    query += " and CONVERT(varchar(10),DATE_TO,110) = :DATE_TO ";
+                    query += " and YEAR_FROM like :YEAR_FROM ";
+                }
+                if (!string.IsNullOrEmpty(MONTH_TO))
+                {
+                    query += " and MONTH_TO like :MONTH_TO ";
+                }
+                if (!string.IsNullOrEmpty(YEAR_TO))
+                {
+                    query += " and YEAR_TO like :YEAR_TO ";
                 }
                 if (!string.IsNullOrEmpty(BRANCH_TRAINING))
                 {
@@ -641,13 +680,21 @@ namespace WEB_PERSONAL.Entities
                 {
                     command.Parameters.Add(new OracleParameter("COURSE", "%" + COURSE + "%"));
                 }
-                if (!string.IsNullOrEmpty(DATE_FROM))
+                if (!string.IsNullOrEmpty(MONTH_FROM))
                 {
-                    command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
+                    command.Parameters.Add(new OracleParameter("MONTH_FROM", MONTH_FROM + "%"));
                 }
-                if (!string.IsNullOrEmpty(DATE_TO))
+                if (!string.IsNullOrEmpty(YEAR_FROM))
                 {
-                    command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
+                    command.Parameters.Add(new OracleParameter("YEAR_FROM", YEAR_FROM + "%"));
+                }
+                if (!string.IsNullOrEmpty(MONTH_TO))
+                {
+                    command.Parameters.Add(new OracleParameter("MONTH_TO", MONTH_TO + "%"));
+                }
+                if (!string.IsNullOrEmpty(YEAR_TO))
+                {
+                    command.Parameters.Add(new OracleParameter("YEAR_TO", YEAR_TO + "%"));
                 }
                 if (!string.IsNullOrEmpty(BRANCH_TRAINING))
                 {
@@ -679,7 +726,7 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_TRAINING_HISTORY (CITIZEN_ID,COURSE,DATE_FROM,DATE_TO,BRANCH_TRAINING) VALUES (:CITIZEN_ID,:COURSE,:DATE_FROM,:DATE_TO,:BRANCH_TRAINING)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_TRAINING_HISTORY (CITIZEN_ID,COURSE,MONTH_FROM,YEAR_FROM,MONTH_TO,YEAR_TO,BRANCH_TRAINING) VALUES (:CITIZEN_ID,:COURSE,:MONTH_FROM,:YEAR_FROM,:MONTH_TO,:YEAR_TO,:BRANCH_TRAINING)", conn);
 
             try
             {
@@ -689,8 +736,10 @@ namespace WEB_PERSONAL.Entities
                 }
                 command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
                 command.Parameters.Add(new OracleParameter("COURSE", COURSE));
-                command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
-                command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
+                command.Parameters.Add(new OracleParameter("MONTH_FROM", MONTH_FROM));
+                command.Parameters.Add(new OracleParameter("YEAR_FROM", YEAR_FROM));
+                command.Parameters.Add(new OracleParameter("MONTH_TO", MONTH_TO));
+                command.Parameters.Add(new OracleParameter("YEAR_TO", YEAR_TO));
                 command.Parameters.Add(new OracleParameter("BRANCH_TRAINING", BRANCH_TRAINING));
 
                 id = command.ExecuteNonQuery();
@@ -713,8 +762,10 @@ namespace WEB_PERSONAL.Entities
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_TRAINING_HISTORY Set ";
             query += " COURSE = :COURSE ,";
-            query += " DATE_FROM = :DATE_FROM ,";
-            query += " DATE_TO = :DATE_TO ,";
+            query += " MONTH_FROM = :MONTH_FROM ,";
+            query += " YEAR_FROM = :YEAR_FROM ,";
+            query += " MONTH_TO = :MONTH_TO ,";
+            query += " YEAR_TO = :YEAR_TO ,";
             query += " BRANCH_TRAINING = :BRANCH_TRAINING ";
             query += " where ID  = :ID";
 
@@ -726,8 +777,10 @@ namespace WEB_PERSONAL.Entities
                     conn.Open();
                 }
                 command.Parameters.Add(new OracleParameter("COURSE", COURSE));
-                command.Parameters.Add(new OracleParameter("DATE_FROM", DATE_FROM));
-                command.Parameters.Add(new OracleParameter("DATE_TO", DATE_TO));
+                command.Parameters.Add(new OracleParameter("MONTH_FROM", MONTH_FROM));
+                command.Parameters.Add(new OracleParameter("YEAR_FROM", YEAR_FROM));
+                command.Parameters.Add(new OracleParameter("MONTH_TO", MONTH_TO));
+                command.Parameters.Add(new OracleParameter("YEAR_TO", YEAR_TO));
                 command.Parameters.Add(new OracleParameter("BRANCH_TRAINING", BRANCH_TRAINING));
                 command.Parameters.Add(new OracleParameter("ID", ID));
                 if (command.ExecuteNonQuery() > 0)
@@ -802,7 +855,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT ID,CITIZEN_ID,YEAR,MENU,REF_DOC FROM TB_DISCIPLINARY_AND_AMNESTY ";
+            string query = "SELECT * FROM TB_DISCIPLINARY_AND_AMNESTY ";
             if (!string.IsNullOrEmpty(YEAR) || !string.IsNullOrEmpty(MENU) || !string.IsNullOrEmpty(REF_DOC) || !string.IsNullOrEmpty(CITIZEN_ID))
             {
                 query += " where 1=1 ";
@@ -998,7 +1051,7 @@ namespace WEB_PERSONAL.Entities
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT ID,CITIZEN_ID,YEAR,MENU,REF_DOC FROM TB_POSITION_AND_SALARY ";
+            string query = "SELECT * FROM TB_POSITION_AND_SALARY ";
             if (!string.IsNullOrEmpty(DDATE) || !string.IsNullOrEmpty(POSITION_NAME) || !string.IsNullOrEmpty(PERSON_ID) || !string.IsNullOrEmpty(ST_ID) || POSITION_ID != 0 || SALARY != 0 || POSITION_SALARY != 0 || !string.IsNullOrEmpty(REFERENCE_DOCUMENT) || !string.IsNullOrEmpty(CITIZEN_ID))
             {
                 query += " where 1=1 ";
