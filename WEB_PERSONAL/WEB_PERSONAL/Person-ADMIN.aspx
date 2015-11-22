@@ -6,7 +6,7 @@
      <script type="text/javascript">
         function pageLoad(sender , args) {
             $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
-        };
+        }; 
     </script>
     <style type="text/CSS">
         .ui-datepicker{  
