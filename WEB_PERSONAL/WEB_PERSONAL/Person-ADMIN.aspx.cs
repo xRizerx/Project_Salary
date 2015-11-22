@@ -173,7 +173,7 @@ namespace WEB_PERSONAL
                 , txtPersonStudyHistoryMajorEdit.Text);
 
 
-            if (ddl_101.SelectedIndex == 0 && ddl_102.SelectedIndex == 0 && ddl_103.SelectedIndex == 0 && ddl_104.SelectedIndex == 0 )
+            if (ddl_101.SelectedIndex == 0 && ddl_102.SelectedIndex == 0 && ddl_103.SelectedIndex == 0 && ddl_104.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตั้งแต่ - ถึง (เดือน ปี) ให้ถูกต้อง')", true);
                 return;
@@ -356,7 +356,11 @@ namespace WEB_PERSONAL
         }
         protected void GridView2_RowDataBound2(object sender, GridViewRowEventArgs e)
         {
-
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton2");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "LICENCE_NAME") + " จริงๆใช่ไหม ?');");
+            }
         }
         protected void myGridViewPersonJobLisence_PageIndexChanging2(object sender, GridViewPageEventArgs e)
         {
@@ -714,7 +718,7 @@ namespace WEB_PERSONAL
                             sqlConn1.Close();
 
                             ddl_501.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
-                            
+
                             DataRowView dr1 = e.Row.DataItem as DataRowView;
                         }
                     }
