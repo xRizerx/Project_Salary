@@ -32,8 +32,8 @@ namespace WEB_PERSONAL {
                                     DropDownList3.SelectedValue = reader.GetInt32(6).ToString();
                                     TextBox24.Text = reader.GetFloat(7).ToString();
                                     TextBox25.Text = reader.GetFloat(8).ToString();
-                                    TextBox7.Text = reader.GetString(9);
-                                    TextBox8.Text = reader.GetString(10);
+                                    TextBox7.Text = Util.NDT(reader.GetString(9));
+                                    TextBox8.Text = Util.NDT(reader.GetString(10));
                                     TextBox26.Text = reader.GetFloat(11).ToString();
                                     TextBox27.Text = reader.GetString(12);
                                 }
@@ -62,7 +62,7 @@ namespace WEB_PERSONAL {
                     }*/
 
                     {
-                        string sql = "SELECT TB_POSITION_AND_SALARY.POSITION_NAME FROM TB_POSITION_AND_SALARY WHERE TB_POSITION_AND_SALARY.ID = :1 ORDER BY ID DESC";
+                        string sql = "SELECT TB_POSITION_AND_SALARY.POSITION_NAME FROM TB_POSITION_AND_SALARY, TB_STUDY WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = :1 ORDER BY TB_POSITION_AND_SALARY.ID DESC";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             command.Parameters.AddWithValue("1", TextBox3.Text);
                             using (OracleDataReader reader = command.ExecuteReader()) {
@@ -105,12 +105,13 @@ namespace WEB_PERSONAL {
                         command.Parameters.AddWithValue("7", DropDownList3.SelectedValue);
                         command.Parameters.AddWithValue("8", TextBox24.Text);
                         command.Parameters.AddWithValue("9", TextBox25.Text);
-                        command.Parameters.AddWithValue("10", Util.toOracleDateTime(TextBox7.Text));
-                        command.Parameters.AddWithValue("11", Util.toOracleDateTime(TextBox8.Text));
+                        command.Parameters.AddWithValue("10", Util.ODT(TextBox7.Text));
+                        command.Parameters.AddWithValue("11", Util.ODT(TextBox8.Text));
                         command.Parameters.AddWithValue("12", TextBox26.Text);
                         command.Parameters.AddWithValue("13", TextBox27.Text);
                         command.ExecuteNonQuery();
                         Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
+                        BindGridView1();
                     }
                 }
             }
@@ -159,18 +160,16 @@ namespace WEB_PERSONAL {
             {
                 using (OracleConnection con = Util.OC()) {
                     {
-                        string sql = "SELECT TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION_WORK.POSITION_WORK_NAME FROM TB_PERSON, TB_STAFFTYPE, TB_POSITION_WORK WHERE TB_PERSON.CITIZEN_ID = '" + TextBox3.Text + "' AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSON.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID";
+                        string sql = "SELECT TB_POSITION_AND_SALARY.POSITION_NAME FROM TB_POSITION_AND_SALARY, TB_STUDY WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = :1 ORDER BY TB_POSITION_AND_SALARY.ID DESC";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
+                            command.Parameters.AddWithValue("1", TextBox3.Text);
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 if (reader.HasRows) {
                                     while (reader.Read()) {
-                                        Label37.Text = reader.GetString(0);
-                                        Label39.Text = reader.GetString(1);
-                                        Label41.Text = reader.GetString(2);
+                                        Label41.Text = reader.GetString(0);
                                     }
                                 } else {
-                                    string script = "alert('ไม่พบรหัสพนักงาน')";
-                                    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                                    Util.Alert(this, "ไม่พบรหัสพนักงาน");
                                 }
 
                             }
