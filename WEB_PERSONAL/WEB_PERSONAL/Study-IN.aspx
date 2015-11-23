@@ -112,7 +112,7 @@
                         </td>
                         <td class="auto-style20">
                             <asp:TextBox ID="TextBox23" runat="server" CssClass="master_default_textbox"></asp:TextBox>
-                            <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_default_button" OnClick="LinkButton15_Click">ดึง</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_default_button" OnClick="LinkButton15_Click">ค้นหา</asp:LinkButton>
                         </td>
                     </tr>
                     <tr>

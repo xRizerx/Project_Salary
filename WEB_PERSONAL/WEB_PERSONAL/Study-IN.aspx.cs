@@ -153,6 +153,26 @@ namespace WEB_PERSONAL {
                 string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }*/
+            using(OracleConnection con = Util.OC()) {
+                using(OracleCommand command = new OracleCommand("UPDATE TB_STUDY SET CITIZEN_ID = :2, STUDY_YEAR = :3, STUDY_DEGREE_ID = :4, STUDY_BRANCH_NAME = :5, STUDY_LOCATION = :6, STUDY_COURSE_ID = :7, STUDY_TIME = :8, STUDY_TIME_YEAR = :9, STUDY_FROM_DATE = :10, STUDY_TO_DATE = :11, STUDY_TIME_COURSE = :12, \"COMMENT\" = :13 WHERE ID = :1", con)) {
+                    command.Parameters.AddWithValue("1", TextBox1.Text);
+                    command.Parameters.AddWithValue("2", TextBox3.Text);
+                    command.Parameters.AddWithValue("3", TextBox28.Text);
+                    command.Parameters.AddWithValue("4", DropDownList1.SelectedValue);
+                    command.Parameters.AddWithValue("5", TextBox29.Text);
+                    command.Parameters.AddWithValue("6", TextBox6.Text);
+                    command.Parameters.AddWithValue("7", DropDownList3.SelectedValue);
+                    command.Parameters.AddWithValue("8", TextBox24.Text);
+                    command.Parameters.AddWithValue("9", TextBox25.Text);
+                    command.Parameters.AddWithValue("10", Util.ODT(TextBox7.Text));
+                    command.Parameters.AddWithValue("11", Util.ODT(TextBox8.Text));
+                    command.Parameters.AddWithValue("12", TextBox26.Text);
+                    command.Parameters.AddWithValue("13", TextBox27.Text);
+                    command.ExecuteNonQuery();
+                    Util.Alert(this, "แก้ไขข้อมูลสำเร็จ");
+                    BindGridView1();
+                }
+            }
         }
 
         protected void LinkButton18_Click(object sender, EventArgs e) {
