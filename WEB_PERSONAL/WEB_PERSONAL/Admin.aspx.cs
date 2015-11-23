@@ -9,8 +9,9 @@ using System.Data.OracleClient;
 namespace WEB_PERSONAL {
     public partial class Admin : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-            if(Session["login_system_status"] != null && Session["login_system_status"].ToString() != "Admin") {
+            if(Session["login_system_status_id"] != null && Session["login_system_status_id"].ToString() != "1") {
                 Response.Redirect("default.aspx");
+                return;
             }
             BindGridView1();
         }

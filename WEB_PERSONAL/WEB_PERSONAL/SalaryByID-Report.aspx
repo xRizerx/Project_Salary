@@ -31,100 +31,66 @@
     <div>
         <br />
         <asp:Panel ID="Panel1" runat="server">
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM (SELECT ROWNUM,TB_PERSONAL.CITIZEN_ID,TB_PERSONAL.STF_NAME || '    ' || TB_PERSONAL.STF_LNAME as &quot;NAME_LNAME&quot;,TB_POSITION.POSITION_NAME,TB_POSITION_WORK.POSITION_WORK_NAME,TB_ADMIN_POSITION.ADMIN_POSITION_NAME,
-TB_SALARY_UP.detail_salary,TB_SALARY_UP.detail_maxsalary,TB_SALARY_UP.detail_basemoney,TB_SALARY_UP.detail_percent_rate,TB_SALARY_UP.detail_moneynotround,TB_SALARY_UP.detail_moneyround,
-TB_SALARY_UP.detail_moneyup,TB_SALARY_UP.detail_moneybonus,TB_SALARY_UP.detail_sum_money,TB_SALARY_UP.detail_new_salary,TB_SALARY_UP.detail_score_test,TB_SALARY_UP.detail_level_test,
-TB_SALARY_UP.admin_ratesum,TB_SALARY_UP.admin_rate,TB_SALARY_UP.admin_money_add,TB_SALARY_UP.sum_percent_rate2,TB_SALARY_UP.sum_moneynotround,TB_SALARY_UP.sum_moneyround,
-TB_SALARY_UP.sum_moneyup,TB_SALARY_UP.sum_moneybonus,TB_SALARY_UP.sum_moneyuptotal,TB_SALARY_UP.sum_newsalary,TB_SALARY_UP.&quot;COMMENT&quot;
-FROM TB_PERSONAL,TB_POSITION,TB_POSITION_WORK,TB_ADMIN_POSITION,TB_SALARY_UP
-WHERE TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID 
-AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN_POSITION.ADMIN_POSITION_ID AND TB_PERSONAL.citizen_id = TB_SALARY_UP.citizen_id ORDER BY TB_SALARY_UP.ID DESC ) WHERE ROWNUM =1" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT TB_PERSON.ID, TB_PERSON.CITIZEN_ID, TB_PERSON.TITLE_ID, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TB_POSITION.NAME, TB_SALARY_UP.DETAIL_SALARY, TB_SALARY_UP.DETAIL_MAXSALARY, TB_SALARY_UP.DETAIL_BASEMONEY, TB_SALARY_UP.DETAIL_PERCENT_RATE, TB_SALARY_UP.DETAIL_MONEYNOTROUND, TB_SALARY_UP.DETAIL_MONEYROUND, TB_SALARY_UP.DETAIL_MONEYUP, TB_SALARY_UP.DETAIL_MONEYBONUS, TB_SALARY_UP.DETAIL_SUM_MONEY, TB_SALARY_UP.DETAIL_NEW_SALARY, TB_SALARY_UP.DETAIL_SCORE_TEST, TB_SALARY_UP.DETAIL_LEVEL_TEST, TB_SALARY_UP.ADMIN_RATESUM, TB_SALARY_UP.ADMIN_RATE, TB_SALARY_UP.ADMIN_MONEY_ADD, TB_SALARY_UP.SUM_PERCENT_RATE2, TB_SALARY_UP.SUM_MONEYNOTROUND, TB_SALARY_UP.SUM_MONEYROUND, TB_SALARY_UP.SUM_MONEYUP, TB_SALARY_UP.SUM_MONEYBONUS, TB_SALARY_UP.SUM_MONEYUPTOTAL, TB_SALARY_UP.SUM_NEWSALARY, TB_SALARY_UP.&quot;COMMENT&quot; FROM TB_PERSON, TB_POSITION_AND_SALARY, TB_SALARY_UP, TB_POSITION WHERE TB_PERSON.ID = TB_POSITION_AND_SALARY.ID AND TB_PERSON.ID = TB_SALARY_UP.ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>">
             </asp:SqlDataSource>
             <div class="auto-style1">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Font-Names="THS" Width="3000px" OnRowCreated="GridView1_RowCreated">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Font-Names="THS" Width="3000px" OnRowCreated="GridView1_RowCreated" DataKeyNames="ID">
                     <Columns>
-                        <asp:BoundField DataField="ROWNUM" HeaderText="ลำดับที่" SortExpression="ROWNUM" />
-                        <asp:BoundField DataField="CITIZEN_ID" HeaderText="เลขประจำตัวประชาชน" SortExpression="CITIZEN_ID" />
-                        <asp:BoundField DataField="NAME_LNAME" HeaderText="ชื่อ นามสกุล" SortExpression="STF_NAME" >
-                        <ItemStyle Width="250px" />
+                        <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" ReadOnly="True" />
+                        <asp:BoundField DataField="CITIZEN_ID" HeaderText="CITIZEN_ID" SortExpression="CITIZEN_ID" />
+                        <asp:BoundField DataField="TITLE_ID" HeaderText="TITLE_ID" SortExpression="TITLE_ID" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="POSITION_NAME" HeaderText="ชื่อตำแหน่งในสายงาน" SortExpression="POSITION_NAME" >
-                        <ItemStyle Width="150px" />
+                        <asp:BoundField DataField="PERSON_NAME" HeaderText="PERSON_NAME" SortExpression="PERSON_NAME" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="POSITION_WORK_NAME" HeaderText="ระดับตำแหน่ง" SortExpression="POSITION_WORK_NAME" >
-                        <ItemStyle Width="200px" />
+                        <asp:BoundField DataField="PERSON_LASTNAME" HeaderText="PERSON_LASTNAME" SortExpression="PERSON_LASTNAME" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="ADMIN_POSITION_NAME" HeaderText="ชื่อตำแหน่งในการบริหาร" SortExpression="ADMIN_POSITION_NAME" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="NAME" HeaderText="NAME" SortExpression="NAME" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_SALARY" HeaderText="เงินเดือนก่อนเลื่อน (ณ 1มี.ค.58)" SortExpression="DETAIL_SALARY" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_SALARY" HeaderText="DETAIL_SALARY" SortExpression="DETAIL_SALARY" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_MAXSALARY" HeaderText="เงินเดือนสูงสุดแต่ละประเภท" SortExpression="DETAIL_MAXSALARY" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_MAXSALARY" HeaderText="DETAIL_MAXSALARY" SortExpression="DETAIL_MAXSALARY" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_BASEMONEY" HeaderText="ฐานในการคำนวณ" SortExpression="DETAIL_BASEMONEY" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_BASEMONEY" HeaderText="DETAIL_BASEMONEY" SortExpression="DETAIL_BASEMONEY" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_PERCENT_RATE" HeaderText="ร้อยละที่ได้เลื่อน" SortExpression="DETAIL_PERCENT_RATE" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_PERCENT_RATE" HeaderText="DETAIL_PERCENT_RATE" SortExpression="DETAIL_PERCENT_RATE" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_MONEYNOTROUND" HeaderText="จำนวนเงินที่คำนวณได้ 3*4 ไม่ปัดเศษ" SortExpression="DETAIL_MONEYNOTROUND" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_MONEYNOTROUND" HeaderText="DETAIL_MONEYNOTROUND" SortExpression="DETAIL_MONEYNOTROUND" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_MONEYROUND" HeaderText="จำนวนเงินที่คำนวณได้ 3*4(ปัดเศษ)" SortExpression="DETAIL_MONEYROUND" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_MONEYROUND" HeaderText="DETAIL_MONEYROUND" SortExpression="DETAIL_MONEYROUND" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_MONEYUP" HeaderText="จำนวนเงินที่ได้เลื่อน" SortExpression="DETAIL_MONEYUP" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_MONEYUP" HeaderText="DETAIL_MONEYUP" SortExpression="DETAIL_MONEYUP" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_MONEYBONUS" HeaderText="เงินตอบแทนพิเศษ 5-7" SortExpression="DETAIL_MONEYBONUS" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_MONEYBONUS" HeaderText="DETAIL_MONEYBONUS" SortExpression="DETAIL_MONEYBONUS" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_SUM_MONEY" HeaderText="รวมใช้เลื่อน 7+8" SortExpression="DETAIL_SUM_MONEY" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_SUM_MONEY" HeaderText="DETAIL_SUM_MONEY" SortExpression="DETAIL_SUM_MONEY" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_NEW_SALARY" HeaderText="เงินเดือนใหม่ 1+7" SortExpression="DETAIL_NEW_SALARY" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_NEW_SALARY" HeaderText="DETAIL_NEW_SALARY" SortExpression="DETAIL_NEW_SALARY" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_SCORE_TEST" HeaderText="คะแนนผลการประเมิน" SortExpression="DETAIL_SCORE_TEST" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_SCORE_TEST" HeaderText="DETAIL_SCORE_TEST" SortExpression="DETAIL_SCORE_TEST" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="DETAIL_LEVEL_TEST" HeaderText="ระดับผลการประเมิน" SortExpression="DETAIL_LEVEL_TEST" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="DETAIL_LEVEL_TEST" HeaderText="DETAIL_LEVEL_TEST" SortExpression="DETAIL_LEVEL_TEST" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="ADMIN_RATESUM" HeaderText="ร้อยละที่ได้เลื่อนตามสัดส่วน" SortExpression="ADMIN_RATESUM" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="ADMIN_RATESUM" HeaderText="ADMIN_RATESUM" SortExpression="ADMIN_RATESUM" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="ADMIN_RATE" HeaderText="ร้อยละที่ได้เลื่อน(อธิการบดีเพิ่ม)" SortExpression="ADMIN_RATE" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="ADMIN_RATE" HeaderText="ADMIN_RATE" SortExpression="ADMIN_RATE" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="ADMIN_MONEY_ADD" HeaderText="จำนวนเงินที่ได้เพิ่ม" SortExpression="ADMIN_MONEY_ADD" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="ADMIN_MONEY_ADD" HeaderText="ADMIN_MONEY_ADD" SortExpression="ADMIN_MONEY_ADD" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="SUM_PERCENT_RATE2" HeaderText="ร้อยละที่ได้เลื่อน" SortExpression="SUM_PERCENT_RATE2" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="SUM_PERCENT_RATE2" HeaderText="SUM_PERCENT_RATE2" SortExpression="SUM_PERCENT_RATE2" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="SUM_MONEYNOTROUND" HeaderText="จำนวนเงินที่คำนวณได้ 3*4 (ไม่ปัดเศษ)" SortExpression="SUM_MONEYNOTROUND" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="SUM_MONEYNOTROUND" HeaderText="SUM_MONEYNOTROUND" SortExpression="SUM_MONEYNOTROUND" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="SUM_MONEYROUND" HeaderText="จำนวนเงินที่คำนวณได้ 3*4 (ปัดเศษ)" SortExpression="SUM_MONEYROUND" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="SUM_MONEYROUND" HeaderText="SUM_MONEYROUND" SortExpression="SUM_MONEYROUND" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="SUM_MONEYUP" HeaderText="จำนวนเงินที่ได้เลื่อน" SortExpression="SUM_MONEYUP" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="SUM_MONEYUP" HeaderText="SUM_MONEYUP" SortExpression="SUM_MONEYUP" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="SUM_MONEYBONUS" HeaderText="เงินตอบแทนพิเศษ" SortExpression="SUM_MONEYBONUS" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="SUM_MONEYBONUS" HeaderText="SUM_MONEYBONUS" SortExpression="SUM_MONEYBONUS" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="SUM_MONEYUPTOTAL" HeaderText="รวมใช้เลื่อน" SortExpression="SUM_MONEYUPTOTAL" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="SUM_MONEYUPTOTAL" HeaderText="SUM_MONEYUPTOTAL" SortExpression="SUM_MONEYUPTOTAL" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="SUM_NEWSALARY" HeaderText="เงินเดือนใหม่" SortExpression="SUM_NEWSALARY" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="SUM_NEWSALARY" HeaderText="SUM_NEWSALARY" SortExpression="SUM_NEWSALARY" >
                         </asp:BoundField>
-                        <asp:BoundField DataField="COMMENT" HeaderText="หมายเหตุ" SortExpression="COMMENT" >
-                        <ItemStyle Width="100px" />
+                        <asp:BoundField DataField="COMMENT" HeaderText="COMMENT" SortExpression="COMMENT" >
                         </asp:BoundField>
                     </Columns>
                 </asp:GridView>
