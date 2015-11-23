@@ -141,6 +141,10 @@
     <Content Include="Image\anime_p1.png" />
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\blurred-blue-background.jpg" />
+    <Content Include="Image\ImageTUU\Desktop-icon.png" />
+    <Content Include="Image\ImageTUU\Documents-icon.png" />
+    <Content Include="Image\ImageTUU\User-icon.png" />
+    <Content Include="Image\ImageTUU\Utilities-icon.png" />
     <Content Include="Image\stickman.png" />
     <Content Include="Image\TUUbg1.jpg" />
     <Content Include="Image\TUUbg2.jpg" />
