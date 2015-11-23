@@ -173,7 +173,7 @@ win=window.open(mypage,myname,settings);}
                     <a href="Salary_Basesalary.aspx" onclick="Popup(this.href, 'Base_salary', '350', '350', 'no', 'center'); return false;" class="button_ui">ปรับฐานเงินเดือน</a>
 
 
-                    <asp:LinkButton ID="LinkButton11" runat="server" CssClass="button_ui_admin">ปรับฐานเงินเดือน [Admin]</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton11" runat="server" CssClass="button_ui_admin" OnClick="LinkButton11_Click">ปรับฐานเงินเดือน [Admin]</asp:LinkButton>
 
 
                 </td>

@@ -415,5 +415,10 @@ namespace WEB_PERSONAL
         {
             Response.Redirect("SalaryByID-Report.aspx");
         }
+
+        protected void LinkButton11_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Salary_Basesalary_Admin.aspx");
+        }
     }
 }
