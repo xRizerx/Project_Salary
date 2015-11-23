@@ -180,14 +180,14 @@
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>
-                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="Linkbtn">เพิ่มข้อมูลฐานเงินเดือน</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="Linkbtn" OnClick="LinkButton2_Click">เพิ่มข้อมูลฐานเงินเดือน</asp:LinkButton>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style1"></td>
                             <td class="auto-style1" colspan="10">
-                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" DeleteCommand="DELETE FROM &quot;TB_BASESALARY&quot; WHERE &quot;ID&quot; = :ID" InsertCommand="INSERT INTO &quot;TB_BASESALARY&quot; (&quot;ID&quot;, &quot;POSITION_ID&quot;, &quot;MAXSALARY&quot;, &quot;MINSALARY&quot;, &quot;MAXLOWSALARY&quot;, &quot;MINLOWSALARY&quot;) VALUES (:ID, :POSITION_ID, :MAXSALARY, :MINSALARY, :MAXLOWSALARY, :MINLOWSALARY)" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_BASESALARY.ID,TB_POSITION.NAME, TB_BASESALARY.MAXSALARY, TB_BASESALARY.MINSALARY, TB_BASESALARY.MAXLOWSALARY, TB_BASESALARY.MINLOWSALARY FROM TB_BASESALARY, TB_POSITION WHERE TB_BASESALARY.POSITION_ID = TB_POSITION.ID" UpdateCommand="UPDATE &quot;TB_BASESALARY&quot; SET &quot;MAXSALARY&quot; = :MAXSALARY, &quot;MINSALARY&quot; = :MINSALARY, &quot;MAXLOWSALARY&quot; = :MAXLOWSALARY, &quot;MINLOWSALARY&quot; = :MINLOWSALARY WHERE &quot;ID&quot; = :ID">
+                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" DeleteCommand="DELETE FROM &quot;TB_BASESALARY&quot; WHERE &quot;ID&quot; = :ID" InsertCommand="INSERT INTO &quot;TB_BASESALARY&quot; (&quot;ID&quot;, &quot;POSITION_ID&quot;, &quot;MAXSALARY&quot;, &quot;MINSALARY&quot;, &quot;MAXLOWSALARY&quot;, &quot;MINLOWSALARY&quot;) VALUES (:ID, :POSITION_ID, :MAXSALARY, :MINSALARY, :MAXLOWSALARY, :MINLOWSALARY)" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_BASESALARY.ID,TB_POSITION.NAME, TB_BASESALARY.MAXSALARY, TB_BASESALARY.MINSALARY, TB_BASESALARY.MAXLOWSALARY, TB_BASESALARY.MINLOWSALARY FROM TB_BASESALARY, TB_POSITION WHERE TB_BASESALARY.POSITION_ID = TB_POSITION.ID ORDER BY TB_BASESALARY.ID ASC" UpdateCommand="UPDATE &quot;TB_BASESALARY&quot; SET &quot;MAXSALARY&quot; = :MAXSALARY, &quot;MINSALARY&quot; = :MINSALARY, &quot;MAXLOWSALARY&quot; = :MAXLOWSALARY, &quot;MINLOWSALARY&quot; = :MINLOWSALARY WHERE &quot;ID&quot; = :ID">
                                     <DeleteParameters>
                                         <asp:Parameter Name="ID" Type="Decimal" />
                                     </DeleteParameters>
@@ -200,16 +200,16 @@
                                         <asp:Parameter Name="MINLOWSALARY" Type="Decimal" />
                                     </InsertParameters>
                                     <UpdateParameters>
-                                        <asp:Parameter Name="ID" />
                                         <asp:Parameter Name="MAXSALARY" Type="Decimal" />
                                         <asp:Parameter Name="MINSALARY" Type="Decimal" />
                                         <asp:Parameter Name="MAXLOWSALARY" Type="Decimal" />
                                         <asp:Parameter Name="MINLOWSALARY" Type="Decimal" />
+                                        <asp:Parameter Name="ID" />
                                     </UpdateParameters>
                                 </asp:SqlDataSource>
-                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="mGrid" DataKeyNames="ID" AllowPaging="True" DataMember="DefaultView" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" ShowFooter="True">
+                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="mGrid" DataKeyNames="ID" AllowPaging="True" DataMember="DefaultView" ShowFooter="True">
                                     <Columns>
-                                        <asp:CommandField ShowEditButton="True" EditText="แก้ไข" UpdateText="อัพเดท" CancelText="ยกเลิก" InsertText="เพิ่ม" NewText="สร้างใหม่" ShowDeleteButton="True" />
+                                        <asp:CommandField ShowEditButton="True" EditText="แก้ไข" UpdateText="อัพเดท" CancelText="ยกเลิก" InsertText="เพิ่ม" NewText="สร้างใหม่" ShowDeleteButton="True" DeleteText="ลบ" SelectText="เลือก" />
                                         <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
                                         <asp:BoundField DataField="NAME" HeaderText="NAME" ReadOnly="True" SortExpression="NAME" />
                                         <asp:BoundField DataField="MAXSALARY" HeaderText="MAXSALARY" SortExpression="MAXSALARY" />

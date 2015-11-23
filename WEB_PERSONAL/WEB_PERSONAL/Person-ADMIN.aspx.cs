@@ -159,18 +159,30 @@ namespace WEB_PERSONAL
             Label lblPersonStudyHistoryCitizenID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblPersonStudyHistoryCitizenID");
             TextBox txtPersonStudyHistoryGradUNIVEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryGradUNIVEdit");
             DropDownList ddl_101 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_101");
-            TextBox txtPersonStudyHistoryYearFromEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryYearFromEdit");
-            TextBox txtPersonStudyHistoryMonthTOEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMonthTOEdit");
-            TextBox txtPersonStudyHistoryYearTOEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryYearTOEdit");
+            DropDownList ddl_102 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_102");
+            DropDownList ddl_103 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_103");
+            DropDownList ddl_104 = (DropDownList)GridView1.Rows[e.RowIndex].FindControl("ddl_104");
             TextBox txtPersonStudyHistoryMajorEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPersonStudyHistoryMajorEdit");
 
             ClassPersonStudyHistory p1 = new ClassPersonStudyHistory(Convert.ToInt32(lblPersonStudyHistoryID.Text), lblPersonStudyHistoryCitizenID.Text
                 , txtPersonStudyHistoryGradUNIVEdit.Text
                 , ddl_101.SelectedValue
-                , txtPersonStudyHistoryYearFromEdit.Text
-                , txtPersonStudyHistoryMonthTOEdit.Text
-                , txtPersonStudyHistoryYearTOEdit.Text
+                , ddl_102.SelectedValue
+                , ddl_103.SelectedValue
+                , ddl_104.SelectedValue
                 , txtPersonStudyHistoryMajorEdit.Text);
+
+
+            if (ddl_101.SelectedIndex == 0 && ddl_102.SelectedIndex == 0 && ddl_103.SelectedIndex == 0 && ddl_104.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตั้งแต่ - ถึง (เดือน ปี) ให้ถูกต้อง')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtPersonStudyHistoryGradUNIVEdit.Text) && string.IsNullOrEmpty(txtPersonStudyHistoryMajorEdit.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบทุกช่อง')", true);
+                return;
+            }
 
             p1.UpdatePersonStudyHistory();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
@@ -179,58 +191,108 @@ namespace WEB_PERSONAL
 
         }
 
-        private DataTable Retrieveddl_101()
-        {
-            //fetch the connection string from web.config
-            string connectionString = ConfigurationManager.ConnectionStrings["RMUTTOORCL"].ToString();
-            //SQL statement to fetch entries from products
-            string sql = @"select * from TB_DDLMONTH";
-            DataTable dtddl_101 = new DataTable();
-            //Open SQL Connection
-            using (OracleConnection conn = new OracleConnection(connectionString))
-            {
-                conn.Open();
-                //Initialize command object
-                using (OracleCommand cmd = new OracleCommand(sql, conn))
-                {
-                    OracleDataAdapter adapter = new OracleDataAdapter(cmd);
-                    //Fill the result set
-                    adapter.Fill(dtddl_101);
-                }
-            }
-            return dtddl_101;
-        }
-
         protected void GridView1_RowDataBound1(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "GRAD_UNIV") + " จริงๆใช่ไหม ?');");
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
 
-                    using (OracleConnection sqlConn = new OracleConnection(strConn))
+                    using (OracleConnection sqlConn1 = new OracleConnection(strConn))
                     {
-                        using (OracleCommand sqlCmd = new OracleCommand())
+                        using (OracleCommand sqlCmd1 = new OracleCommand())
                         {
                             DropDownList ddl_101 = (DropDownList)e.Row.FindControl("ddl_101");
-                            sqlCmd.CommandText = "select * from TB_DDLMONTH";
-                            sqlCmd.Connection = sqlConn;
-                            sqlConn.Open();
-                            OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+
+                            sqlCmd1.CommandText = "select * from TB_DDLMONTH";
+                            sqlCmd1.Connection = sqlConn1;
+                            sqlConn1.Open();
+                            OracleDataAdapter da1 = new OracleDataAdapter(sqlCmd1);
                             DataTable dt = new DataTable();
-                            da.Fill(dt);
+                            da1.Fill(dt);
                             ddl_101.DataSource = dt;
-                            
+                            ddl_101.SelectedValue = DataBinder.Eval(e.Row.DataItem, "MONTH_FROM").ToString();
                             ddl_101.DataValueField = "MONTH_SHORT";
                             ddl_101.DataTextField = "MONTH_SHORT";
                             ddl_101.DataBind();
-                            sqlConn.Close();
+                            sqlConn1.Close();
 
                             ddl_101.Items.Insert(0, new ListItem("--เดือน--", "0"));
-                            DataRowView dr = e.Row.DataItem as DataRowView;
-                            ddl_101.SelectedValue = "1";
-                            // ddl_101.SelectedValue = value;
+                            DataRowView dr1 = e.Row.DataItem as DataRowView;
+                        }
 
+                        using (OracleConnection sqlConn2 = new OracleConnection(strConn))
+                        {
+                            using (OracleCommand sqlCmd2 = new OracleCommand())
+                            {
+                                DropDownList ddl_102 = (DropDownList)e.Row.FindControl("ddl_102");
+
+                                sqlCmd2.CommandText = "select * from TB_YEAR";
+                                sqlCmd2.Connection = sqlConn2;
+                                sqlConn2.Open();
+                                OracleDataAdapter da2 = new OracleDataAdapter(sqlCmd2);
+                                DataTable dt = new DataTable();
+                                da2.Fill(dt);
+                                ddl_102.DataSource = dt;
+                                ddl_102.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR_FROM").ToString();
+                                ddl_102.DataValueField = "YEAR_NAME";
+                                ddl_102.DataTextField = "YEAR_NAME";
+                                ddl_102.DataBind();
+                                sqlConn2.Close();
+
+                                ddl_102.Items.Insert(0, new ListItem("--ปี--", "0"));
+                                DataRowView dr2 = e.Row.DataItem as DataRowView;
+                            }
+                        }
+
+                        using (OracleConnection sqlConn3 = new OracleConnection(strConn))
+                        {
+                            using (OracleCommand sqlCmd3 = new OracleCommand())
+                            {
+                                DropDownList ddl_103 = (DropDownList)e.Row.FindControl("ddl_103");
+
+                                sqlCmd3.CommandText = "select * from TB_DDLMONTH";
+                                sqlCmd3.Connection = sqlConn3;
+                                sqlConn3.Open();
+                                OracleDataAdapter da3 = new OracleDataAdapter(sqlCmd3);
+                                DataTable dt = new DataTable();
+                                da3.Fill(dt);
+                                ddl_103.DataSource = dt;
+                                ddl_103.SelectedValue = DataBinder.Eval(e.Row.DataItem, "MONTH_TO").ToString();
+                                ddl_103.DataValueField = "MONTH_SHORT";
+                                ddl_103.DataTextField = "MONTH_SHORT";
+                                ddl_103.DataBind();
+                                sqlConn3.Close();
+
+                                ddl_103.Items.Insert(0, new ListItem("--เดือน--", "0"));
+                                DataRowView dr3 = e.Row.DataItem as DataRowView;
+                            }
+                        }
+
+                        using (OracleConnection sqlConn4 = new OracleConnection(strConn))
+                        {
+                            using (OracleCommand sqlCmd4 = new OracleCommand())
+                            {
+                                DropDownList ddl_104 = (DropDownList)e.Row.FindControl("ddl_104");
+
+                                sqlCmd4.CommandText = "select * from TB_YEAR";
+                                sqlCmd4.Connection = sqlConn4;
+                                sqlConn4.Open();
+                                OracleDataAdapter da4 = new OracleDataAdapter(sqlCmd4);
+                                DataTable dt = new DataTable();
+                                da4.Fill(dt);
+                                ddl_104.DataSource = dt;
+                                ddl_104.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR_TO").ToString();
+                                ddl_104.DataValueField = "YEAR_NAME";
+                                ddl_104.DataTextField = "YEAR_NAME";
+                                ddl_104.DataBind();
+                                sqlConn4.Close();
+
+                                ddl_104.Items.Insert(0, new ListItem("--ปี--", "0"));
+                                DataRowView dr4 = e.Row.DataItem as DataRowView;
+                            }
                         }
                     }
                 }
@@ -294,7 +356,19 @@ namespace WEB_PERSONAL
         }
         protected void GridView2_RowDataBound2(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton2");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "LICENCE_NAME") + " จริงๆใช่ไหม ?');");
 
+                //TextBox txt1 = (e.Row.FindControl("txtPersonJobLisenceDDATEEdit") as TextBox);
+                //txt1.Attributes.Add("onfocus", "ShowDate('" + txt1.ClientID + "')");
+
+               // var DtShmt = (TextBox)e.Row.FindControl("txtPersonJobLisenceDDATEEdit");
+                //ClientScript.RegisterStartupScript(this.GetType(), "datepick",
+                  //   "$(function () { $('#" + DtShmt.ClientID + "').datepicker({ dateFormat: 'dd/mm/yyyy' });  })", true);
+                //$("#ContentPlaceHolder1_txtBirthDayNumber")
+            }
         }
         protected void myGridViewPersonJobLisence_PageIndexChanging2(object sender, GridViewPageEventArgs e)
         {
@@ -334,19 +408,30 @@ namespace WEB_PERSONAL
             Label lblPersonTrainingID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonTrainingID");
             Label lblPersonTrainingCitizenID = (Label)GridView3.Rows[e.RowIndex].FindControl("lblPersonTrainingCitizenID");
             TextBox txtPersonTrainingCourseEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingCourseEdit");
-            TextBox txtPersonTrainingMonthFromEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingMonthFromEdit");
-            TextBox txtPersonTrainingYearFromEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingYearFromEdit");
-            TextBox txtPersonTrainingMonthTOEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingMonthTOEdit");
-            TextBox txtPersonTrainingYearTOEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingYearTOEdit");
+            DropDownList ddl_301 = (DropDownList)GridView3.Rows[e.RowIndex].FindControl("ddl_301");
+            DropDownList ddl_302 = (DropDownList)GridView3.Rows[e.RowIndex].FindControl("ddl_302");
+            DropDownList ddl_303 = (DropDownList)GridView3.Rows[e.RowIndex].FindControl("ddl_303");
+            DropDownList ddl_304 = (DropDownList)GridView3.Rows[e.RowIndex].FindControl("ddl_304");
             TextBox txtPersonTrainingBranchEdit = (TextBox)GridView3.Rows[e.RowIndex].FindControl("txtPersonTrainingBranchEdit");
 
             ClassPersonTraining p3 = new ClassPersonTraining(Convert.ToInt32(lblPersonTrainingID.Text), lblPersonTrainingCitizenID.Text
                 , txtPersonTrainingCourseEdit.Text
-                , txtPersonTrainingMonthFromEdit.Text
-                , txtPersonTrainingYearFromEdit.Text
-                , txtPersonTrainingMonthTOEdit.Text
-                , txtPersonTrainingYearTOEdit.Text
+                , ddl_301.SelectedValue
+                , ddl_302.SelectedValue
+                , ddl_303.SelectedValue
+                , ddl_304.SelectedValue
                 , txtPersonTrainingBranchEdit.Text);
+
+            if (ddl_301.SelectedIndex == 0 && ddl_302.SelectedIndex == 0 && ddl_303.SelectedIndex == 0 && ddl_304.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตั้งแต่ - ถึง (เดือน ปี) ให้ถูกต้อง')", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtPersonTrainingCourseEdit.Text) && string.IsNullOrEmpty(txtPersonTrainingBranchEdit.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอกข้อมูลให้ครบทุกช่อง')", true);
+                return;
+            }
 
             p3.UpdatePersonTraining();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
@@ -356,7 +441,110 @@ namespace WEB_PERSONAL
         }
         protected void GridView3_RowDataBound3(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton3");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "COURSE") + " จริงๆใช่ไหม ?');");
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
 
+                    using (OracleConnection sqlConn1 = new OracleConnection(strConn))
+                    {
+                        using (OracleCommand sqlCmd1 = new OracleCommand())
+                        {
+                            DropDownList ddl_301 = (DropDownList)e.Row.FindControl("ddl_301");
+
+                            sqlCmd1.CommandText = "select * from TB_DDLMONTH";
+                            sqlCmd1.Connection = sqlConn1;
+                            sqlConn1.Open();
+                            OracleDataAdapter da1 = new OracleDataAdapter(sqlCmd1);
+                            DataTable dt = new DataTable();
+                            da1.Fill(dt);
+                            ddl_301.DataSource = dt;
+                            ddl_301.SelectedValue = DataBinder.Eval(e.Row.DataItem, "MONTH_FROM").ToString();
+                            ddl_301.DataValueField = "MONTH_SHORT";
+                            ddl_301.DataTextField = "MONTH_SHORT";
+                            ddl_301.DataBind();
+                            sqlConn1.Close();
+
+                            ddl_301.Items.Insert(0, new ListItem("--เดือน--", "0"));
+                            DataRowView dr1 = e.Row.DataItem as DataRowView;
+                        }
+
+                        using (OracleConnection sqlConn2 = new OracleConnection(strConn))
+                        {
+                            using (OracleCommand sqlCmd2 = new OracleCommand())
+                            {
+                                DropDownList ddl_302 = (DropDownList)e.Row.FindControl("ddl_302");
+
+                                sqlCmd2.CommandText = "select * from TB_YEAR";
+                                sqlCmd2.Connection = sqlConn2;
+                                sqlConn2.Open();
+                                OracleDataAdapter da2 = new OracleDataAdapter(sqlCmd2);
+                                DataTable dt = new DataTable();
+                                da2.Fill(dt);
+                                ddl_302.DataSource = dt;
+                                ddl_302.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR_FROM").ToString();
+                                ddl_302.DataValueField = "YEAR_NAME";
+                                ddl_302.DataTextField = "YEAR_NAME";
+                                ddl_302.DataBind();
+                                sqlConn2.Close();
+
+                                ddl_302.Items.Insert(0, new ListItem("--ปี--", "0"));
+                                DataRowView dr2 = e.Row.DataItem as DataRowView;
+                            }
+                        }
+
+                        using (OracleConnection sqlConn3 = new OracleConnection(strConn))
+                        {
+                            using (OracleCommand sqlCmd3 = new OracleCommand())
+                            {
+                                DropDownList ddl_303 = (DropDownList)e.Row.FindControl("ddl_303");
+
+                                sqlCmd3.CommandText = "select * from TB_DDLMONTH";
+                                sqlCmd3.Connection = sqlConn3;
+                                sqlConn3.Open();
+                                OracleDataAdapter da3 = new OracleDataAdapter(sqlCmd3);
+                                DataTable dt = new DataTable();
+                                da3.Fill(dt);
+                                ddl_303.DataSource = dt;
+                                ddl_303.SelectedValue = DataBinder.Eval(e.Row.DataItem, "MONTH_TO").ToString();
+                                ddl_303.DataValueField = "MONTH_SHORT";
+                                ddl_303.DataTextField = "MONTH_SHORT";
+                                ddl_303.DataBind();
+                                sqlConn3.Close();
+
+                                ddl_303.Items.Insert(0, new ListItem("--เดือน--", "0"));
+                                DataRowView dr3 = e.Row.DataItem as DataRowView;
+                            }
+                        }
+
+                        using (OracleConnection sqlConn4 = new OracleConnection(strConn))
+                        {
+                            using (OracleCommand sqlCmd4 = new OracleCommand())
+                            {
+                                DropDownList ddl_304 = (DropDownList)e.Row.FindControl("ddl_304");
+
+                                sqlCmd4.CommandText = "select * from TB_YEAR";
+                                sqlCmd4.Connection = sqlConn4;
+                                sqlConn4.Open();
+                                OracleDataAdapter da4 = new OracleDataAdapter(sqlCmd4);
+                                DataTable dt = new DataTable();
+                                da4.Fill(dt);
+                                ddl_304.DataSource = dt;
+                                ddl_304.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR_TO").ToString();
+                                ddl_304.DataValueField = "YEAR_NAME";
+                                ddl_304.DataTextField = "YEAR_NAME";
+                                ddl_304.DataBind();
+                                sqlConn4.Close();
+
+                                ddl_304.Items.Insert(0, new ListItem("--ปี--", "0"));
+                                DataRowView dr4 = e.Row.DataItem as DataRowView;
+                            }
+                        }
+                    }
+                }
+            }
         }
         protected void myGridViewPersonTraining_PageIndexChanging3(object sender, GridViewPageEventArgs e)
         {
@@ -395,12 +583,12 @@ namespace WEB_PERSONAL
 
             Label lblPersonDISCIPLINARYID = (Label)GridView4.Rows[e.RowIndex].FindControl("lblPersonDISCIPLINARYID");
             Label lblPersonDISCIPLINARYCitizenID = (Label)GridView4.Rows[e.RowIndex].FindControl("lblPersonDISCIPLINARYCitizenID");
-            TextBox txtPersonDISCIPLINARYYearEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYYearEdit");
+            DropDownList ddl_401 = (DropDownList)GridView4.Rows[e.RowIndex].FindControl("ddl_401");
             TextBox txtPersonDISCIPLINARYListEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYListEdit");
             TextBox txtPersonDISCIPLINARYRefEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYRefEdit");
 
             ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY(Convert.ToInt32(lblPersonDISCIPLINARYID.Text), lblPersonDISCIPLINARYCitizenID.Text
-                , txtPersonDISCIPLINARYYearEdit.Text
+                , ddl_401.SelectedValue
                 , txtPersonDISCIPLINARYListEdit.Text
                 , txtPersonDISCIPLINARYRefEdit.Text);
 
@@ -412,7 +600,38 @@ namespace WEB_PERSONAL
         }
         protected void GridView4_RowDataBound4(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton4");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "MENU") + " จริงๆใช่ไหม ?');");
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
 
+                    using (OracleConnection sqlConn2 = new OracleConnection(strConn))
+                    {
+                        using (OracleCommand sqlCmd2 = new OracleCommand())
+                        {
+                            DropDownList ddl_401 = (DropDownList)e.Row.FindControl("ddl_401");
+
+                            sqlCmd2.CommandText = "select * from TB_YEAR";
+                            sqlCmd2.Connection = sqlConn2;
+                            sqlConn2.Open();
+                            OracleDataAdapter da2 = new OracleDataAdapter(sqlCmd2);
+                            DataTable dt = new DataTable();
+                            da2.Fill(dt);
+                            ddl_401.DataSource = dt;
+                            ddl_401.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR").ToString();
+                            ddl_401.DataValueField = "YEAR_NAME";
+                            ddl_401.DataTextField = "YEAR_NAME";
+                            ddl_401.DataBind();
+                            sqlConn2.Close();
+
+                            ddl_401.Items.Insert(0, new ListItem("--ปี--", "0"));
+                            DataRowView dr2 = e.Row.DataItem as DataRowView;
+                        }
+                    }
+                }
+            }
         }
         protected void myGridViewPersonDISCIPLINARY_PageIndexChanging4(object sender, GridViewPageEventArgs e)
         {
@@ -453,8 +672,8 @@ namespace WEB_PERSONAL
             TextBox lblPersonPosiSalaryDateEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryDateEdit");
             TextBox txtPersonPosiSalaryPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionEdit");
             TextBox txtPersonPosiSalaryNoPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryNoPositionEdit");
-            TextBox txtPersonPosiSalaryTypePositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryTypePositionEdit");
-            TextBox txtPersonPosiSalaryDegreeEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryDegreeEdit");
+            DropDownList ddl_501 = (DropDownList)GridView5.Rows[e.RowIndex].FindControl("ddl_501");
+            DropDownList ddl_502 = (DropDownList)GridView5.Rows[e.RowIndex].FindControl("ddl_502");
             TextBox txtPersonPosiSalarySALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalarySALARYEdit");
             TextBox txtPersonPosiSalaryPositionSALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionSALARYEdit");
             TextBox txtPersonPosiSalaryRefEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryRefEdit");
@@ -465,8 +684,8 @@ namespace WEB_PERSONAL
                 , DDATE
                 , txtPersonPosiSalaryPositionEdit.Text
                 , txtPersonPosiSalaryNoPositionEdit.Text
-                , txtPersonPosiSalaryTypePositionEdit.Text
-                , Convert.ToInt32(txtPersonPosiSalaryDegreeEdit.Text)
+                , ddl_501.SelectedValue
+                , Convert.ToInt32(ddl_502.SelectedValue)
                 , Convert.ToInt32(txtPersonPosiSalarySALARYEdit.Text)
                 , Convert.ToInt32(txtPersonPosiSalaryPositionSALARYEdit.Text)
                 , txtPersonPosiSalaryRefEdit.Text
@@ -480,7 +699,64 @@ namespace WEB_PERSONAL
         }
         protected void GridView5_RowDataBound5(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton5");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "POSITION_NAME") + " จริงๆใช่ไหม ?');");
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
 
+                    using (OracleConnection sqlConn1 = new OracleConnection(strConn))
+                    {
+                        using (OracleCommand sqlCmd1 = new OracleCommand())
+                        {
+                            DropDownList ddl_501 = (DropDownList)e.Row.FindControl("ddl_501");
+
+                            sqlCmd1.CommandText = "select * from TB_STAFF";
+                            sqlCmd1.Connection = sqlConn1;
+                            sqlConn1.Open();
+                            OracleDataAdapter da1 = new OracleDataAdapter(sqlCmd1);
+                            DataTable dt = new DataTable();
+                            da1.Fill(dt);
+                            ddl_501.DataSource = dt;
+                            ddl_501.SelectedValue = DataBinder.Eval(e.Row.DataItem, "ST_ID").ToString();
+                            ddl_501.DataValueField = "ST_ID";
+                            ddl_501.DataTextField = "ST_NAME";
+                            ddl_501.DataBind();
+                            sqlConn1.Close();
+
+                            ddl_501.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
+
+                            DataRowView dr1 = e.Row.DataItem as DataRowView;
+                        }
+                    }
+
+                    using (OracleConnection sqlConn2 = new OracleConnection(strConn))
+                    {
+                        using (OracleCommand sqlCmd2 = new OracleCommand())
+                        {
+                            DropDownList ddl_502 = (DropDownList)e.Row.FindControl("ddl_502");
+
+                            sqlCmd2.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER UNION ALL select * FROM TB_POSITION_PERMANENT_EMP ";
+                            sqlCmd2.Connection = sqlConn2;
+                            sqlConn2.Open();
+                            OracleDataAdapter da2 = new OracleDataAdapter(sqlCmd2);
+                            DataTable dt = new DataTable();
+                            da2.Fill(dt);
+                            ddl_502.DataSource = dt;
+                            ddl_502.SelectedValue = DataBinder.Eval(e.Row.DataItem, "POSITION_ID").ToString();
+                            ddl_502.DataValueField = "ID";
+                            ddl_502.DataTextField = "NAME";
+                            ddl_502.DataBind();
+                            sqlConn2.Close();
+
+                            ddl_502.Items.Insert(0, new ListItem("--ระดับ--", "0"));
+
+                            DataRowView dr1 = e.Row.DataItem as DataRowView;
+                        }
+                    }
+                }
+            }
         }
         protected void myGridViewPersonPosiSalary_PageIndexChanging5(object sender, GridViewPageEventArgs e)
         {

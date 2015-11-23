@@ -58,6 +58,24 @@
             border: 1px solid black;
             font-size:16px;
         }
+        .button_ui_admin {
+            background: #ff0000;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: white;
+            border-color: black;
+            border: 1px solid black;
+            font-size:16px;
+        }
+        .button_ui_admin:hover {
+            background: #ff6a00;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: white;
+            border-color: black;
+            border: 1px solid black;
+            font-size:16px;
+        }
         .button_ui_edit {
             background:rgb(79, 255, 169);
             padding: 5px 10px;
@@ -153,6 +171,9 @@ win=window.open(mypage,myname,settings);}
                     <asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui_edit" OnClick="Button1_Click">ค้นหา</asp:LinkButton>
                     <a href="SalaryByID-Report.aspx" class="button_ui_edit">ออกรายงาน</a>
                     <a href="Salary_Basesalary.aspx" onclick="Popup(this.href, 'Base_salary', '350', '350', 'no', 'center'); return false;" class="button_ui">ปรับฐานเงินเดือน</a>
+
+
+                    <asp:LinkButton ID="LinkButton11" runat="server" CssClass="button_ui_admin" OnClick="LinkButton11_Click">ปรับฐานเงินเดือน [Admin]</asp:LinkButton>
 
 
                 </td>
