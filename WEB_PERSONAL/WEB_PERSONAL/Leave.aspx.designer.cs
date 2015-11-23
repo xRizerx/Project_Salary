@@ -49,6 +49,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label23;
         
         /// <summary>
+        /// Panel5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel5;
+        
+        /// <summary>
         /// TextBox16 control.
         /// </summary>
         /// <remarks>
@@ -211,6 +220,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label21;
         
         /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+        
+        /// <summary>
         /// TextBox15 control.
         /// </summary>
         /// <remarks>
@@ -274,6 +292,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
+        /// Panel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel3;
+        
+        /// <summary>
         /// TextBox3 control.
         /// </summary>
         /// <remarks>
@@ -317,6 +344,15 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label14;
+        
+        /// <summary>
+        /// Panel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel4;
         
         /// <summary>
         /// TextBox8 control.
@@ -677,15 +713,6 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButton10;
-        
-        /// <summary>
-        /// Panel8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel8;
         
         /// <summary>
         /// GridView1 control.

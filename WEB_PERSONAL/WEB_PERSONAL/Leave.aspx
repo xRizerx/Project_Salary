@@ -183,8 +183,11 @@
                             <asp:Label ID="Label23" runat="server" Text="รหัสผู้ลา"></asp:Label>
                         </td>
                         <td class="auto-style67">
-                            <asp:TextBox ID="TextBox16" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:Panel ID="Panel5" runat="server" DefaultButton="LinkButton17">
+                                <asp:TextBox ID="TextBox16" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton17" runat="server" CssClass="master_default_button" OnClick="Button1_Click2">ตรวจสอบ</asp:LinkButton>
+                            </asp:Panel>
+                            
                         </td>
                     </tr>
                     <tr>
@@ -268,8 +271,11 @@
                             <asp:Label ID="Label21" runat="server" Text="ค้นหาตามรหัสเอกสาร"></asp:Label>
                         </td>
                         <td class="auto-style77">
-                            <asp:TextBox ID="TextBox15" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:Panel ID="Panel1" runat="server" DefaultButton="LinkButton18">
+                                <asp:TextBox ID="TextBox15" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton18" runat="server" CssClass="master_default_button" OnClick="LinkButton18_Click">ค้นหา</asp:LinkButton>
+                            </asp:Panel>
+                            
                         </td>
                     </tr>
                     <tr>
@@ -293,8 +299,11 @@
                             <asp:Label ID="Label9" runat="server" Text="รหัสผู้ลา"></asp:Label>
                         </td>
                         <td class="auto-style77">
-                            <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:Panel ID="Panel3" runat="server" DefaultButton="LinkButton14">
+                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton14" runat="server" CssClass="master_default_button" OnClick="LinkButton14_Click">ตรวจสอบ</asp:LinkButton>
+                            </asp:Panel>
+                            
                         </td>
                     </tr>
                     <tr>
@@ -310,8 +319,11 @@
                             <asp:Label ID="Label14" runat="server" Text="รหัสผู้อนุมัติ"></asp:Label>
                         </td>
                         <td class="auto-style77">
-                            <asp:TextBox ID="TextBox8" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:Panel ID="Panel4" runat="server" DefaultButton="LinkButton15">
+                                <asp:TextBox ID="TextBox8" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_default_button" OnClick="LinkButton15_Click">ตรวจสอบ</asp:LinkButton>
+                            </asp:Panel>
+                            
                         </td>
                     </tr>
                     <tr>
@@ -463,8 +475,7 @@
                     </tr>
                 </table>
 
-                <asp:Panel ID="Panel8" runat="server" ScrollBars="Both" CssClass="leave_grid_view" Height="800px">
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnPageIndexChanging="GridView1_PageIndexChanging">
                         <AlternatingRowStyle BackColor="White" />
                         <EditRowStyle BackColor="#2461BF" />
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -477,7 +488,7 @@
                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
-                </asp:Panel>
+
             </div>
         </div>
 

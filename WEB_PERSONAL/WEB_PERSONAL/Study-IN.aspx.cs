@@ -10,7 +10,7 @@ using System.Data.OracleClient;
 namespace WEB_PERSONAL {
     public partial class Study_IN : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-
+            BindGridView1();
         }
 
         protected void LinkButton15_Click(object sender, EventArgs e) {
@@ -19,7 +19,7 @@ namespace WEB_PERSONAL {
             using (OracleConnection con = Util.OC()) {
                 {
                     {
-                        string sql = "select ID, CITIZEN_ID, STUDY_YEAR, STUDY_DEGREE_ID, STUDY_BRANCH_ID, STUDY_LOCATION, STUDY_COURSE_ID, STUDY_TIME, STUDY_TIME_YEAR, TO_CHAR(STUDY_FROM_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), TO_CHAR(STUDY_TO_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), STUDY_TIME_EXT, \"COMMENT\" from TB_STUDY where id = " + TextBox23.Text;
+                        string sql = "select ID, CITIZEN_ID, STUDY_YEAR, STUDY_DEGREE_ID, STUDY_BRANCH_NAME, STUDY_LOCATION, STUDY_COURSE_ID, STUDY_TIME, STUDY_TIME_YEAR, TO_CHAR(STUDY_FROM_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), TO_CHAR(STUDY_TO_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), STUDY_TIME_COURSE, \"COMMENT\" from TB_STUDY where id = " + TextBox23.Text;
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 while (reader.Read()) {
@@ -27,7 +27,7 @@ namespace WEB_PERSONAL {
                                     TextBox3.Text = reader.GetString(1);
                                     TextBox28.Text = reader.GetInt32(2).ToString();
                                     DropDownList1.SelectedValue = reader.GetInt32(3).ToString();
-                                    DropDownList2.SelectedValue = reader.GetString(4);
+                                    TextBox29.Text = reader.GetString(4);
                                     TextBox6.Text = reader.GetString(5);
                                     DropDownList3.SelectedValue = reader.GetInt32(6).ToString();
                                     TextBox24.Text = reader.GetFloat(7).ToString();
@@ -42,8 +42,8 @@ namespace WEB_PERSONAL {
                         }
                     }
 
-                    {
-                        string sql = "SELECT TB_PERSONAL.STF_NAME || ' ' || TB_PERSONAL.STF_LNAME, TB_POSITION.POSITION_NAME, TB_POSITION_WORK.POSITION_WORK_NAME FROM TB_PERSONAL, TB_POSITION, TB_POSITION_WORK WHERE CITIZEN_ID = '" + TextBox3.Text + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID";
+                   /* {
+                        string sql = "SELECT TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME, TB_POSITION.POSITION_NAME, TB_POSITION_WORK.POSITION_WORK_NAME FROM TB_PERSONAL, TB_POSITION, TB_POSITION_WORK WHERE CITIZEN_ID = '" + TextBox3.Text + "' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 if (reader.HasRows) {
@@ -51,6 +51,24 @@ namespace WEB_PERSONAL {
                                         Label37.Text = reader.GetString(0);
                                         Label39.Text = reader.GetString(1);
                                         Label41.Text = reader.GetString(2);
+                                    }
+                                } else {
+                                    Util.Alert(this, "ไม่พบรหัสพนักงาน");
+                                }
+
+                            }
+
+                        }
+                    }*/
+
+                    {
+                        string sql = "SELECT TB_POSITION_AND_SALARY.POSITION_NAME FROM TB_POSITION_AND_SALARY WHERE TB_POSITION_AND_SALARY.ID = :1 ORDER BY ID DESC";
+                        using (OracleCommand command = new OracleCommand(sql, con)) {
+                            command.Parameters.AddWithValue("1", TextBox3.Text);
+                            using (OracleDataReader reader = command.ExecuteReader()) {
+                                if (reader.HasRows) {
+                                    while (reader.Read()) {
+                                        Label41.Text = reader.GetString(0);
                                     }
                                 } else {
                                     Util.Alert(this, "ไม่พบรหัสพนักงาน");
@@ -82,7 +100,7 @@ namespace WEB_PERSONAL {
                         command.Parameters.AddWithValue("2", TextBox3.Text);
                         command.Parameters.AddWithValue("3", TextBox28.Text);
                         command.Parameters.AddWithValue("4", DropDownList1.SelectedValue);
-                        command.Parameters.AddWithValue("5", DropDownList2.SelectedValue);
+                        command.Parameters.AddWithValue("5", TextBox29.Text);
                         command.Parameters.AddWithValue("6", TextBox6.Text);
                         command.Parameters.AddWithValue("7", DropDownList3.SelectedValue);
                         command.Parameters.AddWithValue("8", TextBox24.Text);
@@ -173,14 +191,86 @@ namespace WEB_PERSONAL {
             DropDownList1.SelectedIndex = 0;
         }
 
-        protected void DropDownList2_DataBound(object sender, EventArgs e) {
-            DropDownList2.Items.Insert(0, new ListItem("--กรุณาเลือกสาขา--", String.Empty));
-            DropDownList2.SelectedIndex = 0;
-        }
-
         protected void DropDownList3_DataBound(object sender, EventArgs e) {
             DropDownList3.Items.Insert(0, new ListItem("--กรุณาเลือกหลักสูตร--", String.Empty));
             DropDownList3.SelectedIndex = 0;
+        }
+        private void BindGridView1() {
+            GridView1.AllowPaging = true;
+            GridView1.EnableSortingAndPagingCallbacks = true;
+            GridView1.AutoGenerateColumns = false;
+            GridView1.Controls.Clear();
+            GridView1.Columns.Clear();
+            {
+                BoundField test = new BoundField();
+                test.DataField = "ID";
+                test.HeaderText = "รหัส";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "CITIZEN_ID";
+                test.HeaderText = "รหัสพนักงาน";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "STUDY_YEAR";
+                test.HeaderText = "ปีที่ศึกษา";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "SHORT_NAME";
+                test.HeaderText = "ระดับ";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "STUDY_BRANCH_NAME";
+                test.HeaderText = "สาขาที่ศึกษา";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "STUDY_LOCATION";
+                test.HeaderText = "สถานที่ศึกษา";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "NAME";
+                test.HeaderText = "หลักสูตร";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "STUDY_TIME";
+                test.HeaderText = "ระยะเวลาที่ศึกษา (ปี)";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "FROM_TO_DATE";
+                test.HeaderText = "ตั้งแต่วันที่";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "STUDY_TIME_COURSE";
+                test.HeaderText = "ระยะเวลาศึกษาตามหลักสูตร";
+                GridView1.Columns.Add(test);
+            }
+            {
+                BoundField test = new BoundField();
+                test.DataField = "COMMENT";
+                test.HeaderText = "คอมเมนต์";
+                GridView1.Columns.Add(test);
+            }
+
+            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "SELECT TB_STUDY.ID, TB_STUDY.CITIZEN_ID, TB_STUDY.STUDY_YEAR, TB_STUDY_DEGREE.SHORT_NAME, TB_STUDY.STUDY_BRANCH_NAME, TB_STUDY.STUDY_LOCATION, TB_STUDY_COURSE.NAME, TB_STUDY.STUDY_TIME || ' (' || TB_STUDY.STUDY_TIME_YEAR || ')' as \"STUDY_TIME\", TO_CHAR(TB_STUDY.STUDY_FROM_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') || ' - ' || TO_CHAR(TB_STUDY.STUDY_TO_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') as \"FROM_TO_DATE\", TB_STUDY.STUDY_TIME_COURSE, TB_STUDY.\"COMMENT\" FROM TB_STUDY, TB_STUDY_DEGREE, TB_STUDY_COURSE WHERE TB_STUDY.STUDY_COURSE_ID = TB_STUDY_COURSE.ID AND TB_STUDY.STUDY_DEGREE_ID = TB_STUDY_DEGREE.ID");
+            GridView1.DataSource = sds;
+            GridView1.DataBind();
         }
     }
 }
