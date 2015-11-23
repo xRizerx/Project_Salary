@@ -9,7 +9,18 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["login_id"] == null)
+            {
+                return;
+            }
+            if (Session["login_system_status_id"].ToString() == "1")
+            {
+                LinkButton11.Visible = true;
+            }
+            else
+            {
+                LinkButton11.Visible = false;
+            }
         }
         protected void Button1_Click(object sender, EventArgs e)
         {

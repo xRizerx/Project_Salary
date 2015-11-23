@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using Rmutto.Connection;
 using System.Data.OracleClient;
 using System.Data;
 
@@ -15,69 +9,27 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
-        //method for binding GridView
-
-        protected void BindGridView()
-
+        protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            using (OracleConnection con = Util.OC())
+            using (OracleConnection conn  = Util.OC())
             {
-                DataTable dt = new DataTable();
-
-                OracleDataAdapter da = new OracleDataAdapter("SELECT TB_BASESALARY.ID,TB_POSITION.NAME, TB_BASESALARY.MAXSALARY, TB_BASESALARY.MINSALARY, TB_BASESALARY.MAXLOWSALARY, TB_BASESALARY.MINLOWSALARY FROM TB_BASESALARY, TB_POSITION WHERE TB_BASESALARY.POSITION_ID = TB_POSITION.ID", con);
-
-                con.Open();
-
-                da.Fill(dt);
-
-                con.Close();
-
-
-
-                if (dt.Rows.Count > 0)
-
+                String sql = "INSERT INTO TB_BASESALARY VALUES (SEQ_BASESALARY_ID.NEXTVAL,:1,:2,:3,:4,:5)";
+                sql = String.Format(sql, DropDownList1.SelectedValue, TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text);
+                using (OracleCommand command = new OracleCommand(sql, conn))
                 {
-
-                    GridView1.DataSource = dt;
-
-                    GridView1.DataBind();
-
+                    command.Parameters.AddWithValue("1", DropDownList1.SelectedValue);
+                    command.Parameters.AddWithValue("2", TextBox1.Text);
+                    command.Parameters.AddWithValue("3", TextBox2.Text);
+                    command.Parameters.AddWithValue("4", TextBox3.Text);
+                    command.Parameters.AddWithValue("5", TextBox4.Text);
+                    command.ExecuteNonQuery();
+                    Util.Alert(this,"Insert Successful.");
                 }
             }
-
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // find values for update
-            using (OracleConnection con = Util.OC())
-            {
-                TextBox MAXSALARY = (TextBox)GridView1.FooterRow.FindControl("MAXSALARY");
-                TextBox MINSALARY = (TextBox)GridView1.FooterRow.FindControl("MINSALARY");
-                TextBox MAXLOWSALARY = (TextBox)GridView1.FooterRow.FindControl("MAXLOWSALARY");
-                TextBox MINLOWSALARY = (TextBox)GridView1.FooterRow.FindControl("MINLOWSALARY");
-
-
-
-                // insert values into database
-
-                OracleCommand cmd = new OracleCommand("INSERT INTO TB_BASESALARY (MAXSALARY,MINSALARY,MAXLOWSALARY,MINLOWSALARY)"+
-    
-                                  "values('" + MAXSALARY.Text + "', '" + MINSALARY.Text + "', '" + MAXLOWSALARY.Text + "', '" + MINLOWSALARY.Text + "')", con);
-    
-
-                cmd.ExecuteNonQuery();
-
-
-            }
-                
-
-
-
-            BindGridView();
+            Response.Redirect(Request.Url.ToString());
         }
     }
 }
