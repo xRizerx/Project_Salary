@@ -131,11 +131,6 @@
             height: 95px;
         }
 
-        .auto-style75 {
-            width: 192px;
-            text-align: right;
-        }
-
         .auto-style77 {
             width: 317px;
         }
@@ -156,13 +151,16 @@
             text-align: right;
         }
 
-        .auto-style94 {
-            width: 100px;
-            text-align: right;
-        }
         .auto-style95 {
             width: 120px;
             text-align: right;
+        }
+        .auto-style96 {
+            width: 180px;
+            height: 33px;
+        }
+        .auto-style97 {
+            height: 33px;
         }
     </style>
     <asp:Panel ID="Panel2" runat="server" CssClass="mp">
@@ -184,7 +182,7 @@
                         </td>
                         <td class="auto-style67">
                             <asp:Panel ID="Panel5" runat="server" DefaultButton="LinkButton17">
-                                <asp:TextBox ID="TextBox16" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox16" runat="server" CssClass="master_default_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton17" runat="server" CssClass="master_default_button" OnClick="Button1_Click2">ตรวจสอบ</asp:LinkButton>
                             </asp:Panel>
                             
@@ -300,7 +298,7 @@
                         </td>
                         <td class="auto-style77">
                             <asp:Panel ID="Panel3" runat="server" DefaultButton="LinkButton14">
-                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton14" runat="server" CssClass="master_default_button" OnClick="LinkButton14_Click">ตรวจสอบ</asp:LinkButton>
                             </asp:Panel>
                             
@@ -320,7 +318,7 @@
                         </td>
                         <td class="auto-style77">
                             <asp:Panel ID="Panel4" runat="server" DefaultButton="LinkButton15">
-                                <asp:TextBox ID="TextBox8" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox8" runat="server" CssClass="master_default_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
                             <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_default_button" OnClick="LinkButton15_Click">ตรวจสอบ</asp:LinkButton>
                             </asp:Panel>
                             
@@ -409,13 +407,18 @@
                 <table>
                     <tr>
                         <td class="auto-style58">
-                            <asp:Label ID="Label2" runat="server" Text="ค้นหาตามสถานะ"></asp:Label>
-                        </td>
+                            &nbsp;</td>
                         <td>
                             <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" CssClass="master_default_button">ทั้งหมด</asp:LinkButton>
-                            <asp:LinkButton ID="LinkButton4" runat="server" OnClick="Button3_Click" CssClass="master_default_button">ยังไม่ตรวจสอบ</asp:LinkButton>
-                            <asp:LinkButton ID="LinkButton5" runat="server" OnClick="Button4_Click" CssClass="master_default_button">อนุมัติ</asp:LinkButton>
-                            <asp:LinkButton ID="LinkButton6" runat="server" OnClick="Button5_Click" CssClass="master_default_button">ไม่อนุมัติ</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style96">
+                            <asp:Label ID="Label2" runat="server" Text="ค้นหาตามสถานะ"></asp:Label>
+                        </td>
+                        <td class="auto-style97">
+                            <asp:DropDownList ID="DropDownList7" runat="server" AutoPostBack="True" CssClass="master_default_dropdown" DataSourceID="SqlDataSource1" DataTextField="LEAVE_STATUS_NAME" DataValueField="LEAVE_STATUS_ID" OnDataBound="DropDownList7_DataBound" OnSelectedIndexChanged="DropDownList7_SelectedIndexChanged">
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
