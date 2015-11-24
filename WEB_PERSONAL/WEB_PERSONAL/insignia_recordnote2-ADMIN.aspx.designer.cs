@@ -22,49 +22,49 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// txtSearchNationENG control.
+        /// txtSearchInsig2CITIZENID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchNationENG;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchInsig2CITIZENID;
         
         /// <summary>
-        /// txtSearchNationID control.
+        /// txtSearchNAME control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchNationID;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchNAME;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtSearchLASTNAME control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchLASTNAME;
         
         /// <summary>
-        /// txtSearchNationTHA control.
+        /// txtSearchDATE_INWORK control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchNationTHA;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchDATE_INWORK;
         
         /// <summary>
-        /// btnSearchNATIONAL control.
+        /// btnSearchInsig2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchNATIONAL;
+        protected global::System.Web.UI.WebControls.Button btnSearchInsig2;
         
         /// <summary>
         /// btnSearchRefresh control.
@@ -85,139 +85,121 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// TextBox12 control.
+        /// txtt0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.WebControls.TextBox txtt0;
         
         /// <summary>
-        /// txtInsertNationENG control.
+        /// txtt1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertNationENG;
+        protected global::System.Web.UI.WebControls.TextBox txtt1;
         
         /// <summary>
-        /// txtInsertNationTHA control.
+        /// txtt2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertNationTHA;
+        protected global::System.Web.UI.WebControls.TextBox txtt2;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtt3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtt3;
         
         /// <summary>
-        /// TextBox3 control.
+        /// txtt4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtt4;
         
         /// <summary>
-        /// TextBox4 control.
+        /// txtt5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtt5;
         
         /// <summary>
-        /// TextBox5 control.
+        /// txtt6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtt6;
         
         /// <summary>
-        /// TextBox6 control.
+        /// txtt7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox txtt7;
         
         /// <summary>
-        /// TextBox7 control.
+        /// txtt8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox txtt8;
         
         /// <summary>
-        /// TextBox8 control.
+        /// txtt9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.TextBox txtt9;
         
         /// <summary>
-        /// TextBox9 control.
+        /// txtt10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        protected global::System.Web.UI.WebControls.TextBox txtt10;
         
         /// <summary>
-        /// TextBox10 control.
+        /// btnSubmitInsig2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.Button btnSubmitInsig2;
         
         /// <summary>
-        /// TextBox11 control.
+        /// btnCancelInsig2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
-        
-        /// <summary>
-        /// btnSubmitNATIONAL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmitNATIONAL;
-        
-        /// <summary>
-        /// btnCancelNATIONAL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelNATIONAL;
+        protected global::System.Web.UI.WebControls.Button btnCancelInsig2;
         
         /// <summary>
         /// GridView1 control.
