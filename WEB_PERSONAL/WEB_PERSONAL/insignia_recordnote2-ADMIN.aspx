@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="insignia_recordnote2-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.insignia_recordnote2_ADMIN" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script>
-        $(function () {
-            $("#ContentPlaceHolder1_txtt0,#ContentPlaceHolder1_txtt7").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+    <script type="text/javascript">
+        $('document').ready(function () {
+            $(".date").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
         });
     </script>
 <style type="text/css">
@@ -134,7 +134,7 @@
                             <asp:Label ID="lbl0" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd-MM-yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txt0" MaxLength="100" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
+                            		<asp:TextBox ID="txt0" MaxLength="100" CssClass="date" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ตำแหน่ง" ControlStyle-Width="80" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
@@ -187,10 +187,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="วัน/เดือน/ปี" ControlStyle-Width="80" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lbl7" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "GAZETTE_DATE")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:Label>
+                            <asp:Label ID="lbl7" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "GAZETTE_DATE")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>' ></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txt7" MaxLength="100" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "GAZETTE_DATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
+                            		<asp:TextBox ID="txt7" MaxLength="100" CssClass="date" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "GAZETTE_DATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ใบกำกับ" ControlStyle-Width="80" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
