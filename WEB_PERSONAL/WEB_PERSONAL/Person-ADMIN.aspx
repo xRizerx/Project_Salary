@@ -6,7 +6,10 @@
      <script type="text/javascript">
         function pageLoad(sender , args) {
             $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
-        }; 
+            $('document').ready(function () {
+                $(".date").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+            });
+        };
     </script>
     <style type="text/CSS">
         .ui-datepicker{  
@@ -534,7 +537,7 @@
                             <asp:Label ID="lblPersonJobLisenceDDATEEdit" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonJobLisenceDDATEEdit" MaxLength="120" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonJobLisenceDDATEEdit" CssClass="date" MaxLength="120" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
@@ -964,10 +967,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="วัน เดือน ปี" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblPersonPosiSalaryDateEdit" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:Label>
+                            <asp:Label ID="lblPersonPosiSalaryDateEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DDATE","{0:dd MMM yyyy}") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtPersonPosiSalaryDateEdit" MaxLength="100" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtPersonPosiSalaryDateEdit" MaxLength="100" CssClass="date" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DDATE","{0:dd MMM yyyy}") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ตำแหน่ง" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
