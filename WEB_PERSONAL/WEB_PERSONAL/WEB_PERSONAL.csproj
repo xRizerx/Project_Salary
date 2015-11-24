@@ -290,6 +290,7 @@
     <Content Include="Salary_Basesalary_Admin.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
+    <Content Include="Study-Report1.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TeachISCED-ADMIN.aspx" />
     <Content Include="TimeContact-ADMIN.aspx" />
@@ -614,6 +615,13 @@
     </Compile>
     <Compile Include="Study-IN.aspx.designer.cs">
       <DependentUpon>Study-IN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Study-Report1.aspx.cs">
+      <DependentUpon>Study-Report1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Study-Report1.aspx.designer.cs">
+      <DependentUpon>Study-Report1.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubStaffType-ADMIN.aspx.cs">
       <DependentUpon>SubStaffType-ADMIN.aspx</DependentUpon>
