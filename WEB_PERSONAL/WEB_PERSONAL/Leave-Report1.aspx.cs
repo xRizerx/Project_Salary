@@ -11,8 +11,12 @@ namespace WEB_PERSONAL {
     public partial class Leave_Report1 : System.Web.UI.Page {
 
         protected void Page_Load(object sender, EventArgs e) {
-
-            if(!IsPostBack) {
+            if (Session["login_id"] == null) {
+                Session["redirect_to"] = Request.Url.ToString();
+                Response.Redirect("Access.aspx");
+                return;
+            }
+            if (!IsPostBack) {
                 for (int i = 2500; i < 2600; ++i) {
                     DropDownList1.Items.Add(new ListItem("" + i, "" + i));
                 }
@@ -37,40 +41,24 @@ namespace WEB_PERSONAL {
 
             DataTable dt = new DataTable();
 
-                
-                dt.Columns.Add("ลำดับที่");
-                dt.Columns.Add("ชื่อ - นามสกุล");
-                dt.Columns.Add("ตำแหน่ง");
-                dt.Columns.Add("ครั้ง");
-                dt.Columns.Add("วัน");
-                {
-                    DataColumn dc = new DataColumn("ครั้ง ");
-                    dc.Caption = "ครั้ง";
-                    dt.Columns.Add(dc);
-                }
-                {
-                    DataColumn dc = new DataColumn("วัน ");
-                    dc.Caption = "วัน";
-                    dt.Columns.Add(dc);
-                }
-                {
-                    DataColumn dc = new DataColumn("ครั้ง  ");
-                    dc.Caption = "ครั้ง";
-                    dt.Columns.Add(dc);
-                }
-                {
-                    DataColumn dc = new DataColumn("วัน  ");
-                    dc.Caption = "วัน";
-                    dt.Columns.Add(dc);
-                }
-                dt.Columns.Add("มาสาย(ครั้ง)");
-                dt.Columns.Add("ขาดราชการ(วัน)");
-                dt.Columns.Add("ลาศึกษาต่อ(ระบุวันที่ลา)");
-                dt.Columns.Add("ลาคลอดบุตร(ระบุวันที่ลา)");
-                dt.Columns.Add("ลาอุปสมบทฯ(ระบุวันที่ลา)");
-                dt.Columns.Add("หมายเหตุ");
 
-                
+            dt.Columns.Add("ลำดับที่");
+            dt.Columns.Add("ชื่อ - นามสกุล");
+            dt.Columns.Add("ตำแหน่ง");
+            dt.Columns.Add("ครั้ง");
+            dt.Columns.Add("วัน");
+            dt.Columns.Add("ครั้ง ");
+            dt.Columns.Add("ครั้ง  ");
+            dt.Columns.Add("วัน ");
+            dt.Columns.Add("วัน  ");
+            dt.Columns.Add("มาสาย(ครั้ง)");
+            dt.Columns.Add("ขาดราชการ(วัน)");
+            dt.Columns.Add("ลาศึกษาต่อ(ระบุวันที่ลา)");
+            dt.Columns.Add("ลาคลอดบุตร(ระบุวันที่ลา)");
+            dt.Columns.Add("ลาอุปสมบทฯ(ระบุวันที่ลา)");
+            dt.Columns.Add("หมายเหตุ");
+
+
 
 
 
@@ -81,12 +69,29 @@ namespace WEB_PERSONAL {
                         if (reader.HasRows) {
                             while (reader.Read()) {
 
+                                bool toAdd = true;
+
                                 DataRow dr = dt.NewRow();
                                 dr[0] = i++;
                                 dr[1] = reader.GetString(1);
 
 
                                 if (!reader.IsDBNull(0)) {
+
+                                    using (OracleCommand command2 = new OracleCommand("SELECT COUNT(*) FROM TB_LEAVE WHERE CITIZEN_ID = :1 AND LEAVE_FROM_DATE >= TO_DATE('01-10-" + DropDownList1.SelectedValue + "','DD-MM-YYYY') AND LEAVE_FROM_DATE <= TO_DATE('30-09-" + (Convert.ToInt32(DropDownList1.SelectedValue) + 1) + "','DD-MM-YYYY')", con)) {
+                                        command2.Parameters.AddWithValue("1", reader.GetString(0));
+                                        using (OracleDataReader reader2 = command2.ExecuteReader()) {
+                                            if (reader2.HasRows) {
+                                                reader2.Read();
+                                                if(reader2.GetInt32(0) == 0) {
+                                                    toAdd = false;
+                                                }
+                                            } else {
+                                                dr[2] = "-";
+                                            }
+                                        }
+                                    }
+
                                     using (OracleCommand command2 = new OracleCommand("SELECT POSITION_NAME FROM TB_POSITION_AND_SALARY WHERE CITIZEN_ID = :1 ORDER BY ID DESC", con)) {
                                         command2.Parameters.AddWithValue("1", reader.GetString(0));
                                         using (OracleDataReader reader2 = command2.ExecuteReader()) {
@@ -230,13 +235,15 @@ namespace WEB_PERSONAL {
                                             }
                                         }
                                     }
+                                } else {
+                                    toAdd = false;
                                 }
 
 
 
 
-
-                                dt.Rows.Add(dr);
+                                if(toAdd)
+                                    dt.Rows.Add(dr);
                             }
                         } else {
                             Util.Alert(this, "no data");
@@ -249,40 +256,47 @@ namespace WEB_PERSONAL {
             GridView1.DataSource = dt;
             GridView1.DataBind();
 
-            GridViewRow HeaderGridRow = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Insert);
-            {
-                TableCell HeaderCell = new TableCell();
-                HeaderCell.Text = " ";
-                HeaderCell.ColumnSpan = 3;
-                HeaderGridRow.Cells.Add(HeaderCell);
-            }
-            {
-                TableCell HeaderCell = new TableCell();
-                HeaderCell.Text = "ลาป่วย";
-                HeaderCell.ColumnSpan = 2;
-                HeaderGridRow.Cells.Add(HeaderCell);
-            }
-            {
-                TableCell HeaderCell = new TableCell();
-                HeaderCell.Text = "ลากิจ";
-                HeaderCell.ColumnSpan = 2;
-                HeaderGridRow.Cells.Add(HeaderCell);
-            }
-            {
-                TableCell HeaderCell = new TableCell();
-                HeaderCell.Text = "ลาพักผ่อน";
-                HeaderCell.ColumnSpan = 2;
-                HeaderGridRow.Cells.Add(HeaderCell);
-            }
-            {
-                TableCell HeaderCell = new TableCell();
-                HeaderCell.Text = " ";
-                HeaderCell.ColumnSpan = 6;
-                HeaderGridRow.Cells.Add(HeaderCell);
-            }
+            if(GridView1.Rows.Count > 0) {
+                Label4.Text = "";
+                GridViewRow HeaderGridRow = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Insert);
+                {
+                    TableCell HeaderCell = new TableCell();
+                    HeaderCell.Text = " ";
+                    HeaderCell.ColumnSpan = 3;
+                    HeaderGridRow.Cells.Add(HeaderCell);
+                }
+                {
+                    TableCell HeaderCell = new TableCell();
+                    HeaderCell.Text = "ลาป่วย";
+                    HeaderCell.ColumnSpan = 2;
+                    HeaderGridRow.Cells.Add(HeaderCell);
+                }
+                {
+                    TableCell HeaderCell = new TableCell();
+                    HeaderCell.Text = "ลากิจ";
+                    HeaderCell.ColumnSpan = 2;
+                    HeaderGridRow.Cells.Add(HeaderCell);
+                }
+                {
+                    TableCell HeaderCell = new TableCell();
+                    HeaderCell.Text = "ลาพักผ่อน";
+                    HeaderCell.ColumnSpan = 2;
+                    HeaderGridRow.Cells.Add(HeaderCell);
+                }
+                {
+                    TableCell HeaderCell = new TableCell();
+                    HeaderCell.Text = " ";
+                    HeaderCell.ColumnSpan = 6;
+                    HeaderGridRow.Cells.Add(HeaderCell);
+                }
 
 
-            GridView1.Controls[0].Controls.AddAt(0, HeaderGridRow);
+                GridView1.Controls[0].Controls.AddAt(0, HeaderGridRow);
+            } else {
+                Label4.Text = "ไม่มีข้อมูลในปี " + DropDownList1.SelectedValue;
+            }
+
+            
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e) {

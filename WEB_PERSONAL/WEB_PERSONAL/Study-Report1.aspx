@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Leave-Report1.aspx.cs" Inherits="WEB_PERSONAL.Leave_Report1" MaintainScrollPositionOnPostback="true"%>
-
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Study-Report1.aspx.cs" Inherits="WEB_PERSONAL.Study_Report1" %>
 
 <!DOCTYPE html>
 
@@ -12,15 +10,17 @@
             font-family: THS;
             src: url("Font/THSarabun.ttf");
         }
+
         body {
             font-family: THS;
             font-size: 26px;
         }
+
         .g1 th {
             text-align: center;
         }
+
         .ds1 {
-            
         }
         .div_no_data {
             text-align: center;
@@ -29,17 +29,12 @@
             font-size: 64px;
             font-family: 'WDB Bangna';
         }
-    
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="ds1">
-            <asp:Label ID="Label3" runat="server" Text="สรุปข้อมูลการลาหยุดราชการ ขาดราชการ มาสาย ประจำปีงบประมาณ"></asp:Label>
-            <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
-            <asp:Label ID="Label1" runat="server" Text="(1 ตุลาคม 2557 - 30 กันยายน 2558)"></asp:Label>
-            <br />
-            <asp:Label ID="Label2" runat="server" Text="ชื่อหน่วยงาน ... มหาวิยาลัยเทคโนโลยีราชมงคลตะวันออก"></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text="รายชื่อผู้ที่ลาศึกษาต่อ"></asp:Label>
         </div>
         <div>
             <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="g1">
@@ -59,7 +54,6 @@
         <div class="div_no_data">
             <asp:Label ID="Label4" runat="server" Text="ไม่มีข้อมูล"></asp:Label>
         </div>
-        
     </form>
 </body>
 </html>
