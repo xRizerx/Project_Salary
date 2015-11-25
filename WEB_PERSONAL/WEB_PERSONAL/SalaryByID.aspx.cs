@@ -2,6 +2,7 @@
 using System.Web.UI;
 using System.Data.SqlClient;
 using System.Data.OracleClient;
+using System.Globalization;
 
 namespace WEB_PERSONAL
 {
@@ -21,6 +22,21 @@ namespace WEB_PERSONAL
             {
                 LinkButton11.Visible = false;
             }
+            string Mon = "มี.ค.";
+            int year = new ThaiBuddhistCalendar().GetYear(DateTime.Now);
+            switch (DateTime.Now.Month)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 10:
+                case 11:
+                case 12:
+                    Mon = "ก.ย.";
+                    break;
+            }
+            
+            Label20.Text = "เงินเดือนก่อนเลื่อน (ณ 1 " + Mon + " " + year + " )";
         }
         protected void Button1_Click(object sender, EventArgs e)
         {

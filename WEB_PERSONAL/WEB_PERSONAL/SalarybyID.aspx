@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SalaryByID.aspx.cs" Inherits="WEB_PERSONAL.SalaryByID" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SalaryByID.aspx.cs" Inherits="WEB_PERSONAL.SalaryByID" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>ระบบเพิ่มเงินเดือนรายบุคคล</title>
@@ -66,12 +66,13 @@
             border-color: black;
             border: 1px solid black;
             font-size:16px;
+            transition: background-color ease 0.5s;
         }
         .button_ui_admin:hover {
             background: #ff6a00;
             padding: 5px 10px;
             text-decoration: none;
-            color: white;
+            color: black;
             border-color: black;
             border: 1px solid black;
             font-size:16px;
@@ -264,7 +265,7 @@ win=window.open(mypage,myname,settings);}
                     <asp:Label ID="Label25" runat="server" Text="ร้อยละที่ได้เลื่อน"></asp:Label>
                 </td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                    <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -317,7 +318,7 @@ win=window.open(mypage,myname,settings);}
                     <asp:Label ID="Label37" runat="server" Text="ระดับการประเมิน"></asp:Label>
                 </td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="TextBox5" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -341,13 +342,13 @@ win=window.open(mypage,myname,settings);}
                     <asp:Label ID="Label38" runat="server" Text="ร้อยละได้เลื่อน (ตามสัดส่วน)"></asp:Label>
                 </td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                    <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label39" runat="server" Text="ร้อยละที่ได้เลื่อน (อธิการบดีเพิ่มให้)"></asp:Label>
                 </td>
                 <td class="auto-style14">
-                    <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                    <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
                 </td>
             </tr>
             <tr>
