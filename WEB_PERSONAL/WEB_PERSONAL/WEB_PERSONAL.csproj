@@ -144,6 +144,10 @@
     <Content Include="Image\blurred-blue-background.jpg" />
     <Content Include="Image\btx1.jpg" />
     <Content Include="Image\roka.gif" />
+    <Content Include="Image\ImageTUU\Desktop-icon.png" />
+    <Content Include="Image\ImageTUU\Documents-icon.png" />
+    <Content Include="Image\ImageTUU\User-icon.png" />
+    <Content Include="Image\ImageTUU\Utilities-icon.png" />
     <Content Include="Image\stickman.png" />
     <Content Include="Image\TUUbg1.jpg" />
     <Content Include="Image\TUUbg2.jpg" />
@@ -151,6 +155,7 @@
     <Content Include="Image\TUUbg4.jpg" />
     <Content Include="Image\TUUbg5.jpg" />
     <Content Include="insignia_from_view.aspx" />
+    <Content Include="insignia_recordnote2-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.css" />
     <Content Include="Default.aspx" />
     <Content Include="Department-ADMIN.aspx" />
@@ -287,6 +292,7 @@
     <Content Include="Salary_Basesalary_Admin.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
+    <Content Include="Study-Report1.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TeachISCED-ADMIN.aspx" />
     <Content Include="TimeContact-ADMIN.aspx" />
@@ -377,6 +383,7 @@
     <Compile Include="Department-ADMIN.aspx.designer.cs">
       <DependentUpon>Department-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Tuu.cs" />
     <Compile Include="Entities\Ministry.cs" />
     <Compile Include="Entities\Personnel.cs" />
     <Compile Include="Entities\Person.cs" />
@@ -402,6 +409,13 @@
     </Compile>
     <Compile Include="insignia_from_view.aspx.designer.cs">
       <DependentUpon>insignia_from_view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_recordnote2-ADMIN.aspx.cs">
+      <DependentUpon>insignia_recordnote2-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_recordnote2-ADMIN.aspx.designer.cs">
+      <DependentUpon>insignia_recordnote2-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_recordnote2.aspx.cs">
       <DependentUpon>insignia_recordnote2.aspx</DependentUpon>
@@ -603,6 +617,13 @@
     </Compile>
     <Compile Include="Study-IN.aspx.designer.cs">
       <DependentUpon>Study-IN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Study-Report1.aspx.cs">
+      <DependentUpon>Study-Report1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Study-Report1.aspx.designer.cs">
+      <DependentUpon>Study-Report1.aspx</DependentUpon>
     </Compile>
     <Compile Include="SubStaffType-ADMIN.aspx.cs">
       <DependentUpon>SubStaffType-ADMIN.aspx</DependentUpon>

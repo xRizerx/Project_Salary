@@ -188,23 +188,23 @@
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
-                                    <a href="Default.aspx" onmouseover="mover('image/RMUTTO.png')">หน้าหลัก</a>
+                                    <a href="Default.aspx">หน้าหลัก</a>
                                 </td>
                                 <td>
-                                    <a href="Salary.aspx" onmouseover="mover('image/anime_p2.png')">DPIS</a>
+                                    <a href="Salary.aspx">DPIS</a>
                                 </td>
                                 <td>
-                                    <a href="Leave.aspx" onmouseover="mover('image/anime_p2.png')">การลา</a>
+                                    <a href="Leave.aspx">การลา</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx" onmouseover="mover('image/anime_p2.png')">ติดต่อผู้ดูแลระบบ</a></td>
+                                    <a href="M-Admin.aspx">ติดต่อผู้ดูแลระบบ</a></td>
                                 <td>
-                                    <a href="SalarybyID.aspx" onmouseover="mover('image/anime_p2.png')">การขึ้นเงินเดือนรายบุคคล</a>
+                                    <a href="SalarybyID.aspx">การขึ้นเงินเดือนรายบุคคล</a>
                                 </td>
                                 <td>
-                                    <a href="Late.aspx" onmouseover="mover('image/anime_p2.png')">มาสาย</a>
+                                    <a href="Late.aspx">มาสาย</a>
                                 </td>
                             </tr>
                             <tr>
@@ -215,27 +215,27 @@
                                     <span class="master_header_under_header">การสัมมนา</span>
                                 </td>
                                 <td>
-                                    <a href="Study-IN.aspx" onmouseover="mover('image/anime_p2.png')">ศึกษาต่อ</a>
+                                    <a href="Study-IN.aspx">ศึกษาต่อ</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
-                                    <a href="Person-GENERAL.aspx" onmouseover="mover('image/stickman.png')">เพิ่มบุคลากร</a>
+                                    <a href="Person-GENERAL.aspx">เพิ่มบุคลากร</a>
                                 </td>
                                 <td>
-                                    <a href="SEMINAR-GENERAL.aspx" onmouseover="mover('image/anime_p2.png')">การสัมมนา</a>
+                                    <a href="SEMINAR-GENERAL.aspx">การสัมมนา</a>
                                 </td>
                                 <td>
-                                    <a href="Leave-Report1.aspx" onmouseover="mover('image/anime_p2.png')">ออกรายงานการลา</a>
+                                    <a href="Leave-Report1.aspx">ออกรายงานการลา</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="master_header_under_left">
-                                    <a href="Person-ADMIN.aspx" onmouseover="mover('image/stickman.png')">แก้ไขบุคลากร</a>
+                                    <a href="Person-ADMIN.aspx">แก้ไขบุคลากร</a>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
+                                    <a href="Study-Report1.aspx">ออกรายงานการลาศึกษาต่อ</a>
                                 </td>
                             </tr>
                             <tr>
@@ -246,7 +246,7 @@
 
                                 </td>
                                 <td>
-                                    <a href="insignia_citizen.aspx">เครื่องราชอิสริยาภรณ์</a>
+                                    <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
                                 </td>
                             </tr>
                             <tr>
@@ -257,7 +257,7 @@
 
                                 </td>
                                 <td>
-                                    
+                                    <a href="insignia_citizen.aspx">เครื่องราชอิสริยาภรณ์</a>
                                 </td>
                             </tr>
                         </table>

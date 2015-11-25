@@ -125,9 +125,7 @@ namespace WEB_PERSONAL {
             GridView1.DataBind();
         }
 
-        protected void Button3_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 1 order by tb_leave.paper_id desc");
-        }
+ 
 
         private void pullSql(string sql) {
 
@@ -216,13 +214,6 @@ namespace WEB_PERSONAL {
             GridView1.DataBind();
         }
 
-        protected void Button4_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 2 order by tb_leave.paper_id desc");
-        }
-
-        protected void Button5_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = 3 order by tb_leave.paper_id desc");
-        }
 
         protected void LinkButton7_Click(object sender, EventArgs e) {
             if (TextBox4.Text == "") {
@@ -452,5 +443,15 @@ namespace WEB_PERSONAL {
 
         }
 
+        protected void DropDownList7_SelectedIndexChanged(object sender, EventArgs e) {
+            if(DropDownList7.SelectedIndex != 0)
+                pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = " + DropDownList7.SelectedValue + " order by tb_leave.paper_id desc");
+        }
+
+        protected void DropDownList7_DataBound(object sender, EventArgs e) {
+            DropDownList7.Items.Insert(0, new ListItem("--กรุณาเลือกสถานะการลา--", String.Empty));
+            DropDownList7.SelectedIndex = 0;
+        }
     }
+    
 }
