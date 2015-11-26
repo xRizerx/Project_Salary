@@ -9,6 +9,11 @@ using System.Globalization;
 namespace WEB_PERSONAL {
 
     public class Util {
+        public static string ToOracleDate2(string date)
+        {
+            string[] s = date.Split('/');
+            return s[0] + " " + ToOracleMonth(s[1]) + " " + (Convert.ToInt32(s[2])-543);
+        }
         public static System.Data.DataTable dt;
         /*public static string YearDown543(DateTime date) {
 

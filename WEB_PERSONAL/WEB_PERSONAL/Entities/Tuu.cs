@@ -10,8 +10,9 @@ namespace WEB_PERSONAL.Entities
 {
     public class ClassInsigRecord2
     {
+        public int ID { get; set; }
         public string CITIZEN_ID { get; set; }
-        public DateTime DATE { get; set; }
+        public DateTime DDATE { get; set; }
         public string POSITION_WORK_NAME { get; set; }
         public string POSITION_NAME { get; set; }
         public string GRADEINSIGNIA_NAME { get; set; }
@@ -22,13 +23,14 @@ namespace WEB_PERSONAL.Entities
         public string INVOICE { get; set; }
         public string DECORATION { get; set; }
         public string NOTES { get; set; }
-        public int ID { get; set; }
+        
 
         public ClassInsigRecord2() { }
-        public ClassInsigRecord2(string CITIZEN_ID, DateTime DATE, string POSITION_WORK_NAME, string POSITION_NAME, string GRADEINSIGNIA_NAME, string GAZETTE_LAM, string GAZETTE_TON, string GAZETTE_NA, DateTime GAZETTE_DATE, string INVOICE, string DECORATION, string NOTES, int ID)
+        public ClassInsigRecord2(int ID, string CITIZEN_ID, DateTime DDATE, string POSITION_WORK_NAME, string POSITION_NAME, string GRADEINSIGNIA_NAME, string GAZETTE_LAM, string GAZETTE_TON, string GAZETTE_NA, DateTime GAZETTE_DATE, string INVOICE, string DECORATION, string NOTES)
         {
+            this.ID = ID;
             this.CITIZEN_ID = CITIZEN_ID;
-            this.DATE = DATE;
+            this.DDATE = DDATE;
             this.POSITION_WORK_NAME = POSITION_WORK_NAME;
             this.POSITION_NAME = POSITION_NAME;
             this.GRADEINSIGNIA_NAME = GRADEINSIGNIA_NAME;
@@ -39,25 +41,23 @@ namespace WEB_PERSONAL.Entities
             this.INVOICE = INVOICE;
             this.DECORATION = DECORATION;
             this.NOTES = NOTES;
-            this.ID = ID;
-
         }
 
-        public DataTable GetInsigRecord2(string CITIZEN_ID, string DATE, string POSITION_WORK_NAME, string POSITION_NAME, string GRADEINSIGNIA_NAME, string GAZETTE_LAM, string GAZETTE_TON, string GAZETTE_NA, string GAZETTE_DATE, string INVOICE, string DECORATION, string NOTES)
+        public DataTable GetInsigRecord2(string CITIZEN_ID, string DDATE, string POSITION_WORK_NAME, string POSITION_NAME, string GRADEINSIGNIA_NAME, string GAZETTE_LAM, string GAZETTE_TON, string GAZETTE_NA, string GAZETTE_DATE, string INVOICE, string DECORATION, string NOTES)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_RECORDNOTE ";
-            if (!string.IsNullOrEmpty(CITIZEN_ID) || !string.IsNullOrEmpty(DATE) || !string.IsNullOrEmpty(POSITION_WORK_NAME) || !string.IsNullOrEmpty(POSITION_NAME) || !string.IsNullOrEmpty(GRADEINSIGNIA_NAME) || !string.IsNullOrEmpty(GAZETTE_LAM) || !string.IsNullOrEmpty(GAZETTE_TON) || !string.IsNullOrEmpty(GAZETTE_NA) || !string.IsNullOrEmpty(GAZETTE_DATE) || !string.IsNullOrEmpty(INVOICE) || !string.IsNullOrEmpty(DECORATION) || !string.IsNullOrEmpty(NOTES))
+            string query = "SELECT * FROM TB_RECORDNOTE1 ";
+            if (!string.IsNullOrEmpty(CITIZEN_ID) || !string.IsNullOrEmpty(DDATE) || !string.IsNullOrEmpty(POSITION_WORK_NAME) || !string.IsNullOrEmpty(POSITION_NAME) || !string.IsNullOrEmpty(GRADEINSIGNIA_NAME) || !string.IsNullOrEmpty(GAZETTE_LAM) || !string.IsNullOrEmpty(GAZETTE_TON) || !string.IsNullOrEmpty(GAZETTE_NA) || !string.IsNullOrEmpty(GAZETTE_DATE) || !string.IsNullOrEmpty(INVOICE) || !string.IsNullOrEmpty(DECORATION) || !string.IsNullOrEmpty(NOTES))
             {
                 query += " where 1=1 ";
                 if (!string.IsNullOrEmpty(CITIZEN_ID))
                 {
                     query += " and CITIZEN_ID like :CITIZEN_ID ";
                 }
-                if (!string.IsNullOrEmpty(DATE))
+                if (!string.IsNullOrEmpty(DDATE))
                 {
-                    query += " and DATE like :DATE ";
+                    query += " and DDATE like :DDATE ";
                 }
                 if (!string.IsNullOrEmpty(POSITION_WORK_NAME))
                 {
@@ -113,9 +113,9 @@ namespace WEB_PERSONAL.Entities
                 {
                     command.Parameters.Add(new OracleParameter("CITIZEN_ID", "%" + CITIZEN_ID + "%"));
                 }
-                if (!string.IsNullOrEmpty(DATE))
+                if (!string.IsNullOrEmpty(DDATE))
                 {
-                    command.Parameters.Add(new OracleParameter("DATE", "%" + DATE + "%"));
+                    command.Parameters.Add(new OracleParameter("DDATE", "%" + DDATE + "%"));
                 }
                 if (!string.IsNullOrEmpty(POSITION_WORK_NAME))
                 {
@@ -177,16 +177,16 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_RECORDNOTE (CITIZEN_ID,DATE,POSITION_WORK_NAME,POSITION_NAME,GRADEINSIGNIA_NAME,GAZETTE_LAM,GAZETTE_TON,GAZETTE_NA,GAZETTE_DATE,INVOICE,DECORATION,NOTES) VALUES (:CITIZEN_ID,:DATE,:POSITION_WORK_NAME,:POSITION_NAME,:GRADEINSIGNIA_NAME,:GAZETTE_LAM,:GAZETTE_TON,:GAZETTE_NA,:GAZETTE_DATE,:INVOICE,:DECORATION,:NOTES)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_RECORDNOTE1 (CITIZEN_ID,DDATE,POSITION_WORK_NAME,POSITION_NAME,GRADEINSIGNIA_NAME,GAZETTE_LAM,GAZETTE_TON,GAZETTE_NA,GAZETTE_DATE,INVOICE,DECORATION,NOTES) VALUES (:CITIZEN_ID,:DDATE,:POSITION_WORK_NAME,:POSITION_NAME,:GRADEINSIGNIA_NAME,:GAZETTE_LAM,:GAZETTE_TON,:GAZETTE_NA,:GAZETTE_DATE,:INVOICE,:DECORATION,:NOTES)", conn);
 
             try
             {
-                if (conn.State != ConnectionState.Open)
+               if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
                 command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
-                command.Parameters.Add(new OracleParameter("DATE", DATE));
+                command.Parameters.Add(new OracleParameter("DDATE", DDATE));
                 command.Parameters.Add(new OracleParameter("POSITION_WORK_NAME", POSITION_WORK_NAME));
                 command.Parameters.Add(new OracleParameter("POSITION_NAME", POSITION_NAME));
                 command.Parameters.Add(new OracleParameter("GRADEINSIGNIA_NAME", GRADEINSIGNIA_NAME));
@@ -216,8 +216,8 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "Update TB_RECORDNOTE Set ";
-            query += " DATE = :DATE,";
+            string query = "Update TB_RECORDNOTE1 Set ";
+            query += " DDATE = :DDATE,";
             query += " POSITION_WORK_NAME = :POSITION_WORK_NAME,";
             query += " POSITION_NAME = :POSITION_NAME,";
             query += " GRADEINSIGNIA_NAME = :GRADEINSIGNIA_NAME,";
@@ -237,7 +237,7 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("DATE", DATE));
+                command.Parameters.Add(new OracleParameter("DDATE", DDATE));
                 command.Parameters.Add(new OracleParameter("POSITION_WORK_NAME", POSITION_WORK_NAME));
                 command.Parameters.Add(new OracleParameter("POSITION_NAME", POSITION_NAME));
                 command.Parameters.Add(new OracleParameter("GRADEINSIGNIA_NAME", GRADEINSIGNIA_NAME));
@@ -270,7 +270,7 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_RECORDNOTE where ID = :ID", conn);
+            OracleCommand command = new OracleCommand("Delete TB_RECORDNOTE1 where ID = :ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)

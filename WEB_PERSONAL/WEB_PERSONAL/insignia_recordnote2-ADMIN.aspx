@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="insignia_recordnote2-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.insignia_recordnote2_ADMIN" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        $('document').ready(function () {
+            $(".date").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+        });
+    </script>
 <style type="text/css">
         .divpan {
 
@@ -29,57 +34,72 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" Height="70px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchNATIONAL">
+<asp:Panel ID="Panel1" runat="server" Height="70px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchInsig2">
     <div>
         <fieldset>
             <legend>Search</legend>
             <div>
-                รหัสบัตรประชาชน :&nbsp<asp:TextBox ID="txtSearchNationENG" runat="server" CssClass="tb5" Width="150px" MaxLength="100"></asp:TextBox>
-                ชื่อ :&nbsp<asp:TextBox ID="txtSearchNationID" runat="server" CssClass="tb5" Width="100px" MaxLength="100"></asp:TextBox>
-                นามสกุล :&nbsp<asp:TextBox ID="TextBox1" runat="server" CssClass="tb5" Width="100px" MaxLength="100"></asp:TextBox>
-                วันที่เริ่มบรรจุ :&nbsp<asp:TextBox ID="txtSearchNationTHA" runat="server" CssClass="tb5" Width="150px" MaxLength="100"></asp:TextBox>
-                <asp:Button ID="btnSearchNATIONAL" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchNATIONAL_Click" />
+                รหัสบัตรประชาชน :&nbsp<asp:TextBox ID="txtSearchInsig2CITIZENID" runat="server" CssClass="tb5" Width="150px" MaxLength="13"></asp:TextBox>
+                ชื่อ :&nbsp<asp:TextBox ID="txtSearchNAME" runat="server" CssClass="tb5" Width="100px" MaxLength="100" Enabled="False"></asp:TextBox>
+                นามสกุล :&nbsp<asp:TextBox ID="txtSearchLASTNAME" runat="server" CssClass="tb5" Width="100px" MaxLength="100" Enabled="False"></asp:TextBox>
+                วันที่เริ่มบรรจุ :&nbsp<asp:TextBox ID="txtSearchDATE_INWORK" runat="server" CssClass="tb5" Width="80px" MaxLength="100" Enabled="False"></asp:TextBox>
+                <asp:Button ID="btnSearchInsig2" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchInsig2_Click" />
                 <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>
       </asp:Panel>
-<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitNATIONAL">
+<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitInsig2">
     <div>
         <fieldset>
             <legend>Insert</legend>
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width:100px">วัน/เดือน/ปี</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox12" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">ตำแหน่ง</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="txtInsertNationENG" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">ระดับ</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="txtInsertNationTHA" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">ได้รับ ชั้น/รายการ</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox2" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">เล่ม</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox3" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">ตอน</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox4" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">หน้า</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox5" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">วัน/เดือน/ปี</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox6" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">ได้รับ</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox7" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">ไม่ได้รับ</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox8" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">ได้รับ</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox9" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">ไม่ได้รับ</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox10" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:100px">หมายเหตุ</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="TextBox11" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:120px">วัน/เดือน/ปี</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt0" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:80px">ตำแหน่ง</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt1" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:80px">ระดับ</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt2" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+  
+                    </tr>
+                </table>
 
-                        <td style="text-align: left;"><asp:Button ID="btnSubmitNATIONAL" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitNATIONAL_Click" /></td>
-                        <td style="text-align: left;"><asp:Button ID="btnCancelNATIONAL" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelNATIONAL_Click" /></td>
+                <table>
+                    <tr>
+                        <td style="text-align: left; width:120px">ได้รับ ชั้น/รายการ</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt3" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:80px">เล่ม</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt4" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:80px">ตอน</td>
+                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="txtt5" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                       
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                         <td style="text-align: left; width:120px">หน้า</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt6" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:80px">วัน/เดือน/ปี</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt7" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:80px">ใบกำกับ</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt8" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                    </tr>
+                </table>
+
+                 <table>
+                    <tr>
+                          <td style="text-align: left; width:120px">เหรียญตรา</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt9" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                         <td style="text-align: left; width:80px">หมายเหตุ</td>
+                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt10" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:80px"></td>
+
+                        <td style="text-align: left;"><asp:Button ID="btnSubmitInsig2" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitInsig2_Click" /></td>
+                        <td style="text-align: left;"><asp:Button ID="btnCancelInsig2" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelInsig2_Click" /></td>
+
                     </tr>
                 </table>
             </div>
@@ -111,10 +131,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="วัน/เดือน/ปี" ControlStyle-Width="80" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lbl0" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE") %>'></asp:Label>
+                            <asp:Label ID="lbl0" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd-MM-yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txt0" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DATE") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txt0" MaxLength="100" CssClass="date" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ตำแหน่ง" ControlStyle-Width="80" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
@@ -167,10 +187,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="วัน/เดือน/ปี" ControlStyle-Width="80" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lbl7" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GAZETTE_DATE") %>'></asp:Label>
+                            <asp:Label ID="lbl7" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "GAZETTE_DATE")).ToString("dddd, dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>' ></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txt7" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GAZETTE_DATE") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txt7" MaxLength="100" CssClass="date" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "GAZETTE_DATE")).ToString("dd/MM/yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")) %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ใบกำกับ" ControlStyle-Width="80" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
@@ -186,7 +206,7 @@
                             <asp:Label ID="lbl10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DECORATION") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txt10" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DECORATION") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txt9" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.DECORATION") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="หมายเหตุ" ControlStyle-Width="80" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
@@ -194,7 +214,7 @@
                             <asp:Label ID="lbl12" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NOTES") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txt12" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NOTES") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txt10" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.NOTES") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>

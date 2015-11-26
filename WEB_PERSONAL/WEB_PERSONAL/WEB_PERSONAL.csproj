@@ -138,10 +138,12 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="CSS\Access.css" />
+    <Content Include="Entities\Virus.mp3" />
     <Content Include="Image\anime_p1.png" />
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\Bar\header_bar.png" />
     <Content Include="Image\blurred-blue-background.jpg" />
+    <Content Include="Image\btx1.jpg" />
     <Content Include="Image\Button\menu_button.png" />
     <Content Include="Image\Button\menu_button_hover.png" />
     <Content Include="Image\roka.gif" />
