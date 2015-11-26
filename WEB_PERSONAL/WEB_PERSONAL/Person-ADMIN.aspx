@@ -12,9 +12,6 @@
         };
     </script>
     <style type="text/CSS">
-        date {
-            width:30px;
-        }
         .ui-datepicker{  
         font-family:tahoma;  
         text-align:center;
