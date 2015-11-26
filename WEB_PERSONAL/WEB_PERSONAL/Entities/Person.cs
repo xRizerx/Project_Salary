@@ -514,11 +514,13 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
+                DateTime d = DDATE;
+                d = d.AddYears(543);
                 command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
                 command.Parameters.Add(new OracleParameter("LICENCE_NAME", LICENCE_NAME));
                 command.Parameters.Add(new OracleParameter("BRANCH", BRANCH));
                 command.Parameters.Add(new OracleParameter("LICENCE_NO", LICENCE_NO));
-                command.Parameters.Add(new OracleParameter("DDATE", DDATE));
+                command.Parameters.Add(new OracleParameter("DDATE", d));
 
                 id = command.ExecuteNonQuery();
             }
@@ -552,10 +554,12 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
+                DateTime d = DDATE;
+                d = d.AddYears(543);
                 command.Parameters.Add(new OracleParameter("LICENCE_NAME", LICENCE_NAME));
                 command.Parameters.Add(new OracleParameter("BRANCH", BRANCH));
                 command.Parameters.Add(new OracleParameter("LICENCE_NO", LICENCE_NO));
-                command.Parameters.Add(new OracleParameter("DDATE", DDATE));
+                command.Parameters.Add(new OracleParameter("DDATE", d));
                 command.Parameters.Add(new OracleParameter("ID", ID));
                 if (command.ExecuteNonQuery() > 0)
                 {
@@ -1166,7 +1170,9 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("DDATE", DDATE));
+                DateTime d = DDATE;
+                d = d.AddYears(543);
+                command.Parameters.Add(new OracleParameter("DDATE", d));
                 command.Parameters.Add(new OracleParameter("POSITION_NAME", POSITION_NAME));
                 command.Parameters.Add(new OracleParameter("PERSON_ID", PERSON_ID));
                 command.Parameters.Add(new OracleParameter("ST_ID", ST_ID));
@@ -1212,7 +1218,9 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("DDATE", DDATE));
+                DateTime d = DDATE;
+                d = d.AddYears(543);
+                command.Parameters.Add(new OracleParameter("DDATE", d));
                 command.Parameters.Add(new OracleParameter("POSITION_NAME", POSITION_NAME));
                 command.Parameters.Add(new OracleParameter("PERSON_ID", PERSON_ID));
                 command.Parameters.Add(new OracleParameter("ST_ID", ST_ID));
