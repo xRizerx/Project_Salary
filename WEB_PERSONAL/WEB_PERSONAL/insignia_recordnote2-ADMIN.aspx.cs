@@ -45,8 +45,16 @@ namespace WEB_PERSONAL
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
-            
         }
+        void BindData1()
+        {
+            ClassInsigRecord2 n = new ClassInsigRecord2();
+            DataTable dt = n.GetInsigRecord2(txtSearchInsig2CITIZENID.Text, "", "", "", "", "", "", "", "", "", "", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
 
         private void ClearData()
         {
@@ -61,6 +69,10 @@ namespace WEB_PERSONAL
             txtt8.Text = "";
             txtt9.Text = "";
             txtt10.Text = "";
+            txtSearchInsig2CITIZENID.Text = "";
+            txtSearchNAME.Text = "";
+            txtSearchLASTNAME.Text = "";
+            txtSearchDATE_INWORK.Text = "";
 
         }
 
@@ -158,21 +170,31 @@ namespace WEB_PERSONAL
             n.DDATE = new DateTime(Convert.ToInt32(splitDate1[2]), Util.MonthToNumber(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
             n.GAZETTE_DATE = new DateTime(Convert.ToInt32(splitDate2[2]), Util.MonthToNumber(splitDate1[1]), Convert.ToInt32(splitDate2[0]));
 
-            n.InserInsigRecord2();
-            BindData();
-            ClearData();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            if (n.CheckHaveCitizenID())
+            {
+                n.InserInsigRecord2();
+                BindData();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ไม่มีรหัสประจำตัวประชาชนดังกล่าวที่จะเพิ่มข้อมูล !')", true);
+            }
+
         }
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
+
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            BindData1();
+
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
@@ -184,12 +206,12 @@ namespace WEB_PERSONAL
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData();
-            
+            BindData1();
+
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            /*
+            
             if (string.IsNullOrEmpty(txtSearchInsig2CITIZENID.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ บัตรประชาชนในการ Update')", true);
@@ -199,7 +221,7 @@ namespace WEB_PERSONAL
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ บัตรประชาชนให้ครบ 13 หลัก')", true);
                 return;
-            }*/
+            }
 
             Label lblID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblID");
             Label lblCITIZEN_ID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblCITIZEN_ID");
@@ -231,15 +253,33 @@ namespace WEB_PERSONAL
                 , txt9.Text
                 , txt10.Text);
 
-            n.UpdateInsigRecord2();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
-            GridView1.EditIndex = -1;
-            BindData();
+            if (n.CheckHaveCitizenID())
+            {
+                n.UpdateInsigRecord2();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
+                GridView1.EditIndex = -1;
+
+                DataTable dt = n.GetInsigRecord2(txtSearchInsig2CITIZENID.Text, "", "", "", "", "", "", "", "", "", "", "");
+                GridView1.DataSource = dt;
+                //GridView1.DataBind();
+
+                SetViewState(dt);
+
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ไม่มีรหัสประจำตัวประชาชนดังกล่าวที่จะอัพเดทข้อมูล !')", true);
+            }
             
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ จริงๆใช่ไหม ?');");
+            }
         }
         protected void myGridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -262,7 +302,15 @@ namespace WEB_PERSONAL
 
         protected void btnSearchInsig2_Click(object sender, EventArgs e)
         {
-            
+           
+
+            ClassInsigRecord2 n = new ClassInsigRecord2();
+            DataTable dt = n.GetInsigRecord2(txtSearchInsig2CITIZENID.Text, "", "", "", "", "", "", "", "", "", "", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+
+            ClassInsigRecord2 P = new ClassInsigRecord2();
             if (string.IsNullOrEmpty(txtSearchInsig2CITIZENID.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ บัตรประชาชนในการค้นหา')", true);
@@ -282,18 +330,24 @@ namespace WEB_PERSONAL
                     {
                         using (OracleDataReader reader = cmd.ExecuteReader())
                         {
+                            if (reader.HasRows) { 
                             while (reader.Read())
                             {
                                 txtSearchNAME.Text = reader.IsDBNull(0) ? "" : reader.GetString(0);
                                 txtSearchLASTNAME.Text = reader.IsDBNull(1) ? "" : reader.GetString(1);
                                 txtSearchDATE_INWORK.Text = reader.IsDBNull(2) ? "" : reader.GetString(2);
                             }
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ไม่พบรหัสบัตรประชาชนดังกล่าว')", true);
+                                return;
+                            }
                         }
                     }
                 }
-
             }
-            
+
         }
 
         protected void btnSearchRefresh_Click(object sender, EventArgs e)

@@ -237,14 +237,16 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("DDATE", DDATE));
+                DateTime d = DDATE;
+                d = d.AddYears(543);
+                command.Parameters.Add(new OracleParameter("DDATE", d));
                 command.Parameters.Add(new OracleParameter("POSITION_WORK_NAME", POSITION_WORK_NAME));
                 command.Parameters.Add(new OracleParameter("POSITION_NAME", POSITION_NAME));
                 command.Parameters.Add(new OracleParameter("GRADEINSIGNIA_NAME", GRADEINSIGNIA_NAME));
                 command.Parameters.Add(new OracleParameter("GAZETTE_LAM", GAZETTE_LAM));
                 command.Parameters.Add(new OracleParameter("GAZETTE_TON", GAZETTE_TON));
                 command.Parameters.Add(new OracleParameter("GAZETTE_NA", GAZETTE_NA));
-                command.Parameters.Add(new OracleParameter("GAZETTE_DATE", GAZETTE_DATE));
+                command.Parameters.Add(new OracleParameter("GAZETTE_DATE", d));
                 command.Parameters.Add(new OracleParameter("INVOICE", INVOICE));
                 command.Parameters.Add(new OracleParameter("DECORATION", DECORATION));
                 command.Parameters.Add(new OracleParameter("NOTES", NOTES));
@@ -295,5 +297,39 @@ namespace WEB_PERSONAL.Entities
             return result;
         }
 
+        public bool CheckHaveCitizenID()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(CITIZEN_ID) FROM TB_PERSON WHERE CITIZEN_ID = :CITIZEN_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        } 
     }
 }

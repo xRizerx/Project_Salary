@@ -22,6 +22,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// txtSearchInsig2CITIZENID control.
         /// </summary>
         /// <remarks>
@@ -200,6 +209,15 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelInsig2;
+        
+        /// <summary>
+        /// UpdateGridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdateGridView1;
         
         /// <summary>
         /// GridView1 control.
