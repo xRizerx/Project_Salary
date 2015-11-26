@@ -62,7 +62,7 @@ namespace WEB_PERSONAL {
                     }*/
 
                     {
-                        string sql = "SELECT TB_POSITION_AND_SALARY.POSITION_NAME FROM TB_POSITION_AND_SALARY, TB_STUDY WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = :1 ORDER BY TB_POSITION_AND_SALARY.ID DESC";
+                        string sql = "SELECT TB_POSITION.NAME FROM TB_POSITION, TB_POSITION_AND_SALARY WHERE TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_POSITION_AND_SALARY.CITIZEN_ID = :1 ORDER BY TB_POSITION_AND_SALARY.ID DESC";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             command.Parameters.AddWithValue("1", TextBox3.Text);
                             using (OracleDataReader reader = command.ExecuteReader()) {
@@ -180,7 +180,7 @@ namespace WEB_PERSONAL {
             {
                 using (OracleConnection con = Util.OC()) {
                     {
-                        string sql = "SELECT TB_POSITION_AND_SALARY.POSITION_NAME FROM TB_POSITION_AND_SALARY, TB_STUDY WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = :1 ORDER BY TB_POSITION_AND_SALARY.ID DESC";
+                        string sql = "SELECT TB_POSITION.NAME FROM TB_POSITION, TB_POSITION_AND_SALARY WHERE TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_POSITION_AND_SALARY.CITIZEN_ID = :1 ORDER BY TB_POSITION_AND_SALARY.ID DESC";
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             command.Parameters.AddWithValue("1", TextBox3.Text);
                             using (OracleDataReader reader = command.ExecuteReader()) {

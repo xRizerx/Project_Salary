@@ -48,8 +48,8 @@ namespace WEB_PERSONAL {
             dt.Columns.Add("ครั้ง");
             dt.Columns.Add("วัน");
             dt.Columns.Add("ครั้ง ");
-            dt.Columns.Add("ครั้ง  ");
             dt.Columns.Add("วัน ");
+            dt.Columns.Add("ครั้ง  ");
             dt.Columns.Add("วัน  ");
             dt.Columns.Add("มาสาย(ครั้ง)");
             dt.Columns.Add("ขาดราชการ(วัน)");
@@ -70,14 +70,13 @@ namespace WEB_PERSONAL {
                             while (reader.Read()) {
 
                                 bool toAdd = true;
-
                                 DataRow dr = dt.NewRow();
-                                dr[0] = i++;
-                                dr[1] = reader.GetString(1);
+
 
 
                                 if (!reader.IsDBNull(0)) {
-
+                                    
+                                    
                                     using (OracleCommand command2 = new OracleCommand("SELECT COUNT(*) FROM TB_LEAVE WHERE CITIZEN_ID = :1 AND LEAVE_FROM_DATE >= TO_DATE('01-10-" + DropDownList1.SelectedValue + "','DD-MM-YYYY') AND LEAVE_FROM_DATE <= TO_DATE('30-09-" + (Convert.ToInt32(DropDownList1.SelectedValue) + 1) + "','DD-MM-YYYY')", con)) {
                                         command2.Parameters.AddWithValue("1", reader.GetString(0));
                                         using (OracleDataReader reader2 = command2.ExecuteReader()) {
@@ -85,7 +84,11 @@ namespace WEB_PERSONAL {
                                                 reader2.Read();
                                                 if(reader2.GetInt32(0) == 0) {
                                                     toAdd = false;
+                                                } else {
+                                                    dr[0] = i++;
+                                                    dr[1] = reader.GetString(1);
                                                 }
+                                                
                                             } else {
                                                 dr[2] = "-";
                                             }
