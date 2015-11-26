@@ -178,9 +178,9 @@ namespace WEB_PERSONAL
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
-
             GridView1.EditIndex = e.NewEditIndex;
             BindData();
+
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
@@ -288,6 +288,8 @@ namespace WEB_PERSONAL
 
         protected void btnSearchInsig2_Click(object sender, EventArgs e)
         {
+           
+
             ClassInsigRecord2 n = new ClassInsigRecord2();
             DataTable dt = n.GetInsigRecord2(txtSearchInsig2CITIZENID.Text, "", "", "", "", "", "", "", "", "", "", "");
             GridView1.DataSource = dt;
