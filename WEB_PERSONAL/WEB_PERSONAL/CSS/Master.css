@@ -52,8 +52,8 @@ form {
     background-color: #FFFFFF;
     
     z-index: 999;
-    border-bottom: 1px solid #00a2e8;
-    border-bottom: 1px solid #f0f0f0;
+    /*border-bottom: 1px solid #00a2e8;
+    border-bottom: 1px solid #f0f0f0;*/
     
     /*background-image: url("../Image/ef333.jpg");
     background-position: center;*/
@@ -239,40 +239,6 @@ form {
     background-color: #870000;
 }
 
-.master_header {
-    background-image: url("../Image/bg5.jpg");
-    background-position: center;
-    /*background-position-y: 750px;*/
-    /*background-attachment: fixed;*/
-    background-size: 100% auto;
-    text-align: left;
-    /*padding: 20px 0px;*/
-    /*padding-top: 40px;*/
-    /*height: 170px;*/
-    transition: background-color ease 0.25s;
-    border-bottom: 1px solid #f0f0f0;
-}
-.master_header_over {
-    background-color: rgba(255,255,255,0.9);
-    
-}
-.master_header_pre_in {
-    padding: 20px;
-    padding-top: 40px;
-    padding-bottom: 0px;
-    height: 75px;
-    height: 100px;
-    width: 1024px;
-    margin: 0 auto;
-    text-align: left;
-}
-.master_header_in {
-    margin: 0 20px;
-}
-.master_header_in_img1 {
-    float:right;
-    height:100px;
-}
 .master_header_under_toggle {
     /*background-color: #00a2e8;
     height: 30px;
@@ -284,22 +250,48 @@ form {
     cursor: pointer;
     transition: background-color ease 0.25s;
     display: inline-block;*/
+
     text-decoration: none;
     background-color: #00a2e8;
     height: 32px;
     min-width: 100px;
     padding: 0 20px;
-    text-align: center;
+    text-align: right;
     color: #FFFFFF;
     cursor: pointer;
     transition: background-color ease 0.25s;
     display: inline-block;
+
+    background-image: url(../Image/anime_p2.png);
+    background-repeat: no-repeat;
+    background-position-x: -25px;
+    background-position-y: -30px;
+    
+    background-size: cover;
+
 }
 .master_header_under_toggle:hover {
     background-color: #65c1e9;
 }
 .master_header_under_toggle:active {
     background-color: #3d7288;
+}
+.master_menu_button {
+    display: inline-block;
+    width: 140px;
+    height: 32px;
+    background-image: url(../Image/Button/menu_button.png);
+    cursor: pointer;
+    transition: background-image ease 0.25s;
+}
+.master_menu_button:hover {
+    background-image: url(../Image/Button/menu_button_hover.png);
+}
+.master_header_bar {
+    background-image: url(../Image/Bar/header_bar.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    height: 140px;
 }
 
 .master_header_under {
@@ -320,10 +312,9 @@ form {
     display: none;
     /*margin-top: 1000px;
     display: block;*/
-
 }
 .master_header_under_in {
-    background-image: url(../Image/anime_p2.png);
+    /*background-image: url(../Image/anime_p2.png);
     background-repeat: no-repeat;
     background-position: top right;
     background-size: contain;
@@ -705,6 +696,28 @@ form {
     background-color: #00a2e8;
 }
 .master_default_button:active {
+    color: #ffffff;
+    background-color: #3d7288;
+}
+.master_default_gridview_select_button {
+    text-decoration: none;
+    display: inline;
+    padding: 0px 20px;
+    margin: 0px 0px;
+    /*margin-top: 5px;*/
+    /*width: 60px;*/
+    border: none;
+    color: #000000;
+    background-color: #e0e0e0;
+    border-radius: 24px;
+    transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.master_default_gridview_select_button:hover {
+    color: #ffffff;
+    background-color: #00a2e8;
+}
+.master_default_gridview_select_button:active {
     color: #ffffff;
     background-color: #3d7288;
 }

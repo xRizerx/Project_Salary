@@ -9,10 +9,10 @@ using System.Data.OracleClient;
 namespace WEB_PERSONAL {
     public partial class Access : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-
+            
         }
         protected void LinkButton1X_Click(object sender, EventArgs e) {
-            Label12X.Text = "";
+            Label12X.Text = "กำลังตรวจสอบ";
             //try
             {
                 using (OracleConnection con = Util.OC()) {

@@ -7,37 +7,121 @@
 }
 
 .login_popup {
-
+    
+   
 }
 .login_popup_in {
 
-    background-color: rgba(0,0,0,0.25);
-    width: 640px;
-    height: 360px;
-    margin: auto;
-    margin-top: 100px;
-    background-image: url(../Image/anime_p1.png);
-    background-repeat: no-repeat;
-    background-position: top right;
-    background-size: contain;
-    border-radius: 32px;
+    width: 600px;
+    height: 600px;
 
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+    overflow: hidden;
+
+
+    border: none;
+    border: 32px solid #00a2e8;
+    border-radius: 1000px;
+
+    -webkit-animation: k1 1.5s;
+    -moz-animation: k1 1.5s;
+    
+
+}
+
+@-webkit-keyframes k1 {
+    0% {
+        background-color: #FFFFFF;
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+        border: 1px solid #FFFFFF;
+    }
+    50% {
+        background-color: #FFFFFF;
+        opacity: 0.5;
+        width: 64px;
+        height: 64px;
+        border: 16px solid #00a2e8;
+    }
+    100% {
+        opacity: 1;
+        width: 600px;
+        height: 600px;
+        border: 32px solid #00a2e8;
+    }
+}
+@-moz-keyframes k1 {
+    0% {
+        background-color: #FFFFFF;
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+        border: 1px solid #FFFFFF;
+    }
+    50% {
+        background-color: #FFFFFF;
+        opacity: 0.5;
+        width: 64px;
+        height: 64px;
+        border: 16px solid #00a2e8;
+    }
+    100% {
+        opacity: 1;
+        width: 600px;
+        height: 600px;
+        border: 32px solid #00a2e8;
+    }
+}
+@-webkit-keyframes k2 {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    80% {
+        display: block;
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-moz-keyframes k2 {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    80% {
+        display: block;
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 .login_popup_div_sec {
     margin: 0px auto;
+    margin-top: 32px;
+    -webkit-animation: k2 2s;
+    -moz-animation: k2 2s;
     /*box-shadow: #808080 0px 5px 5px;*/
 }
 .login_popup_div_sec_header {
-    background-color: rgba(0,0,0,0.25);
+    /*background-color: rgba(255,255,255,0.25);*/
     
     padding: 10px 25px;
-    
+    text-align: center;
     font-weight: bold;
-    border-top-left-radius: 32px;
-    border-top-right-radius: 32px;
+
 }
 .login_popup_div_sec_header span {
-    margin-left: 20px;
+    /*margin-left: 20px;*/
     color: #FFFFFF;
  font-size: 24px;
     /*text-shadow: 1px 1px 1px #000000;*/
@@ -45,30 +129,86 @@
 .login_popup_div_sec_in {
     /*background-color: rgba(128,128,128,0.6);*/
     padding: 20px 20px;
+    
 }
 .login_popup_div_sec_in span {
     color: #FFFFFF;
     text-shadow: 1px 1px 1px #808080;
 }
-.login_popup_div_sec_in a {
-    text-decoration: none;
-    color: #FFFFFF;
-    background-color: #00b3ff;
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 32px;
-    padding: 2px 20px;
-    transition: background-color ease 0.25s;
-    /*text-shadow: 1px 1px 1px #000000;*/
+
+.login_default_textbox {
+    width: 300px;
+    margin: 2px 0;
+    padding: 3px 20px;
+    border: none;
+    
+    background-color: rgba(255,255,255,0.8);
+    font-family: 'WDB Bangna';
+    font-size: 16px;
+    font-weight: bold;
+    /*box-shadow: rgba(0,162,232,0.8) 1px 1px 10px;
+    box-shadow: rgba(0,0,0,0.5) 1px 1px 5px;*/
 }
-.login_popup_div_sec_in a:hover {
-    background-color: #0083bb;
-    background-color: rgba(255,255,255,0.2);
-    /*text-shadow: 1px 1px 1px #000000;*/
-}
-.login_popup_div_sec_in a:active {
-    background-color: rgba(255,255,255,0.05);
+.login_default_dropdown {
+    width: 340px;
+    margin: 2px 0;
+    padding: 3px 20px;
+    border: none;
+ 
+    background-color: rgba(255,255,255,0.8);
+    color: #000000;
+    background-color: rgba(255,255,255,0.8);
+    font-family: 'WDB Bangna';
+    font-size: 16px;
+    font-weight: bold;
+    /*box-shadow: rgba(0,162,232,0.8) 1px 1px 10px;
+    box-shadow: rgba(0,0,0,0.5) 1px 1px 5px;*/
 }
 #Label1 {
     font-size: 16px;
     color: #e0e0e0;
+}
+.cerror {
+    
+}
+.login_column0 {
+    text-align: left;
+    padding-right: 10px;
+}
+.login_column1 {
+    text-align: left;
+}
+table {
+    margin: 0 auto;
+}
+.login_button {
+    text-decoration: none;
+    color: #000000;
+
+    background-color: #00b3ff;
+    background-color: rgba(255,255,255,0.8);
+
+
+    text-align: center;
+    width: 300px;
+    margin: 2px 0;
+    padding: 3px 20px;
+    display: inline-block;
+
+    font-size: 16px;
+    font-weight: bold;
+    /*box-shadow: rgba(0,0,0,0.5) 1px 1px 5px;*/
+    transition: background-color ease 0.25s;
+    /*text-shadow: 1px 1px 1px #000000;*/
+}
+.login_button:hover {
+    color: #000000;
+    background-color: rgba(255,255,255,0.5);
+    /*text-shadow: 1px 1px 1px #000000;*/
+}
+.login_button {
+    
+}
+#Panel1 {
+    text-align: center;
 }

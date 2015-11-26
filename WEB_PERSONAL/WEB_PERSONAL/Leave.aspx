@@ -385,7 +385,7 @@
                     <tr>
                         <td class="auto-style95">&nbsp;</td>
                         <td class="auto-style77">
-                            <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_default_button" Enabled="False" OnClick="LinkButton13_Click">แก้ไข</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_default_button" OnClick="LinkButton13_Click">แก้ไข</asp:LinkButton>
                         </td>
                     </tr>
                 </table>
@@ -403,6 +403,42 @@
                 <asp:Label ID="Label34" runat="server" Text="ข้อมูลเอกสารการลา" Font-Bold="True"></asp:Label>
             </div>
             <div class="master_default_div_sec_in">
+
+                <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="PAPER_ID" DataSourceID="SqlDataSource2" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnPageIndexChanged="GridView2_PageIndexChanged">
+                    <AlternatingRowStyle BackColor="White" />
+                    <Columns>
+      
+                        <asp:BoundField DataField="PAPER_ID" HeaderText="รหัสเอกสาร" ReadOnly="True" SortExpression="PAPER_ID" />
+                        <asp:BoundField DataField="TO_CHAR(TB_LEAVE.PAPER_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" HeaderText="วันที่เอกสาร" SortExpression="TO_CHAR(TB_LEAVE.PAPER_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" />
+                        <asp:BoundField DataField="CITIZEN_ID" HeaderText="รหัสผู้ลา" SortExpression="CITIZEN_ID" />
+                        <asp:BoundField DataField="A.PERSON_NAME||''||A.PERSON_LASTNAME" HeaderText="ชื่อผู้ลา" SortExpression="A.PERSON_NAME||''||A.PERSON_LASTNAME" />
+                        <asp:BoundField DataField="LEAVE_TYPE_NAME" HeaderText="ประเภทการลา" SortExpression="LEAVE_TYPE_NAME" />
+                        <asp:BoundField DataField="TO_CHAR(TB_LEAVE.LEAVE_FROM_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" HeaderText="จากวันที่" SortExpression="TO_CHAR(TB_LEAVE.LEAVE_FROM_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" />
+                        <asp:BoundField DataField="TO_CHAR(TB_LEAVE.LEAVE_TO_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" HeaderText="ถึงวันที่" SortExpression="TO_CHAR(TB_LEAVE.LEAVE_TO_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" />
+                        <asp:BoundField DataField="LEAVE_STATUS_NAME" HeaderText="สถานะ" SortExpression="LEAVE_STATUS_NAME" />
+                        <asp:BoundField DataField="APPROVER_ID" HeaderText="รหัสผู้อนุมัติ" SortExpression="APPROVER_ID" />
+                        <asp:BoundField DataField="B.PERSON_NAME||''||B.PERSON_LASTNAME" HeaderText="ชื่อผู้อนุมัติ" SortExpression="B.PERSON_NAME||''||B.PERSON_LASTNAME" />
+                        <asp:BoundField DataField="TO_CHAR(TB_LEAVE.APPROVE_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" HeaderText="วันที่อนุมัติ" SortExpression="TO_CHAR(TB_LEAVE.APPROVE_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" />
+                        <asp:BoundField DataField="REASON" HeaderText="เหตุผล" SortExpression="REASON" />
+                        <asp:CommandField ShowSelectButton="True" SelectText="เลือก" HeaderText="เลือก" ControlStyle-CssClass="master_default_gridview_select_button" />
+                        <asp:CommandField ShowDeleteButton="true" DeleteText="ลบ" HeaderText="ลบ" ControlStyle-CssClass="master_default_gridview_select_button" />
+                    </Columns>
+                    <FooterStyle BackColor="#CCCC99" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                    <SortedAscendingHeaderStyle BackColor="#848384" />
+                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                    <SortedDescendingHeaderStyle BackColor="#575357" />
+                </asp:GridView>
+
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc" DeleteCommand="DELETE TB_LEAVE WHERE PAPER_ID = :PAPER_ID">
+                    <DeleteParameters>
+                        <asp:Parameter Name="PAPER_ID" />
+                    </DeleteParameters>
+                </asp:SqlDataSource>
 
                 <table>
                     <tr>
@@ -494,6 +530,7 @@
 
             </div>
         </div>
+
 
     </asp:Panel>
 </asp:Content>

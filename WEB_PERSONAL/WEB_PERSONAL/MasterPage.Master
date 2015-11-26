@@ -120,7 +120,7 @@
                 <div class="master_login_in">
                     <ul class="master_login_left">
                         <li>
-                            <span class="master_header_under_toggle" onclick="toggleMenu();">เมนู</span>
+                            <span class="master_menu_button" onclick="toggleMenu();"></span>
                         </li>
                         <!--li>
                             <asp:Label ID="Label12" runat="server" Text="ระบบบุคลากร"></asp:Label>
@@ -266,29 +266,9 @@
             </div>
         </div>
 
-        <div class="master_header">
-            <div class="master_header_over">
-                <div class="master_header_pre_in">
-                    <div class="master_header_in">
-                        <table style="width: 100%;">
-                            <tr>
-                                <td class="mt1">
-                                    <img src="Image/RMUTTO.png" style="height: 80px;" />
-                                </td>
-                                <td class="mt3">
-                                    <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร" CssClass="master_header_label"></asp:Label>
-                                    <br />
-                                    <asp:Label ID="Label3" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_label2"></asp:Label>
-                                </td>
-                                <td>
-                                    <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        <div class="master_header_bar"></div>
+
         <div class="wrapper">
             <div>
                 <div class="master_content_place_holder">

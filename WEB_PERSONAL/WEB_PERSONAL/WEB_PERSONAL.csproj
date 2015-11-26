@@ -140,7 +140,10 @@
     <Content Include="CSS\Access.css" />
     <Content Include="Image\anime_p1.png" />
     <Content Include="Image\anime_p2.png" />
+    <Content Include="Image\Bar\header_bar.png" />
     <Content Include="Image\blurred-blue-background.jpg" />
+    <Content Include="Image\Button\menu_button.png" />
+    <Content Include="Image\Button\menu_button_hover.png" />
     <Content Include="Image\roka.gif" />
     <Content Include="Image\ImageTUU\Desktop-icon.png" />
     <Content Include="Image\ImageTUU\Documents-icon.png" />
