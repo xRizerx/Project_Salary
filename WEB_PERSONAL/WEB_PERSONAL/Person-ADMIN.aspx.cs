@@ -364,9 +364,9 @@ namespace WEB_PERSONAL
                 //TextBox txt1 = (e.Row.FindControl("txtPersonJobLisenceDDATEEdit") as TextBox);
                 //txt1.Attributes.Add("onfocus", "ShowDate('" + txt1.ClientID + "')");
 
-               // var DtShmt = (TextBox)e.Row.FindControl("txtPersonJobLisenceDDATEEdit");
+                // var DtShmt = (TextBox)e.Row.FindControl("txtPersonJobLisenceDDATEEdit");
                 //ClientScript.RegisterStartupScript(this.GetType(), "datepick",
-                  //   "$(function () { $('#" + DtShmt.ClientID + "').datepicker({ dateFormat: 'dd/mm/yyyy' });  })", true);
+                //   "$(function () { $('#" + DtShmt.ClientID + "').datepicker({ dateFormat: 'dd/mm/yyyy' });  })", true);
                 //$("#ContentPlaceHolder1_txtBirthDayNumber")
             }
         }

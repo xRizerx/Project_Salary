@@ -166,7 +166,7 @@ namespace WEB_PERSONAL
 
         protected void btnSearchNATIONAL_Click(object sender, EventArgs e)
         {
-            
+
             if (string.IsNullOrEmpty(txtSearchNationID.Text) && string.IsNullOrEmpty(txtSearchNationENG.Text) && string.IsNullOrEmpty(txtSearchNationTHA.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);

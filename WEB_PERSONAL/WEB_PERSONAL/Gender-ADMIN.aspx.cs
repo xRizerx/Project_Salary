@@ -40,7 +40,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassGender g = new ClassGender();
-            DataTable dt = g.GetGender("","");
+            DataTable dt = g.GetGender("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -152,7 +152,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassGender g = new ClassGender();
-            DataTable dt = g.GetGender("","");
+            DataTable dt = g.GetGender("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

@@ -49,7 +49,7 @@ namespace WEB_PERSONAL
         void BindData1()
         {
             ClassDepartment d = new ClassDepartment();
-            DataTable dt = d.GetDepartmentSearch(txtSearchDepartmentID.Text,txtSearchDepartmentName.Text);
+            DataTable dt = d.GetDepartmentSearch(txtSearchDepartmentID.Text, txtSearchDepartmentName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

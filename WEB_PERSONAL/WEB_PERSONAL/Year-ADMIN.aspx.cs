@@ -57,7 +57,7 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
-            txtSearchTH.Text ="";
+            txtSearchTH.Text = "";
             txtYearName.Text = "";
         }
 
@@ -68,8 +68,8 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ปีการศึกษา')", true);
                 return;
             }
-                ClassYear y = new ClassYear();
-                y.Year_Name = txtYearName.Text;
+            ClassYear y = new ClassYear();
+            y.Year_Name = txtYearName.Text;
 
             if (y.CheckUseYearName())
             {
@@ -103,7 +103,7 @@ namespace WEB_PERSONAL
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData1(); 
+            BindData1();
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {

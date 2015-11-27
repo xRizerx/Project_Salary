@@ -35,7 +35,7 @@ namespace WEB_PERSONAL
             txtDay.Text = "";
             txtBudget.Text = "";
             txtSupportBudget.Text = "";
- 
+
             txtAbstract.Text = "";
             txtResult.Text = "";
             txtShow1.Text = "";
@@ -152,8 +152,8 @@ namespace WEB_PERSONAL
         }
         protected void btnSubmitSeminar_Click(object sender, EventArgs e)
         {
-           // if (NeedData()) { return; };
-                
+            // if (NeedData()) { return; };
+
             Seminar S = new Seminar();
             S.SEMINAR_NAME = txtName.Text;
             S.SEMINAR_LASTNAME = txtLastName.Text;
@@ -185,13 +185,13 @@ namespace WEB_PERSONAL
             S.SEMINAR_DATETIME_FROM = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
             S.SEMINAR_DATETIME_TO = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
 
-            DateTime SEMINAR_SIGNED_DATETIME = DateTime.Now;            
+            DateTime SEMINAR_SIGNED_DATETIME = DateTime.Now;
             S.InsertSEMINAR();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
             ClearData();
         }
 
-          
+
         protected void btnCancelSeminar_Click(object sender, EventArgs e)
         {
             ClearData();
@@ -213,12 +213,12 @@ namespace WEB_PERSONAL
             txtDay.Text = "" + day;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void txtDateFrom_TextChanged(object sender, EventArgs e)
         {
             DateTime df = DateTime.Parse(txtDateFrom.Text);
             DateTime dt = DateTime.Parse(txtDateTO.Text);
             int day = (int)(dt - df).TotalDays + 1;
-            
+
             int year = (day / 365);
             int month = (day % 365) / 30;
             day = (day % 365) % 30;
@@ -242,6 +242,7 @@ namespace WEB_PERSONAL
                 txtCertificate.Text = "ไม่มี";
             }
         }
+
 
     }
 }
