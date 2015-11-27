@@ -118,7 +118,7 @@ namespace WEB_PERSONAL
             TextBox txtAdminPositionIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtAdminPositionIDEdit");
             TextBox txtAdminPositionNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtAdminPositionNameEdit");
 
-            ClassAdminPosition ap = new ClassAdminPosition(txtAdminPositionIDEdit.Text,txtAdminPositionNameEdit.Text);
+            ClassAdminPosition ap = new ClassAdminPosition(txtAdminPositionIDEdit.Text, txtAdminPositionNameEdit.Text);
 
             ap.UpdateAdminPosition();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
@@ -151,7 +151,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassAdminPosition ap = new ClassAdminPosition();
-            DataTable dt = ap.GetAdminPosition("","");
+            DataTable dt = ap.GetAdminPosition("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

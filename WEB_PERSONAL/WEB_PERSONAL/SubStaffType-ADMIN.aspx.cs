@@ -40,7 +40,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType("","");
+            DataTable dt = sst.GetSubStaffType("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -154,7 +154,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType("","");
+            DataTable dt = sst.GetSubStaffType("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

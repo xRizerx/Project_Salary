@@ -40,7 +40,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassStaff s = new ClassStaff();
-            DataTable dt = s.GetStaff("","");
+            DataTable dt = s.GetStaff("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -152,7 +152,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassStaff s = new ClassStaff();
-            DataTable dt = s.GetStaff("","");
+            DataTable dt = s.GetStaff("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

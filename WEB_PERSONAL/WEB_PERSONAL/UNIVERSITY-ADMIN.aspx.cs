@@ -42,7 +42,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassUniversity u = new ClassUniversity();
-            DataTable dt = u.GetUniversity("","");
+            DataTable dt = u.GetUniversity("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -72,7 +72,7 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสมหาวิทยาลัย')", true);
                 return;
             }
-            
+
             if (string.IsNullOrEmpty(txtInsertUnivName.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อมหาวิทยาลัย')", true);
@@ -157,7 +157,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassUniversity y = new ClassUniversity();
-            DataTable dt = y.GetUniversity("","");
+            DataTable dt = y.GetUniversity("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

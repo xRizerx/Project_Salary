@@ -182,7 +182,7 @@ namespace WEB_PERSONAL
             else
             {
                 ClassPosition p = new ClassPosition();
-                DataTable dt = p.GetPositionSearch(txtSearchPositionID.Text,txtSearchPositionName.Text, txtSearchSubStaffID.Text);
+                DataTable dt = p.GetPositionSearch(txtSearchPositionID.Text, txtSearchPositionName.Text, txtSearchSubStaffID.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);

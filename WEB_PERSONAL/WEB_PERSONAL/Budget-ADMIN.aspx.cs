@@ -40,7 +40,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassBudget b = new ClassBudget();
-            DataTable dt = b.GetBudget("","");
+            DataTable dt = b.GetBudget("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -153,7 +153,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassBudget b = new ClassBudget();
-            DataTable dt = b.GetBudget("","");
+            DataTable dt = b.GetBudget("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -167,7 +167,7 @@ namespace WEB_PERSONAL
                 return;
             }
             else
-            { 
+            {
                 ClassBudget b = new ClassBudget();
                 DataTable dt = b.GetBudgetSearch(txtSearchBudgetID.Text, txtSearchBudgetName.Text);
                 GridView1.DataSource = dt;

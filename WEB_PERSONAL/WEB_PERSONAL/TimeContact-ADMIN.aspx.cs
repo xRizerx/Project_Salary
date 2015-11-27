@@ -40,7 +40,7 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassTimeContact tc = new ClassTimeContact();
-            DataTable dt = tc.GetTimeContact("","");
+            DataTable dt = tc.GetTimeContact("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -152,7 +152,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassTimeContact tc = new ClassTimeContact();
-            DataTable dt = tc.GetTimeContact("","");
+            DataTable dt = tc.GetTimeContact("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

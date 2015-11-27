@@ -167,7 +167,7 @@ namespace WEB_PERSONAL
             else
             {
                 ClassMinistry m = new ClassMinistry();
-                DataTable dt = m.GetMinistrySearch(txtSearchMinistryID.Text,txtSearchMinistryName.Text);
+                DataTable dt = m.GetMinistrySearch(txtSearchMinistryID.Text, txtSearchMinistryName.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);
