@@ -69,14 +69,14 @@
                                 <asp:TextBox ID="txtPosition" runat="server" MaxLength="100" Width="148px" CssClass="tb5"></asp:TextBox></td>
                             <td style="text-align: right; margin-right: 5px;">ระดับ<span class="textred">*</span> :&nbsp;</td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtDegree" runat="server" MaxLength="100" Width="148px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtDegree" runat="server" MaxLength="100" Width="153px" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
                         <tr>
                             <td style="text-align: right; margin-right: 5px;">สังกัด<span class="textred">*</span> :&nbsp;</td>
                             <td style="text-align: left;">
-                                <asp:TextBox ID="txtCampus" runat="server" MaxLength="100" Width="576px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtCampus" runat="server" MaxLength="100" Width="625px" CssClass="tb5"></asp:TextBox></td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: right; margin-right: 5px;">มหาวิทยาลัยเทคโนยีราชมงคลตะวันออก</td>
                         </tr>
@@ -86,7 +86,7 @@
                             <td style="text-align: right; margin-right: 5px;">2. </td>
                             <td style="text-align: right; margin-right: 5px;">ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน<span class="textred">*</span> :&nbsp;</td>
                             <td style="text-align: left;">
-                                <asp:TextBox ID="txtNameOfProject" runat="server" MaxLength="100" Width="690px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtNameOfProject" runat="server" MaxLength="100" Width="691px" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -100,12 +100,12 @@
                     <table>
                         <tr>
                             <td style="text-align: right; margin-right: 5px;">ระยะเวลาการฝึกอบรม/สัมมนา/ดูงาน</td>
-                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">ตั้งแต่วันที่<span class="textred">*</span> </td>
-                            <td style="text-align: left; width: 190px;">
+                            <td style="text-align: left; width: 220px;">
                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtDateFrom" runat="server" Width="155px" CssClass="tb5" OnTextChanged="txtDateFrom_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtDateFrom" runat="server" Width="180px" CssClass="tb5" OnTextChanged="txtDateFrom_TextChanged" AutoPostBack="True"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="txtDateFrom" />
@@ -114,10 +114,10 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; margin-right: 5px;">ถึงวันที่<span class="textred">*</span></td>
-                            <td style="text-align: left; width: 190px;">
+                            <td style="text-align: left; width: 220px;">
                                 <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtDateTO" runat="server" Width="155px" OnTextChanged="txtDateTO_TextChanged" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtDateTO" runat="server" Width="180px" OnTextChanged="txtDateTO_TextChanged" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="txtDateFrom" />
@@ -132,12 +132,12 @@
                             <td style="text-align: left; width: 50px;">
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtYear" runat="server" MaxLength="100" Width="50px" Enabled="False" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtDay" runat="server" MaxLength="100" Width="50px" Enabled="False" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
 
-                            <td style="text-align: left; margin-right: 5px;">ปี </td>
+                            <td style="text-align: left; margin-right: 5px;">วัน</td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 50px;">
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -146,20 +146,20 @@
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; margin-right: 5px;">เดือน </td>
+                            <td style="text-align: left; margin-right: 5px;">เดือน</td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 50px;">
                                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtDay" runat="server" MaxLength="100" Width="50px" Enabled="False" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtYear" runat="server" MaxLength="100" Width="50px" Enabled="False" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; margin-right: 10px;">วัน </td>
+                            <td style="text-align: left; margin-right: 10px;">ปี</td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: right; margin-right: 5px;">ค่าใช้จ่ายตลอดโครงการ<span class="textred">*</span> :&nbsp;</td>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtBudget" runat="server" MaxLength="100" Width="356px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtBudget" runat="server" MaxLength="100" Width="360px" CssClass="tb5"></asp:TextBox></td>
                             <td style="text-align: right; margin-right: 5px;">บาท </td>
                         </tr>
                     </table>
@@ -167,7 +167,7 @@
                         <tr>
                             <td style="text-align: right; margin-right: 5px;">แหล่งงบประมาณที่ได้รับการสนับสนุน<span class="textred">*</span></td>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtSupportBudget" runat="server" MaxLength="100" Width="702px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtSupportBudget" runat="server" MaxLength="100" Width="718px" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -186,7 +186,7 @@
                             <td style="text-align: left; width: 50px;">
                                 <asp:UpdatePanel ID="UpdatetxtCertificate" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtCertificate" runat="server" MaxLength="100" Width="739px" Enabled="False" Text="ไม่มี" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtCertificate" runat="server" MaxLength="100" Width="753px" Enabled="False" Text="ไม่มี" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="txtCertificate" />
@@ -201,7 +201,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtAbstract" runat="server" MaxLength="1000" Height="100px" Width="947px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtAbstract" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -211,7 +211,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtResult" runat="server" MaxLength="1000" Height="100px" Width="947px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtResult" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -223,7 +223,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtShow1" runat="server" MaxLength="1000" Height="100px" Width="947px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtShow1" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -232,7 +232,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtShow2" runat="server" MaxLength="1000" Height="100px" Width="947px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtShow2" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -241,7 +241,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtShow3" runat="server" MaxLength="1000" Height="100px" Width="947px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtShow3" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -250,7 +250,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtShow4" runat="server" MaxLength="1000" Height="100px" Width="947px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtShow4" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -259,7 +259,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtProblem" runat="server" MaxLength="1000" Height="100px" Width="947px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtProblem" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -268,7 +268,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtComment" runat="server" MaxLength="1000" TextMode="MultiLine" Height="100px" Width="947px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtComment" runat="server" MaxLength="1000" TextMode="MultiLine" Height="100px" Width="955px" CssClass="tb5"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>

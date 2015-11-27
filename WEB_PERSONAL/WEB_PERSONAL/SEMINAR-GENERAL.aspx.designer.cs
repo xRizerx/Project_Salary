@@ -139,13 +139,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// txtYear control.
+        /// txtDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYear;
+        protected global::System.Web.UI.WebControls.TextBox txtDay;
         
         /// <summary>
         /// UpdatePanel2 control.
@@ -175,13 +175,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
-        /// txtDay control.
+        /// txtYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDay;
+        protected global::System.Web.UI.WebControls.TextBox txtYear;
         
         /// <summary>
         /// txtBudget control.
