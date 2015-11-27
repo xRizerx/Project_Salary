@@ -178,7 +178,7 @@
                         </td>
                         <td class="auto-style67">
                             <asp:TextBox ID="TextBox2" runat="server" CssClass="master_default_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
-                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_default_button" OnClick="LinkButton20_Click">ตรวจสอบ</asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_default_button" OnClick="LinkButton1_Click">ตรวจสอบ</asp:LinkButton>
                         </td>
                     </tr>
                     <tr>

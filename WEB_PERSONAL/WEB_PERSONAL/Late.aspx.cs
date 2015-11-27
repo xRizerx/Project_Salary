@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OracleClient;
 using System.Drawing;
+using WEB_PERSONAL.Class;
 
 namespace WEB_PERSONAL {
     public partial class Late : System.Web.UI.Page {
@@ -14,34 +15,8 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton20_Click(object sender, EventArgs e) {
-            try {
-
-                using (OracleConnection con = Util.OC()) {
-                    {
-                        string sql = "SELECT PERSON_NAME || ' ' || PERSON_LASTNAME FROM TB_PERSON WHERE CITIZEN_ID = '" + TextBox21.Text + "'";
-                        using (OracleCommand command = new OracleCommand(sql, con)) {
-                            using (OracleDataReader reader = command.ExecuteReader()) {
-                                if (reader.HasRows) {
-                                    reader.Read();
-                                    Label45.Text = reader.GetString(0);
-                                    Label45.ForeColor = Color.White;
-                                } else {
-                                    Label45.Text = "ไม่พบรหัสพนักงาน";
-                                    Label45.ForeColor = Color.Red;
-                                    //string script2 = "alert('ไม่พบรหัสพนักงาน!');";
-                                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
-                                }
-
-                            }
-
-
-                        }
-                    }
-                }
-            } catch (Exception e2) {
-                string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
+            Person person = new Person(TextBox21.Text);
+            Label45.Text = person.Exist ? person.NameAndLastname : "ไม่พบรหัสพนักงาน!!";
         }
 
         protected void LinkButton11_Click(object sender, EventArgs e) {
@@ -74,8 +49,7 @@ namespace WEB_PERSONAL {
 
 
             //try {
-                using (OracleConnection con = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;")) {
-                    con.Open();
+                using (OracleConnection con = Util.OC()) {
                     {
                         string sql = "INSERT INTO TB_WORK_CHECK_IN VALUES(SEQ_WORK_CHECK_IN_ID.NEXTVAL,:1,:2,:3,:4,:5,:6)";
 
@@ -177,6 +151,11 @@ namespace WEB_PERSONAL {
             TextBox5.Text = "";
             TextBox6.Text = "";
             Label50.Text = "";
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e) {
+            Person person = new Person(TextBox2.Text);
+            Label5.Text = person.Exist ? person.NameAndLastname : "ไม่พบรหัสพนักงาน!!";
         }
     }
 }

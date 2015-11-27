@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OracleClient;
 using System.IO;
+using WEB_PERSONAL.Class;
 
 namespace WEB_PERSONAL {
     public partial class Profile : System.Web.UI.Page {
@@ -14,18 +15,18 @@ namespace WEB_PERSONAL {
                 return;
             }
             //sec2.InnerHtml = "";
-
+            
             string path = Server.MapPath("~/AppData/Image/UserImage/" + Session["login_id"].ToString());
             if(Directory.Exists(path)) {
                 string[] ss = Directory.GetFiles(path);
 
-                List<string> files = new List<string>();
+                //List<string> files = new List<string>();
                 
                 for (int j=0; j<ss.Length;++j) {
                     if (Path.GetExtension(ss[j]) == ".png" ||
                         Path.GetExtension(ss[j]) == ".jpg" ||
                         Path.GetExtension(ss[j]) == ".gif") {
-                        files.Add(ss[j]);
+                        //files.Add(ss[j]);
                         //sec2.InnerHtml += "<img src=\"" + ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(files[j])) + "\"></img>";
                         string temp = ss[j];
 
@@ -33,24 +34,29 @@ namespace WEB_PERSONAL {
                         imagePanel.CssClass = "imagePanel";
 
                         Image img = new Image();
-                        img.ImageUrl = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(files[j]));
+                        img.ImageUrl = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(ss[j]));
                         imagePanel.Controls.Add(img);
 
                         LinkButton lbSelect = new LinkButton();
                         lbSelect.CssClass = "linkButton";
                         lbSelect.Text = "เลือก";
+                        lbSelect.Click += (e2, e3) => {
+                            selectImageFile(Path.GetFileName(temp));
+                        };
                         imagePanel.Controls.Add(lbSelect);
 
                         LinkButton lb = new LinkButton();
                         lb.CssClass = "linkButton";
                         lb.Text = "ลบ";
                         lb.Click += (e2, e3) => {
-                            deleteFile(Path.GetFileName(temp));
+
+                            deleteImageFile(Path.GetFileName(temp));
+
                         };
                         imagePanel.Controls.Add(lb);
 
                         Label lbImageExtension = new Label();
-                        lbImageExtension.Text = Path.GetExtension(files[j]);
+                        lbImageExtension.Text = Path.GetExtension(ss[j]).Replace(".","").ToUpper();
                         lbImageExtension.CssClass = "extension";
                         imagePanel.Controls.Add(lbImageExtension);
 
@@ -60,49 +66,192 @@ namespace WEB_PERSONAL {
                     
                 }
                 
-                files.Sort((x, y) => y.CompareTo(x));
-                if (files.Count > 0) {
-                    profile_pic.Attributes["src"] = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(files[0]));
+                //files.Sort((x, y) => y.CompareTo(x));
+                //if (files.Count > 0) {
+                    //profile_pic.Attributes["src"] = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(files[0]));
+                //}
+
+                using (OracleConnection con = Util.OC()) {
+                    using (OracleCommand command = new OracleCommand("SELECT URL FROM TB_PERSON_IMAGE WHERE CITIZEN_ID = :1 AND PRESENT = :2", con)) {
+                        command.Parameters.AddWithValue("1", Session["login_id"].ToString());
+                        command.Parameters.AddWithValue("2", "1");
+                        using(OracleDataReader reader = command.ExecuteReader()) {
+                            if(reader.HasRows) {
+                                reader.Read();
+                                profile_pic.Attributes["src"] = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + reader.GetString(0));
+                            } else {
+
+                            }
+                        }
+                        
+                    }
                 }
-                
-                
-                
-                
-                
+
+
+
+
+
             } else {
                 
             }
 
-            
 
+            Person person = new Person(Session["login_id"].ToString());
+            Label14.Text = person.CitizenID;
+            Label32.Text = person.TitleName;
+            Label15.Text = person.Name;
+            Label17.Text = person.Lastname;
+            Label46.Text = person.GenderName;
+            Label22.Text = person.SystemStatusName;
+            Label30.Text = person.StaffTypeName;
+            Label24.Text = person.PositionName;
+            Label42.Text = person.MinistryName;
+            Label44.Text = person.DepartmentName;
+            Label26.Text = person.Birthdate;
+            Label28.Text = person.InworkDate;
+            Label34.Text = person.RetireDate;
+            Label38.Text = person.FatherNameAndLastname;
+            Label39.Text = person.MotherNameAndLastname;
+            Label40.Text = person.CoupleNameAndLastname;
 
-            
-            using(OracleConnection con = Util.OC()) {
-                using (OracleCommand command = new OracleCommand("SELECT TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TB_SYSTEM_STATUS.NAME FROM TB_PERSON, TB_SYSTEM_STATUS WHERE CITIZEN_ID = :1 AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID", con)) {
-                    command.Parameters.AddWithValue("1", Session["login_id"].ToString());
-                    using(OracleDataReader reader = command.ExecuteReader()) {
-                        if(reader.HasRows) {
-                            reader.Read();
-                            Label14.Text = Session["login_id"].ToString();
-                            Label15.Text = reader.GetString(0);
-                            Label17.Text = reader.GetString(1);
-                            Label22.Text = reader.GetString(2);
-                        }
-                    }
+            //Study History
+            study_history_div.InnerHtml += "<table>";
+            study_history_div.InnerHtml += "<tr>";
+            study_history_div.InnerHtml += "<td class=\"table_column_header\"><span>สถานศึกษา</span></td>";
+            study_history_div.InnerHtml += "<td class=\"table_column_header\"><span>ตั้งแต่ - ถึง (เดือน ปี)</span></td>";
+            study_history_div.InnerHtml += "<td class=\"table_column_header\"><span>วุฒิ (สาขาวิชาเอก)</span></td>";
+            study_history_div.InnerHtml += "</tr>";
+
+            foreach (StudyHistory i in person.StudyHistoryList) {
+                study_history_div.InnerHtml += "<tr>";
+                study_history_div.InnerHtml += "<td>" + i.GraduationUniversity + "</td>";
+                study_history_div.InnerHtml += "<td>" + i.FromAndToDate + "</td>";
+                study_history_div.InnerHtml += "<td>" + i.Major + "</td>";
+                study_history_div.InnerHtml += "</tr>";
+            }
+            study_history_div.InnerHtml += "</table>";
+
+            //-----
+
+            //Job license
+            job_license_div.InnerHtml += "<table>";
+            job_license_div.InnerHtml += "<tr>";
+            job_license_div.InnerHtml += "<td class=\"table_column_header\"><span>ชื่อใบอนุญาติ</span></td>";
+            job_license_div.InnerHtml += "<td class=\"table_column_header\"><span>หน่วยงาน</span></td>";
+            job_license_div.InnerHtml += "<td class=\"table_column_header\"><span>เลขที่ใบอนุญาต</span></td>";
+            job_license_div.InnerHtml += "<td class=\"table_column_header\"><span>วันที่มีผลบังคับใช้ (วัน เดือน ปี)</span></td>";
+            job_license_div.InnerHtml += "</tr>";
+
+            foreach (JobLicense i in person.JobLicenseList) {
+                job_license_div.InnerHtml += "<tr>";
+                job_license_div.InnerHtml += "<td>" + i.LicenseName + "</td>";
+                job_license_div.InnerHtml += "<td>" + i.Branch + "</td>";
+                job_license_div.InnerHtml += "<td>" + i.LicenseNo + "</td>";
+                job_license_div.InnerHtml += "<td>" + i.Date + "</td>";
+                job_license_div.InnerHtml += "</tr>";
+            }
+            job_license_div.InnerHtml += "</table>";
+
+            //-----
+
+            //Training History
+            training_history_div.InnerHtml += "<table>";
+            training_history_div.InnerHtml += "<tr>";
+            training_history_div.InnerHtml += "<td class=\"table_column_header\"><span>หลักสูตรฝึกอบรม</span></td>";
+            training_history_div.InnerHtml += "<td class=\"table_column_header\"><span>ตั้งแต่ - ถึง (วัน เดือน ปี)</span></td>";
+            training_history_div.InnerHtml += "<td class=\"table_column_header\"><span>หน่วยงานที่จัดฝึกอบรม</span></td>";
+            training_history_div.InnerHtml += "</tr>";
+
+            foreach (TrainingHistory i in person.TrainingHistoryList) {
+                training_history_div.InnerHtml += "<tr>";
+                training_history_div.InnerHtml += "<td>" + i.Course + "</td>";
+                training_history_div.InnerHtml += "<td>" + i.FromAndToDate + "</td>";
+                training_history_div.InnerHtml += "<td>" + i.BranchTraining + "</td>";
+                training_history_div.InnerHtml += "</tr>";
+            }
+            training_history_div.InnerHtml += "</table>";
+
+            //-----
+
+            //Disciplinary and Amnesty
+            disciplinary_and_amnesty.InnerHtml += "<table>";
+            disciplinary_and_amnesty.InnerHtml += "<tr>";
+            disciplinary_and_amnesty.InnerHtml += "<td class=\"table_column_header\"><span>พ.ศ.</span></td>";
+            disciplinary_and_amnesty.InnerHtml += "<td class=\"table_column_header\"><span>รายการ</span></td>";
+            disciplinary_and_amnesty.InnerHtml += "<td class=\"table_column_header\"><span>เอกสารอ้างอิง</span></td>";
+            disciplinary_and_amnesty.InnerHtml += "</tr>";
+
+            foreach (DisciplinaryAndAmnesty i in person.DisciplinaryAndAmnestyList) {
+                disciplinary_and_amnesty.InnerHtml += "<tr>";
+                disciplinary_and_amnesty.InnerHtml += "<td>" + i.Year + "</td>";
+                disciplinary_and_amnesty.InnerHtml += "<td>" + i.Menu + "</td>";
+                disciplinary_and_amnesty.InnerHtml += "<td>" + i.ReferenceDocument + "</td>";
+                disciplinary_and_amnesty.InnerHtml += "</tr>";
+            }
+            disciplinary_and_amnesty.InnerHtml += "</table>";
+
+            //-----
+
+            //Position And Salary
+            position_and_salary_div.InnerHtml += "<table>";
+            position_and_salary_div.InnerHtml += "<tr>";
+            position_and_salary_div.InnerHtml += "<td class=\"table_column_header\"><span>วันที่</span></td>";
+            position_and_salary_div.InnerHtml += "<td class=\"table_column_header\"><span>ตำแหน่ง</span></td>";
+            position_and_salary_div.InnerHtml += "<td class=\"table_column_header\"><span>เลขที่ตำแหน่ง</span></td>";
+            position_and_salary_div.InnerHtml += "<td class=\"table_column_header\"><span>ระดับ</span></td>";
+            position_and_salary_div.InnerHtml += "<td class=\"table_column_header\"><span>ตำแหน่งประเภท</span></td>";
+            position_and_salary_div.InnerHtml += "<td class=\"table_column_header\"><span>เงินเดือน</span></td>";
+            position_and_salary_div.InnerHtml += "<td class=\"table_column_header\"><span>เงินเดือนประจำตำแหน่ง</span></td>";
+            position_and_salary_div.InnerHtml += "<td class=\"table_column_header\"><span>เอกสารอ้างอิง</span></td>";
+            position_and_salary_div.InnerHtml += "</tr>";
+
+            foreach (PositionAndSalary i in person.PositionAndSalaryList) {
+                position_and_salary_div.InnerHtml += "<tr>";
+                position_and_salary_div.InnerHtml += "<td>" + i.Date + "</td>";
+                position_and_salary_div.InnerHtml += "<td>" + i.PositionDescription + "</td>";
+                position_and_salary_div.InnerHtml += "<td>" + i.PersonID + "</td>";
+                position_and_salary_div.InnerHtml += "<td>" + i.STID + "</td>";
+                position_and_salary_div.InnerHtml += "<td>" + i.PositionID + "</td>";
+                position_and_salary_div.InnerHtml += "<td>" + i.Salary + "</td>";
+                position_and_salary_div.InnerHtml += "<td>" + i.PositionSalary + "</td>";
+                position_and_salary_div.InnerHtml += "<td>" + i.ReferenceDocument + "</td>";
+                position_and_salary_div.InnerHtml += "</tr>";
+            }
+            position_and_salary_div.InnerHtml += "</table>";
+
+            //-----
+        }
+        public void selectImageFile(string target) {
+            using (OracleConnection con = Util.OC()) {
+                using (OracleCommand command = new OracleCommand("UPDATE TB_PERSON_IMAGE SET PRESENT = :1 WHERE CITIZEN_ID = :2", con)) {
+                    command.Parameters.AddWithValue("1", "0");
+                    command.Parameters.AddWithValue("2", Session["login_id"].ToString());
+                    command.ExecuteNonQuery();
                 }
-                using (OracleCommand command = new OracleCommand("SELECT TB_POSITION_AND_SALARY.POSITION_NAME FROM TB_POSITION_AND_SALARY WHERE CITIZEN_ID = :1 ORDER BY ID", con)) {
-                    command.Parameters.AddWithValue("1", Session["login_id"].ToString());
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        if (reader.HasRows) {
-                            reader.Read();
-                            Label24.Text = reader.GetString(0);
-                        }
-                    }
+                using (OracleCommand command = new OracleCommand("UPDATE TB_PERSON_IMAGE SET PRESENT = :1 WHERE CITIZEN_ID = :2 AND URL = :3", con)) {
+                    command.Parameters.AddWithValue("1", "1");
+                    command.Parameters.AddWithValue("2", Session["login_id"].ToString());
+                    command.Parameters.AddWithValue("3", target);
+                    command.ExecuteNonQuery();
                 }
             }
-            
+            Response.Redirect(Request.Url.ToString());
         }
-        public void deleteFile(string target) {
+        public void deleteImageFile(string target) {
+
+            using (OracleConnection con = Util.OC()) {
+                using (OracleCommand command = new OracleCommand("DELETE FROM TB_PERSON_IMAGE WHERE CITIZEN_ID = :1 AND URL = :2", con)) {
+                    command.Parameters.AddWithValue("1", Session["login_id"].ToString());
+                    command.Parameters.AddWithValue("2", target);
+                    command.ExecuteNonQuery();
+                }
+                using (OracleCommand command = new OracleCommand("UPDATE TB_PERSON_IMAGE SET PRESENT = :1 WHERE CITIZEN_ID = :2", con)) {
+                    command.Parameters.AddWithValue("1", "0");
+                    command.Parameters.AddWithValue("2", Session["login_id"].ToString());
+                    command.ExecuteNonQuery();
+                }
+            }
+
             string path = Server.MapPath("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + target);
             File.Delete(path);
             Response.Redirect(Request.Url.ToString());
@@ -159,14 +308,35 @@ namespace WEB_PERSONAL {
                     Path.GetExtension(FileUpload1.FileName) == ".jpg" ||
                     Path.GetExtension(FileUpload1.FileName) == ".gif") {
 
+                    string nameToSave = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + Path.GetExtension(FileUpload1.FileName);
+
+                    using (OracleConnection con = Util.OC()) {
+                        using (OracleCommand command = new OracleCommand("UPDATE TB_PERSON_IMAGE SET PRESENT = :1 WHERE CITIZEN_ID = :2", con)) {
+                            command.Parameters.AddWithValue("1", "0");
+                            command.Parameters.AddWithValue("2", Session["login_id"].ToString());
+                            command.ExecuteNonQuery();
+                        }
+                        using (OracleCommand command = new OracleCommand("INSERT INTO TB_PERSON_IMAGE VALUES(SEQ_PERSON_IMAGE_ID.NEXTVAL, :2, :3, :4, :5, :6)", con)) {
+                            command.Parameters.AddWithValue("2", Session["login_id"].ToString());
+                            command.Parameters.AddWithValue("3", nameToSave);
+                            command.Parameters.AddWithValue("4", Util.ODTN());
+                            command.Parameters.AddWithValue("5", Util.ODTN());
+                            command.Parameters.AddWithValue("6", "1");
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
                     string path = Server.MapPath("~/AppData/Image/UserImage/" + Session["login_id"].ToString());
                     if (!Directory.Exists(path)) {
                         Directory.CreateDirectory(path);
                     }
                     
-                    FileUpload1.SaveAs(path + "/" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + Path.GetExtension(FileUpload1.FileName));
+                    FileUpload1.SaveAs(path + "/" + nameToSave);
                     Response.Redirect(Request.Url.ToString());
                     //FileUpload1.SaveAs(path + "/" + FileUpload1.FileName);
+
+                    
+
 
                 } else {
                     Util.Alert(this, "ไฟล์ไม่ถูกต้อง");
