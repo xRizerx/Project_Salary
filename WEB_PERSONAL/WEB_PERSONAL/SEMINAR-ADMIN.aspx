@@ -1,298 +1,288 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SEMINAR-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.SEMINAR_ADMIN" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <style type="text/css">
-         body {
-            background-image: url("Image/444.png");
-        }
-          .tb5 {
-	        background-repeat:repeat-x;
-	        border:1px solid #d1c7ac;
-	        width: 230px;
-	        color:#333333;
-	        padding:3px;
-	        margin-right:4px;
-	        margin-bottom:8px;
-	        font-family:tahoma, arial, sans-serif;
-            border-radius:10px;
-            resize:none;
-              }
-    </style>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal" Height="512px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchNameSeminar">
-        <div class="divover">
-        <fieldset>
-            <legend>Search</legend>
-            <div>
-                ชื่อ :
-                <asp:TextBox ID="txtSearchNameSeminar" runat="server" CssClass="tb5"></asp:TextBox>
-               
-                <asp:Button ID="btnSearchNameSeminar" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchNameSeminar_Click" />
-            </div>
-        </fieldset>
-      </div>
-      <div>
-        <fieldset>
-            <legend>Data</legend>
-            <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
-                AutoGenerateColumns="false"
-                AllowPaging="true"
-                DataKeyNames="SEMINAR_ID"
-                OnRowEditing="modEditCommand"
-                OnRowCancelingEdit="modCancelCommand"
-                OnRowUpdating="modUpdateCommand"
-                OnRowDeleting="modDeleteCommand"
-                OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewSEMINARADMIN_PageIndexChanging" PageSize="10" BackColor="White" BorderColor="#999999">
-                <Columns>
-                        <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
-                    <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                         <ItemTemplate>
-                         <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/Image/x.png" CommandName="Delete" OnClientClick="return confirm('คุณต้องการที่จะลบจริงๆใช่ไหม ?');" AlternateText="Delete" />               
-                    </ItemTemplate>
-                    </asp:TemplateField>
-                    	<asp:TemplateField HeaderText="ID" Visible="false">
-                       		 <ItemTemplate>
-                            		<asp:Label ID="lblSEMINAR_ID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_ID") %>'></asp:Label>
-                       		 </ItemTemplate>
-                  	    </asp:TemplateField>
+    <script type="text/javascript">
+        function pageLoad(sender, args) {
+            $("#ContentPlaceHolder1_txtDateFrom,#ContentPlaceHolder1_txtDateTO").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+        };
+    </script>
+    <style type="text/CSS">
+        .multext {
+            resize: none;
+        }
 
+        .a1 {
+            border-radius: 20px;
+            padding: 5px 10px;
+            background-color: #00ff21;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
 
-                    	<asp:TemplateField HeaderText="ชื่อ" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	 <ItemTemplate>
-                            	 <asp:Label ID="lblSEMINAR_NAME" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_NAME") %>'></asp:Label>
-                       		 </ItemTemplate>
-                       			 <EditItemTemplate>
-                           		 <asp:TextBox ID="txtName" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_NAME") %>'></asp:TextBox>
-                        		 </EditItemTemplate>
-                   	</asp:TemplateField>
+        .divpan {
+            text-align: center;
+        }
 
+        body {
+            background-image: url("Image/444.png");
+        }
 
-                   	<asp:TemplateField HeaderText="นามสกุล" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                       		 <ItemTemplate>
-                           	 <asp:Label ID="lblSEMINAR_LASTNAME" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_LASTNAME") %>'></asp:Label>
-                       		 </ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtLastName" MaxLength="150" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_LASTNAME") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                    	</asp:TemplateField>
+        .tb5 {
+            background-repeat: repeat-x;
+            border: 1px solid #d1c7ac;
+            width: 230px;
+            color: #333333;
+            padding: 3px;
+            margin-right: 4px;
+            margin-bottom: 8px;
+            font-family: tahoma, arial, sans-serif;
+            border-radius: 10px;
+            resize: none;
+        }
 
+        .textred {
+            color: red;
+        }
+    </style>
+    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSaveSeminar">
+        <div>
+            <fieldset>
+                <legend>เพิ่มข้อมูลการฝึกอบรม/สัมมนา/ดูงาน</legend>
+                <div>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+                    <table>
+                        <tr>
+                            <td style="text-align: right; margin-right: 5px;">1. </td>
+                            <td style="text-align: right; margin-right: 5px;">ชื่อ<span class="textred">*</span> :&nbsp;</td>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="148px" CssClass="tb5"></asp:TextBox>
+                            </td>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: right; margin-right: 5px;">นามสกุล<span class="textred">*</span> :&nbsp;</td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:TextBox ID="txtLastName" runat="server" MaxLength="100" Width="148px" CssClass="tb5"></asp:TextBox></td>
+                            <td style="text-align: right; margin-right: 5px;">ตำแหน่ง<span class="textred">*</span> :&nbsp;</td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:TextBox ID="txtPosition" runat="server" MaxLength="100" Width="148px" CssClass="tb5"></asp:TextBox></td>
+                            <td style="text-align: right; margin-right: 5px;">ระดับ<span class="textred">*</span> :&nbsp;</td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:TextBox ID="txtDegree" runat="server" MaxLength="100" Width="153px" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: right; margin-right: 5px;">สังกัด<span class="textred">*</span> :&nbsp;</td>
+                            <td style="text-align: left;">
+                                <asp:TextBox ID="txtCampus" runat="server" MaxLength="100" Width="625px" CssClass="tb5"></asp:TextBox></td>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: right; margin-right: 5px;">มหาวิทยาลัยเทคโนยีราชมงคลตะวันออก</td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: right; margin-right: 5px;">2. </td>
+                            <td style="text-align: right; margin-right: 5px;">ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน<span class="textred">*</span> :&nbsp;</td>
+                            <td style="text-align: left;">
+                                <asp:TextBox ID="txtNameOfProject" runat="server" MaxLength="100" Width="691px" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: right; margin-right: 5px;">3. </td>
+                            <td style="text-align: right; margin-right: 5px;">สถานที่ฝึกอบรม/สัมมนา/ดูงาน<span class="textred">*</span> :&nbsp;</td>
+                            <td style="text-align: left;">
+                                <asp:TextBox ID="txtPlace" runat="server" MaxLength="100" Width="718px" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: right; margin-right: 5px;">ระยะเวลาการฝึกอบรม/สัมมนา/ดูงาน</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px;">ตั้งแต่วันที่<span class="textred">*</span> </td>
+                            <td style="text-align: left; width: 220px;">
+                                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtDateFrom" runat="server" Width="180px" CssClass="tb5" OnTextChanged="txtDateFrom_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="txtDateFrom" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; margin-right: 5px;">ถึงวันที่<span class="textred">*</span></td>
+                            <td style="text-align: left; width: 220px;">
+                                <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtDateTO" runat="server" Width="180px" OnTextChanged="txtDateTO_TextChanged" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="txtDateFrom" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: right; margin-right: 5px;">รวมเวลา :&nbsp;</td>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtDay" runat="server" MaxLength="100" Width="50px" Enabled="False" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
 
-                    	<asp:TemplateField HeaderText="ตำแหน่ง" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                            	<asp:Label ID="lblSEMINAR_POSITION" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_POSITION") %>'></asp:Label>
-                      		</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtPosition" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_POSITION") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                    	</asp:TemplateField>
+                            <td style="text-align: left; margin-right: 5px;">วัน</td>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtMonth" runat="server" MaxLength="100" Width="50px" Enabled="False" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; margin-right: 5px;">เดือน</td>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtYear" runat="server" MaxLength="100" Width="50px" Enabled="False" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; margin-right: 10px;">ปี</td>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: right; margin-right: 5px;">ค่าใช้จ่ายตลอดโครงการ<span class="textred">*</span> :&nbsp;</td>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtBudget" runat="server" MaxLength="100" Width="360px" CssClass="tb5"></asp:TextBox></td>
+                            <td style="text-align: right; margin-right: 5px;">บาท </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: right; margin-right: 5px;">แหล่งงบประมาณที่ได้รับการสนับสนุน<span class="textred">*</span></td>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtSupportBudget" runat="server" MaxLength="100" Width="718px" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: right; margin-right: 5px;">4. ประกาศนียบัตรที่ได้รับ </td>
+                            <td style="text-align: left; width: 40px;">
+                                <asp:UpdatePanel ID="UpdatechkBox" runat="server">
+                                    <ContentTemplate>
+                                        <asp:CheckBox ID="chkBox" runat="server" Text="ถ้ามี" OnCheckedChanged="chkBox_CheckedChanged" AutoPostBack="True" />
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="chkBox" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:UpdatePanel ID="UpdatetxtCertificate" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtCertificate" runat="server" MaxLength="100" Width="753px" Enabled="False" Text="ไม่มี" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="txtCertificate" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: left; margin-right: 10px;">5. สรุปผลการฝึกอบรม/สัมมนา/ดูงาน </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtAbstract" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: left; margin-right: 5px;">6. ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน </td>
 
-
-                    	<asp:TemplateField HeaderText="ระดับ" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                            	<asp:Label ID="lblSEMINAR_DEGREE" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DEGREE") %>'></asp:Label>
-                       	 	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtDegree" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DEGREE") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                    	</asp:TemplateField>
-
-
-                    	<asp:TemplateField HeaderText="สังกัด" ControlStyle-Width="150" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                            	<asp:Label ID="lblSEMINAR_CAMPUS" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_CAMPUS") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtCampus" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_CAMPUS") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                    	</asp:TemplateField>
-
-                    	<asp:TemplateField HeaderText="ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_NAMEOFPROJECT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_NAMEOFPROJECT") %>'></asp:Label>
-                        	</ItemTemplate> 
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtNameOfProject"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_NAMEOFPROJECT") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="สถานที่ฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_PLACE" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_PLACE") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtPlace"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_PLACE") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="วันที่เริ่ม" ControlStyle-Width="180" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_DATETIME_FROM" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_FROM","{0:MM-dd-yyyy}") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtDateFrom"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_FROM") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="วันที่สิ้นสุด" ControlStyle-Width="180" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_DATETIME_TO" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_TO","{0:MM-dd-yyyy}") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtDateTO"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DATETIME_TO") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="รวมระยะเวลา : วัน " ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_DAY" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DAY") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtDay"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_DAY") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="รวมระยะเวลา : เดือน " ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_MONTH" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_MONTH") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtMonth"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_MONTH") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="รวมระยะเวลา : ปี " ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_YEAR" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtYear"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_YEAR") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ค่าใช้จ่ายตลอดโครงการ" ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_BUDGET" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_BUDGET") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtBudget"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_BUDGET") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="แหล่งงบประมาณที่ได้รับการสนับสนุน" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_SUPPORT_BUDGET" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SUPPORT_BUDGET") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtSupportBudget"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SUPPORT_BUDGET") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ประกาศนียบัตรที่ได้รับ" ControlStyle-Width="300" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_CERTIFICATE" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_CERTIFICATE") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtCertificate"  MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_CERTIFICATE") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="สรุปผลการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_ABSTRACT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_ABSTRACT") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtAbstract"  MaxLength="1000" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_ABSTRACT") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_RESULT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_RESULT") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtResult"  MaxLength="1000" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_RESULT") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ด้านการเรียนการสอน" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_SHOW_1" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_1") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtShow1"  MaxLength="1000" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_1") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ด้านการวิจัย" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_SHOW_2" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_2") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtShow2"  MaxLength="1000" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_2") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ด้านการบริการวิชาการ" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_SHOW_3" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_3") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtShow3"  MaxLength="1000" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_3") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ด้านอื่นๆ" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_SHOW_4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_4") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtShow4"  MaxLength="1000" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SHOW_4") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_PROBLEM" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_PROBLEM") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtProblem"  MaxLength="1000" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_PROBLEM") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ความคิดเห็น/ข้อเสนอแนะอื่นๆ" ControlStyle-Width="400" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                        	<ItemTemplate>
-                           	<asp:Label ID="lblSEMINAR_COMMENT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_COMMENT") %>'></asp:Label>
-                        	</ItemTemplate>
-                        		<EditItemTemplate>
-                            		<asp:TextBox ID="txtComment"  MaxLength="1000" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_COMMENT") %>'></asp:TextBox>
-                        		</EditItemTemplate>
-                   	 </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="วันที่กรอกฟรอม" Visible="True" ControlStyle-Width="200" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                       		 <ItemTemplate>
-                            		<asp:Label ID="lblSEMINAR_SIGNED_DATETIME" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SEMINAR_SIGNED_DATETIME") %>'></asp:Label>
-                       		 </ItemTemplate>
-                  	    </asp:TemplateField>
-
-                    	
-                </Columns>
-            </asp:GridView>
-
-        </fieldset>
-    </div>
-           
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtResult" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: left; margin-right: 5px;">7. การนำผลงานที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; margin-right: 5px;">7.1 ด้านการเรียนการสอน </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtShow1" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: left; margin-right: 5px;">7.2 ด้านการวิจัย </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtShow2" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: left; margin-right: 5px;">7.3 ด้านการบริการวิชาการ </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtShow3" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: left; margin-right: 5px;">7.4 ด้านอื่นๆ </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtShow4" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: left; margin-right: 5px;">8. ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtProblem" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: left; margin-right: 5px;">9. ความคิดเห็น/ข้อเสนอแนะอื่นๆ </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:TextBox ID="txtComment" runat="server" MaxLength="1000" TextMode="MultiLine" Height="100px" Width="955px" CssClass="tb5"></asp:TextBox></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 50px;">
+                                <asp:Button ID="btnCancelSeminar" Text="Cancel" runat="server" OnClick="btnCancelSeminar_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                            <td style="text-align: left; width: 50px;"></td>
+                            <td style="text-align: right; margin-right: 5px;">
+                                <asp:Button ID="btnSaveSeminar" Text="OK" runat="server" OnClick="btnSubmitSeminar_Click" Width="140px" CssClass="master_OAT_button" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
     </asp:Panel>
+
 </asp:Content>
