@@ -64,8 +64,8 @@ form {
     /*background-size: 100% auto;*/
 }
 .master_login_pre_in {
-    width: 1024px;
-    margin: 0 auto;
+    /*width: 1024px;
+    margin: 0 auto;*/
 }
 .master_login_in {
     
@@ -309,11 +309,12 @@ form {
 }
 
 .master_header_under {
-    /*background-color: rgba(0,0,0,0.5);*/
-    background-color: #00a2e8;
+    background-color: rgba(0,0,0,0.9);
+    background-color: #202020;
+    /*background-color: #00a2e8;*/
     text-align: center;
     
-    background-image: url(../Image/blurred-blue-background.jpg);
+    /*background-image: url(../Image/blurred-blue-background.jpg);
     background-repeat: no-repeat;
     background-position: top;
     /*background-image: url(../Image/anime_p1.png);
@@ -328,25 +329,92 @@ form {
     display: block;*/
 }
 .master_header_under_in {
-    /*background-image: url(../Image/anime_p2.png);
+    background-image: url(../Image/blurred-blue-background.jpg);
     background-repeat: no-repeat;
     background-position: top right;
-    background-size: contain;
+    background-position: top;
+    /*background-size: contain;
     /*background-color: #00a2e8;*/
-    width: 1024px;
+
+    /*width: 1024px;*/
     height: 100vh;
     margin: 0 auto;
+
+}
+@-webkit-keyframes key_master_header_under_in {
+    0% {
+        background-position-x: 0px;
+    }
+    100% {
+        background-position-x: 1920px;
+    }
 }
 .master_header_under_in2 {
-    background-color: rgba(0,0,0,0.25);
+    /*background-color: rgba(0,0,0,0.25);*/
     padding: 0;
     max-height: 85vh;
-    border-bottom-left-radius: 48px;
-    border-bottom-right-radius: 48px;
+    /*border-bottom-left-radius: 48px;
+    border-bottom-right-radius: 48px;*/
 }
 .master_header_under_in2_head {
-    background-color: rgba(0,0,0,0.5);
+    background-color: #000000;
     padding-right: 65px;
+    border-bottom: 3px solid red;
+    margin-bottom: 20px;
+    -webkit-animation: jungnap 20s infinite;
+    -moz-animation: jungnap 20s infinite;
+}
+@-webkit-keyframes jungnap {
+    84% {
+        border-bottom: 3px solid #ad00ff;
+    }
+    70% {
+        border-bottom: 3px solid #0028ff;
+    }
+    56% {
+        border-bottom: 3px solid #00fff6;
+    }
+    42% {
+        border-bottom: 3px solid #11ff00;
+    }
+    28% {
+        border-bottom: 3px solid #feff00;
+    }
+    14% {
+        border-bottom: 3px solid #ff8900;
+    }
+    0% {
+        border-bottom: 3px solid #ff0000;
+    }
+    100% {
+        border-bottom: 3px solid #ff0000;
+    }
+}
+@-moz-keyframes jungnap {
+    84% {
+        border-bottom: 3px solid #ad00ff;
+    }
+    70% {
+        border-bottom: 3px solid #0028ff;
+    }
+    56% {
+        border-bottom: 3px solid #00fff6;
+    }
+    42% {
+        border-bottom: 3px solid #11ff00;
+    }
+    28% {
+        border-bottom: 3px solid #feff00;
+    }
+    14% {
+        border-bottom: 3px solid #ff8900;
+    }
+    0% {
+        border-bottom: 3px solid #ff0000;
+    }
+    100% {
+        border-bottom: 3px solid #ff0000;
+    }
 }
 .master_header_under table {
     margin: 0 auto;

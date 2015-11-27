@@ -37,9 +37,8 @@
     -webkit-animation: k1 1.5s;
     -moz-animation: k1 1.5s;
     
-
+    transition: border ease 0.25s;
 }
-
 @-webkit-keyframes k1 {
     0% {
         background-color: #FFFFFF;
@@ -56,6 +55,7 @@
         border: 16px solid #00a2e8;
     }
     100% {
+
         opacity: 1;
         width: 500px;
         height: 500px;
