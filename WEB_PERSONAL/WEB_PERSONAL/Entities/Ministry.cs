@@ -22,15 +22,15 @@ namespace WEB_PERSONAL.Entities
 
         }
 
-        public DataTable GetMinistry(int MINISTRY_ID, string MINISTRY_NAME)
+        public DataTable GetMinistry(string MINISTRY_ID, string MINISTRY_NAME)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            string query = "SELECT * FROM TB_MINISTRY order by MINISTRY_ID asc ";
-            if (MINISTRY_ID != 0 || !string.IsNullOrEmpty(MINISTRY_NAME))
+            string query = "SELECT * FROM TB_MINISTRY";
+            if (!string.IsNullOrEmpty(MINISTRY_ID) || !string.IsNullOrEmpty(MINISTRY_NAME))
             {
                 query += " where 1=1 ";
-                if (MINISTRY_ID != 0)
+                if (!string.IsNullOrEmpty(MINISTRY_ID))
                 {
                     query += " and MINISTRY_ID like :MINISTRY_ID ";
                 }
@@ -47,7 +47,7 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                if (MINISTRY_ID != 0)
+                if (!string.IsNullOrEmpty(MINISTRY_ID))
                 {
                     command.Parameters.Add(new OracleParameter("MINISTRY_ID", MINISTRY_ID + "%"));
                 }

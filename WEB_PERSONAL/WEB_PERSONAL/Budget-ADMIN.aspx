@@ -29,7 +29,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" Height="70px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchBudgetName">
+<asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchBudgetName">
     <div>
         <fieldset>
             <legend>Search</legend>
@@ -42,14 +42,14 @@
         </fieldset>
     </div>
     </asp:Panel>
-<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitBudget">
+<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitBudget">
     <div>
         <fieldset>
             <legend>Insert</legend>
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width:20px"></td>
+                        <td style="text-align: left; width:30px"></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทเงินจ้างงาน :</td>
                         <td style="text-align: left; width: 120px;"><asp:TextBox ID="txtInsertBudgetID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
                         <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทเงินจ้างงาน :</td>
@@ -64,7 +64,10 @@
     <div>
         <fieldset >
             <legend>Data</legend>
-            <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
+                <asp:ScriptManager ID="ScriptManager1" runat="server" />
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+				<ContentTemplate>
+            <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center; width:100%"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="BUDGET_ID"
@@ -80,7 +83,7 @@
                             <asp:Label ID="lblBudgetIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BUDGET_ID") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtBudgetIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BUDGET_ID") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtBudgetIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BUDGET_ID") %>' Enabled="False"></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="ชื่อประเภทเงินจ้างงาน" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
@@ -94,12 +97,16 @@
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
                     <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                          <ItemTemplate>
-                         <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/Image/x.png" CommandName="Delete" OnClientClick="return confirm('คุณต้องการที่จะลบจริงๆใช่ไหม ?');" AlternateText="Delete" />               
+                         <asp:LinkButton ID="DeleteButton1" runat="server" CausesValidation="false" CommandName="Delete" Text="Delete" ></asp:LinkButton>                
                     </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-
+				</ContentTemplate>
+				<Triggers>
+				<asp:AsyncPostBackTrigger ControlID="Gridview1" />
+				</Triggers>
+				</asp:UpdatePanel>
         </fieldset>
     </div>
   </asp:Panel>
