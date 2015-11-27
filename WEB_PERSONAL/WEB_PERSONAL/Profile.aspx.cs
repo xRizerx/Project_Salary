@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OracleClient;
+using System.IO;
 
 namespace WEB_PERSONAL {
     public partial class Profile : System.Web.UI.Page {
@@ -12,6 +13,70 @@ namespace WEB_PERSONAL {
             if(Session["login_id"] == null) {
                 return;
             }
+            //sec2.InnerHtml = "";
+
+            string path = Server.MapPath("~/AppData/Image/UserImage/" + Session["login_id"].ToString());
+            if(Directory.Exists(path)) {
+                string[] ss = Directory.GetFiles(path);
+
+                List<string> files = new List<string>();
+                
+                for (int j=0; j<ss.Length;++j) {
+                    if (Path.GetExtension(ss[j]) == ".png" ||
+                        Path.GetExtension(ss[j]) == ".jpg" ||
+                        Path.GetExtension(ss[j]) == ".gif") {
+                        files.Add(ss[j]);
+                        //sec2.InnerHtml += "<img src=\"" + ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(files[j])) + "\"></img>";
+                        string temp = ss[j];
+
+                        Panel imagePanel = new Panel();
+                        imagePanel.CssClass = "imagePanel";
+
+                        Image img = new Image();
+                        img.ImageUrl = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(files[j]));
+                        imagePanel.Controls.Add(img);
+
+                        LinkButton lbSelect = new LinkButton();
+                        lbSelect.CssClass = "linkButton";
+                        lbSelect.Text = "เลือก";
+                        imagePanel.Controls.Add(lbSelect);
+
+                        LinkButton lb = new LinkButton();
+                        lb.CssClass = "linkButton";
+                        lb.Text = "ลบ";
+                        lb.Click += (e2, e3) => {
+                            deleteFile(Path.GetFileName(temp));
+                        };
+                        imagePanel.Controls.Add(lb);
+
+                        Label lbImageExtension = new Label();
+                        lbImageExtension.Text = Path.GetExtension(files[j]);
+                        lbImageExtension.CssClass = "extension";
+                        imagePanel.Controls.Add(lbImageExtension);
+
+                        Panel1.Controls.Add(imagePanel);
+                        //sec2.InnerHtml += "<asp:LinkButton runat=\"server\" OnClientClick=\"deleteFile()\">LinkButton</asp:LinkButton>";
+                    }
+                    
+                }
+                
+                files.Sort((x, y) => y.CompareTo(x));
+                if (files.Count > 0) {
+                    profile_pic.Attributes["src"] = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(files[0]));
+                }
+                
+                
+                
+                
+                
+            } else {
+                
+            }
+
+            
+
+
+            
             using(OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("SELECT TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TB_SYSTEM_STATUS.NAME FROM TB_PERSON, TB_SYSTEM_STATUS WHERE CITIZEN_ID = :1 AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID", con)) {
                     command.Parameters.AddWithValue("1", Session["login_id"].ToString());
@@ -36,6 +101,11 @@ namespace WEB_PERSONAL {
                 }
             }
             
+        }
+        public void deleteFile(string target) {
+            string path = Server.MapPath("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + target);
+            File.Delete(path);
+            Response.Redirect(Request.Url.ToString());
         }
 
         protected void LinkButton12_Click(object sender, EventArgs e) {
@@ -82,5 +152,32 @@ namespace WEB_PERSONAL {
         protected void LinkButton11_Click(object sender, EventArgs e) {
             Response.Redirect("Person-ADMIN.aspx");
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e) {
+            if (FileUpload1.HasFile) {
+                if (Path.GetExtension(FileUpload1.FileName) == ".png" ||
+                    Path.GetExtension(FileUpload1.FileName) == ".jpg" ||
+                    Path.GetExtension(FileUpload1.FileName) == ".gif") {
+
+                    string path = Server.MapPath("~/AppData/Image/UserImage/" + Session["login_id"].ToString());
+                    if (!Directory.Exists(path)) {
+                        Directory.CreateDirectory(path);
+                    }
+                    
+                    FileUpload1.SaveAs(path + "/" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + Path.GetExtension(FileUpload1.FileName));
+                    Response.Redirect(Request.Url.ToString());
+                    //FileUpload1.SaveAs(path + "/" + FileUpload1.FileName);
+
+                } else {
+                    Util.Alert(this, "ไฟล์ไม่ถูกต้อง");
+                    return;
+                }
+                
+            } else {
+                Util.Alert(this, "กรุณาเลือกไฟล์");
+            }
+        }
+
+  
     }
 }
