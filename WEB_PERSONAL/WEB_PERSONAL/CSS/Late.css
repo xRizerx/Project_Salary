@@ -1,0 +1,67 @@
+﻿.wrapper {
+    width: unset;
+}
+.mp {
+    padding: 20px;
+    background-color: #202020;
+}
+
+#sec1 {
+    width: 470px;
+}
+#sec1_pre_in {
+    background-image: url("../Image/paper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+#sec1_in {
+    height: 350px;
+}
+#sec2 {
+    width: 470px;
+}
+#sec2_pre_in {
+    background-image: url("../Image/paper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#sec2_in {
+    height: 350px;
+}
+#sec3_pre_in {
+    background-image: url("../Image/paper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#sec4_pre_in {
+    background-image: url("../Image/paper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.error_text {
+    font-size: 32px;
+}
+
+.delete {
+    background-image: url("../Image/anime_p1.png");
+    background-size: cover;
+}
+
+.t1 td {
+    vertical-align: top;
+}
+
+.auto-style83 {
+    width: 100px;
+    text-align: right;
+}
+
+.auto-style84 {
+    width: 120px;
+}
+
+.auto-style85 {
+    width: 120px;
+    text-align: right;
+}

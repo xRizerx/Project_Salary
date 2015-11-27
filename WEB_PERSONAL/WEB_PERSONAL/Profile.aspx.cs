@@ -209,11 +209,11 @@ namespace WEB_PERSONAL {
                 position_and_salary_div.InnerHtml += "<tr>";
                 position_and_salary_div.InnerHtml += "<td>" + i.Date + "</td>";
                 position_and_salary_div.InnerHtml += "<td>" + i.PositionDescription + "</td>";
-                position_and_salary_div.InnerHtml += "<td>" + i.PersonID + "</td>";
-                position_and_salary_div.InnerHtml += "<td>" + i.STID + "</td>";
-                position_and_salary_div.InnerHtml += "<td>" + i.PositionID + "</td>";
-                position_and_salary_div.InnerHtml += "<td>" + i.Salary + "</td>";
-                position_and_salary_div.InnerHtml += "<td>" + i.PositionSalary + "</td>";
+                position_and_salary_div.InnerHtml += "<td class=\"t_center\">" + i.PersonID + "</td>";
+                position_and_salary_div.InnerHtml += "<td class=\"t_center\">" + i.STID + "</td>";
+                position_and_salary_div.InnerHtml += "<td class=\"t_center\">" + i.PositionID + "</td>";
+                position_and_salary_div.InnerHtml += "<td class=\"t_center\">" + i.Salary + "</td>";
+                position_and_salary_div.InnerHtml += "<td class=\"t_center\">" + i.PositionSalary + "</td>";
                 position_and_salary_div.InnerHtml += "<td>" + i.ReferenceDocument + "</td>";
                 position_and_salary_div.InnerHtml += "</tr>";
             }

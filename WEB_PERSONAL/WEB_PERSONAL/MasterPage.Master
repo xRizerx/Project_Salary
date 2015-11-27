@@ -118,33 +118,25 @@
         <div class="master_login">
             <div class="master_login_pre_in">
                 <div class="master_login_in">
-                    <ul class="master_login_left">
-                        <li>
-                            <span class="master_menu_button" onclick="toggleMenu();"></span>
-                        </li>
-                        <!--li>
-                            <asp:Label ID="Label12" runat="server" Text="ระบบบุคลากร"></asp:Label>
-                        </!--li>
-                        <li>
-                            <asp:Label ID="Label13" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ"></asp:Label>
-                        </li>
-                        <li>
-                            <asp:Label ID="Label14" runat="server" Text="(เวอร์ชั่น ทดสอบ)" style="color:#FF0000"></asp:Label>
-                        </li-->
-                    </ul>
+
+                    <div class="master_login_left">
+                        <span class="master_menu_button" onclick="toggleMenu();"></span>
+                        <span style="display: inline-block; width:20px;"></span>
+                        <asp:Label ID="Label12" runat="server" Text="ระบบบุคลากร" Font-Bold="true"></asp:Label>
+                    </div>
                     <ul class="master_login_right">
                         <li>
-                            <asp:Label ID="Label9" runat="server" Text="ยินดีต้อนรับ" CssClass="master_login_name" style="color:#808080;"></asp:Label>
+                            <asp:Label ID="Label9" runat="server" Text="ยินดีต้อนรับ" CssClass="master_login_name"></asp:Label>
                         </li>
                         <li>
                             <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_login_name_link" OnClick="LinkButton1_Click1">LinkButton</asp:LinkButton>
-                            
+
                         </li>
-                
+
                         <li>
                             <span style="display: inline-block; width: 5px"></span>
                         </li>
-                       
+
                         <li>
                             <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click" CssClass="master_logout">ออกจากระบบ</asp:LinkButton>
                         </li>
@@ -157,23 +149,23 @@
                     <div class="master_header_under_in2">
                         <div class="master_header_under_in2_head">
                             <table>
-                            <tr>
-                                <td style="width: 70px;">
-                                    <img src="Image/RMUTTO.png" style="height: 100px; background-color: transparent;" />
-                                </td>
-                                <td style="width: 400px;">
-                                    <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_under_label"></asp:Label>
-                                    
-                                    <br />
-                                    <asp:Label ID="Label10" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_under_label2"></asp:Label>
-                                </td>
-                                <td>
-                                    <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
-                                </td>
-                            </tr>
-                        </table>
+                                <tr>
+                                    <td style="width: 70px;">
+                                        <img src="Image/RMUTTO.png" style="height: 100px; background-color: transparent;" />
+                                    </td>
+                                    <td style="width: 400px;">
+                                        <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_under_label"></asp:Label>
+
+                                        <br />
+                                        <asp:Label ID="Label10" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_under_label2"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                        
+
                         <table class="master_header_under_table2">
                             <tr>
                                 <td class="master_header_under_left">
@@ -242,9 +234,7 @@
                                 <td class="master_header_under_left">
                                     <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
                                 </td>
-                                <td>
-
-                                </td>
+                                <td></td>
                                 <td>
                                     <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
                                 </td>
@@ -253,9 +243,7 @@
                                 <td>
                                     <a href="Admin.aspx">ระบบ</a>
                                 </td>
-                                <td>
-
-                                </td>
+                                <td></td>
                                 <td>
                                     <a href="insignia_citizen.aspx">เครื่องราชอิสริยาภรณ์</a>
                                 </td>
@@ -266,8 +254,8 @@
             </div>
         </div>
 
-        
-        <div class="master_header_bar"></div>
+        <div style="height: 32px;"></div>
+        <!--div class="master_header_bar"></!--div-->
 
         <div class="wrapper">
             <div>

@@ -2,7 +2,7 @@
     width: unset;
 }
 .main {
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 .sec1 {
@@ -46,7 +46,6 @@
 }
 
 .profile_image_header {
-    margin-top: 20px;
     padding-left: 20px;
     color: #FFFFFF;
     height: 50px;
@@ -66,7 +65,7 @@
 .imagePanel {
     display: inline-block;
     width: 221px;
-    background-color: #303030;
+    background-color: #282828;
     margin: 10px;
 }
 .linkButton {
@@ -139,14 +138,13 @@
     color: #FFFFFF;
     background-color: #404040;
     padding: 1px 5px;
-
     border: none;
 }
 .info_div {
     margin: 20px 0px;
 }
-.info_div_in td{
-
+.info_div_in td {
+    padding: 0 10px;
 }
 .info_div_in {
     border: 1px solid #404040;
@@ -173,6 +171,9 @@
 .table_column_header span {
 
     
+}
+.t_center {
+    text-align: right;
 }
 .auto-style2 {
     width: 160px;
