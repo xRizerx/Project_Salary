@@ -41,7 +41,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div>
         <fieldset>
-            <legend>Search</legend>
+            <legend>ค้นหาข้อมูล</legend>
             <div>
                 รหัสบัตรประชาชน :&nbsp<asp:TextBox ID="txtSearchInsig2CITIZENID" runat="server" CssClass="tb5" Width="150px" MaxLength="13"></asp:TextBox>
                 ชื่อ :&nbsp<asp:TextBox ID="txtSearchNAME" runat="server" CssClass="tb5" Width="100px" MaxLength="100" Enabled="False"></asp:TextBox>
@@ -56,50 +56,58 @@
 <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitInsig2">
     <div>
         <fieldset>
-            <legend>Insert</legend>
+            <legend>วัน/เดือน/ปี, ตำแหน่ง, ระดับ, ได้รับ ชั้น/รายการ</legend>
             <div>
                 <table>
                     <tr>
-                        <td style="text-align: left; width:120px">วัน/เดือน/ปี</td>
+                        <td style="text-align: left; width:100px">วัน/เดือน/ปี</td>
                         <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt0" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:80px">ตำแหน่ง</td>
+                        <td style="text-align: left; width:60px">ตำแหน่ง</td>
                         <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt1" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:80px">ระดับ</td>
+                        <td style="text-align: left; width:60px">ระดับ</td>
                         <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt2" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-  
-                    </tr>
-                </table>
-
-                <table>
-                    <tr>
                         <td style="text-align: left; width:120px">ได้รับ ชั้น/รายการ</td>
                         <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt3" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:80px">เล่ม</td>
-                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt4" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:80px">ตอน</td>
-                        <td style="text-align: left; width: 50px;"><asp:TextBox ID="txtt5" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                       
                     </tr>
                 </table>
+        </div>
+        </fieldset>
+    </div>
 
+
+ <div>
+        <fieldset>
+            <legend>ราชกิจจานุเบกษา</legend>
+            <div>
                 <table>
                     <tr>
-                         <td style="text-align: left; width:120px">หน้า</td>
+                        
+                        <td style="text-align: left; width:60px">เล่ม</td>
+                        <td style="text-align: left; width: 185px;"><asp:TextBox ID="txtt4" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:60px">ตอน</td>
+                        <td style="text-align: left; width: 178px;"><asp:TextBox ID="txtt5" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:60px">หน้า</td>
                         <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt6" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
                         <td style="text-align: left; width:80px">วัน/เดือน/ปี</td>
                         <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt7" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:80px">ใบกำกับ</td>
-                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt8" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
                     </tr>
                 </table>
-
+        </div>
+        </fieldset>
+    </div>
+<div>
+        <fieldset>
+            <legend>ใบกำกับ , เหรียญตรา , หมายเหตุ</legend>
+            <div>
                  <table>
                     <tr>
-                          <td style="text-align: left; width:120px">เหรียญตรา</td>
-                        <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt9" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                        <td style="text-align: left; width:60px">ใบกำกับ</td>
+                        <td style="text-align: left; width: 175px;"><asp:TextBox ID="txtt8" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
+                          <td style="text-align: left; width:90px">เหรียญตรา</td>
+                        <td style="text-align: left; width: 180px;"><asp:TextBox ID="txtt9" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
                          <td style="text-align: left; width:80px">หมายเหตุ</td>
                         <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt10" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
-                        <td style="text-align: left; width:80px"></td>
+                        <td style="text-align: left; width:1px"></td>
 
                         <td style="text-align: left;"><asp:Button ID="btnSubmitInsig2" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitInsig2_Click" /></td>
                         <td style="text-align: left;"><asp:Button ID="btnCancelInsig2" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelInsig2_Click" /></td>
@@ -109,6 +117,8 @@
             </div>
         </fieldset>
     </div>
+
+
     <div>
         <fieldset >
             <legend>Data</legend>
@@ -123,7 +133,7 @@
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridView1_PageIndexChanging" PageSize="3" BackColor="White" BorderColor="#999999">
+                OnPageIndexChanging="myGridView1_PageIndexChanging" PageSize="10" BackColor="White" BorderColor="#999999">
                 <Columns>
                     <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
                     <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">

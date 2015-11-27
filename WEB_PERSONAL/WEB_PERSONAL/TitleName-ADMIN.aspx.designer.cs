@@ -22,49 +22,31 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// txtSearchTH control.
+        /// txtSearchTitleID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchTH;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchTitleID;
         
         /// <summary>
-        /// txtSearchTHmin control.
+        /// txtSearchTitleName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchTHmin;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchTitleName;
         
         /// <summary>
-        /// txtSearchEN control.
+        /// btnSearchTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchEN;
-        
-        /// <summary>
-        /// txtSearchENmin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchENmin;
-        
-        /// <summary>
-        /// btnSearchTitleName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchTitleName;
+        protected global::System.Web.UI.WebControls.Button btnSearchTitle;
         
         /// <summary>
         /// btnSearchRefresh control.
@@ -85,58 +67,58 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// txtTitleNameTh control.
+        /// txtInsertTitleID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTitleNameTh;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertTitleID;
         
         /// <summary>
-        /// txtTitleNameThMin control.
+        /// txtInsertTitleName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTitleNameThMin;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertTitleName;
         
         /// <summary>
-        /// txtTitleNameEn control.
+        /// btnSubmitTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTitleNameEn;
+        protected global::System.Web.UI.WebControls.Button btnSubmitTitle;
         
         /// <summary>
-        /// txtTitleNameEnMin control.
+        /// btnCancelTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTitleNameEnMin;
+        protected global::System.Web.UI.WebControls.Button btnCancelTitle;
         
         /// <summary>
-        /// btnSubmitPretitle control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmitPretitle;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// btnCancelPretitle control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelPretitle;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// GridView1 control.

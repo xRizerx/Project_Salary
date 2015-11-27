@@ -17,6 +17,8 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 BindData();
+                txtSearchTitleID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtInsertTitleID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
 
@@ -25,21 +27,30 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["Title"];
+            return (DataTable)ViewState["TITLE"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["Title"] = data;
+            ViewState["TITLE"] = data;
         }
 
         #endregion
 
         void BindData()
         {
-            TITLENAME ptn = new TITLENAME();
-            DataTable dt = ptn.GetTITLENAME("", "", "", "");
+            ClassTitleName t = new ClassTitleName();
+            DataTable dt = t.GetTitleName("", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
+        void BindData1()
+        {
+            ClassTitleName t = new ClassTitleName();
+            DataTable dt = t.GetTitleNameSearch(txtSearchTitleID.Text, txtSearchTitleName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -47,128 +58,117 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
-            txtTitleNameEn.Text = "";
-            txtTitleNameEnMin.Text = "";
-            txtTitleNameTh.Text = "";
-            txtTitleNameThMin.Text = "";
-            txtSearchTH.Text = "";
-            txtSearchTHmin.Text = "";
-            txtSearchEN.Text = "";
-            txtSearchENmin.Text = "";
+            txtSearchTitleID.Text = "";
+            txtSearchTitleName.Text = "";
+            txtInsertTitleID.Text = "";
+            txtInsertTitleName.Text = "";
         }
 
-        protected void btnSubmitPretitle_Click(object sender, EventArgs e)
+        protected void btnSubmitTitle_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtTitleNameTh.Text))
+            if (string.IsNullOrEmpty(txtInsertTitleID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อภาษาไทย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสคำนำหน้านาม')", true);
                 return;
             }
-            if (string.IsNullOrEmpty(txtTitleNameThMin.Text))
+            if (string.IsNullOrEmpty(txtInsertTitleName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อย่อภาษาไทย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อคำนำหน้านาม')", true);
                 return;
             }
-            if (string.IsNullOrEmpty(txtTitleNameEn.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อภาษาอังกฤษ')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtTitleNameEnMin.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อย่อภาษาอังกฤษ')", true);
-                return;
-            }
+            ClassTitleName t = new ClassTitleName();
+            t.TITLE_ID = Convert.ToInt32(txtInsertTitleID.Text);
+            t.TITLE_NAME_TH = txtInsertTitleName.Text;
 
-            TITLENAME ptn = new TITLENAME();
-            ptn.TITLE_NAME_TH = txtTitleNameTh.Text;
-            ptn.TITLE_NAME_TH_MIN = txtTitleNameThMin.Text;
-            ptn.TITLE_NAME_EN = txtTitleNameEn.Text;
-            ptn.TITLE_NAME_EN_MIN = txtTitleNameEnMin.Text;
-
-            ptn.InsertTITLENAME();
-            BindData();
-            ClearData();
+            if (t.CheckUseTitleID())
+            {
+                t.InsertTitleName();
+                BindData();
+                ClearData();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสคำนำหน้านามนี้ อยู่ในระบบแล้ว !')", true);
+            }
         }
-     
 
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            BindData1();
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            TITLENAME ptn = new TITLENAME();
-            ptn.TITLE_ID = id;
-            ptn.DeleteTITLENAME();
+            ClassTitleName t = new ClassTitleName();
+            t.TITLE_ID = id;
+            t.DeleteTitleName();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblTitleID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblTitleID");
+            TextBox txtTitleIDEDIT = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleIDEDIT");
+            TextBox txtTitleNameEDIT = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameEDIT");
 
-            TextBox txtTitleNameTh = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameTh");
+            ClassTitleName t = new ClassTitleName(Convert.ToInt32(txtTitleIDEDIT.Text), txtTitleNameEDIT.Text);
 
-            TextBox txtTitleNameThMin = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameThMin");
-
-            TextBox txtTitleNameEn = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameEn");
-
-            TextBox txtTitleNameEnMin = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTitleNameEnMin");
-
-            TITLENAME ptn = new TITLENAME(Convert.ToInt32(lblTitleID.Text)
-                , txtTitleNameTh.Text
-                , txtTitleNameThMin.Text
-                , txtTitleNameEn.Text
-                , txtTitleNameEnMin.Text);
-
-            ptn.UpdateTITLENAME();
+            t.UpdateTitleName();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
-
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            
+            DataRowView drv = e.Row.DataItem as DataRowView;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบรหัสคำนำหน้านาม " + DataBinder.Eval(e.Row.DataItem, "TITLE_ID") + " ใช่ไหม ?');");
+
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
+                    TextBox txt = (TextBox)e.Row.FindControl("txtTitleIDEDIT");
+                    txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                }
+            }
         }
-        protected void myGridViewPRETITLE_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void myGridViewTitle_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataSource = GetViewState();
             GridView1.DataBind();
         }
 
-        protected void btnCancelPretitle_Click(object sender, EventArgs e)
+        protected void btnCancelTitle_Click(object sender, EventArgs e)
         {
             ClearData();
-            TITLENAME ptn = new TITLENAME();
-            DataTable dt = ptn.GetTITLENAME("", "", "", "");
+            ClassTitleName t = new ClassTitleName();
+            DataTable dt = t.GetTitleName("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
         }
 
-        protected void btnSearchTitleName_Click(object sender, EventArgs e)
+        protected void btnSearchTitle_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearchTH.Text) && string.IsNullOrEmpty(txtSearchTHmin.Text) && string.IsNullOrEmpty(txtSearchEN.Text) && string.IsNullOrEmpty(txtSearchENmin.Text))
+            if (string.IsNullOrEmpty(txtSearchTitleID.Text) && string.IsNullOrEmpty(txtSearchTitleName.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
                 return;
             }
             else
             {
-                TITLENAME ptn = new TITLENAME();
-                DataTable dt = ptn.GetTITLENAME(txtSearchTH.Text, txtSearchTHmin.Text, txtSearchEN.Text, txtSearchENmin.Text);
+                ClassTitleName t = new ClassTitleName();
+                DataTable dt = t.GetTitleNameSearch(txtSearchTitleID.Text, txtSearchTitleName.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);
@@ -178,8 +178,8 @@ namespace WEB_PERSONAL
         protected void btnSearchRefresh_Click(object sender, EventArgs e)
         {
             ClearData();
-            TITLENAME ptn = new TITLENAME();
-            DataTable dt = ptn.GetTITLENAME("", "", "", "");
+            ClassTitleName t = new ClassTitleName();
+            DataTable dt = t.GetTitleName("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

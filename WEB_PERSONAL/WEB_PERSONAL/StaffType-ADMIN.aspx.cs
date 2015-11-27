@@ -16,6 +16,7 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 BindData();
+                txtSearchStaffID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtInsertStaffID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
@@ -38,8 +39,17 @@ namespace WEB_PERSONAL
 
         void BindData()
         {
-            ClassStaffType s = new ClassStaffType();
-            DataTable dt = s.GetStaffType(0,"");
+            ClassStaff s = new ClassStaff();
+            DataTable dt = s.GetStaff("","");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
+        void BindData1()
+        {
+            ClassStaff s = new ClassStaff();
+            DataTable dt = s.GetStaffSearch(txtSearchStaffID.Text, txtSearchStaffName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -65,13 +75,13 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อประเภทของบุคลากร')", true);
                 return;
             }
-            ClassStaffType s = new ClassStaffType();
-            s.STAFFTYPE_ID = Convert.ToInt32(txtInsertStaffID.Text);
-            s.STAFFTYPE_NAME = txtInsertStaffName.Text;
+            ClassStaff s = new ClassStaff();
+            s.ST_ID = Convert.ToInt32(txtInsertStaffID.Text);
+            s.ST_NAME = txtInsertStaffName.Text;
 
-            if (s.CheckUseStaffTypeID())
+            if (s.CheckUseStaffID())
             {
-                s.InsertStaffType();
+                s.InsertStaff();
                 BindData();
                 ClearData();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
@@ -85,42 +95,45 @@ namespace WEB_PERSONAL
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            BindData1();
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            ClassStaffType s = new ClassStaffType();
-            s.STAFFTYPE_ID = id;
-            s.DeleteStaffType();
+            ClassStaff s = new ClassStaff();
+            s.ST_ID = id;
+            s.DeleteStaff();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
             TextBox txtStaffIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtStaffIDEdit");
             TextBox txtStaffNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtStaffNameEdit");
 
-            ClassStaffType s = new ClassStaffType(Convert.ToInt32(txtStaffIDEdit.Text)
+            ClassStaff s = new ClassStaff(Convert.ToInt32(txtStaffIDEdit.Text)
                 , txtStaffNameEdit.Text);
 
-            s.UpdateStaffType();
+            s.UpdateStaff();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             DataRowView drv = e.Row.DataItem as DataRowView;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบรหัสประเภทตำแหน่ง " + DataBinder.Eval(e.Row.DataItem, "ST_ID") + " ใช่ไหม ?');");
+
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
                     TextBox txt = (TextBox)e.Row.FindControl("txtStaffIDEdit");
@@ -138,8 +151,8 @@ namespace WEB_PERSONAL
         protected void btnCancelStaff_Click(object sender, EventArgs e)
         {
             ClearData();
-            ClassStaffType s = new ClassStaffType();
-            DataTable dt = s.GetStaffType(0,"");
+            ClassStaff s = new ClassStaff();
+            DataTable dt = s.GetStaff("","");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -154,8 +167,8 @@ namespace WEB_PERSONAL
             }
             else
             {
-                ClassStaffType s = new ClassStaffType();
-                DataTable dt = s.GetStaffTypeSearch(Convert.ToInt32(txtSearchStaffID.Text), txtSearchStaffName.Text);
+                ClassStaff s = new ClassStaff();
+                DataTable dt = s.GetStaffSearch(txtSearchStaffID.Text, txtSearchStaffName.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);
@@ -165,8 +178,8 @@ namespace WEB_PERSONAL
         protected void btnSearchRefresh_Click(object sender, EventArgs e)
         {
             ClearData();
-            ClassStaffType s = new ClassStaffType();
-            DataTable dt = s.GetStaffType(0, "");
+            ClassStaff s = new ClassStaff();
+            DataTable dt = s.GetStaff("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

@@ -45,6 +45,15 @@ namespace WEB_PERSONAL
             SetViewState(dt);
         }
 
+        void BindData1()
+        {
+            ClassNational n = new ClassNational();
+            DataTable dt = n.GetNationalSearch(txtSearchNationID.Text, txtSearchNationENG.Text, txtSearchNationTHA.Text);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
         private void ClearData()
         {
             txtSearchNationID.Text = "";
@@ -95,12 +104,12 @@ namespace WEB_PERSONAL
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            BindData1();
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
@@ -111,7 +120,7 @@ namespace WEB_PERSONAL
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
@@ -128,11 +137,15 @@ namespace WEB_PERSONAL
             n.UpdateNational();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบรหัสสัญชาติ " + DataBinder.Eval(e.Row.DataItem, "NATION_ID") + " ใช่ไหม ?');");
+            }
         }
         protected void myGridViewNATIONAL_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

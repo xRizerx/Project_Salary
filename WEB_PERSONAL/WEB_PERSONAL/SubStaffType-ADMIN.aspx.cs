@@ -16,6 +16,7 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 BindData();
+                txtSearchSubStaffTypeID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtInsertSubStaffTypeID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
@@ -39,7 +40,16 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType(0,"");
+            DataTable dt = sst.GetSubStaffType("","");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
+        void BindData1()
+        {
+            ClassSubStaffType sst = new ClassSubStaffType();
+            DataTable dt = sst.GetSubStaffType(txtSearchSubStaffTypeID.Text, txtSearchSubStaffTypeName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -85,12 +95,12 @@ namespace WEB_PERSONAL
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            BindData1();
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
@@ -101,7 +111,7 @@ namespace WEB_PERSONAL
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
@@ -114,7 +124,7 @@ namespace WEB_PERSONAL
             sst.UpdateSubStaffType();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
 
 
         }
@@ -123,6 +133,9 @@ namespace WEB_PERSONAL
             DataRowView drv = e.Row.DataItem as DataRowView;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบรหัสประเภทบุคลากรย่อย " + DataBinder.Eval(e.Row.DataItem, "SUBSTAFFTYPE_ID") + " ใช่ไหม ?');");
+
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
                     TextBox txt = (TextBox)e.Row.FindControl("txtSubStaffTypeIDEdit");
@@ -141,7 +154,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType(0,"");
+            DataTable dt = sst.GetSubStaffType("","");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -157,7 +170,7 @@ namespace WEB_PERSONAL
             else
             {
                 ClassSubStaffType sst = new ClassSubStaffType();
-                DataTable dt = sst.GetSubStaffTypeSearch(Convert.ToInt32(txtSearchSubStaffTypeID.Text), txtSearchSubStaffTypeName.Text);
+                DataTable dt = sst.GetSubStaffTypeSearch(txtSearchSubStaffTypeID.Text, txtSearchSubStaffTypeName.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);
@@ -168,7 +181,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType(0, "");
+            DataTable dt = sst.GetSubStaffType("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

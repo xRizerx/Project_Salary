@@ -17,7 +17,7 @@ namespace WEB_PERSONAL
             {
                 BindData();
                 txtSearchDepartmentID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
-                txtSearchDepartmentName.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtInsertDepartmentID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
 
@@ -41,6 +41,15 @@ namespace WEB_PERSONAL
         {
             ClassDepartment d = new ClassDepartment();
             DataTable dt = d.GetDepartment("", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
+        void BindData1()
+        {
+            ClassDepartment d = new ClassDepartment();
+            DataTable dt = d.GetDepartmentSearch(txtSearchDepartmentID.Text,txtSearchDepartmentName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -86,12 +95,12 @@ namespace WEB_PERSONAL
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            BindData1();
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
@@ -102,7 +111,7 @@ namespace WEB_PERSONAL
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
@@ -114,13 +123,16 @@ namespace WEB_PERSONAL
             d.UpdateDepartment();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             DataRowView drv = e.Row.DataItem as DataRowView;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบรหัสคณะ/หน่วยงานที่สังกัด หรือเทียบเท่า " + DataBinder.Eval(e.Row.DataItem, "DEPARTMENT_ID") + " ใช่ไหม ?');");
+
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
                     TextBox txt = (TextBox)e.Row.FindControl("txtDepartmentIDEdit");

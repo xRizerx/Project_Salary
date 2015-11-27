@@ -46,6 +46,15 @@ namespace WEB_PERSONAL
             SetViewState(dt);
         }
 
+        void BindData1()
+        {
+            ClassPositionWork pw = new ClassPositionWork();
+            DataTable dt = pw.GetPositionWorkSearch(txtSearchPositionWorkID.Text, txtSearchPositionWorkName.Text);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
         private void ClearData()
         {
             txtSearchPositionWorkID.Text = "";
@@ -86,12 +95,12 @@ namespace WEB_PERSONAL
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            BindData1();
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
@@ -102,7 +111,7 @@ namespace WEB_PERSONAL
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
@@ -114,13 +123,16 @@ namespace WEB_PERSONAL
             pw.UpdatePositionWork();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             DataRowView drv = e.Row.DataItem as DataRowView;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบรหัสตำแหน่งในสายงาน " + DataBinder.Eval(e.Row.DataItem, "POSITION_WORK_ID") + " ใช่ไหม ?');");
+
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
                     TextBox txt = (TextBox)e.Row.FindControl("txtPositionWorkIDEdit");

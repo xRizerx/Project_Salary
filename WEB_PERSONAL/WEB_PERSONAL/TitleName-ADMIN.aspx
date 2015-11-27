@@ -39,76 +39,32 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" Height="110px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchTitleName">
-     <div>
+<asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchTitle">
+    <div>
         <fieldset>
             <legend>Search</legend>
             <div>
-                <table>
-                    <tr>
-                        <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px; ">ชื่อภาษาไทย :&nbsp;</td>
-                        <td style="text-align: left; width: 120px;">
-                            <asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb5" MaxLength="6"></asp:TextBox>
-                        </td>
-                        <td style="text-align: left; width: 50px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px; ">ชื่อย่อภาษาไทย :&nbsp;</td>
-                        <td style="text-align: left; ">
-                            <asp:TextBox ID="txtSearchTHmin" runat="server" CssClass="tb5" MaxLength="10"></asp:TextBox></td>  
-                    </tr>
-                    <tr>
-                        <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px;">ชื่อภาษาอังกฤษ :&nbsp;</td>
-                        <td style="text-align: left;">
-                            <asp:TextBox ID="txtSearchEN" runat="server" CssClass="tb5"></asp:TextBox>
-                        </td>
-                        <td style="text-align: left; width: 50px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px;">ชื่อย่อภาษาอังกฤษ :&nbsp;</td>
-                        <td style="text-align: left; "">
-                            <asp:TextBox ID="txtSearchENmin" runat="server" MaxLength="10" CssClass="tb5"></asp:TextBox></td>
-                        <td style="text-align: right; margin-right: 5px;"></td>
-                        <td style="text-align: left;">
-                            <asp:Button ID="btnSearchTitleName" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSearchTitleName_Click" /></td>
-                        <td style="text-align: left;">
-                            <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick = "btnSearchRefresh_Click" /></td>
-                    </tr>
-                </table>
+                รหัสคำนำหน้านาม :&nbsp<asp:TextBox ID="txtSearchTitleID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
+                ชื่อคำนำหน้านาม :&nbsp<asp:TextBox ID="txtSearchTitleName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                <asp:Button ID="btnSearchTitle" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchTitle_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
-    </div>	
+    </div>
     </asp:Panel>
-<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" Height="600px" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPretitle">
+<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitTitle">
     <div>
         <fieldset>
             <legend>Insert</legend>
             <div>
                 <table>
-                    <tr>
-                        <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px; ">ชื่อภาษาไทย :&nbsp;</td>
-                        <td style="text-align: left; width: 120px;">
-                            <asp:TextBox ID="txtTitleNameTh" runat="server" CssClass="tb5" MaxLength="6"></asp:TextBox>
-                        </td>
-                        <td style="text-align: left; width: 50px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px; ">ชื่อย่อภาษาไทย :&nbsp;</td>
-                        <td style="text-align: left; ">
-                            <asp:TextBox ID="txtTitleNameThMin" runat="server" CssClass="tb5" MaxLength="10"></asp:TextBox></td>  
-                    </tr>
-                    <tr>
-                        <td style="text-align: left; width: 80px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px;">ชื่อภาษาอังกฤษ :&nbsp;</td>
-                        <td style="text-align: left;">
-                            <asp:TextBox ID="txtTitleNameEn" runat="server" CssClass="tb5"></asp:TextBox>
-                        </td>
-                        <td style="text-align: left; width: 50px;"> </td> 
-                        <td style="text-align: right; margin-right: 5px;">ชื่อย่อภาษาอังกฤษ :&nbsp;</td>
-                        <td style="text-align: left; "">
-                            <asp:TextBox ID="txtTitleNameEnMin" runat="server" MaxLength="10" CssClass="tb5"></asp:TextBox></td>
-                        <td style="text-align: right; margin-right: 5px;"></td>
-                        <td style="text-align: left;">
-                            <asp:Button ID="btnSubmitPretitle" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitPretitle_Click" /></td>
-                        <td style="text-align: left;">
-                            <asp:Button ID="btnCancelPretitle" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelPretitle_Click" /></td>
+                    <tr><td style="text-align: left; width:55px"></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสคำนำหน้านาม :</td>
+                        <td style="text-align: left; width: 230px;"><asp:TextBox ID="txtInsertTitleID" runat="server" CssClass="tb6" MaxLength="4" Width="230px"></asp:TextBox></td>
+                        <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อคำนำหน้านาม :</td>
+                        <td style="text-align: left; width: 230px;"><asp:TextBox ID="txtInsertTitleName" runat="server" CssClass="tb5" MaxLength="100" Width="230px"></asp:TextBox></td>
+                        <td style="text-align: left;"><asp:Button ID="btnSubmitTitle" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitTitle_Click" /></td>
+                        <td style="text-align: left;"><asp:Button ID="btnCancelTitle" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelTitle_Click" /></td>
                     </tr>
                 </table>
             </div>
@@ -117,7 +73,10 @@
     <div>
         <fieldset >
             <legend>Data</legend>
-            <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center;"
+            <asp:ScriptManager ID="ScriptManager1" runat="server" />
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+				<ContentTemplate>
+            <asp:GridView ID="GridView1" runat="server" style="margin-left: auto; margin-right: auto; text-align: center; width:100%"
                 AutoGenerateColumns="false"
                 AllowPaging="true"
                 DataKeyNames="TITLE_ID"
@@ -126,62 +85,37 @@
                 OnRowUpdating="modUpdateCommand"
                 OnRowDeleting="modDeleteCommand"
                 OnRowDataBound="GridView1_RowDataBound"
-                OnPageIndexChanging="myGridViewPRETITLE_PageIndexChanging" PageSize="10" BackColor="White" BorderColor="#999999">
+                OnPageIndexChanging="myGridViewTitle_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                 <Columns>
-                    <asp:TemplateField HeaderText="ID" Visible="false">
+                    <asp:TemplateField HeaderText="รหัสคำนำหน้านาม" ControlStyle-Width="180" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblTitleID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_ID") %>'></asp:Label>
-                            </ItemTemplate>
-                    </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ชื่อภาษาไทย" ControlStyle-Width="210" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                            <ItemTemplate>
-                            <asp:Label ID="lblTitleNameTh" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH") %>'></asp:Label>
+                            <asp:Label ID="lblTitleIDEDIT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_ID") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameTh" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtTitleIDEDIT" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_ID") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ชื่อย่อภาษไทย" ControlStyle-Width="210" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                    <asp:TemplateField HeaderText="ชื่อคำนำหน้านาม" ControlStyle-Width="640" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                             <ItemTemplate>
-                            <asp:Label ID="lblTitleNameThMin" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH_MIN") %>'></asp:Label>
+                            <asp:Label ID="lblTitleNameEDIT" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH") %>'></asp:Label>
                             </ItemTemplate>
                                     <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameThMin" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH_MIN") %>'></asp:TextBox>
+                            		<asp:TextBox ID="txtTitleNameEDIT" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_TH") %>'></asp:TextBox>
                         		    </EditItemTemplate>
                     </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ชื่อภาษาอังกฤษ" ControlStyle-Width="210" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                            <ItemTemplate>
-                            <asp:Label ID="lblTitleNameEn" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN") %>'></asp:Label>
-                            </ItemTemplate>
-                                    <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameEn" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN") %>'></asp:TextBox>
-                        		    </EditItemTemplate>
-                    </asp:TemplateField>
-
-
-                    <asp:TemplateField HeaderText="ชื่อย่อภาษาอังกฤษ" ControlStyle-Width="210" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                            <ItemTemplate>
-                            <asp:Label ID="lblTitleNameEnMin" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN_MIN") %>'></asp:Label>
-                            </ItemTemplate>
-                                    <EditItemTemplate>
-                            		<asp:TextBox ID="txtTitleNameEnMin" MaxLength="10" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TITLE_NAME_EN_MIN") %>'></asp:TextBox>
-                        		    </EditItemTemplate>
-                    </asp:TemplateField>
-
-                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
+                    <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua"/>
                     <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                          <ItemTemplate>
-                         <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/Image/x.png" CommandName="Delete" OnClientClick="return confirm('คุณต้องการที่จะลบจริงๆใช่ไหม ?');" AlternateText="Delete" />               
+                         <asp:LinkButton ID="DeleteButton1" runat="server" CausesValidation="false" CommandName="Delete" Text="Delete" ></asp:LinkButton>                
                     </ItemTemplate>
-                    </asp:TemplateField>  
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+				</ContentTemplate>
+				<Triggers>
+				<asp:AsyncPostBackTrigger ControlID="Gridview1" />
+				</Triggers>
+				</asp:UpdatePanel>
 
         </fieldset>
     </div>

@@ -17,9 +17,9 @@ namespace WEB_PERSONAL
             {
                 BindData();
                 txtSearchPositionID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
-                txtSearchSubStaffName.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtSearchSubStaffID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtInsertPositionID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
-                txtInsertSubStaffName.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtInsertSubStaffID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
             }
         }
@@ -43,7 +43,16 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassPosition p = new ClassPosition();
-            DataTable dt = p.GetPosition(0, "", "");
+            DataTable dt = p.GetPosition("", "", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
+        void BindData1()
+        {
+            ClassPosition p = new ClassPosition();
+            DataTable dt = p.GetPositionSearch(txtSearchPositionID.Text, txtSearchPositionName.Text, txtSearchSubStaffID.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -53,10 +62,10 @@ namespace WEB_PERSONAL
         {
             txtSearchPositionID.Text = "";
             txtSearchPositionName.Text = "";
-            txtSearchSubStaffName.Text = "";
+            txtSearchSubStaffID.Text = "";
             txtInsertPositionID.Text = "";
             txtInsertPositionName.Text = "";
-            txtInsertSubStaffName.Text = "";
+            txtInsertSubStaffID.Text = "";
         }
 
         protected void btnSubmitPosition_Click(object sender, EventArgs e)
@@ -64,23 +73,23 @@ namespace WEB_PERSONAL
 
             if (string.IsNullOrEmpty(txtInsertPositionID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสตำแหน่งทางวิชาการ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสระดับ')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtInsertPositionName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อตำแหน่งทางวิชาการ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อระดับ')", true);
                 return;
             }
-            if (string.IsNullOrEmpty(txtInsertSubStaffName.Text))
+            if (string.IsNullOrEmpty(txtInsertSubStaffID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสประเภทบุคลากรย่อย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสประเภทตำแหน่ง')", true);
                 return;
             }
             ClassPosition p = new ClassPosition();
-            p.POSITION_ID = txtInsertPositionID.Text;
-            p.POSITION_NAME = txtInsertPositionName.Text;
-            p.SUBSTAFFTYPE_ID = Convert.ToInt32(txtInsertSubStaffName.Text);
+            p.ID = txtInsertPositionID.Text;
+            p.NAME = txtInsertPositionName.Text;
+            p.ST_ID = txtInsertSubStaffID.Text;
 
             if (p.CheckUsePositionID())
             {
@@ -98,47 +107,50 @@ namespace WEB_PERSONAL
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            BindData1();
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
             string id = GridView1.DataKeys[e.RowIndex].Value.ToString();
             ClassPosition p = new ClassPosition();
-            p.POSITION_ID = id;
+            p.ID = id;
             p.DeletePosition();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
             TextBox txtPositionIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPositionIDEdit");
             TextBox txtPositionNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtPositionNameEdit");
-            TextBox txtSubStaffNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffNameEdit");
+            TextBox txtSubStaffIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffIDEdit");
 
-            ClassPosition p = new ClassPosition(txtPositionIDEdit.Text, txtPositionNameEdit.Text, Convert.ToInt32(txtSubStaffNameEdit.Text));
+            ClassPosition p = new ClassPosition(txtPositionIDEdit.Text, txtPositionNameEdit.Text, txtSubStaffIDEdit.Text);
 
             p.UpdatePosition();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             DataRowView drv = e.Row.DataItem as DataRowView;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบรหัสระดับ " + DataBinder.Eval(e.Row.DataItem, "ID") + " ใช่ไหม ?');");
+
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
                     TextBox txt = (TextBox)e.Row.FindControl("txtPositionIDEdit");
                     txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
-                    TextBox txt2 = (TextBox)e.Row.FindControl("txtSubStaffNameEdit");
+                    TextBox txt2 = (TextBox)e.Row.FindControl("txtSubStaffIDEdit");
                     txt2.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 }
             }
@@ -154,7 +166,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassPosition p = new ClassPosition();
-            DataTable dt = p.GetPosition(0, "", "");
+            DataTable dt = p.GetPosition("", "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -162,7 +174,7 @@ namespace WEB_PERSONAL
 
         protected void btnSearchPosition_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearchPositionID.Text) && string.IsNullOrEmpty(txtSearchPositionName.Text) && string.IsNullOrEmpty(txtSearchSubStaffName.Text))
+            if (string.IsNullOrEmpty(txtSearchPositionID.Text) && string.IsNullOrEmpty(txtSearchPositionName.Text) && string.IsNullOrEmpty(txtSearchSubStaffID.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
                 return;
@@ -170,7 +182,7 @@ namespace WEB_PERSONAL
             else
             {
                 ClassPosition p = new ClassPosition();
-                DataTable dt = p.GetPositionSearch(txtSearchSubStaffName.Text,txtSearchPositionID.Text, txtSearchPositionName.Text);
+                DataTable dt = p.GetPositionSearch(txtSearchPositionID.Text,txtSearchPositionName.Text, txtSearchSubStaffID.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);
@@ -181,7 +193,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassPosition p = new ClassPosition();
-            DataTable dt = p.GetPosition(0, "", "");
+            DataTable dt = p.GetPosition("", "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
