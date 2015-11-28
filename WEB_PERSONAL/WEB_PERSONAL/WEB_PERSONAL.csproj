@@ -141,6 +141,7 @@
     <Content Include="CSS\Late.css" />
     <Content Include="CSS\Leave.css" />
     <Content Include="CSS\Profile.css" />
+    <Content Include="CSS\Salary.css" />
     <Content Include="CSS\Study.css" />
     <Content Include="Entities\Virus.mp3" />
     <Content Include="Image\anime_p1.png" />

@@ -56,8 +56,9 @@
             color: white;
             border-color: black;
             border: 1px solid black;
-            font-size:16px;
+            font-size: 16px;
         }
+
         .button_ui_admin {
             background: #ff0000;
             padding: 5px 10px;
@@ -65,20 +66,22 @@
             color: white;
             border-color: black;
             border: 1px solid black;
-            font-size:16px;
+            font-size: 16px;
             transition: background-color ease 0.5s;
         }
-        .button_ui_admin:hover {
-            background: #ff6a00;
-            padding: 5px 10px;
-            text-decoration: none;
-            color: black;
-            border-color: black;
-            border: 1px solid black;
-            font-size:16px;
-        }
+
+            .button_ui_admin:hover {
+                background: #ff6a00;
+                padding: 5px 10px;
+                text-decoration: none;
+                color: black;
+                border-color: black;
+                border: 1px solid black;
+                font-size: 16px;
+            }
+
         .button_ui_edit {
-            background:rgb(79, 255, 169);
+            background: rgb(79, 255, 169);
             padding: 5px 10px;
             border-radius: 10px;
             text-decoration: none;
@@ -86,387 +89,449 @@
             border-color: yellow;
             border: 1px solid black;
         }
-        .panin{
-            background-color:white;
+
+        .panin {
+            background-color: white;
             border-radius: 5px;
             border: 2px solid black;
             padding: 5px;
         }
+
         .panout {
             padding: 20px;
             text-align: center;
-            border-radius:5px;
-            border: 5px solid black
+            border-radius: 5px;
+            border: 5px solid black;
         }
+
         body {
             background-image: url("Image/ef333.jpg");
         }
+
         .auto-style14 {
             text-align: left;
         }
+
         .auto-style15 {
             width: 507px;
             text-align: center;
         }
+
         .auto-style18 {
             width: 490px;
             text-align: center;
         }
+
         .auto-style19 {
             width: 227px;
         }
+
         .auto-style20 {
             width: 228px;
             text-align: left;
         }
+
         .auto-style21 {
             width: 227px;
             text-align: left;
         }
-        .header-text{
+
+        .header-text {
             padding: 10px;
-            background-color:rgb(0, 113, 23);
+            background-color: rgb(0, 113, 23);
             border-radius: 4px;
         }
     </style>
     <script language="javascript" type="text/javascript">
 <!--
-/****************************************************
-     Author: Eric King
-     Url: http://redrival.com/eak/index.shtml
-     This script is free to use as long as this info is left in
-     Featured on Dynamic Drive script library (http://www.dynamicdrive.com)
-****************************************************/
-var win=null;
-function Popup(mypage,myname,w,h,scroll,pos){
-if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
-if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
-else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
-settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=yes,menubar=no,toolbar=no,resizable=no';
-win=window.open(mypage,myname,settings);}
-// -->
-</script>
+    /****************************************************
+         Author: Eric King
+         Url: http://redrival.com/eak/index.shtml
+         This script is free to use as long as this info is left in
+         Featured on Dynamic Drive script library (http://www.dynamicdrive.com)
+    ****************************************************/
+    var win = null;
+    function Popup(mypage, myname, w, h, scroll, pos) {
+        if (pos == "random") { LeftPosition = (screen.width) ? Math.floor(Math.random() * (screen.width - w)) : 100; TopPosition = (screen.height) ? Math.floor(Math.random() * ((screen.height - h) - 75)) : 100; }
+        if (pos == "center") { LeftPosition = (screen.width) ? (screen.width - w) / 2 : 100; TopPosition = (screen.height) ? (screen.height - h) / 2 : 100; }
+        else if ((pos != "center" && pos != "random") || pos == null) { LeftPosition = 0; TopPosition = 20 }
+        settings = 'width=' + w + ',height=' + h + ',top=' + TopPosition + ',left=' + LeftPosition + ',scrollbars=' + scroll + ',location=no,directories=no,status=yes,menubar=no,toolbar=no,resizable=no';
+        win = window.open(mypage, myname, settings);
+    }
+    // -->
+    </script>
+    <link href="CSS/Salary.css" rel="stylesheet" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="Panel6" runat="server" CssClass="panout">
-        <asp:Label ID="Label7" runat="server" Text="การขึ้นเงินเดือนรายบุคคล" Font-Bold="True" Font-Size="20pt" CssClass="header-text"></asp:Label><br /><br /><br />
+
         <asp:Panel ID="Panel1" runat="server" CssClass="panin">
-        <table style="width: 100%;">
-            <tr>
-                <td class="auto-style19">
-                    &nbsp;</td>
-                <td class="auto-style3">
-                    &nbsp;</td>
-                <td class="auto-style14">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style21">
-                    <asp:Label ID="Label8" runat="server" Text="กรุณาป้อนรหัสบัตรประชาชน"></asp:Label>
-                </td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="TextBox1" runat="server" CssClass="master_default_textbox" Height="24px" MaxLength="13" Width="100px"></asp:TextBox>
-                </td>
-                <td class="auto-style14">
-                    <asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui_edit" OnClick="Button1_Click">ค้นหา</asp:LinkButton>
-                    <a href="SalaryByID-Report.aspx" class="button_ui_edit">ออกรายงาน</a>
-                    <a href="Salary_Basesalary.aspx" onclick="Popup(this.href, 'Base_salary', '350', '350', 'no', 'center'); return false;" class="button_ui">ปรับฐานเงินเดือน</a>
+            <asp:Panel ID="Panel_Citizen_id" runat="server">
+                <div class="Salary_div">
+                    <div class="Salary_div_header">
+                        <br />
+                        <asp:Label ID="Label7" runat="server" Text="การขึ้นเงินเดือนรายบุคคล" Font-Bold="True" Font-Size="20pt" CssClass="header-text"></asp:Label><br />
+                        <br />
+                    </div>
+                    <div class="Salary_div_in">
+                        <asp:Table ID="Table1" runat="server" Width="100%">
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="3">
+                        <hr /><br />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell>
+                                    <asp:Label ID="Label8" runat="server" Text="กรุณาป้อนรหัสบัตรประชาชน"></asp:Label>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="master_default_textbox" Height="24px" MaxLength="13" Width="100px"></asp:TextBox>
+                                </asp:TableCell>
+                                <asp:TableCell>
+                                    <asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui_edit" OnClick="Button1_Click">ค้นหา</asp:LinkButton>
+                                    <a href="SalaryByID-Report.aspx" class="button_ui_edit">ออกรายงาน</a>
+                                    <a href="Salary_Basesalary.aspx" onclick="Popup(this.href, 'Base_salary', '350', '350', 'no', 'center'); return false;" class="button_ui">ปรับฐานเงินเดือน</a>
+                                    <asp:LinkButton ID="LinkButton11" runat="server" CssClass="button_ui_admin" OnClick="LinkButton11_Click">ปรับฐานเงินเดือน [Admin]</asp:LinkButton><br />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow>
+                                <asp:TableCell ColumnSpan="3">
+                        <br />
+                        <hr />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
+                    </div>
+                </div>
+            </asp:Panel>
 
+            <asp:Panel ID="Panel_Government_Officer" runat="server"  Visible="false">
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="auto-style20">ชื่อ - นามสกุล :</td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label11" runat="server" Text="NAME"></asp:Label>
+                            &nbsp;<asp:Label ID="Label13" runat="server" Text="LASTNAME"></asp:Label>
+                        </td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label14" runat="server" Text="ชื่อตำแหน่งในสายงาน"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label15" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label16" runat="server" Text="ระดับตำแหน่ง"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:Label ID="Label17" runat="server" Text="-"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label18" runat="server" Text="ชื่อตำแหน่งในการบริหาร"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label19" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label60" runat="server" Text="ประเภท"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:Label ID="Label61" runat="server" Text="ประเภท"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">&nbsp;</td>
+                        <td class="auto-style6">&nbsp;</td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="auto-style14">
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="auto-style14">
+                            <asp:Label ID="Label55" runat="server" Text="รายละเอียดการบริหารวงเงินร้อยละ"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label20" runat="server" Text="เงินเดือนก่อนเลื่อน (ณ 1 มี.ค. 58)"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:TextBox ID="TextBox2" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label21" runat="server" Text="เงินเดือนสูงสุดแต่ละประเภท"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:Label ID="Label22" runat="server" Text="-"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label23" runat="server" Text="ฐานในการคำนวณ"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label24" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label25" runat="server" Text="ร้อยละที่ได้เลื่อน"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style9">
+                            <asp:Label ID="Label59" runat="server" Text="จำนวนเงินที่คำนวณได้"></asp:Label>
+                        </td>
+                        <td class="auto-style10">
+                            <asp:Label ID="Label26" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style11">&nbsp;</td>
+                        <td class="auto-style12">
+                            <asp:Label ID="Label27" runat="server" Text="-"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label28" runat="server" Text="จำนวนเงินที่ได้เลื่อน"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label29" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label30" runat="server" Text="เงินตอบแทนพิเศษ"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:Label ID="Label31" runat="server" Text="-"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label32" runat="server" Text="รวมได้เลื่อน"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label33" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label34" runat="server" Text="เงินเดือนใหม่"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:Label ID="Label35" runat="server" Text="-"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label36" runat="server" Text="คะแนนผลประเมิน"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:TextBox ID="TextBox4" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label37" runat="server" Text="ระดับการประเมิน"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:TextBox ID="TextBox5" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">&nbsp;</td>
+                        <td class="auto-style6">&nbsp;</td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="auto-style14">
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="auto-style14">
+                            <asp:Label ID="Label56" runat="server" Text="อธิการบดีเพิ่มให้"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label38" runat="server" Text="ร้อยละได้เลื่อน (ตามสัดส่วน)"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label39" runat="server" Text="ร้อยละที่ได้เลื่อน (อธิการบดีเพิ่มให้)"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label40" runat="server" Text="จำนวนเงินที่ได้เพิ่ม"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label58" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">&nbsp;</td>
+                        <td class="auto-style6">&nbsp;</td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="auto-style14">
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label57" runat="server" Text="รวมได้เลื่อนทั้งสิ้น"></asp:Label>
+                        </td>
+                        <td class="auto-style6">&nbsp;</td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label41" runat="server" Text="ร้อยละที่ได้เลื่อน"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label42" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">&nbsp;</td>
+                        <td class="auto-style14">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label43" runat="server" Text="จำนวนเงินที่คำนวณได้"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label44" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label45" runat="server" Text="จำนวนเงินที่คำนวณได้(ปัดเศษ)"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:Label ID="Label46" runat="server" Text="-"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label47" runat="server" Text="จำนวนเงินที่ได้เลื่อน"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label48" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label49" runat="server" Text="เงินตอบแทนพิเศษ"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:Label ID="Label50" runat="server" Text="-"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style20">
+                            <asp:Label ID="Label51" runat="server" Text="รวมใช้เลื่อน"></asp:Label>
+                        </td>
+                        <td class="auto-style6">
+                            <asp:Label ID="Label52" runat="server" Text="-"></asp:Label>
+                        </td>
+                        <td class="auto-style7">
+                            <asp:Label ID="Label53" runat="server" Text="เงินเดือนใหม่"></asp:Label>
+                        </td>
+                        <td class="auto-style14">
+                            <asp:Label ID="Label54" runat="server" Text="-"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style4">หมายเหตุ</td>
+                        <td colspan="2">
+                            <asp:TextBox ID="TextBox9" runat="server" Height="50px" TextMode="Multiline" Width="500px" Font-Size="14pt" Style="resize: none" CssClass="master_default_textbox_multi_line"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui" OnClick="LinkButton1_Click">คำนวณเงินเดือน</asp:LinkButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style4">&nbsp;</td>
+                        <td colspan="2">&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </asp:Panel>
+        
+        <br />
+        <asp:Panel ID="Panel_Permanent_Emp" runat="server" Visible="false">
+            <asp:Table ID="Table2" runat="server" Width="100%">
+                <asp:TableRow>
+                    <asp:TableCell ColumnSpan="10">
+                        <br />
+                        <hr />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label ID="Label2" runat="server" Text="ชื่อ - นามสกุล"></asp:Label>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="Label3" runat="server" Text="Name"></asp:Label><span>    </span>
+                        <asp:Label ID="Label4" runat="server" Text="LastName"></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label ID="Label5" runat="server" Text="ประเภท"></asp:Label>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="Label6" runat="server" Text="Label_ประเภท"></asp:Label>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="Label9" runat="server" Text="ตำแหน่ง"></asp:Label>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="Label10" runat="server" Text="Label_ตำแหน่ง"></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell ColumnSpan="10">
+                        <hr />
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+        </asp:Panel>
 
-                    <asp:LinkButton ID="LinkButton11" runat="server" CssClass="button_ui_admin" OnClick="LinkButton11_Click">ปรับฐานเงินเดือน [Admin]</asp:LinkButton>
-
-
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style21">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style14">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style14" colspan="3">
-                    <hr />
-                </td>
-            </tr>
-        </table>
-        <table style="width: 100%;">
-            <tr>
-                <td class="auto-style20">ชื่อ - นามสกุล :</td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label11" runat="server" Text="-"></asp:Label>
-                    &nbsp;<asp:Label ID="Label13" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style14">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label14" runat="server" Text="ชื่อตำแหน่งในสายงาน"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label15" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label16" runat="server" Text="ระดับตำแหน่ง"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:Label ID="Label17" runat="server" Text="-"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label18" runat="server" Text="ชื่อตำแหน่งในการบริหาร"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label19" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style14">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style20">&nbsp;</td>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style14">&nbsp;</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="auto-style14">
-                    <hr />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4" class="auto-style14">
-                    <asp:Label ID="Label55" runat="server" Text="รายละเอียดการบริหารวงเงินร้อยละ 4.1"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label20" runat="server" Text="เงินเดือนก่อนเลื่อน (ณ 1 มี.ค. 58)"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:TextBox ID="TextBox2" runat="server" CssClass="master_default_textbox"></asp:TextBox>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label21" runat="server" Text="เงินเดือนสูงสุดแต่ละประเภท"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:Label ID="Label22" runat="server" Text="-"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label23" runat="server" Text="ฐานในการคำนวณ"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label24" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label25" runat="server" Text="ร้อยละที่ได้เลื่อน"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:TextBox ID="TextBox3" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style9"><asp:Label ID="Label59" runat="server" Text="จำนวนเงินที่คำนวณได้"></asp:Label>
-                </td>
-                <td class="auto-style10">
-                    <asp:Label ID="Label26" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style11">&nbsp;</td>
-                <td class="auto-style12">
-                    <asp:Label ID="Label27" runat="server" Text="-"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label28" runat="server" Text="จำนวนเงินที่ได้เลื่อน"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label29" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label30" runat="server" Text="เงินตอบแทนพิเศษ"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:Label ID="Label31" runat="server" Text="-"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label32" runat="server" Text="รวมได้เลื่อน"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label33" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label34" runat="server" Text="เงินเดือนใหม่"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:Label ID="Label35" runat="server" Text="-"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label36" runat="server" Text="คะแนนผลประเมิน"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:TextBox ID="TextBox4" runat="server" CssClass="master_default_textbox"></asp:TextBox>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label37" runat="server" Text="ระดับการประเมิน"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:TextBox ID="TextBox5" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">&nbsp;</td>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style14">&nbsp;</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="auto-style14">
-                    <hr />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4" class="auto-style14">
-                    <asp:Label ID="Label56" runat="server" Text="อธิการบดีเพิ่มให้"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label38" runat="server" Text="ร้อยละได้เลื่อน (ตามสัดส่วน)"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:TextBox ID="TextBox6" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label39" runat="server" Text="ร้อยละที่ได้เลื่อน (อธิการบดีเพิ่มให้)"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label40" runat="server" Text="จำนวนเงินที่ได้เพิ่ม"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label58" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style14">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style20">&nbsp;</td>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style14">&nbsp;</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="auto-style14">
-                    <hr />
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label57" runat="server" Text="รวมได้เลื่อนทั้งสิ้น"></asp:Label>
-                </td>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style14">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label41" runat="server" Text="ร้อยละที่ได้เลื่อน"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label42" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style14">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label43" runat="server" Text="จำนวนเงินที่คำนวณได้"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label44" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label45" runat="server" Text="จำนวนเงินที่คำนวณได้(ปัดเศษ)"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:Label ID="Label46" runat="server" Text="-"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label47" runat="server" Text="จำนวนเงินที่ได้เลื่อน"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label48" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label49" runat="server" Text="เงินตอบแทนพิเศษ"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:Label ID="Label50" runat="server" Text="-"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style20">
-                    <asp:Label ID="Label51" runat="server" Text="รวมใช้เลื่อน"></asp:Label>
-                </td>
-                <td class="auto-style6">
-                    <asp:Label ID="Label52" runat="server" Text="-"></asp:Label>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label53" runat="server" Text="เงินเดือนใหม่"></asp:Label>
-                </td>
-                <td class="auto-style14">
-                    <asp:Label ID="Label54" runat="server" Text="-"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style4">หมายเหตุ</td>
-                <td colspan="2">
-                    <asp:TextBox ID="TextBox9" runat="server" Height="50px" TextMode="Multiline" Width="500px" Font-Size="14pt" style = "resize:none" CssClass="master_default_textbox_multi_line" ></asp:TextBox>
-                </td>
-                <td>
-                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="button_ui" OnClick="LinkButton1_Click">คำนวณเงินเดือน</asp:LinkButton>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style4">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
-        </asp:Panel><br />
+        </asp:Panel>
+        <asp:Panel ID="Panel_Oracle_Control" runat="server">
         <table style="width: 100%;" class="panin">
+            <tr>
+                <td class="auto-style18">&nbsp;</td>
+                <td class="auto-style15">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style18">
+                    <asp:LinkButton ID="LinkButton2" runat="server" CssClass="button_ui" OnClick="LinkButton2_Click" Font-Size="14px">บันทึก</asp:LinkButton>
+                </td>
+                <td class="auto-style15">
+                    <a href="SalarybyID-Edit.aspx" onclick="Popup(this.href,'แก้ไขข้อมูลบุคคล','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui">แก้ไขข้อมูล</a>
+                </td>
                 <tr>
                     <td class="auto-style18">&nbsp;</td>
                     <td class="auto-style15">&nbsp;</td>
                 </tr>
-                <tr>
-                    <td class="auto-style18">
-                        <asp:LinkButton ID="LinkButton2" runat="server" CssClass="button_ui" OnClick="LinkButton2_Click" Font-Size="14px">บันทึก</asp:LinkButton>
-                    </td>
-                    <td class="auto-style15">
-                        <a href="SalarybyID-Edit.aspx" onclick="Popup(this.href,'แก้ไขข้อมูลบุคคล','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui">แก้ไขข้อมูล</a>
-                    </td>
-                    <tr>
-                        <td class="auto-style18">&nbsp;</td>
-                        <td class="auto-style15">&nbsp;</td>
-                    </tr>
-                </tr>
+            </tr>
         </table>
-
+        </asp:Panel>
     </asp:Panel>
 </asp:Content>
 
