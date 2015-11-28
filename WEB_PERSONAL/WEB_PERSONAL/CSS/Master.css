@@ -8,6 +8,7 @@
 }
 html, body {
     /*height: 100%;*/
+
 }
 
 body {
@@ -16,6 +17,8 @@ body {
     background-attachment: fixed;*/
     font-family: WDB_Bangna;
     background-color: #f0f0f0;
+    background-color: #000000;
+    
 }
 
 form {
@@ -31,16 +34,28 @@ form {
     min-height: 100vh;
     padding-bottom: 10px;
     width: 1024px;
+    background-color: #f0f0f0;
+    background-color: #202020;
+    background-color: #FFFFFF;
+
+}
+.all_div {
+    /*position: fixed;
+    width: 100vw;
+    height: 100vh;*/
+
+    opacity: 0;
+    transition: opacity ease 1s;
+    z-index: 9999;
 }
 
-
 .master_content_place_holder {
-    background-color: rgba(255,255,255,1);
+    /*background-color: rgba(255,255,255,1);*/
     margin: 152px 0;
     margin: 110px 0;
     margin-top: 32px;
     margin-top: 0px;
-    min-height: 70vh;
+    /*min-height: 70vh;*/
 }
 
 .master_login {
@@ -311,6 +326,7 @@ form {
 .master_header_under {
     background-color: rgba(0,0,0,0.9);
     background-color: #202020;
+
     /*background-color: #00a2e8;*/
     text-align: center;
     
@@ -329,7 +345,7 @@ form {
     display: block;*/
 }
 .master_header_under_in {
-    background-image: url(../Image/blurred-blue-background.jpg);
+    /*background-image: url(../Image/blurred-blue-background.jpg);
     background-repeat: no-repeat;
     background-position: top right;
     background-position: top;
@@ -360,6 +376,7 @@ form {
     background-color: #000000;
     padding-right: 65px;
     border-bottom: 3px solid red;
+    box-shadow: #ff0000 0px 0px 20px;
     margin-bottom: 20px;
     -webkit-animation: jungnap 20s infinite;
     -moz-animation: jungnap 20s infinite;
@@ -367,53 +384,69 @@ form {
 @-webkit-keyframes jungnap {
     84% {
         border-bottom: 3px solid #ad00ff;
+        box-shadow: #ad00ff 0px 0px 20px;
     }
     70% {
         border-bottom: 3px solid #0028ff;
+        box-shadow: #0028ff 0px 0px 20px;
     }
     56% {
         border-bottom: 3px solid #00fff6;
+        box-shadow: #00fff6 0px 0px 20px;
     }
     42% {
         border-bottom: 3px solid #11ff00;
+        box-shadow: #11ff00 0px 0px 20px;
     }
     28% {
         border-bottom: 3px solid #feff00;
+        box-shadow: #feff00 0px 0px 20px;
     }
     14% {
         border-bottom: 3px solid #ff8900;
+        box-shadow: #ff8900 0px 0px 20px;
     }
     0% {
         border-bottom: 3px solid #ff0000;
+        box-shadow: #ff0000 0px 0px 20px;
     }
     100% {
         border-bottom: 3px solid #ff0000;
+        box-shadow: #ff0000 0px 0px 20px;
     }
 }
 @-moz-keyframes jungnap {
     84% {
         border-bottom: 3px solid #ad00ff;
+        box-shadow: #ad00ff 0px 0px 20px;
     }
     70% {
         border-bottom: 3px solid #0028ff;
+        box-shadow: #0028ff 0px 0px 20px;
     }
     56% {
         border-bottom: 3px solid #00fff6;
+        box-shadow: #00fff6 0px 0px 20px;
     }
     42% {
         border-bottom: 3px solid #11ff00;
+        box-shadow: #11ff00 0px 0px 20px;
     }
     28% {
         border-bottom: 3px solid #feff00;
+        box-shadow: #feff00 0px 0px 20px;
     }
     14% {
         border-bottom: 3px solid #ff8900;
+        box-shadow: #ff8900 0px 0px 20px;
     }
     0% {
         border-bottom: 3px solid #ff0000;
+        box-shadow: #ff0000 0px 0px 20px;
     }
     100% {
         border-bottom: 3px solid #ff0000;
+        box-shadow: #ff0000 0px 0px 20px;
     }
 }
 .master_header_under table {
@@ -435,6 +468,11 @@ form {
     border-radius: 24px;
     padding: 0 20px;
     text-align: center;
+
+    color: #FFFFFF;
+    background-color: #404040;
+    box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+
 }
 .master_header_under td {
     font-size: 16px;
@@ -450,7 +488,7 @@ form {
     margin: 0 20px;
 
     border-radius: 24px;
-    transition: background-color ease 0.25s text-decoration ease 0.25s;
+
 
     text-decoration: none;
     text-align: left;
@@ -459,12 +497,14 @@ form {
 
     width: 200px;
     transition: background-color ease 0.25s;
-    /*background-color: rgba(0,0,0,0);*/
+    background-color: rgba(0,0,0,0.2);
+    color: #c0c0c0;
     text-shadow: 1px 1px 1px #000000;
 }
 .master_header_under a:hover {
-    background-color: rgba(255,255,255,0.25);
-    background-color: rgba(0,0,0,0.5);
+    color: #FFFFFF;
+    text-shadow: 1px 1px 5px #FFFFFF;
+
 }
 .master_header_under img {
     float:right;
@@ -653,6 +693,7 @@ form {
     background-color: #202020;
     background-color: #e0e0e0;
     background-color: #00a2e8;
+    background-color: #303030;
     /*background-color: #FFFFFF;*/
     text-align: center;
     /*box-shadow: 0px 0px 16px #c0c0c0;*/
@@ -664,7 +705,9 @@ form {
     /*background-size: 100% auto;*/
     /*border-top: 1px solid #00a2e8;*/
     /*-----------------*/
+
     border-bottom: 20px solid #006692;
+    border-bottom: 20px solid #282828;
     
 }
 .master_footer a {

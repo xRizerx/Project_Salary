@@ -45,9 +45,14 @@ namespace WEB_PERSONAL {
                                         Session["login_lastname"] = reader.GetString(3);
                                         Session["login_date_time"] = DateTime.Now;
                                         Session["login_total_second"] = DropDownList1X.SelectedValue;
+
+                                        
+
                                         if (Session["redirect_to"] == null) {
+                                            //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "goPage('Default.aspx');", true);
                                             Response.Redirect("Default.aspx");
                                         } else {
+                                            //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "goPage('" + Session["redirect_to"].ToString() + "');", true);
                                             Response.Redirect(Session["redirect_to"].ToString());
                                         }
                                         

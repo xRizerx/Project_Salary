@@ -21,42 +21,24 @@
     <style type="text/css">
         .wrapper {
             width: auto;
-        }
-
-        .c1 {
-            height: 640px;
-            margin: 0 auto;
-            text-align: center;
-            background-size: cover;
-        }
-
-        .c2 {
-            width: 100%;
+            background-color: #202020;
         }
 
         .mp {
-            /*background-image: url("../Image/anime2.jpg");
-            background-size: 100% auto;
-            background-attachment: fixed;*/
-            
+            background-color: #202020;
+        }
+
+        .c1 {
+            padding: 20px;
+            padding-bottom: 10px;
+            background-color: #101010;
+            margin: 0 auto;
             text-align: center;
         }
-        .mp2 {
-            /*background-color: rgba(255,255,255,0.9);*/
-            padding: 20px 0;
-        }
 
-        .i90p {
-            width: 90%;
-        }
-
-        .i75p {
-            width: 75%;
-        }
-
-        .i100p {
-            width: 100%;
-        }
+            .c1 img {
+                height: 200px;
+            }
 
         .div_sec {
             background-color: #202020;
@@ -94,17 +76,14 @@
             background-repeat: no-repeat;*/
         }
 
-        #sec2 {
-            background-color: #404040;
+        .para_group {
+            padding-left: 100px;
         }
-
-        #sec3 {
-            background-color: #606060;
-        }
-
         .para {
-            width: 1024px;
-            margin: 0 auto;
+            /*width: 1024px;
+            margin: 0 auto;*/
+            
+            color: #FFFFFF;
         }
     </style>
 
@@ -124,7 +103,7 @@
 
             <div style="height: 50px;"></div>
 
-            <div class="div_sec" id="sec1">
+            <!--div class="div_sec" id="sec1">
                 <div class="div_sec_in">
                     <div class="div_sec_in2">
                         <img src="Image/i1.jpg" />
@@ -140,14 +119,55 @@
                     </div>
 
                 </div>
+            </!--div-->
+
+            <asp:Panel ID="Panel1" runat="server" CssClass="c1">
+                <img src="Image/i1.jpg" />
+                <img src="Image/i2.jpg" />
+                <img src="Image/i3.jpg" />
+            </asp:Panel>
+
+            <div class="para_group">
+                <div class="para">
+                    <p>
+                        VERSION ALPHA
+                    </p>
+                </div>
+
+                <div class="para">
+                    <p>
+                        <strong>-= UPDATED 28 พ.ย. 2558 =-</strong>
+                        <br />
+                        <span style="display: inline-block; width: 20px"></span>- CHANGED TO DARK THEME
+                    <br />
+                        <span style="display: inline-block; width: 20px"></span>- ADDED FADE IN
+                    <br />
+                        <span style="display: inline-block; width: 20px"></span>- NEW MENU CONTENT DESIGN
+                    <br />
+                        <span style="display: inline-block; width: 20px"></span>- UPDATED DEFAULT.ASPX
+                    <br />
+                        <span style="display: inline-block; width: 20px"></span>- CHANGED FOOTER COLOR
+                    <br />
+                        <span style="display: inline-block; width: 20px"></span>- MINOR IMPROVED AND BUG FIXED
+                    <br />
+                        <span style="display: inline-block; width: 20px"></span>- กูขัม
+                    </p>
+                </div>
+
+                <div class="para">
+                    <p>
+                        c# is real
+                    </p>
+                </div>
+
+                <div class="para">
+                    <p>
+                        wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
+                    </p>
+                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                </div>
             </div>
 
-            <div class="para">
-                <p>
-                    wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
-                </p>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            </div>
 
             <div style="height: 50px"></div>
 
