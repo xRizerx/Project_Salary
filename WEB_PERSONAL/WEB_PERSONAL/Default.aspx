@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <link href="CSS/Default.css" rel="stylesheet" />
     <script>
         (function ($) {
             $(window).load(function () {
@@ -18,74 +19,7 @@
         })(jQuery);
     </script>
 
-    <style type="text/css">
-        .wrapper {
-            width: auto;
-            background-color: #202020;
-        }
-
-        .mp {
-            background-color: #202020;
-        }
-
-        .c1 {
-            padding: 20px;
-            padding-bottom: 10px;
-            background-color: #101010;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-            .c1 img {
-                height: 200px;
-            }
-
-        .div_sec {
-            background-color: #202020;
-            margin: 0;
-        }
-
-        .div_sec_in {
-            background-color: rgba(128,128,128,0.6);
-            padding: 10px 10px;
-            padding-bottom: 0px;
-            /*width: 80%;*/
-            /*overflow-x: scroll;*/
-        }
-
-        .div_sec_in2 {
-            width: 2500px;
-        }
-
-        .div_sec_in span {
-            color: #FFFFFF;
-            text-shadow: 1px 1px 1px #000000;
-        }
-
-        .div_sec img {
-            height: 240px;
-            padding: 0;
-            margin: 0;
-            box-shadow: #000000 0px 1px 10px;
-        }
-
-        #sec1 {
-            background-color: #202020;
-            /*background-image: url("Image/333.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;*/
-        }
-
-        .para_group {
-            padding-left: 100px;
-        }
-        .para {
-            /*width: 1024px;
-            margin: 0 auto;*/
-            
-            color: #FFFFFF;
-        }
-    </style>
+    
 
     <script>
         /*$(".div_sec_in2").ready(function () {
@@ -101,7 +35,7 @@
     <div class="mp">
         <div class="mp2">
 
-            <div style="height: 50px;"></div>
+            <!--div style="height: 50px;"></!--div-->
 
             <!--div class="div_sec" id="sec1">
                 <div class="div_sec_in">
@@ -127,45 +61,35 @@
                 <img src="Image/i3.jpg" />
             </asp:Panel>
 
+
             <div class="para_group">
-                <div class="para">
-                    <p>
-                        VERSION ALPHA
+                <div class="para_center">
+                    <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร (Personnel System)" style="font-size: 24px; font-weight: bold;"></asp:Label>
+                    <br />
+                    <p style="font-size: 24px; font-weight: bold;">
+                        
                     </p>
                 </div>
 
-                <div class="para">
-                    <p>
-                        <strong>-= UPDATED 28 พ.ย. 2558 =-</strong>
-                        <br />
-                        <span style="display: inline-block; width: 20px"></span>- CHANGED TO DARK THEME
-                    <br />
-                        <span style="display: inline-block; width: 20px"></span>- ADDED FADE IN
-                    <br />
-                        <span style="display: inline-block; width: 20px"></span>- NEW MENU CONTENT DESIGN
-                    <br />
-                        <span style="display: inline-block; width: 20px"></span>- UPDATED DEFAULT.ASPX
-                    <br />
-                        <span style="display: inline-block; width: 20px"></span>- CHANGED FOOTER COLOR
-                    <br />
-                        <span style="display: inline-block; width: 20px"></span>- MINOR IMPROVED AND BUG FIXED
-                    <br />
-                        <span style="display: inline-block; width: 20px"></span>- กูขัม
-                    </p>
+                <span style="font-size: 24px; font-weight: bold; color: #FFFFFF; margin-left: 100px">ประกาศ</span>
+
+                <div id="div_announce" runat="server">
+                    
                 </div>
 
-                <div class="para">
-                    <p>
-                        c# is real
-                    </p>
+                <div class="dpl_7c" style="height: 1px; margin: 20px 100px;">
+
                 </div>
 
-                <div class="para">
-                    <p>
-                        wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
-                    </p>
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <span style="font-size: 24px; font-weight: bold; color: #FFFFFF; margin-left: 100px">การอัพเดท</span>
+
+                <div id="div_update_history" runat="server">
+
                 </div>
+
+                
+
+                
             </div>
 
 

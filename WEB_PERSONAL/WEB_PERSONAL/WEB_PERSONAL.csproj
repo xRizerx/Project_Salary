@@ -138,6 +138,8 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="CSS\Access.css" />
+    <Content Include="CSS\Admin.css" />
+    <Content Include="CSS\Default.css" />
     <Content Include="CSS\Late.css" />
     <Content Include="CSS\Leave.css" />
     <Content Include="CSS\Profile.css" />
