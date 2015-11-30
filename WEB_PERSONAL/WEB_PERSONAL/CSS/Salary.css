@@ -17,3 +17,13 @@
     border-radius: 0px 0px 5px 5px;
     text-shadow: 7px 3px 10px #000000;
 }
+.cal_linkbutton{
+    padding:5px;
+    text-decoration:none;
+    background-color: rgba(20,20,20,0.5);
+    border-radius: 30px;
+    color:white;
+}
+.cal_linkbutton:hover{
+    background-color: #ff6a00;
+}
