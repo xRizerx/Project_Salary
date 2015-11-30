@@ -78,6 +78,7 @@
     <script>
         $(document).ready(function () {
             $("#i2").hide();
+            $(".all_div").css('opacity', '1');
         });
         function mover(target) {
             //var v = document.getElementById('master_header_under_id');
@@ -87,7 +88,7 @@
         }
         function toggleMenu() {
             //$("#i2").slideToggle(500);
-            
+
             $("#i2").fadeToggle(500);
             $("#pu").slideUp(500);
             //$("#pu").fadeOut(1);
@@ -116,183 +117,186 @@
 <body>
 
     <form id="form1" runat="server" onload="form1_Load">
+        <div class="all_div">
 
-        <div class="master_login">
-            <div class="master_login_pre_in">
-                <div class="master_login_in">
 
-                    <div class="master_login_left">
-                        <span class="master_menu_button" onclick="toggleMenu();"></span>
-                        <span style="display: inline-block; width:20px;"></span>
-                        <asp:Label ID="Label12" runat="server" Text="ระบบบุคลากร" Font-Bold="true"></asp:Label>
+            <div class="master_login">
+                <div class="master_login_pre_in">
+                    <div class="master_login_in">
+
+                        <div class="master_login_left">
+                            <span class="master_menu_button" onclick="toggleMenu();"></span>
+                            <span style="display: inline-block; width: 20px;"></span>
+                            <asp:Label ID="Label12" runat="server" Text="ระบบบุคลากร" Font-Bold="true"></asp:Label>
+                        </div>
+                        <ul class="master_login_right">
+                            <li>
+                                <asp:Label ID="Label9" runat="server" Text="ยินดีต้อนรับ" CssClass="master_login_name"></asp:Label>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_login_name_link" OnClick="LinkButton1_Click1">LinkButton</asp:LinkButton>
+
+                            </li>
+
+                            <li>
+                                <span style="display: inline-block; width: 5px"></span>
+                            </li>
+
+                            <li>
+                                <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click" CssClass="master_logout">ออกจากระบบ</asp:LinkButton>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="master_login_right">
-                        <li>
-                            <asp:Label ID="Label9" runat="server" Text="ยินดีต้อนรับ" CssClass="master_login_name"></asp:Label>
-                        </li>
-                        <li>
-                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_login_name_link" OnClick="LinkButton1_Click1">LinkButton</asp:LinkButton>
-
-                        </li>
-
-                        <li>
-                            <span style="display: inline-block; width: 5px"></span>
-                        </li>
-
-                        <li>
-                            <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click" CssClass="master_logout">ออกจากระบบ</asp:LinkButton>
-                        </li>
-                    </ul>
                 </div>
-            </div>
 
-            <div class="master_header_under" id="i2">
-                <div class="master_header_under_in">
-                    <div class="master_header_under_in2">
-                        <div class="master_header_under_in2_head">
-                            <table>
+                <div class="master_header_under" id="i2">
+                    <div class="master_header_under_in">
+                        <div class="master_header_under_in2">
+                            <div class="master_header_under_in2_head">
+                                <table>
+                                    <tr>
+                                        <td style="width: 70px;">
+                                            <img src="Image/RMUTTO.png" style="height: 100px; background-color: transparent;" />
+                                        </td>
+                                        <td style="width: 400px;">
+                                            <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_under_label"></asp:Label>
+
+                                            <br />
+                                            <asp:Label ID="Label10" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_under_label2"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
+
+                            <table class="master_header_under_table2">
                                 <tr>
-                                    <td style="width: 70px;">
-                                        <img src="Image/RMUTTO.png" style="height: 100px; background-color: transparent;" />
-                                    </td>
-                                    <td style="width: 400px;">
-                                        <asp:Label ID="Label4" runat="server" Text="ระบบบุคลากร" CssClass="master_header_under_label"></asp:Label>
-
-                                        <br />
-                                        <asp:Label ID="Label10" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ" CssClass="master_header_under_label2"></asp:Label>
+                                    <td class="master_header_under_left">
+                                        <span class="master_header_under_header">เมนูหลัก</span>
                                     </td>
                                     <td>
-                                        <!--img src="Image/love_live_chibi/Honoka_Kousaka.png" class="master_header_in_img1" /-->
+                                        <span class="master_header_under_header">การขึ้นเงินเดือน</span>
+                                    </td>
+                                    <td>
+                                        <span class="master_header_under_header">การลา | มาสาย | ศึกษาต่อ</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="master_header_under_left">
+                                        <a href="Default.aspx">หน้าหลัก</a>
+                                    </td>
+                                    <td>
+                                        <a href="Salary.aspx">DPIS</a>
+                                    </td>
+                                    <td>
+                                        <a href="Leave.aspx">การลา</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="master_header_under_left">
+                                        <a href="M-Admin.aspx">ติดต่อผู้ดูแลระบบ</a></td>
+                                    <td>
+                                        <a href="SalarybyID.aspx">การขึ้นเงินเดือนรายบุคคล</a>
+                                    </td>
+                                    <td>
+                                        <a href="Late.aspx">มาสาย</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="master_header_under_left">
+                                        <span class="master_header_under_header">บุคลากร</span>
+                                    </td>
+                                    <td>
+                                        <span class="master_header_under_header">การสัมมนา</span>
+                                    </td>
+                                    <td>
+                                        <a href="Study-IN.aspx">ศึกษาต่อ</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="master_header_under_left">
+                                        <a href="Person-GENERAL.aspx">เพิ่มบุคลากร</a>
+                                    </td>
+                                    <td>
+                                        <a href="SEMINAR-GENERAL.aspx">การสัมมนา</a>
+                                    </td>
+                                    <td>
+                                        <a href="Leave-Report1.aspx">ออกรายงานการลา</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="master_header_under_left">
+                                        <a href="Person-ADMIN.aspx">แก้ไขบุคลากร</a>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <a href="Study-Report1.aspx">ออกรายงานการลาศึกษาต่อ</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="master_header_under_left">
+                                        <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="Admin.aspx">จัดการระบบ</a>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <a href="insignia_citizen.aspx">เครื่องราชอิสริยาภรณ์</a>
                                     </td>
                                 </tr>
                             </table>
 
+
+
                         </div>
-
-                        
-
-                        <table class="master_header_under_table2">
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <span class="master_header_under_header">เมนูหลัก</span>
-                                </td>
-                                <td>
-                                    <span class="master_header_under_header">การขึ้นเงินเดือน</span>
-                                </td>
-                                <td>
-                                    <span class="master_header_under_header">การลา | มาสาย | ศึกษาต่อ</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="Default.aspx">หน้าหลัก</a>
-                                </td>
-                                <td>
-                                    <a href="Salary.aspx">DPIS</a>
-                                </td>
-                                <td>
-                                    <a href="Leave.aspx">การลา</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="M-Admin.aspx">ติดต่อผู้ดูแลระบบ</a></td>
-                                <td>
-                                    <a href="SalarybyID.aspx">การขึ้นเงินเดือนรายบุคคล</a>
-                                </td>
-                                <td>
-                                    <a href="Late.aspx">มาสาย</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <span class="master_header_under_header">บุคลากร</span>
-                                </td>
-                                <td>
-                                    <span class="master_header_under_header">การสัมมนา</span>
-                                </td>
-                                <td>
-                                    <a href="Study-IN.aspx">ศึกษาต่อ</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="Person-GENERAL.aspx">เพิ่มบุคลากร</a>
-                                </td>
-                                <td>
-                                    <a href="SEMINAR-GENERAL.aspx">การสัมมนา</a>
-                                </td>
-                                <td>
-                                    <a href="Leave-Report1.aspx">ออกรายงานการลา</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <a href="Person-ADMIN.aspx">แก้ไขบุคลากร</a>
-                                </td>
-                                <td></td>
-                                <td>
-                                    <a href="Study-Report1.aspx">ออกรายงานการลาศึกษาต่อ</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="master_header_under_left">
-                                    <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
-                                </td>
-                                <td></td>
-                                <td>
-                                    <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="Admin.aspx">ระบบ</a>
-                                </td>
-                                <td></td>
-                                <td>
-                                    <a href="insignia_citizen.aspx">เครื่องราชอิสริยาภรณ์</a>
-                                </td>
-                            </tr>
-                        </table>
-
-                        
-
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div style="height: 32px;"></div>
-        <!--div class="master_header_bar"></!--div-->
+            <div style="height: 32px;"></div>
+            <!--div class="master_header_bar"></!--div-->
 
-        <div class="wrapper">
-            <div>
+            <div class="wrapper">
+      
                 <div class="master_content_place_holder">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
+       
             </div>
-        </div>
-        <footer>
-            <div class="master_footer">
-                <div>
-                    <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="กองบริหารงานบุคคล สำนักงานอธิการบดี มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ"></asp:Label>
-                    <br />
-                    <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="43  หมู่ 6   ตำบลบางพระ  อำเภอศรีราชา  จังหวัดชลบุรี  20110"></asp:Label>
-                    <br />
-                    <asp:Label ID="Label6" runat="server" CssClass="master_footer_label2" Text="โทรศัพท์ <strong>0-3835-8137, 0-3835-8201</strong> โทรสาร <strong>0-3834-1808-9</strong>"></asp:Label>
-                    <br />
-                    <asp:Label ID="Label8" runat="server" CssClass="master_footer_label2" Text="เว็บไซต์ "></asp:Label>
-                    <a href="http://www.rmutto.ac.th">www.rmutto.ac.th</a>
+            <footer>
+                <div class="master_footer">
+                    <div>
+                        <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="กองบริหารงานบุคคล สำนักงานอธิการบดี มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ"></asp:Label>
+                        <br />
+                        <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="43  หมู่ 6   ตำบลบางพระ  อำเภอศรีราชา  จังหวัดชลบุรี  20110"></asp:Label>
+                        <br />
+                        <asp:Label ID="Label6" runat="server" CssClass="master_footer_label2" Text="โทรศัพท์ <strong>0-3835-8137, 0-3835-8201</strong> โทรสาร <strong>0-3834-1808-9</strong>"></asp:Label>
+                        <br />
+                        <asp:Label ID="Label8" runat="server" CssClass="master_footer_label2" Text="เว็บไซต์ "></asp:Label>
+                        <a href="http://www.rmutto.ac.th">www.rmutto.ac.th</a>
+                    </div>
                 </div>
-            </div>
-            <div class="master_footer_under">
-                <div class="master_footer_under_inner">
-                    <asp:Label ID="LabelCounter" runat="server"></asp:Label>
-                </div>
+                <div class="master_footer_under">
+                    <div class="master_footer_under_inner">
+                        <asp:Label ID="LabelCounter" runat="server"></asp:Label>
+                    </div>
 
-            </div>
-        </footer>
+                </div>
+            </footer>
+        </div>
     </form>
 </body>
 </html>

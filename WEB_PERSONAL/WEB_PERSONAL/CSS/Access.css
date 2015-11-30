@@ -5,8 +5,15 @@
 
 
     /*background-attachment: fixed;*/
+    background-color: black;
 }
-
+.all_div {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    transition: opacity linear 1s;
+}
 .login_popup {
     background-image: url(../Image/blurred-blue-background.jpg  );
     background-repeat: no-repeat;

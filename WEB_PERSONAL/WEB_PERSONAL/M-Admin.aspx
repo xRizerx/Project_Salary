@@ -5,6 +5,9 @@
             width: 150px;
             text-align:right;
         }
+        .wrapper {
+            background-color: #FFFFFF;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

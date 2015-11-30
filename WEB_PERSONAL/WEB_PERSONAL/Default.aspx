@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <link href="CSS/Default.css" rel="stylesheet" />
     <script>
         (function ($) {
             $(window).load(function () {
@@ -18,95 +19,7 @@
         })(jQuery);
     </script>
 
-    <style type="text/css">
-        .wrapper {
-            width: auto;
-        }
-
-        .c1 {
-            height: 640px;
-            margin: 0 auto;
-            text-align: center;
-            background-size: cover;
-        }
-
-        .c2 {
-            width: 100%;
-        }
-
-        .mp {
-            /*background-image: url("../Image/anime2.jpg");
-            background-size: 100% auto;
-            background-attachment: fixed;*/
-            
-            text-align: center;
-        }
-        .mp2 {
-            /*background-color: rgba(255,255,255,0.9);*/
-            padding: 20px 0;
-        }
-
-        .i90p {
-            width: 90%;
-        }
-
-        .i75p {
-            width: 75%;
-        }
-
-        .i100p {
-            width: 100%;
-        }
-
-        .div_sec {
-            background-color: #202020;
-            margin: 0;
-        }
-
-        .div_sec_in {
-            background-color: rgba(128,128,128,0.6);
-            padding: 10px 10px;
-            padding-bottom: 0px;
-            /*width: 80%;*/
-            /*overflow-x: scroll;*/
-        }
-
-        .div_sec_in2 {
-            width: 2500px;
-        }
-
-        .div_sec_in span {
-            color: #FFFFFF;
-            text-shadow: 1px 1px 1px #000000;
-        }
-
-        .div_sec img {
-            height: 240px;
-            padding: 0;
-            margin: 0;
-            box-shadow: #000000 0px 1px 10px;
-        }
-
-        #sec1 {
-            background-color: #202020;
-            /*background-image: url("Image/333.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;*/
-        }
-
-        #sec2 {
-            background-color: #404040;
-        }
-
-        #sec3 {
-            background-color: #606060;
-        }
-
-        .para {
-            width: 1024px;
-            margin: 0 auto;
-        }
-    </style>
+    
 
     <script>
         /*$(".div_sec_in2").ready(function () {
@@ -122,9 +35,9 @@
     <div class="mp">
         <div class="mp2">
 
-            <div style="height: 50px;"></div>
+            <!--div style="height: 50px;"></!--div-->
 
-            <div class="div_sec" id="sec1">
+            <!--div class="div_sec" id="sec1">
                 <div class="div_sec_in">
                     <div class="div_sec_in2">
                         <img src="Image/i1.jpg" />
@@ -140,14 +53,45 @@
                     </div>
 
                 </div>
+            </!--div-->
+
+            <asp:Panel ID="Panel1" runat="server" CssClass="c1">
+                <img src="Image/i1.jpg" />
+                <img src="Image/i2.jpg" />
+                <img src="Image/i3.jpg" />
+            </asp:Panel>
+
+
+            <div class="para_group">
+                <div class="para_center">
+                    <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร (Personnel System)" style="font-size: 24px; font-weight: bold;"></asp:Label>
+                    <br />
+                    <p style="font-size: 24px; font-weight: bold;">
+                        
+                    </p>
+                </div>
+
+                <span style="font-size: 24px; font-weight: bold; color: #FFFFFF; margin-left: 100px">ประกาศ</span>
+
+                <div id="div_announce" runat="server">
+                    
+                </div>
+
+                <div class="dpl_7c" style="height: 1px; margin: 20px 100px;">
+
+                </div>
+
+                <span style="font-size: 24px; font-weight: bold; color: #FFFFFF; margin-left: 100px">การอัพเดท</span>
+
+                <div id="div_update_history" runat="server">
+
+                </div>
+
+                
+
+                
             </div>
 
-            <div class="para">
-                <p>
-                    wqeqpi qwope piepw oeiwqpeo ipwqo ieqpweipwoq iepqwoiwp owqi pwqoe iqpow iepqwe iqwpoe iqwpoeiw pqowiepoqi wqei pqoi pqeiqo wq qweipo wqiepoiqpwoe iwqpeo qiwpoe qwiep oqwie qpwoeiwqpo eiwqpo ei
-                </p>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            </div>
 
             <div style="height: 50px"></div>
 
