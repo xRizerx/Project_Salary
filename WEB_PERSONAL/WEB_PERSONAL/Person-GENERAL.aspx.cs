@@ -1759,6 +1759,8 @@ namespace WEB_PERSONAL
                             command.Parameters.Add(new OracleParameter("REFERENCE_DOCUMENT", GridView5.Rows[i].Cells[7].Text));
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
 
+
+
                             id = command.ExecuteNonQuery();
 
                         }
