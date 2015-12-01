@@ -38,6 +38,7 @@ namespace WEB_PERSONAL
                 BindPROVINCEList();
                 DDLGender();
                 DDLNation();
+                DDLStaffTypeDown();
                 DDLTimeContact();
                 DDLBudget();
                 DDLSubStaffType();
@@ -257,6 +258,34 @@ namespace WEB_PERSONAL
                         sqlConn.Close();
 
                         DropDownNATION.Items.Insert(0, new ListItem("--กรุณาเลือก สัญชาติ--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLStaffTypeDown()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_STAFFTYPE";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownSTAFFTYPEDown.DataSource = dt;
+                        DropDownSTAFFTYPEDown.DataValueField = "STAFFTYPE_ID";
+                        DropDownSTAFFTYPEDown.DataTextField = "STAFFTYPE_NAME";
+                        DropDownSTAFFTYPEDown.DataBind();
+                        sqlConn.Close();
+
+                        DropDownSTAFFTYPEDown.Items.Insert(0, new ListItem("--กรุณาเลือก ประเภทบุคลากร--", "0"));
 
                     }
                 }
@@ -1076,6 +1105,7 @@ namespace WEB_PERSONAL
             txtZIPCODE.Text = "";
             txtTELEPHONE.Text = "";
             DropDownNATION.SelectedIndex = 0;
+            DropDownSTAFFTYPEDown.SelectedIndex = 0; 
             DropDownTIME_CONTACT.SelectedIndex = 0;
             DropDownBUDGET.SelectedIndex = 0;
             DropDownSUBSTAFFTYPE.SelectedIndex = 0;
@@ -1404,6 +1434,11 @@ namespace WEB_PERSONAL
             if (DropDownNATION.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก สัญชาติ')", true);
+                return true;
+            }
+            if (DropDownSTAFFTYPEDown.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเภทบุคลากร')", true);
                 return true;
             }
             if (DropDownTIME_CONTACT.SelectedIndex == 0)

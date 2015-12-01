@@ -922,13 +922,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtTELEPHONE;
         
         /// <summary>
-        /// txtSPECIAL_NAME control.
+        /// DropDownDEPARTMENT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSPECIAL_NAME;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownDEPARTMENT;
         
         /// <summary>
         /// txtBIRTHDAY control.
@@ -949,13 +949,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownNATION;
         
         /// <summary>
-        /// DropDownTEACH_ISCED control.
+        /// txtSPECIAL_NAME control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownTEACH_ISCED;
+        protected global::System.Web.UI.WebControls.TextBox txtSPECIAL_NAME;
         
         /// <summary>
         /// txtHOMEADD control.
@@ -965,6 +965,33 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtHOMEADD;
+        
+        /// <summary>
+        /// DropDownSTAFFTYPEDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownSTAFFTYPEDown;
+        
+        /// <summary>
+        /// DropDownTEACH_ISCED control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTEACH_ISCED;
+        
+        /// <summary>
+        /// txtMOO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMOO;
         
         /// <summary>
         /// DropDownTIME_CONTACT control.
@@ -985,13 +1012,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownGRAD_LEV;
         
         /// <summary>
-        /// txtMOO control.
+        /// txtSTREET control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMOO;
+        protected global::System.Web.UI.WebControls.TextBox txtSTREET;
         
         /// <summary>
         /// DropDownBUDGET control.
@@ -1012,13 +1039,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtGRAD_CURR;
         
         /// <summary>
-        /// txtSTREET control.
+        /// UpdatePanel11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSTREET;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel11;
+        
+        /// <summary>
+        /// ddlPROVINCE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPROVINCE;
         
         /// <summary>
         /// DropDownSUBSTAFFTYPE control.
@@ -1039,22 +1075,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownGRAD_ISCED;
         
         /// <summary>
-        /// UpdatePanel11 control.
+        /// UpdatePanel10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel11;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel10;
         
         /// <summary>
-        /// ddlPROVINCE control.
+        /// ddlAMPHUR control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPROVINCE;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAMPHUR;
         
         /// <summary>
         /// DropDownADMIN_POSITION control.
@@ -1075,22 +1111,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownGRAD_PROG;
         
         /// <summary>
-        /// UpdatePanel10 control.
+        /// UpdatePanel9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel10;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel9;
         
         /// <summary>
-        /// ddlAMPHUR control.
+        /// ddlDISTRICT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAMPHUR;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDISTRICT;
         
         /// <summary>
         /// DropDownPOSITION control.
@@ -1111,42 +1147,6 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtGRAD_UNIVDown;
         
         /// <summary>
-        /// UpdatePanel9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel9;
-        
-        /// <summary>
-        /// ddlDISTRICT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDISTRICT;
-        
-        /// <summary>
-        /// DropDownPOSITION_WORK control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownPOSITION_WORK;
-        
-        /// <summary>
-        /// DropDownGRAD_COUNTRY control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownGRAD_COUNTRY;
-        
-        /// <summary>
         /// UpdatePanel8 control.
         /// </summary>
         /// <remarks>
@@ -1165,13 +1165,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtZIPCODE;
         
         /// <summary>
-        /// DropDownDEPARTMENT control.
+        /// DropDownPOSITION_WORK control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownDEPARTMENT;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownPOSITION_WORK;
+        
+        /// <summary>
+        /// DropDownGRAD_COUNTRY control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownGRAD_COUNTRY;
         
         /// <summary>
         /// btnCancelPerson control.
