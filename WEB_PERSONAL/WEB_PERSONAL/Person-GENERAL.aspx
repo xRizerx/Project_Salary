@@ -747,15 +747,13 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownNATION" runat="server" CssClass="tb5" Width="257px" DataSourceID="Nation" DataTextField="NATION_THA" DataValueField="NATION_ID">
+                                <asp:DropDownList ID="DropDownNATION" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Nation" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT NATION_ID, NATION_THA FROM TB_NATIONAL"></asp:SqlDataSource>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownTEACH_ISCED" runat="server" CssClass="tb5" Width="257px" DataSourceID="Teach_ISCED" DataTextField="ISCED_NAME_TH" DataValueField="ISCED_ID">
+                                <asp:DropDownList ID="DropDownTEACH_ISCED" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Teach_ISCED" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT ISCED_ID, ISCED_NAME_TH FROM TB_TEACH_ISCED"></asp:SqlDataSource>
                             </td>
                         </tr>
                         <tr>
@@ -773,15 +771,13 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownTIME_CONTACT" runat="server" CssClass="tb5" Width="257px" DataSourceID="Time_Contract" DataTextField="TIME_CONTACT_NAME" DataValueField="TIME_CONTACT_ID">
+                                <asp:DropDownList ID="DropDownTIME_CONTACT" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Time_Contract" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TIME_CONTACT_ID, TIME_CONTACT_NAME FROM TB_TIME_CONTACT"></asp:SqlDataSource>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="257px" DataSourceID="Grad_LEV" DataTextField="LEV_NAME" DataValueField="LEV_ID">
+                                <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Grad_LEV" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT LEV_ID, LEV_NAME FROM TB_LEV"></asp:SqlDataSource>
                             </td>
                         </tr>
                         <tr>
@@ -800,10 +796,8 @@
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
 
-                                <asp:DropDownList ID="DropDownBUDGET" runat="server" CssClass="tb5" Width="257px" DataSourceID="Budget" DataTextField="BUDGET_NAME" DataValueField="BUDGET_ID">
+                                <asp:DropDownList ID="DropDownBUDGET" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-
-                                <asp:SqlDataSource ID="Budget" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT BUDGET_ID, BUDGET_NAME FROM TB_BUDGET"></asp:SqlDataSource>
 
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
@@ -827,15 +821,13 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownSUBSTAFFTYPE" runat="server" CssClass="tb5" Width="257px" DataSourceID="Substafftype" DataTextField="SUBSTAFFTYPE_NAME" DataValueField="SUBSTAFFTYPE_ID">
+                                <asp:DropDownList ID="DropDownSUBSTAFFTYPE" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Substafftype" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT SUBSTAFFTYPE_ID, SUBSTAFFTYPE_NAME FROM TB_SUBSTAFFTYPE"></asp:SqlDataSource>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownGRAD_ISCED" runat="server" CssClass="tb5" Width="257px" DataSourceID="Grad_ISCED" DataTextField="ISCED_NAME" DataValueField="ISCED_ID">
+                                <asp:DropDownList ID="DropDownGRAD_ISCED" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Grad_ISCED" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT ISCED_ID, ISCED_NAME FROM TB_ISCED"></asp:SqlDataSource>
                             </td>
                         </tr>
                         <tr>
@@ -851,9 +843,9 @@
                             <td style="text-align: left; width: 80px;">
                                 <asp:UpdatePanel ID="UpdatePanel11" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="ddlPROVINCE" runat="server" AutoPostBack="True" CssClass="tb5" OnSelectedIndexChanged="ddlPROVINCE_SelectedIndexChanged" Width="257px" DataSourceID="Province" DataTextField="PROVINCE_TH" DataValueField="PROVINCE_ID">
+                                        <asp:DropDownList ID="ddlPROVINCE" runat="server" AutoPostBack="True" CssClass="tb5" OnSelectedIndexChanged="ddlPROVINCE_SelectedIndexChanged" Width="257px">
                                         </asp:DropDownList>
-                                        <asp:SqlDataSource ID="Province" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_PROVINCE.PROVINCE_ID, TB_PROVINCE.PROVINCE_TH, TB_AMPHUR.AMPHUR_ID, TB_AMPHUR.AMPHUR_TH, TB_DISTRICT.DISTRICT_ID, TB_DISTRICT.DISTRICT_TH FROM TB_PROVINCE, TB_AMPHUR, TB_DISTRICT WHERE TB_PROVINCE.PROVINCE_ID = TB_AMPHUR.PROVINCE_ID AND TB_PROVINCE.PROVINCE_ID = TB_DISTRICT.PROVINCE_ID AND TB_AMPHUR.AMPHUR_ID = TB_DISTRICT.AMPHUR_ID"></asp:SqlDataSource>
+                                        
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ddlPROVINCE" EventName="SelectedIndexChanged" />
@@ -862,15 +854,13 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownADMIN_POSITION" runat="server" CssClass="tb5" Width="257px" DataSourceID="AdminPosition" DataTextField="ADMIN_POSITION_NAME" DataValueField="ADMIN_POSITION_ID">
+                                <asp:DropDownList ID="DropDownADMIN_POSITION" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="AdminPosition" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT ADMIN_POSITION_ID, ADMIN_POSITION_NAME FROM TB_ADMIN_POSITION"></asp:SqlDataSource>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownGRAD_PROG" runat="server" CssClass="tb5" Width="257px" DataSourceID="Grad_PROG" DataTextField="GRAD_PROG_NAME" DataValueField="GRAD_PROG_ID">
+                                <asp:DropDownList ID="DropDownGRAD_PROG" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Grad_PROG" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT GRAD_PROG_ID, GRAD_PROG_NAME FROM TB_PROGRAM"></asp:SqlDataSource>
                             </td>
                         </tr>
                         <tr>
@@ -886,7 +876,7 @@
                             <td style="text-align: left; width: 80px;">
                                 <asp:UpdatePanel ID="UpdatePanel10" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="ddlAMPHUR" runat="server" AutoPostBack="True" CssClass="tb5" OnSelectedIndexChanged="ddlAMPHUR_SelectedIndexChanged" Width="257px" DataSourceID="Province" DataTextField="AMPHUR_TH" DataValueField="AMPHUR_ID">
+                                        <asp:DropDownList ID="ddlAMPHUR" runat="server" AutoPostBack="True" CssClass="tb5" OnSelectedIndexChanged="ddlAMPHUR_SelectedIndexChanged" Width="257px">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -896,9 +886,8 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownPOSITION" runat="server" CssClass="tb5" Width="257px" DataSourceID="Position" DataTextField="NAME" DataValueField="ID">
+                                <asp:DropDownList ID="DropDownPOSITION" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Position" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT ID, NAME FROM TB_POSITION"></asp:SqlDataSource>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
@@ -918,7 +907,7 @@
                             <td style="text-align: left; width: 80px;">
                                 <asp:UpdatePanel ID="UpdatePanel9" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="ddlDISTRICT" runat="server" OnSelectedIndexChanged="ddlDISTRICT_SelectedIndexChanged" Width="257px" AutoPostBack="True" CssClass="tb5" DataSourceID="Province" DataTextField="DISTRICT_TH" DataValueField="DISTRICT_ID"></asp:DropDownList>
+                                        <asp:DropDownList ID="ddlDISTRICT" runat="server" OnSelectedIndexChanged="ddlDISTRICT_SelectedIndexChanged" Width="257px" AutoPostBack="True" CssClass="tb5"></asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ddlDISTRICT" EventName="SelectedIndexChanged" />
@@ -927,15 +916,13 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownPOSITION_WORK" runat="server" CssClass="tb5" Width="257px" DataSourceID="PositionWork" DataTextField="POSITION_WORK_NAME" DataValueField="POSITION_WORK_ID">
+                                <asp:DropDownList ID="DropDownPOSITION_WORK" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="PositionWork" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT POSITION_WORK_ID, POSITION_WORK_NAME FROM TB_POSITION_WORK"></asp:SqlDataSource>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownGRAD_COUNTRY" runat="server" CssClass="tb5" Width="257px" DataSourceID="Country" DataTextField="SHORT_NAME" DataValueField="COUNTRY_ID">
+                                <asp:DropDownList ID="DropDownGRAD_COUNTRY" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Country" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT COUNTRY_ID, SHORT_NAME FROM TB_COUNTRY"></asp:SqlDataSource>
                             </td>
                         </tr>
                         <tr>
@@ -957,9 +944,8 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownDEPARTMENT" runat="server" CssClass="tb5" Width="257px" DataSourceID="Department" DataTextField="DEPARTMENT_NAME" DataValueField="DEPARTMENT_ID">
+                                <asp:DropDownList ID="DropDownDEPARTMENT" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="Department" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT DEPARTMENT_ID, DEPARTMENT_NAME FROM TB_DEPARTMENT"></asp:SqlDataSource>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">&nbsp;</td>
