@@ -82,6 +82,8 @@
     color: #FFFFFF;
 }
 .div_update_history_item {
+    display: inline-block;
+    vertical-align: top;
     margin-right: 20px;
     margin-bottom: 20px;
 }
