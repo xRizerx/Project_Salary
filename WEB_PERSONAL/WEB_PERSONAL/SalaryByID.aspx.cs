@@ -12,7 +12,7 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["login_id"] == null)
+            if (Session["login_person"] == null)
             {
                 return;
             }
@@ -37,13 +37,13 @@ namespace WEB_PERSONAL
                     Mon = "ก.ย.";
                     break;
             }
-            
+
             Label20.Text = "เงินเดือนก่อนเลื่อน (ณ 1 " + Mon + " " + year + " )";
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
             Person person = new Person(Session["login_id"].ToString());
-            /*BaseSalary salary = new BaseSalary(person.PositionID);
+            BaseSalary salary = new BaseSalary(person.PositionID);
             Label11.Text = person.Name;
             Label3.Text = person.Name;
             Label13.Text = person.Lastname;
@@ -56,63 +56,23 @@ namespace WEB_PERSONAL
             Label64.Text = person.SalaryYear.ToString();
             Label66.Text = person.SalaryYear.ToString();
             Label68.Text = person.SalaryYear.ToString();
-            Label22.Text = salary.MaxSalary;*/
-
-            using (OracleConnection conn = Util.OC())
+            Label22.Text = "" + salary.MaxSalary;
+            Session["STAFFTYPE_STATUS"] = Label61.Text;
+            Label19.Text = person.AdminPositionName;
+            Label15.Text = person.PositionWorkName;
+            if (Session["STAFFTYPE_STATUS"] != null)
             {
-                using (OracleCommand command = new OracleCommand("SELECT TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME,TB_STAFFTYPE.STAFFTYPE_NAME,TB_POSITION.NAME,TB_POSITION_AND_SALARY.SALARY,TB_BASESALARY.MAXSALARY,TB_POSITION.ID FROM TB_PERSON, TB_POSITION_AND_SALARY, TB_POSITION,TB_BASESALARY,TB_STAFFTYPE WHERE TB_PERSON.CITIZEN_ID = TB_POSITION_AND_SALARY.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_BASESALARY.POSITION_ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID  AND TB_PERSON.CITIZEN_ID = '" + TextBox1.Text + "'", conn))
+                if (Session["STAFFTYPE_STATUS"].ToString() == "ข้าราชการ")
                 {
-                    using (OracleDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                Label11.Text = reader.GetString(0);
-                                Label3.Text = reader.GetString(0);
-                                Label13.Text = reader.GetString(1);
-                                Label4.Text = reader.GetString(1);
-                                Label61.Text = reader.GetString(2);
-                                Label6.Text = reader.GetString(2);
-                                Label17.Text = reader.GetString(3);
-                                Label10.Text = reader.GetString(3);
-                                TextBox2.Text = reader.GetInt32(4).ToString();
-                                Label64.Text = reader.GetInt32(4).ToString();
-                                Label66.Text = reader.GetInt32(4).ToString();
-                                Label68.Text = reader.GetInt32(4).ToString();
-                                Label22.Text = reader.GetInt32(5).ToString();
-                                Session["Position_id"] = reader.GetString(6);
-                            }
-                            Session["citizen_id"] = TextBox1.Text;
-                            Session["STAFFTYPE_STATUS"] = Label61.Text;
-                            
-                            if (Session["STAFFTYPE_STATUS"] != null)
-                            {
-                                if (Session["STAFFTYPE_STATUS"].ToString() == "ข้าราชการ")
-                                {
-                                    Panel_Government_Officer.Visible = true;
-                                    Panel_Oracle_Control.Visible = true;
-                                    Edit_page.Attributes["href"] = "SalarybyID-Edit.aspx";
-                                }
-                                if (Session["STAFFTYPE_STATUS"].ToString() == "ลูกจ้างประจำ")
-                                {
-                                    Panel_Permanent_Emp.Visible = true;
-                                    Panel_Oracle_Control.Visible = true;
-                                    Edit_page.Attributes["href"] = "SalarybyID-Edit-Permanent.aspx";
-                                }
-                            }
-                            else
-                            {
-
-                            }
-
-                        }
-                        else
-                        {
-                            string script = "alert(\"ไม่พบผู้ใช้\");";
-                            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                        }
-                    }
+                    Panel_Government_Officer.Visible = true;
+                    Panel_Oracle_Control.Visible = true;
+                    Edit_page.Attributes["href"] = "SalarybyID-Edit.aspx";
+                }
+                if (Session["STAFFTYPE_STATUS"].ToString() == "ลูกจ้างประจำ")
+                {
+                    Panel_Permanent_Emp.Visible = true;
+                    Panel_Oracle_Control.Visible = true;
+                    Edit_page.Attributes["href"] = "SalarybyID-Edit-Permanent.aspx";
                 }
             }
 
@@ -122,20 +82,14 @@ namespace WEB_PERSONAL
         {
             if (TextBox2.Text != "" && TextBox2.Text != null && TextBox3.Text != "" && TextBox3.Text != null && TextBox6.Text != "" && TextBox6.Text != null && TextBox7.Text != "" && TextBox7.Text != null)
             {
-                using (OracleConnection conn = Util.OC())
-                {
-                    OracleCommand command = new OracleCommand("Select TB_POSITION.NAME,TB_BASESALARY.maxsalary,TB_BASESALARY.minsalary,TB_BASESALARY.maxlowsalary,TB_BASESALARY.minlowsalary FROM TB_POSITION,TB_BASESALARY,TB_PERSON,TB_POSITION_AND_SALARY WHERE TB_PERSON.CITIZEN_ID = " + TextBox1.Text + " AND TB_PERSON.CITIZEN_ID = TB_POSITION_AND_SALARY.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_BASESALARY.POSITION_ID AND TB_BASESALARY.POSITION_ID = TB_POSITION.ID", conn);
-                    using (OracleDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            String position = reader.GetString(0);
-                            int maxsal = reader.GetInt32(1);
-                            int minsal = reader.GetInt32(2);
-                            int maxlowsal = reader.GetInt32(3);
-                            int minlowsal = reader.GetInt32(4);
-                            double salary = Convert.ToDouble(TextBox2.Text);
-                            /* วิชาการ */
+                Person person = new Person(TextBox1.Text);
+                BaseSalary basesalasy = new BaseSalary(person.PositionID);
+                string position = person.PositionName;
+                double maxsal = basesalasy.MaxSalary;
+                double minsal = basesalasy.MinSalary;
+                double maxlowsal = basesalasy.MaxLowSalary;
+                double minlowsal = basesalasy.MinLowSalary;
+                double salary = Convert.ToDouble(TextBox2.Text);
                             if (position == "ศาสตราจารย์")
                             {
                                 if (salary <= maxlowsal)
@@ -274,11 +228,6 @@ namespace WEB_PERSONAL
                                 else
                                     Label24.Text = "18110";
                             }
-
-
-                        }
-
-                    }
                     /* จำนวนเงินที่คำนวณได้แบบไม่ปัดเศษ */
                     double basesalcal = Convert.ToDouble(Label24.Text);
                     double rate = Convert.ToDouble(TextBox3.Text);
@@ -376,12 +325,6 @@ namespace WEB_PERSONAL
 
                     Label58.Text = "" + (Convert.ToDouble(Label52.Text) - sumup2);
                 }
-            }
-            else
-            {
-                Util.Alert(this, "กรุณากรอกข้อมูล");
-                return;
-            }
 
         }
 
@@ -446,14 +389,15 @@ namespace WEB_PERSONAL
                     string sql = "INSERT INTO TB_SALARY_UP_PERMANENT_EMP VALUES (SEQ_TB_SALARY_UP_PERMANENT_EMP.NEXTVAL,:1,:2)";
                     using (OracleCommand command = new OracleCommand(sql, conn))
                     {
-                        if (Radio_Per_Hour_1.Checked == true || Radio_Per_Hour_2.Checked==true || Radio_Per_Hour_3.Checked == true || Radio_Per_Hour_4.Checked == true)
+                        if (Radio_Per_Hour_1.Checked == true || Radio_Per_Hour_2.Checked == true || Radio_Per_Hour_3.Checked == true || Radio_Per_Hour_4.Checked == true)
                         {
                             command.Parameters.AddWithValue("1", person.PositionID);
                             command.Parameters.AddWithValue("2", Convert.ToDouble(Label79.Text));
                             command.ExecuteNonQuery();
                             string script = "alert(\"SAVE SUCCESSFUL.\");";
                             ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                        }else if (Radio_Per_Day_1.Checked == true || Radio_Per_Day_2.Checked == true || Radio_Per_Day_3.Checked == true || Radio_Per_Day_4.Checked == true)
+                        }
+                        else if (Radio_Per_Day_1.Checked == true || Radio_Per_Day_2.Checked == true || Radio_Per_Day_3.Checked == true || Radio_Per_Day_4.Checked == true)
                         {
                             command.Parameters.AddWithValue("1", Session["Position_id"].ToString());
                             command.Parameters.AddWithValue("2", Convert.ToDouble(Label80.Text));
@@ -461,7 +405,7 @@ namespace WEB_PERSONAL
                             string script = "alert(\"SAVE SUCCESSFUL.\");";
                             ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                         }
-                        else if(Radio_Per_Month_1.Checked == true || Radio_Per_Month_2.Checked == true || Radio_Per_Month_3.Checked == true || Radio_Per_Month_4.Checked == true)
+                        else if (Radio_Per_Month_1.Checked == true || Radio_Per_Month_2.Checked == true || Radio_Per_Month_3.Checked == true || Radio_Per_Month_4.Checked == true)
                         {
                             command.Parameters.AddWithValue("1", Session["Position_id"].ToString());
                             command.Parameters.AddWithValue("2", Convert.ToDouble(Label83.Text));
@@ -481,7 +425,7 @@ namespace WEB_PERSONAL
 
                 }
             }
-           
+
 
 
 
@@ -582,7 +526,7 @@ namespace WEB_PERSONAL
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Label69.Visible = true;
-            Label69.Text = "อัตราค่าจ้าง "+DropDownList1.SelectedValue+" บาท";
+            Label69.Text = "อัตราค่าจ้าง " + DropDownList1.SelectedValue + " บาท";
         }
 
         protected void DropDownList1_DataBound(object sender, EventArgs e)
@@ -649,9 +593,9 @@ namespace WEB_PERSONAL
             }
             else
             {
-                Util.Alert(this,"ข้อมูลไม่ครบถ้วน");
+                Util.Alert(this, "ข้อมูลไม่ครบถ้วน");
             }
-            
+
         }
 
         protected void LinkButton4_Click(object sender, EventArgs e)
