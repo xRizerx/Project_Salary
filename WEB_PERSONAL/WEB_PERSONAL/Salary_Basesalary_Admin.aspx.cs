@@ -9,7 +9,14 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["login_system_status_id"].ToString() == "1")
+            {
+                
+            }
+            else
+            {
+                Response.Redirect("Error-Member.aspx");
+            }
         }
 
         protected void LinkButton2_Click(object sender, EventArgs e)

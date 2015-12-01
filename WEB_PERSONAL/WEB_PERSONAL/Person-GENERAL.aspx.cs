@@ -35,6 +35,23 @@ namespace WEB_PERSONAL
                 txtSalary14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtSalaryForPosition14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
+                BindPROVINCEList();
+                DDLGender();
+                DDLNation();
+                DDLTimeContact();
+                DDLBudget();
+                DDLSubStaffType();
+                DDLAdminPosition();
+                DDLPosition();
+                DDLPositionWork();
+                DDLDepartment();
+                DDLTeachISCED();
+                DDLGradLEV();
+                DDLISCED();
+                DDLGradProg();
+                DDLGradCountry();
+                txtTELEPHONE.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+
                 Session["StudyHis"] = new DataTable();
                 ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
                 ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ (เดือน)");
@@ -83,6 +100,504 @@ namespace WEB_PERSONAL
                 GridView5.DataBind();
 
             }
+        }
+
+        private void DDLGender()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_GENDER";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGENDER.DataSource = dt;
+                        DropDownGENDER.DataValueField = "GENDER_ID";
+                        DropDownGENDER.DataTextField = "GENDER_NAME";
+                        DropDownGENDER.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGENDER.Items.Insert(0, new ListItem("--กรุณเลือก เพศ--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+
+        private void BindPROVINCEList()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_PROVINCE";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        ddlPROVINCE.DataSource = dt;
+                        ddlPROVINCE.DataValueField = "PROVINCE_ID";
+                        ddlPROVINCE.DataTextField = "PROVINCE_TH";
+                        ddlPROVINCE.DataBind();
+                        sqlConn.Close();
+
+                        ddlPROVINCE.Items.Insert(0, new ListItem("--กรุณาเลือก จังหวัด--", "0"));
+                        ddlAMPHUR.Items.Insert(0, new ListItem("--กรุณาเลือก อำเภอ--", "0"));
+                        ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือก ตำบล--", "0"));
+                        txtZIPCODE.Text = "";
+                    }
+                }
+            }
+            catch { }
+        }
+
+        protected void ddlPROVINCE_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_AMPHUR where PROVINCE_ID=:PROVINCE_ID";
+                        sqlCmd.Parameters.AddWithValue(":PROVINCE_ID", ddlPROVINCE.SelectedValue);
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        ddlAMPHUR.DataSource = dt;
+                        ddlAMPHUR.DataValueField = "AMPHUR_ID";
+                        ddlAMPHUR.DataTextField = "AMPHUR_TH";
+                        ddlAMPHUR.DataBind();
+                        sqlConn.Close();
+
+                        ddlAMPHUR.Items.Insert(0, new ListItem("--กรุณาเลือก อำเภอ--", "0"));
+                        ddlDISTRICT.Items.Clear();
+                        ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือก ตำบล--", "0"));
+                        txtZIPCODE.Text = "";
+                    }
+                }
+            }
+            catch { }
+        }
+
+        protected void ddlAMPHUR_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DISTRICT where AMPHUR_ID=:DISTRICT_ID";
+                        sqlCmd.Parameters.AddWithValue(":DISTRICT_ID", ddlAMPHUR.SelectedValue);
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        ddlDISTRICT.DataSource = dt;
+                        ddlDISTRICT.DataValueField = "DISTRICT_ID";
+                        ddlDISTRICT.DataTextField = "DISTRICT_TH";
+                        ddlDISTRICT.DataBind();
+                        sqlConn.Close();
+
+                        ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือก ตำบล--", "0"));
+                        txtZIPCODE.Text = "";
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        protected void ddlDISTRICT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ZIPCODE = "select POST_CODE from TB_DISTRICT where DISTRICT_ID = " + ddlDISTRICT.SelectedValue + "";
+
+            OracleConnection conn = new OracleConnection(ConfigurationManager.ConnectionStrings["RMUTTOORCL"].ConnectionString);
+
+            conn.Open();
+
+            OracleCommand SC = new OracleCommand(ZIPCODE, conn);
+            string ZIPCODE2 = SC.ExecuteScalar().ToString();
+
+            txtZIPCODE.Text = ZIPCODE2;
+        }
+
+        private void DDLNation()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_NATIONAL";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownNATION.DataSource = dt;
+                        DropDownNATION.DataValueField = "NATION_ID";
+                        DropDownNATION.DataTextField = "NATION_THA";
+                        DropDownNATION.DataBind();
+                        sqlConn.Close();
+
+                        DropDownNATION.Items.Insert(0, new ListItem("--กรุณาเลือก สัญชาติ--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLTimeContact()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_TIME_CONTACT";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownTIME_CONTACT.DataSource = dt;
+                        DropDownTIME_CONTACT.DataValueField = "TIME_CONTACT_ID";
+                        DropDownTIME_CONTACT.DataTextField = "TIME_CONTACT_NAME";
+                        DropDownTIME_CONTACT.DataBind();
+                        sqlConn.Close();
+
+                        DropDownTIME_CONTACT.Items.Insert(0, new ListItem("--กรุณาเลือก ระยะเวลาจ้าง--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLBudget()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_BUDGET";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownBUDGET.DataSource = dt;
+                        DropDownBUDGET.DataValueField = "BUDGET_ID";
+                        DropDownBUDGET.DataTextField = "BUDGET_NAME";
+                        DropDownBUDGET.DataBind();
+                        sqlConn.Close();
+
+                        DropDownBUDGET.Items.Insert(0, new ListItem("--กรุณาเลือก ประเภทเงินจ้าง--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLSubStaffType()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_SUBSTAFFTYPE";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownSUBSTAFFTYPE.DataSource = dt;
+                        DropDownSUBSTAFFTYPE.DataValueField = "SUBSTAFFTYPE_ID";
+                        DropDownSUBSTAFFTYPE.DataTextField = "SUBSTAFFTYPE_NAME";
+                        DropDownSUBSTAFFTYPE.DataBind();
+                        sqlConn.Close();
+
+                        DropDownSUBSTAFFTYPE.Items.Insert(0, new ListItem("--กรุณาเลือก ประเภทบุคลากรย่อย--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLAdminPosition()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_ADMIN_POSITION";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownADMIN_POSITION.DataSource = dt;
+                        DropDownADMIN_POSITION.DataValueField = "ADMIN_POSITION_ID";
+                        DropDownADMIN_POSITION.DataTextField = "ADMIN_POSITION_NAME";
+                        DropDownADMIN_POSITION.DataBind();
+                        sqlConn.Close();
+
+                        DropDownADMIN_POSITION.Items.Insert(0, new ListItem("--กรุณาเลือก ตำแหน่งบริหาร--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLPosition()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_POSITION";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownPOSITION.DataSource = dt;
+                        DropDownPOSITION.DataValueField = "POSITION_ID";
+                        DropDownPOSITION.DataTextField = "POSITION_NAME";
+                        DropDownPOSITION.DataBind();
+                        sqlConn.Close();
+
+                        DropDownPOSITION.Items.Insert(0, new ListItem("--กรุณาเลือก ตำแหน่งทางวิชาการ--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLPositionWork()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_POSITION_WORK";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownPOSITION_WORK.DataSource = dt;
+                        DropDownPOSITION_WORK.DataValueField = "POSITION_WORK_ID";
+                        DropDownPOSITION_WORK.DataTextField = "POSITION_WORK_NAME";
+                        DropDownPOSITION_WORK.DataBind();
+                        sqlConn.Close();
+
+                        DropDownPOSITION_WORK.Items.Insert(0, new ListItem("--กรุณาเลือก ตำแหน่งในสายงาน--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLDepartment()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DEPARTMENT";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownDEPARTMENT.DataSource = dt;
+                        DropDownDEPARTMENT.DataValueField = "DEPARTMENT_ID";
+                        DropDownDEPARTMENT.DataTextField = "DEPARTMENT_NAME";
+                        DropDownDEPARTMENT.DataBind();
+                        sqlConn.Close();
+
+                        DropDownDEPARTMENT.Items.Insert(0, new ListItem("--กรุณาเลือก คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLTeachISCED()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_TEACH_ISCED";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownTEACH_ISCED.DataSource = dt;
+                        DropDownTEACH_ISCED.DataValueField = "ISCED_ID";
+                        DropDownTEACH_ISCED.DataTextField = "ISCED_NAME_TH";
+                        DropDownTEACH_ISCED.DataBind();
+                        sqlConn.Close();
+
+                        DropDownTEACH_ISCED.Items.Insert(0, new ListItem("--กรุณาเลือก กลุ่มสาขาวิชาที่สอน(ISCED)--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLGradLEV()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_LEV";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGRAD_LEV.DataSource = dt;
+                        DropDownGRAD_LEV.DataValueField = "LEV_ID";
+                        DropDownGRAD_LEV.DataTextField = "LEV_NAME";
+                        DropDownGRAD_LEV.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGRAD_LEV.Items.Insert(0, new ListItem("--กรุณาเลือก ระดับการศึกษาที่จบสูงสุด--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLISCED()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_ISCED";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGRAD_ISCED.DataSource = dt;
+                        DropDownGRAD_ISCED.DataValueField = "ISCED_ID";
+                        DropDownGRAD_ISCED.DataTextField = "ISCED_NAME";
+                        DropDownGRAD_ISCED.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGRAD_ISCED.Items.Insert(0, new ListItem("--กรุณาเลือก กลุ่มสาขาวิชาที่จบสูงสุด(ISCED)--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLGradProg()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_PROGRAM";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGRAD_PROG.DataSource = dt;
+                        DropDownGRAD_PROG.DataValueField = "GRAD_PROG_ID";
+                        DropDownGRAD_PROG.DataTextField = "GRAD_PROG_NAME";
+                        DropDownGRAD_PROG.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGRAD_PROG.Items.Insert(0, new ListItem("--กรุณาเลือก สาขาวิชาที่จบสูงสุด--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLGradCountry()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_COUNTRY order by SHORT_NAME asc";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGRAD_COUNTRY.DataSource = dt;
+                        DropDownGRAD_COUNTRY.DataValueField = "COUNTRY_ID";
+                        DropDownGRAD_COUNTRY.DataTextField = "SHORT_NAME";
+                        DropDownGRAD_COUNTRY.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGRAD_COUNTRY.Items.Insert(0, new ListItem("--กรุณาเลือก ประเทศที่จบการศึกษาสูงสุด--", "0"));
+
+                    }
+                }
+            }
+            catch { }
         }
 
         private void DDLMisnistry()
@@ -548,6 +1063,36 @@ namespace WEB_PERSONAL
             txtRefDoc14.Text = "";
         }
 
+        protected void ClearDataDown()
+        {
+            DropDownGENDER.SelectedIndex = 0;
+            txtBIRTHDAY.Text = "";
+            txtHOMEADD.Text = "";
+            txtMOO.Text = "";
+            txtSTREET.Text = "";
+            ddlPROVINCE.SelectedIndex = 0;
+            ddlAMPHUR.SelectedIndex = 0;
+            ddlDISTRICT.SelectedIndex = 0;
+            txtZIPCODE.Text = "";
+            txtTELEPHONE.Text = "";
+            DropDownNATION.SelectedIndex = 0;
+            DropDownTIME_CONTACT.SelectedIndex = 0;
+            DropDownBUDGET.SelectedIndex = 0;
+            DropDownSUBSTAFFTYPE.SelectedIndex = 0;
+            DropDownADMIN_POSITION.SelectedIndex = 0;
+            DropDownPOSITION.SelectedIndex = 0;
+            DropDownPOSITION_WORK.SelectedIndex = 0;
+            DropDownDEPARTMENT.SelectedIndex = 0;
+            txtSPECIAL_NAME.Text = "";
+            DropDownTEACH_ISCED.SelectedIndex = 0;
+            DropDownGRAD_LEV.SelectedIndex = 0;
+            txtGRAD_CURR.Text = "";
+            DropDownGRAD_ISCED.SelectedIndex = 0;
+            DropDownGRAD_PROG.SelectedIndex = 0;
+            txtGRAD_UNIVDown.Text = "";
+            DropDownGRAD_COUNTRY.SelectedIndex = 0;
+        }
+
         public bool NeedData1To9()
         {
             if (DropDownMinistry.SelectedIndex == 0)
@@ -819,7 +1364,123 @@ namespace WEB_PERSONAL
             return false;
         }
 
-        protected void btnCancelPerson_Click(object sender, EventArgs e)
+        public bool NeedDataDown()
+        {
+            if (DropDownGENDER.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลเพศ')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtBIRTHDAY.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันเกิด')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtHOMEADD.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก บ้านเลขที่')", true);
+                return true;
+            }
+            if (ddlPROVINCE.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลจังหวัด')", true);
+                return true;
+            }
+            if (ddlAMPHUR.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลอำเภอ')", true);
+                return true;
+            }
+            if (ddlDISTRICT.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลตำบล')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtZIPCODE.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสไปรษณีย์')", true);
+                return true;
+            }
+            if (DropDownNATION.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก สัญชาติ')", true);
+                return true;
+            }
+            if (DropDownTIME_CONTACT.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระยะเวลาจ้าง')", true);
+                return true;
+            }
+            if (DropDownBUDGET.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเภทเงินจ้าง')", true);
+                return true;
+            }
+            if (DropDownADMIN_POSITION.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งบริหาร')", true);
+                return true;
+            }
+            if (DropDownPOSITION.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งทางวิชาการ')", true);
+                return true;
+            }
+            if (DropDownPOSITION_WORK.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งในสายงาน')", true);
+                return true;
+            }
+            if (DropDownDEPARTMENT.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtSPECIAL_NAME.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สาขางานที่เชี่ยวชาญ')", true);
+                return true;
+            }
+            if (DropDownTEACH_ISCED.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กลุ่มสาขาวิชาที่สอน(ISCED)')", true);
+                return true;
+            }
+            if (DropDownGRAD_LEV.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระดับการศึกษาที่จบสูงสุด')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtGRAD_CURR.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หลักสูตรที่จบการศึกษาสูงสุด')", true);
+                return true;
+            }
+            if (DropDownGRAD_ISCED.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กลุ่มสาขาวิชาที่จบสูงสุด(ISCED)')", true);
+                return true;
+            }
+            if (DropDownGRAD_PROG.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก สาขาวิชาที่จบสูงสุด')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtGRAD_UNIVDown.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อสถาบันที่จบการศึกษาสูงสุด')", true);
+                return true;
+            }
+            if (DropDownGRAD_COUNTRY.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเทศที่จบการศึกษาสูงสุด')", true);
+                return true;
+            }
+
+            return false;
+        }
+
+    protected void btnCancelPerson_Click(object sender, EventArgs e)
         {
             ClearData();
             ClearDataGridViewNumber10();
@@ -827,6 +1488,7 @@ namespace WEB_PERSONAL
             ClearDataGridViewNumber12();
             ClearDataGridViewNumber13();
             ClearDataGridViewNumber14();
+            ClearDataDown();
 
             Session["StudyHis"] = new DataTable();
             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
@@ -875,6 +1537,7 @@ namespace WEB_PERSONAL
         {
             //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
             if (NeedData1To9()) { return; }
+            if (NeedDataDown()) { return; }
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
             P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
@@ -1096,6 +1759,8 @@ namespace WEB_PERSONAL
                             command.Parameters.Add(new OracleParameter("REFERENCE_DOCUMENT", GridView5.Rows[i].Cells[7].Text));
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
 
+
+
                             id = command.ExecuteNonQuery();
 
                         }
@@ -1119,6 +1784,7 @@ namespace WEB_PERSONAL
             ClearDataGridViewNumber12();
             ClearDataGridViewNumber13();
             ClearDataGridViewNumber14();
+            ClearDataDown();
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
              

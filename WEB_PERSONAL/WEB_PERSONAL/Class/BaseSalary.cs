@@ -36,7 +36,7 @@ namespace WEB_PERSONAL.Class
                         }
                     }
                 }
-                using (OracleCommand command = new OracleCommand("select nvl(tb_position.position_name,'-') from tb_position,tb_basesalary where tb_basesalary.position_id = :1 and tb_position.position_id = tb_basesalary.position_id", conn))
+                using (OracleCommand command = new OracleCommand("select nvl(tb_position.name,'-') from tb_position,tb_basesalary where tb_basesalary.position_id = :1 and tb_position.id = tb_basesalary.position_id", conn))
                 {
                     command.Parameters.AddWithValue("1", position_id);
                     using (OracleDataReader reader = command.ExecuteReader())

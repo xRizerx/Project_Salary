@@ -65,6 +65,10 @@ namespace WEB_PERSONAL.Class {
         private string couple_old_lastname;
         private double salary;
         private double salary_year;
+        private string admin_position_id;
+        private string admin_position_name;
+        private string position_work_id;
+        private string position_work_name;
         private List<PositionAndSalary> position_and_salary_list = new List<PositionAndSalary>();
         private List<StudyHistory> study_history_list = new List<StudyHistory>();
         private List<JobLicense> job_license_list = new List<JobLicense>();
@@ -438,6 +442,70 @@ namespace WEB_PERSONAL.Class {
                                 }
                             }
                         }
+                        using (OracleCommand command = new OracleCommand("select nvl(admin_position_id,'-') from tb_person where citizen_id = :1",con))
+                        {
+                            command.Parameters.AddWithValue("1", citizen_id);
+                            using (OracleDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    reader.Read();
+                                    admin_position_id = reader.GetString(0);
+                                }
+                                else
+                                {
+                                    admin_position_id = "-";
+                                }
+                            }
+                        }
+                        using (OracleCommand command = new OracleCommand("select nvl(tb_admin_position.admin_position_name,'-') from tb_person,tb_admin_position where citizen_id = :1 and tb_person.admin_position_id = tb_admin_position.admin_position_id", con))
+                        {
+                            command.Parameters.AddWithValue("1", citizen_id);
+                            using (OracleDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    reader.Read();
+                                    admin_position_name = reader.GetString(0);
+                                }
+                                else
+                                {
+                                    admin_position_name = "-";
+                                }
+                            }
+                        }
+                        using (OracleCommand command = new OracleCommand("select nvl(position_work_id,'-') from tb_person where citizen_id = :1", con))
+                        {
+                            command.Parameters.AddWithValue("1", citizen_id);
+                            using (OracleDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    reader.Read();
+                                    position_work_id = reader.GetString(0);
+                                }
+                                else
+                                {
+                                    position_work_id = "-";
+                                }
+                            }
+                        }
+                        using (OracleCommand command = new OracleCommand("select nvl(tb_position_work.position_work_name,'-') from tb_person,tb_position_work where citizen_id = :1 and tb_person.position_work_id = tb_position_work.position_work_id", con))
+                        {
+                            command.Parameters.AddWithValue("1", citizen_id);
+                            using (OracleDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    reader.Read();
+                                    position_work_name = reader.GetString(0);
+                                }
+                                else
+                                {
+                                    position_work_name = "-";
+                                }
+                            }
+                        }
                     }
 
                 }
@@ -568,6 +636,22 @@ namespace WEB_PERSONAL.Class {
         }
         public double SalaryYear {
             get { return salary_year; }
+        }
+        public string AdminPositionName
+        {
+            get { return admin_position_name; }
+        }
+        public string AdminPositionID
+        {
+            get { return admin_position_id;  }
+        }
+        public string PositionWorkID
+        {
+            get { return position_work_id; }
+        }
+        public string PositionWorkName
+        {
+            get { return position_work_name; }
         }
 
     }
