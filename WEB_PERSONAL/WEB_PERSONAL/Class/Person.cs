@@ -3,12 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.OracleClient;
+using System.Globalization;
 
 namespace WEB_PERSONAL.Class {
 
     // universal person
     // created by tangkwa
     public class Person {
+
+        //static -----------------------------------------------------------------
+        public static bool IsExist(string citizen_id) {
+            using (OracleConnection con = Util.OC()) {
+                using (OracleCommand command = new OracleCommand("SELECT COUNT(*) FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
+                    command.Parameters.AddWithValue("1", citizen_id);
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            reader.Read();
+                            if (reader.GetInt32(0) > 0) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            }
+            }
+        //instance ---------------------------------------------------------------------
 
         private bool exist;
         private string citizen_id;
@@ -24,6 +47,7 @@ namespace WEB_PERSONAL.Class {
         private string staff_type_name;
         private int position_id;
         private string position_name;
+        private string position_name_description;
         private int ministry_id;
         private string ministry_name;
         private string department_name;
@@ -38,11 +62,13 @@ namespace WEB_PERSONAL.Class {
         private string couple_name;
         private string couple_lastname;
         private string couple_old_lastname;
-        private List<PositionAndSalary> positionAndSalaryList = new List<PositionAndSalary>();
-        private List<StudyHistory> studyHistoryList = new List<StudyHistory>();
-        private List<JobLicense> jobLicenseList = new List<JobLicense>();
-        private List<TrainingHistory> trainingHistory = new List<TrainingHistory>();
-        private List<DisciplinaryAndAmnesty> disciplinaryAndAmnestyList = new List<DisciplinaryAndAmnesty>();
+        private double salary;
+        private double salary_year;
+        private List<PositionAndSalary> position_and_salary_list = new List<PositionAndSalary>();
+        private List<StudyHistory> study_history_list = new List<StudyHistory>();
+        private List<JobLicense> job_license_list = new List<JobLicense>();
+        private List<TrainingHistory> training_history_list = new List<TrainingHistory>();
+        private List<DisciplinaryAndAmnesty> disciplinary_and_amnesty_list = new List<DisciplinaryAndAmnesty>();
 
 
         public Person(string citizen_id) {
@@ -60,7 +86,7 @@ namespace WEB_PERSONAL.Class {
                                 exist = false;
                             }
                         } else {
-                            
+                            exist = false;
                         }
                     }
                 }
@@ -176,7 +202,7 @@ namespace WEB_PERSONAL.Class {
                         }
                     }
                 }
-                using (OracleCommand command = new OracleCommand("SELECT TB_POSITION.NAME FROM TB_POSITION_AND_SALARY, TB_POSITION WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = :1 AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID ORDER BY TB_POSITION_AND_SALARY.ID", con)) {
+                using (OracleCommand command = new OracleCommand("SELECT NVL(TB_POSITION.NAME, '-') FROM TB_POSITION_AND_SALARY, TB_POSITION WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = :1 AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID ORDER BY TB_POSITION_AND_SALARY.ID", con)) {
                     command.Parameters.AddWithValue("1", citizen_id);
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
@@ -184,6 +210,17 @@ namespace WEB_PERSONAL.Class {
                             position_name = reader.GetString(0);
                         } else {
                             position_name = "-";
+                        }
+                    }
+                }
+                using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_NAME, '-') FROM TB_POSITION_AND_SALARY WHERE CITIZEN_ID = :1 ORDER BY ID DESC", con)) {
+                    command.Parameters.AddWithValue("1", citizen_id);
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            reader.Read();
+                            position_name_description = reader.GetString(0);
+                        } else {
+                            position_name_description = "-";
                         }
                     }
                 }
@@ -301,7 +338,7 @@ namespace WEB_PERSONAL.Class {
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
                             while(reader.Read()) {
-                                positionAndSalaryList.Add(new PositionAndSalary(reader.GetInt32(0)));
+                                position_and_salary_list.Add(new PositionAndSalary(reader.GetInt32(0)));
                             }
                         } else {
                             
@@ -313,7 +350,7 @@ namespace WEB_PERSONAL.Class {
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
                             while (reader.Read()) {
-                                studyHistoryList.Add(new StudyHistory(reader.GetInt32(0)));
+                                study_history_list.Add(new StudyHistory(reader.GetInt32(0)));
                             }
                         } else {
 
@@ -325,7 +362,7 @@ namespace WEB_PERSONAL.Class {
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
                             while (reader.Read()) {
-                                jobLicenseList.Add(new JobLicense(reader.GetInt32(0)));
+                                job_license_list.Add(new JobLicense(reader.GetInt32(0)));
                             }
                         } else {
 
@@ -337,7 +374,7 @@ namespace WEB_PERSONAL.Class {
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
                             while (reader.Read()) {
-                                trainingHistory.Add(new TrainingHistory(reader.GetInt32(0)));
+                                training_history_list.Add(new TrainingHistory(reader.GetInt32(0)));
                             }
                         } else {
 
@@ -349,13 +386,59 @@ namespace WEB_PERSONAL.Class {
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
                             while (reader.Read()) {
-                                disciplinaryAndAmnestyList.Add(new DisciplinaryAndAmnesty(reader.GetInt32(0)));
+                                disciplinary_and_amnesty_list.Add(new DisciplinaryAndAmnesty(reader.GetInt32(0)));
                             }
                         } else {
 
                         }
                     }
                 }
+                using (OracleCommand command = new OracleCommand("SELECT NVL(TB_POSITION_AND_SALARY.SALARY, -1) FROM TB_PERSON, TB_POSITION_AND_SALARY WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = :1 AND TB_POSITION_AND_SALARY.CITIZEN_ID = TB_PERSON.CITIZEN_ID ORDER BY TB_POSITION_AND_SALARY.ID", con)) {
+                    command.Parameters.AddWithValue("1", citizen_id);
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            reader.Read();
+                            salary = reader.GetDouble(0);
+                        } else {
+                            salary = -1;
+                        }
+                    }
+                }
+                {
+                    int m = 3;
+                    int y = Util.ODTN().Year;
+                    switch (DateTime.Now.Month) {
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 10:
+                        case 11:
+                        case 12:
+                            m = 9;
+                            break;
+                    }
+                    switch (DateTime.Now.Month) {
+                        case 1:
+                        case 2:
+                        case 3:
+                            --y;
+                            break;
+                    }
+                    using (OracleCommand command = new OracleCommand("select salary from tb_position_and_salary where CITIZEN_ID = :1 and extract(MONTH FROM DDATE) = :2 and extract(YEAR FROM DDATE) = :3", con)) {
+                        command.Parameters.AddWithValue("1", citizen_id);
+                        command.Parameters.AddWithValue("2", m);
+                        command.Parameters.AddWithValue("3", y);
+                        using (OracleDataReader reader = command.ExecuteReader()) {
+                            if (reader.HasRows) {
+                                reader.Read();
+                                salary_year = reader.GetDouble(0);
+                            } else {
+                                salary_year = -1;
+                            }
+                        }
+                    }
+                }
+                
             }
         }
 
@@ -403,6 +486,9 @@ namespace WEB_PERSONAL.Class {
         }
         public string PositionName {
             get { return position_name; }
+        }
+        public string PositionNameDescription {
+            get { return position_name_description; }
         }
         public int MinistryID {
             get { return ministry_id; }
@@ -456,19 +542,25 @@ namespace WEB_PERSONAL.Class {
             get { return couple_name + " " + couple_lastname; }
         }
         public List<PositionAndSalary> PositionAndSalaryList {
-            get { return positionAndSalaryList; }
+            get { return position_and_salary_list; }
         }
         public List<StudyHistory> StudyHistoryList {
-            get { return studyHistoryList; }
+            get { return study_history_list; }
         }
         public List<JobLicense> JobLicenseList {
-            get { return jobLicenseList; }
+            get { return job_license_list; }
         }
         public List<TrainingHistory> TrainingHistoryList {
-            get { return trainingHistory; }
+            get { return training_history_list; }
         }
         public List<DisciplinaryAndAmnesty> DisciplinaryAndAmnestyList {
-            get { return disciplinaryAndAmnestyList; }
+            get { return disciplinary_and_amnesty_list; }
+        }
+        public double Salary {
+            get { return salary; }
+        }
+        public double SalaryYear {
+            get { return salary_year; }
         }
 
     }

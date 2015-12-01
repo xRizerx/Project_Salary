@@ -209,7 +209,6 @@ namespace WEB_PERSONAL {
                 test.HeaderText = "เหตุผล";
                 GridView1.Columns.Add(test);
             }
-
             SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", sql);
             GridView1.DataSource = sds;
             GridView1.DataBind();
