@@ -917,7 +917,7 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownPOSITION" runat="server" CssClass="tb5" Width="257px">
+                                <asp:DropDownList ID="DropDownPOSITIONDown" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>

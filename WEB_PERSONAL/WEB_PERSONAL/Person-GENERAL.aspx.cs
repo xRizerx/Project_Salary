@@ -419,13 +419,13 @@ namespace WEB_PERSONAL
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
-                        DropDownPOSITION.DataSource = dt;
-                        DropDownPOSITION.DataValueField = "POSITION_ID";
-                        DropDownPOSITION.DataTextField = "POSITION_NAME";
-                        DropDownPOSITION.DataBind();
+                        DropDownPOSITIONDown.DataSource = dt;
+                        DropDownPOSITIONDown.DataValueField = "ST_ID";
+                        DropDownPOSITIONDown.DataTextField = "NAME";
+                        DropDownPOSITIONDown.DataBind();
                         sqlConn.Close();
 
-                        DropDownPOSITION.Items.Insert(0, new ListItem("--กรุณาเลือก ตำแหน่งทางวิชาการ--", "0"));
+                        DropDownPOSITIONDown.Items.Insert(0, new ListItem("--กรุณาเลือก ตำแหน่งทางวิชาการ--", "0"));
 
                     }
                 }
@@ -1110,7 +1110,7 @@ namespace WEB_PERSONAL
             DropDownBUDGET.SelectedIndex = 0;
             DropDownSUBSTAFFTYPE.SelectedIndex = 0;
             DropDownADMIN_POSITION.SelectedIndex = 0;
-            DropDownPOSITION.SelectedIndex = 0;
+            DropDownPOSITIONDown.SelectedIndex = 0;
             DropDownPOSITION_WORK.SelectedIndex = 0;
             DropDownDEPARTMENT.SelectedIndex = 0;
             txtSPECIAL_NAME.Text = "";
@@ -1456,7 +1456,7 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งบริหาร')", true);
                 return true;
             }
-            if (DropDownPOSITION.SelectedIndex == 0)
+            if (DropDownPOSITIONDown.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งทางวิชาการ')", true);
                 return true;
