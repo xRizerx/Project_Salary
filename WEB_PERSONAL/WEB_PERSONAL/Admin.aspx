@@ -86,6 +86,9 @@
 
         </div>
 
+        <br />
+        <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
+
         <div class="master_dark_div_sec">
             <div class="master_dark_div_sec_title">
                 ประกาศ

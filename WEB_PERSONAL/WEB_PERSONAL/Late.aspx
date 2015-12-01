@@ -8,189 +8,177 @@
             $("#ContentPlaceHolder1_TextBox11,#ContentPlaceHolder1_TextBox1").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
         });
     </script>
-    
+
     <link href="CSS/Late.css" rel="stylesheet" />
 
     <div class="mp">
 
 
-        <div>
-            <table class="t1">
-                <tr>
-                    <td>
-                        <div class="master_dark_div_sec" id="sec1">
-                            <div>
-                                <asp:Label ID="Label36" runat="server" Text="เพิ่มเวลาเข้างาน" CssClass="master_dark_div_sec_title"></asp:Label>
-                            </div>
-                            <div class="master_dark_div_sec_pre_in" id="sec1_pre_in">
-                                <div class="master_dark_div_sec_in" id="sec1_in">
-                                    <table style="width: 100%;">
-                                        <tr>
-                                            <td class="auto-style83">
-                                                <asp:Label ID="Label41" runat="server" Text="วันที่"></asp:Label>
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:TextBox ID="TextBox11" runat="server" CssClass="master_dark_textbox"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style83">
-                                                <asp:Label ID="Label44" runat="server" Text="รหัสพนักงาน"></asp:Label>
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:TextBox ID="TextBox21" runat="server" CssClass="master_dark_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
-                                                <asp:LinkButton ID="LinkButton20" runat="server" CssClass="master_dark_button" OnClick="LinkButton20_Click">ตรวจสอบ</asp:LinkButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style83">
-                                                <asp:Label ID="Label47" runat="server" Text="ชื่อพนักงาน"></asp:Label>
 
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:Label ID="Label45" runat="server"></asp:Label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style83">
-                                                <asp:Label ID="Label39" runat="server" Text="เวลาเข้า"></asp:Label>
-                                            </td>
-                                            <td class="auto-style64">
-                                                <asp:TextBox ID="TextBox22" runat="server" Width="50px" placeholder="ชั่วโมง" CssClass="master_dark_textbox"></asp:TextBox>
-                                                <asp:TextBox ID="TextBox23" runat="server" Width="50px" placeholder="นาที" CssClass="master_dark_textbox"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style83">
-                                                <asp:Label ID="Label40" runat="server" Text="เวลาออก"></asp:Label>
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:TextBox ID="TextBox24" runat="server" placeholder="ชั่วโมง" Width="50px" CssClass="master_dark_textbox"></asp:TextBox>
-                                                <asp:TextBox ID="TextBox25" runat="server" placeholder="นาที" Width="50px" CssClass="master_dark_textbox"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style81"></td>
-                                            <td class="auto-style64">
-                                                <asp:LinkButton ID="LinkButton11" runat="server" CssClass="master_dark_button" OnClick="LinkButton11_Click">เพิ่ม</asp:LinkButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style83">&nbsp;</td>
-                                            <td class="auto-style67">&nbsp;</td>
-                                        </tr>
-                                    </table>
+        <div class="master_dark_div_sec" id="sec1">
+            <div>
+                <asp:Label ID="Label36" runat="server" Text="เพิ่มเวลาเข้างาน" CssClass="master_dark_div_sec_title"></asp:Label>
+            </div>
+            <div class="master_dark_div_sec_pre_in" id="sec1_pre_in">
+                <div class="master_dark_div_sec_in" id="sec1_in">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td class="auto-style83">
+                                <asp:Label ID="Label41" runat="server" Text="วันที่"></asp:Label>
+                            </td>
+                            <td class="auto-style67">
+                                <asp:TextBox ID="TextBox11" runat="server" CssClass="master_dark_textbox"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style83">
+                                <asp:Label ID="Label44" runat="server" Text="รหัสพนักงาน"></asp:Label>
+                            </td>
+                            <td class="auto-style67">
+                                <asp:TextBox ID="TextBox21" runat="server" CssClass="master_dark_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
+                                <asp:LinkButton ID="LinkButton20" runat="server" CssClass="master_dark_button" OnClick="LinkButton20_Click">ตรวจสอบ</asp:LinkButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style83">
+                                <asp:Label ID="Label47" runat="server" Text="ชื่อพนักงาน"></asp:Label>
 
-                                </div>
-                            </div>
+                            </td>
+                            <td class="auto-style67">
+                                <asp:Label ID="Label45" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style83">
+                                <asp:Label ID="Label39" runat="server" Text="เวลาเข้า"></asp:Label>
+                            </td>
+                            <td class="auto-style64">
+                                <asp:TextBox ID="TextBox22" runat="server" Width="50px" placeholder="ชั่วโมง" CssClass="master_dark_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox23" runat="server" Width="50px" placeholder="นาที" CssClass="master_dark_textbox"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style83">
+                                <asp:Label ID="Label40" runat="server" Text="เวลาออก"></asp:Label>
+                            </td>
+                            <td class="auto-style67">
+                                <asp:TextBox ID="TextBox24" runat="server" placeholder="ชั่วโมง" Width="50px" CssClass="master_dark_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox25" runat="server" placeholder="นาที" Width="50px" CssClass="master_dark_textbox"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style81"></td>
+                            <td class="auto-style64">
+                                <asp:LinkButton ID="LinkButton11" runat="server" CssClass="master_dark_button" OnClick="LinkButton11_Click">เพิ่ม</asp:LinkButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style83">&nbsp;</td>
+                            <td class="auto-style67">&nbsp;</td>
+                        </tr>
+                    </table>
 
-
-                        </div>
-                    </td>
-                    <td>
-                        <div class="master_dark_div_sec" id="sec2">
-                            <div>
-                                <asp:Label ID="Label1" runat="server" Text="แก้ไขเวลาเข้างาน" CssClass="master_dark_div_sec_title"></asp:Label>
-                            </div>
-                            <div class="master_dark_div_sec_pre_in" id="sec2_pre_in">
-                                <div class="master_dark_div_sec_in" id="sec2_in">
-
-                                    <table style="width: 100%;">
-                                        <tr>
-                                            <td class="auto-style85">&nbsp;</td>
-                                            <td class="auto-style67">
-                                                <asp:Label ID="Label50" runat="server" CssClass="error_text"></asp:Label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style85">
-                                                <asp:Label ID="Label49" runat="server" Text="ค้นหารหัสเอกสาร"></asp:Label>
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:TextBox ID="TextBox27" runat="server" CssClass="master_dark_textbox"></asp:TextBox>
-                                                <asp:LinkButton ID="LinkButton21" runat="server" CssClass="master_dark_button" OnClick="LinkButton21_Click">ค้นหา</asp:LinkButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style85">
-                                                <asp:Label ID="Label48" runat="server" Text="รหัสเอกสาร"></asp:Label>
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:TextBox ID="TextBox26" runat="server" CssClass="master_dark_textbox" Enabled="False"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style85">
-                                                <asp:Label ID="Label2" runat="server" Text="วันที่"></asp:Label>
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:TextBox ID="TextBox1" runat="server" CssClass="master_dark_textbox"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style85">
-                                                <asp:Label ID="Label3" runat="server" Text="รหัสพนักงาน"></asp:Label>
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:TextBox ID="TextBox2" runat="server" CssClass="master_dark_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
-                                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_dark_button" OnClick="LinkButton1_Click">ตรวจสอบ</asp:LinkButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style85">
-                                                <asp:Label ID="Label4" runat="server" Text="ชื่อพนักงาน"></asp:Label>
-
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:Label ID="Label5" runat="server"></asp:Label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style85">
-                                                <asp:Label ID="Label6" runat="server" Text="เวลาเข้า"></asp:Label>
-                                            </td>
-                                            <td class="auto-style64">
-                                                <asp:TextBox ID="TextBox3" runat="server" Width="50px" placeholder="ชั่วโมง" CssClass="master_dark_textbox"></asp:TextBox>
-                                                <asp:TextBox ID="TextBox4" runat="server" Width="50px" placeholder="นาที" CssClass="master_dark_textbox"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style85">
-                                                <asp:Label ID="Label7" runat="server" Text="เวลาออก"></asp:Label>
-                                            </td>
-                                            <td class="auto-style67">
-                                                <asp:TextBox ID="TextBox5" runat="server" placeholder="ชั่วโมง" Width="50px" CssClass="master_dark_textbox"></asp:TextBox>
-                                                <asp:TextBox ID="TextBox6" runat="server" placeholder="นาที" Width="50px" CssClass="master_dark_textbox"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style84"></td>
-                                            <td class="auto-style64">
-                                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="master_dark_button" OnClick="LinkButton2_Click">แก้ไข</asp:LinkButton>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style85">&nbsp;</td>
-                                            <td class="auto-style67">&nbsp;</td>
-                                        </tr>
-                                    </table>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-
+                </div>
+            </div>
 
 
         </div>
 
 
+        <div class="master_dark_div_sec" id="sec2">
+            <div>
+                <asp:Label ID="Label1" runat="server" Text="แก้ไขเวลาเข้างาน" CssClass="master_dark_div_sec_title"></asp:Label>
+            </div>
+            <div class="master_dark_div_sec_pre_in" id="sec2_pre_in">
+                <div class="master_dark_div_sec_in" id="sec2_in">
 
+                    <table style="width: 100%;">
+                        <tr>
+                            <td class="auto-style85">&nbsp;</td>
+                            <td class="auto-style67">
+                                <asp:Label ID="Label50" runat="server" CssClass="error_text"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style85">
+                                <asp:Label ID="Label49" runat="server" Text="ค้นหารหัสเอกสาร"></asp:Label>
+                            </td>
+                            <td class="auto-style67">
+                                <asp:TextBox ID="TextBox27" runat="server" CssClass="master_dark_textbox"></asp:TextBox>
+                                <asp:LinkButton ID="LinkButton21" runat="server" CssClass="master_dark_button" OnClick="LinkButton21_Click">ค้นหา</asp:LinkButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style85">
+                                <asp:Label ID="Label48" runat="server" Text="รหัสเอกสาร"></asp:Label>
+                            </td>
+                            <td class="auto-style67">
+                                <asp:TextBox ID="TextBox26" runat="server" CssClass="master_dark_textbox" Enabled="False"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style85">
+                                <asp:Label ID="Label2" runat="server" Text="วันที่"></asp:Label>
+                            </td>
+                            <td class="auto-style67">
+                                <asp:TextBox ID="TextBox1" runat="server" CssClass="master_dark_textbox"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style85">
+                                <asp:Label ID="Label3" runat="server" Text="รหัสพนักงาน"></asp:Label>
+                            </td>
+                            <td class="auto-style67">
+                                <asp:TextBox ID="TextBox2" runat="server" CssClass="master_dark_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_dark_button" OnClick="LinkButton1_Click">ตรวจสอบ</asp:LinkButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style85">
+                                <asp:Label ID="Label4" runat="server" Text="ชื่อพนักงาน"></asp:Label>
 
+                            </td>
+                            <td class="auto-style67">
+                                <asp:Label ID="Label5" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style85">
+                                <asp:Label ID="Label6" runat="server" Text="เวลาเข้า"></asp:Label>
+                            </td>
+                            <td class="auto-style64">
+                                <asp:TextBox ID="TextBox3" runat="server" Width="50px" placeholder="ชั่วโมง" CssClass="master_dark_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox4" runat="server" Width="50px" placeholder="นาที" CssClass="master_dark_textbox"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style85">
+                                <asp:Label ID="Label7" runat="server" Text="เวลาออก"></asp:Label>
+                            </td>
+                            <td class="auto-style67">
+                                <asp:TextBox ID="TextBox5" runat="server" placeholder="ชั่วโมง" Width="50px" CssClass="master_dark_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox6" runat="server" placeholder="นาที" Width="50px" CssClass="master_dark_textbox"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style84"></td>
+                            <td class="auto-style64">
+                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="master_dark_button" OnClick="LinkButton2_Click">แก้ไข</asp:LinkButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style85">&nbsp;</td>
+                            <td class="auto-style67">&nbsp;</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+        <br />
+        <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
 
         <div class="master_dark_div_sec" id="sec3">
             <div>

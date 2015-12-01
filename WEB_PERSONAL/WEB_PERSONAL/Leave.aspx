@@ -3,6 +3,12 @@
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style98 {
+            width: 100px;
+            text-align: right;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script>
@@ -13,11 +19,13 @@
 
     <link href="CSS/Leave.css" rel="stylesheet" />
 
-    <asp:Panel ID="Panel2" runat="server" CssClass="mp">
+    <div class="mp">
         <div class="master_dark_page_header">
             <asp:Label ID="Label1" runat="server" Text="การลา"></asp:Label>
 
         </div>
+
+
 
         <div class="master_dark_div_sec">
             <div>
@@ -30,7 +38,7 @@
 
                     <table style="width: 100%;">
                         <tr>
-                            <td class="auto-style83">
+                            <td class="auto-style98">
                                 <asp:Label ID="Label23" runat="server" Text="รหัสผู้ลา"></asp:Label>
                             </td>
                             <td class="auto-style67">
@@ -42,7 +50,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style83">
+                            <td class="auto-style98">
                                 <asp:Label ID="Label46" runat="server" Text="ชื่อผู้ลา"></asp:Label>
                             </td>
                             <td class="auto-style67">
@@ -50,7 +58,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style83">
+                            <td class="auto-style98">
                                 <asp:Label ID="Label25" runat="server" Text="ประเภทการลา"></asp:Label>
                             </td>
                             <td class="auto-style64">
@@ -59,7 +67,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style83">
+                            <td class="auto-style98">
                                 <asp:Label ID="Label26" runat="server" Text="สถานะการลา"></asp:Label>
                             </td>
                             <td class="auto-style67">
@@ -68,7 +76,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style83">
+                            <td class="auto-style98">
                                 <asp:Label ID="Label27" runat="server" Text="จากวันที่"></asp:Label>
                             </td>
                             <td class="auto-style67">
@@ -76,7 +84,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style83">
+                            <td class="auto-style98">
                                 <asp:Label ID="Label28" runat="server" Text="ถึงวันที่"></asp:Label>
                             </td>
                             <td class="auto-style67">
@@ -84,7 +92,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style83">
+                            <td class="auto-style98">
                                 <asp:Label ID="Label29" runat="server" Text="เหตุผล"></asp:Label>
                             </td>
                             <td class="auto-style69">
@@ -92,7 +100,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style83">&nbsp;</td>
+                            <td class="auto-style98">&nbsp;</td>
                             <td class="auto-style67">
                                 <asp:LinkButton ID="LinkButton16" runat="server" CssClass="master_dark_button" OnClick="LinkButton16_Click">เพิ่ม</asp:LinkButton>
                             </td>
@@ -235,7 +243,7 @@
                                 <asp:Label ID="Label16" runat="server" Text="เหตุผลที่ลา"></asp:Label>
                             </td>
                             <td class="auto-style77">
-                                <asp:TextBox ID="TextBox10" runat="server" CssClass="master_dark_textbox" Height="74px" TextMode="MultiLine" Width="584px"></asp:TextBox>
+                                <asp:TextBox ID="TextBox10" runat="server" CssClass="master_dark_textbox" Height="100px" TextMode="MultiLine" Width="300px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -254,6 +262,8 @@
             </div>
         </div>
 
+        <br />
+        <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
 
         <div class="master_dark_div_sec" >
             <div>
@@ -392,5 +402,5 @@
         </div>
 
 
-    </asp:Panel>
+    </div>
 </asp:Content>

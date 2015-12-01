@@ -939,6 +939,7 @@ ault_page_header {
     color: #FFFFFF;
 }
 .master_dark_div_sec {
+    display: inline-block;
     color: #FFFFFF;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -949,9 +950,8 @@ ault_page_header {
     padding: 0 20px;
     color: #FFFFFF;
     background-color: #404040;
-
-    font-size: 24px;
-    font-weight: bold;
+    /*font-size: 24px;
+    font-weight: bold;*/
 }
 .master_dark_div_sec_pre_in {
 
