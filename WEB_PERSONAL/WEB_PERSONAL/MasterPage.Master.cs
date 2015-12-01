@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OracleClient;
+using WEB_PERSONAL.Class;
 
 namespace WEB_PERSONAL
 {
@@ -61,11 +62,12 @@ namespace WEB_PERSONAL
                     Response.Redirect("Access.aspx");
                     return;
                 }
-                
-               
-                
+                Person person = ((Person)Session["login_person"]);
+
+
                 /*Label7.Text = Session["login_id"].ToString();*/
-                string name = Session["login_name"].ToString() + " " + Session["login_lastname"];
+                //string name = Session["login_name"].ToString() + " " + Session["login_lastname"];
+                string name = person.NameAndLastname;
                 string systemRank = "(" + Session["login_system_status"].ToString() + ")";
                 LinkButton1.Text = name;
                 //Label7.Text = systemRank;

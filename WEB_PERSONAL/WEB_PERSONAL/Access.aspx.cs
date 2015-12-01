@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OracleClient;
+using WEB_PERSONAL.Class;
 
 namespace WEB_PERSONAL {
     public partial class Access : System.Web.UI.Page {
@@ -38,6 +39,7 @@ namespace WEB_PERSONAL {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 while (reader.Read()) {
                                     if (reader.GetString(0) == TextBox2X.Text) {
+                                        Session["login_person"] = new Person(TextBox1X.Text);
                                         Session["login_id"] = TextBox1X.Text;
                                         Session["login_system_status_id"] = reader.GetInt32(4).ToString();
                                         Session["login_system_status"] = reader.GetString(1);
