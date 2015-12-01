@@ -44,14 +44,14 @@ namespace WEB_PERSONAL {
                                 using (OracleCommand command2 = new OracleCommand("SELECT DETAIL FROM TB_WEB_UPDATE_HISTORY, TB_WEB_UPDATE_HISTORY_DETAIL WHERE TB_WEB_UPDATE_HISTORY.ID = :1 AND TB_WEB_UPDATE_HISTORY.ID = TB_WEB_UPDATE_HISTORY_DETAIL.MAIN_ID", con)) {
                                     command2.Parameters.AddWithValue("1", reader.GetInt32(0));
                                     using (OracleDataReader reader2 = command2.ExecuteReader()) {
-                                        div_update_history.InnerHtml += "<div class=\"div_update_history_item\">";
+                                        div_update_history.InnerHtml += "<span class=\"div_update_history_item\">";
                                         div_update_history.InnerHtml += "<strong>อัพเดทข้อมูลวันที่ " + reader.GetString(1) + " โดย " + reader.GetString(2) + " (#" + reader.GetInt32(0) + ")</strong><br>";
                                         while (reader2.Read()) {
                                             div_update_history.InnerHtml += "<span style=\"display: inline-block; width: 20px\"></span>- ";
                                             div_update_history.InnerHtml += reader2.GetString(0);
                                             div_update_history.InnerHtml += "<br>";
                                         }
-                                        div_update_history.InnerHtml += "</div>";
+                                        div_update_history.InnerHtml += "</span>";
 
 
 

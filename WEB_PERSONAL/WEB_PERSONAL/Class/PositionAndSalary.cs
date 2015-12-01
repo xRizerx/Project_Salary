@@ -12,7 +12,7 @@ namespace WEB_PERSONAL.Class {
         private string position_description;
         private string person_id;
         private string st_id;
-        private int position_id;
+        private string position_id;
         private string position_name;
         private int salary;
         private int position_salary;
@@ -66,14 +66,14 @@ namespace WEB_PERSONAL.Class {
                         }
                     }
                 }
-                using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_ID, -1) FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
+                using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_ID, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
                     command.Parameters.AddWithValue("1", id);
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
                             reader.Read();
-                            position_id = reader.GetInt32(0);
+                            position_id = reader.GetString(0);
                         } else {
-                            position_id = -1;
+                            position_id = "-";
                         }
                     }
                 }
@@ -151,7 +151,7 @@ namespace WEB_PERSONAL.Class {
         public string STID {
             get { return st_id; }
         }
-        public int PositionID {
+        public string PositionID {
             get { return position_id; }
         }
         public string PositionName {
