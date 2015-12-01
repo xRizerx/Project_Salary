@@ -43,6 +43,7 @@ namespace WEB_PERSONAL
         protected void Button1_Click(object sender, EventArgs e)
         {
             Person person = new Person(Session["login_id"].ToString());
+            /*BaseSalary salary = new BaseSalary(person.PositionID);
             Label11.Text = person.Name;
             Label3.Text = person.Name;
             Label13.Text = person.Lastname;
@@ -51,12 +52,11 @@ namespace WEB_PERSONAL
             Label6.Text = person.StaffTypeName;
             Label17.Text = person.PositionName;
             Label10.Text = person.PositionName;
-           /* TextBox2.Text = person.sa;
-            Label64.Text = reader.GetInt32(4).ToString();
-            Label66.Text = reader.GetInt32(4).ToString();
-            Label68.Text = reader.GetInt32(4).ToString();
-            Label22.Text = reader.GetInt32(5).ToString();
-            Session["Position_id"] = reader.GetString(6);*/
+            TextBox2.Text = person.SalaryYear.ToString();
+            Label64.Text = person.SalaryYear.ToString();
+            Label66.Text = person.SalaryYear.ToString();
+            Label68.Text = person.SalaryYear.ToString();
+            Label22.Text = salary.MaxSalary;*/
 
             using (OracleConnection conn = Util.OC())
             {
@@ -439,6 +439,7 @@ namespace WEB_PERSONAL
             }
             if (Session["STAFFTYPE_STATUS"].ToString() == "ลูกจ้างประจำ")
             {
+                Person person = new Person(Session["login_id"].ToString());
                 using (OracleConnection conn = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;"))
                 {
                     conn.Open();
@@ -447,7 +448,7 @@ namespace WEB_PERSONAL
                     {
                         if (Radio_Per_Hour_1.Checked == true || Radio_Per_Hour_2.Checked==true || Radio_Per_Hour_3.Checked == true || Radio_Per_Hour_4.Checked == true)
                         {
-                            command.Parameters.AddWithValue("1", Session["Position_id"].ToString());
+                            command.Parameters.AddWithValue("1", person.PositionID);
                             command.Parameters.AddWithValue("2", Convert.ToDouble(Label79.Text));
                             command.ExecuteNonQuery();
                             string script = "alert(\"SAVE SUCCESSFUL.\");";
