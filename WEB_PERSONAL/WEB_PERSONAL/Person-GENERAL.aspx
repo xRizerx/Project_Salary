@@ -715,7 +715,7 @@
                             <td style="text-align: left; width: 80px;"></td>
                             <td style="text-align: left; margin-right: 5px;">หมายเลขโทรศัพท์ที่ทำงาน</td>
                             <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">สาขางานที่เชี่ยวชาญ <span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -729,8 +729,7 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownDEPARTMENT" runat="server" CssClass="tb5" Width="257px">
-                                </asp:DropDownList>
+                                <asp:TextBox ID="txtSPECIAL_NAME" runat="server" CssClass="tb5" MaxLength="100" placeholder="ตัวอย่าง ความปลอดภัยและประสิทธิภาพของยา" Width="250px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -739,7 +738,7 @@
                             <td style="text-align: left;"></td>
                             <td style="text-align: left; margin-right: 5px;">สัญชาติ <span class="textred">*</span></td>
                             <td style="text-align: left;"></td>
-                            <td style="text-align: left; margin-right: 5px;">สาขางานที่เชี่ยวชาญ <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">กลุ่มสาขาวิชาที่สอน(ISCED) <span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -753,36 +752,13 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtSPECIAL_NAME" runat="server" CssClass="tb5" MaxLength="100" placeholder="ตัวอย่าง ความปลอดภัยและประสิทธิภาพของยา" Width="250px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">บ้านเลขที่ <span class="textred">*</span></td>
-                            <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ประเภทบุคลากร <span class="textred">*</span></td>
-                            <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">กลุ่มสาขาวิชาที่สอน(ISCED) <span class="textred">*</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 80px;">
-                                <asp:TextBox ID="txtHOMEADD" runat="server" CssClass="tb5" MaxLength="100" placeholder="บ้านเลขที่" Width="250px"></asp:TextBox>
-                            </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownSTAFFTYPEDown" runat="server" CssClass="tb5" Width="257px">
-                                </asp:DropDownList>
-                            </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
                                 <asp:DropDownList ID="DropDownTEACH_ISCED" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">หมู่</td>
+                            <td style="text-align: left; margin-right: 5px;">บ้านเลขที่ <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
                             <td style="text-align: left; margin-right: 5px;">ระยะเวลาจ้าง <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
@@ -791,25 +767,22 @@
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 80px;">
-                                <asp:TextBox ID="txtMOO" runat="server" CssClass="tb5" MaxLength="100" placeholder="หมู่บ้าน" Width="250px"></asp:TextBox>
+                                <asp:TextBox ID="txtHOMEADD" runat="server" CssClass="tb5" MaxLength="100" placeholder="บ้านเลขที่" Width="250px"></asp:TextBox>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;"> 
-
+                            <td style="text-align: left; width: 170px;">
                                 <asp:DropDownList ID="DropDownTIME_CONTACT" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
                                 <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
-
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ถนน</td>
+                            <td style="text-align: left; margin-right: 5px;">หมู่</td>
                             <td style="text-align: left; width: 80px;"></td>
                             <td style="text-align: left; margin-right: 5px;">ประเภทเงินจ้าง <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
@@ -818,25 +791,52 @@
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 80px;">
-                                <asp:TextBox ID="txtSTREET" runat="server" CssClass="tb5" MaxLength="100" placeholder="ถนน" Width="250px"></asp:TextBox>
+                                <asp:TextBox ID="txtMOO" runat="server" CssClass="tb5" MaxLength="100" placeholder="หมู่บ้าน" Width="250px"></asp:TextBox>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
+
                                 <asp:DropDownList ID="DropDownBUDGET" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
+
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
                                 <asp:TextBox ID="txtGRAD_CURR" runat="server" CssClass="tb5" MaxLength="100" placeholder="ชื่อหลักสูตร/ชื่อสาขา" Width="250px"></asp:TextBox>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px;">ถนน</td>
+                            <td style="text-align: left; width: 80px;"></td>
+                            <td style="text-align: left; margin-right: 5px;">ประเภทบุคลากรย่อย <span class="textred">*</span></td>
+                            <td style="text-align: left; width: 80px;"></td>
+                            <td style="text-align: left; margin-right: 5px;">กลุ่มสาขาวิชาที่จบสูงสุด(ISCED) <span class="textred">*</span></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 80px;">
+                                <asp:TextBox ID="txtSTREET" runat="server" CssClass="tb5" MaxLength="100" placeholder="ถนน" Width="250px"></asp:TextBox>
+                            </td>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:DropDownList ID="DropDownSUBSTAFFTYPE" runat="server" CssClass="tb5" Width="257px">
+                                </asp:DropDownList>
+                            </td>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:DropDownList ID="DropDownGRAD_ISCED" runat="server" CssClass="tb5" Width="257px">
+                                </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">จังหวัด <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ประเภทบุคลากรย่อย <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">ตำแหน่งบริหาร <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">กลุ่มสาขาวิชาที่จบสูงสุด(ISCED) <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">สาขาวิชาที่จบสูงสุด <span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -854,12 +854,12 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownSUBSTAFFTYPE" runat="server" CssClass="tb5" Width="257px">
+                                <asp:DropDownList ID="DropDownADMIN_POSITION" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownGRAD_ISCED" runat="server" CssClass="tb5" Width="257px">
+                                <asp:DropDownList ID="DropDownGRAD_PROG" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -867,9 +867,9 @@
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">อำเภอ <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ตำแหน่งบริหาร <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">ตำแหน่งทางวิชาการ <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">สาขาวิชาที่จบสูงสุด <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">ชื่อสถาบันที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -886,22 +886,21 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownADMIN_POSITION" runat="server" CssClass="tb5" Width="257px">
+                                <asp:DropDownList ID="DropDownPOSITION" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownGRAD_PROG" runat="server" CssClass="tb5" Width="257px">
-                                </asp:DropDownList>
+                                <asp:TextBox ID="txtGRAD_UNIVDown" runat="server" CssClass="tb5" MaxLength="70" placeholder="ชื่อสถาบันที่จบการศึกษาสูงสุด" Width="250px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">ตำบล <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ตำแหน่งทางวิชาการ <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">ตำแหน่งในสายงาน <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ชื่อสถาบันที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">ประเทศที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -917,21 +916,22 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownPOSITIONDown" runat="server" CssClass="tb5" Width="257px">
+                                <asp:DropDownList ID="DropDownPOSITION_WORK" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtGRAD_UNIVDown" runat="server" CssClass="tb5" MaxLength="70" placeholder="ชื่อสถาบันที่จบการศึกษาสูงสุด" Width="250px"></asp:TextBox>
+                                <asp:DropDownList ID="DropDownGRAD_COUNTRY" runat="server" CssClass="tb5" Width="257px">
+                                </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">รหัสไปรษณีย์ <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ตำแหน่งในสายงาน <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า <span class="textred">*</span></td>
                             <td style="text-align: left; width: 80px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ประเทศที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">&nbsp;</td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -944,14 +944,11 @@
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownPOSITION_WORK" runat="server" CssClass="tb5" Width="257px">
+                                <asp:DropDownList ID="DropDownDEPARTMENT" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownGRAD_COUNTRY" runat="server" CssClass="tb5" Width="257px">
-                                </asp:DropDownList>
-                            </td>
+                            <td style="text-align: left; width: 170px;">&nbsp;</td>
                         </tr>
                     </table>
                     <table>
