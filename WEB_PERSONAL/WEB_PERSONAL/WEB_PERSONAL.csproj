@@ -299,6 +299,7 @@
     <Content Include="Position-ADMIN.aspx" />
     <Content Include="PositionWork-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="SalarybyID-Edit-Permanent.aspx" />
     <Content Include="Salary_Basesalary_Admin.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
@@ -570,6 +571,13 @@
     </Compile>
     <Compile Include="Salary-report.aspx.designer.cs">
       <DependentUpon>Salary-report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalarybyID-Edit-Permanent.aspx.cs">
+      <DependentUpon>SalarybyID-Edit-Permanent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalarybyID-Edit-Permanent.aspx.designer.cs">
+      <DependentUpon>SalarybyID-Edit-Permanent.aspx</DependentUpon>
     </Compile>
     <Compile Include="SalarybyID-Edit.aspx.cs">
       <DependentUpon>SalarybyID-Edit.aspx</DependentUpon>

@@ -3,14 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>ระบบเพิ่มเงินเดือนรายบุคคล</title>
     <style type="text/css">
-        .auto-style1 {
-            margin-left: 0;
-        }
-
-        .auto-style3 {
-            width: 130px;
-        }
-
+        
         .auto-style4 {
             width: 228px;
         }
@@ -122,17 +115,8 @@
             text-align: center;
         }
 
-        .auto-style19 {
-            width: 227px;
-        }
-
         .auto-style20 {
             width: 228px;
-            text-align: left;
-        }
-
-        .auto-style21 {
-            width: 227px;
             text-align: left;
         }
 
@@ -167,7 +151,7 @@
     <asp:Panel ID="Panel6" runat="server" CssClass="panout">
 
         <asp:Panel ID="Panel1" runat="server" CssClass="panin">
-            <asp:Panel ID="Panel_Citizen_id" runat="server">
+            <asp:Panel ID="Panel_Citizen_id" runat="server" DefaultButton="LinkButton3">
                 <div class="Salary_div">
                     <div class="Salary_div_header">
                         <br />
@@ -464,8 +448,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style4">&nbsp;</td>
-                        <td colspan="2">&nbsp;</td>
+                        <td class="auto-style4">
+                            &nbsp;</td>
+                        <td colspan="2">
+                            
+                        </td>
                         <td>&nbsp;</td>
                     </tr>
                 </table>
@@ -508,11 +495,175 @@
                         <hr />
                     </asp:TableCell>
                 </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:RadioButton ID="RadioButton1" GroupName="Cal_Permanent_Emp" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" AutoPostBack="true" />
+                        <asp:Label ID="Label1" runat="server" Text="คำนวณรายชั่วโมง"></asp:Label>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:RadioButton ID="RadioButton2" GroupName="Cal_Permanent_Emp" runat="server" OnCheckedChanged="RadioButton2_CheckedChanged" AutoPostBack="true" />
+                        <asp:Label ID="Label12" runat="server" Text="คำนวณรายวัน"></asp:Label>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:RadioButton ID="RadioButton3" GroupName="Cal_Permanent_Emp" runat="server" OnCheckedChanged="RadioButton3_CheckedChanged" AutoPostBack="true" />
+                        <asp:Label ID="Label62" runat="server" Text="คำนวณรายเดือน"></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell ColumnSpan="10">
+                        <hr />
+                    </asp:TableCell>
+                </asp:TableRow>
             </asp:Table>
+            <asp:Panel ID="Panel_Permanent_Emp_Hour" runat="server" Visible="false">
+                <asp:Table ID="Table3" runat="server">
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="Label63" runat="server" Text="เงินเดือน"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label64" runat="server" Text="Label"></asp:Label>
+                            
+                        </asp:TableCell>         
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:RadioButton ID="Radio_Per_Hour_1" runat="server" GroupName="Hour_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Hour_1_CheckedChanged" Text="กลุ่มบัญชี 1" /><span></span>
+                            <asp:RadioButton ID="Radio_Per_Hour_2" runat="server" GroupName="Hour_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Hour_2_CheckedChanged" Text="กลุ่มบัญชี 2" /><span></span>
+                            <asp:RadioButton ID="Radio_Per_Hour_3" runat="server" GroupName="Hour_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Hour_3_CheckedChanged" Text="กลุ่มบัญชี 3" /><span></span>
+                            <asp:RadioButton ID="Radio_Per_Hour_4" runat="server" GroupName="Hour_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Hour_4_CheckedChanged" Text="กลุ่มบัญชี 4" /><span></span>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" OnDataBound="DropDownList1_DataBound" >
+                            </asp:DropDownList>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="Label69" runat="server" Visible="false"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label72" runat="server" Text="ทำงานรวม"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label73" runat="server" Text="ชั่วโมง"></asp:Label>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:LinkButton ID="LinkButton6" runat="server" CssClass="cal_linkbutton" OnClick="LinkButton6_Click">คำนวณเงิน</asp:LinkButton>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label78" runat="server" Text="ผลลัพธ์" Visible="false"></asp:Label><span>     </span>
+                            <asp:Label ID="Label79" runat="server" Text="" Visible="false"></asp:Label><span>     </span>
+                            <asp:Label ID="Label86" runat="server" Text="บาท" Visible="false"></asp:Label>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
+            </asp:Panel>
+            <asp:Panel ID="Panel_Permanent_Emp_Day" runat="server" Visible="false">
+                <asp:Table ID="Table4" runat="server">
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="Label65" runat="server" Text="เงินเดือน"></asp:Label>
+                            
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label66" runat="server" Text="Label"></asp:Label>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                     <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:RadioButton ID="Radio_Per_Day_1" runat="server" GroupName="Day_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Day_1_CheckedChanged" Text="กลุ่มบัญชี 1" /><span></span>
+                            <asp:RadioButton ID="Radio_Per_Day_2" runat="server" GroupName="Day_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Day_2_CheckedChanged" Text="กลุ่มบัญชี 2" /><span></span>
+                            <asp:RadioButton ID="Radio_Per_Day_3" runat="server" GroupName="Day_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Day_3_CheckedChanged" Text="กลุ่มบัญชี 3" /><span></span>
+                            <asp:RadioButton ID="Radio_Per_Day_4" runat="server" GroupName="Day_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Day_4_CheckedChanged" Text="กลุ่มบัญชี 4" /><span></span>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" OnDataBound="DropDownList2_DataBound"></asp:DropDownList>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="Label70" runat="server" Visible="false"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label74" runat="server" Text="ทำงานรวม"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label75" runat="server" Text="วัน"></asp:Label>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:LinkButton ID="LinkButton5" runat="server" CssClass="cal_linkbutton" OnClick="LinkButton5_Click">คำนวณเงิน</asp:LinkButton>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label81" runat="server" Text="ผลลัพธ์" Visible="false"></asp:Label><span>     </span>
+                            <asp:Label ID="Label80" runat="server" Text="Label" Visible="false"></asp:Label><span>     </span>
+                            <asp:Label ID="Label84" runat="server" Text="บาท" Visible="false"></asp:Label>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
+            </asp:Panel>
+            <asp:Panel ID="Panel_Permanent_Emp_Month" runat="server" Visible="false">
+                <asp:Table ID="Table5" runat="server">
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="Label67" runat="server" Text="เงินเดือน"></asp:Label>
+                            
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label68" runat="server" Text="Label"></asp:Label>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                     <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:RadioButton ID="Radio_Per_Month_1" runat="server" GroupName="Month_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Month_1_CheckedChanged" Text="กลุ่มบัญชี 1" /><span></span>
+                            <asp:RadioButton ID="Radio_Per_Month_2" runat="server" GroupName="Month_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Month_2_CheckedChanged" Text="กลุ่มบัญชี 2" /><span></span>
+                            <asp:RadioButton ID="Radio_Per_Month_3" runat="server" GroupName="Month_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Month_3_CheckedChanged" Text="กลุ่มบัญชี 3" /><span></span>
+                            <asp:RadioButton ID="Radio_Per_Month_4" runat="server" GroupName="Month_Permanent_Emp" AutoPostBack="True" OnCheckedChanged="Radio_Per_Month_4_CheckedChanged" Text="กลุ่มบัญชี 4" /><span></span>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" OnDataBound="DropDownList3_DataBound"></asp:DropDownList>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="Label71" runat="server" Visible="false"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label76" runat="server" Text="ทำงานรวม"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label77" runat="server" Text="เดือน"></asp:Label>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:LinkButton ID="LinkButton4" runat="server" CssClass="cal_linkbutton" OnClick="LinkButton4_Click">คำนวณเงิน</asp:LinkButton>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="Label82" runat="server" Text="ผลลัพธ์" Visible="false"></asp:Label><span>     </span>
+                            <asp:Label ID="Label83" runat="server" Text="Label" Visible="false"></asp:Label><span>     </span>
+                            <asp:Label ID="Label85" runat="server" Text="บาท" Visible="false"></asp:Label>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
+            </asp:Panel>
         </asp:Panel>
 
         </asp:Panel>
-        <asp:Panel ID="Panel_Oracle_Control" runat="server">
+        <asp:Panel ID="Panel_Oracle_Control" runat="server" Visible="false">
         <table style="width: 100%;" class="panin">
             <tr>
                 <td class="auto-style18">&nbsp;</td>
@@ -523,7 +674,8 @@
                     <asp:LinkButton ID="LinkButton2" runat="server" CssClass="button_ui" OnClick="LinkButton2_Click" Font-Size="14px">บันทึก</asp:LinkButton>
                 </td>
                 <td class="auto-style15">
-                    <a href="SalarybyID-Edit.aspx" onclick="Popup(this.href,'แก้ไขข้อมูลบุคคล','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui">แก้ไขข้อมูล</a>
+                    <!--SalarybyID-Edit.aspx-->
+                    <a id="Edit_page" runat="server" href="https://www.google.co.th" onclick="Popup(this.href,'แก้ไขข้อมูลบุคคล','860','600','yes','center');return false" onfocus="this.blur()" class="button_ui">แก้ไขข้อมูล</a>
                 </td>
                 <tr>
                     <td class="auto-style18">&nbsp;</td>

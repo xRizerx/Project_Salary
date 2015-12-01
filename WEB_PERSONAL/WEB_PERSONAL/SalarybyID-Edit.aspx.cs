@@ -24,7 +24,12 @@ namespace WEB_PERSONAL
                 using (OracleConnection conn = new OracleConnection("DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;"))
                 {
                     conn.Open();
-                    using (OracleCommand command = new OracleCommand("Select * FROM (Select TB_PERSONAL.STF_NAME,TB_PERSONAL.STF_LNAME,TB_POSITION.POSITION_NAME,TB_SUBSTAFFTYPE.SUBSTAFFTYPE_NAME,TB_ADMIN_POSITION.ADMIN_POSITION_NAME,BASESALARY.MAXSALARY,TB_SALARY_UP.ID From TB_PERSONAL,TB_POSITION,TB_SUBSTAFFTYPE,TB_ADMIN_POSITION,BASESALARY,TB_SALARY_UP WHERE TB_PERSONAL.CITIZEN_ID = '"+Label61.Text+"' AND TB_PERSONAL.POSITION_ID = TB_POSITION.POSITION_ID AND TB_PERSONAL.SUBSTAFFTYPE_ID = TB_SUBSTAFFTYPE.SUBSTAFFTYPE_ID AND TB_PERSONAL.ADMIN_POSITION_ID = TB_ADMIN_POSITION.ADMIN_POSITION_ID AND TB_PERSONAL.POSITION_ID = BASESALARY.POSITION_ID AND TB_PERSONAL.CITIZEN_ID = TB_SALARY_UP.CITIZEN_ID ORDER BY ID DESC) where rownum=1", conn))
+                    using (OracleCommand command = new OracleCommand("SELECT * FROM (Select TB_PERSON.PERSON_NAME,TB_PERSON.PERSON_LASTNAME,TB_POSITION.NAME,TB_POSITION_AND_SALARY.SALARY" +
+                                                                        ", TB_BASESALARY.MAXSALARY, TB_SALARY_UP.ID " +
+                                                                        "FROM TB_PERSON, TB_POSITION, TB_BASESALARY, TB_SALARY_UP, TB_POSITION_AND_SALARY " +
+                                                                        "WHERE TB_PERSON.CITIZEN_ID = "+ Session["citizen_id"].ToString() + " AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID " +
+                                                                        "AND TB_POSITION.ID = TB_BASESALARY.POSITION_ID " +
+                                                                        "AND TB_PERSON.CITIZEN_ID = TB_SALARY_UP.CITIZEN_ID ORDER BY ID DESC) where rownum = 1", conn))
                     {
                         using (OracleDataReader reader = command.ExecuteReader())
                         {
@@ -33,16 +38,14 @@ namespace WEB_PERSONAL
                             {
                                 found = true;
                                 Label61.Text = Session["citizen_id"].ToString();
-                                Label11.Text = reader.GetString(0);
-                                Label13.Text = reader.GetString(1);
-                                Label15.Text = reader.GetString(2);
-                                Label17.Text = reader.GetString(3);
-                                Label19.Text = reader.GetString(4);
-                                Label22.Text = reader.GetInt32(5).ToString();
-                                Label63.Text = reader.GetInt32(6).ToString();
+                                Label11.Text = reader.GetString(0);//NAME
+                                Label13.Text = reader.GetString(1);//LASTNAME
+                                Label17.Text = reader.GetString(2);//POSITION
+                                TextBox2.Text = reader.GetInt32(3).ToString();//SALARY
+                                Label22.Text = reader.GetInt32(4).ToString();//MAXSALARY
+                                Label63.Text = reader.GetInt32(5).ToString();
+
                             }
-                            command.Dispose();
-                            reader.Close();
                             if (!found)
                             {
                                 string script = "alert(\"ไม่พบผู้ใช้\");";
@@ -81,7 +84,7 @@ namespace WEB_PERSONAL
                                 Label50.Text = reader.GetDouble(18).ToString();
                                 Label52.Text = reader.GetDouble(19).ToString();
                                 Label54.Text = reader.GetDouble(20).ToString();
-                                TextBox9.Text = reader.IsDBNull(21)?"":reader.GetString(21);
+                                TextBox9.Text = reader.IsDBNull(21) ? "" : reader.GetString(21);
                             }
                             command.Dispose();
                             reader.Close();
