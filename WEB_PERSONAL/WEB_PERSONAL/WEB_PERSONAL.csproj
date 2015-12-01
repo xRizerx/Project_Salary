@@ -379,6 +379,7 @@
     <Compile Include="Budget-ADMIN.aspx.designer.cs">
       <DependentUpon>Budget-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Class\BaseSalary.cs" />
     <Compile Include="Class\DisciplinaryAndAmnesty.cs" />
     <Compile Include="Class\JobLicense.cs" />
     <Compile Include="Class\Person.cs" />
