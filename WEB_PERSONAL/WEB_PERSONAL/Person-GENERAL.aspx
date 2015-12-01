@@ -793,8 +793,8 @@
                             <td style="text-align: left; width: 80px;">
                                 <asp:TextBox ID="txtMOO" runat="server" CssClass="tb5" MaxLength="100" placeholder="หมู่บ้าน" Width="250px"></asp:TextBox>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td> 
-                            <td style="text-align: left; width: 170px;">
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 170px;"> 
 
                                 <asp:DropDownList ID="DropDownTIME_CONTACT" runat="server" CssClass="tb5" Width="257px">
                                 </asp:DropDownList>
