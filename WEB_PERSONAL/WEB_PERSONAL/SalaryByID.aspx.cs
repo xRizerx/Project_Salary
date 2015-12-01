@@ -4,6 +4,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data.OracleClient;
 using System.Globalization;
+using WEB_PERSONAL.Class;
 
 namespace WEB_PERSONAL
 {
@@ -41,6 +42,22 @@ namespace WEB_PERSONAL
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
+            Person person = new Person(Session["login_id"].ToString());
+            Label11.Text = person.Name;
+            Label3.Text = person.Name;
+            Label13.Text = person.Lastname;
+            Label4.Text = person.Lastname;
+            Label61.Text = person.StaffTypeName;
+            Label6.Text = person.StaffTypeName;
+            Label17.Text = person.PositionName;
+            Label10.Text = person.PositionName;
+           /* TextBox2.Text = person.sa;
+            Label64.Text = reader.GetInt32(4).ToString();
+            Label66.Text = reader.GetInt32(4).ToString();
+            Label68.Text = reader.GetInt32(4).ToString();
+            Label22.Text = reader.GetInt32(5).ToString();
+            Session["Position_id"] = reader.GetString(6);*/
+
             using (OracleConnection conn = Util.OC())
             {
                 using (OracleCommand command = new OracleCommand("SELECT TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME,TB_STAFFTYPE.STAFFTYPE_NAME,TB_POSITION.NAME,TB_POSITION_AND_SALARY.SALARY,TB_BASESALARY.MAXSALARY,TB_POSITION.ID FROM TB_PERSON, TB_POSITION_AND_SALARY, TB_POSITION,TB_BASESALARY,TB_STAFFTYPE WHERE TB_PERSON.CITIZEN_ID = TB_POSITION_AND_SALARY.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_BASESALARY.POSITION_ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID  AND TB_PERSON.CITIZEN_ID = '" + TextBox1.Text + "'", conn))
