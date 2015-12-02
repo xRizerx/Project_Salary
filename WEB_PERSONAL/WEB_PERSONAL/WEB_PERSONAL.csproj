@@ -153,6 +153,7 @@
     <Content Include="Image\btx1.jpg" />
     <Content Include="Image\Button\menu_button.png" />
     <Content Include="Image\Button\menu_button_hover.png" />
+    <Content Include="Image\Button\hamburger_menu.png" />
     <Content Include="Image\roka.gif" />
     <Content Include="Image\ImageTUU\Desktop-icon.png" />
     <Content Include="Image\ImageTUU\Documents-icon.png" />
