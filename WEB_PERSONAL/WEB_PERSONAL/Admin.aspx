@@ -37,12 +37,12 @@
     <link href="CSS/Admin.css" rel="stylesheet" />
 
     <div class="main">
-        <div class="master_dark_div_sec">
-            <div class="master_dark_div_sec_title">
+        <div class="master_light_div_sec">
+            <div class="master_light_div_sec_title">
                 ข้อเสนอแนะ
             </div>
-            <div class="master_dark_div_sec_pre_in">
-                <div class="master_dark_div_sec_in">
+            <div class="master_light_div_sec_pre_in">
+                <div class="master_light_div_sec_in">
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" DataSourceID="SqlDataSource2">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
@@ -74,8 +74,8 @@
                                 <asp:Label ID="Label16" runat="server" Text="ลบข้อมูลตามรหัส"></asp:Label>
                             </td>
                             <td class="auto-style5">
-                                <asp:TextBox ID="TextBox4" runat="server" CssClass="master_dark_textbox" placeHolder="รหัส"></asp:TextBox>
-                                <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_dark_button" OnClick="LinkButton13_Click">ลบ</asp:LinkButton>
+                                <asp:TextBox ID="TextBox4" runat="server" CssClass="master_light_textbox" placeHolder="รหัส"></asp:TextBox>
+                                <asp:LinkButton ID="LinkButton13" runat="server" CssClass="master_light_button" OnClick="LinkButton13_Click">ลบ</asp:LinkButton>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
@@ -89,26 +89,26 @@
         <br />
         <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
 
-        <div class="master_dark_div_sec">
-            <div class="master_dark_div_sec_title">
+        <div class="master_light_div_sec">
+            <div class="master_light_div_sec_title">
                 ประกาศ
             </div>
-            <div class="master_dark_div_sec_pre_in">
-                <div class="master_dark_div_sec_in">
+            <div class="master_light_div_sec_pre_in">
+                <div class="master_light_div_sec_in">
                     <table style="width: 100%;">
                         <tr>
                             <td class="auto-style6">
                                 <asp:Label ID="Label17" runat="server" Text="รายละเอียด"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="TextBox5" runat="server" CssClass="master_dark_textbox" Height="200px" Width="500px" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox ID="TextBox5" runat="server" CssClass="master_light_textbox" Height="200px" Width="500px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td class="auto-style6">&nbsp;</td>
                             <td>
-                                <asp:LinkButton ID="LinkButton14" runat="server" CssClass="master_dark_button" OnClick="LinkButton14_Click">เพิ่ม</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton14" runat="server" CssClass="master_light_button" OnClick="LinkButton14_Click">เพิ่ม</asp:LinkButton>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
@@ -122,8 +122,8 @@
                                 <asp:Label ID="Label18" runat="server" Text="ลบข้อมูลตามรหัส"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="TextBox6" runat="server" CssClass="master_dark_textbox" placeHolder="รหัส"></asp:TextBox>
-                                <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_dark_button" OnClick="LinkButton15_Click">ลบ</asp:LinkButton>
+                                <asp:TextBox ID="TextBox6" runat="server" CssClass="master_light_textbox" placeHolder="รหัส"></asp:TextBox>
+                                <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_light_button" OnClick="LinkButton15_Click">ลบ</asp:LinkButton>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
@@ -164,12 +164,12 @@
 
         </div>
 
-        <div class="master_dark_div_sec">
-            <div class="master_dark_div_sec_title">
+        <div class="master_light_div_sec">
+            <div class="master_light_div_sec_title">
                 การแก้ไขข้อมูล
             </div>
-            <div class="master_dark_div_sec_pre_in">
-                <div class="master_dark_div_sec_in">
+            <div class="master_light_div_sec_pre_in">
+                <div class="master_light_div_sec_in">
 
                     <table style="width: 100%;">
                         <tr>
@@ -177,7 +177,7 @@
                                 <asp:Label ID="Label14" runat="server" Text="รายละเอียด"></asp:Label>
                             </td>
                             <td class="auto-style2">
-                                <asp:TextBox ID="TextBox2" runat="server" CssClass="master_dark_textbox" Height="200px" Width="500px" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox ID="TextBox2" runat="server" CssClass="master_light_textbox" Height="200px" Width="500px" TextMode="MultiLine"></asp:TextBox>
                                 <asp:Label ID="Label19" runat="server" Text="* เพิ่มข้อโดยการเว้นบรรทัด" style="color:#808080"></asp:Label>
                             </td>
                             <td>&nbsp;</td>
@@ -185,7 +185,7 @@
                         <tr>
                             <td class="auto-style1">&nbsp;</td>
                             <td class="auto-style2">
-                                <asp:LinkButton ID="LinkButton11" runat="server" CssClass="master_dark_button" OnClick="LinkButton11_Click">เพิ่ม</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton11" runat="server" CssClass="master_light_button" OnClick="LinkButton11_Click">เพิ่ม</asp:LinkButton>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
@@ -199,8 +199,8 @@
                                 <asp:Label ID="Label15" runat="server" Text="ลบข้อมูลตามรหัส"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_dark_textbox" placeHolder="รหัส"></asp:TextBox>
-                                <asp:LinkButton ID="LinkButton12" runat="server" CssClass="master_dark_button" OnClick="LinkButton12_Click">ลบ</asp:LinkButton>
+                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_light_textbox" placeHolder="รหัส"></asp:TextBox>
+                                <asp:LinkButton ID="LinkButton12" runat="server" CssClass="master_light_button" OnClick="LinkButton12_Click">ลบ</asp:LinkButton>
                             </td>
                             <td>&nbsp;</td>
                         </tr>

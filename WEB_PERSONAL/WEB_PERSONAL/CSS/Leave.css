@@ -9,9 +9,17 @@
 
 .mp {
     padding: 20px;
-    background-color: #202020;
+    background-color: #f0f0f0;
 }
-
+#sec1 {
+    height: 640px;   
+}
+#sec2 {
+    height: 640px;
+}
+#sec3 {
+    height: 640px;
+}
 
 .leave_button_div ul {
     list-style-type: none;
@@ -52,36 +60,6 @@
     margin: 0 auto;
     text-align: center;
     border: 1px solid #808080;
-}
-
-#sec1 {
-    background-image: url("../Image/time_check_in.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#sec2 {
-    background-image: url("../Image/paper.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#sec3 {
-    background-image: url("../Image/paper.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#sec4 {
-    background-image: url("../Image/papers.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#sec5 {
-    background-image: url("../Image/report-writing.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
 .leave_sec1 {
@@ -147,6 +125,7 @@
 .auto-style95 {
     width: 120px;
     text-align: right;
+    vertical-align: top;
 }
 
 .auto-style96 {

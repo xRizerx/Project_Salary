@@ -7,7 +7,9 @@
 
 .sec1 {
     color: #FFFFFF;
+    color: #000000;
     background-color: #202020;
+    background-color: #f0f0f0;
     padding: 20px;
 }
 .sec1 td {
@@ -32,7 +34,7 @@
 }
 
 .title_a {
-    color: #FFFFFF;
+    color: #000000;
     font-size: 24px;
     font-weight: bold;
 }
@@ -54,7 +56,6 @@
 #ContentPlaceHolder1_Panel1 {
     background-color: #202020;
     padding: 10px;
-
 }
 
 #ContentPlaceHolder1_Panel1 img {
@@ -122,8 +123,8 @@
 
 .profile_default_button {
     text-decoration: none;
-    color: #FFFFFF;
-    background-color: #404040;
+    color: #000000;
+    background-color: #e0e0e0;
     padding: 3px 20px;
     margin-top: 3px;
     display: inline-block;
@@ -131,12 +132,12 @@
     transition: background-color ease 0.25s;
 }
 .profile_default_button:hover {
-    background-color: #808080;
+    background-color: #ffffff;
 }
 .profile_default_textbox {
     font-family: 'WDB Bangna';
-    color: #FFFFFF;
-    background-color: #404040;
+    color: #000000;
+    background-color: #e0e0e0;
     padding: 1px 5px;
     border: none;
 }
@@ -147,15 +148,15 @@
     padding: 0 10px;
 }
 .info_div_in {
-    border: 1px solid #404040;
+    border: 1px solid #e0e0e0;
 }
 
 .info_div_title {
 
     display: inline-block;
     padding: 0 20px;
-    color: #FFFFFF;
-    background-color: #404040;
+    color: #000000;
+    background-color: #e0e0e0;
 
     font-size: 24px;
     font-weight: bold;
@@ -165,7 +166,7 @@
     font-weight: bold;
     text-align: center;
     padding: 0px 20px;
-    background-color: #404040;
+    background-color: #e0e0e0;
     
 }
 .table_column_header span {
@@ -175,6 +176,8 @@
 .t_center {
     text-align: right;
 }
+
+
 .auto-style2 {
     width: 160px;
 }

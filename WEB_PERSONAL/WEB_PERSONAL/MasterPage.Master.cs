@@ -139,5 +139,13 @@ namespace WEB_PERSONAL {
         protected void LinkButton1_Click1(object sender, EventArgs e) {
             Response.Redirect("Profile.aspx");
         }
+
+        protected void LinkButton2_Click1(object sender, EventArgs e) {
+            Response.Redirect(Request.Url.ToString());
+        }
+
+        protected void LinkButton3_Click1(object sender, EventArgs e) {
+            Response.Redirect("Default.aspx");
+        }
     }
 }

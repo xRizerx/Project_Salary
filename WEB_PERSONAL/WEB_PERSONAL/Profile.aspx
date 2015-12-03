@@ -35,7 +35,7 @@
                 <tr>
                     <td>
                         <div class="sec1_1">
-                            <img id="profile_pic" runat="server" src="Image/roka.gif" style="object-fit: contain;" />
+                            <img id="profile_pic" runat="server" src="Image/no_image.png" style="object-fit: contain;" />
 
                         </div>
                     </td>
@@ -459,35 +459,7 @@
                     </td>
 
                 </tr>
-                <tr>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp;</td>
-                    <td>
-                        &nbsp;</td>
-
-                </tr>
-            </table>
+                </table>
 
 
 
@@ -501,7 +473,7 @@
         <div class="profile_image_header">
             <asp:Label ID="Label3" runat="server" Text="รูปภาพ"></asp:Label>
             <span style="display: inline-block; width: 50px;"></span>
-            <asp:FileUpload ID="FileUpload1" runat="server" Width="200px" />
+            <asp:FileUpload ID="FileUpload1" runat="server" Width="200px" CssClass="uploader"/>
             <asp:LinkButton ID="LinkButton1" runat="server" Text="อัพโหลด" CssClass="profile_default_button" OnClick="LinkButton1_Click"></asp:LinkButton>
         </div>
 

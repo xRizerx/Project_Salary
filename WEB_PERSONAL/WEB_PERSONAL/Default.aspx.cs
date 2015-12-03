@@ -45,7 +45,7 @@ namespace WEB_PERSONAL {
                                     command2.Parameters.AddWithValue("1", reader.GetInt32(0));
                                     using (OracleDataReader reader2 = command2.ExecuteReader()) {
                                         div_update_history.InnerHtml += "<div class=\"div_update_history_item\">";
-                                        div_update_history.InnerHtml += "<strong>อัพเดทข้อมูลวันที่ " + reader.GetString(1) + " โดย " + reader.GetString(2) + " (#" + reader.GetInt32(0) + ")</strong><br>";
+                                        div_update_history.InnerHtml += "<strong>" + reader.GetString(1) + " / " + reader.GetString(2) + " (#" + reader.GetInt32(0) + ")</strong><br>";
                                         while (reader2.Read()) {
                                             div_update_history.InnerHtml += "<span style=\"display: inline-block; width: 20px\"></span>- ";
                                             div_update_history.InnerHtml += reader2.GetString(0);

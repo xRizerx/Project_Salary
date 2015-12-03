@@ -61,7 +61,7 @@
             $(window).load(function () {
                 $(".master_header_under_in2").mCustomScrollbar({
                     axis: "y",
-                    theme: "white-thin",
+                    theme: "dark-thin",
                     //theme: "minimal-dark",
                     autoExpandScrollbar: true,
                     scrollbarPosition: "outside",
@@ -80,7 +80,7 @@
         $(document).ready(function () {
             $("#i2").hide();
             $(".all_div").css('opacity', '1');
-            
+
             $(window).resize(checkWidth);
         });
         function mover(target) {
@@ -134,28 +134,39 @@
             <div class="master_login">
                 <div class="master_login_pre_in">
                     <div class="master_login_in">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td>
+                                    <div class="master_login_left">
+                                        <span class="master_menu_button" onclick="toggleMenu();">&nbsp</span>
+                                        <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click1" CssClass="master_home_button">&nbsp</asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click1" CssClass="master_reload_button">&nbsp</asp:LinkButton>
+                                    </div>
+                                </td>
+                                <td style="text-align: right;">
+                                    <ul class="master_login_right">
+                                        <li>
+                                            <asp:Label ID="Label9" runat="server" Text="ยินดีต้อนรับ" CssClass="master_login_name"></asp:Label>
+                                        </li>
+                                        <li>
+                                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_login_name_link" OnClick="LinkButton1_Click1">LinkButton</asp:LinkButton>
 
-                        <div class="master_login_left">
-                            <span class="master_menu_button" onclick="toggleMenu();">เมนู</span>
-                            <span style="display: inline-block; width: 20px;"></span>
-                        </div>
-                        <ul class="master_login_right">
-                            <li>
-                                <asp:Label ID="Label9" runat="server" Text="ยินดีต้อนรับ" CssClass="master_login_name"></asp:Label>
-                            </li>
-                            <li>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_login_name_link" OnClick="LinkButton1_Click1">LinkButton</asp:LinkButton>
+                                        </li>
 
-                            </li>
+                                        <li>
+                                            <span style="display: inline-block; width: 5px"></span>
+                                        </li>
 
-                            <li>
-                                <span style="display: inline-block; width: 5px"></span>
-                            </li>
+                                        <li>
+                                            <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click" CssClass="master_logout">ออกจากระบบ</asp:LinkButton>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
 
-                            <li>
-                                <asp:LinkButton ID="LinkButton10" runat="server" OnClick="LinkButton10_Click" CssClass="master_logout">ออกจากระบบ</asp:LinkButton>
-                            </li>
-                        </ul>
+                        </table>
+
+
                     </div>
                 </div>
 
@@ -189,10 +200,6 @@
                                     <a href="SEMINAR-GENERAL.aspx">การพัฒนาบุคลากร</a>
                                 </div>
                                 <div>
-                                    <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
-                                    <a href="Admin.aspx">จัดการระบบ</a>
-                                </div>
-                                <div>
                                     <span class="master_header_under_header">การขึ้นเงินเดือน</span>
                                     <a href="Salary.aspx">DPIS</a>
                                     <a href="SalarybyID.aspx">การขึ้นเงินเดือนรายบุคคล</a>
@@ -209,6 +216,10 @@
                                 <div>
                                     <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
                                     <a href="insignia_citizen.aspx">เครื่องราชอิสริยาภรณ์</a>
+                                </div>
+                                <div>
+                                    <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
+                                    <a href="Admin.aspx">จัดการระบบ</a>
                                 </div>
 
                             </div>

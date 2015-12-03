@@ -71,7 +71,7 @@
                     </p>
                 </div>
 
-                <span style="font-size: 24px; font-weight: bold; color: #FFFFFF; margin-left: 100px">ประกาศ</span>
+                <span style="font-size: 24px; font-weight: bold; margin-left: 100px">ประกาศ</span>
 
                 <div id="div_announce" runat="server">
                     
@@ -81,7 +81,7 @@
 
                 </div>
 
-                <span style="font-size: 24px; font-weight: bold; color: #FFFFFF; margin-left: 100px">การอัพเดท</span>
+                <span style="font-size: 24px; font-weight: bold; margin-left: 100px">การอัพเดท</span>
 
                 <div id="div_update_history" runat="server">
 
