@@ -94,6 +94,7 @@ namespace WEB_PERSONAL {
             Label94.Text = person.StartPositionWorkName;
 
             //Study History
+            study_history_div.InnerHtml = "";
             study_history_div.InnerHtml += "<table>";
             study_history_div.InnerHtml += "<tr>";
             study_history_div.InnerHtml += "<td class=\"table_column_header\"><span>สถานศึกษา</span></td>";
@@ -113,6 +114,7 @@ namespace WEB_PERSONAL {
             //-----
 
             //Job license
+            job_license_div.InnerHtml = "";
             job_license_div.InnerHtml += "<table>";
             job_license_div.InnerHtml += "<tr>";
             job_license_div.InnerHtml += "<td class=\"table_column_header\"><span>ชื่อใบอนุญาติ</span></td>";
@@ -134,6 +136,7 @@ namespace WEB_PERSONAL {
             //-----
 
             //Training History
+            training_history_div.InnerHtml = "";
             training_history_div.InnerHtml += "<table>";
             training_history_div.InnerHtml += "<tr>";
             training_history_div.InnerHtml += "<td class=\"table_column_header\"><span>หลักสูตรฝึกอบรม</span></td>";
@@ -153,6 +156,7 @@ namespace WEB_PERSONAL {
             //-----
 
             //Disciplinary and Amnesty
+            disciplinary_and_amnesty.InnerHtml = "";
             disciplinary_and_amnesty.InnerHtml += "<table>";
             disciplinary_and_amnesty.InnerHtml += "<tr>";
             disciplinary_and_amnesty.InnerHtml += "<td class=\"table_column_header\"><span>พ.ศ.</span></td>";
@@ -172,6 +176,7 @@ namespace WEB_PERSONAL {
             //-----
 
             //Position And Salary
+            position_and_salary_div.InnerHtml = "";
             position_and_salary_div.InnerHtml += "<table>";
             position_and_salary_div.InnerHtml += "<tr>";
             position_and_salary_div.InnerHtml += "<td class=\"table_column_header\"><span>วันที่</span></td>";

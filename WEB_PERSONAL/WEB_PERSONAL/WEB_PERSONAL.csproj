@@ -154,6 +154,7 @@
     <Content Include="Image\btx1.jpg" />
     <Content Include="Image\Button\arrow_up.png" />
     <Content Include="Image\Button\home.png" />
+    <Content Include="Image\Button\logout.png" />
     <Content Include="Image\Button\menu_button.png" />
     <Content Include="Image\Button\menu_button_hover.png" />
     <Content Include="Image\Button\hamburger_menu.png" />

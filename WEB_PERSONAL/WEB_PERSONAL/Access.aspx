@@ -9,6 +9,8 @@
     <title>ระบบบุคลากร - มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ</title>
     <link rel="stylesheet" type="text/css" href="CSS/Master.css" />
     <link href="CSS/Access.css" rel="stylesheet" />
+    <script src="jQueryCalendarThai/jquery-ui-1.10.3.custom.js"></script>
+    <script src="jQueryCalendarThai/jquery-1.9.0.min.js"></script>
     <script>
         function goPage(target) {
             /*setTimeout(function () { fa(target); }, 1000);
@@ -19,6 +21,14 @@
         function fa(target) {
             //document.location.href = target;
         }
+        $(document).ready(function () {
+            setTimeout(op1, 300);
+        });
+        function op1() {
+            $(".all_div").css('opacity', '1');
+        }
+        
+        
     </script>
 </head>
 <body>
@@ -46,7 +56,7 @@
                                 <table>
                                     <tr>
                                         <td class="login_column0">
-                                            <asp:Label ID="Label13X" runat="server" Text="รหัสบัตรประชาชน" CssClass="c10"></asp:Label>
+                                            <asp:Label ID="Label13X" runat="server" Text="รหัสบัตรประชาชน"></asp:Label>
                                         </td>
                                         <td class="login_column1">
                                             <asp:TextBox ID="TextBox1X" runat="server" CssClass="login_default_textbox" MaxLength="13"></asp:TextBox>
