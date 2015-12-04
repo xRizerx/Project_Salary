@@ -80,8 +80,8 @@
         $(document).ready(function () {
             $("#i2").hide();
             $(".all_div").css('opacity', '1');
-
             $(window).resize(checkWidth);
+
         });
         function mover(target) {
             //var v = document.getElementById('master_header_under_id');
@@ -90,12 +90,16 @@
             //$("#i2").css('background-image', 'url(../' + target + ')');
         }
         function toggleMenu() {
+            checkWidth();
             //$("#i2").slideToggle(500);
 
             $("#i2").fadeToggle(500);
-            $("#pu").slideUp(500);
-            checkWidth();
+            //$("#pu").slideUp(500);
+            
             //$("#pu").fadeOut(1);
+        }
+        function goOnTop() {
+            $('html, body').animate({ scrollTop: 0 }, 1000);
         }
         function checkWidth() {
             if ($("body").width() < 800) {
@@ -141,6 +145,7 @@
                                         <span class="master_menu_button" onclick="toggleMenu();">&nbsp</span>
                                         <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click1" CssClass="master_home_button">&nbsp</asp:LinkButton>
                                         <asp:LinkButton ID="LinkButton2" runat="server" OnClick="LinkButton2_Click1" CssClass="master_reload_button">&nbsp</asp:LinkButton>
+                                        <span class="master_go_on_top_button" onclick="goOnTop();">&nbsp</span>
                                     </div>
                                 </td>
                                 <td style="text-align: right;">
@@ -197,6 +202,7 @@
                                     <span class="master_header_under_header">บุคลากร</span>
                                     <a href="Person-GENERAL.aspx">เพิ่มบุคลากร</a>
                                     <a href="Person-ADMIN.aspx">แก้ไขบุคลากร</a>
+                                    <a href="Person-Detail.aspx">รายชื่อบุคลากร</a>
                                     <a href="SEMINAR-GENERAL.aspx">การพัฒนาบุคลากร</a>
                                 </div>
                                 <div>

@@ -12,10 +12,10 @@
 
 .c1 {
     padding: 20px;
-    padding-bottom: 10px;
-    background-color: #101010;
+    background-color: #202020;
     margin: 0 auto;
     text-align: center;
+    font-size: 0;
 }
 
 .c1 img {

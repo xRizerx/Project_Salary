@@ -142,6 +142,7 @@
     <Content Include="CSS\Default.css" />
     <Content Include="CSS\Late.css" />
     <Content Include="CSS\Leave.css" />
+    <Content Include="CSS\Person-Detail.css" />
     <Content Include="CSS\Profile.css" />
     <Content Include="CSS\Salary.css" />
     <Content Include="CSS\Study.css" />
@@ -151,6 +152,7 @@
     <Content Include="Image\Bar\header_bar.png" />
     <Content Include="Image\blurred-blue-background.jpg" />
     <Content Include="Image\btx1.jpg" />
+    <Content Include="Image\Button\arrow_up.png" />
     <Content Include="Image\Button\home.png" />
     <Content Include="Image\Button\menu_button.png" />
     <Content Include="Image\Button\menu_button_hover.png" />
@@ -294,6 +296,7 @@
     <Content Include="Font\THSarabun Italic.ttf" />
     <Content Include="Font\THSarabun.ttf" />
     <Content Include="Person-ADMIN.aspx" />
+    <Content Include="Person-Detail.aspx" />
     <Content Include="Person-GENERAL.aspx" />
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
@@ -529,6 +532,13 @@
     </Compile>
     <Compile Include="Person-ADMIN.aspx.designer.cs">
       <DependentUpon>Person-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Person-Detail.aspx.cs">
+      <DependentUpon>Person-Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person-Detail.aspx.designer.cs">
+      <DependentUpon>Person-Detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Person-GENERAL.aspx.cs">
       <DependentUpon>Person-GENERAL.aspx</DependentUpon>

@@ -382,7 +382,29 @@ form {
 .master_home_button:hover {
     background-color: #00a2e8;
 }
-.master_home_button:active {
+home_button:active {
+    background-color: #202020;
+}
+.master_go_on_top_button {
+    display: inline-block;
+    width: 64px;
+    height: 32px;
+    background-image: url(../Image/Button/arrow_up.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: right;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: background-color ease 0.25s;
+}
+.master_go_on_top_button:hover {
+    background-color: #808080;
+    background-color: #00a2e8;
+}
+.master_go_on_top_button:active {
     background-color: #202020;
 }
 .master_header_bar {
@@ -397,7 +419,35 @@ form {
     background-color: #202020;
     background-color: #f0f0f0;
     background-color: unset;
+    /*background-color: #00a2e8;*/
+    text-align: left;
+    
+    /*background-image: url(../Image/blurred-blue-background.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    /*background-image: url(../Image/anime_p1.png);
+    background-repeat: no-repeat;
+    background-position: top right;*/
 
+    /*background-size: contain;
+    background-attachment: fixed;*/
+    
+    /*height: 100vh;*/
+    display: none;
+    /*margin-top: 1000px;
+    display: block;*/
+    width: 240px;
+
+    
+    border-bottom: 1px solid #000000;
+    box-shadow: rgba(0,0,0,0.5) 0px 10px 40px;
+}
+
+.master_header_under {
+    background-color: rgba(0,0,0,0.9);
+    background-color: #202020;
+    background-color: #f0f0f0;
+    background-color: unset;
     /*background-color: #00a2e8;*/
     text-align: left;
     
