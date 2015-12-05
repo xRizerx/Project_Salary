@@ -605,7 +605,7 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    using (OracleCommand command = new OracleCommand("SELECT NVL(NAME, '-') FROM TB_PERSON, TB_POSITION WHERE CITIZEN_ID = :1 AND TB_PERSON.START_POSITION_WORK_ID = TB_POSITION.ID", con)) {
+                    using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_WORK_NAME, '-') FROM TB_PERSON, TB_POSITION_WORK WHERE CITIZEN_ID = :1 AND TB_PERSON.START_POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
                             if (reader.HasRows) {

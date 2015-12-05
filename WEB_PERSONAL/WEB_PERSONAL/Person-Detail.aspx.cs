@@ -50,8 +50,13 @@ namespace WEB_PERSONAL {
 
                 }
             }
+            pullPerson(row.Cells[1].Text);
+      
 
-            Person person = new Person(row.Cells[1].Text);
+        }
+
+        private void pullPerson(string citizen_id) {
+            Person person = new Person(citizen_id);
             Label14.Text = person.CitizenID;
             Label32.Text = person.TitleName;
             Label15.Text = person.Name;
@@ -204,6 +209,10 @@ namespace WEB_PERSONAL {
             position_and_salary_div.InnerHtml += "</table>";
 
             //-----
+        }
+
+        protected void LinkButton13_Click(object sender, EventArgs e) {
+            pullPerson(TextBox2.Text);
         }
     }
 }

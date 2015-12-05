@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Data.OracleClient;
 using System.Globalization;
 using System.Drawing;
+using WEB_PERSONAL.Class;
 
 namespace WEB_PERSONAL {
     public partial class Leave : System.Web.UI.Page {
@@ -261,10 +262,8 @@ namespace WEB_PERSONAL {
                                 if (reader.HasRows) {
                                     reader.Read();
                                     Label24.Text = reader.GetString(0);
-                                    Label24.ForeColor = Color.White;
                                 } else {
                                     Label24.Text = "ไม่พบรหัสพนักงาน";
-                                    Label24.ForeColor = Color.Red;
                                 }
 
                             }
@@ -514,6 +513,10 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton1_Click1(object sender, EventArgs e) {
+            if (!Person.IsAdmin(Session["login_id"].ToString())) {
+                Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
+                return;
+            }
             using (OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("DELETE TB_LEAVE_TYPE WHERE LEAVE_TYPE_ID = :2", con)) {
                     command.Parameters.AddWithValue("2", TextBox11.Text);
@@ -543,6 +546,13 @@ namespace WEB_PERSONAL {
         protected void DropDownList8_DataBound(object sender, EventArgs e) {
             DropDownList8.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทการลา--", String.Empty));
             DropDownList8.SelectedIndex = 0;
+        }
+
+        protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e) {
+            if(!Person.IsAdmin(Session["login_id"].ToString())) {
+                e.Cancel = true;
+                Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
+            }
         }
     }
     

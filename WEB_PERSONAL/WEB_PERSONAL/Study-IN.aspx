@@ -220,8 +220,22 @@
 
                 <div class="master_light_div_sec_in">
 
-                    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
+                    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource4" OnRowDeleting="GridView1_RowDeleting">
                         <AlternatingRowStyle BackColor="White" />
+                        <Columns>
+                            <asp:BoundField DataField="ID" HeaderText="รหัส" ReadOnly="True" SortExpression="ID" />
+                            <asp:BoundField DataField="CITIZEN_ID" HeaderText="รหัสพนักงาน" SortExpression="CITIZEN_ID" />
+                            <asp:BoundField DataField="STUDY_YEAR" HeaderText="ปีการศึกษา" SortExpression="STUDY_YEAR" />
+                            <asp:BoundField DataField="SHORT_NAME" HeaderText="ระดับ" SortExpression="SHORT_NAME" />
+                            <asp:BoundField DataField="STUDY_BRANCH_NAME" HeaderText="สาขา" SortExpression="STUDY_BRANCH_NAME" />
+                            <asp:BoundField DataField="STUDY_LOCATION" HeaderText="สถานที่" SortExpression="STUDY_LOCATION" />
+                            <asp:BoundField DataField="NAME" HeaderText="หลักสูตร" SortExpression="NAME" />
+                            <asp:BoundField DataField="STUDY_TIME" HeaderText="ระยะเวลาที่ศึกษา" SortExpression="STUDY_TIME" />
+                            <asp:BoundField DataField="FROM_TO_DATE" HeaderText="วันที่" SortExpression="FROM_TO_DATE" />
+                            <asp:BoundField DataField="STUDY_TIME_COURSE" HeaderText="ระยะเวลาที่ศึกษาตามหลักสูตร" SortExpression="STUDY_TIME_COURSE" />
+                            <asp:BoundField DataField="COMMENT" HeaderText="หมายเหตุ" SortExpression="COMMENT" />
+                            <asp:CommandField DeleteText="ลบ" HeaderText="ลบ" ShowDeleteButton="True" />
+                        </Columns>
                         <FooterStyle BackColor="#CCCC99" />
                         <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
                         <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
@@ -232,6 +246,9 @@
                         <SortedDescendingCellStyle BackColor="#EAEAD3" />
                         <SortedDescendingHeaderStyle BackColor="#575357" />
                     </asp:GridView>
+
+
+                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_STUDY.ID, TB_STUDY.CITIZEN_ID, TB_STUDY.STUDY_YEAR, TB_STUDY_DEGREE.SHORT_NAME, TB_STUDY.STUDY_BRANCH_NAME, TB_STUDY.STUDY_LOCATION, TB_STUDY_COURSE.NAME, TB_STUDY.STUDY_TIME || ' (' || TB_STUDY.STUDY_TIME_YEAR || ')' as &quot;STUDY_TIME&quot;, TO_CHAR(TB_STUDY.STUDY_FROM_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') || ' - ' || TO_CHAR(TB_STUDY.STUDY_TO_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') as &quot;FROM_TO_DATE&quot;, TB_STUDY.STUDY_TIME_COURSE, TB_STUDY.&quot;COMMENT&quot; FROM TB_STUDY, TB_STUDY_DEGREE, TB_STUDY_COURSE WHERE TB_STUDY.STUDY_COURSE_ID = TB_STUDY_COURSE.ID AND TB_STUDY.STUDY_DEGREE_ID = TB_STUDY_DEGREE.ID ORDER BY TB_STUDY.ID DESC"></asp:SqlDataSource>
 
 
                 </div>

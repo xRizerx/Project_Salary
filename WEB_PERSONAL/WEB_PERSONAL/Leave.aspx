@@ -347,11 +347,29 @@
                         <SortedDescendingHeaderStyle BackColor="#575357" />
                     </asp:GridView>
 
-                    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM TB_LEAVE_TYPE"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM TB_LEAVE_TYPE">
+                        <UpdateParameters>
+                            <asp:Parameter Name="LEAVE_TYPE_NAME" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
 
                 </div>
             </div>
         </div>
+
+        <br />
+        <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
+
+        <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource6" style="font-family: 'WDB Bangna'">
+            <Series>
+                <asp:Series Name="Series1" XValueMember="LEAVE_TYPE_NAME" YValueMembers="COUNT(TB_LEAVE.LEAVE_TYPE_ID)"></asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+            </ChartAreas>
+        </asp:Chart>
+
+        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="select leave_type_name, count(tb_leave.leave_type_id) from tb_leave, tb_leave_type where tb_leave.leave_type_id = tb_leave_type.leave_type_id group by leave_type_name"></asp:SqlDataSource>
 
         <br />
         <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
@@ -449,7 +467,7 @@
                         </tr>
                     </table>
 
-                    <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="PAPER_ID" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnPageIndexChanged="GridView2_PageIndexChanged">
+                    <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="PAPER_ID" ForeColor="Black" GridLines="Vertical" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnPageIndexChanged="GridView2_PageIndexChanged" OnRowDeleting="GridView2_RowDeleting">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
 
