@@ -15,8 +15,8 @@
     transition: opacity linear 1s;
 }*/
 .all_div {
-    opacity: 0;
-    transition: opacity ease 0.5s;
+    opacity: 1;
+    transition: opacity ease 0.25s;
 }
 
 .login_popup {
@@ -43,12 +43,12 @@
     margin: auto;
     overflow: hidden;
 
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     border: none;
-    /*border: 32px solid #00a2e8;
-    border: 32px solid #ffffff;*/
+    border: 32px solid #00a2e8;
+    /*border: 32px solid #ffffff;*/
     border-radius: 1000px;
-    box-shadow: #ffffff 0px 0px 120px;
+    box-shadow: #ffffff 0px 0px 50px;
 
     /*-webkit-animation: k1 0.5s;
     -moz-animation: k1 1.5s;*/
@@ -118,8 +118,16 @@
     
     margin: 0px auto;
     margin-top: 20px;
-    -webkit-animation: k2 2s;
-    -moz-animation: k2 2s;
+    -webkit-animation: k2 1s;
+    -moz-animation: k2 1s;
+    /*box-shadow: #808080 0px 5px 5px;*/
+}
+.login_popup_div_sec: {
+    
+    margin: 0px auto;
+    margin-top: 20px;
+    -webkit-animation: k2 1s;
+    -moz-animation: k2 1s;
     /*box-shadow: #808080 0px 5px 5px;*/
 }
 .login_popup_div_sec_header {

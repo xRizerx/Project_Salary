@@ -159,6 +159,7 @@
     <Content Include="Image\Button\menu_button_hover.png" />
     <Content Include="Image\Button\hamburger_menu.png" />
     <Content Include="Image\Button\reload.png" />
+    <Content Include="Image\loading_spinner.gif" />
     <Content Include="Image\no_image.png" />
     <Content Include="Image\roka.gif" />
     <Content Include="Image\ImageTUU\Desktop-icon.png" />
