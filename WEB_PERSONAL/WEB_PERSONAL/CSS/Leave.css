@@ -10,15 +10,7 @@
 .mp {
     padding: 20px;
     background-color: #f0f0f0;
-}
-#sec1 {
-    height: 640px;   
-}
-#sec2 {
-    height: 640px;
-}
-#sec3 {
-    height: 640px;
+    min-height: 1024px;
 }
 
 .leave_button_div ul {
@@ -86,6 +78,8 @@
 
 .auto-style58 {
     width: 180px;
+    font-weight: bold;
+
 }
 
 .auto-style64 {
@@ -126,11 +120,15 @@
     width: 120px;
     text-align: right;
     vertical-align: top;
+    font-weight: bold;
+    margin-right: 10px;
+    display: inline-block;
 }
 
 .auto-style96 {
     width: 180px;
     height: 33px;
+    font-weight: bold;
 }
 
 .auto-style97 {

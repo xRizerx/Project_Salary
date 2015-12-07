@@ -7,16 +7,25 @@
         .auto-style98 {
             width: 100px;
             text-align: right;
+            font-weight: bold;
+            margin-right: 10px;
+    display: inline-block;
         }
     .auto-style99 {
         width: 150px;
         text-align: right;
         vertical-align: top;
+        font-weight: bold;
+        margin-right: 10px;
+    display: inline-block;
     }
     .auto-style100 {
         width: 150px;
         text-align: right;
         height: 29px;
+        font-weight: bold;
+        margin-right: 10px;
+    display: inline-block;
     }
     </style>
 </asp:Content>
@@ -25,6 +34,24 @@
         $(function () {
             $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox5,#ContentPlaceHolder1_TextBox6,#ContentPlaceHolder1_TextBox9,#ContentPlaceHolder1_TextBox17,#ContentPlaceHolder1_TextBox18").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
         });
+        $(document).ready(function () {
+            foggle('1');
+        });
+        function foggleOff() {
+            for (var i = 1; i < 6; ++i) {
+                var j = document.getElementById('sp' + i);
+                j.style.display = 'none';
+            }
+            for (var i = 1; i < 6; ++i) {
+                var j = document.getElementById('st' + i);
+                j.className = 'master_light_toggle_button';
+            }
+        }
+        function foggle(target) {
+            foggleOff();
+            $('#sp' + target).slideDown(250);
+            document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
+        }
     </script>
 
     <link href="CSS/Leave.css" rel="stylesheet" />
@@ -34,16 +61,26 @@
             การลา
         </div>
 
-
-
-        <div class="master_light_div_sec">
+        <table class="master_light_table_div_sec">
+            <tr>
+                <td>
+                    <div class="master_light_toggle_div_sec">
+                        <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">เพิ่มข้อมูลการลา</div>
+                        <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">แก้ไขข้อมูลการลา</div>
+                        <div class="master_light_toggle_button" id="st3" onclick="foggle('3')">จัดการประเภทการลา</div>
+                        <div class="master_light_toggle_button" id="st4" onclick="foggle('4')">กราฟ</div>
+                        <div class="master_light_toggle_button" id="st5" onclick="foggle('5')">ข้อมูลการลา</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="master_light_div_sec" id="sp1">
             <div class="master_light_div_sec_title">
                 เพิ่มเอกสารการลา
             </div>
             <div class="master_light_div_sec_pre_in">
 
 
-                <div class="master_light_div_sec_in" id="sec1">
+                <div class="master_light_div_sec_in">
 
                     <table style="width: 100%;">
                         <tr>
@@ -123,14 +160,14 @@
         
 
 
-        <div class="master_light_div_sec">
+        <div class="master_light_div_sec" id="sp2">
             <div class="master_light_div_sec_title">
                 แก้ไขเอกสารการลา
             </div>
             <div class="master_light_div_sec_pre_in">
 
 
-                <div class="master_light_div_sec_in" id="sec2">
+                <div class="master_light_div_sec_in">
 
                     <table style="width: 100%;">
                         <tr>
@@ -273,14 +310,14 @@
             </div>
         </div>
 
-        <div class="master_light_div_sec">
+        <div class="master_light_div_sec" id="sp3">
             <div class="master_light_div_sec_title">
                 จัดการประเภทการลา
             </div>
             <div class="master_light_div_sec_pre_in">
 
 
-                <div class="master_light_div_sec_in" id="sec3">
+                <div class="master_light_div_sec_in">
 
                     <table style="width: 100%;">
                         <tr>
@@ -357,10 +394,8 @@
             </div>
         </div>
 
-        <br />
-        <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
-
-        <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource6" style="font-family: 'WDB Bangna'">
+                    <div id="sp4">
+                        <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource6" style="font-family: 'WDB Bangna'">
             <Series>
                 <asp:Series Name="Series1" XValueMember="LEAVE_TYPE_NAME" YValueMembers="COUNT(TB_LEAVE.LEAVE_TYPE_ID)"></asp:Series>
             </Series>
@@ -370,11 +405,9 @@
         </asp:Chart>
 
         <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="select leave_type_name, count(tb_leave.leave_type_id) from tb_leave, tb_leave_type where tb_leave.leave_type_id = tb_leave_type.leave_type_id group by leave_type_name"></asp:SqlDataSource>
-
-        <br />
-        <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
-
-        <div class="master_light_div_sec" >
+                    </div>
+        
+        <div class="master_light_div_sec" id="sp5">
             <div class="master_light_div_sec_title">
                 ข้อมูลเอกสารการลา
             </div>
@@ -504,6 +537,11 @@
                 </div>
             </div>
         </div>
+                </td>
+            </tr>
+        </table>
+
+        
 
 
     </div>

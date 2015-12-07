@@ -2,7 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        
+        .auto-style7 {
+            width: 20px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -20,7 +22,26 @@
                     advanced: { autoExpandHorizontalScroll: true }
                 });
             });
+            $(document).ready(function () {
+                foggle('1');
+            });
         })(jQuery);
+        function foggleOff() {
+            for (var i = 1; i < 12; ++i) {
+                var j = document.getElementById('sp' + i);
+                j.style.display = 'none';
+            }
+            for (var i = 1; i < 12; ++i) {
+                var j = document.getElementById('st' + i);
+                j.className = 'profile_button';
+            }
+        }
+        function foggle(target) {
+            foggleOff();
+            $('#sp' + target).slideDown(250);
+            document.getElementById('st' + target).className = 'profile_button_selected';
+
+        }
     </script>
 
     <div class="main">
@@ -31,18 +52,23 @@
                     <td>
                         <div class="sec1_1">
                             <img id="profile_pic" runat="server" src="Image/no_image.png" style="object-fit: contain;" />
-
+                            <div class="profile_button" id="st1" onclick="foggle('1')">ข้อมูลส่วนตัว</div>
+                            <div class="profile_button" id="st2" onclick="foggle('2')">ที่อยู่</div>
+                            <div class="profile_button" id="st3" onclick="foggle('3')">การงาน</div>
+                            <div class="profile_button" id="st4" onclick="foggle('4')">การศึกษา</div>
+                            <div class="profile_button" id="st6" onclick="foggle('6')">ประวัติการศึกษา</div>
+                            <div class="profile_button" id="st7" onclick="foggle('7')">ใบอนุญาตประกอบวิชาชีพ</div>
+                            <div class="profile_button" id="st8" onclick="foggle('8')">ประวัติการฝึกอบรม</div>
+                            <div class="profile_button" id="st9" onclick="foggle('9')">การได้รับโทษทางวินัยและการนิรโทษกรรม</div>
+                            <div class="profile_button" id="st10" onclick="foggle('10')">ตำแหน่งและเงินเดือน</div>
+                            <div class="profile_button" id="st11" onclick="foggle('11')">รูปภาพ</div>
+                            <div class="profile_button" id="st5" onclick="foggle('5')">เปลี่ยนรหัสผ่าน</div>
                         </div>
                     </td>
                     <td>
                         <div class="sec1_2">
 
-
-                            <div>
-                                <asp:Label ID="Label2" runat="server" Text="ข้อมูลผู้ใช้งาน" CssClass="title_a"></asp:Label>
-                            </div>
-
-                            <div class="master_light_div_sec">
+                            <div class="master_light_div_sec" id="sp1">
                                 <div class="master_light_div_sec_title">
                                     ข้อมูลส่วนตัว
                                 </div>
@@ -55,6 +81,8 @@
                                             <td>
                                                 <asp:Label ID="Label14" runat="server" Text="Label"></asp:Label>
                                             </td>
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style8">&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
@@ -64,16 +92,13 @@
                                             <td>
                                                 <asp:Label ID="Label32" runat="server" Text="Label"></asp:Label>
                                             </td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style2">
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style8">
                                                 <asp:Label ID="Label88" runat="server" Text="ยศ"></asp:Label>
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label90" runat="server" Text="Label"></asp:Label>
                                             </td>
-                                            <td>&nbsp;</td>
                                         </tr>
                                         <tr>
                                             <td class="auto-style2">
@@ -82,16 +107,13 @@
                                             <td>
                                                 <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label>
                                             </td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style2">
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style8">
                                                 <asp:Label ID="Label16" runat="server" Text="นามสกุล"></asp:Label>
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label17" runat="server" Text="Label"></asp:Label>
                                             </td>
-                                            <td>&nbsp;</td>
                                         </tr>
                                         <tr>
                                             <td class="auto-style2">
@@ -100,7 +122,13 @@
                                             <td>
                                                 <asp:Label ID="Label46" runat="server" Text="Label"></asp:Label>
                                             </td>
-                                            <td>&nbsp;</td>
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style8">
+                                                <asp:Label ID="Label47" runat="server" Text="สัญชาติ"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="Label48" runat="server" Text="Label"></asp:Label>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td class="auto-style2">
@@ -109,39 +137,21 @@
                                             <td>
                                                 <asp:Label ID="Label26" runat="server" Text="Label"></asp:Label>
                                             </td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style2">
-                                                <asp:Label ID="Label47" runat="server" Text="สัญชาติ"></asp:Label>
-                                            </td>
-                                            <td>
-                                                <asp:Label ID="Label48" runat="server" Text="Label"></asp:Label>
-                                            </td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="auto-style2">
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style8">
                                                 <asp:Label ID="Label63" runat="server" Text="เบอร์โทรศัพท์"></asp:Label>
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label64" runat="server" Text="Label"></asp:Label>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="auto-style2">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style8">&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-                            <div class="master_light_div_sec">
-                                <div class="master_light_div_sec_title">
-                                    ครอบครัว
-                                </div>
-                                <div class="master_light_div_sec_in">
-                                    <table style="width: 100%;">
                                         <tr>
                                             <td class="auto-style2">
                                                 <asp:Label ID="Label35" runat="server" Text="ชื่อบิดา"></asp:Label>
@@ -149,6 +159,8 @@
                                             <td>
                                                 <asp:Label ID="Label38" runat="server" Text="Label"></asp:Label>
                                             </td>
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style8">&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
@@ -158,6 +170,8 @@
                                             <td>
                                                 <asp:Label ID="Label39" runat="server" Text="Label"></asp:Label>
                                             </td>
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style8">&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
@@ -167,17 +181,15 @@
                                             <td>
                                                 <asp:Label ID="Label40" runat="server" Text="Label"></asp:Label>
                                             </td>
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style8">&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
 
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-
-                            <div class="master_light_div_sec">
+                            <div class="master_light_div_sec" id="sp2">
                                 <div class="master_light_div_sec_title">
                                     ที่อยู่
                                 </div>
@@ -250,14 +262,7 @@
                                 </div>
                             </div>
 
-
-
-
-
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-                            <div class="master_light_div_sec">
+                            <div class="master_light_div_sec" id="sp3">
                                 <div class="master_light_div_sec_title">
                                     การงาน
                                 </div>
@@ -402,10 +407,7 @@
                                 </div>
                             </div>
 
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-                            <div class="master_light_div_sec">
+                            <div class="master_light_div_sec" id="sp4">
                                 <div class="master_light_div_sec_title">
                                     การศึกษา
                                 </div>
@@ -469,10 +471,7 @@
                                 </div>
                             </div>
 
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-                            <div class="master_light_div_sec">
+                            <div class="master_light_div_sec" id="sp5">
                                 <div class="master_light_div_sec_title">
                                     เปลี่ยนรหัสผ่าน
                                 </div>
@@ -483,7 +482,7 @@
                                                 <asp:Label ID="Label18" runat="server" Text="รหัสผ่านเก่า"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox1" runat="server" CssClass="profile_default_textbox" TextMode="Password" Width="160px"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox1" runat="server" CssClass="master_light_textbox" TextMode="Password" Width="160px"></asp:TextBox>
                                             </td>
                                             <td>&nbsp;</td>
                                         </tr>
@@ -492,7 +491,7 @@
                                                 <asp:Label ID="Label19" runat="server" Text="รหัสผ่านใหม่"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox2" runat="server" CssClass="profile_default_textbox" TextMode="Password" Width="160px"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox2" runat="server" CssClass="master_light_textbox" TextMode="Password" Width="160px"></asp:TextBox>
                                             </td>
                                             <td>&nbsp;</td>
                                         </tr>
@@ -501,14 +500,14 @@
                                                 <asp:Label ID="Label20" runat="server" Text="ยืนยันรหัสผ่านใหม่"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox3" runat="server" CssClass="profile_default_textbox" TextMode="Password" Width="160px"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_light_textbox" TextMode="Password" Width="160px"></asp:TextBox>
                                             </td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
                                             <td class="auto-style5">&nbsp;</td>
                                             <td>
-                                                <asp:LinkButton ID="LinkButton12" runat="server" CssClass="profile_default_button" OnClick="LinkButton12_Click">เปลี่ยนรหัสผ่าน</asp:LinkButton>
+                                                <asp:LinkButton ID="LinkButton12" runat="server" CssClass="master_light_button" OnClick="LinkButton12_Click">เปลี่ยนรหัสผ่าน</asp:LinkButton>
                                             </td>
                                             <td>&nbsp;</td>
                                         </tr>
@@ -516,10 +515,7 @@
                                 </div>
                             </div>
 
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-                            <div class="info_div">
+                            <div class="info_div" id="sp6">
                                 <div>
                                     <asp:Label ID="Label7" runat="server" Text="ประวัติการศึกษา" CssClass="info_div_title"></asp:Label>
                                 </div>
@@ -527,10 +523,7 @@
                                 </div>
                             </div>
 
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-                            <div class="info_div">
+                            <div class="info_div" id="sp7">
                                 <div>
                                     <asp:Label ID="Label1" runat="server" Text="ใบอนุญาตประกอบวิชาชีพ" CssClass="info_div_title"></asp:Label>
                                 </div>
@@ -538,10 +531,7 @@
                                 </div>
                             </div>
 
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-                            <div class="info_div">
+                            <div class="info_div" id="sp8">
                                 <div>
                                     <asp:Label ID="Label4" runat="server" Text="ประวัติการฝึกอบรม" CssClass="info_div_title"></asp:Label>
                                 </div>
@@ -549,10 +539,7 @@
                                 </div>
                             </div>
 
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-                            <div class="info_div">
+                            <div class="info_div" id="sp9">
                                 <div>
                                     <asp:Label ID="Label5" runat="server" Text="การได้รับโทษทางวินัยและการนิรโทษกรรม" CssClass="info_div_title"></asp:Label>
                                 </div>
@@ -560,10 +547,7 @@
                                 </div>
                             </div>
 
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
-
-                            <div class="info_div">
+                            <div class="info_div" id="sp10">
                                 <div>
                                     <asp:Label ID="Label6" runat="server" Text="ตำแหน่งและเงินเดือน" CssClass="info_div_title"></asp:Label>
                                 </div>
@@ -571,12 +555,17 @@
                                 </div>
                             </div>
 
-                            <div class="dpl_7c" style="height: 1px;"></div>
-                            <br />
+                            <div id="sp11">
+                                <div class="profile_image_header">
+                                    <asp:Label ID="Label3" runat="server" Text="รูปภาพ"></asp:Label>
+                                    <span style="display: inline-block; width: 50px;"></span>
+                                    <asp:FileUpload ID="FileUpload1" runat="server" Width="200px" CssClass="uploader" />
+                                    <asp:LinkButton ID="LinkButton1" runat="server" Text="อัพโหลด" CssClass="profile_default_button" OnClick="LinkButton1_Click"></asp:LinkButton>
+                                </div>
 
-                            <div>
-                                <asp:LinkButton ID="LinkButton11" runat="server" CssClass="profile_default_button" OnClick="LinkButton11_Click">แก้ไขข้อมูล</asp:LinkButton>
+                                <asp:Panel ID="Panel1" runat="server"></asp:Panel>
                             </div>
+
 
                         </div>
                     </td>
@@ -585,22 +574,9 @@
             </table>
 
 
-
-
-
-
-
-
         </div>
 
-        <div class="profile_image_header">
-            <asp:Label ID="Label3" runat="server" Text="รูปภาพ"></asp:Label>
-            <span style="display: inline-block; width: 50px;"></span>
-            <asp:FileUpload ID="FileUpload1" runat="server" Width="200px" CssClass="uploader" />
-            <asp:LinkButton ID="LinkButton1" runat="server" Text="อัพโหลด" CssClass="profile_default_button" OnClick="LinkButton1_Click"></asp:LinkButton>
-        </div>
 
-        <asp:Panel ID="Panel1" runat="server"></asp:Panel>
 
 
 

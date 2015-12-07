@@ -5,6 +5,24 @@
         $(function () {
             $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox7,#ContentPlaceHolder1_TextBox8").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
         });
+        $(document).ready(function () {
+            foggle('1');
+        });
+        function foggleOff() {
+            for (var i = 1; i < 3; ++i) {
+                var j = document.getElementById('sp' + i);
+                j.style.display = 'none';
+            }
+            for (var i = 1; i < 3; ++i) {
+                var j = document.getElementById('st' + i);
+                j.className = 'master_light_toggle_button';
+            }
+        }
+        function foggle(target) {
+            foggleOff();
+            $('#sp' + target).slideDown(250);
+            document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
+        }
     </script>
 
     <link href="CSS/Study.css" rel="stylesheet" />
@@ -29,7 +47,17 @@
         <div class="master_light_page_header">
             การลาศึกษาต่อภายในและภายนอกประเทศ
         </div>
-        <div class="master_light_div_sec">
+
+        <table class="master_light_table_div_sec">
+            <tr>
+                <td>
+                    <div class="master_light_toggle_div_sec">
+                        <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">เพิ่มการศึกษาต่อ</div>
+                        <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">ข้อมูลการศึกษาต่อ</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="master_light_div_sec" id="sp1">
             <div class="master_light_div_sec_title">
                 เพิ่มข้อมูลการลาศึกษาต่อ
             </div>
@@ -208,10 +236,7 @@
             </div>
         </div>
 
-        <br />
-        <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
-
-        <div class="master_light_div_sec">
+        <div class="master_light_div_sec" id="sp2">
             <div class="master_light_div_sec_title">
                 ข้อมูลการลาศึกษาต่อ
             </div>
@@ -255,6 +280,11 @@
             </div>
 
         </div>
+                </td>
+            </tr>
+        </table>
+
+        
 
 
 

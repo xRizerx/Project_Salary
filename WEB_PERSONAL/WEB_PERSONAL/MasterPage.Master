@@ -64,7 +64,7 @@
                     theme: "dark-thin",
                     //theme: "minimal-dark",
                     autoExpandScrollbar: true,
-                    scrollbarPosition: "outside",
+                    //scrollbarPosition: "outside",
                     advanced: { autoExpandHorizontalScroll: true }
                 });
                 /*$(".master_header_under_in2").mCustomScrollbar({
@@ -226,6 +226,11 @@
                                 <div>
                                     <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
                                     <a href="Admin.aspx">จัดการระบบ</a>
+                                </div>
+
+                                <div>
+                                    <span class="master_header_under_header">ดาวน์โหลด</span>
+                                    <a href="Download.aspx">ดาวน์โหลด</a>
                                 </div>
 
                             </div>

@@ -35,9 +35,44 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <link href="CSS/Admin.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            foggle('1');
+        });
+        function foggleOff() {
+            for (var i = 1; i < 4; ++i) {
+                var j = document.getElementById('sp' + i);
+                j.style.display = 'none';
+            }
+            for (var i = 1; i < 4; ++i) {
+                var j = document.getElementById('st' + i);
+                j.className = 'master_light_toggle_button';
+            }
+        }
+        function foggle(target) {
+            foggleOff();
+            $('#sp' + target).slideDown(250);
+            document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
+        }
+    </script>
 
     <div class="main">
-        <div class="master_light_div_sec">
+
+        <div class="master_light_page_header">
+            จัดการระบบ
+        </div>
+
+        <table class="master_light_table_div_sec">
+            <tr>
+                <td>
+                    <div class="master_light_toggle_div_sec">
+                        <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">ข้อเสนอแนะ</div>
+                        <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">ประกาศ</div>
+                        <div class="master_light_toggle_button" id="st3" onclick="foggle('3')">การแก้ไขข้อมูล</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="master_light_div_sec" id="sp1">
             <div class="master_light_div_sec_title">
                 ข้อเสนอแนะ
             </div>
@@ -86,10 +121,7 @@
 
         </div>
 
-        <br />
-        <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
-
-        <div class="master_light_div_sec">
+        <div class="master_light_div_sec" id="sp2">
             <div class="master_light_div_sec_title">
                 ประกาศ
             </div>
@@ -164,7 +196,7 @@
 
         </div>
 
-        <div class="master_light_div_sec">
+        <div class="master_light_div_sec" id="sp3">
             <div class="master_light_div_sec_title">
                 การแก้ไขข้อมูล
             </div>
@@ -236,6 +268,11 @@
             </div>
 
         </div>
+                </td>
+            </tr>
+        </table>
+
+        
 
     </div>
 </asp:Content>

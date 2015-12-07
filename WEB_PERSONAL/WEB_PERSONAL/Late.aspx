@@ -7,6 +7,24 @@
         $(function () {
             $("#ContentPlaceHolder1_TextBox11,#ContentPlaceHolder1_TextBox1").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
         });
+        $(document).ready(function () {
+            foggle('1');
+        });
+        function foggleOff() {
+            for (var i = 1; i < 5; ++i) {
+                var j = document.getElementById('sp' + i);
+                j.style.display = 'none';
+            }
+            for (var i = 1; i < 5; ++i) {
+                var j = document.getElementById('st' + i);
+                j.className = 'master_light_toggle_button';
+            }
+        }
+        function foggle(target) {
+            foggleOff();
+            $('#sp' + target).slideDown(250);
+            document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
+        }
     </script>
 
     <link href="CSS/Late.css" rel="stylesheet" />
@@ -16,13 +34,23 @@
             การเข้างาน (มาสาย)
         </div>
 
-
-        <div class="master_light_div_sec">
+        <table class="master_light_table_div_sec">
+            <tr>
+                <td>
+                    <div class="master_light_toggle_div_sec">
+                        <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">เพิ่มการเข้างาน</div>
+                        <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">แก้ไขการเข้างาน</div>
+                        <div class="master_light_toggle_button" id="st3" onclick="foggle('3')">ข้อมูลการเข้างาน</div>
+                        <div class="master_light_toggle_button" id="st4" onclick="foggle('4')">ข้อมูลการมาสาย</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="master_light_div_sec" id="sp1">
             <div class="master_light_div_sec_title">
                 เพิ่มเวลาเข้างาน
             </div>
             <div class="master_light_div_sec_pre_in">
-                <div class="master_light_div_sec_in" id="sec1">
+                <div class="master_light_div_sec_in">
                     <table style="width: 100%;">
                         <tr>
                             <td class="auto-style83">
@@ -87,12 +115,12 @@
         </div>
 
 
-        <div class="master_light_div_sec">
+        <div class="master_light_div_sec" id="sp2">
             <div class="master_light_div_sec_title">
                 แก้ไขเวลาเข้างาน
             </div>
             <div class="master_light_div_sec_pre_in">
-                <div class="master_light_div_sec_in" id="sec2">
+                <div class="master_light_div_sec_in">
 
                     <table style="width: 100%;">
                         <tr>
@@ -179,10 +207,7 @@
 
         </div>
 
-        <br />
-        <div class="dpl_7c" style="height: 1px; margin: 20px 0;"></div>
-
-        <div class="master_light_div_sec">
+        <div class="master_light_div_sec" id="sp3">
             <div class="master_light_div_sec_title">
                 รายชื่อการเข้างาน
             </div>
@@ -225,7 +250,7 @@
             </div>
         </div>
 
-        <div class="master_light_div_sec">
+        <div class="master_light_div_sec" id="sp4">
             <div class="master_light_div_sec_title">
                 รายชื่อการมาสาย
             </div>
@@ -261,6 +286,11 @@
                 </div>
             </div>
         </div>
+                </td>
+            </tr>
+        </table>
+
+        
 
     </div>
 </asp:Content>
