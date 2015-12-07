@@ -391,8 +391,8 @@ namespace WEB_PERSONAL
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownPOSITION.DataSource = dt;
-                        DropDownPOSITION.DataValueField = "POSITION_ID";
-                        DropDownPOSITION.DataTextField = "POSITION_NAME";
+                        DropDownPOSITION.DataValueField = "ID";
+                        DropDownPOSITION.DataTextField = "NAME";
                         DropDownPOSITION.DataBind();
                         sqlConn.Close();
 
@@ -1480,7 +1480,7 @@ namespace WEB_PERSONAL
             return false;
         }
 
-    protected void btnCancelPerson_Click(object sender, EventArgs e)
+        protected void btnCancelPerson_Click(object sender, EventArgs e)
         {
             ClearData();
             ClearDataGridViewNumber10();
@@ -1764,7 +1764,7 @@ namespace WEB_PERSONAL
                             id = command.ExecuteNonQuery();
 
                         }
-                    
+
                         catch (Exception ex)
                         {
                             throw ex;
@@ -1787,7 +1787,7 @@ namespace WEB_PERSONAL
             ClearDataDown();
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
-             
+
             Session["StudyHis"] = new DataTable();
             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
             ((DataTable)(Session["StudyHis"])).Columns.Add("ตั้งแต่ (เดือน)");

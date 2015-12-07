@@ -5,25 +5,32 @@
 
 
     /*background-attachment: fixed;*/
-    background-color: black;
+    background-color: #e0e0e0;
 }
-.all_div {
+/*.all_div {
     position: fixed;
     width: 100vw;
     height: 100vh;
     opacity: 1;
     transition: opacity linear 1s;
+}*/
+.all_div {
+    opacity: 1;
+    transition: opacity ease 0.25s;
 }
+
 .login_popup {
-    background-image: url(../Image/blurred-blue-background.jpg  );
+    /*background-image: url(../Image/blurred-blue-background.jpg  );
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
     width: 100vw;
     height: 100vh;
 }
 
 .login_popup_in {
-
+    /*background-image: url(../Image/blurred-blue-background.jpg  );
+    background-repeat: no-repeat;
+    background-size: cover;*/
     width: 500px;
     height: 500px;
 
@@ -36,37 +43,23 @@
     margin: auto;
     overflow: hidden;
 
-
+    background-color: #ffffff;
     border: none;
     border: 32px solid #00a2e8;
+    /*border: 32px solid #ffffff;*/
     border-radius: 1000px;
+    box-shadow: #ffffff 0px 0px 50px;
 
-    -webkit-animation: k1 1.5s;
-    -moz-animation: k1 1.5s;
-    
+    /*-webkit-animation: k1 0.5s;
+    -moz-animation: k1 1.5s;*/
     transition: border ease 0.25s;
 }
 @-webkit-keyframes k1 {
     0% {
-        background-color: #FFFFFF;
-        opacity: 0;
-        width: 0px;
-        height: 0px;
-        border: 1px solid #FFFFFF;
-    }
-    50% {
-        background-color: #FFFFFF;
-        opacity: 0.5;
-        width: 64px;
-        height: 64px;
-        border: 16px solid #00a2e8;
+        box-shadow: #00a2e8 0px 0px 0px;
     }
     100% {
-
-        opacity: 1;
-        width: 500px;
-        height: 500px;
-        border: 32px solid #00a2e8;
+        box-shadow: #00a2e8 0px 0px 200px;
     }
 }
 @-moz-keyframes k1 {
@@ -96,11 +89,13 @@
         display: none;
         opacity: 0;
     }
-    80% {
+    50% {
         display: block;
+        margin-top: 40px;
         opacity: 0;
     }
     100% {
+
         opacity: 1;
     }
 }
@@ -109,8 +104,9 @@
         display: none;
         opacity: 0;
     }
-    80% {
+    50% {
         display: block;
+        margin-top: 50px;
         opacity: 0;
     }
     100% {
@@ -119,10 +115,19 @@
 }
 
 .login_popup_div_sec {
+    
     margin: 0px auto;
-    margin-top: 10px;
-    -webkit-animation: k2 2s;
-    -moz-animation: k2 2s;
+    margin-top: 20px;
+    -webkit-animation: k2 1s;
+    -moz-animation: k2 1s;
+    /*box-shadow: #808080 0px 5px 5px;*/
+}
+.login_popup_div_sec: {
+    
+    margin: 0px auto;
+    margin-top: 20px;
+    -webkit-animation: k2 1s;
+    -moz-animation: k2 1s;
     /*box-shadow: #808080 0px 5px 5px;*/
 }
 .login_popup_div_sec_header {
@@ -136,6 +141,7 @@
 .login_popup_div_sec_header span {
     /*margin-left: 20px;*/
     color: #FFFFFF;
+    color: #000000;
  font-size: 24px;
     /*text-shadow: 1px 1px 1px #000000;*/
 }
@@ -145,8 +151,10 @@
     
 }
 .login_popup_div_sec_in span {
-    color: #FFFFFF;
-    text-shadow: 1px 1px 1px #808080;
+    /*color: #FFFFFF;
+    text-shadow: 1px 1px 1px #808080;*/
+    color: #000000;
+
 }
 
 .login_default_textbox {
@@ -154,8 +162,9 @@
     margin: 2px 0;
     padding: 3px 20px;
     border: none;
-    
-    background-color: rgba(255,255,255,0.8);
+
+    background-color: rgba(255,255,255,0.9);
+    background-color: #f0f0f0;
     font-family: 'WDB Bangna';
     font-size: 16px;
     font-weight: bold;
@@ -170,7 +179,7 @@
  
     background-color: rgba(255,255,255,0.8);
     color: #000000;
-    background-color: rgba(255,255,255,0.8);
+    background-color: #f0f0f0;
     font-family: 'WDB Bangna';
     font-size: 16px;
     font-weight: bold;
@@ -180,6 +189,7 @@
 #Label1 {
     font-size: 16px;
     color: #e0e0e0;
+    color: #808080;
 }
 .cerror {
     
@@ -199,8 +209,8 @@ table {
     color: #000000;
 
     background-color: #00b3ff;
-    background-color: rgba(255,255,255,0.8);
-
+    background-color: rgba(240,240,240,0.8);
+    background-color: #f0f0f0;
 
     text-align: center;
     width: 150px;
@@ -217,6 +227,7 @@ table {
 .login_button:hover {
     color: #000000;
     background-color: rgba(255,255,255,0.5);
+    background-color: #e0e0e0;
     /*text-shadow: 1px 1px 1px #000000;*/
 }
 .login_button {

@@ -6,13 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OracleClient;
 using WEB_PERSONAL.Class;
+using System.Threading;
 
 namespace WEB_PERSONAL {
     public partial class Access : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-
+            
         }
-        protected void LinkButton1X_Click(object sender, EventArgs e) {
+        protected void LinkButton1X_Click(object sender, EventArgs e) {      
             Label12X.Text = "กำลังตรวจสอบ";
             using (OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("SELECT count(*) FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
@@ -55,6 +56,10 @@ namespace WEB_PERSONAL {
                     }
                 }
             }
+
+            string script2 = "f2()";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script2, true);
+
         }
 
     }

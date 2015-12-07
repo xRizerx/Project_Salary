@@ -1,10 +1,11 @@
 ﻿.wrapper {
-    width: unset;
+    width: auto;
 }
 
 .pan {
     padding: 20px;
-    background-color: #202020;
+    background-color: #f0f0f0;
+    min-height: 1024px;
 }
 
 #sec1 {

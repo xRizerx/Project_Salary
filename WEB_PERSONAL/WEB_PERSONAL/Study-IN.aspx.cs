@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data.OracleClient;
+using WEB_PERSONAL.Class;
 
 namespace WEB_PERSONAL {
     public partial class Study_IN : System.Web.UI.Page {
@@ -215,81 +216,14 @@ namespace WEB_PERSONAL {
             DropDownList3.SelectedIndex = 0;
         }
         private void BindGridView1() {
-            GridView1.AllowPaging = true;
-            GridView1.EnableSortingAndPagingCallbacks = true;
-            GridView1.AutoGenerateColumns = false;
-            GridView1.Controls.Clear();
-            GridView1.Columns.Clear();
-            {
-                BoundField test = new BoundField();
-                test.DataField = "ID";
-                test.HeaderText = "รหัส";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "CITIZEN_ID";
-                test.HeaderText = "รหัสพนักงาน";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "STUDY_YEAR";
-                test.HeaderText = "ปีที่ศึกษา";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "SHORT_NAME";
-                test.HeaderText = "ระดับ";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "STUDY_BRANCH_NAME";
-                test.HeaderText = "สาขาที่ศึกษา";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "STUDY_LOCATION";
-                test.HeaderText = "สถานที่ศึกษา";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "NAME";
-                test.HeaderText = "หลักสูตร";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "STUDY_TIME";
-                test.HeaderText = "ระยะเวลาที่ศึกษา (ปี)";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "FROM_TO_DATE";
-                test.HeaderText = "ตั้งแต่วันที่";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "STUDY_TIME_COURSE";
-                test.HeaderText = "ระยะเวลาศึกษาตามหลักสูตร";
-                GridView1.Columns.Add(test);
-            }
-            {
-                BoundField test = new BoundField();
-                test.DataField = "COMMENT";
-                test.HeaderText = "คอมเมนต์";
-                GridView1.Columns.Add(test);
-            }
-
-            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "SELECT TB_STUDY.ID, TB_STUDY.CITIZEN_ID, TB_STUDY.STUDY_YEAR, TB_STUDY_DEGREE.SHORT_NAME, TB_STUDY.STUDY_BRANCH_NAME, TB_STUDY.STUDY_LOCATION, TB_STUDY_COURSE.NAME, TB_STUDY.STUDY_TIME || ' (' || TB_STUDY.STUDY_TIME_YEAR || ')' as \"STUDY_TIME\", TO_CHAR(TB_STUDY.STUDY_FROM_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') || ' - ' || TO_CHAR(TB_STUDY.STUDY_TO_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') as \"FROM_TO_DATE\", TB_STUDY.STUDY_TIME_COURSE, TB_STUDY.\"COMMENT\" FROM TB_STUDY, TB_STUDY_DEGREE, TB_STUDY_COURSE WHERE TB_STUDY.STUDY_COURSE_ID = TB_STUDY_COURSE.ID AND TB_STUDY.STUDY_DEGREE_ID = TB_STUDY_DEGREE.ID");
-            GridView1.DataSource = sds;
             GridView1.DataBind();
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e) {
+            if (!Person.IsAdmin(Session["login_id"].ToString())) {
+                e.Cancel = true;
+                Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
+            }
         }
     }
 }

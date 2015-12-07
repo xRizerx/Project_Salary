@@ -22,58 +22,30 @@ namespace WEB_PERSONAL.Class {
         public PositionAndSalary(int id) {
             this.id = id;
             using (OracleConnection con = Util.OC()) {
-                using (OracleCommand command = new OracleCommand("SELECT NVL(TO_CHAR(DDATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
+                using (OracleCommand command = new OracleCommand("SELECT NVL(TO_CHAR(DDATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(POSITION_NAME, '-'), NVL(PERSON_ID, '-'), NVL(ST_ID, '-'), NVL(POSITION_ID, '-'), NVL(SALARY, -1), NVL(POSITION_SALARY, -1), NVL(REFERENCE_DOCUMENT, '-'), NVL(CITIZEN_ID, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
                     command.Parameters.AddWithValue("1", id);
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
                             reader.Read();
                             date = reader.GetString(0);
+                            position_description = reader.GetString(1);
+                            person_id = reader.GetString(2);
+                            st_id = reader.GetString(3);
+                            position_id = reader.GetString(4);
+                            salary = reader.GetInt32(5);
+                            position_salary = reader.GetInt32(6);
+                            reference_document = reader.GetString(7);
+                            citizen_id = reader.GetString(8);
                         } else {
                             date = "-";
-                        }
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_NAME, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", id);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        if (reader.HasRows) {
-                            reader.Read();
-                            position_description = reader.GetString(0);
-                        } else {
                             position_description = "-";
-                        }
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT NVL(PERSON_ID, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", id);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        if (reader.HasRows) {
-                            reader.Read();
-                            person_id = reader.GetString(0);
-                        } else {
                             person_id = "-";
-                        }
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT NVL(ST_ID, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", id);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        if (reader.HasRows) {
-                            reader.Read();
-                            st_id = reader.GetString(0);
-                        } else {
                             st_id = "-";
-                        }
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_ID, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", id);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        if (reader.HasRows) {
-                            reader.Read();
-                            position_id = reader.GetString(0);
-                        } else {
                             position_id = "-";
+                            salary = -1;
+                            position_salary = -1;
+                            reference_document = "-";
+                            citizen_id = "-";
                         }
                     }
                 }
@@ -85,50 +57,6 @@ namespace WEB_PERSONAL.Class {
                             position_name = reader.GetString(0);
                         } else {
                             position_name = "-";
-                        }
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT NVL(SALARY, -1) FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", id);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        if (reader.HasRows) {
-                            reader.Read();
-                            salary = reader.GetInt32(0);
-                        } else {
-                            salary = -1;
-                        }
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_SALARY, -1) FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", id);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        if (reader.HasRows) {
-                            reader.Read();
-                            position_salary = reader.GetInt32(0);
-                        } else {
-                            position_salary = -1;
-                        }
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT NVL(REFERENCE_DOCUMENT, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", id);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        if (reader.HasRows) {
-                            reader.Read();
-                            reference_document = reader.GetString(0);
-                        } else {
-                            reference_document = "-";
-                        }
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT NVL(CITIZEN_ID, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", id);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        if (reader.HasRows) {
-                            reader.Read();
-                            citizen_id = reader.GetString(0);
-                        } else {
-                            citizen_id = "-";
                         }
                     }
                 }

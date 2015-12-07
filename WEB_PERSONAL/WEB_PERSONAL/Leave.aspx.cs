@@ -8,12 +8,16 @@ using System.Data.SqlClient;
 using System.Data.OracleClient;
 using System.Globalization;
 using System.Drawing;
+using WEB_PERSONAL.Class;
 
 namespace WEB_PERSONAL {
     public partial class Leave : System.Web.UI.Page {
 
         protected void Page_Load(object sender, EventArgs e) {
-
+            if(!IsPostBack) {
+                pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc");
+            }
+            
         }
 
         private string toDate(String str) {
@@ -121,16 +125,9 @@ namespace WEB_PERSONAL {
             Response.Redirect("Leave-Report1.aspx");
         }
 
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e) {
-            GridView1.PageIndex = e.NewPageIndex;
-            GridView1.DataBind();
-        }
-
- 
-
         private void pullSql(string sql) {
 
-            GridView1.AutoGenerateColumns = false;
+            /*GridView1.AutoGenerateColumns = false;
             GridView1.Controls.Clear();
             GridView1.Columns.Clear();
             {
@@ -208,10 +205,11 @@ namespace WEB_PERSONAL {
                 test.DataField = "REASON";
                 test.HeaderText = "เหตุผล";
                 GridView1.Columns.Add(test);
-            }
+            }*/
             SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", sql);
-            GridView1.DataSource = sds;
-            GridView1.DataBind();
+            sds.DeleteCommand = "DELETE TB_LEAVE WHERE PAPER_ID = :PAPER_ID";
+            GridView2.DataSource = sds;
+            GridView2.DataBind();
         }
 
 
@@ -219,7 +217,7 @@ namespace WEB_PERSONAL {
             if (TextBox4.Text == "") {
                 Util.Alert(this, "กรุณาป้อนข้อมูล!");
             } else {
-                pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.CITIZEN_ID = '" + TextBox4.Text + "' order by tb_leave.paper_id desc");
+                pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.CITIZEN_ID = '" + TextBox4.Text + "' order by tb_leave.paper_id desc");
             }
 
         }
@@ -228,7 +226,7 @@ namespace WEB_PERSONAL {
             if (TextBox7.Text == "") {
                 Util.Alert(this, "กรุณาป้อนข้อมูล!");
             } else {
-                pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.APPROVER_ID = '" + TextBox7.Text + "' order by tb_leave.paper_id desc");
+                pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.APPROVER_ID = '" + TextBox7.Text + "' order by tb_leave.paper_id desc");
             }
         }
 
@@ -236,7 +234,7 @@ namespace WEB_PERSONAL {
             if (TextBox12.Text == "") {
                 Util.Alert(this, "กรุณาป้อนข้อมูล!");
             } else {
-                pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND LOWER(a.PERSON_NAME) like '%" + TextBox12.Text.ToLower() + "%' order by tb_leave.paper_id desc");
+                pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND LOWER(a.PERSON_NAME) like '%" + TextBox12.Text.ToLower() + "%' order by tb_leave.paper_id desc");
             }
         }
 
@@ -244,13 +242,13 @@ namespace WEB_PERSONAL {
             if (TextBox14.Text == "") {
                 Util.Alert(this, "กรุณาป้อนข้อมูล!");
             } else {
-                pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND LOWER(b.PERSON_NAME) like '%" + TextBox14.Text.ToLower() + "%' order by tb_leave.paper_id desc");
+                pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND LOWER(b.PERSON_NAME) like '%" + TextBox14.Text.ToLower() + "%' order by tb_leave.paper_id desc");
             }
         }
 
         protected void DropDownList4_SelectedIndexChanged(object sender, EventArgs e) {
             if (DropDownList4.SelectedIndex != 0)
-                pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS  where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_type_id = " + DropDownList4.SelectedValue + " order by tb_leave.paper_id desc");
+                pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_type_id = " + DropDownList4.SelectedValue + " order by tb_leave.paper_id desc");
         }
 
         protected void Button1_Click2(object sender, EventArgs e) {
@@ -264,10 +262,8 @@ namespace WEB_PERSONAL {
                                 if (reader.HasRows) {
                                     reader.Read();
                                     Label24.Text = reader.GetString(0);
-                                    Label24.ForeColor = Color.White;
                                 } else {
                                     Label24.Text = "ไม่พบรหัสพนักงาน";
-                                    Label24.ForeColor = Color.Red;
                                 }
 
                             }
@@ -411,7 +407,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton3_Click(object sender, EventArgs e) {
-            pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc");
+            pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc");
         }
 
         
@@ -444,7 +440,7 @@ namespace WEB_PERSONAL {
 
         protected void DropDownList7_SelectedIndexChanged(object sender, EventArgs e) {
             if(DropDownList7.SelectedIndex != 0)
-                pullSql("select tb_leave.PAPER_ID as \"PAPER_ID\",TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"PAPER_DATE\",tb_leave.CITIZEN_ID as \"CITIZEN_ID\",a.PERSON_NAME || ' ' || a.PERSON_LASTNAME as \"STF_NAME\",tb_leave_type.LEAVE_TYPE_NAME as \"LEAVE_TYPE_NAME\",TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_FROM_DATE\",TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"LEAVE_TO_DATE\",TB_LEAVE_STATUS.LEAVE_STATUS_NAME as \"LEAVE_STATUS_NAME\",TB_LEAVE.APPROVER_ID as \"APPROVER_ID\",b.PERSON_NAME || ' ' || b.PERSON_LASTNAME as \"STF_NAME2\",TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI') as \"APPROVE_DATE\",TB_LEAVE.REASON as \"REASON\" from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = " + DropDownList7.SelectedValue + " order by tb_leave.paper_id desc");
+                pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = " + DropDownList7.SelectedValue + " order by tb_leave.paper_id desc");
         }
 
         protected void DropDownList7_DataBound(object sender, EventArgs e) {
@@ -505,6 +501,58 @@ namespace WEB_PERSONAL {
             TextBox10.Text = "";
             Label20.Text = "";
             TextBox15.Text = "";
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e) {
+            using (OracleConnection con = Util.OC()) {
+                using (OracleCommand command = new OracleCommand("INSERT INTO TB_LEAVE_TYPE VALUES(SEQ_LEAVE_TYPE_ID.NEXTVAL, :2)", con)) {
+                    command.Parameters.AddWithValue("2", TextBox1.Text);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        protected void LinkButton1_Click1(object sender, EventArgs e) {
+            if (!Person.IsAdmin(Session["login_id"].ToString())) {
+                Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
+                return;
+            }
+            using (OracleConnection con = Util.OC()) {
+                using (OracleCommand command = new OracleCommand("DELETE TB_LEAVE_TYPE WHERE LEAVE_TYPE_ID = :2", con)) {
+                    command.Parameters.AddWithValue("2", TextBox11.Text);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        protected void LinkButton19_Click(object sender, EventArgs e) {
+            if(DropDownList8.SelectedIndex != 0) {
+                using (OracleConnection con = Util.OC()) {
+                    using (OracleCommand command = new OracleCommand("UPDATE TB_LEAVE_TYPE SET LEAVE_TYPE_NAME = :2 WHERE LEAVE_TYPE_ID = :3", con)) {
+                        command.Parameters.AddWithValue("2", TextBox20.Text);
+                        command.Parameters.AddWithValue("3", DropDownList8.SelectedValue);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+        protected void DropDownList8_SelectedIndexChanged(object sender, EventArgs e) {
+            TextBox20.Text = "";
+            if(DropDownList8.SelectedIndex != 0)
+                TextBox20.Text = DropDownList8.SelectedItem.Text;
+        }
+
+        protected void DropDownList8_DataBound(object sender, EventArgs e) {
+            DropDownList8.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทการลา--", String.Empty));
+            DropDownList8.SelectedIndex = 0;
+        }
+
+        protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e) {
+            if(!Person.IsAdmin(Session["login_id"].ToString())) {
+                e.Cancel = true;
+                Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
+            }
         }
     }
     

@@ -1,44 +1,12 @@
 ﻿.wrapper {
-    width: unset;
+    width: auto;
 }
 .mp {
     padding: 20px;
-    background-color: #202020;
+    background-color: #f0f0f0;
+    min-height: 1024px;
 }
 
-#sec1 {
-    width: 470px;
-}
-#sec1_pre_in {
-    background-image: url("../Image/paper.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-}
-#sec1_in {
-    height: 350px;
-}
-#sec2 {
-    width: 470px;
-}
-#sec2_pre_in {
-    background-image: url("../Image/paper.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#sec2_in {
-    height: 350px;
-}
-#sec3_pre_in {
-    background-image: url("../Image/paper.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#sec4_pre_in {
-    background-image: url("../Image/paper.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 .error_text {
     font-size: 32px;
 }

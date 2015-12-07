@@ -157,5 +157,12 @@ namespace WEB_PERSONAL {
             Person person = new Person(TextBox2.Text);
             Label5.Text = person.Exist ? person.NameAndLastname : "ไม่พบรหัสพนักงาน!!";
         }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e) {
+            if (!Person.IsAdmin(Session["login_id"].ToString())) {
+                e.Cancel = true;
+                Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
+            }
+        }
     }
 }

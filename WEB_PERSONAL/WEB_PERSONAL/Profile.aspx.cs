@@ -113,6 +113,30 @@ namespace WEB_PERSONAL {
             Label38.Text = person.FatherNameAndLastname;
             Label39.Text = person.MotherNameAndLastname;
             Label40.Text = person.CoupleNameAndLastname;
+            Label48.Text = person.NationNameTH;
+            Label52.Text = person.HomeAdd;
+            Label53.Text = person.Moo;
+            Label54.Text = person.Street;
+            Label59.Text = person.DistrictName;
+            Label60.Text = person.AmphurName;
+            Label61.Text = person.ProvinceName;
+            Label62.Text = person.Zipcode.ToString();
+            Label64.Text = person.Telephone;
+            Label67.Text = person.TimeContactName;
+            Label68.Text = person.BudgetName;
+            Label70.Text = person.SubStaffTypeName;
+            Label73.Text = person.SpecialName;
+            Label74.Text = person.TeachISCED_Name;
+            Label76.Text = person.GraduationLevelName;
+            Label78.Text = person.GraduationCurr;
+            Label80.Text = person.GraduationISCED_Name;
+            Label82.Text = person.GraduationProgramName;
+            Label84.Text = person.GraduationUniversity;
+            Label86.Text = person.GraduationCountryName;
+            Label89.Text = person.BranchName;
+            Label90.Text = person.RankName;
+            Label93.Text = person.FacultyName;
+            Label94.Text = person.StartPositionWorkName;
 
             //Study History
             study_history_div.InnerHtml += "<table>";
@@ -296,10 +320,6 @@ namespace WEB_PERSONAL {
                 }
             }
 
-        }
-
-        protected void LinkButton11_Click(object sender, EventArgs e) {
-            Response.Redirect("Person-ADMIN.aspx");
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e) {

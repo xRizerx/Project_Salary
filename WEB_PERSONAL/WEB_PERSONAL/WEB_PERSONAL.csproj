@@ -140,19 +140,31 @@
     <Content Include="CSS\Access.css" />
     <Content Include="CSS\Admin.css" />
     <Content Include="CSS\Default.css" />
+    <Content Include="CSS\Download.css" />
     <Content Include="CSS\Late.css" />
     <Content Include="CSS\Leave.css" />
+    <Content Include="CSS\Person-Detail.css" />
     <Content Include="CSS\Profile.css" />
     <Content Include="CSS\Salary.css" />
     <Content Include="CSS\Study.css" />
+    <Content Include="Download.aspx" />
     <Content Include="Entities\Virus.mp3" />
     <Content Include="Image\anime_p1.png" />
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\Bar\header_bar.png" />
     <Content Include="Image\blurred-blue-background.jpg" />
     <Content Include="Image\btx1.jpg" />
+    <Content Include="Image\Button\arrow_up.png" />
+    <Content Include="Image\Button\home.png" />
+    <Content Include="Image\Button\logout.png" />
     <Content Include="Image\Button\menu_button.png" />
     <Content Include="Image\Button\menu_button_hover.png" />
+    <Content Include="Image\Button\hamburger_menu.png" />
+    <Content Include="Image\Button\reload.png" />
+    <Content Include="Image\font_icon.png" />
+    <Content Include="Image\loading_spinner.gif" />
+    <Content Include="Image\no_image.png" />
+    <Content Include="Image\plus.png" />
     <Content Include="Image\roka.gif" />
     <Content Include="Image\ImageTUU\Desktop-icon.png" />
     <Content Include="Image\ImageTUU\Documents-icon.png" />
@@ -290,6 +302,7 @@
     <Content Include="Font\THSarabun Italic.ttf" />
     <Content Include="Font\THSarabun.ttf" />
     <Content Include="Person-ADMIN.aspx" />
+    <Content Include="Person-Detail.aspx" />
     <Content Include="Person-GENERAL.aspx" />
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
@@ -400,6 +413,13 @@
     </Compile>
     <Compile Include="Department-ADMIN.aspx.designer.cs">
       <DependentUpon>Department-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Download.aspx.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Download.aspx.designer.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Tuu.cs" />
     <Compile Include="Entities\Ministry.cs" />
@@ -525,6 +545,13 @@
     </Compile>
     <Compile Include="Person-ADMIN.aspx.designer.cs">
       <DependentUpon>Person-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Person-Detail.aspx.cs">
+      <DependentUpon>Person-Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person-Detail.aspx.designer.cs">
+      <DependentUpon>Person-Detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Person-GENERAL.aspx.cs">
       <DependentUpon>Person-GENERAL.aspx</DependentUpon>
