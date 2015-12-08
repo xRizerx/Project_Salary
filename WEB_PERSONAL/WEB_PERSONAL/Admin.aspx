@@ -58,20 +58,17 @@
 
     <div class="main">
 
-        <div class="master_light_page_header">
-            จัดการระบบ
-        </div>
-
         <table class="master_light_table_div_sec">
             <tr>
-                <td>
+                <td class="master_light_table_div_sec_td_left">
                     <div class="master_light_toggle_div_sec">
+                        <div class="master_light_toggle_div_sec_title">เมนูจัดการระบบ</div>
                         <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">ข้อเสนอแนะ</div>
                         <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">ประกาศ</div>
                         <div class="master_light_toggle_button" id="st3" onclick="foggle('3')">การแก้ไขข้อมูล</div>
                     </div>
                 </td>
-                <td>
+                <td class="master_light_table_div_sec_td_right">
                     <div class="master_light_div_sec" id="sp1">
             <div class="master_light_div_sec_title">
                 ข้อเสนอแนะ

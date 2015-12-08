@@ -44,19 +44,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <asp:Panel ID="Panel8" runat="server" CssClass="pan">
-        <div class="master_light_page_header">
-            การลาศึกษาต่อภายในและภายนอกประเทศ
-        </div>
-
         <table class="master_light_table_div_sec">
             <tr>
-                <td>
+                <td class="master_light_table_div_sec_td_left">
                     <div class="master_light_toggle_div_sec">
+                        <div class="master_light_toggle_div_sec_title">เมนูการลาศึกษาต่อ</div>
                         <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">เพิ่มการศึกษาต่อ</div>
                         <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">ข้อมูลการศึกษาต่อ</div>
                     </div>
                 </td>
-                <td>
+                <td class="master_light_table_div_sec_td_right">
                     <div class="master_light_div_sec" id="sp1">
             <div class="master_light_div_sec_title">
                 เพิ่มข้อมูลการลาศึกษาต่อ

@@ -448,43 +448,6 @@ namespace WEB_PERSONAL {
             DropDownList7.SelectedIndex = 0;
         }
 
-        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e) {
-
-           
-
-            GridViewRow row = GridView2.SelectedRow;
-
-            Label33.Text = row.Cells[0].Text;
-            TextBox2.Text = Util.NDT(row.Cells[1].Text);
-            TextBox3.Text = row.Cells[2].Text;
-            DropDownList1.ClearSelection();
-            DropDownList1.Items.FindByText(row.Cells[4].Text).Selected = true;
-            TextBox5.Text = Util.NDT(row.Cells[5].Text);
-            TextBox6.Text = Util.NDT(row.Cells[6].Text);
-            DropDownList2.ClearSelection();
-            DropDownList2.Items.FindByText(row.Cells[7].Text).Selected = true;
-            TextBox8.Text = row.Cells[8].Text;
-            TextBox9.Text = Util.NDT(row.Cells[10].Text);
-            TextBox10.Text = row.Cells[11].Text == "&nbsp;" ? "":row.Cells[11].Text;
-            using(OracleConnection con = Util.OC()) {
-                using(OracleCommand command = new OracleCommand("SELECT PERSON_NAME || ' ' || PERSON_LASTNAME FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", TextBox3.Text);
-                    using(OracleDataReader reader = command.ExecuteReader()) {
-                        reader.Read();
-                        Label31.Text = reader.GetString(0);
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT PERSON_NAME || ' ' || PERSON_LASTNAME FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", TextBox8.Text);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        reader.Read();
-                        Label32.Text = reader.GetString(0);
-                    }
-                }
-            }
- 
-        }
-
         protected void GridView2_PageIndexChanged(object sender, EventArgs e) {
             GridView2.SelectedIndex = -1;
             Label33.Text = "";

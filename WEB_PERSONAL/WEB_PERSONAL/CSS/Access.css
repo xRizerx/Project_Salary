@@ -122,18 +122,11 @@
     -moz-animation: k2 1s;
     /*box-shadow: #808080 0px 5px 5px;*/
 }
-.login_popup_div_sec: {
-    
-    margin: 0px auto;
-    margin-top: 20px;
-    -webkit-animation: k2 1s;
-    -moz-animation: k2 1s;
-    /*box-shadow: #808080 0px 5px 5px;*/
-}
+
 .login_popup_div_sec_header {
     /*background-color: rgba(255,255,255,0.25);*/
     
-    padding: 10px 25px;
+    padding: 0px 25px;
     text-align: center;
     font-weight: bold;
 
@@ -162,12 +155,12 @@
     margin: 2px 0;
     padding: 3px 20px;
     border: none;
-
-    background-color: rgba(255,255,255,0.9);
-    background-color: #f0f0f0;
+    background-color: #ffffff;
+    border: 1px solid #00a2e8;
     font-family: 'WDB Bangna';
     font-size: 16px;
     font-weight: bold;
+    
     /*box-shadow: rgba(0,162,232,0.8) 1px 1px 10px;
     box-shadow: rgba(0,0,0,0.5) 1px 1px 5px;*/
 }
@@ -175,11 +168,9 @@
     width: 190px;
     margin: 2px 0;
     padding: 3px 20px;
-    border: none;
- 
-    background-color: rgba(255,255,255,0.8);
     color: #000000;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
+    border: 1px solid #00a2e8;
     font-family: 'WDB Bangna';
     font-size: 16px;
     font-weight: bold;
@@ -207,11 +198,7 @@ table {
 .login_button {
     text-decoration: none;
     color: #000000;
-
-    background-color: #00b3ff;
-    background-color: rgba(240,240,240,0.8);
     background-color: #f0f0f0;
-
     text-align: center;
     width: 150px;
     margin: 2px 0;

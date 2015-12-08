@@ -30,21 +30,20 @@
     <link href="CSS/Late.css" rel="stylesheet" />
 
     <div class="mp">
-        <div class="master_light_page_header">
-            การเข้างาน (มาสาย)
-        </div>
+       
 
         <table class="master_light_table_div_sec">
             <tr>
-                <td>
+                <td class="master_light_table_div_sec_td_left">
                     <div class="master_light_toggle_div_sec">
+                        <div class="master_light_toggle_div_sec_title">เมนูการเข้างาน</div>
                         <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">เพิ่มการเข้างาน</div>
                         <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">แก้ไขการเข้างาน</div>
                         <div class="master_light_toggle_button" id="st3" onclick="foggle('3')">ข้อมูลการเข้างาน</div>
                         <div class="master_light_toggle_button" id="st4" onclick="foggle('4')">ข้อมูลการมาสาย</div>
                     </div>
                 </td>
-                <td>
+                <td class="master_light_table_div_sec_td_right">
                     <div class="master_light_div_sec" id="sp1">
             <div class="master_light_div_sec_title">
                 เพิ่มเวลาเข้างาน

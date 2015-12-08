@@ -23,21 +23,19 @@ body {
 }
 
 form {
-    min-height: 100%;
+    /*min-height: 100%;*/
 }
 .wrapper {
-    height: auto !important;
-    height: 100%;
+    /*height: auto !important;*/
+    /*height: 100%;*/
     /*margin: 0 auto -200px;*/
     margin: 0 auto -120px;
     /*width: 1024px;*/
-    min-height: 100%;
-    min-height: 100vh;
-    padding-bottom: 10px;
+    /*min-height: 100%;
+    min-height: 100vh;*/
+    /*padding-bottom: 10px;*/
     width: 1024px;
     background-color: #f0f0f0;
-    background-color: #202020;
-    background-color: #FFFFFF;
 
 }
 .all_div {
@@ -419,34 +417,6 @@ home_button:active {
     height: 140px;
 }
 
-.master_header_under {
-    background-color: rgba(0,0,0,0.9);
-    background-color: #202020;
-    background-color: #f0f0f0;
-    background-color: unset;
-    /*background-color: #00a2e8;*/
-    text-align: left;
-    
-    /*background-image: url(../Image/blurred-blue-background.jpg);
-    background-repeat: no-repeat;
-    background-position: top;
-    /*background-image: url(../Image/anime_p1.png);
-    background-repeat: no-repeat;
-    background-position: top right;*/
-
-    /*background-size: contain;
-    background-attachment: fixed;*/
-    
-    /*height: 100vh;*/
-    display: none;
-    /*margin-top: 1000px;
-    display: block;*/
-    width: 240px;
-
-    
-    border-bottom: 1px solid #000000;
-    box-shadow: rgba(0,0,0,0.5) 0px 10px 40px;
-}
 
 .master_header_under {
     background-color: rgba(0,0,0,0.9);
@@ -471,7 +441,6 @@ home_button:active {
     /*margin-top: 1000px;
     display: block;*/
     width: 240px;
-
     
     border-bottom: 1px solid #000000;
     box-shadow: rgba(0,0,0,0.5) 0px 10px 40px;
@@ -641,7 +610,8 @@ home_button:active {
     padding: 0 20px;
 
     width: 200px;
-    height: 32px;
+    /*height: 32px;*/
+    border-bottom: 1px solid #e0e0e0;
     transition: background-color ease 0.25s;
     /*background-color: rgba(0,0,0,0.2);*/
     color: #000000;
@@ -649,7 +619,7 @@ home_button:active {
 }
 .master_header_under a:hover {
     background-color: #f0f0f0;
-
+    background-color: #e0e0e0;
 }
 .master_header_under img {
     float:right;
@@ -1151,10 +1121,9 @@ ault_page_header {
     border-radius: 24px;
 }
 .master_light_page_header {
-    font-size: 32px;
+    margin-top: 100px;
+    font-size: 48px;
     text-align: center;
-    font-weight: bold;
-    color: #000000;
 }
 .master_light_div_sec {
     display: inline-block;
@@ -1219,23 +1188,47 @@ ault_page_header {
     border: 1px solid #00a2e8;
     /*border-radius: 24px;*/
 }
+.master_light_table_div_sec {
+    border-collapse: collapse;
+}
 .master_light_table_div_sec td {
     vertical-align: top;
+}
+.master_light_table_div_sec_td_left {
+    padding: 0;
+    margin: 0;
+}
+.master_light_table_div_sec_td_right {
+
+    margin-top: 20px;
+    margin-left: 220px;
+    display: block;
 }
 .master_light_toggle_div_sec {
     width: 200px;
     margin-right: 20px;
+    height: 100%;
+    position: fixed;
+    background-color: #f0f0f0;
+    border-right: 1px solid #404040;
+    box-shadow: #404040 0px 0px 4px;
+    overflow-y: auto;
+}
+.master_light_toggle_div_sec_title {
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    background-color: #00a2e8;
+    border-bottom: 1px solid #FFFFFF;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
 }
 .master_light_toggle_button {
     text-decoration: none;
     color: #000000;
-    background-color: #e0e0e0;
     padding: 0px 20px;
     padding-bottom: 1px;
-    /*border-radius: 24px;*/
-    color: #FFFFFF;
-    background-color: #202020;
-    border-bottom: 1px solid #808080;
+    border-bottom: 1px solid #e0e0e0;
     display: inline-block;
     text-align: left;
     transition: background-color ease 0.25s;
@@ -1243,6 +1236,7 @@ ault_page_header {
     cursor: pointer;
 }
 .master_light_toggle_button:hover {
+    color: #FFFFFF;
     background-color: #49bbeb;
     border-bottom: 1px solid #49bbeb;
 }

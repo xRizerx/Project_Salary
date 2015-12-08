@@ -10,7 +10,7 @@
 namespace WEB_PERSONAL {
     
     
-    public partial class Default {
+    public partial class UpdateHistory {
         
         /// <summary>
         /// Label2 control.
@@ -22,21 +22,12 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Panel1 control.
+        /// div_update_history control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
-        /// div_announce control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_announce;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_update_history;
     }
 }

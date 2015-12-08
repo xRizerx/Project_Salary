@@ -91,15 +91,15 @@
         }
         function toggleMenu() {
             checkWidth();
-            //$("#i2").slideToggle(500);
+            //$("#i2").slideToggle(250);
 
-            $("#i2").fadeToggle(500);
+            $("#i2").fadeToggle(250);
             //$("#pu").slideUp(500);
             
             //$("#pu").fadeOut(1);
         }
         function goOnTop() {
-            $('html, body').animate({ scrollTop: 0 }, 1000);
+            $('html, body').animate({ scrollTop: 0 }, 250);
         }
         function checkWidth() {
             if ($("body").width() < 800) {
@@ -197,6 +197,8 @@
                                     <span class="master_header_under_header">เมนูหลัก</span>
                                     <a href="Default.aspx">หน้าหลัก</a>
                                     <a href="M-Admin.aspx">ติดต่อผู้ดูแลระบบ</a>
+                                    <a href="About.aspx">เกี่ยวกับ</a>
+                                    <a href="UpdateHistory.aspx">การอัพเดท</a>
                                 </div>
                                 <div>
                                     <span class="master_header_under_header">บุคลากร</span>
@@ -221,7 +223,9 @@
 
                                 <div>
                                     <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
-                                    <a href="insignia_citizen.aspx">เครื่องราชอิสริยาภรณ์</a>
+                                    <a href="insignia_from_view.aspx">ดูการขอเครื่องราชอิสริยาภรณ์</a>
+                                    <a href="insignia_recordnote2-admin.aspx">ดูประวัติการขอเครื่องราชอิสริยาภรณ์</a>
+                                    <a href="insignia_recordnote2-ADMIN.aspx">เพิ่มประวัติการขอเครื่องราชอิสริยาภรณ์</a>
                                 </div>
                                 <div>
                                     <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
@@ -337,26 +341,7 @@
                 </div>
 
             </div>
-            <footer>
-                <div class="master_footer">
-                    <div>
-                        <asp:Label ID="Label1" runat="server" CssClass="master_footer_label" Text="กองบริหารงานบุคคล สำนักงานอธิการบดี มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก วิทยาเขตบางพระ"></asp:Label>
-                        <br />
-                        <asp:Label ID="Label5" runat="server" CssClass="master_footer_label2" Text="43  หมู่ 6   ตำบลบางพระ  อำเภอศรีราชา  จังหวัดชลบุรี  20110"></asp:Label>
-                        <br />
-                        <asp:Label ID="Label6" runat="server" CssClass="master_footer_label2" Text="โทรศัพท์ <strong>0-3835-8137, 0-3835-8201</strong> โทรสาร <strong>0-3834-1808-9</strong>"></asp:Label>
-                        <br />
-                        <asp:Label ID="Label8" runat="server" CssClass="master_footer_label2" Text="เว็บไซต์ "></asp:Label>
-                        <a href="http://www.rmutto.ac.th">www.rmutto.ac.th</a>
-                    </div>
-                </div>
-                <div class="master_footer_under">
-                    <div class="master_footer_under_inner">
-                        <asp:Label ID="LabelCounter" runat="server"></asp:Label>
-                    </div>
 
-                </div>
-            </footer>
         </div>
     </form>
 </body>
