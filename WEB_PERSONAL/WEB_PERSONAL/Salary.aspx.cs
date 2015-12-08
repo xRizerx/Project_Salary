@@ -41,7 +41,7 @@ namespace WEB_PERSONAL
             using (OracleConnection conn = new OracleConnection(Util.CS()))
             {
                 conn.Open();
-                using (OracleCommand command = new OracleCommand("SELECT COUNT(TB_PERSONAL.CITIZEN_ID)COUNT_PEPOLE FROM TB_PERSONAL WHERE BRANCH_ID = " + DropDownList1.SelectedValue + " GROUP BY BRANCH_ID", conn))
+                using (OracleCommand command = new OracleCommand("SELECT COUNT(TB_PERSON.CITIZEN_ID)COUNT_PEPOLE FROM TB_PERSON WHERE BRANCH_ID = " + DropDownList1.SelectedValue + " GROUP BY BRANCH_ID", conn))
                 {
                     using (OracleDataReader reader = command.ExecuteReader())
                     {

@@ -1537,7 +1537,7 @@ namespace WEB_PERSONAL
         {
             //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
             if (NeedData1To9()) { return; }
-            if (NeedDataDown()) { return; }
+            //if (NeedDataDown()) { return; }
             ClassPerson P = new ClassPerson();
             P.CITIZEN_ID = txtCitizen.Text;
             P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
