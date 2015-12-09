@@ -408,7 +408,7 @@
                     </div>
 
                     <div id="sp4">
-                        <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource6" Style="font-family: 'WDB Bangna'">
+                        <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource6" Style="font-family: 'WDB Bangna';" Height="600px" Width="800px">
                             <Series>
                                 <asp:Series Name="Series1" XValueMember="LEAVE_TYPE_NAME" YValueMembers="COUNT(TB_LEAVE.LEAVE_TYPE_ID)"></asp:Series>
                             </Series>
