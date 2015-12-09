@@ -12,5 +12,7 @@
 
         <div id="div_update_history" runat="server">
         </div>
+
+        <div class="dpl_7c"></div>
     </div>
 </asp:Content>

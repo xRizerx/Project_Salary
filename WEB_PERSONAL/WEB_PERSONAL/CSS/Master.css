@@ -443,7 +443,7 @@ home_button:active {
     width: 240px;
     
     border-bottom: 1px solid #000000;
-    box-shadow: rgba(0,0,0,0.5) 0px 10px 40px;
+
 }
 .master_header_under_in {
     background-color: #202020;
@@ -1180,6 +1180,13 @@ ault_page_header {
     
     /*border-radius: 24px;*/
 }
+.master_light_textbox:disabled {
+    font-family: 'WDB Bangna';
+    padding: 3px 10px;
+    color: #000000;
+    background-color: #f0f0f0;
+    border: 1px solid #e0e0e0;
+}
 .master_light_dropdown {
     font-family: 'WDB Bangna';
     padding: 3px 10px;
@@ -1200,7 +1207,7 @@ ault_page_header {
 }
 .master_light_table_div_sec_td_right {
 
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     margin-left: 220px;
     display: block;
 }
@@ -1211,17 +1218,15 @@ ault_page_header {
     position: fixed;
     background-color: #f0f0f0;
     border-right: 1px solid #404040;
-    box-shadow: #404040 0px 0px 4px;
+    /*box-shadow: #404040 0px 0px 4px;*/
+    border: 1px solid #e0e0e0;
     overflow-y: auto;
 }
 .master_light_toggle_div_sec_title {
-    color: #FFFFFF;
-    background-color: #FFFFFF;
-    background-color: #00a2e8;
-    border-bottom: 1px solid #FFFFFF;
-    font-size: 20px;
+    color: #000000;
+    background-color: #e0e0e0;
+    font-size: 24px;
     text-align: center;
-    font-weight: bold;
 }
 .master_light_toggle_button {
     text-decoration: none;

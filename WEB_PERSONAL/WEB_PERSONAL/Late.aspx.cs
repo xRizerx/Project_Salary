@@ -11,20 +11,20 @@ using WEB_PERSONAL.Class;
 namespace WEB_PERSONAL {
     public partial class Late : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
+            if(!IsPostBack) {
+                Util.RunScript(this, "$(function () { foggle('1'); });");
+            }
             BindAllData();
         }
 
         protected void LinkButton20_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('1'); });");
             Person person = new Person(TextBox21.Text);
             Label45.Text = person.Exist ? person.NameAndLastname : "ไม่พบรหัสพนักงาน!!";
         }
 
         protected void LinkButton11_Click(object sender, EventArgs e) {
-            if (Session["login_id"] == null) {
-                Util.Alert(this, "กรุณาเข้าสู่ระบบก่อน");
-                return;
-            }
-
+            Util.RunScript(this, "$(function () { foggle('1'); });");
             try {
                 if (Int32.Parse(TextBox22.Text) < 0 || Int32.Parse(TextBox22.Text) > 23) {
                     Util.Alert(this, "ชั่วโมงเข้าไม่ถูกต้อง");
@@ -61,7 +61,6 @@ namespace WEB_PERSONAL {
                             command.Parameters.AddWithValue("5", TextBox24.Text);
                             command.Parameters.AddWithValue("6", TextBox25.Text);
                             command.ExecuteNonQuery();
-                            Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
                         }
                     }
                 }
@@ -78,6 +77,7 @@ namespace WEB_PERSONAL {
   
    
         protected void LinkButton21_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('2'); });");
             GridView1.SelectedIndex = -1;
             clearEdit();
             using (OracleConnection con = Util.OC()) {
@@ -105,7 +105,8 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton2_Click(object sender, EventArgs e) {
-            using(OracleConnection con = Util.OC()) {
+            Util.RunScript(this, "$(function () { foggle('2'); });");
+            using (OracleConnection con = Util.OC()) {
                 using(OracleCommand command = new OracleCommand("UPDATE TB_WORK_CHECK_IN SET DDATE = :1, CITIZEN_ID = :2, HOUR_IN = :3, MINUTE_IN = :4, HOUR_OUT = :5, MINUTE_OUT = :6 WHERE ID = :7", con)) {
                     command.Parameters.AddWithValue("1", Util.ODT(TextBox1.Text));
                     command.Parameters.AddWithValue("2", TextBox2.Text);
@@ -118,21 +119,6 @@ namespace WEB_PERSONAL {
                     BindAllData();
                 }
             }
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e) {
-            GridViewRow row = GridView1.SelectedRow;
-
-            TextBox26.Text = row.Cells[0].Text;
-            TextBox1.Text = Util.NDT(row.Cells[1].Text);
-            TextBox2.Text = row.Cells[2].Text;
-            string[] _in = row.Cells[4].Text.Split(':');
-            string[] _out = row.Cells[5].Text.Split(':');
-            TextBox3.Text = _in[0];
-            TextBox4.Text = _in[1];
-            TextBox5.Text = _out[0];
-            TextBox6.Text = _out[1];
-
         }
 
         protected void GridView1_PageIndexChanged(object sender, EventArgs e) {
@@ -154,6 +140,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('2'); });");
             Person person = new Person(TextBox2.Text);
             Label5.Text = person.Exist ? person.NameAndLastname : "ไม่พบรหัสพนักงาน!!";
         }
@@ -163,6 +150,10 @@ namespace WEB_PERSONAL {
                 e.Cancel = true;
                 Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
             }
+        }
+
+        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('3'); });");
         }
     }
 }

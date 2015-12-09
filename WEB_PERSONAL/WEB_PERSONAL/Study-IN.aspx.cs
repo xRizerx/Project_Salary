@@ -11,10 +11,14 @@ using WEB_PERSONAL.Class;
 namespace WEB_PERSONAL {
     public partial class Study_IN : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
+            if(!IsPostBack) {
+                Util.RunScript(this, "$(function () { foggle('1'); });");
+            }
             BindGridView1();
         }
 
         protected void LinkButton15_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('1'); });");
             //try
             //{
             using (OracleConnection con = Util.OC()) {
@@ -92,6 +96,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton16_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('1'); });");
             //try
             //{
             using (OracleConnection con = Util.OC()) {
@@ -111,7 +116,7 @@ namespace WEB_PERSONAL {
                         command.Parameters.AddWithValue("12", TextBox26.Text);
                         command.Parameters.AddWithValue("13", TextBox27.Text);
                         command.ExecuteNonQuery();
-                        Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
+                        //Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
                         BindGridView1();
                     }
                 }
@@ -131,6 +136,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton17_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('1'); });");
             /*try
             {
                 string connectionString = "Data Source=203.158.140.66;Initial Catalog=personal;Integrated Security=FALSE;User ID=rmutto;Password=Zxcvbnm!";
@@ -154,7 +160,7 @@ namespace WEB_PERSONAL {
                 string script = "alert('เกิดข้อผิดพลาด! " + e2.Message + "');";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }*/
-            using(OracleConnection con = Util.OC()) {
+            using (OracleConnection con = Util.OC()) {
                 using(OracleCommand command = new OracleCommand("UPDATE TB_STUDY SET CITIZEN_ID = :2, STUDY_YEAR = :3, STUDY_DEGREE_ID = :4, STUDY_BRANCH_NAME = :5, STUDY_LOCATION = :6, STUDY_COURSE_ID = :7, STUDY_TIME = :8, STUDY_TIME_YEAR = :9, STUDY_FROM_DATE = :10, STUDY_TO_DATE = :11, STUDY_TIME_COURSE = :12, \"COMMENT\" = :13 WHERE ID = :1", con)) {
                     command.Parameters.AddWithValue("1", TextBox1.Text);
                     command.Parameters.AddWithValue("2", TextBox3.Text);
@@ -177,6 +183,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton18_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('1'); });");
             //try
             {
                 using (OracleConnection con = Util.OC()) {
@@ -225,5 +232,10 @@ namespace WEB_PERSONAL {
                 Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
             }
         }
+
+        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('2'); });");
+        }
+
     }
 }

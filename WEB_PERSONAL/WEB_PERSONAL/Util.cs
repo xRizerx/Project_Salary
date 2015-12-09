@@ -9,6 +9,7 @@ using System.Globalization;
 namespace WEB_PERSONAL {
 
     public class Util {
+
         public static string ToOracleDate2(string date)
         {
             string[] s = date.Split('/');
@@ -219,6 +220,9 @@ namespace WEB_PERSONAL {
         public static void Alert(Control control, string message) {
             string script2 = "alert('" + message + "');";
             ScriptManager.RegisterStartupScript(control, control.GetType(), "ServerControlScript", script2, true);
+        }
+        public static void RunScript(Control control, string script) {
+            ScriptManager.RegisterClientScriptBlock(control, control.GetType(), "ServerControlScript", script, true);
         }
     }
 

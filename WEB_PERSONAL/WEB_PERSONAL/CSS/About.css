@@ -1,7 +1,4 @@
-﻿.wrapper {
-    width: auto;
-}
-.mp {
+﻿.mp {
     padding: 20px;
 }
 .c1 {
@@ -9,7 +6,7 @@
     text-align: center;
 }
 .c2 {
-    margin-top: 64px;
+    margin-top: 32px;
     text-align: center;
 }
 .c3 {

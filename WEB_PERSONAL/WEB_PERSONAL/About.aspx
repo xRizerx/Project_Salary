@@ -22,5 +22,6 @@
         <div class="c2">
             <asp:label id="LabelCounter" runat="server"></asp:label>
         </div>
+        <div class="dpl_7c"></div>
     </div>
 </asp:Content>

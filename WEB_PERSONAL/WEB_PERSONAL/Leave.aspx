@@ -29,15 +29,27 @@
             margin-right: 10px;
             display: inline-block;
         }
+        .auto-style101 {
+            text-decoration: none;
+            color: #000000;
+            background-color: #e0e0e0;
+            padding-bottom: 1px;
+/*border-radius: 24px;*/color: #FFFFFF;
+            background-color: #00a2e8;
+            display: inline-block;
+            text-align: center;
+            transition: background-color ease 0.25s;
+            cursor: pointer;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 0px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script>
         $(function () {
             $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox5,#ContentPlaceHolder1_TextBox6,#ContentPlaceHolder1_TextBox9,#ContentPlaceHolder1_TextBox17,#ContentPlaceHolder1_TextBox18").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
-        });
-        $(document).ready(function () {
-            foggle('1');
         });
         function foggleOff() {
             for (var i = 1; i < 6; ++i) {
@@ -91,7 +103,7 @@
                                         </td>
                                         <td class="auto-style67">
                                             <asp:Panel ID="Panel5" runat="server" DefaultButton="LinkButton17">
-                                                <asp:TextBox ID="TextBox16" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox16" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน" MaxLength="13"></asp:TextBox>
                                                 <asp:LinkButton ID="LinkButton17" runat="server" CssClass="master_light_button" OnClick="Button1_Click2">ตรวจสอบ</asp:LinkButton>
                                             </asp:Panel>
 
@@ -150,7 +162,7 @@
                                     <tr>
                                         <td class="auto-style98">&nbsp;</td>
                                         <td class="auto-style67">
-                                            <asp:LinkButton ID="LinkButton16" runat="server" CssClass="master_light_button" OnClick="LinkButton16_Click">เพิ่ม</asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton16" runat="server" CssClass="auto-style101" OnClick="LinkButton16_Click">เพิ่ม</asp:LinkButton>
                                         </td>
                                     </tr>
                                 </table>
@@ -209,7 +221,7 @@
                                         </td>
                                         <td class="auto-style77">
                                             <asp:Panel ID="Panel3" runat="server" DefaultButton="LinkButton14">
-                                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน" MaxLength="13"></asp:TextBox>
                                                 <asp:LinkButton ID="LinkButton14" runat="server" CssClass="master_light_button" OnClick="LinkButton14_Click">ตรวจสอบ</asp:LinkButton>
                                             </asp:Panel>
 
@@ -229,7 +241,7 @@
                                         </td>
                                         <td class="auto-style77">
                                             <asp:Panel ID="Panel4" runat="server" DefaultButton="LinkButton15">
-                                                <asp:TextBox ID="TextBox8" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox8" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน" MaxLength="13"></asp:TextBox>
                                                 <asp:LinkButton ID="LinkButton15" runat="server" CssClass="master_light_button" OnClick="LinkButton15_Click">ตรวจสอบ</asp:LinkButton>
                                             </asp:Panel>
 
@@ -454,7 +466,7 @@
                                         </td>
                                         <td>
                                             <asp:Panel ID="Panel8" runat="server" DefaultButton="LinkButton7">
-                                                <asp:TextBox ID="TextBox4" runat="server" CssClass="master_light_textbox"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox4" runat="server" CssClass="master_light_textbox" MaxLength="13"></asp:TextBox>
                                                 <asp:LinkButton ID="LinkButton7" runat="server" CssClass="master_light_button" OnClick="LinkButton7_Click">ค้นหา</asp:LinkButton>
                                             </asp:Panel>
 
@@ -479,7 +491,7 @@
                                         </td>
                                         <td>
                                             <asp:Panel ID="Panel10" runat="server" DefaultButton="LinkButton8">
-                                                <asp:TextBox ID="TextBox7" runat="server" CssClass="master_light_textbox"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox7" runat="server" CssClass="master_light_textbox" MaxLength="13"></asp:TextBox>
                                                 <asp:LinkButton ID="LinkButton8" runat="server" CssClass="master_light_button" OnClick="LinkButton8_Click">ค้นหา</asp:LinkButton>
                                             </asp:Panel>
 

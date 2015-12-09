@@ -75,7 +75,7 @@
             </div>
             <div class="master_light_div_sec_pre_in">
                 <div class="master_light_div_sec_in">
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" DataSourceID="SqlDataSource2">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataSourceID="SqlDataSource2">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="รหัส" SortExpression="ID" />
@@ -86,15 +86,16 @@
                             </asp:BoundField>
                             <asp:BoundField DataField="COMMENT_STRING" HeaderText="คอมเมนต์" SortExpression="COMMENT_STRING" />
                         </Columns>
-                        <FooterStyle BackColor="#CCCC99" />
-                        <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                        <RowStyle BackColor="#F7F7DE" />
-                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                        <SortedAscendingHeaderStyle BackColor="#848384" />
-                        <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                        <SortedDescendingHeaderStyle BackColor="#575357" />
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_COMMENT.ID, TB_COMMENT.CITIZEN_ID, TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME, to_char(TB_COMMENT.COMMENT_DATE, 'dd mon yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_COMMENT.COMMENT_STRING from TB_COMMENT, TB_PERSON WHERE TB_COMMENT.CITIZEN_ID = TB_PERSON.CITIZEN_ID"></asp:SqlDataSource>
 
@@ -160,7 +161,7 @@
 
                     <div style="height: 20px;"></div>
 
-                    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="ANNOUNCE_ID" DataSourceID="SqlDataSource3" ForeColor="Black" GridLines="Vertical">
+                    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ANNOUNCE_ID" DataSourceID="SqlDataSource3" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="ANNOUNCE_ID" HeaderText="รหัส" ReadOnly="True" SortExpression="ANNOUNCE_ID" />
@@ -171,15 +172,16 @@
                             </asp:BoundField>
                             <asp:BoundField DataField="ANNOUNCE_STRING" HeaderText="คำประกาศ" SortExpression="ANNOUNCE_STRING" />
                         </Columns>
-                        <FooterStyle BackColor="#CCCC99" />
-                        <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                        <RowStyle BackColor="#F7F7DE" />
-                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                        <SortedAscendingHeaderStyle BackColor="#848384" />
-                        <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                        <SortedDescendingHeaderStyle BackColor="#575357" />
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
 
                     
@@ -237,7 +239,7 @@
 
                     <div style="height: 20px;"></div>
 
-                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical">
+                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="รหัส" SortExpression="ID" />
@@ -248,15 +250,16 @@
                             <HeaderStyle Width="100px" />
                             </asp:BoundField>
                         </Columns>
-                        <FooterStyle BackColor="#CCCC99" />
-                        <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                        <RowStyle BackColor="#F7F7DE" />
-                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                        <SortedAscendingHeaderStyle BackColor="#848384" />
-                        <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                        <SortedDescendingHeaderStyle BackColor="#575357" />
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
                     </asp:GridView>
 
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_WEB_UPDATE_HISTORY.ID, TB_WEB_UPDATE_HISTORY.CITIZEN_ID, PERSON_NAME || ' ' || PERSON_LASTNAME, TO_CHAR(UPDATE_DATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI') FROM TB_WEB_UPDATE_HISTORY, TB_PERSON WHERE TB_WEB_UPDATE_HISTORY.CITIZEN_ID = TB_PERSON.CITIZEN_ID ORDER BY TB_WEB_UPDATE_HISTORY.ID DESC"></asp:SqlDataSource>
