@@ -51,7 +51,7 @@
         }
         function foggle(target) {
             foggleOff();
-            $('#sp' + target).slideDown(250);
+            $('#sp' + target).fadeIn(250);
             document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
         }
     </script>
