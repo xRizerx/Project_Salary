@@ -155,6 +155,7 @@
     <Content Include="Image\anime_p1.png" />
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\Bar\header_bar.png" />
+    <Content Include="Image\blur-black.jpg" />
     <Content Include="Image\blurred-blue-background.jpg" />
     <Content Include="Image\btx1.jpg" />
     <Content Include="Image\Button\arrow_up.png" />
@@ -328,6 +329,10 @@
     <Content Include="UpdateHistory.aspx" />
     <Content Include="Year-ADMIN.aspx" />
     <Content Include="Font\WDB_Bangna.ttf" />
+    <Content Include="Font\THSARABUNNEW BOLDITALIC_0.TTF" />
+    <Content Include="Font\THSARABUNNEW BOLD_0.TTF" />
+    <Content Include="Font\THSARABUNNEW ITALIC_0.TTF" />
+    <Content Include="Font\THSARABUNNEW_0.TTF" />
     <None Include="personalDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>personalDataSet.Designer.cs</LastGenOutput>

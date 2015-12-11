@@ -10,12 +10,18 @@ html, body {
     /*height: 100%;*/
 
 }
-
+@font-face {
+    font-family: 'THSARABUNNEW_0';
+    src: url('../Font/THSARABUNNEW_0.TTF') format('truetype');
+}
 body {
     /*background-image: url("../Image/anime2.jpg");
     background-size: 100% auto;
     background-attachment: fixed;*/
+
     font-family: WDB_Bangna;
+    font-family: THSARABUNNEW_0;
+    font-size: 20px;
     background-color: #f0f0f0;
     background-color: #000000;
     background-color: #f0f0f0;
@@ -35,7 +41,7 @@ form {
     min-height: 100vh;*/
     /*padding-bottom: 10px;*/
     width: 1024px;
-    background-color: #f0f0f0;
+    /*background-color: #f0f0f0;*/
 
 }
 .all_div {
@@ -568,13 +574,13 @@ home_button:active {
     font-weight: bold;
 
     display: inline-block;
-    width: 240px;
+    width: 200px;
     /*background-color: #00b3ff;
     background-color: #c0c0c0;
     background-color: #00a2e8;*/
     background-color: #FFFFFF;
-    /*border-radius: 24px;*/
-    height: 32px;
+    border-radius: 4px;
+    height: 24px;
 
     text-align: center;
 
@@ -601,7 +607,7 @@ home_button:active {
     display: inline-block;
     /*margin: 0 20px;*/
 
-    /*border-radius: 24px;*/
+    border-radius: 4px;
 
 
     text-decoration: none;
@@ -609,10 +615,10 @@ home_button:active {
     color: #FFFFFF;
     padding: 0 20px;
 
-    width: 200px;
+    width: 160px;
     /*height: 32px;*/
     border-bottom: 1px solid #e0e0e0;
-    transition: background-color ease 0.25s;
+    /*transition: background-color ease 0.25s;*/
     /*background-color: rgba(0,0,0,0.2);*/
     color: #000000;
     /*text-shadow: 1px 1px 1px #000000;*/
@@ -1137,11 +1143,11 @@ ault_page_header {
     display: inline-block;
     padding: 0 20px;
     color: #000000;
-    color: #FFFFFF;
+    /*color: #FFFFFF;*/
     background-color: #e0e0e0;
-    background-color: #00a2e8;
+    /*background-color: #00a2e8;*/
     /*font-size: 24px;*/
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 .master_light_div_sec_pre_in {
 
@@ -1150,6 +1156,10 @@ ault_page_header {
     background-color: #f8f8f8;
     padding: 20px;
     border: 1px solid #00a2e8;
+    border: 1px solid #e0e0e0;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 .master_light_button {
     text-decoration: none;
@@ -1157,10 +1167,9 @@ ault_page_header {
     background-color: #e0e0e0;
     padding: 0px 20px;
     padding-bottom: 1px;
-    height: 30px;
-    /*border-radius: 24px;*/
-    color: #FFFFFF;
-    background-color: #00a2e8;
+    border-radius: 4px;
+    /*color: #FFFFFF;*/
+    /*background-color: #00a2e8;*/
     display: inline-block;
     text-align: center;
     transition: background-color ease 0.25s;
@@ -1168,32 +1177,32 @@ ault_page_header {
 }
 .master_light_button:hover {
     background-color: #808080;
-    background-color: #69c4eb;
+    /*background-color: #69c4eb;*/
+    background-color: #c0c0c0;
 }
 .master_light_textbox {
-    font-family: 'WDB Bangna';
-    padding: 3px 10px;
+    font-family: THSARABUNNEW_0;
+    font-size: 20px;
+    padding: 1px 10px;
     color: #000000;
     background-color: #ffffff;
     border: 1px solid #00a2e8;
-    
-    
-    /*border-radius: 24px;*/
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
 }
 .master_light_textbox:disabled {
-    font-family: 'WDB Bangna';
-    padding: 3px 10px;
-    color: #000000;
     background-color: #f0f0f0;
     border: 1px solid #e0e0e0;
 }
 .master_light_dropdown {
-    font-family: 'WDB Bangna';
-    padding: 3px 10px;
+    font-family: THSARABUNNEW_0;
+    font-size: 20px;
+    padding: 1px 10px;
     color: #000000;
     background-color: #ffffff;
     border: 1px solid #00a2e8;
-    /*border-radius: 24px;*/
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
 }
 .master_light_table_div_sec {
     border-collapse: collapse;
@@ -1236,7 +1245,7 @@ ault_page_header {
     border-bottom: 1px solid #e0e0e0;
     display: inline-block;
     text-align: left;
-    transition: background-color ease 0.25s;
+    /*transition: background-color ease 0.25s;*/
     width: 160px;
     cursor: pointer;
 }

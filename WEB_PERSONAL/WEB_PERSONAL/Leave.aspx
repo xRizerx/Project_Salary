@@ -7,7 +7,6 @@
         .auto-style98 {
             width: 100px;
             text-align: right;
-            font-weight: bold;
             margin-right: 10px;
             display: inline-block;
         }
@@ -16,7 +15,6 @@
             width: 150px;
             text-align: right;
             vertical-align: top;
-            font-weight: bold;
             margin-right: 10px;
             display: inline-block;
         }
@@ -25,7 +23,6 @@
             width: 150px;
             text-align: right;
             height: 29px;
-            font-weight: bold;
             margin-right: 10px;
             display: inline-block;
         }
@@ -63,7 +60,7 @@
         }
         function foggle(target) {
             foggleOff();
-            $('#sp' + target).slideDown(250);
+            $('#sp' + target).fadeIn(250);
             document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
         }
     </script>
@@ -162,7 +159,7 @@
                                     <tr>
                                         <td class="auto-style98">&nbsp;</td>
                                         <td class="auto-style67">
-                                            <asp:LinkButton ID="LinkButton16" runat="server" CssClass="auto-style101" OnClick="LinkButton16_Click">เพิ่ม</asp:LinkButton>
+                                            <asp:LinkButton ID="LinkButton16" runat="server" CssClass="master_light_button" OnClick="LinkButton16_Click">เพิ่ม</asp:LinkButton>
                                         </td>
                                     </tr>
                                 </table>

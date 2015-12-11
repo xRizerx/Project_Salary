@@ -1,4 +1,8 @@
-﻿body {
+﻿@font-face {
+    font-family: 'THSARABUNNEW_0';
+    src: url('../Font/THSARABUNNEW_0.TTF') format('truetype');
+}
+body {
     /*background-image: url(../Image/blurred-blue-background.jpg  );
     background-repeat: no-repeat;
     background-size: cover;*/
@@ -125,7 +129,6 @@
 
 .login_popup_div_sec_header {
     /*background-color: rgba(255,255,255,0.25);*/
-    
     padding: 0px 25px;
     text-align: center;
     font-weight: bold;
@@ -157,9 +160,8 @@
     border: none;
     background-color: #ffffff;
     border: 1px solid #00a2e8;
-    font-family: 'WDB Bangna';
-    font-size: 16px;
-    font-weight: bold;
+    font-family: THSARABUNNEW_0;
+    font-size: 20px;
     
     /*box-shadow: rgba(0,162,232,0.8) 1px 1px 10px;
     box-shadow: rgba(0,0,0,0.5) 1px 1px 5px;*/
@@ -171,16 +173,13 @@
     color: #000000;
     background-color: #ffffff;
     border: 1px solid #00a2e8;
-    font-family: 'WDB Bangna';
-    font-size: 16px;
-    font-weight: bold;
+    font-family: THSARABUNNEW_0;
+    font-size: 20px;
     /*box-shadow: rgba(0,162,232,0.8) 1px 1px 10px;
     box-shadow: rgba(0,0,0,0.5) 1px 1px 5px;*/
 }
 #Label1 {
-    font-size: 16px;
-    color: #e0e0e0;
-    color: #808080;
+    color: #00a2e8;
 }
 .cerror {
     
@@ -205,8 +204,6 @@ table {
     padding: 3px 20px;
     display: inline-block;
 
-    font-size: 16px;
-    font-weight: bold;
     /*box-shadow: rgba(0,0,0,0.5) 1px 1px 5px;*/
     transition: background-color ease 0.25s;
     /*text-shadow: 1px 1px 1px #000000;*/
