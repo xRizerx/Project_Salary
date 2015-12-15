@@ -145,12 +145,12 @@
                         </tr>
                         <tr>
                             <td colspan="4">
-                                <asp:Label ID="Label55" runat="server" Text="รายละเอียดการบริหารวงเงินร้อยละ 2.9"></asp:Label>
+                                <asp:Label ID="Label55" runat="server" Text="รายละเอียดการบริหารวงเงินร้อยละ"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style2">
-                                <asp:Label ID="Label20" runat="server" Text="เงินเดือนก่อนเลื่อน (ณ 1 มี.ค. 58)" Width="250"></asp:Label>
+                                <asp:Label ID="Label20" runat="server" Width="250"></asp:Label>
                             </td>
                             <td class="auto-style1">
                                 <asp:TextBox ID="TextBox2" runat="server" Width="150"></asp:TextBox>
