@@ -14,10 +14,11 @@ namespace WEB_PERSONAL {
     public partial class Leave : System.Web.UI.Page {
 
         protected void Page_Load(object sender, EventArgs e) {
-            if(!IsPostBack) {
+            if (!IsPostBack) {
                 pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc");
+                Util.RunScript(this, "$(function () { foggle('1'); });");
             }
-            
+
         }
 
         private string toDate(String str) {
@@ -45,10 +46,11 @@ namespace WEB_PERSONAL {
                         command.Parameters.AddWithValue("10", TextBox10.Text);
                         command.ExecuteNonQuery();
                         Util.Alert(this, "บันทึกสำเร็จ!");
-                        GridView2.DataBind();
                     }
                 }
             }
+            BindAllGridView();
+            Util.RunScript(this, "$(function () { foggle('2'); });");
             //} catch (Exception e2) {
             // string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
             // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
@@ -80,7 +82,7 @@ namespace WEB_PERSONAL {
                                         Label31.Text = reader.GetString(0);
                                     }
                                 } else {
-                                    Util.Alert(this, "ไม่พบรหัสพนักงาน!");
+                                    Label31.Text = "ไม่พบรหัสพนักงาน!";
                                 }
 
                             }
@@ -89,6 +91,7 @@ namespace WEB_PERSONAL {
                         }
                     }
                 }
+                Util.RunScript(this, "$(function () { foggle('2'); });");
             } catch (Exception e2) {
                 Util.Alert(this, "เกิดข้อผิดพลาด!" + e2.Message);
             }
@@ -115,6 +118,7 @@ namespace WEB_PERSONAL {
                         }
                     }
                 }
+                Util.RunScript(this, "$(function () { foggle('2'); });");
             } catch (Exception e2) {
                 string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
@@ -272,6 +276,7 @@ namespace WEB_PERSONAL {
                         }
                     }
                 }
+                Util.RunScript(this, "$(function () { foggle('1'); });");
             } catch (Exception e2) {
                 Util.Alert(this, "เกิดข้อผิดพลาด! " + e2.Message);
             }
@@ -283,7 +288,7 @@ namespace WEB_PERSONAL {
                 Util.Alert(this, "กรุณาเข้าสู่ระบบก่อน");
                 return;
             }
-            if(
+            if (
                 TextBox16.Text == null || TextBox16.Text == "" ||
                 DropDownList5.SelectedIndex == 0 || DropDownList6.SelectedIndex == 0 ||
                 TextBox17.Text == null || TextBox17.Text == "" ||
@@ -311,7 +316,6 @@ namespace WEB_PERSONAL {
                         command.Parameters.AddWithValue("10", TextBox19.Text);
                         command.ExecuteNonQuery();
                         Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
-                        GridView2.DataBind();
                     }
                 }
 
@@ -319,6 +323,8 @@ namespace WEB_PERSONAL {
 
 
             }
+            BindAllGridView();
+            Util.RunScript(this, "$(function () { foggle('1'); });");
             //} catch (Exception e2) {
             //    Util.Alert(this,"เกิดข้อผิดพลาด! " + e2.Message);
             //}
@@ -327,7 +333,7 @@ namespace WEB_PERSONAL {
 
         //pull paper from id
         protected void LinkButton18_Click(object sender, EventArgs e) {
-
+            Util.RunScript(this, "$(function () { foggle('2'); });");
             Label33.Text = "";
             TextBox2.Text = "";
             TextBox3.Text = "";
@@ -361,7 +367,7 @@ namespace WEB_PERSONAL {
                             }
                         }
                     }
-                    
+
                 }
 
                 {
@@ -397,8 +403,6 @@ namespace WEB_PERSONAL {
                 LinkButton13.Enabled = true;
 
             }
-
-
             //} catch (Exception e2) {
             //   string script = "alert(\"เกิดข้อผิดพลาด! " + e2.Message + "\");";
             //   ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
@@ -410,7 +414,7 @@ namespace WEB_PERSONAL {
             pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc");
         }
 
-        
+
 
         protected void DropDownList4_DataBound(object sender, EventArgs e) {
             DropDownList4.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทการลา--", String.Empty));
@@ -439,50 +443,13 @@ namespace WEB_PERSONAL {
         }
 
         protected void DropDownList7_SelectedIndexChanged(object sender, EventArgs e) {
-            if(DropDownList7.SelectedIndex != 0)
+            if (DropDownList7.SelectedIndex != 0)
                 pullSql("select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID AND tb_leave.leave_status_id = " + DropDownList7.SelectedValue + " order by tb_leave.paper_id desc");
         }
 
         protected void DropDownList7_DataBound(object sender, EventArgs e) {
             DropDownList7.Items.Insert(0, new ListItem("--กรุณาเลือกสถานะการลา--", String.Empty));
             DropDownList7.SelectedIndex = 0;
-        }
-
-        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e) {
-
-           
-
-            GridViewRow row = GridView2.SelectedRow;
-
-            Label33.Text = row.Cells[0].Text;
-            TextBox2.Text = Util.NDT(row.Cells[1].Text);
-            TextBox3.Text = row.Cells[2].Text;
-            DropDownList1.ClearSelection();
-            DropDownList1.Items.FindByText(row.Cells[4].Text).Selected = true;
-            TextBox5.Text = Util.NDT(row.Cells[5].Text);
-            TextBox6.Text = Util.NDT(row.Cells[6].Text);
-            DropDownList2.ClearSelection();
-            DropDownList2.Items.FindByText(row.Cells[7].Text).Selected = true;
-            TextBox8.Text = row.Cells[8].Text;
-            TextBox9.Text = Util.NDT(row.Cells[10].Text);
-            TextBox10.Text = row.Cells[11].Text == "&nbsp;" ? "":row.Cells[11].Text;
-            using(OracleConnection con = Util.OC()) {
-                using(OracleCommand command = new OracleCommand("SELECT PERSON_NAME || ' ' || PERSON_LASTNAME FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", TextBox3.Text);
-                    using(OracleDataReader reader = command.ExecuteReader()) {
-                        reader.Read();
-                        Label31.Text = reader.GetString(0);
-                    }
-                }
-                using (OracleCommand command = new OracleCommand("SELECT PERSON_NAME || ' ' || PERSON_LASTNAME FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
-                    command.Parameters.AddWithValue("1", TextBox8.Text);
-                    using (OracleDataReader reader = command.ExecuteReader()) {
-                        reader.Read();
-                        Label32.Text = reader.GetString(0);
-                    }
-                }
-            }
- 
         }
 
         protected void GridView2_PageIndexChanged(object sender, EventArgs e) {
@@ -510,6 +477,8 @@ namespace WEB_PERSONAL {
                     command.ExecuteNonQuery();
                 }
             }
+            BindAllGridView();
+            Util.RunScript(this, "$(function () { foggle('3'); });");
         }
 
         protected void LinkButton1_Click1(object sender, EventArgs e) {
@@ -523,10 +492,12 @@ namespace WEB_PERSONAL {
                     command.ExecuteNonQuery();
                 }
             }
+            BindAllGridView();
+            Util.RunScript(this, "$(function () { foggle('3'); });");
         }
 
         protected void LinkButton19_Click(object sender, EventArgs e) {
-            if(DropDownList8.SelectedIndex != 0) {
+            if (DropDownList8.SelectedIndex != 0) {
                 using (OracleConnection con = Util.OC()) {
                     using (OracleCommand command = new OracleCommand("UPDATE TB_LEAVE_TYPE SET LEAVE_TYPE_NAME = :2 WHERE LEAVE_TYPE_ID = :3", con)) {
                         command.Parameters.AddWithValue("2", TextBox20.Text);
@@ -535,11 +506,13 @@ namespace WEB_PERSONAL {
                     }
                 }
             }
+            BindAllGridView();
+            Util.RunScript(this, "$(function () { foggle('3'); });");
         }
 
         protected void DropDownList8_SelectedIndexChanged(object sender, EventArgs e) {
             TextBox20.Text = "";
-            if(DropDownList8.SelectedIndex != 0)
+            if (DropDownList8.SelectedIndex != 0)
                 TextBox20.Text = DropDownList8.SelectedItem.Text;
         }
 
@@ -549,11 +522,15 @@ namespace WEB_PERSONAL {
         }
 
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e) {
-            if(!Person.IsAdmin(Session["login_id"].ToString())) {
+            if (!Person.IsAdmin(Session["login_id"].ToString())) {
                 e.Cancel = true;
                 Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
             }
         }
+        private void BindAllGridView() {
+            GridView2.DataBind();
+            GridView3.DataBind();
+        }
     }
-    
+
 }

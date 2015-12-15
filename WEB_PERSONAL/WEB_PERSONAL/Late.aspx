@@ -7,9 +7,6 @@
         $(function () {
             $("#ContentPlaceHolder1_TextBox11,#ContentPlaceHolder1_TextBox1").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
         });
-        $(document).ready(function () {
-            foggle('1');
-        });
         function foggleOff() {
             for (var i = 1; i < 5; ++i) {
                 var j = document.getElementById('sp' + i);
@@ -22,7 +19,7 @@
         }
         function foggle(target) {
             foggleOff();
-            $('#sp' + target).slideDown(250);
+            $('#sp' + target).fadeIn(250);
             document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
         }
     </script>
@@ -30,21 +27,20 @@
     <link href="CSS/Late.css" rel="stylesheet" />
 
     <div class="mp">
-        <div class="master_light_page_header">
-            การเข้างาน (มาสาย)
-        </div>
+       
 
         <table class="master_light_table_div_sec">
             <tr>
-                <td>
+                <td class="master_light_table_div_sec_td_left">
                     <div class="master_light_toggle_div_sec">
+                        <div class="master_light_toggle_div_sec_title">เมนูการเข้างาน</div>
                         <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">เพิ่มการเข้างาน</div>
                         <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">แก้ไขการเข้างาน</div>
                         <div class="master_light_toggle_button" id="st3" onclick="foggle('3')">ข้อมูลการเข้างาน</div>
                         <div class="master_light_toggle_button" id="st4" onclick="foggle('4')">ข้อมูลการมาสาย</div>
                     </div>
                 </td>
-                <td>
+                <td class="master_light_table_div_sec_td_right">
                     <div class="master_light_div_sec" id="sp1">
             <div class="master_light_div_sec_title">
                 เพิ่มเวลาเข้างาน
@@ -65,7 +61,7 @@
                                 <asp:Label ID="Label44" runat="server" Text="รหัสพนักงาน"></asp:Label>
                             </td>
                             <td class="auto-style67">
-                                <asp:TextBox ID="TextBox21" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
+                                <asp:TextBox ID="TextBox21" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน" MaxLength="13"></asp:TextBox>
                                 <asp:LinkButton ID="LinkButton20" runat="server" CssClass="master_light_button" OnClick="LinkButton20_Click">ตรวจสอบ</asp:LinkButton>
                             </td>
                         </tr>
@@ -159,7 +155,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="รหัสพนักงาน"></asp:Label>
                             </td>
                             <td class="auto-style67">
-                                <asp:TextBox ID="TextBox2" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน"></asp:TextBox>
+                                <asp:TextBox ID="TextBox2" runat="server" CssClass="master_light_textbox" placeHolder="รหัสประชาชน" MaxLength="13"></asp:TextBox>
                                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_light_button" OnClick="LinkButton1_Click">ตรวจสอบ</asp:LinkButton>
                             </td>
                         </tr>
@@ -216,7 +212,7 @@
 
                 <div class="master_light_div_sec_in">
 
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="Black" GridLines="Vertical" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" OnPageIndexChanged="GridView1_PageIndexChanged" OnRowDeleting="GridView1_RowDeleting">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="Black" GridLines="Vertical" AllowPaging="True" AllowSorting="True" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" OnPageIndexChanged="GridView1_PageIndexChanged" OnRowDeleting="GridView1_RowDeleting" OnRowDeleted="GridView1_RowDeleted">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="รหัส" ReadOnly="True" SortExpression="ID" />
@@ -225,8 +221,9 @@
                             <asp:BoundField DataField="PERSON_NAME||''||PERSON_LASTNAME" HeaderText="ชื่อพนักงาน" SortExpression="PERSON_NAME||''||PERSON_LASTNAME" />
                             <asp:BoundField DataField="HOUR_IN||':'||MINUTE_IN" HeaderText="เวลาเข้า" SortExpression="HOUR_IN||':'||MINUTE_IN" />
                             <asp:BoundField DataField="HOUR_OUT||':'||MINUTE_OUT" HeaderText="เวลาออก" SortExpression="HOUR_OUT||':'||MINUTE_OUT" />
-                            <asp:CommandField ShowSelectButton="True" SelectText="เลือก" HeaderText="เลือก" ControlStyle-CssClass="master_default_gridview_select_button" />
-                            <asp:CommandField ShowDeleteButton="true" DeleteText="ลบ" HeaderText="ลบ" ControlStyle-CssClass="master_default_gridview_select_button" />
+                            <asp:CommandField ShowDeleteButton="true" DeleteText="ลบ" HeaderText="ลบ" ControlStyle-CssClass="master_default_gridview_select_button" >
+<ControlStyle CssClass="master_default_gridview_select_button"></ControlStyle>
+                            </asp:CommandField>
                         </Columns>
                         <FooterStyle BackColor="#CCCC99" />
                         <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -257,7 +254,7 @@
             <div class="master_light_div_sec_pre_in">
                 <div class="master_light_div_sec_in">
 
-                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource2" CellPadding="4" ForeColor="Black" GridLines="Vertical" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowSorting="True" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
+                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource2" CellPadding="4" ForeColor="Black" GridLines="Vertical" AllowPaging="True" AllowSorting="True" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="รหัส" ReadOnly="True" SortExpression="ID" />

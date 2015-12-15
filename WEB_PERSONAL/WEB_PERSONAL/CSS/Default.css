@@ -1,21 +1,26 @@
 ﻿.wrapper {
     width: auto;
-    background-color: #202020;
-    background-color: #f0f0f0;
+    background: none;
+}
+body {
     
 }
-
 .mp {
-    background-color: #202020;
-    background-color: #f0f0f0;
+    
+    
 }
-
+.master_light_page_header {
+    margin-top: 40px;
+}
 .c1 {
     padding: 20px;
     background-color: #202020;
     margin: 0 auto;
     text-align: center;
     font-size: 0;
+    margin: 20px 0px;
+    /*background-image: url(../Image/bg2.jpg);
+    background-size: cover;*/
 }
 
 .c1 img {
@@ -62,6 +67,8 @@
 
 .para_group {
     margin-top: 20px;
+    width: 1024px;
+    margin: 0 auto;
 }
 
 .para {

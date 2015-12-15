@@ -33,7 +33,6 @@
     </script>
 
     <div class="mp">
-        <div class="mp2">
 
             <!--div style="height: 50px;"></!--div-->
 
@@ -55,23 +54,21 @@
                 </div>
             </!--div-->
 
+        <div class="master_light_page_header">
+                    <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร (Personnel System)"></asp:Label>
+                </div>
+
             <asp:Panel ID="Panel1" runat="server" CssClass="c1">
                 <img src="Image/i1.jpg" />
                 <img src="Image/i2.jpg" />
                 <img src="Image/i3.jpg" />
+                
             </asp:Panel>
 
-
             <div class="para_group">
-                <div class="para_center">
-                    <asp:Label ID="Label2" runat="server" Text="ระบบบุคลากร (Personnel System)" style="font-size: 24px; font-weight: bold;"></asp:Label>
-                    <br />
-                    <p style="font-size: 24px; font-weight: bold;">
-                        
-                    </p>
-                </div>
+                
 
-                <span style="font-size: 24px; font-weight: bold; margin-left: 100px">ประกาศ</span>
+                <span style="font-size: 32px; margin-left: 100px">ประกาศ</span>
 
                 <div id="div_announce" runat="server">
                     
@@ -80,21 +77,11 @@
                 <div class="dpl_7c" style="height: 1px; margin: 20px 100px;">
 
                 </div>
-
-                <span style="font-size: 24px; font-weight: bold; margin-left: 100px">การอัพเดท</span>
-
-                <div id="div_update_history" runat="server">
-
-                </div>
-
-                
-
-                
+                    
             </div>
 
 
             <div style="height: 50px"></div>
 
-        </div>
     </div>
 </asp:Content>

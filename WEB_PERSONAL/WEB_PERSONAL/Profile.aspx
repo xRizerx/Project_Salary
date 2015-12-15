@@ -33,13 +33,13 @@
             }
             for (var i = 1; i < 12; ++i) {
                 var j = document.getElementById('st' + i);
-                j.className = 'profile_button';
+                j.className = 'master_light_toggle_button';
             }
         }
         function foggle(target) {
             foggleOff();
             $('#sp' + target).slideDown(250);
-            document.getElementById('st' + target).className = 'profile_button_selected';
+            document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
 
         }
     </script>
@@ -47,26 +47,26 @@
     <div class="main">
         <div class="sec1">
 
-            <table>
+            <table class="master_light_table_div_sec">
                 <tr>
-                    <td>
-                        <div class="sec1_1">
-                            <img id="profile_pic" runat="server" src="Image/no_image.png" style="object-fit: contain;" />
-                            <div class="profile_button" id="st1" onclick="foggle('1')">ข้อมูลส่วนตัว</div>
-                            <div class="profile_button" id="st2" onclick="foggle('2')">ที่อยู่</div>
-                            <div class="profile_button" id="st3" onclick="foggle('3')">การงาน</div>
-                            <div class="profile_button" id="st4" onclick="foggle('4')">การศึกษา</div>
-                            <div class="profile_button" id="st6" onclick="foggle('6')">ประวัติการศึกษา</div>
-                            <div class="profile_button" id="st7" onclick="foggle('7')">ใบอนุญาตประกอบวิชาชีพ</div>
-                            <div class="profile_button" id="st8" onclick="foggle('8')">ประวัติการฝึกอบรม</div>
-                            <div class="profile_button" id="st9" onclick="foggle('9')">การได้รับโทษทางวินัยและการนิรโทษกรรม</div>
-                            <div class="profile_button" id="st10" onclick="foggle('10')">ตำแหน่งและเงินเดือน</div>
-                            <div class="profile_button" id="st11" onclick="foggle('11')">รูปภาพ</div>
-                            <div class="profile_button" id="st5" onclick="foggle('5')">เปลี่ยนรหัสผ่าน</div>
+                    <td class="master_light_table_div_sec_td_left">
+                        <div class="master_light_toggle_div_sec">
+                            <img id="profile_pic" runat="server" src="Image/no_image.png" />
+                            <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">ข้อมูลส่วนตัว</div>
+                            <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">ที่อยู่</div>
+                            <div class="master_light_toggle_button" id="st3" onclick="foggle('3')">การงาน</div>
+                            <div class="master_light_toggle_button" id="st4" onclick="foggle('4')">การศึกษา</div>
+                            <div class="master_light_toggle_button" id="st6" onclick="foggle('6')">ประวัติการศึกษา</div>
+                            <div class="master_light_toggle_button" id="st7" onclick="foggle('7')">ใบอนุญาตประกอบวิชาชีพ</div>
+                            <div class="master_light_toggle_button" id="st8" onclick="foggle('8')">ประวัติการฝึกอบรม</div>
+                            <div class="master_light_toggle_button" id="st9" onclick="foggle('9')">การได้รับโทษทางวินัยและการนิรโทษกรรม</div>
+                            <div class="master_light_toggle_button" id="st10" onclick="foggle('10')">ตำแหน่งและเงินเดือน</div>
+                            <div class="master_light_toggle_button" id="st11" onclick="foggle('11')">รูปภาพ</div>
+                            <div class="master_light_toggle_button" id="st5" onclick="foggle('5')">เปลี่ยนรหัสผ่าน</div>
                         </div>
                     </td>
-                    <td>
-                        <div class="sec1_2">
+                    <td class="master_light_table_div_sec_td_right">
+                        <div>
 
                             <div class="master_light_div_sec" id="sp1">
                                 <div class="master_light_div_sec_title">
@@ -555,15 +555,19 @@
                                 </div>
                             </div>
 
-                            <div id="sp11">
-                                <div class="profile_image_header">
-                                    <asp:Label ID="Label3" runat="server" Text="รูปภาพ"></asp:Label>
-                                    <span style="display: inline-block; width: 50px;"></span>
-                                    <asp:FileUpload ID="FileUpload1" runat="server" Width="200px" CssClass="uploader" />
-                                    <asp:LinkButton ID="LinkButton1" runat="server" Text="อัพโหลด" CssClass="profile_default_button" OnClick="LinkButton1_Click"></asp:LinkButton>
+                            <div class="master_light_div_sec" id="sp11">
+                                <div class="master_light_div_sec_title">
+                                    รูปภาพ
+                                </div>
+                                <div class="master_light_div_sec_in">
+                                    <div class="profile_image_header">
+                                        <asp:FileUpload ID="FileUpload1" runat="server" Width="200px" CssClass="uploader" />
+                                        <asp:LinkButton ID="LinkButton1" runat="server" Text="อัพโหลด" CssClass="master_light_button" OnClick="LinkButton1_Click"></asp:LinkButton>
+                                    </div>
+
+                                    <asp:Panel ID="Panel1" runat="server"></asp:Panel>
                                 </div>
 
-                                <asp:Panel ID="Panel1" runat="server"></asp:Panel>
                             </div>
 
 

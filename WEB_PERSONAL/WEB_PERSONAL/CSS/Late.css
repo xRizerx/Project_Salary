@@ -2,9 +2,8 @@
     width: auto;
 }
 .mp {
-    padding: 20px;
     background-color: #f0f0f0;
-    min-height: 1024px;
+    padding: 20px;
 }
 
 .error_text {

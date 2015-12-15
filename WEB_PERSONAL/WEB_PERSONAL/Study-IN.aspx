@@ -5,9 +5,6 @@
         $(function () {
             $("#ContentPlaceHolder1_TextBox2,#ContentPlaceHolder1_TextBox7,#ContentPlaceHolder1_TextBox8").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
         });
-        $(document).ready(function () {
-            foggle('1');
-        });
         function foggleOff() {
             for (var i = 1; i < 3; ++i) {
                 var j = document.getElementById('sp' + i);
@@ -20,7 +17,7 @@
         }
         function foggle(target) {
             foggleOff();
-            $('#sp' + target).slideDown(250);
+            $('#sp' + target).fadeIn(250);
             document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
         }
     </script>
@@ -44,19 +41,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <asp:Panel ID="Panel8" runat="server" CssClass="pan">
-        <div class="master_light_page_header">
-            การลาศึกษาต่อภายในและภายนอกประเทศ
-        </div>
-
         <table class="master_light_table_div_sec">
             <tr>
-                <td>
+                <td class="master_light_table_div_sec_td_left">
                     <div class="master_light_toggle_div_sec">
+                        <div class="master_light_toggle_div_sec_title">เมนูการลาศึกษาต่อ</div>
                         <div class="master_light_toggle_button" id="st1" onclick="foggle('1')">เพิ่มการศึกษาต่อ</div>
                         <div class="master_light_toggle_button" id="st2" onclick="foggle('2')">ข้อมูลการศึกษาต่อ</div>
                     </div>
                 </td>
-                <td>
+                <td class="master_light_table_div_sec_td_right">
                     <div class="master_light_div_sec" id="sp1">
             <div class="master_light_div_sec_title">
                 เพิ่มข้อมูลการลาศึกษาต่อ
@@ -90,7 +84,7 @@
                                 <asp:Label ID="Label10" runat="server" Text="รหัสผู้ลาศึกษา"></asp:Label>
                             </td>
                             <td class="auto-style27">
-                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_light_textbox"></asp:TextBox>
+                                <asp:TextBox ID="TextBox3" runat="server" CssClass="master_light_textbox" MaxLength="13" placeHolder="รหัสประชาชน"></asp:TextBox>
                                 <asp:LinkButton ID="LinkButton18" runat="server" CssClass="master_light_button" OnClick="LinkButton18_Click">ตรวจสอบ</asp:LinkButton>
                             </td>
                         </tr>
@@ -245,7 +239,7 @@
 
                 <div class="master_light_div_sec_in">
 
-                    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource4" OnRowDeleting="GridView1_RowDeleting">
+                    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource4" OnRowDeleting="GridView1_RowDeleting" OnRowDeleted="GridView1_RowDeleted">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField DataField="ID" HeaderText="รหัส" ReadOnly="True" SortExpression="ID" />
@@ -273,7 +267,11 @@
                     </asp:GridView>
 
 
-                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_STUDY.ID, TB_STUDY.CITIZEN_ID, TB_STUDY.STUDY_YEAR, TB_STUDY_DEGREE.SHORT_NAME, TB_STUDY.STUDY_BRANCH_NAME, TB_STUDY.STUDY_LOCATION, TB_STUDY_COURSE.NAME, TB_STUDY.STUDY_TIME || ' (' || TB_STUDY.STUDY_TIME_YEAR || ')' as &quot;STUDY_TIME&quot;, TO_CHAR(TB_STUDY.STUDY_FROM_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') || ' - ' || TO_CHAR(TB_STUDY.STUDY_TO_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') as &quot;FROM_TO_DATE&quot;, TB_STUDY.STUDY_TIME_COURSE, TB_STUDY.&quot;COMMENT&quot; FROM TB_STUDY, TB_STUDY_DEGREE, TB_STUDY_COURSE WHERE TB_STUDY.STUDY_COURSE_ID = TB_STUDY_COURSE.ID AND TB_STUDY.STUDY_DEGREE_ID = TB_STUDY_DEGREE.ID ORDER BY TB_STUDY.ID DESC"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_STUDY.ID, TB_STUDY.CITIZEN_ID, TB_STUDY.STUDY_YEAR, TB_STUDY_DEGREE.SHORT_NAME, TB_STUDY.STUDY_BRANCH_NAME, TB_STUDY.STUDY_LOCATION, TB_STUDY_COURSE.NAME, TB_STUDY.STUDY_TIME || ' (' || TB_STUDY.STUDY_TIME_YEAR || ')' as &quot;STUDY_TIME&quot;, TO_CHAR(TB_STUDY.STUDY_FROM_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') || ' - ' || TO_CHAR(TB_STUDY.STUDY_TO_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') as &quot;FROM_TO_DATE&quot;, TB_STUDY.STUDY_TIME_COURSE, TB_STUDY.&quot;COMMENT&quot; FROM TB_STUDY, TB_STUDY_DEGREE, TB_STUDY_COURSE WHERE TB_STUDY.STUDY_COURSE_ID = TB_STUDY_COURSE.ID AND TB_STUDY.STUDY_DEGREE_ID = TB_STUDY_DEGREE.ID ORDER BY TB_STUDY.ID DESC" DeleteCommand="DELETE FROM TB_STUDY WHERE ID = :ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="ID" />
+                        </DeleteParameters>
+                    </asp:SqlDataSource>
 
 
                 </div>

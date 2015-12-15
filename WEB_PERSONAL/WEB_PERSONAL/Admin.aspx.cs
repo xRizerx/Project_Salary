@@ -13,7 +13,9 @@ namespace WEB_PERSONAL {
                 Response.Redirect("default.aspx");
                 return;
             }
-
+            if(IsPostBack) {
+                Util.RunScript(this, "$(function () { foggle('1'); });");
+            }
         }
         private void BindAllGridView() {
             GridView1.DataBind();
@@ -22,6 +24,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton11_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('3'); });");
             int id;
             using(OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("SELECT SEQ_WUH_ID.NEXTVAL FROM DUAL", con)) {
@@ -54,6 +57,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton12_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('3'); });");
             using (OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("DELETE FROM TB_WEB_UPDATE_HISTORY WHERE ID = :1", con)) {
                     command.Parameters.AddWithValue("1", TextBox3.Text);
@@ -68,6 +72,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton13_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('1'); });");
             using (OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("DELETE FROM TB_COMMENT WHERE ID = :1", con)) {
                     command.Parameters.AddWithValue("1", TextBox4.Text);
@@ -78,6 +83,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton14_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('2'); });");
             using (OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("INSERT INTO TB_ANNOUNCE VALUES(SEQ_ANNOUNCE_ID.NEXTVAL, :2, :3, :4)", con)) {
                     command.Parameters.AddWithValue("2", Session["login_id"].ToString());
@@ -90,6 +96,7 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton15_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('2'); });");
             using (OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("DELETE FROM TB_ANNOUNCE WHERE ANNOUNCE_ID = :1", con)) {
                     command.Parameters.AddWithValue("1", TextBox6.Text);

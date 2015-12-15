@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.aspx" />
+    <Content Include="About.aspx" />
     <Content Include="Access.aspx" />
     <Content Include="Admin.aspx" />
     <Content Include="AdminPosition-ADMIN.aspx" />
@@ -137,6 +138,7 @@
     <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="CSS\About.css" />
     <Content Include="CSS\Access.css" />
     <Content Include="CSS\Admin.css" />
     <Content Include="CSS\Default.css" />
@@ -147,11 +149,13 @@
     <Content Include="CSS\Profile.css" />
     <Content Include="CSS\Salary.css" />
     <Content Include="CSS\Study.css" />
+    <Content Include="CSS\UpdateHistory.css" />
     <Content Include="Download.aspx" />
     <Content Include="Entities\Virus.mp3" />
     <Content Include="Image\anime_p1.png" />
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\Bar\header_bar.png" />
+    <Content Include="Image\blur-black.jpg" />
     <Content Include="Image\blurred-blue-background.jpg" />
     <Content Include="Image\btx1.jpg" />
     <Content Include="Image\Button\arrow_up.png" />
@@ -171,6 +175,7 @@
     <Content Include="Image\ImageTUU\User-icon.png" />
     <Content Include="Image\ImageTUU\Utilities-icon.png" />
     <Content Include="Image\stickman.png" />
+    <Content Include="Image\Texture.png" />
     <Content Include="Image\TUUbg1.jpg" />
     <Content Include="Image\TUUbg2.jpg" />
     <Content Include="Image\TUUbg3.jpg" />
@@ -321,8 +326,13 @@
     <Content Include="TeachISCED-ADMIN.aspx" />
     <Content Include="TimeContact-ADMIN.aspx" />
     <Content Include="UNIVERSITY-ADMIN.aspx" />
+    <Content Include="UpdateHistory.aspx" />
     <Content Include="Year-ADMIN.aspx" />
     <Content Include="Font\WDB_Bangna.ttf" />
+    <Content Include="Font\THSARABUNNEW BOLDITALIC_0.TTF" />
+    <Content Include="Font\THSARABUNNEW BOLD_0.TTF" />
+    <Content Include="Font\THSARABUNNEW ITALIC_0.TTF" />
+    <Content Include="Font\THSARABUNNEW_0.TTF" />
     <None Include="personalDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>personalDataSet.Designer.cs</LastGenOutput>
@@ -363,6 +373,13 @@
     </Compile>
     <Compile Include="404.aspx.designer.cs">
       <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="Access.aspx.cs">
       <DependentUpon>Access.aspx</DependentUpon>
@@ -719,6 +736,13 @@
     </Compile>
     <Compile Include="UNIVERSITY-ADMIN.aspx.designer.cs">
       <DependentUpon>UNIVERSITY-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateHistory.aspx.cs">
+      <DependentUpon>UpdateHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateHistory.aspx.designer.cs">
+      <DependentUpon>UpdateHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Year-ADMIN.aspx.cs">

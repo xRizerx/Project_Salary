@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WEB_PERSONAL.Class;
 using System.Data.OracleClient;
+using System.IO;
 
 namespace WEB_PERSONAL {
     public partial class Person_Detail : System.Web.UI.Page {
@@ -13,27 +14,29 @@ namespace WEB_PERSONAL {
 
             if (Session["login_person"] == null)
                 return;
-            
+            if(!IsPostBack) {
+                Util.RunScript(this, "$(function () { foggle('11'); });");
+            }
 
-            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "SELECT TB_PERSON.ID, TB_PERSON.CITIZEN_ID, PERSON_NAME, PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION.NAME, TB_MINISTRY.MINISTRY_NAME, TB_PERSON.DEPARTMENT_NAME FROM TB_PERSON, TB_POSITION, TB_POSITION_AND_SALARY, TB_STAFFTYPE, TB_MINISTRY WHERE TB_PERSON.CITIZEN_ID = TB_POSITION_AND_SALARY.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSON.MINISTRY_ID = TB_MINISTRY.MINISTRY_ID AND ROWNUM = 1 ORDER BY TB_POSITION_AND_SALARY.ID DESC");
+           /* SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "SELECT TB_PERSON.ID, TB_PERSON.CITIZEN_ID, PERSON_NAME, PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION.NAME, TB_MINISTRY.MINISTRY_NAME, TB_PERSON.DEPARTMENT_NAME FROM TB_PERSON, TB_POSITION, TB_POSITION_AND_SALARY, TB_STAFFTYPE, TB_MINISTRY WHERE TB_PERSON.CITIZEN_ID = TB_POSITION_AND_SALARY.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSON.MINISTRY_ID = TB_MINISTRY.MINISTRY_ID AND ROWNUM = 1 ORDER BY TB_POSITION_AND_SALARY.ID DESC");
             GridView1.DataSource = sds;
-            GridView1.DataBind();
+            GridView1.DataBind();*/
         }
 
         protected void LinkButton11_Click(object sender, EventArgs e) {
-            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "SELECT TB_PERSON.ID, TB_PERSON.CITIZEN_ID, PERSON_NAME, PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION.NAME, TB_MINISTRY.MINISTRY_NAME, TB_PERSON.DEPARTMENT_NAME FROM TB_PERSON, TB_POSITION, TB_POSITION_AND_SALARY, TB_STAFFTYPE, TB_MINISTRY WHERE TB_PERSON.CITIZEN_ID = TB_POSITION_AND_SALARY.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSON.MINISTRY_ID = TB_MINISTRY.MINISTRY_ID AND ROWNUM = 1 AND TB_PERSON.CITIZEN_ID = '" + TextBox1.Text + "' ORDER BY TB_POSITION_AND_SALARY.ID DESC");
+            /*SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "SELECT TB_PERSON.ID, TB_PERSON.CITIZEN_ID, PERSON_NAME, PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION.NAME, TB_MINISTRY.MINISTRY_NAME, TB_PERSON.DEPARTMENT_NAME FROM TB_PERSON, TB_POSITION, TB_POSITION_AND_SALARY, TB_STAFFTYPE, TB_MINISTRY WHERE TB_PERSON.CITIZEN_ID = TB_POSITION_AND_SALARY.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSON.MINISTRY_ID = TB_MINISTRY.MINISTRY_ID AND ROWNUM = 1 AND TB_PERSON.CITIZEN_ID = '" + TextBox1.Text + "' ORDER BY TB_POSITION_AND_SALARY.ID DESC");
             GridView1.DataSource = sds;
-            GridView1.DataBind();
+            GridView1.DataBind();*/
         }
 
         protected void LinkButton12_Click(object sender, EventArgs e) {
-            SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "SELECT TB_PERSON.ID, TB_PERSON.CITIZEN_ID, PERSON_NAME, PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION.NAME, TB_MINISTRY.MINISTRY_NAME, TB_PERSON.DEPARTMENT_NAME FROM TB_PERSON, TB_POSITION, TB_POSITION_AND_SALARY, TB_STAFFTYPE, TB_MINISTRY WHERE TB_PERSON.CITIZEN_ID = TB_POSITION_AND_SALARY.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSON.MINISTRY_ID = TB_MINISTRY.MINISTRY_ID AND ROWNUM = 1 ORDER BY TB_POSITION_AND_SALARY.ID DESC");
+           /* SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", "SELECT TB_PERSON.ID, TB_PERSON.CITIZEN_ID, PERSON_NAME, PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, TB_POSITION.NAME, TB_MINISTRY.MINISTRY_NAME, TB_PERSON.DEPARTMENT_NAME FROM TB_PERSON, TB_POSITION, TB_POSITION_AND_SALARY, TB_STAFFTYPE, TB_MINISTRY WHERE TB_PERSON.CITIZEN_ID = TB_POSITION_AND_SALARY.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_PERSON.MINISTRY_ID = TB_MINISTRY.MINISTRY_ID AND ROWNUM = 1 ORDER BY TB_POSITION_AND_SALARY.ID DESC");
             GridView1.DataSource = sds;
-            GridView1.DataBind();
+            GridView1.DataBind();*/
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e) {
-            GridViewRow row = GridView1.SelectedRow;
+            /*GridViewRow row = GridView1.SelectedRow;
 
             using (OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("SELECT URL FROM TB_PERSON_IMAGE WHERE CITIZEN_ID = :1 AND PRESENT = :2", con)) {
@@ -51,7 +54,7 @@ namespace WEB_PERSONAL {
                 }
             }
             pullPerson(row.Cells[1].Text);
-      
+      */
 
         }
 
@@ -212,7 +215,84 @@ namespace WEB_PERSONAL {
         }
 
         protected void LinkButton13_Click(object sender, EventArgs e) {
-            pullPerson(TextBox2.Text);
+            //pullPerson(TextBox2.Text);
+        }
+
+        protected void LinkButton11_Click1(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('1'); });");
+            using (OracleConnection con = Util.OC()) {
+                using (OracleCommand command = new OracleCommand("SELECT URL FROM TB_PERSON_IMAGE WHERE CITIZEN_ID = :1 AND PRESENT = :2", con)) {
+                    command.Parameters.AddWithValue("1", Session["login_id"].ToString());
+                    command.Parameters.AddWithValue("2", "1");
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            reader.Read();
+                            profile_pic.Attributes["src"] = ResolveUrl("~/AppData/Image/UserImage/" + TextBox1.Text + "/" + reader.GetString(0));
+                        } else {
+
+                        }
+                    }
+
+                }
+            }
+
+            string path = Server.MapPath("~/AppData/Image/UserImage/" + Session["login_id"].ToString());
+            if (Directory.Exists(path)) {
+                string[] ss = Directory.GetFiles(path);
+
+                //List<string> files = new List<string>();
+
+                for (int j = 0; j < ss.Length; ++j) {
+                    if (Path.GetExtension(ss[j]) == ".png" ||
+                        Path.GetExtension(ss[j]) == ".jpg" ||
+                        Path.GetExtension(ss[j]) == ".gif") {
+                        //files.Add(ss[j]);
+                        //sec2.InnerHtml += "<img src=\"" + ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(files[j])) + "\"></img>";
+                        string temp = ss[j];
+
+                        Panel imagePanel = new Panel();
+                        imagePanel.CssClass = "imagePanel";
+
+                        Image img = new Image();
+                        img.ImageUrl = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(ss[j]));
+                        imagePanel.Controls.Add(img);
+
+                        Panel1.Controls.Add(imagePanel);
+                        //sec2.InnerHtml += "<asp:LinkButton runat=\"server\" OnClientClick=\"deleteFile()\">LinkButton</asp:LinkButton>";
+                    }
+
+                }
+
+                //files.Sort((x, y) => y.CompareTo(x));
+                //if (files.Count > 0) {
+                //profile_pic.Attributes["src"] = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + Path.GetFileName(files[0]));
+                //}
+
+                using (OracleConnection con = Util.OC()) {
+                    using (OracleCommand command = new OracleCommand("SELECT URL FROM TB_PERSON_IMAGE WHERE CITIZEN_ID = :1 AND PRESENT = :2", con)) {
+                        command.Parameters.AddWithValue("1", Session["login_id"].ToString());
+                        command.Parameters.AddWithValue("2", "1");
+                        using (OracleDataReader reader = command.ExecuteReader()) {
+                            if (reader.HasRows) {
+                                reader.Read();
+                                profile_pic.Attributes["src"] = ResolveUrl("~/AppData/Image/UserImage/" + Session["login_id"].ToString() + "/" + reader.GetString(0));
+                            } else {
+
+                            }
+                        }
+
+                    }
+                }
+
+
+
+
+
+            } else {
+
+            }
+
+            pullPerson(TextBox1.Text);
         }
     }
 }

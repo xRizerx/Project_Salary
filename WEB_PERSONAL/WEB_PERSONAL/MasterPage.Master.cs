@@ -76,14 +76,14 @@ namespace WEB_PERSONAL {
                     using (OracleCommand command = new OracleCommand("UPDATE TB_WEB SET COUNTER = COUNTER+1 WHERE ID = 1", con)) {
                         command.ExecuteNonQuery();
                     }
-                    using (OracleCommand command = new OracleCommand("SELECT COUNTER FROM TB_WEB WHERE ID = 1", con)) {
+                    /*using (OracleCommand command = new OracleCommand("SELECT COUNTER FROM TB_WEB WHERE ID = 1", con)) {
                         using (OracleDataReader reader = command.ExecuteReader()) {
                             if (reader.HasRows) {
                                 reader.Read();
                                 LabelCounter.Text = "จำนวนผู้เข้าชม : " + reader.GetInt32(0).ToString("#,###") + " ครั้ง";
                             }
                         }
-                    }
+                    }*/
                 }
             }
 
