@@ -42,7 +42,6 @@ namespace WEB_PERSONAL
                 DDLBudget();
                 DDLSubStaffType();
                 DDLAdminPosition();
-                DDLPosition();
                 DDLPositionWork();
                 DDLDepartment();
                 DDLTeachISCED();
@@ -376,34 +375,6 @@ namespace WEB_PERSONAL
             catch { }
         }
 
-        private void DDLPosition()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_POSITION";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownPOSITION.DataSource = dt;
-                        DropDownPOSITION.DataValueField = "ID";
-                        DropDownPOSITION.DataTextField = "NAME";
-                        DropDownPOSITION.DataBind();
-                        sqlConn.Close();
-
-                        DropDownPOSITION.Items.Insert(0, new ListItem("--กรุณาเลือก ตำแหน่งทางวิชาการ--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
         private void DDLPositionWork()
         {
             try
@@ -440,19 +411,19 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DEPARTMENT";
+                        sqlCmd.CommandText = "select * from TB_BRANCH";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
-                        DropDownDEPARTMENT.DataSource = dt;
-                        DropDownDEPARTMENT.DataValueField = "DEPARTMENT_ID";
-                        DropDownDEPARTMENT.DataTextField = "DEPARTMENT_NAME";
-                        DropDownDEPARTMENT.DataBind();
+                        DropDownBranch.DataSource = dt;
+                        DropDownBranch.DataValueField = "BRANCH_ID";
+                        DropDownBranch.DataTextField = "BRANCH_NAME";
+                        DropDownBranch.DataBind();
                         sqlConn.Close();
 
-                        DropDownDEPARTMENT.Items.Insert(0, new ListItem("--กรุณาเลือก คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า--", "0"));
+                        DropDownBranch.Items.Insert(0, new ListItem("--กรุณาเลือก คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า--", "0"));
 
                     }
                 }
@@ -1066,7 +1037,6 @@ namespace WEB_PERSONAL
         protected void ClearDataDown()
         {
             DropDownGENDER.SelectedIndex = 0;
-            txtBIRTHDAY.Text = "";
             txtHOMEADD.Text = "";
             txtMOO.Text = "";
             txtSTREET.Text = "";
@@ -1080,9 +1050,8 @@ namespace WEB_PERSONAL
             DropDownBUDGET.SelectedIndex = 0;
             DropDownSUBSTAFFTYPE.SelectedIndex = 0;
             DropDownADMIN_POSITION.SelectedIndex = 0;
-            DropDownPOSITION.SelectedIndex = 0;
             DropDownPOSITION_WORK.SelectedIndex = 0;
-            DropDownDEPARTMENT.SelectedIndex = 0;
+            DropDownBranch.SelectedIndex = 0;
             txtSPECIAL_NAME.Text = "";
             DropDownTEACH_ISCED.SelectedIndex = 0;
             DropDownGRAD_LEV.SelectedIndex = 0;
@@ -1371,11 +1340,6 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลเพศ')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtBIRTHDAY.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันเกิด')", true);
-                return true;
-            }
             if (string.IsNullOrEmpty(txtHOMEADD.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก บ้านเลขที่')", true);
@@ -1421,17 +1385,12 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งบริหาร')", true);
                 return true;
             }
-            if (DropDownPOSITION.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งทางวิชาการ')", true);
-                return true;
-            }
             if (DropDownPOSITION_WORK.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งในสายงาน')", true);
                 return true;
             }
-            if (DropDownDEPARTMENT.SelectedIndex == 0)
+            if (DropDownBranch.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า')", true);
                 return true;

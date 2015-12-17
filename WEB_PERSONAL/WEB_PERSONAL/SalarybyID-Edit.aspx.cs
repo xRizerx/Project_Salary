@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data.OracleClient;
+using System.Globalization;
 
 namespace WEB_PERSONAL
 {
@@ -92,6 +93,21 @@ namespace WEB_PERSONAL
 
                     }
                 }
+                string Mon = "มี.ค.";
+                int year = new ThaiBuddhistCalendar().GetYear(DateTime.Now);
+                switch (DateTime.Now.Month)
+                {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 10:
+                    case 11:
+                    case 12:
+                        Mon = "ก.ย.";
+                        break;
+                }
+
+                Label20.Text = "เงินเดือนก่อนเลื่อน (ณ 1 " + Mon + " " + year + " )";
             }
         }
         private int roundUp(double i)
