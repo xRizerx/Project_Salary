@@ -11,7 +11,7 @@ namespace WEB_PERSONAL.Class {
         private string date;
         private string position_description;
         private string person_id;
-        private string st_id;
+        private int st_id;
         private string position_id;
         private string position_name;
         private int salary;
@@ -22,7 +22,7 @@ namespace WEB_PERSONAL.Class {
         public PositionAndSalary(int id) {
             this.id = id;
             using (OracleConnection con = Util.OC()) {
-                using (OracleCommand command = new OracleCommand("SELECT NVL(TO_CHAR(DDATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(POSITION_NAME, '-'), NVL(PERSON_ID, '-'), NVL(ST_ID, '-'), NVL(POSITION_ID, '-'), NVL(SALARY, -1), NVL(POSITION_SALARY, -1), NVL(REFERENCE_DOCUMENT, '-'), NVL(CITIZEN_ID, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
+                using (OracleCommand command = new OracleCommand("SELECT NVL(TO_CHAR(DDATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(POSITION_NAME, '-'), NVL(PERSON_ID, '-'), NVL(ST_ID, -1), NVL(POSITION_ID, '-'), NVL(SALARY, -1), NVL(POSITION_SALARY, -1), NVL(REFERENCE_DOCUMENT, '-'), NVL(CITIZEN_ID, '-') FROM TB_POSITION_AND_SALARY WHERE ID = :1", con)) {
                     command.Parameters.AddWithValue("1", id);
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
@@ -30,7 +30,7 @@ namespace WEB_PERSONAL.Class {
                             date = reader.GetString(0);
                             position_description = reader.GetString(1);
                             person_id = reader.GetString(2);
-                            st_id = reader.GetString(3);
+                            st_id = reader.GetInt32(3);
                             position_id = reader.GetString(4);
                             salary = reader.GetInt32(5);
                             position_salary = reader.GetInt32(6);
@@ -40,7 +40,7 @@ namespace WEB_PERSONAL.Class {
                             date = "-";
                             position_description = "-";
                             person_id = "-";
-                            st_id = "-";
+                            st_id = -1;
                             position_id = "-";
                             salary = -1;
                             position_salary = -1;
@@ -76,7 +76,7 @@ namespace WEB_PERSONAL.Class {
         public string PersonID {
             get { return person_id; }
         }
-        public string STID {
+        public int STID {
             get { return st_id; }
         }
         public string PositionID {

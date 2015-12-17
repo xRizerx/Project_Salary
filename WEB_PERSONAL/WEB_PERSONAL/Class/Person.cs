@@ -517,7 +517,7 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    using (OracleCommand command = new OracleCommand("SELECT NVL(ISCED_NAME, '-') FROM TB_PERSON, TB_ISCED WHERE CITIZEN_ID = :1 AND TB_PERSON.TEACH_ISCED_ID = TB_ISCED.ISCED_ID", con)) {
+                    using (OracleCommand command = new OracleCommand("SELECT NVL(TEACH_ISCED_NAME_TH, '-') FROM TB_PERSON, TB_TEACH_ISCED WHERE CITIZEN_ID = :1 AND TB_PERSON.TEACH_ISCED_ID = TB_TEACH_ISCED.TEACH_ISCED_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
                             if (reader.HasRows) {
@@ -528,7 +528,7 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    using (OracleCommand command = new OracleCommand("SELECT NVL(LEV_NAME, '-') FROM TB_PERSON, TB_LEV WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_LEV_ID = TB_LEV.LEV_ID", con)) {
+                    /*using (OracleCommand command = new OracleCommand("SELECT NVL(LEV_NAME, '-') FROM TB_PERSON, TB_LEV WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_LEV_ID = TB_LEV.LEV_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
                             if (reader.HasRows) {
@@ -538,8 +538,8 @@ namespace WEB_PERSONAL.Class {
                                 grad_lev_name = "-";
                             }
                         }
-                    }
-                    using (OracleCommand command = new OracleCommand("SELECT NVL(ISCED_NAME, '-') FROM TB_PERSON, TB_ISCED WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_ISCED_ID = TB_ISCED.ISCED_ID", con)) {
+                    }*/
+                    using (OracleCommand command = new OracleCommand("SELECT NVL(TEACH_ISCED_NAME_TH, '-') FROM TB_PERSON, TB_TEACH_ISCED WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_ISCED_ID = TB_TEACH_ISCED.TEACH_ISCED_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
                             if (reader.HasRows) {
@@ -550,7 +550,7 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    using (OracleCommand command = new OracleCommand("SELECT NVL(GRAD_PROG_NAME, '-') FROM TB_PERSON, TB_PROGRAM WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_PROG_ID = TB_PROGRAM.GRAD_PROG_ID", con)) {
+                    using (OracleCommand command = new OracleCommand("SELECT NVL(GRAD_PROG_NAME, '-') FROM TB_PERSON, TB_GRAD_PROGRAM WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_PROG_ID = TB_GRAD_PROGRAM.GRAD_PROG_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
                             if (reader.HasRows) {
@@ -561,7 +561,7 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    using (OracleCommand command = new OracleCommand("SELECT NVL(SHORT_NAME, '-') FROM TB_PERSON, TB_COUNTRY WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_COUNTRY_ID = TB_COUNTRY.COUNTRY_ID", con)) {
+                    /*using (OracleCommand command = new OracleCommand("SELECT NVL(SHORT_NAME, '-') FROM TB_PERSON, TB_COUNTRY WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_COUNTRY_ID = TB_COUNTRY.COUNTRY_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
                             if (reader.HasRows) {
@@ -571,7 +571,7 @@ namespace WEB_PERSONAL.Class {
                                 grad_country_name = "-";
                             }
                         }
-                    }
+                    }*/
                     using (OracleCommand command = new OracleCommand("SELECT NVL(BRANCH_NAME, '-') FROM TB_PERSON, TB_BRANCH WHERE CITIZEN_ID = :1 AND TB_PERSON.BRANCH_ID = TB_BRANCH.BRANCH_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {

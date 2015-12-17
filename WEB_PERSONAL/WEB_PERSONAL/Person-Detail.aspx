@@ -515,7 +515,7 @@
                                     <div>
                                         <table style="width: 100%;">
                                             <tr>
-                                                <td>
+                                                <td style="width: 120px;">
                                                     <asp:Label ID="Label95" runat="server" Text="ค้นหาบุคลากร"></asp:Label>
                                                 </td>
                                                 <td>
@@ -524,6 +524,76 @@
                                                 </td>
                                             </tr>
                                             </table>
+                                    </div>
+                                    <div>
+                                        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="CITIZEN_ID" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None">
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <Columns>
+                                                <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                                                <asp:BoundField DataField="CITIZEN_ID" HeaderText="CITIZEN_ID" ReadOnly="True" SortExpression="CITIZEN_ID" />
+                                                <asp:BoundField DataField="TITLE_ID" HeaderText="TITLE_ID" SortExpression="TITLE_ID" />
+                                                <asp:BoundField DataField="PERSON_NAME" HeaderText="PERSON_NAME" SortExpression="PERSON_NAME" />
+                                                <asp:BoundField DataField="PERSON_LASTNAME" HeaderText="PERSON_LASTNAME" SortExpression="PERSON_LASTNAME" />
+                                                <asp:BoundField DataField="BIRTHDATE" HeaderText="BIRTHDATE" SortExpression="BIRTHDATE" />
+                                                <asp:BoundField DataField="BIRTHDATE_LONG" HeaderText="BIRTHDATE_LONG" SortExpression="BIRTHDATE_LONG" />
+                                                <asp:BoundField DataField="RETIRE_DATE" HeaderText="RETIRE_DATE" SortExpression="RETIRE_DATE" />
+                                                <asp:BoundField DataField="RETIRE_DATE_LONG" HeaderText="RETIRE_DATE_LONG" SortExpression="RETIRE_DATE_LONG" />
+                                                <asp:BoundField DataField="INWORK_DATE" HeaderText="INWORK_DATE" SortExpression="INWORK_DATE" />
+                                                <asp:BoundField DataField="STAFFTYPE_ID" HeaderText="STAFFTYPE_ID" SortExpression="STAFFTYPE_ID" />
+                                                <asp:BoundField DataField="FATHER_NAME" HeaderText="FATHER_NAME" SortExpression="FATHER_NAME" />
+                                                <asp:BoundField DataField="FATHER_LASTNAME" HeaderText="FATHER_LASTNAME" SortExpression="FATHER_LASTNAME" />
+                                                <asp:BoundField DataField="MOTHER_NAME" HeaderText="MOTHER_NAME" SortExpression="MOTHER_NAME" />
+                                                <asp:BoundField DataField="MOTHER_LASTNAME" HeaderText="MOTHER_LASTNAME" SortExpression="MOTHER_LASTNAME" />
+                                                <asp:BoundField DataField="MOTHER_OLD_LASTNAME" HeaderText="MOTHER_OLD_LASTNAME" SortExpression="MOTHER_OLD_LASTNAME" />
+                                                <asp:BoundField DataField="COUPLE_NAME" HeaderText="COUPLE_NAME" SortExpression="COUPLE_NAME" />
+                                                <asp:BoundField DataField="COUPLE_LASTNAME" HeaderText="COUPLE_LASTNAME" SortExpression="COUPLE_LASTNAME" />
+                                                <asp:BoundField DataField="COUPLE_OLD_LASTNAME" HeaderText="COUPLE_OLD_LASTNAME" SortExpression="COUPLE_OLD_LASTNAME" />
+                                                <asp:BoundField DataField="MINISTRY_ID" HeaderText="MINISTRY_ID" SortExpression="MINISTRY_ID" />
+                                                <asp:BoundField DataField="DEPARTMENT_NAME" HeaderText="DEPARTMENT_NAME" SortExpression="DEPARTMENT_NAME" />
+                                                <asp:BoundField DataField="PASSWORD" HeaderText="PASSWORD" SortExpression="PASSWORD" />
+                                                <asp:BoundField DataField="SYSTEM_STATUS_ID" HeaderText="SYSTEM_STATUS_ID" SortExpression="SYSTEM_STATUS_ID" />
+                                                <asp:BoundField DataField="GENDER_ID" HeaderText="GENDER_ID" SortExpression="GENDER_ID" />
+                                                <asp:BoundField DataField="NATION_ID" HeaderText="NATION_ID" SortExpression="NATION_ID" />
+                                                <asp:BoundField DataField="HOMEADD" HeaderText="HOMEADD" SortExpression="HOMEADD" />
+                                                <asp:BoundField DataField="MOO" HeaderText="MOO" SortExpression="MOO" />
+                                                <asp:BoundField DataField="STREET" HeaderText="STREET" SortExpression="STREET" />
+                                                <asp:BoundField DataField="DISTRICT_ID" HeaderText="DISTRICT_ID" SortExpression="DISTRICT_ID" />
+                                                <asp:BoundField DataField="AMPHUR_ID" HeaderText="AMPHUR_ID" SortExpression="AMPHUR_ID" />
+                                                <asp:BoundField DataField="PROVINCE_ID" HeaderText="PROVINCE_ID" SortExpression="PROVINCE_ID" />
+                                                <asp:BoundField DataField="ZIPCODE_ID" HeaderText="ZIPCODE_ID" SortExpression="ZIPCODE_ID" />
+                                                <asp:BoundField DataField="TELEPHONE" HeaderText="TELEPHONE" SortExpression="TELEPHONE" />
+                                                <asp:BoundField DataField="TIME_CONTACT_ID" HeaderText="TIME_CONTACT_ID" SortExpression="TIME_CONTACT_ID" />
+                                                <asp:BoundField DataField="BUDGET_ID" HeaderText="BUDGET_ID" SortExpression="BUDGET_ID" />
+                                                <asp:BoundField DataField="SUBSTAFFTYPE_ID" HeaderText="SUBSTAFFTYPE_ID" SortExpression="SUBSTAFFTYPE_ID" />
+                                                <asp:BoundField DataField="ADMIN_POSITION_ID" HeaderText="ADMIN_POSITION_ID" SortExpression="ADMIN_POSITION_ID" />
+                                                <asp:BoundField DataField="POSITION_WORK_ID" HeaderText="POSITION_WORK_ID" SortExpression="POSITION_WORK_ID" />
+                                                <asp:BoundField DataField="SPECIAL_NAME" HeaderText="SPECIAL_NAME" SortExpression="SPECIAL_NAME" />
+                                                <asp:BoundField DataField="TEACH_ISCED_ID" HeaderText="TEACH_ISCED_ID" SortExpression="TEACH_ISCED_ID" />
+                                                <asp:BoundField DataField="GRAD_LEV_ID" HeaderText="GRAD_LEV_ID" SortExpression="GRAD_LEV_ID" />
+                                                <asp:BoundField DataField="GRAD_CURR" HeaderText="GRAD_CURR" SortExpression="GRAD_CURR" />
+                                                <asp:BoundField DataField="GRAD_ISCED_ID" HeaderText="GRAD_ISCED_ID" SortExpression="GRAD_ISCED_ID" />
+                                                <asp:BoundField DataField="GRAD_PROG_ID" HeaderText="GRAD_PROG_ID" SortExpression="GRAD_PROG_ID" />
+                                                <asp:BoundField DataField="GRAD_UNIV" HeaderText="GRAD_UNIV" SortExpression="GRAD_UNIV" />
+                                                <asp:BoundField DataField="GRAD_COUNTRY_ID" HeaderText="GRAD_COUNTRY_ID" SortExpression="GRAD_COUNTRY_ID" />
+                                                <asp:BoundField DataField="BRANCH_ID" HeaderText="BRANCH_ID" SortExpression="BRANCH_ID" />
+                                                <asp:BoundField DataField="RANK_ID" HeaderText="RANK_ID" SortExpression="RANK_ID" />
+                                                <asp:BoundField DataField="GOT_ID" HeaderText="GOT_ID" SortExpression="GOT_ID" />
+                                                <asp:BoundField DataField="GET_ID" HeaderText="GET_ID" SortExpression="GET_ID" />
+                                                <asp:BoundField DataField="FACULTY_ID" HeaderText="FACULTY_ID" SortExpression="FACULTY_ID" />
+                                                <asp:BoundField DataField="START_POSITION_WORK_ID" HeaderText="START_POSITION_WORK_ID" SortExpression="START_POSITION_WORK_ID" />
+                                            </Columns>
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                            <RowStyle BackColor="#EFF3FB" />
+                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                        </asp:GridView>
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_PERSON&quot;"></asp:SqlDataSource>
                                     </div>
                                 </div>
 

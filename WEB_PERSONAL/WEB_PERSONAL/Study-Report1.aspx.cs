@@ -41,7 +41,7 @@ namespace WEB_PERSONAL {
 
             int i = 1;
             using (OracleConnection con = Util.OC()) {
-                using (OracleCommand command = new OracleCommand("SELECT TB_PERSON.CITIZEN_ID, TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, STUDY_YEAR, TB_STUDY_DEGREE.SHORT_NAME, STUDY_BRANCH_NAME, STUDY_LOCATION, TB_STUDY_COURSE.NAME, STUDY_TIME || ' (' || STUDY_TIME_YEAR || ')', TO_CHAR(STUDY_FROM_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') || ' - ' || TO_CHAR(STUDY_TO_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI'), STUDY_TIME_COURSE, \"COMMENT\" FROM TB_PERSON, TB_STUDY, TB_STAFFTYPE, TB_STUDY_DEGREE, TB_STUDY_COURSE WHERE TB_STUDY.CITIZEN_ID = TB_PERSON.CITIZEN_ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_STUDY.STUDY_DEGREE_ID = TB_STUDY_DEGREE.ID AND TB_STUDY.STUDY_COURSE_ID = TB_STUDY_COURSE.ID", con)) {
+                using (OracleCommand command = new OracleCommand("SELECT TB_PERSON.CITIZEN_ID, TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME, TB_STAFFTYPE.STAFFTYPE_NAME, STUDY_YEAR, TB_STUDY_DEGREE.STUDY_DEGREE_SHORT_NAME, STUDY_BRANCH_NAME, STUDY_LOCATION, TB_STUDY_COURSE.STUDY_COURSE_NAME, STUDY_TIME || ' (' || STUDY_TIME_YEAR || ')', TO_CHAR(STUDY_FROM_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') || ' - ' || TO_CHAR(STUDY_TO_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI'), STUDY_TIME_COURSE, \"COMMENT\" FROM TB_PERSON, TB_STUDY, TB_STAFFTYPE, TB_STUDY_DEGREE, TB_STUDY_COURSE WHERE TB_STUDY.CITIZEN_ID = TB_PERSON.CITIZEN_ID AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID AND TB_STUDY.STUDY_DEGREE_ID = TB_STUDY_DEGREE.STUDY_DEGREE_ID AND TB_STUDY.STUDY_COURSE_ID = TB_STUDY_COURSE.STUDY_COURSE_ID", con)) {
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         if (reader.HasRows) {
                             while (reader.Read()) {
@@ -58,7 +58,7 @@ namespace WEB_PERSONAL {
                                 dr[9] = reader.GetString(8);
                                 dr[10] = reader.GetString(9);
                                 dr[11] = reader.GetInt32(10).ToString();
-                                dr[12] = reader.GetString(11);
+                                dr[12] = reader.IsDBNull(11) ? "-":reader.GetString(11);
 
                                 if (!reader.IsDBNull(0)) {
              
