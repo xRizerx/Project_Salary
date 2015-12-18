@@ -37,7 +37,7 @@ namespace WEB_PERSONAL {
             dt.Columns.Add("ระยะเวลาที่ศึกษา (ปี)");
             dt.Columns.Add("ตั้งแต่วันที่");
             dt.Columns.Add("ระยะเวลาที่ศึกษาตามหลักสูตร");
-            dt.Columns.Add("หมายเหตุ");
+            dt.Columns.Add("หมายเหตุ"); 
 
             int i = 1;
             using (OracleConnection con = Util.OC()) {
