@@ -18,6 +18,7 @@
         }
 
         </style>
+    <link href="CSS/Salary.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style type="text/css">
@@ -97,9 +98,11 @@
 
             <asp:Label ID="Label2" runat="server" Text="Salary System" CssClass="textmode" Font-Size="40pt"></asp:Label><br />
             <br />
-            <asp:Label ID="Label1" runat="server" CssClass="textmodeb" Text="รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุคมศึกษา"></asp:Label><br />
+            <div class="Salary_div_header">
+                <asp:Label ID="Label1" runat="server" CssClass="textmodeb" Text="รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุคมศึกษา"></asp:Label><br />
             <asp:Label ID="Label3" runat="server" CssClass="textmodeb" Text="ครั้งที่ 1 วันที่ 1 เมษายน 2558"></asp:Label><br />
             <asp:Label ID="Label21" runat="server" CssClass="textmodeb" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก"></asp:Label><br />
+            </div>
             <asp:Panel ID="Panel2" runat="server" CssClass="panin">
                 <table style="width: 100%;" border="0">
 

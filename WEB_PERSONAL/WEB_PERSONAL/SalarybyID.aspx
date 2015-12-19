@@ -95,6 +95,7 @@
             text-align: center;
             border-radius: 5px;
             border: 5px solid black;
+            background-color: rgba(204, 204, 204,0.5);
         }
 
         body {
