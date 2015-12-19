@@ -24,7 +24,7 @@ namespace WEB_PERSONAL {
             using (OracleConnection con = Util.OC()) {
                 {
                     {
-                        string sql = "select ID, CITIZEN_ID, STUDY_YEAR, STUDY_DEGREE_ID, STUDY_BRANCH_NAME, STUDY_LOCATION, STUDY_COURSE_ID, STUDY_TIME, STUDY_TIME_YEAR, TO_CHAR(STUDY_FROM_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), TO_CHAR(STUDY_TO_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), STUDY_TIME_COURSE, \"COMMENT\" from TB_STUDY where id = " + TextBox23.Text;
+                        string sql = "select STUDY_ID, CITIZEN_ID, STUDY_YEAR, STUDY_DEGREE_ID, STUDY_BRANCH_NAME, STUDY_LOCATION, STUDY_COURSE_ID, STUDY_TIME, STUDY_TIME_YEAR, TO_CHAR(STUDY_FROM_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), TO_CHAR(STUDY_TO_DATE,'dd MON yyyy', 'NLS_DATE_LANGUAGE=THAI'), STUDY_TIME_COURSE, \"COMMENT\" from TB_STUDY WHERE STUDY_ID = " + TextBox23.Text;
                         using (OracleCommand command = new OracleCommand(sql, con)) {
                             using (OracleDataReader reader = command.ExecuteReader()) {
                                 while (reader.Read()) {
@@ -40,7 +40,7 @@ namespace WEB_PERSONAL {
                                     TextBox7.Text = Util.NDT(reader.GetString(9));
                                     TextBox8.Text = Util.NDT(reader.GetString(10));
                                     TextBox26.Text = reader.GetFloat(11).ToString();
-                                    TextBox27.Text = reader.GetString(12);
+                                    TextBox27.Text = reader.IsDBNull(12) ? "-" : reader.GetString(12);
                                 }
                             }
 
@@ -161,7 +161,7 @@ namespace WEB_PERSONAL {
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }*/
             using (OracleConnection con = Util.OC()) {
-                using(OracleCommand command = new OracleCommand("UPDATE TB_STUDY SET CITIZEN_ID = :2, STUDY_YEAR = :3, STUDY_DEGREE_ID = :4, STUDY_BRANCH_NAME = :5, STUDY_LOCATION = :6, STUDY_COURSE_ID = :7, STUDY_TIME = :8, STUDY_TIME_YEAR = :9, STUDY_FROM_DATE = :10, STUDY_TO_DATE = :11, STUDY_TIME_COURSE = :12, \"COMMENT\" = :13 WHERE ID = :1", con)) {
+                using(OracleCommand command = new OracleCommand("UPDATE TB_STUDY SET CITIZEN_ID = :2, STUDY_YEAR = :3, STUDY_DEGREE_ID = :4, STUDY_BRANCH_NAME = :5, STUDY_LOCATION = :6, STUDY_COURSE_ID = :7, STUDY_TIME = :8, STUDY_TIME_YEAR = :9, STUDY_FROM_DATE = :10, STUDY_TO_DATE = :11, STUDY_TIME_COURSE = :12, \"COMMENT\" = :13 WHERE STUDY_ID = :1", con)) {
                     command.Parameters.AddWithValue("1", TextBox1.Text);
                     command.Parameters.AddWithValue("2", TextBox3.Text);
                     command.Parameters.AddWithValue("3", TextBox28.Text);

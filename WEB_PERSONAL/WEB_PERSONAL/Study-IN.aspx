@@ -129,7 +129,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="ระดับ"></asp:Label>
                             </td>
                             <td class="auto-style27">
-                                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NAME" DataValueField="ID" CssClass="master_light_dropdown" OnDataBound="DropDownList1_DataBound">
+                                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="STUDY_DEGREE_NAME" DataValueField="STUDY_DEGREE_ID" CssClass="master_light_dropdown" OnDataBound="DropDownList1_DataBound">
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_STUDY_DEGREE&quot;"></asp:SqlDataSource>
                             </td>
@@ -155,7 +155,7 @@
                                 <asp:Label ID="Label42" runat="server" Text="หลักสูตร"></asp:Label>
                             </td>
                             <td class="auto-style27">
-                                <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="NAME" DataValueField="ID" CssClass="master_light_dropdown" OnDataBound="DropDownList3_DataBound">
+                                <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="STUDY_COURSE_NAME" DataValueField="STUDY_COURSE_ID" CssClass="master_light_dropdown" OnDataBound="DropDownList3_DataBound">
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_STUDY_COURSE&quot;"></asp:SqlDataSource>
                             </td>
@@ -239,16 +239,16 @@
 
                 <div class="master_light_div_sec_in">
 
-                    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource4" OnRowDeleting="GridView1_RowDeleting" OnRowDeleted="GridView1_RowDeleted">
+                    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" AutoGenerateColumns="False" DataKeyNames="STUDY_ID" DataSourceID="SqlDataSource4" OnRowDeleting="GridView1_RowDeleting" OnRowDeleted="GridView1_RowDeleted">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:BoundField DataField="ID" HeaderText="รหัส" ReadOnly="True" SortExpression="ID" />
+                            <asp:BoundField DataField="STUDY_ID" HeaderText="รหัส" ReadOnly="True" SortExpression="STUDY_ID" />
                             <asp:BoundField DataField="CITIZEN_ID" HeaderText="รหัสพนักงาน" SortExpression="CITIZEN_ID" />
                             <asp:BoundField DataField="STUDY_YEAR" HeaderText="ปีการศึกษา" SortExpression="STUDY_YEAR" />
-                            <asp:BoundField DataField="SHORT_NAME" HeaderText="ระดับ" SortExpression="SHORT_NAME" />
+                            <asp:BoundField DataField="STUDY_DEGREE_SHORT_NAME" HeaderText="ระดับ" SortExpression="STUDY_DEGREE_SHORT_NAME" />
                             <asp:BoundField DataField="STUDY_BRANCH_NAME" HeaderText="สาขา" SortExpression="STUDY_BRANCH_NAME" />
                             <asp:BoundField DataField="STUDY_LOCATION" HeaderText="สถานที่" SortExpression="STUDY_LOCATION" />
-                            <asp:BoundField DataField="NAME" HeaderText="หลักสูตร" SortExpression="NAME" />
+                            <asp:BoundField DataField="STUDY_COURSE_NAME" HeaderText="หลักสูตร" SortExpression="STUDY_COURSE_NAME" />
                             <asp:BoundField DataField="STUDY_TIME" HeaderText="ระยะเวลาที่ศึกษา" SortExpression="STUDY_TIME" />
                             <asp:BoundField DataField="FROM_TO_DATE" HeaderText="วันที่" SortExpression="FROM_TO_DATE" />
                             <asp:BoundField DataField="STUDY_TIME_COURSE" HeaderText="ระยะเวลาที่ศึกษาตามหลักสูตร" SortExpression="STUDY_TIME_COURSE" />
@@ -267,9 +267,9 @@
                     </asp:GridView>
 
 
-                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_STUDY.ID, TB_STUDY.CITIZEN_ID, TB_STUDY.STUDY_YEAR, TB_STUDY_DEGREE.SHORT_NAME, TB_STUDY.STUDY_BRANCH_NAME, TB_STUDY.STUDY_LOCATION, TB_STUDY_COURSE.NAME, TB_STUDY.STUDY_TIME || ' (' || TB_STUDY.STUDY_TIME_YEAR || ')' as &quot;STUDY_TIME&quot;, TO_CHAR(TB_STUDY.STUDY_FROM_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') || ' - ' || TO_CHAR(TB_STUDY.STUDY_TO_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') as &quot;FROM_TO_DATE&quot;, TB_STUDY.STUDY_TIME_COURSE, TB_STUDY.&quot;COMMENT&quot; FROM TB_STUDY, TB_STUDY_DEGREE, TB_STUDY_COURSE WHERE TB_STUDY.STUDY_COURSE_ID = TB_STUDY_COURSE.ID AND TB_STUDY.STUDY_DEGREE_ID = TB_STUDY_DEGREE.ID ORDER BY TB_STUDY.ID DESC" DeleteCommand="DELETE FROM TB_STUDY WHERE ID = :ID">
+                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_STUDY.STUDY_ID, TB_STUDY.CITIZEN_ID, TB_STUDY.STUDY_YEAR, TB_STUDY_DEGREE.STUDY_DEGREE_SHORT_NAME, TB_STUDY.STUDY_BRANCH_NAME, TB_STUDY.STUDY_LOCATION, TB_STUDY_COURSE.STUDY_COURSE_NAME, TB_STUDY.STUDY_TIME || ' (' || TB_STUDY.STUDY_TIME_YEAR || ')' as &quot;STUDY_TIME&quot;, TO_CHAR(TB_STUDY.STUDY_FROM_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') || ' - ' || TO_CHAR(TB_STUDY.STUDY_TO_DATE, 'DD MON RRRR', 'NLS_DATE_LANGUAGE = THAI') as &quot;FROM_TO_DATE&quot;, TB_STUDY.STUDY_TIME_COURSE, TB_STUDY.&quot;COMMENT&quot; FROM TB_STUDY, TB_STUDY_DEGREE, TB_STUDY_COURSE WHERE TB_STUDY.STUDY_COURSE_ID = TB_STUDY_COURSE.STUDY_COURSE_ID AND TB_STUDY.STUDY_DEGREE_ID = TB_STUDY_DEGREE.STUDY_DEGREE_ID ORDER BY TB_STUDY.STUDY_ID DESC" DeleteCommand="DELETE FROM TB_STUDY WHERE STUDY_ID = :STUDY_ID">
                         <DeleteParameters>
-                            <asp:Parameter Name="ID" />
+                            <asp:Parameter Name="STUDY_ID" />
                         </DeleteParameters>
                     </asp:SqlDataSource>
 

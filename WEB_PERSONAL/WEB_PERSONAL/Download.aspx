@@ -14,8 +14,14 @@
             </div>
             <div class="master_light_div_sec_in">
                 <div>
-                    <img src="Image/font_icon.png"/>
-                    <a href="Font/WDB_Bangna.ttf">ฟ้อนต์ WDB_Bangna.ttf</a>
+                    <div>
+                        <img src="Image/font_icon.png"/><a href="Font/WDB_Bangna.ttf">ฟ้อนต์ WDB_Bangna.ttf</a>
+                    </div>
+                    <div>
+                        <img src="Image/font_icon.png"/><a href="Font/THSARABUNNEW_0.TTF">ฟ้อนต์ TH Sarabun New.TTF</a>
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>

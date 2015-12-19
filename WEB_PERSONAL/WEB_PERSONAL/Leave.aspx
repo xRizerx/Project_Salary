@@ -519,11 +519,11 @@
                                         <asp:AsyncPostBackTrigger ControlID="DropDownList4" EventName="SelectedIndexChanged" />
                                     </Triggers>
                                     <ContentTemplate>
-                                        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="PAPER_ID" ForeColor="#333333" GridLines="None" OnPageIndexChanged="GridView2_PageIndexChanged" OnRowDeleting="GridView2_RowDeleting">
+                                        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="LEAVE_ID" ForeColor="#333333" GridLines="None" OnPageIndexChanged="GridView2_PageIndexChanged" OnRowDeleting="GridView2_RowDeleting">
                                             <AlternatingRowStyle BackColor="White" />
                                             <Columns>
 
-                                                <asp:BoundField DataField="PAPER_ID" HeaderText="รหัสเอกสาร" ReadOnly="True" SortExpression="PAPER_ID" />
+                                                <asp:BoundField DataField="LEAVE_ID" HeaderText="รหัสเอกสาร" ReadOnly="True" SortExpression="LEAVE_ID" />
                                                 <asp:BoundField DataField="TO_CHAR(TB_LEAVE.PAPER_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" HeaderText="วันที่เอกสาร" SortExpression="TO_CHAR(TB_LEAVE.PAPER_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" />
                                                 <asp:BoundField DataField="CITIZEN_ID" HeaderText="รหัสผู้ลา" SortExpression="CITIZEN_ID" />
                                                 <asp:BoundField DataField="A.PERSON_NAME||''||A.PERSON_LASTNAME" HeaderText="ชื่อผู้ลา" SortExpression="A.PERSON_NAME||''||A.PERSON_LASTNAME" />
@@ -550,9 +550,9 @@
                                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
                                         </asp:GridView>
-                                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="select tb_leave.PAPER_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.paper_id desc" DeleteCommand="DELETE TB_LEAVE WHERE PAPER_ID = :PAPER_ID">
+                                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="select tb_leave.LEAVE_ID, TO_CHAR(tb_leave.PAPER_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), tb_leave.CITIZEN_ID, a.PERSON_NAME || ' ' || a.PERSON_LASTNAME, tb_leave_type.LEAVE_TYPE_NAME, TO_CHAR(tb_leave.LEAVE_FROM_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TO_CHAR(tb_leave.LEAVE_TO_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE_STATUS.LEAVE_STATUS_NAME, TB_LEAVE.APPROVER_ID, b.PERSON_NAME || ' ' || b.PERSON_LASTNAME, TO_CHAR(tb_leave.APPROVE_DATE, 'dd MON yyyy', 'NLS_DATE_LANGUAGE = THAI'), TB_LEAVE.REASON from tb_person a,tb_person b,tb_leave,tb_leave_type,TB_LEAVE_STATUS where tb_leave.LEAVE_TYPE_ID = TB_LEAVE_TYPE.LEAVE_TYPE_ID AND TB_LEAVE.LEAVE_STATUS_ID = TB_LEAVE_STATUS.LEAVE_STATUS_ID AND a.CITIZEN_ID = tb_leave.CITIZEN_ID AND b.CITIZEN_ID = tb_leave.APPROVER_ID order by tb_leave.LEAVE_ID desc" DeleteCommand="DELETE TB_LEAVE WHERE LEAVE_ID = :LEAVE_ID">
                                             <DeleteParameters>
-                                                <asp:Parameter Name="PAPER_ID" />
+                                                <asp:Parameter Name="LEAVE_ID" />
                                             </DeleteParameters>
                                         </asp:SqlDataSource>
                                     </ContentTemplate>

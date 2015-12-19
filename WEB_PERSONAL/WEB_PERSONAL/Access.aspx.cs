@@ -30,7 +30,7 @@ namespace WEB_PERSONAL {
                         }
                     }
                 }
-                using (OracleCommand command = new OracleCommand("SELECT TB_PERSON.PASSWORD, TB_SYSTEM_STATUS.NAME, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TB_PERSON.SYSTEM_STATUS_ID FROM TB_PERSON, TB_SYSTEM_STATUS WHERE TB_PERSON.CITIZEN_ID = :1 AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID", con)) {
+                using (OracleCommand command = new OracleCommand("SELECT TB_PERSON.PASSWORD, TB_SYSTEM_STATUS.SYSTEM_STATUS_NAME, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TB_PERSON.SYSTEM_STATUS_ID FROM TB_PERSON, TB_SYSTEM_STATUS WHERE TB_PERSON.CITIZEN_ID = :1 AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.SYSTEM_STATUS_ID", con)) {
                     command.Parameters.AddWithValue("1", TextBox1X.Text);
                     using (OracleDataReader reader = command.ExecuteReader()) {
                         reader.Read();
