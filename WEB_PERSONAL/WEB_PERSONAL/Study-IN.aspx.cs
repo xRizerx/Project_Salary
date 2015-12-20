@@ -101,7 +101,7 @@ namespace WEB_PERSONAL {
             //{
             using (OracleConnection con = Util.OC()) {
                 {
-                    string sql = "insert into TB_STUDY values(SEQ_STUDY_ID.NEXTVAL,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13)";
+                    string sql = "insert into TB_STUDY values(SEQ_STUDY_ID.NEXTVAL,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14)";
                     using (OracleCommand command = new OracleCommand(sql, con)) {
                         command.Parameters.AddWithValue("2", TextBox3.Text);
                         command.Parameters.AddWithValue("3", TextBox28.Text);
@@ -115,6 +115,7 @@ namespace WEB_PERSONAL {
                         command.Parameters.AddWithValue("11", Util.ODT(TextBox8.Text));
                         command.Parameters.AddWithValue("12", TextBox26.Text);
                         command.Parameters.AddWithValue("13", TextBox27.Text);
+                        command.Parameters.AddWithValue("14", Util.ODTT());
                         command.ExecuteNonQuery();
                         //Util.Alert(this, "เพิ่มข้อมูลสำเร็จ!");
                         BindGridView1();

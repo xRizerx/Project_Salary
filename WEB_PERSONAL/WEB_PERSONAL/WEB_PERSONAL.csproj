@@ -93,7 +93,6 @@
     <Content Include="404.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Access.aspx" />
-    <Content Include="Admin.aspx" />
     <Content Include="AdminPosition-ADMIN.aspx" />
     <Content Include="Budget-ADMIN.aspx" />
     <Content Include="Content\Site.css" />
@@ -150,7 +149,6 @@
     <Content Include="CSS\Salary.css" />
     <Content Include="CSS\Study.css" />
     <Content Include="CSS\UpdateHistory.css" />
-    <Content Include="Download.aspx" />
     <Content Include="Entities\Virus.mp3" />
     <Content Include="Image\anime_p1.png" />
     <Content Include="Image\anime_p2.png" />
@@ -181,6 +179,7 @@
     <Content Include="Image\TUUbg3.jpg" />
     <Content Include="Image\TUUbg4.jpg" />
     <Content Include="Image\TUUbg5.jpg" />
+    <Content Include="Image\white1.png" />
     <Content Include="insignia_from_view.aspx" />
     <Content Include="insignia_recordnote2-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.css" />
@@ -292,7 +291,6 @@
     <Content Include="js\index.js" />
     <Content Include="Late.aspx" />
     <Content Include="Leave-Report1.aspx" />
-    <Content Include="M-Admin.aspx" />
     <Content Include="insignia_from_edit.aspx" />
     <Content Include="insignia_citizen.aspx" />
     <Content Include="insignia_user.aspx" />
@@ -326,7 +324,6 @@
     <Content Include="TeachISCED-ADMIN.aspx" />
     <Content Include="TimeContact-ADMIN.aspx" />
     <Content Include="UNIVERSITY-ADMIN.aspx" />
-    <Content Include="UpdateHistory.aspx" />
     <Content Include="Year-ADMIN.aspx" />
     <Content Include="Font\WDB_Bangna.ttf" />
     <Content Include="Font\THSARABUNNEW BOLDITALIC_0.TTF" />
@@ -388,13 +385,6 @@
     <Compile Include="Access.aspx.designer.cs">
       <DependentUpon>Access.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin.aspx.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin.aspx.designer.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AdminPosition-ADMIN.aspx.cs">
       <DependentUpon>AdminPosition-ADMIN.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -430,13 +420,6 @@
     </Compile>
     <Compile Include="Department-ADMIN.aspx.designer.cs">
       <DependentUpon>Department-ADMIN.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Download.aspx.cs">
-      <DependentUpon>Download.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Download.aspx.designer.cs">
-      <DependentUpon>Download.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Tuu.cs" />
     <Compile Include="Entities\Ministry.cs" />
@@ -492,13 +475,6 @@
     </Compile>
     <Compile Include="Leave-Report1.aspx.designer.cs">
       <DependentUpon>Leave-Report1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="M-Admin.aspx.cs">
-      <DependentUpon>M-Admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="M-Admin.aspx.designer.cs">
-      <DependentUpon>M-Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_from_edit.aspx.cs">
       <DependentUpon>insignia_from_edit.aspx</DependentUpon>
@@ -736,13 +712,6 @@
     </Compile>
     <Compile Include="UNIVERSITY-ADMIN.aspx.designer.cs">
       <DependentUpon>UNIVERSITY-ADMIN.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UpdateHistory.aspx.cs">
-      <DependentUpon>UpdateHistory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UpdateHistory.aspx.designer.cs">
-      <DependentUpon>UpdateHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Year-ADMIN.aspx.cs">
