@@ -14,13 +14,22 @@ body {
 }
 .c1 {
     padding: 20px;
-    background-color: #202020;
+    /*background-color: #202020;*/
     margin: 0 auto;
     text-align: center;
-    font-size: 0;
+    /*font-size: 0;*/
     margin: 20px 0px;
     /*background-image: url(../Image/bg2.jpg);
     background-size: cover;*/
+}
+.c1 a {
+    text-decoration: none;
+    text-align: left;
+    color: #000000;
+}
+.c1 a:hover {
+    background-color: #e0e0e0;
+    border-radius: 4px;
 }
 
 .c1 img {

@@ -39,7 +39,7 @@
             <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
             <asp:Label ID="Label1" runat="server" Text="(1 ตุลาคม 2557 - 30 กันยายน 2558)"></asp:Label>
             <br />
-            <asp:Label ID="Label2" runat="server" Text="ชื่อหน่วยงาน ... มหาวิยาลัยเทคโนโลยีราชมงคลตะวันออก"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก"></asp:Label>
         </div>
         <div>
             <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="g1">

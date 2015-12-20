@@ -38,7 +38,7 @@
         }
         function foggle(target) {
             foggleOff();
-            $('#sp' + target).slideDown(250);
+            $('#sp' + target).fadeIn(250);
             document.getElementById('st' + target).className = 'master_light_toggle_button_selected';
 
         }
@@ -68,11 +68,11 @@
                     <td class="master_light_table_div_sec_td_right">
                         <div>
 
-                            <div class="master_light_div_sec" id="sp1">
-                                <div class="master_light_div_sec_title">
+                            <div class="master_clean_div_sec" id="sp1">
+                                <div class="master_clean_div_sec_title">
                                     ข้อมูลส่วนตัว
                                 </div>
-                                <div class="master_light_div_sec_in">
+                                <div class="master_clean_div_sec_in">
                                     <table class="auto-style3">
                                         <tr>
                                             <td class="auto-style2">
@@ -189,11 +189,11 @@
                                 </div>
                             </div>
 
-                            <div class="master_light_div_sec" id="sp2">
-                                <div class="master_light_div_sec_title">
+                            <div class="master_clean_div_sec" id="sp2">
+                                <div class="master_clean_div_sec_title">
                                     ที่อยู่
                                 </div>
-                                <div class="master_light_div_sec_in">
+                                <div class="master_clean_div_sec_in">
                                     <table style="width: 100%;">
                                         <tr>
                                             <td class="auto-style2">
@@ -262,11 +262,11 @@
                                 </div>
                             </div>
 
-                            <div class="master_light_div_sec" id="sp3">
-                                <div class="master_light_div_sec_title">
+                            <div class="master_clean_div_sec" id="sp3">
+                                <div class="master_clean_div_sec_title">
                                     การงาน
                                 </div>
-                                <div class="master_light_div_sec_in">
+                                <div class="master_clean_div_sec_in">
                                     <table style="width: 100%;">
                                         <tr>
                                             <td class="auto-style6">
@@ -407,11 +407,11 @@
                                 </div>
                             </div>
 
-                            <div class="master_light_div_sec" id="sp4">
-                                <div class="master_light_div_sec_title">
+                            <div class="master_clean_div_sec" id="sp4">
+                                <div class="master_clean_div_sec_title">
                                     การศึกษา
                                 </div>
-                                <div class="master_light_div_sec_in">
+                                <div class="master_clean_div_sec_in">
                                     <table style="width: 100%;">
                                         <tr>
                                             <td class="auto-style6">
@@ -471,11 +471,11 @@
                                 </div>
                             </div>
 
-                            <div class="master_light_div_sec" id="sp5">
-                                <div class="master_light_div_sec_title">
+                            <div class="master_clean_div_sec" id="sp5">
+                                <div class="master_clean_div_sec_title">
                                     เปลี่ยนรหัสผ่าน
                                 </div>
-                                <div class="master_light_div_sec_in">
+                                <div class="master_clean_div_sec_in">
                                     <table style="width: 100%;">
                                         <tr>
                                             <td class="auto-style5">
@@ -555,11 +555,11 @@
                                 </div>
                             </div>
 
-                            <div class="master_light_div_sec" id="sp11">
-                                <div class="master_light_div_sec_title">
+                            <div class="master_clean_div_sec" id="sp11">
+                                <div class="master_clean_div_sec_title">
                                     รูปภาพ
                                 </div>
-                                <div class="master_light_div_sec_in">
+                                <div class="master_clean_div_sec_in">
                                     <div class="profile_image_header">
                                         <asp:FileUpload ID="FileUpload1" runat="server" Width="200px" CssClass="uploader" />
                                         <asp:LinkButton ID="LinkButton1" runat="server" Text="อัพโหลด" CssClass="master_light_button" OnClick="LinkButton1_Click"></asp:LinkButton>

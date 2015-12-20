@@ -59,20 +59,51 @@
                 </div>
 
             <asp:Panel ID="Panel1" runat="server" CssClass="c1">
-                <img src="Image/i1.jpg" />
+                <!--img src="Image/i1.jpg" />
                 <img src="Image/i2.jpg" />
-                <img src="Image/i3.jpg" />
+                <img src="Image/i3.jpg" /-->
+
+                <div class="master_header_under_div_left">
+                                <div class="master_header_under_main">
+                                    <span class="master_header_under_header">เมนูหลัก</span>
+                                    <a href="Default.aspx">หน้าหลัก</a>
+                                    <a href="About.aspx">เกี่ยวกับ</a>
+                                </div>
+                                <div class="master_header_under_person">
+                                    <span class="master_header_under_header">บุคลากร</span>
+                                    <a href="Person-GENERAL.aspx">เพิ่มบุคลากร</a>
+                                    <a href="Person-ADMIN.aspx">แก้ไขบุคลากร</a>
+                                    <a href="Person-Detail.aspx">รายชื่อบุคลากร</a>
+                                    <a href="SEMINAR-GENERAL.aspx">การพัฒนาบุคลากร</a>
+                                </div>
+                                <div class="master_header_under_salary">
+                                    <span class="master_header_under_header">การขึ้นเงินเดือน</span>
+                                    <a href="Salary.aspx">DPIS</a>
+                                    <a href="SalarybyID.aspx">การขึ้นเงินเดือนรายบุคคล</a>
+                                </div>
+                                <div class="master_header_under_leave">
+                                    <span class="master_header_under_header">การลา | มาสาย | ศึกษาต่อ</span>
+                                    <a href="Leave.aspx">การลา</a>
+                                    <a href="Late.aspx">การเข้างาน (มาสาย)</a>
+                                    <a href="Study-IN.aspx">ศึกษาต่อ</a>
+                                    <a href="Leave-Report1.aspx">ออกรายงานการลา</a>
+                                    <a href="Study-Report1.aspx">ออกรายงานการลาศึกษาต่อ</a>
+                                </div>
+
+                                <div class="master_header_under_insig">
+                                    <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
+                                    <a href="insignia_from_view.aspx">ดูการขอเครื่องราชอิสริยาภรณ์</a>
+                                    <a href="insignia_recordnote2-admin.aspx">ดูประวัติการขอเครื่องราชอิสริยาภรณ์</a>
+                                    <a href="insignia_recordnote2-ADMIN.aspx">เพิ่มประวัติการขอเครื่องราชอิสริยาภรณ์</a>
+                                </div>
+
+                            </div>
                 
             </asp:Panel>
 
             <div class="para_group">
                 
-
-                <span style="font-size: 32px; margin-left: 100px">ประกาศ</span>
-
-                <div id="div_announce" runat="server">
-                    
-                </div>
+                
 
                 <div class="dpl_7c" style="height: 1px; margin: 20px 100px;">
 

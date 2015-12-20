@@ -627,6 +627,27 @@ home_button:active {
     background-color: #f0f0f0;
     background-color: #e0e0e0;
 }
+.master_header_under_main span, .master_header_under_main a {
+    padding: 0 20px;
+    width: 80px;
+}
+.master_header_under_person span, .master_header_under_person a {
+    padding: 0 20px;
+    width: 110px;
+}
+.master_header_under_salary span, .master_header_under_salary a {
+    padding: 0 20px;
+    width: 150px;
+}
+.master_header_under_leave span, .master_header_under_leave a {
+    padding: 0 20px;
+    width: 150px;
+}
+.master_header_under_insig span, .master_header_under_insig a {
+    padding: 0 20px;
+    width: 210px;
+}
+
 .master_header_under img {
     float:right;
     background-color: #00a2e8;
@@ -1271,6 +1292,144 @@ ault_page_header {
     width: 160px;
     cursor: pointer;
 }
+
+/* CLEAN */
+
+.master_clean_div_sec {
+    display: inline-block;
+    color: #000000;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #e8e8e8;
+    /*transition: opacity ease 0.25s;*/
+    box-shadow: #808080 2px 2px 2px;
+    background-image: url(../Image/white1.png);
+    background-size: cover;
+    background-position: center;
+}
+.master_clean_div_sec_title {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 2px 20px;
+    /*background-color: #ffffff;*/
+    background-color: rgba(255,255,255,0.5);
+}
+.master_clean_div_sec_pre_in {
+
+}
+.master_clean_div_sec_in {
+    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(255,255,255,0.25);
+    /*background-color: #f8f8f8;
+    background-color: #404040;*/
+    padding: 20px;
+}
+.master_clean_button {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.5);
+    padding: 0px 20px;
+    padding-bottom: 1px;
+    display: inline-block;
+    text-align: center;
+    transition: background-color ease 0.25s;
+    cursor: pointer;
+    border: 1px solid #000000;
+    color: #000000;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: #808080 2px 2px 2px;
+}
+.master_clean_button:hover {
+    background-color: #ffffff;
+}
+.master_clean_textbox {
+    font-family: THSARABUNNEW_0;
+    font-size: 20px;
+    padding: 1px 10px;
+    border: 1px solid #000000;
+    background-color: rgba(240,240,240,0.5);
+}
+.master_clean_textbox:disabled {
+    border: 1px solid #c0c0c0;
+    background-color: rgba(192,192,192,0.5);
+}
+.master_clean_dropdown {
+    font-family: THSARABUNNEW_0;
+    font-size: 20px;
+    padding: 1px 10px;
+    border: 1px solid #000000;
+    background-color: rgba(240,240,240,0.5);
+}
+.master_clean_table_div_sec {
+    border-collapse: collapse;
+}
+.master_clean_table_div_sec td {
+    vertical-align: top;
+}
+.master_clean_table_div_sec_td_left {
+    padding: 0;
+    margin: 0;
+}
+.master_clean_table_div_sec_td_right {
+
+    /*margin-top: 20px;*/
+    margin-left: 220px;
+    display: block;
+}
+.master_clean_toggle_div_sec {
+    width: 200px;
+    margin-right: 20px;
+    height: 100%;
+    position: fixed;
+    background-color: #f0f0f0;
+    border-right: 1px solid #404040;
+    /*box-shadow: #404040 0px 0px 4px;*/
+    border: 1px solid #e0e0e0;
+    overflow-y: auto;
+}
+.master_clean_toggle_div_sec_title {
+    color: #000000;
+    background-color: #e0e0e0;
+    font-size: 24px;
+    text-align: center;
+}
+.master_clean_toggle_button {
+    text-decoration: none;
+    color: #000000;
+    padding: 0px 20px;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #e0e0e0;
+    display: inline-block;
+    text-align: left;
+    /*transition: background-color ease 0.25s;*/
+    width: 160px;
+    cursor: pointer;
+}
+.master_clean_toggle_button:hover {
+    color: #FFFFFF;
+    background-color: #49bbeb;
+    border-bottom: 1px solid #49bbeb;
+}
+.master_clean_toggle_button_selected {
+    text-decoration: none;
+    color: #000000;
+    background-color: #e0e0e0;
+    padding: 0px 20px;
+    padding-bottom: 1px;
+    /*border-radius: 24px;*/
+    color: #FFFFFF;
+    background-color: #00a2e8;
+    border-bottom: 1px solid #00a2e8;
+    display: inline-block;
+    text-align: left;
+    font-weight: bold;
+    transition: background-color ease 0.25s;
+    width: 160px;
+    cursor: pointer;
+}
+
+/* END CLEAN */
+
 .master_OAT_button {
     background-color: rgba(0, 114, 255, 0.90);
     background-repeat:repeat-x;

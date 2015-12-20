@@ -232,7 +232,7 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    using (OracleCommand command = new OracleCommand("SELECT NVL(TB_SYSTEM_STATUS.NAME, '-') FROM TB_PERSON, TB_SYSTEM_STATUS WHERE CITIZEN_ID = :1 AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.ID", con)) {
+                    using (OracleCommand command = new OracleCommand("SELECT NVL(TB_SYSTEM_STATUS.SYSTEM_STATUS_NAME, '-') FROM TB_PERSON, TB_SYSTEM_STATUS WHERE CITIZEN_ID = :1 AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.SYSTEM_STATUS_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
                             if (reader.HasRows) {

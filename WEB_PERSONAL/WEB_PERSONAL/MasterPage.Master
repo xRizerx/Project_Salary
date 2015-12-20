@@ -194,26 +194,24 @@
                             </div>
 
                             <div class="master_header_under_div_left">
-                                <div>
+                                <div class="master_header_under_main">
                                     <span class="master_header_under_header">เมนูหลัก</span>
                                     <a href="Default.aspx">หน้าหลัก</a>
-                                    <a href="M-Admin.aspx">ติดต่อผู้ดูแลระบบ</a>
                                     <a href="About.aspx">เกี่ยวกับ</a>
-                                    <a href="UpdateHistory.aspx">การอัพเดท</a>
                                 </div>
-                                <div>
+                                <div class="master_header_under_person">
                                     <span class="master_header_under_header">บุคลากร</span>
                                     <a href="Person-GENERAL.aspx">เพิ่มบุคลากร</a>
                                     <a href="Person-ADMIN.aspx">แก้ไขบุคลากร</a>
                                     <a href="Person-Detail.aspx">รายชื่อบุคลากร</a>
                                     <a href="SEMINAR-GENERAL.aspx">การพัฒนาบุคลากร</a>
                                 </div>
-                                <div>
+                                <div class="master_header_under_salary">
                                     <span class="master_header_under_header">การขึ้นเงินเดือน</span>
                                     <a href="Salary.aspx">DPIS</a>
                                     <a href="SalarybyID.aspx">การขึ้นเงินเดือนรายบุคคล</a>
                                 </div>
-                                <div>
+                                <div class="master_header_under_leave">
                                     <span class="master_header_under_header">การลา | มาสาย | ศึกษาต่อ</span>
                                     <a href="Leave.aspx">การลา</a>
                                     <a href="Late.aspx">การเข้างาน (มาสาย)</a>
@@ -222,20 +220,11 @@
                                     <a href="Study-Report1.aspx">ออกรายงานการลาศึกษาต่อ</a>
                                 </div>
 
-                                <div>
+                                <div class="master_header_under_insig">
                                     <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
                                     <a href="insignia_from_view.aspx">ดูการขอเครื่องราชอิสริยาภรณ์</a>
                                     <a href="insignia_recordnote2-admin.aspx">ดูประวัติการขอเครื่องราชอิสริยาภรณ์</a>
                                     <a href="insignia_recordnote2-ADMIN.aspx">เพิ่มประวัติการขอเครื่องราชอิสริยาภรณ์</a>
-                                </div>
-                                <div>
-                                    <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
-                                    <a href="Admin.aspx">จัดการระบบ</a>
-                                </div>
-
-                                <div>
-                                    <span class="master_header_under_header">ดาวน์โหลด</span>
-                                    <a href="Download.aspx">ดาวน์โหลด</a>
                                 </div>
 
                             </div>
