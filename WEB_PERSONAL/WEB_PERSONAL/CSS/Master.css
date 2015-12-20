@@ -1429,7 +1429,24 @@ ault_page_header {
 }
 
 /* END CLEAN */
-
+.master_tuu_button {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.5);
+    padding: 0px 20px;
+    padding-bottom: 1px;
+    display: inline-block;
+    text-align: center;
+    transition: background-color ease 0.25s;
+    cursor: pointer;
+    border: 1px solid #000000;
+    color: #000000;
+    background-color: #ffffff;
+    box-shadow: #808080 2px 2px 2px;
+}
+.master_tuu_button:hover {
+    background-color: #ffffff;
+}
 .master_OAT_button {
     background-color: rgba(0, 114, 255, 0.90);
     background-repeat:repeat-x;
