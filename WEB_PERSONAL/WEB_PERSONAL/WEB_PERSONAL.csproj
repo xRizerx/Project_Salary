@@ -300,6 +300,7 @@
     <Content Include="Leave.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Ministry-GENERAL.aspx" />
+    <Content Include="Month-ADMIN.aspx" />
     <Content Include="National-ADMIN.aspx" />
     <Content Include="packages.config" />
     <Content Include="MasterPage.Master" />
@@ -541,6 +542,13 @@
     </Compile>
     <Compile Include="Ministry-GENERAL.aspx.designer.cs">
       <DependentUpon>Ministry-GENERAL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Month-ADMIN.aspx.cs">
+      <DependentUpon>Month-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Month-ADMIN.aspx.designer.cs">
+      <DependentUpon>Month-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="National-ADMIN.aspx.cs">
       <DependentUpon>National-ADMIN.aspx</DependentUpon>

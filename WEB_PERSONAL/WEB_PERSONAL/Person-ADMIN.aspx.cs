@@ -145,7 +145,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassPersonStudyHistory p1 = new ClassPersonStudyHistory();
-            p1.IDSEQ = id;
+            p1.ID = id;
             p1.DeletePersonStudyHistory();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
@@ -166,10 +166,10 @@ namespace WEB_PERSONAL
 
             ClassPersonStudyHistory p1 = new ClassPersonStudyHistory(Convert.ToInt32(lblPersonStudyHistoryID.Text), lblPersonStudyHistoryCitizenID.Text
                 , txtPersonStudyHistoryGradUNIVEdit.Text
-                , ddl_101.SelectedValue
-                , ddl_102.SelectedValue
-                , ddl_103.SelectedValue
-                , ddl_104.SelectedValue
+                , Convert.ToInt32(ddl_101.SelectedValue)
+                , Convert.ToInt32(ddl_102.SelectedValue)
+                , Convert.ToInt32(ddl_103.SelectedValue)
+                , Convert.ToInt32(ddl_104.SelectedValue)
                 , txtPersonStudyHistoryMajorEdit.Text);
 
 
@@ -206,7 +206,7 @@ namespace WEB_PERSONAL
                         {
                             DropDownList ddl_101 = (DropDownList)e.Row.FindControl("ddl_101");
 
-                            sqlCmd1.CommandText = "select * from TB_DDLMONTH";
+                            sqlCmd1.CommandText = "select * from TB_MONTH";
                             sqlCmd1.Connection = sqlConn1;
                             sqlConn1.Open();
                             OracleDataAdapter da1 = new OracleDataAdapter(sqlCmd1);
@@ -214,7 +214,7 @@ namespace WEB_PERSONAL
                             da1.Fill(dt);
                             ddl_101.DataSource = dt;
                             ddl_101.SelectedValue = DataBinder.Eval(e.Row.DataItem, "MONTH_FROM").ToString();
-                            ddl_101.DataValueField = "MONTH_SHORT";
+                            ddl_101.DataValueField = "MONTH_ID";
                             ddl_101.DataTextField = "MONTH_SHORT";
                             ddl_101.DataBind();
                             sqlConn1.Close();
@@ -229,7 +229,7 @@ namespace WEB_PERSONAL
                             {
                                 DropDownList ddl_102 = (DropDownList)e.Row.FindControl("ddl_102");
 
-                                sqlCmd2.CommandText = "select * from TB_YEAR";
+                                sqlCmd2.CommandText = "select * from TB_DATE_YEAR";
                                 sqlCmd2.Connection = sqlConn2;
                                 sqlConn2.Open();
                                 OracleDataAdapter da2 = new OracleDataAdapter(sqlCmd2);
@@ -237,8 +237,8 @@ namespace WEB_PERSONAL
                                 da2.Fill(dt);
                                 ddl_102.DataSource = dt;
                                 ddl_102.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR_FROM").ToString();
-                                ddl_102.DataValueField = "YEAR_NAME";
-                                ddl_102.DataTextField = "YEAR_NAME";
+                                ddl_102.DataValueField = "YEAR_ID";
+                                ddl_102.DataTextField = "YEAR_ID";
                                 ddl_102.DataBind();
                                 sqlConn2.Close();
 
@@ -253,7 +253,7 @@ namespace WEB_PERSONAL
                             {
                                 DropDownList ddl_103 = (DropDownList)e.Row.FindControl("ddl_103");
 
-                                sqlCmd3.CommandText = "select * from TB_DDLMONTH";
+                                sqlCmd3.CommandText = "select * from TB_MONTH";
                                 sqlCmd3.Connection = sqlConn3;
                                 sqlConn3.Open();
                                 OracleDataAdapter da3 = new OracleDataAdapter(sqlCmd3);
@@ -261,7 +261,7 @@ namespace WEB_PERSONAL
                                 da3.Fill(dt);
                                 ddl_103.DataSource = dt;
                                 ddl_103.SelectedValue = DataBinder.Eval(e.Row.DataItem, "MONTH_TO").ToString();
-                                ddl_103.DataValueField = "MONTH_SHORT";
+                                ddl_103.DataValueField = "MONTH_ID";
                                 ddl_103.DataTextField = "MONTH_SHORT";
                                 ddl_103.DataBind();
                                 sqlConn3.Close();
@@ -277,7 +277,7 @@ namespace WEB_PERSONAL
                             {
                                 DropDownList ddl_104 = (DropDownList)e.Row.FindControl("ddl_104");
 
-                                sqlCmd4.CommandText = "select * from TB_YEAR";
+                                sqlCmd4.CommandText = "select * from TB_DATE_YEAR";
                                 sqlCmd4.Connection = sqlConn4;
                                 sqlConn4.Open();
                                 OracleDataAdapter da4 = new OracleDataAdapter(sqlCmd4);
@@ -285,8 +285,8 @@ namespace WEB_PERSONAL
                                 da4.Fill(dt);
                                 ddl_104.DataSource = dt;
                                 ddl_104.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR_TO").ToString();
-                                ddl_104.DataValueField = "YEAR_NAME";
-                                ddl_104.DataTextField = "YEAR_NAME";
+                                ddl_104.DataValueField = "YEAR_ID";
+                                ddl_104.DataTextField = "YEAR_ID";
                                 ddl_104.DataBind();
                                 sqlConn4.Close();
 
@@ -416,10 +416,10 @@ namespace WEB_PERSONAL
 
             ClassPersonTraining p3 = new ClassPersonTraining(Convert.ToInt32(lblPersonTrainingID.Text), lblPersonTrainingCitizenID.Text
                 , txtPersonTrainingCourseEdit.Text
-                , ddl_301.SelectedValue
-                , ddl_302.SelectedValue
-                , ddl_303.SelectedValue
-                , ddl_304.SelectedValue
+                , Convert.ToInt32(ddl_301.SelectedValue)
+                , Convert.ToInt32(ddl_302.SelectedValue)
+                , Convert.ToInt32(ddl_303.SelectedValue)
+                , Convert.ToInt32(ddl_304.SelectedValue)
                 , txtPersonTrainingBranchEdit.Text);
 
             if (ddl_301.SelectedIndex == 0 && ddl_302.SelectedIndex == 0 && ddl_303.SelectedIndex == 0 && ddl_304.SelectedIndex == 0)
@@ -454,7 +454,7 @@ namespace WEB_PERSONAL
                         {
                             DropDownList ddl_301 = (DropDownList)e.Row.FindControl("ddl_301");
 
-                            sqlCmd1.CommandText = "select * from TB_DDLMONTH";
+                            sqlCmd1.CommandText = "select * from TB_MONTH";
                             sqlCmd1.Connection = sqlConn1;
                             sqlConn1.Open();
                             OracleDataAdapter da1 = new OracleDataAdapter(sqlCmd1);
@@ -462,7 +462,7 @@ namespace WEB_PERSONAL
                             da1.Fill(dt);
                             ddl_301.DataSource = dt;
                             ddl_301.SelectedValue = DataBinder.Eval(e.Row.DataItem, "MONTH_FROM").ToString();
-                            ddl_301.DataValueField = "MONTH_SHORT";
+                            ddl_301.DataValueField = "MONTH_ID";
                             ddl_301.DataTextField = "MONTH_SHORT";
                             ddl_301.DataBind();
                             sqlConn1.Close();
@@ -477,7 +477,7 @@ namespace WEB_PERSONAL
                             {
                                 DropDownList ddl_302 = (DropDownList)e.Row.FindControl("ddl_302");
 
-                                sqlCmd2.CommandText = "select * from TB_YEAR";
+                                sqlCmd2.CommandText = "select * from TB_DATE_YEAR";
                                 sqlCmd2.Connection = sqlConn2;
                                 sqlConn2.Open();
                                 OracleDataAdapter da2 = new OracleDataAdapter(sqlCmd2);
@@ -485,8 +485,8 @@ namespace WEB_PERSONAL
                                 da2.Fill(dt);
                                 ddl_302.DataSource = dt;
                                 ddl_302.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR_FROM").ToString();
-                                ddl_302.DataValueField = "YEAR_NAME";
-                                ddl_302.DataTextField = "YEAR_NAME";
+                                ddl_302.DataValueField = "YEAR_ID";
+                                ddl_302.DataTextField = "YEAR_ID";
                                 ddl_302.DataBind();
                                 sqlConn2.Close();
 
@@ -501,7 +501,7 @@ namespace WEB_PERSONAL
                             {
                                 DropDownList ddl_303 = (DropDownList)e.Row.FindControl("ddl_303");
 
-                                sqlCmd3.CommandText = "select * from TB_DDLMONTH";
+                                sqlCmd3.CommandText = "select * from TB_MONTH";
                                 sqlCmd3.Connection = sqlConn3;
                                 sqlConn3.Open();
                                 OracleDataAdapter da3 = new OracleDataAdapter(sqlCmd3);
@@ -509,7 +509,7 @@ namespace WEB_PERSONAL
                                 da3.Fill(dt);
                                 ddl_303.DataSource = dt;
                                 ddl_303.SelectedValue = DataBinder.Eval(e.Row.DataItem, "MONTH_TO").ToString();
-                                ddl_303.DataValueField = "MONTH_SHORT";
+                                ddl_303.DataValueField = "MONTH_ID";
                                 ddl_303.DataTextField = "MONTH_SHORT";
                                 ddl_303.DataBind();
                                 sqlConn3.Close();
@@ -525,7 +525,7 @@ namespace WEB_PERSONAL
                             {
                                 DropDownList ddl_304 = (DropDownList)e.Row.FindControl("ddl_304");
 
-                                sqlCmd4.CommandText = "select * from TB_YEAR";
+                                sqlCmd4.CommandText = "select * from TB_DATE_YEAR";
                                 sqlCmd4.Connection = sqlConn4;
                                 sqlConn4.Open();
                                 OracleDataAdapter da4 = new OracleDataAdapter(sqlCmd4);
@@ -533,8 +533,8 @@ namespace WEB_PERSONAL
                                 da4.Fill(dt);
                                 ddl_304.DataSource = dt;
                                 ddl_304.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR_TO").ToString();
-                                ddl_304.DataValueField = "YEAR_NAME";
-                                ddl_304.DataTextField = "YEAR_NAME";
+                                ddl_304.DataValueField = "YEAR_ID";
+                                ddl_304.DataTextField = "YEAR_ID";
                                 ddl_304.DataBind();
                                 sqlConn4.Close();
 
@@ -588,7 +588,7 @@ namespace WEB_PERSONAL
             TextBox txtPersonDISCIPLINARYRefEdit = (TextBox)GridView4.Rows[e.RowIndex].FindControl("txtPersonDISCIPLINARYRefEdit");
 
             ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY(Convert.ToInt32(lblPersonDISCIPLINARYID.Text), lblPersonDISCIPLINARYCitizenID.Text
-                , ddl_401.SelectedValue
+                , Convert.ToInt32(ddl_401.SelectedValue)
                 , txtPersonDISCIPLINARYListEdit.Text
                 , txtPersonDISCIPLINARYRefEdit.Text);
 
@@ -613,7 +613,7 @@ namespace WEB_PERSONAL
                         {
                             DropDownList ddl_401 = (DropDownList)e.Row.FindControl("ddl_401");
 
-                            sqlCmd2.CommandText = "select * from TB_YEAR";
+                            sqlCmd2.CommandText = "select * from TB_DATE_YEAR";
                             sqlCmd2.Connection = sqlConn2;
                             sqlConn2.Open();
                             OracleDataAdapter da2 = new OracleDataAdapter(sqlCmd2);
@@ -621,8 +621,8 @@ namespace WEB_PERSONAL
                             da2.Fill(dt);
                             ddl_401.DataSource = dt;
                             ddl_401.SelectedValue = DataBinder.Eval(e.Row.DataItem, "YEAR").ToString();
-                            ddl_401.DataValueField = "YEAR_NAME";
-                            ddl_401.DataTextField = "YEAR_NAME";
+                            ddl_401.DataValueField = "YEAR_ID";
+                            ddl_401.DataTextField = "YEAR_ID";
                             ddl_401.DataBind();
                             sqlConn2.Close();
 
@@ -673,7 +673,7 @@ namespace WEB_PERSONAL
             TextBox txtPersonPosiSalaryPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionEdit");
             TextBox txtPersonPosiSalaryNoPositionEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryNoPositionEdit");
             DropDownList ddl_501 = (DropDownList)GridView5.Rows[e.RowIndex].FindControl("ddl_501");
-            DropDownList ddl_502 = (DropDownList)GridView5.Rows[e.RowIndex].FindControl("ddl_502");
+            TextBox txtPersonPosiSalaryDegreeEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryDegreeEdit");
             TextBox txtPersonPosiSalarySALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalarySALARYEdit");
             TextBox txtPersonPosiSalaryPositionSALARYEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryPositionSALARYEdit");
             TextBox txtPersonPosiSalaryRefEdit = (TextBox)GridView5.Rows[e.RowIndex].FindControl("txtPersonPosiSalaryRefEdit");
@@ -684,8 +684,8 @@ namespace WEB_PERSONAL
                 , DDATE
                 , txtPersonPosiSalaryPositionEdit.Text
                 , txtPersonPosiSalaryNoPositionEdit.Text
-                , ddl_501.SelectedValue
-                , Convert.ToInt32(ddl_502.SelectedValue)
+                , Convert.ToInt32(ddl_501.SelectedValue)
+                , txtPersonPosiSalaryDegreeEdit.Text
                 , Convert.ToInt32(txtPersonPosiSalarySALARYEdit.Text)
                 , Convert.ToInt32(txtPersonPosiSalaryPositionSALARYEdit.Text)
                 , txtPersonPosiSalaryRefEdit.Text
@@ -857,14 +857,14 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.CommandText = "select * from TB_MONTH";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownMonth10From.DataSource = dt;
-                        DropDownMonth10From.DataValueField = "MONTH_SHORT";
+                        DropDownMonth10From.DataValueField = "MONTH_ID";
                         DropDownMonth10From.DataTextField = "MONTH_SHORT";
                         DropDownMonth10From.DataBind();
                         sqlConn.Close();
@@ -885,14 +885,14 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.CommandText = "select * from TB_MONTH";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownMonth10To.DataSource = dt;
-                        DropDownMonth10To.DataValueField = "MONTH_SHORT";
+                        DropDownMonth10To.DataValueField = "MONTH_ID";
                         DropDownMonth10To.DataTextField = "MONTH_SHORT";
                         DropDownMonth10To.DataBind();
                         sqlConn.Close();
@@ -913,15 +913,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear10From.DataSource = dt;
-                        DropDownYear10From.DataValueField = "YEAR_NAME";
-                        DropDownYear10From.DataTextField = "YEAR_NAME";
+                        DropDownYear10From.DataValueField = "YEAR_ID";
+                        DropDownYear10From.DataTextField = "YEAR_ID";
                         DropDownYear10From.DataBind();
                         sqlConn.Close();
 
@@ -941,15 +941,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear10To.DataSource = dt;
-                        DropDownYear10To.DataValueField = "YEAR_NAME";
-                        DropDownYear10To.DataTextField = "YEAR_NAME";
+                        DropDownYear10To.DataValueField = "YEAR_ID";
+                        DropDownYear10To.DataTextField = "YEAR_ID";
                         DropDownYear10To.DataBind();
                         sqlConn.Close();
 
@@ -969,14 +969,14 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.CommandText = "select * from TB_MONTH";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownMonth12From.DataSource = dt;
-                        DropDownMonth12From.DataValueField = "MONTH_SHORT";
+                        DropDownMonth12From.DataValueField = "MONTH_ID";
                         DropDownMonth12From.DataTextField = "MONTH_SHORT";
                         DropDownMonth12From.DataBind();
                         sqlConn.Close();
@@ -997,14 +997,14 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.CommandText = "select * from TB_MONTH";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownMonth12To.DataSource = dt;
-                        DropDownMonth12To.DataValueField = "MONTH_SHORT";
+                        DropDownMonth12To.DataValueField = "MONTH_ID";
                         DropDownMonth12To.DataTextField = "MONTH_SHORT";
                         DropDownMonth12To.DataBind();
                         sqlConn.Close();
@@ -1025,15 +1025,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear12From.DataSource = dt;
-                        DropDownYear12From.DataValueField = "YEAR_NAME";
-                        DropDownYear12From.DataTextField = "YEAR_NAME";
+                        DropDownYear12From.DataValueField = "YEAR_ID";
+                        DropDownYear12From.DataTextField = "YEAR_ID";
                         DropDownYear12From.DataBind();
                         sqlConn.Close();
 
@@ -1053,15 +1053,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear12To.DataSource = dt;
-                        DropDownYear12To.DataValueField = "YEAR_NAME";
-                        DropDownYear12To.DataTextField = "YEAR_NAME";
+                        DropDownYear12To.DataValueField = "YEAR_ID";
+                        DropDownYear12To.DataTextField = "YEAR_ID";
                         DropDownYear12To.DataBind();
                         sqlConn.Close();
 
@@ -1081,15 +1081,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear13.DataSource = dt;
-                        DropDownYear13.DataValueField = "YEAR_NAME";
-                        DropDownYear13.DataTextField = "YEAR_NAME";
+                        DropDownYear13.DataValueField = "YEAR_ID";
+                        DropDownYear13.DataTextField = "YEAR_ID";
                         DropDownYear13.DataBind();
                         sqlConn.Close();
 
@@ -1122,35 +1122,6 @@ namespace WEB_PERSONAL
                         sqlConn.Close();
 
                         DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
-                    }
-                }
-            }
-            catch { }
-        }
-
-        protected void DropDownType_Position14_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = " + DropDownType_Position14.SelectedValue + "UNION ALL select * FROM TB_POSITION_PERMANENT_EMP where ST_ID = " + DropDownType_Position14.SelectedValue;
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownDegree14.DataSource = dt;
-                        DropDownDegree14.DataValueField = "ID";
-                        DropDownDegree14.DataTextField = "NAME";
-                        DropDownDegree14.DataBind();
-                        sqlConn.Close();
-
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
-
                     }
                 }
             }
@@ -1196,7 +1167,7 @@ namespace WEB_PERSONAL
             txtGrad_Univ11.Text = "";
             txtDepart11.Text = "";
             txtNolicense11.Text = "";
-            txtDateEnable11.Text = "";
+            txtDate11.Text = "";
         }
 
         protected void ClearDataGridViewNumber12()
@@ -1222,7 +1193,7 @@ namespace WEB_PERSONAL
             txtPosition14.Text = "";
             txtNo_Position14.Text = "";
             DropDownType_Position14.SelectedIndex = 0;
-            DropDownDegree14.SelectedIndex = 0;
+            txtDegree14.Text = "";
             txtSalary14.Text = "";
             txtSalaryForPosition14.Text = "";
             txtRefDoc14.Text = "";
@@ -1391,7 +1362,7 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เลขที่ใบอนุญาต<ใบอนุญาตประกอบวิชาชีพ>')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtDateEnable11.Text) && GridView2.Rows.Count == 0)
+            if (string.IsNullOrEmpty(txtDate11.Text) && GridView2.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่มีผลบังคับใช้(วัน เดือน ปี)<ใบอนุญาตประกอบวิชาชีพ>')", true);
                 return true;
@@ -1476,9 +1447,9 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งประเภท<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
-            if (DropDownDegree14.SelectedIndex == 0 && GridView5.Rows.Count == 0)
+            if (string.IsNullOrEmpty(txtDegree14.Text) && GridView5.Rows.Count == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระดับ<ในส่วนตำแหน่งและเงินเดือน>')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ระดับ<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
             if (string.IsNullOrEmpty(txtSalary14.Text) && GridView5.Rows.Count == 0)
@@ -1583,10 +1554,10 @@ namespace WEB_PERSONAL
                 ClassPersonStudyHistory P = new ClassPersonStudyHistory();
                 P.CITIZEN_ID = txtCitizen.Text;
                 P.GRAD_UNIV = txtGrad_Univ.Text;
-                P.MONTH_FROM = DropDownMonth10From.SelectedValue;
-                P.YEAR_FROM = DropDownYear10From.SelectedValue;
-                P.MONTH_TO = DropDownMonth10To.SelectedValue;
-                P.YEAR_TO = DropDownYear10To.SelectedValue;
+                P.MONTH_FROM = Convert.ToInt32(DropDownMonth10From.SelectedValue);
+                P.YEAR_FROM = Convert.ToInt32(DropDownYear10From.SelectedValue);
+                P.MONTH_TO = Convert.ToInt32(DropDownMonth10To.SelectedValue);
+                P.YEAR_TO = Convert.ToInt32(DropDownYear10To.SelectedValue);
                 P.MAJOR = txtMajor.Text;
                 P.InsertPersonStudyHistory();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ประวัติการศึกษา>เรียบร้อย')", true);
@@ -1605,14 +1576,15 @@ namespace WEB_PERSONAL
 
         protected void ButtonPlus11_Click(object sender, EventArgs e)
         {
-            if (txtGrad_Univ11.Text != "" && txtDepart11.Text != "" && txtNolicense11.Text != "" && txtDateEnable11.Text != "")
+            if (txtGrad_Univ11.Text != "" && txtDepart11.Text != "" && txtNolicense11.Text != "" && txtDate11.Text != "")
             {
                 ClassPersonJobLisence P = new ClassPersonJobLisence();
                 P.CITIZEN_ID = txtCitizen.Text;
                 P.LICENCE_NAME = txtGrad_Univ11.Text;
                 P.BRANCH = txtDepart11.Text;
                 P.LICENCE_NO = txtNolicense11.Text;
-                P.DDATE = DateTime.Parse(txtDateEnable11.Text);
+                P.DDATE = DateTime.Parse(txtDate11.Text);
+                
                 P.InsertPersonJobLisence();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ใบอนุญาตประกอบวิชาชีพ>เรียบร้อย')", true);
                 ClearDataGridViewNumber11();
@@ -1640,10 +1612,10 @@ namespace WEB_PERSONAL
                 ClassPersonTraining P = new ClassPersonTraining();
                 P.CITIZEN_ID = txtCitizen.Text;
                 P.COURSE = txtCourse.Text;
-                P.MONTH_FROM = DropDownMonth12From.SelectedValue;
-                P.YEAR_FROM = DropDownYear12From.SelectedValue;
-                P.MONTH_TO = DropDownMonth12To.SelectedValue;
-                P.YEAR_TO = DropDownYear12To.SelectedValue;
+                P.MONTH_FROM = Convert.ToInt32(DropDownMonth12From.SelectedValue);
+                P.YEAR_FROM = Convert.ToInt32(DropDownYear12From.SelectedValue);
+                P.MONTH_TO = Convert.ToInt32(DropDownMonth12To.SelectedValue);
+                P.YEAR_TO = Convert.ToInt32(DropDownYear12To.SelectedValue);
                 P.BRANCH_TRAINING = txtBranchTrainning.Text;
                 P.InsertPersonTraining();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเในส่วน<ประวัติการฝึกอบรม>เรียบร้อย')", true);
@@ -1671,7 +1643,7 @@ namespace WEB_PERSONAL
             {
                 ClassPersonDISCIPLINARY P = new ClassPersonDISCIPLINARY();
                 P.CITIZEN_ID = txtCitizen.Text;
-                P.YEAR = DropDownYear13.SelectedValue;
+                P.YEAR = Convert.ToInt32(DropDownYear13.SelectedValue);
                 P.MENU = txtList13.Text;
                 P.REF_DOC = txtRefDoc13.Text;
                 P.InsertPersonDISCIPLINARY();
@@ -1691,9 +1663,9 @@ namespace WEB_PERSONAL
 
         protected void ButtonPlus14_Click(object sender, EventArgs e)
         {
-            if (DropDownType_Position14.SelectedValue == "0" || DropDownDegree14.SelectedValue == "0")
+            if (DropDownType_Position14.SelectedValue == "0")
             {
-                Util.Alert(this, "กรุณาเลือก ตำแหน่งประเภทและระดับ ให้ถูกต้อง<ในส่วนตำแหน่งและเงินเดือน>");
+                Util.Alert(this, "กรุณาเลือก ตำแหน่งประเภท ให้ถูกต้อง<ในส่วนตำแหน่งและเงินเดือน>");
                 return;
             }
             if (txtDate14.Text != "" && txtPosition14.Text != "" && txtNo_Position14.Text != "" && txtSalary14.Text != "" && txtSalaryForPosition14.Text != "" && txtRefDoc14.Text != "")
@@ -1702,8 +1674,8 @@ namespace WEB_PERSONAL
                 P.DDATE = DateTime.Parse(txtDate14.Text);
                 P.POSITION_NAME = txtPosition14.Text;
                 P.PERSON_ID = txtNo_Position14.Text;
-                P.ST_ID = DropDownType_Position14.SelectedValue;
-                P.POSITION_ID = Convert.ToInt32(DropDownDegree14.SelectedValue);
+                P.ST_ID = Convert.ToInt32(DropDownType_Position14.SelectedValue);
+                P.POSITION_ID = txtDegree14.Text;
                 P.SALARY = Convert.ToInt32(txtSalary14.Text);
                 P.POSITION_SALARY = Convert.ToInt32(txtSalaryForPosition14.Text);
                 P.REFERENCE_DOCUMENT = txtRefDoc14.Text;

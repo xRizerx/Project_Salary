@@ -180,21 +180,21 @@ namespace WEB_PERSONAL.Entities
 
     public class ClassPersonStudyHistory
     {
-        public int IDSEQ { get; set; }
+        public int ID { get; set; }
         public string CITIZEN_ID { get; set; }
         public string GRAD_UNIV { get; set; }
-        public string MONTH_FROM { get; set; }
-        public string YEAR_FROM { get; set; }
-        public string MONTH_TO { get; set; }
-        public string YEAR_TO { get; set; }
+        public int MONTH_FROM { get; set; }
+        public int YEAR_FROM { get; set; }
+        public int MONTH_TO { get; set; }
+        public int YEAR_TO { get; set; }
         public string MAJOR { get; set; }
 
 
 
         public ClassPersonStudyHistory() { }
-        public ClassPersonStudyHistory(int IDSEQ, string CITIZEN_ID, string GRAD_UNIV, string MONTH_FROM, string YEAR_FROM, string MONTH_TO, string YEAR_TO, string MAJOR)
+        public ClassPersonStudyHistory(int ID, string CITIZEN_ID, string GRAD_UNIV, int MONTH_FROM, int YEAR_FROM, int MONTH_TO, int YEAR_TO, string MAJOR)
         {
-            this.IDSEQ = IDSEQ;
+            this.ID = ID;
             this.CITIZEN_ID = CITIZEN_ID;
             this.GRAD_UNIV = GRAD_UNIV;
             this.MONTH_FROM = MONTH_FROM;
@@ -341,7 +341,7 @@ namespace WEB_PERSONAL.Entities
             query += " MONTH_TO = :MONTH_TO ,";
             query += " YEAR_TO = :YEAR_TO ,";
             query += " MAJOR = :MAJOR ";
-            query += " where IDSEQ  = :IDSEQ";
+            query += " where ID  = :ID";
 
             OracleCommand command = new OracleCommand(query, conn);
             try
@@ -356,7 +356,7 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new OracleParameter("MONTH_TO", MONTH_TO));
                 command.Parameters.Add(new OracleParameter("YEAR_TO", YEAR_TO));
                 command.Parameters.Add(new OracleParameter("MAJOR", MAJOR));
-                command.Parameters.Add(new OracleParameter("IDSEQ", IDSEQ));
+                command.Parameters.Add(new OracleParameter("ID", ID));
                 if (command.ExecuteNonQuery() > 0)
                 {
                     result = true;
@@ -378,14 +378,14 @@ namespace WEB_PERSONAL.Entities
         {
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("Delete TB_STUDY_HISTORY where IDSEQ = :IDSEQ", conn);
+            OracleCommand command = new OracleCommand("Delete TB_STUDY_HISTORY where ID = :ID", conn);
             try
             {
                 if (conn.State != ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("IDSEQ", IDSEQ));
+                command.Parameters.Add(new OracleParameter("ID", ID));
                 if (command.ExecuteNonQuery() >= 0)
                 {
                     result = true;
@@ -613,16 +613,16 @@ namespace WEB_PERSONAL.Entities
         public int ID { get; set; }
         public string CITIZEN_ID { get; set; }
         public string COURSE { get; set; }
-        public string MONTH_FROM { get; set; }
-        public string YEAR_FROM { get; set; }
-        public string MONTH_TO { get; set; }
-        public string YEAR_TO { get; set; }
+        public int MONTH_FROM { get; set; }
+        public int YEAR_FROM { get; set; }
+        public int MONTH_TO { get; set; }
+        public int YEAR_TO { get; set; }
         public string BRANCH_TRAINING { get; set; }
 
 
 
         public ClassPersonTraining() { }
-        public ClassPersonTraining(int ID, string CITIZEN_ID, string COURSE, string MONTH_FROM, string YEAR_FROM, string MONTH_TO, string YEAR_TO, string BRANCH_TRAINING)
+        public ClassPersonTraining(int ID, string CITIZEN_ID, string COURSE, int MONTH_FROM, int YEAR_FROM, int MONTH_TO, int YEAR_TO, string BRANCH_TRAINING)
         {
             this.ID = ID;
             this.CITIZEN_ID = CITIZEN_ID;
@@ -838,14 +838,14 @@ namespace WEB_PERSONAL.Entities
     {
         public int ID { get; set; }
         public string CITIZEN_ID { get; set; }
-        public string YEAR { get; set; }
+        public int YEAR { get; set; }
         public string MENU { get; set; }
         public string REF_DOC { get; set; }
 
 
 
         public ClassPersonDISCIPLINARY() { }
-        public ClassPersonDISCIPLINARY(int ID, string CITIZEN_ID, string YEAR, string MENU, string REF_DOC)
+        public ClassPersonDISCIPLINARY(int ID, string CITIZEN_ID, int YEAR, string MENU, string REF_DOC)
         {
             this.ID = ID;
             this.CITIZEN_ID = CITIZEN_ID;
@@ -1027,8 +1027,8 @@ namespace WEB_PERSONAL.Entities
         public DateTime DDATE { get; set; }
         public string POSITION_NAME { get; set; }
         public string PERSON_ID { get; set; }
-        public string ST_ID { get; set; }
-        public int POSITION_ID { get; set; }
+        public int ST_ID { get; set; }
+        public string POSITION_ID { get; set; }
         public int SALARY { get; set; }
         public int POSITION_SALARY { get; set; }
         public string REFERENCE_DOCUMENT { get; set; }
@@ -1037,7 +1037,7 @@ namespace WEB_PERSONAL.Entities
 
 
         public ClassPersonPosiSalary() { }
-        public ClassPersonPosiSalary(int ID, DateTime DDATE, string POSITION_NAME, string PERSON_ID, string ST_ID, int POSITION_ID, int SALARY, int POSITION_SALARY, string REFERENCE_DOCUMENT, string CITIZEN_ID)
+        public ClassPersonPosiSalary(int ID, DateTime DDATE, string POSITION_NAME, string PERSON_ID, int ST_ID, string POSITION_ID, int SALARY, int POSITION_SALARY, string REFERENCE_DOCUMENT, string CITIZEN_ID)
         {
             this.ID = ID;
             this.DDATE = DDATE;

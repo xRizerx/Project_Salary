@@ -3354,5 +3354,211 @@ namespace WEB_PERSONAL.Entities
         }
     }
 
+    public class ClassMonth
+    {
+        public int MONTH_ID { get; set; }
+        public string MONTH_SHORT { get; set; }
+        public string MONTH_LONG { get; set; }
+
+        public ClassMonth() { }
+        public ClassMonth(int MONTH_ID, string MONTH_SHORT, string MONTH_LONG)
+        {
+            this.MONTH_ID = MONTH_ID;
+            this.MONTH_SHORT = MONTH_SHORT;
+            this.MONTH_LONG = MONTH_LONG;
+        }
+
+        public DataTable GetMonth(string MONTH_SHORT, string MONTH_LONG)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_MONTH ";
+            if (!string.IsNullOrEmpty(MONTH_SHORT) || !string.IsNullOrEmpty(MONTH_LONG))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(MONTH_SHORT))
+                {
+                    query += " and MONTH_SHORT like :MONTH_SHORT ";
+                }
+                if (!string.IsNullOrEmpty(MONTH_LONG))
+                {
+                    query += " and MONTH_LONG like :MONTH_LONG ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(MONTH_SHORT))
+                {
+                    command.Parameters.Add(new OracleParameter("MONTH_SHORT", "%" + MONTH_SHORT + "%"));
+                }
+                if (!string.IsNullOrEmpty(MONTH_LONG))
+                {
+                    command.Parameters.Add(new OracleParameter("MONTH_LONG", "%" + MONTH_LONG + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetMonthSearch(string MONTH_SHORT, string MONTH_LONG)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_MONTH ";
+            if (!string.IsNullOrEmpty(MONTH_SHORT) || !string.IsNullOrEmpty(MONTH_LONG))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(MONTH_SHORT))
+                {
+                    query += " and MONTH_SHORT like :MONTH_SHORT ";
+                }
+                if (!string.IsNullOrEmpty(MONTH_LONG))
+                {
+                    query += " and MONTH_LONG like :MONTH_LONG ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(MONTH_SHORT))
+                {
+                    command.Parameters.Add(new OracleParameter("MONTH_SHORT", "%" + MONTH_SHORT + "%"));
+                }
+                if (!string.IsNullOrEmpty(MONTH_LONG))
+                {
+                    command.Parameters.Add(new OracleParameter("MONTH_LONG", "%" + MONTH_LONG + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertMonth()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_MONTH (MONTH_SHORT,MONTH_LONG) VALUES (:MONTH_SHORT,:MONTH_LONG)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("MONTH_SHORT", MONTH_SHORT));
+                command.Parameters.Add(new OracleParameter("MONTH_LONG", MONTH_LONG));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateMonth()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_MONTH Set ";
+            query += " MONTH_SHORT = :MONTH_SHORT,";
+            query += " MONTH_LONG = :MONTH_LONG";
+            query += " where MONTH_ID = :MONTH_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("MONTH_SHORT", MONTH_SHORT));
+                command.Parameters.Add(new OracleParameter("MONTH_LONG", MONTH_LONG));
+                command.Parameters.Add(new OracleParameter("MONTH_ID", MONTH_ID));
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteMonth()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_MONTH where MONTH_ID = :MONTH_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("MONTH_ID", MONTH_ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+      }
 
 }
