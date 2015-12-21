@@ -92,11 +92,11 @@
 
                                   <div class="master_header_under_insig">
                                     <span class="master_header_under_header">เครื่องราชอิสริยาภรณ์</span>
+                                    <a href="insignia_from_view.aspx">ประวัติการขอเครื่องราชอิสริยาภรณ์</a>
+                                    <a href="insignia_recordnote2.aspx">ประวัติการรับเครื่องราชอิสริยาภรณ์</a>
                                     <a href="insignia_from_add.aspx">เพิ่มข้อมูลเครื่องราชอิสริยาภรณ์</a>
-                                    <a href="insignia_from_view.aspx">ดูการขอเครื่องราชอิสริยาภรณ์</a>
-                                    <a href="insignia_recordnote2.aspx">ประวัติการขอเครื่องราชอิสริยาภรณ์</a>
-                                    <a href="insignia_maintence.aspx">เพิ่มประวัติการขอเครื่องราชอิสริยาภรณ์</a>
-                                    <a href="insignia_maintence.aspx">บัญชีรายชื่อผู้ขอรับภาพถ่ายเข้าเฝ้า(ชั้นสายสะพาย)</a>
+                                    <a href="insignia_recordnote2-ADMIN.aspx">เพิ่มประวัติการรับเครื่องราชอิสริยาภรณ์</a>
+                                     <a href="insignia_maintence.aspx">บัญชีรายชื่อผู้ขอรับภาพถ่ายเข้าเฝ้า(ชั้นสายสะพาย)</a>
                                     <a href="insignia_maintence.aspx">แบบคำขอยืมเครื่องราชอิสริยาภรณ์</a>
                                     <a href="insignia_maintence.aspx">หลักฐานการส่งคืน/ชดใช้ราคาเครื่องราชอิสริยาภรณ์</a>
                                     <a href="insignia_maintence.aspx">บัญชีรายชื่อผู้ส่งคืนเครื่องราชอิสริยาภรณ์</a>

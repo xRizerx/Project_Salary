@@ -184,6 +184,7 @@
     <Content Include="insignia_from_add.aspx" />
     <Content Include="insignia_from_view.aspx" />
     <Content Include="insignia_maintence.aspx" />
+    <Content Include="insignia_print.aspx" />
     <Content Include="insignia_recordnote2-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.css" />
     <Content Include="Default.aspx" />
@@ -465,6 +466,13 @@
     </Compile>
     <Compile Include="insignia_maintence.aspx.designer.cs">
       <DependentUpon>insignia_maintence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_print.aspx.cs">
+      <DependentUpon>insignia_print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_print.aspx.designer.cs">
+      <DependentUpon>insignia_print.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_recordnote2-ADMIN.aspx.cs">
       <DependentUpon>insignia_recordnote2-ADMIN.aspx</DependentUpon>
