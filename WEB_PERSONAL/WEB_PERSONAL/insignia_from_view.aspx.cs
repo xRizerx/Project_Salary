@@ -177,11 +177,17 @@ namespace WEB_PERSONAL
             //    ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             //S }
 
+            Other.Visible = false;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("insignia_from_edit.aspx");
+        }
+
+        protected void CheckBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            Other.Visible = !Other.Visible;
         }
     }
 }
