@@ -19,10 +19,12 @@ namespace WEB_PERSONAL
             if (Session["login_system_status_id"].ToString() == "1")
             {
                 LinkButton11.Visible = true;
+                LinkButton7.Visible = true;
             }
             else
             {
                 LinkButton11.Visible = false;
+                LinkButton7.Visible = false;
             }
             string Mon = "มี.ค.";
             int year = new ThaiBuddhistCalendar().GetYear(DateTime.Now);
@@ -60,6 +62,7 @@ namespace WEB_PERSONAL
             Session["STAFFTYPE_STATUS"] = Label61.Text;
             Label19.Text = person.AdminPositionName;
             Label15.Text = person.PositionWorkName;
+            Session["citizen_id"] = TextBox1.Text;
             if (Session["STAFFTYPE_STATUS"] != null)
             {
                 if (Session["STAFFTYPE_STATUS"].ToString() == "ข้าราชการ")
@@ -73,6 +76,7 @@ namespace WEB_PERSONAL
                     Panel_Permanent_Emp.Visible = true;
                     Panel_Oracle_Control.Visible = true;
                     Edit_page.Attributes["href"] = "SalarybyID-Edit-Permanent.aspx";
+
                 }
             }
 
@@ -633,6 +637,11 @@ namespace WEB_PERSONAL
             {
                 Util.Alert(this, "ข้อมูลไม่ครบถ้วน");
             }
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Salary_Salary_Admin.aspx");
         }
     }
 }

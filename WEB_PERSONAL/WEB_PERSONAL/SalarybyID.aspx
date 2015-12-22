@@ -176,8 +176,8 @@
                                 <asp:TableCell>
                                     <asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui_edit" OnClick="Button1_Click">ค้นหา</asp:LinkButton>
                                     <a href="SalaryByID-Report.aspx" class="button_ui_edit">ออกรายงาน</a>
-                                    <a href="Salary_Basesalary.aspx" onclick="Popup(this.href, 'Base_salary', '350', '350', 'no', 'center'); return false;" class="button_ui">ปรับฐานเงินเดือน</a>
-                                    <asp:LinkButton ID="LinkButton11" runat="server" CssClass="button_ui_admin" OnClick="LinkButton11_Click">ปรับฐานเงินเดือน [Admin]</asp:LinkButton><br />
+                                    <asp:LinkButton ID="LinkButton7" runat="server" CssClass="button_ui_admin" OnClick="LinkButton7_Click" >จัดการเงินเดือน [Admin]</asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton11" runat="server" CssClass="button_ui_admin" OnClick="LinkButton11_Click">จัดการฐานเงินเดือน [Admin]</asp:LinkButton><br />
                                 </asp:TableCell>
                             </asp:TableRow>
                             <asp:TableRow>

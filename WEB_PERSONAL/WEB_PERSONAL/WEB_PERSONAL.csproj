@@ -316,6 +316,7 @@
     <Content Include="PositionWork-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="SalarybyID-Edit-Permanent.aspx" />
+    <Content Include="Salary_Salary_Admin.aspx" />
     <Content Include="Salary_Basesalary_Admin.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
@@ -351,7 +352,6 @@
     <Content Include="SalarybyID-Edit.aspx" />
     <Content Include="SalaryByID-Report.aspx" />
     <Content Include="SalarybyID.aspx" />
-    <Content Include="Salary_Basesalary.aspx" />
     <Content Include="Script\jquery-1.7.1.min.js" />
     <Content Include="Script\jquery-ui-1.8.20.min.js" />
     <Content Include="Script\JSFunction.js" />
@@ -621,19 +621,19 @@
     <Compile Include="SalaryByID.aspx.designer.cs">
       <DependentUpon>SalarybyID.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Salary_Salary_Admin.aspx.cs">
+      <DependentUpon>Salary_Salary_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Salary_Salary_Admin.aspx.designer.cs">
+      <DependentUpon>Salary_Salary_Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Salary_Basesalary_Admin.aspx.cs">
       <DependentUpon>Salary_Basesalary_Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Salary_Basesalary_Admin.aspx.designer.cs">
       <DependentUpon>Salary_Basesalary_Admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Salary_Basesalary.aspx.cs">
-      <DependentUpon>Salary_Basesalary.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Salary_Basesalary.aspx.designer.cs">
-      <DependentUpon>Salary_Basesalary.aspx</DependentUpon>
     </Compile>
     <Compile Include="SEMINAR-ADMIN.aspx.cs">
       <DependentUpon>SEMINAR-ADMIN.aspx</DependentUpon>

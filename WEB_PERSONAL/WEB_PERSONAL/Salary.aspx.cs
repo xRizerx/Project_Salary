@@ -57,20 +57,26 @@ namespace WEB_PERSONAL
 
             }
 
-
-            double a = Convert.ToDouble(TextBox32.Text); /*[3]*/
-            double b = Convert.ToDouble(TextBox25.Text); /*[5]*/
-            Label15.Text = "" + (a * 2.9 / 100); /*[4]=[3]*2.9%*/
-            double c = Convert.ToDouble(Label15.Text);/*[6]*/
-            Label17.Text = String.Format("{0:.##}", c - b); /*[6]=[4]-[5]*/
-            Label16.Text = String.Format("{0:.##}", a * 0.1 / 100);/*[7]=[3]*0.1%*/
-            double d = Convert.ToDouble(Label16.Text);/*[7]*/
-            double ee = Convert.ToDouble(TextBox22.Text);/*[8]*/
-            Label18.Text = String.Format("{0:.##}", c + d);/*[9]=[4]+[7]*/
-            double f = Convert.ToDouble(Label18.Text);/*[9]*/
-            Label19.Text = String.Format("{0:.##}", b + ee);/*[10]=[5]+[8]*/
-            double g = Convert.ToDouble(Label19.Text);/*[10]*/
-            Label20.Text = String.Format("{0:.##}", f - g);/*[11]=[9]-[10]*/
+            if (TextBox32.Text == string.Empty || TextBox32.Text == "0" || TextBox25.Text == string.Empty || TextBox25.Text == "0" || TextBox22.Text == string.Empty)
+            {
+                Util.Alert(this, "กรอกจำนวนเงินไม่ถูกต้อง");
+            }
+            else
+            {
+                double a = Convert.ToDouble(TextBox32.Text); /*[3]*/
+                double b = Convert.ToDouble(TextBox25.Text); /*[5]*/
+                Label15.Text = "" + (a * 2.9 / 100); /*[4]=[3]*2.9%*/
+                double c = Convert.ToDouble(Label15.Text);/*[6]*/
+                Label17.Text = String.Format("{0:.##}", c - b); /*[6]=[4]-[5]*/
+                Label16.Text = String.Format("{0:.##}", a * 0.1 / 100);/*[7]=[3]*0.1%*/
+                double d = Convert.ToDouble(Label16.Text);/*[7]*/
+                double ee = Convert.ToDouble(TextBox22.Text);/*[8]*/
+                Label18.Text = String.Format("{0:.##}", c + d);/*[9]=[4]+[7]*/
+                double f = Convert.ToDouble(Label18.Text);/*[9]*/
+                Label19.Text = String.Format("{0:.##}", b + ee);/*[10]=[5]+[8]*/
+                double g = Convert.ToDouble(Label19.Text);/*[10]*/
+                Label20.Text = String.Format("{0:.##}", f - g);/*[11]=[9]-[10]*/
+            }
 
         }
 
@@ -78,6 +84,10 @@ namespace WEB_PERSONAL
         {
             if (Session["login_id"] != null)
             {
+                if (TextBox32.Text == string.Empty || TextBox32.Text == "0")
+                {
+
+                }
                 using (OracleConnection conn = new OracleConnection(Util.CS()))
                 {
                     conn.Open();
