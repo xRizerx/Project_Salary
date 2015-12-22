@@ -52,7 +52,7 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: left; width: 20px"></td>
+                            <td style="text-align: left; width: 35px"></td>
                             <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทบุคลากรย่อย :</td>
                             <td style="text-align: left; width: 120px;">
                                 <asp:TextBox ID="txtInsertSubStaffTypeID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>

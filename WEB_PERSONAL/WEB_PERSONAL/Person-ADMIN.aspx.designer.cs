@@ -427,22 +427,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtNolicense11;
         
         /// <summary>
-        /// UpdatetxtDateEnable11 control.
+        /// UpdatetxtDate11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatetxtDateEnable11;
+        protected global::System.Web.UI.UpdatePanel UpdatetxtDate11;
         
         /// <summary>
-        /// txtDateEnable11 control.
+        /// txtDate11 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateEnable11;
+        protected global::System.Web.UI.WebControls.TextBox txtDate11;
         
         /// <summary>
         /// UpdateButtonPlus11 control.
@@ -787,22 +787,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownType_Position14;
         
         /// <summary>
-        /// UpdatetxtDropDownDegree14 control.
+        /// UpdatetxtDegree14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatetxtDropDownDegree14;
+        protected global::System.Web.UI.UpdatePanel UpdatetxtDegree14;
         
         /// <summary>
-        /// DropDownDegree14 control.
+        /// txtDegree14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownDegree14;
+        protected global::System.Web.UI.WebControls.TextBox txtDegree14;
         
         /// <summary>
         /// UpdatetxtSalary14 control.

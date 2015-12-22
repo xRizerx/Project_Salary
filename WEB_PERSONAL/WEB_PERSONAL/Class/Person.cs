@@ -50,6 +50,52 @@ namespace WEB_PERSONAL.Class {
                 }
             }
         }
+        public static string GetName(string citizen_id) {
+            using (OracleConnection con = Util.OC()) {
+                using (OracleCommand command = new OracleCommand("SELECT PERSON_NAME FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
+                    command.Parameters.AddWithValue("1", citizen_id);
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            reader.Read();
+                            return reader.GetString(0);
+                        } else {
+                            return "-";
+                        }
+                    }
+                }
+            }
+        }
+        public static string GetLastname(string citizen_id) {
+            using (OracleConnection con = Util.OC()) {
+                using (OracleCommand command = new OracleCommand("SELECT PERSON_LASTNAME FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
+                    command.Parameters.AddWithValue("1", citizen_id);
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            reader.Read();
+                            return reader.GetString(0);
+                        } else {
+                            return "-";
+                        }
+                    }
+                }
+            }
+        }
+        public static string GetNameAndLastname(string citizen_id) {
+            using (OracleConnection con = Util.OC()) {
+                using (OracleCommand command = new OracleCommand("SELECT PERSON_NAME || ' ' || PERSON_LASTNAME FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
+                    command.Parameters.AddWithValue("1", citizen_id);
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            reader.Read();
+                            return reader.GetString(0);
+                        } else {
+                            return "-";
+                        }
+                    }
+                }
+            }
+        }
+
         //instance ---------------------------------------------------------------------
 
         private bool error;
@@ -137,9 +183,10 @@ namespace WEB_PERSONAL.Class {
 
 
         public Person(string citizen_id) {
-            try {
-                this.citizen_id = citizen_id;
-                using (OracleConnection con = Util.OC()) {
+            //try {
+            this.citizen_id = citizen_id;
+            using (OracleConnection con = Util.OC()) {
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT COUNT(*) FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -155,6 +202,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    exist = false;
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TITLE_ID, -1), NVL(PERSON_NAME, '-'), NVL(PERSON_LASTNAME, '-'), NVL(GENDER_ID, -1), NVL(SYSTEM_STATUS_ID, -1), NVL(STAFFTYPE_ID, -1), NVL(MINISTRY_ID, -1), NVL(DEPARTMENT_NAME, '-'), NVL(TO_CHAR(BIRTHDATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(TO_CHAR(INWORK_DATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(TO_CHAR(RETIRE_DATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(FATHER_NAME, '-'), NVL(FATHER_LASTNAME, '-'), NVL(MOTHER_NAME, '-'), NVL(MOTHER_LASTNAME, '-'), NVL(MOTHER_OLD_LASTNAME, '-'), NVL(COUPLE_NAME, '-'), NVL(COUPLE_LASTNAME, '-'), NVL(COUPLE_OLD_LASTNAME, '-'), NVL(ADMIN_POSITION_ID, '-'), NVL(POSITION_WORK_ID, '-'), NVL(NATION_ID, '-'), NVL(HOMEADD, '-'), NVL(MOO, '-'), NVL(STREET, '-'), NVL(DISTRICT_ID, -1), NVL(AMPHUR_ID, -1), NVL(PROVINCE_ID, -1), NVL(ZIPCODE_ID, -1), NVL(TELEPHONE, '-'), NVL(TIME_CONTACT_ID, -1), NVL(BUDGET_ID, -1), NVL(SUBSTAFFTYPE_ID, -1), NVL(SPECIAL_NAME, '-'), NVL(TEACH_ISCED_ID, '-'), NVL(GRAD_LEV_ID, '-'), NVL(GRAD_CURR, '-'), NVL(GRAD_ISCED_ID, '-'), NVL(GRAD_PROG_ID, '-'), NVL(GRAD_UNIV, '-'), NVL(GRAD_COUNTRY_ID, -1), NVL(BRANCH_ID, -1), NVL(RANK_ID, -1), NVL(FACULTY_ID, '-'), NVL(START_POSITION_WORK_ID, '-') FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -208,6 +261,11 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TB_TITLENAME.TITLE_NAME_TH, '-') FROM TB_PERSON, TB_TITLENAME WHERE CITIZEN_ID = :1 AND TB_PERSON.TITLE_ID = TB_TITLENAME.TITLE_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -219,8 +277,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    
-                  
+                } catch {
+                    title_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(GENDER_NAME, '-') FROM TB_PERSON, TB_GENDER WHERE CITIZEN_ID = :1 AND TB_PERSON.GENDER_ID = TB_GENDER.GENDER_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -232,6 +294,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    gender_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TB_SYSTEM_STATUS.SYSTEM_STATUS_NAME, '-') FROM TB_PERSON, TB_SYSTEM_STATUS WHERE CITIZEN_ID = :1 AND TB_PERSON.SYSTEM_STATUS_ID = TB_SYSTEM_STATUS.SYSTEM_STATUS_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -243,7 +311,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    
+                } catch {
+                    system_status_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TB_STAFFTYPE.STAFFTYPE_NAME, '-') FROM TB_PERSON, TB_STAFFTYPE WHERE CITIZEN_ID = :1 AND TB_PERSON.STAFFTYPE_ID = TB_STAFFTYPE.STAFFTYPE_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -255,6 +328,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    staff_type_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_ID, '-') FROM TB_POSITION_AND_SALARY WHERE CITIZEN_ID = :1 ORDER BY ID DESC", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -266,6 +345,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    position_id = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TB_POSITION.NAME, '-') FROM TB_POSITION_AND_SALARY, TB_POSITION WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = :1 AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID ORDER BY TB_POSITION_AND_SALARY.ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -277,6 +362,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    position_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_NAME, '-') FROM TB_POSITION_AND_SALARY WHERE CITIZEN_ID = :1 ORDER BY ID DESC", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -288,7 +379,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                   
+                } catch {
+                    position_name_description = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TB_MINISTRY.MINISTRY_NAME, '-') FROM TB_PERSON, TB_MINISTRY WHERE CITIZEN_ID = :1 AND TB_PERSON.MINISTRY_ID = TB_MINISTRY.MINISTRY_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -300,8 +396,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    ministry_name = "error";
+                    error = true;
+                }
 
-                  
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT ID FROM TB_POSITION_AND_SALARY WHERE CITIZEN_ID = :1", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -314,6 +414,11 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT IDSEQ FROM TB_STUDY_HISTORY WHERE CITIZEN_ID = :1", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -326,6 +431,11 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT ID FROM TB_JOB_LICENSE WHERE CITIZEN_ID = :1", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -338,6 +448,11 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT ID FROM TB_TRAINING_HISTORY WHERE CITIZEN_ID = :1", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -350,6 +465,11 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT ID FROM TB_DISCIPLINARY_AND_AMNESTY WHERE CITIZEN_ID = :1", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -362,6 +482,11 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TB_POSITION_AND_SALARY.SALARY, -1) FROM TB_PERSON, TB_POSITION_AND_SALARY WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = :1 AND TB_POSITION_AND_SALARY.CITIZEN_ID = TB_PERSON.CITIZEN_ID ORDER BY TB_POSITION_AND_SALARY.ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -373,6 +498,11 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    salary = -1;
+                    error = true;
+                }
+                try {
                     {
                         int m = 3;
                         int y = Util.ODTN().Year;
@@ -408,7 +538,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                  
+                } catch {
+                    salary_year = -1;
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("select nvl(tb_admin_position.admin_position_name,'-') from tb_person,tb_admin_position where citizen_id = :1 and tb_person.admin_position_id = tb_admin_position.admin_position_id", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -420,7 +555,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-           
+                } catch {
+                    admin_position_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("select nvl(tb_position_work.position_work_name,'-') from tb_person,tb_position_work where citizen_id = :1 and tb_person.position_work_id = tb_position_work.position_work_id", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -432,6 +572,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    position_work_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(NATION_ENG, '-'), NVL(NATION_THA, '-') FROM TB_PERSON, TB_NATIONAL WHERE CITIZEN_ID = :1 AND TB_PERSON.NATION_ID = TB_NATIONAL.NATION_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -445,8 +591,13 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    
-                    
+                } catch {
+                    nation_name_en = "error";
+                    nation_name_th = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(DISTRICT_TH, '-') FROM TB_PERSON, TB_DISTRICT WHERE CITIZEN_ID = :1 AND TB_PERSON.DISTRICT_ID = TB_DISTRICT.DISTRICT_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -458,7 +609,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                   
+                } catch {
+                    district_name = "errror";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(AMPHUR_TH, '-') FROM TB_PERSON, TB_AMPHUR WHERE CITIZEN_ID = :1 AND TB_PERSON.AMPHUR_ID = TB_AMPHUR.AMPHUR_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -470,7 +626,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    
+                } catch {
+                    amphur_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(PROVINCE_TH, '-') FROM TB_PERSON, TB_PROVINCE WHERE CITIZEN_ID = :1 AND TB_PERSON.PROVINCE_ID = TB_PROVINCE.PROVINCE_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -482,8 +643,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    
-               
+                } catch {
+                    province_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TIME_CONTACT_NAME, '-') FROM TB_PERSON, TB_TIME_CONTACT WHERE CITIZEN_ID = :1 AND TB_PERSON.TIME_CONTACT_ID = TB_TIME_CONTACT.TIME_CONTACT_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -495,6 +660,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    time_contact_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(BUDGET_NAME, '-') FROM TB_PERSON, TB_BUDGET WHERE CITIZEN_ID = :1 AND TB_PERSON.BUDGET_ID = TB_BUDGET.BUDGET_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -506,6 +677,11 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    budget_name = "error";
+                    error = true;
+                }
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(SUBSTAFFTYPE_NAME, '-') FROM TB_PERSON, TB_SUBSTAFFTYPE WHERE CITIZEN_ID = :1 AND TB_PERSON.SUBSTAFFTYPE_ID = TB_SUBSTAFFTYPE.SUBSTAFFTYPE_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -517,6 +693,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    sub_staff_type_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TEACH_ISCED_NAME_TH, '-') FROM TB_PERSON, TB_TEACH_ISCED WHERE CITIZEN_ID = :1 AND TB_PERSON.TEACH_ISCED_ID = TB_TEACH_ISCED.TEACH_ISCED_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -528,17 +710,27 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    /*using (OracleCommand command = new OracleCommand("SELECT NVL(LEV_NAME, '-') FROM TB_PERSON, TB_LEV WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_LEV_ID = TB_LEV.LEV_ID", con)) {
-                        command.Parameters.AddWithValue("1", citizen_id);
-                        using (OracleDataReader reader = command.ExecuteReader()) {
-                            if (reader.HasRows) {
-                                reader.Read();
-                                grad_lev_name = reader.GetString(0);
-                            } else {
-                                grad_lev_name = "-";
-                            }
+                } catch {
+                    teach_isced_name = "error";
+                    error = true;
+                }
+
+
+
+
+                /*using (OracleCommand command = new OracleCommand("SELECT NVL(LEV_NAME, '-') FROM TB_PERSON, TB_LEV WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_LEV_ID = TB_LEV.LEV_ID", con)) {
+                    command.Parameters.AddWithValue("1", citizen_id);
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            reader.Read();
+                            grad_lev_name = reader.GetString(0);
+                        } else {
+                            grad_lev_name = "-";
                         }
-                    }*/
+                    }
+                }*/
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(TEACH_ISCED_NAME_TH, '-') FROM TB_PERSON, TB_TEACH_ISCED WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_ISCED_ID = TB_TEACH_ISCED.TEACH_ISCED_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -550,6 +742,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    grad_isced_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(GRAD_PROG_NAME, '-') FROM TB_PERSON, TB_GRAD_PROGRAM WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_PROG_ID = TB_GRAD_PROGRAM.GRAD_PROG_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -561,17 +759,25 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
-                    /*using (OracleCommand command = new OracleCommand("SELECT NVL(SHORT_NAME, '-') FROM TB_PERSON, TB_COUNTRY WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_COUNTRY_ID = TB_COUNTRY.COUNTRY_ID", con)) {
-                        command.Parameters.AddWithValue("1", citizen_id);
-                        using (OracleDataReader reader = command.ExecuteReader()) {
-                            if (reader.HasRows) {
-                                reader.Read();
-                                grad_country_name = reader.GetString(0);
-                            } else {
-                                grad_country_name = "-";
-                            }
+                } catch {
+                    grad_prog_name = "error";
+                    error = true;
+                }
+
+
+                /*using (OracleCommand command = new OracleCommand("SELECT NVL(SHORT_NAME, '-') FROM TB_PERSON, TB_COUNTRY WHERE CITIZEN_ID = :1 AND TB_PERSON.GRAD_COUNTRY_ID = TB_COUNTRY.COUNTRY_ID", con)) {
+                    command.Parameters.AddWithValue("1", citizen_id);
+                    using (OracleDataReader reader = command.ExecuteReader()) {
+                        if (reader.HasRows) {
+                            reader.Read();
+                            grad_country_name = reader.GetString(0);
+                        } else {
+                            grad_country_name = "-";
                         }
-                    }*/
+                    }
+                }*/
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(BRANCH_NAME, '-') FROM TB_PERSON, TB_BRANCH WHERE CITIZEN_ID = :1 AND TB_PERSON.BRANCH_ID = TB_BRANCH.BRANCH_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -583,6 +789,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    branch_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(RANK_NAME_TH, '-') FROM TB_PERSON, TB_RANK WHERE CITIZEN_ID = :1 AND TB_PERSON.RANK_ID = TB_RANK.SEQ", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -594,6 +806,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    rank_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(FACULTY_NAME, '-') FROM TB_PERSON, TB_FACULTY WHERE CITIZEN_ID = :1 AND TB_PERSON.FACULTY_ID = TB_FACULTY.FACULTY_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -605,6 +823,12 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    faculty_name = "error";
+                    error = true;
+                }
+
+                try {
                     using (OracleCommand command = new OracleCommand("SELECT NVL(POSITION_WORK_NAME, '-') FROM TB_PERSON, TB_POSITION_WORK WHERE CITIZEN_ID = :1 AND TB_PERSON.START_POSITION_WORK_ID = TB_POSITION_WORK.POSITION_WORK_ID", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
@@ -616,12 +840,18 @@ namespace WEB_PERSONAL.Class {
                             }
                         }
                     }
+                } catch {
+                    start_position_work_name = "error";
+                    error = true;
                 }
 
 
-            } catch {
-                error = true;
             }
+
+
+            //} catch {
+            //    error = true;
+            //}
         }
 
         public bool Error {

@@ -1,11 +1,14 @@
 ﻿using WEB_PERSONAL.Entities;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.OracleClient;
+using System.Data;
+using System.Configuration;
+using System.Data.OracleClient;
 
 namespace WEB_PERSONAL
 {
@@ -13,9 +16,37 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            BindData();
+
             if (!IsPostBack)
             {
                 txtBudget.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+            }
+
+            using (OracleConnection conn = Util.OC())
+            {
+                using (OracleCommand cmd = new OracleCommand("select PERSON_NAME,PERSON_LASTNAME from tb_person where citizen_id = '" + Session["login_id"].ToString() + "'", conn))
+
+                {
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            txtName.Text = reader.IsDBNull(0) ? "" : reader.GetString(0);
+                            txtLastName.Text = reader.IsDBNull(1) ? "" : reader.GetString(1);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        void BindData()
+        {
+            if (Session["login_id"] == null)
+            {
+                Response.Redirect("Access.aspx");
+                return;
             }
         }
 
@@ -179,11 +210,12 @@ namespace WEB_PERSONAL
             S.SEMINAR_PROBLEM = txtProblem.Text;
             S.SEMINAR_COMMENT = txtComment.Text;
             S.SEMINAR_SIGNED_DATETIME = DateTime.Now;
+            S.CITIZEN_ID = Session["login_id"].ToString();
 
-            string[] splitDate1 = txtDateFrom.Text.Split('-');
-            string[] splitDate2 = txtDateTO.Text.Split('-');
-            S.SEMINAR_DATETIME_FROM = new DateTime(Convert.ToInt32(splitDate1[2]), Convert.ToInt32(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
-            S.SEMINAR_DATETIME_TO = new DateTime(Convert.ToInt32(splitDate2[2]), Convert.ToInt32(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
+            string[] splitDate1 = txtDateFrom.Text.Split(' ');
+            string[] splitDate2 = txtDateTO.Text.Split(' ');
+            S.SEMINAR_DATETIME_FROM = new DateTime(Convert.ToInt32(splitDate1[2]), Util.MonthToNumber(splitDate1[1]), Convert.ToInt32(splitDate1[0]));
+            S.SEMINAR_DATETIME_TO = new DateTime(Convert.ToInt32(splitDate2[2]), Util.MonthToNumber(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
 
             DateTime SEMINAR_SIGNED_DATETIME = DateTime.Now;
             S.InsertSEMINAR();

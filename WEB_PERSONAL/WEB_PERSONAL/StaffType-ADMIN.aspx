@@ -32,20 +32,20 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchStaff">
+    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchStaffType">
         <div>
             <fieldset>
                 <legend>Search</legend>
                 <div>
-                    รหัสประเภทตำแหน่ง :&nbsp<asp:TextBox ID="txtSearchStaffID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
-                    ชื่อประเภทตำแหน่ง :&nbsp<asp:TextBox ID="txtSearchStaffName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
-                    <asp:Button ID="btnSearchStaff" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchStaff_Click" />
+                    รหัสประเภทข้าราชการ :&nbsp;<asp:TextBox ID="txtSearchStaffTypeID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
+                    ชื่อประเภทข้าราชการ :&nbsp;<asp:TextBox ID="txtSearchStaffTypeName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                    <asp:Button ID="btnSearchStaffType" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchStaffType_Click" />
                     <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
                 </div>
             </fieldset>
         </div>
     </asp:Panel>
-    <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitStaff">
+    <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitStaffType">
         <div>
             <fieldset>
                 <legend>Insert</legend>
@@ -53,16 +53,16 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 55px"></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทตำแหน่ง :</td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทข้าราชการ :</td>
                             <td style="text-align: left; width: 120px;">
-                                <asp:TextBox ID="txtInsertStaffID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทตำแหน่ง :</td>
+                                <asp:TextBox ID="txtInsertStaffTypeID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทข้าราชการ :</td>
                             <td style="text-align: left; width: 120px;">
-                                <asp:TextBox ID="txtInsertStaffName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
+                                <asp:TextBox ID="txtInsertStaffTypeName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnSubmitStaff" Text="OK" runat="server" CssClass="master_OAT_button" OnClick="btnSubmitStaff_Click" /></td>
+                                <asp:Button ID="btnSubmitStaffType" Text="OK" runat="server" CssClass="master_OAT_button" OnClick="btnSubmitStaffType_Click" /></td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnCancelStaff" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick="btnCancelStaff_Click" /></td>
+                                <asp:Button ID="btnCancelStaffType" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick="btnCancelStaffType_Click" /></td>
                         </tr>
                     </table>
                 </div>
@@ -77,7 +77,7 @@
                         <asp:GridView ID="GridView1" runat="server" Style="margin-left: auto; margin-right: auto; text-align: center; width: 100%"
                             AutoGenerateColumns="false"
                             AllowPaging="true"
-                            DataKeyNames="ST_ID"
+                            DataKeyNames="STAFFTYPE_ID"
                             OnRowEditing="modEditCommand"
                             OnRowCancelingEdit="modCancelCommand"
                             OnRowUpdating="modUpdateCommand"
@@ -85,20 +85,20 @@
                             OnRowDataBound="GridView1_RowDataBound"
                             OnPageIndexChanging="myGridViewSTAFFTYPE_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                             <Columns>
-                                <asp:TemplateField HeaderText="รหัสประเภทตำแหน่ง" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="รหัสประเภทข้าราชการ" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblStaffIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ST_ID") %>'></asp:Label>
+                                        <asp:Label ID="lblStaffTypeIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_ID") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtStaffIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ST_ID") %>' Enabled="False"></asp:TextBox>
+                                        <asp:TextBox ID="txtStaffTypeIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_ID") %>' Enabled="False"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ชื่อประเภทตำแหน่ง" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="ชื่อประเภทข้าราชการ" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblStaffNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ST_NAME") %>'></asp:Label>
+                                        <asp:Label ID="lblStaffTypeNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_NAME") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtStaffNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.ST_NAME") %>'></asp:TextBox>
+                                        <asp:TextBox ID="txtStaffTypeNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STAFFTYPE_NAME") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />

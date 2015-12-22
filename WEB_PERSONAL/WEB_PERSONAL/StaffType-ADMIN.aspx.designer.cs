@@ -22,31 +22,31 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// txtSearchStaffID control.
+        /// txtSearchStaffTypeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchStaffID;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchStaffTypeID;
         
         /// <summary>
-        /// txtSearchStaffName control.
+        /// txtSearchStaffTypeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchStaffName;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchStaffTypeName;
         
         /// <summary>
-        /// btnSearchStaff control.
+        /// btnSearchStaffType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchStaff;
+        protected global::System.Web.UI.WebControls.Button btnSearchStaffType;
         
         /// <summary>
         /// btnSearchRefresh control.
@@ -67,40 +67,40 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// txtInsertStaffID control.
+        /// txtInsertStaffTypeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertStaffID;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertStaffTypeID;
         
         /// <summary>
-        /// txtInsertStaffName control.
+        /// txtInsertStaffTypeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertStaffName;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertStaffTypeName;
         
         /// <summary>
-        /// btnSubmitStaff control.
+        /// btnSubmitStaffType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmitStaff;
+        protected global::System.Web.UI.WebControls.Button btnSubmitStaffType;
         
         /// <summary>
-        /// btnCancelStaff control.
+        /// btnCancelStaffType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelStaff;
+        protected global::System.Web.UI.WebControls.Button btnCancelStaffType;
         
         /// <summary>
         /// ScriptManager1 control.

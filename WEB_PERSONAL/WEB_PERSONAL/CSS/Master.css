@@ -645,7 +645,7 @@ home_button:active {
 }
 .master_header_under_insig span, .master_header_under_insig a {
     padding: 0 20px;
-    width: 210px;
+    width: 290px;
 }
 
 .master_header_under img {
@@ -1300,12 +1300,12 @@ ault_page_header {
     color: #000000;
     margin-right: 20px;
     margin-bottom: 20px;
-    background-color: #e8e8e8;
+    background-color: #f0f0f0;
     /*transition: opacity ease 0.25s;*/
     box-shadow: #808080 2px 2px 2px;
-    background-image: url(../Image/white1.png);
+    /*background-image: url(../Image/white1.png);
     background-size: cover;
-    background-position: center;
+    background-position: center;*/
 }
 .master_clean_div_sec_title {
     font-weight: bold;
@@ -1348,6 +1348,7 @@ ault_page_header {
     padding: 1px 10px;
     border: 1px solid #000000;
     background-color: rgba(240,240,240,0.5);
+    background-color: #fcfcfc;
 }
 .master_clean_textbox:disabled {
     border: 1px solid #c0c0c0;
@@ -1359,6 +1360,7 @@ ault_page_header {
     padding: 1px 10px;
     border: 1px solid #000000;
     background-color: rgba(240,240,240,0.5);
+    background-color: #fcfcfc;
 }
 .master_clean_table_div_sec {
     border-collapse: collapse;

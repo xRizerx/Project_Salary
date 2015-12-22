@@ -456,7 +456,9 @@
                 </div>
             </div>
 
-            <!-- กรอบหวะข้อ และ เนื้อหา ส่วนที่ 2-->
+            <asp:CheckBox ID="CheckBox6" runat="server" Text="กรณีขอครั้งแรก / เปลี่ยนชื่อ" AutoPostBack="True" OnCheckedChanged="CheckBox6_CheckedChanged" />
+            <div id="Other" runat="server">
+                 <!-- กรอบหวะข้อ และ เนื้อหา ส่วนที่ 2-->
             <div class="master_default_div_sec" id="TUUbg2">
                 <div class="master_default_div_sec_header">
                     <asp:Label ID="Label1" runat="server" Text="หากมีการเปลี่ยนแปลงคำนำหน้าชื่อ/ชื่อ/นามสกุล ให้ระบุคำนำหน้าชื่อ/ชื่อ/นามสกุล เดิมด้วย"></asp:Label>
@@ -679,13 +681,16 @@
                         <asp:Button ID="Button3" runat="server" CssClass="master_default_textbox" Text="พิมพ์" Width="110px" />
                     </td>
                     <td class="auto-style58">
-                        <asp:Button ID="Button4" runat="server" Text="Button" Width="110px" />
+                        <asp:Button ID="Button4" runat="server" Text="บันทึก" Width="110px" CssClass="master_default_textbox" />
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
+            </div>
+
+           
         </asp:Panel>
     </asp:Panel>
 </asp:Content>

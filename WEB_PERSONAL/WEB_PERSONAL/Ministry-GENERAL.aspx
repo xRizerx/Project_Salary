@@ -52,7 +52,7 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: left; width: 85px"></td>
+                            <td style="text-align: left; width: 98px"></td>
                             <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสกระทรวง :</td>
                             <td style="text-align: left; width: 120px;">
                                 <asp:TextBox ID="txtInsertMinistryID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
