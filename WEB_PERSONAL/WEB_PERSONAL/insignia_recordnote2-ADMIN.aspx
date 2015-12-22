@@ -37,7 +37,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchInsig2">
+<asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" BorderColor="Aqua" DefaultButton="btnSearchInsig2">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div>
         <fieldset>
@@ -53,7 +53,7 @@
         </fieldset>
     </div>
       </asp:Panel>
-<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitInsig2">
+<asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White"  BorderColor="Aqua" DefaultButton="btnSubmitInsig2">
     <div>
         <fieldset>
             <legend>วัน/เดือน/ปี, ตำแหน่ง, ระดับ, ได้รับ ชั้น/รายการ</legend>

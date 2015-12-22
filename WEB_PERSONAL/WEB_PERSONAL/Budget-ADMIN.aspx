@@ -12,7 +12,7 @@
             background-color: rgba(255,255,255,0.6);
             border-radius: 5px;
         }
-
+         
         body {
             background-image: url("Image/444.png");
         }
