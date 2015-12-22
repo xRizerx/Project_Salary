@@ -9,15 +9,15 @@ using System.Web.UI.WebControls;
 
 namespace WEB_PERSONAL
 {
-    public partial class SubStaffType_ADMIN : System.Web.UI.Page
+    public partial class GradLev_ADMIN : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 BindData();
-                txtSearchSubStaffTypeID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
-                txtInsertSubStaffTypeID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtSearchGradLevID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtInsertGradLevID.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
 
@@ -26,21 +26,21 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["SUBSTAFFTYPE"];
+            return (DataTable)ViewState["GRADLEV"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["SUBSTAFFTYPE"] = data;
+            ViewState["GRADLEV"] = data;
         }
 
         #endregion
 
         void BindData()
         {
-            ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType("", "");
+            ClassGradLev gl = new ClassGradLev();
+            DataTable dt = gl.GetGradLev("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -48,8 +48,8 @@ namespace WEB_PERSONAL
 
         void BindData1()
         {
-            ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType(txtSearchSubStaffTypeID.Text, txtSearchSubStaffTypeName.Text);
+            ClassGradLev gl = new ClassGradLev();
+            DataTable dt = gl.GetGradLevSearch(txtSearchGradLevID.Text, txtSearchGradLevName.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -57,38 +57,38 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
-            txtSearchSubStaffTypeID.Text = "";
-            txtSearchSubStaffTypeName.Text = "";
-            txtInsertSubStaffTypeID.Text = "";
-            txtInsertSubStaffTypeName.Text = "";
+            txtSearchGradLevID.Text = "";
+            txtSearchGradLevName.Text = "";
+            txtInsertGradLevID.Text = "";
+            txtInsertGradLevName.Text = "";
         }
 
-        protected void btnSubmitSubStaffType_Click(object sender, EventArgs e)
+        protected void btnSubmitGradLev_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtInsertSubStaffTypeID.Text))
+            if (string.IsNullOrEmpty(txtInsertGradLevID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสประเภทบุคลากรย่อย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสระดับการศึกษาที่จบการศึกษาสูงสุด')", true);
                 return;
             }
-            if (string.IsNullOrEmpty(txtInsertSubStaffTypeName.Text))
+            if (string.IsNullOrEmpty(txtInsertGradLevName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อประเภทบุคลากรย่อย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อระดับการศึกษาที่จบการศึกษาสูงสุด')", true);
                 return;
             }
-            ClassSubStaffType sst = new ClassSubStaffType();
-            sst.SUBSTAFFTYPE_ID = Convert.ToInt32(txtInsertSubStaffTypeID.Text);
-            sst.SUBSTAFFTYPE_NAME = txtInsertSubStaffTypeName.Text;
+            ClassGradLev gl = new ClassGradLev();
+            gl.GRAD_LEV_ID = txtInsertGradLevID.Text;
+            gl.GRAD_LEV_NAME = txtInsertGradLevName.Text;
 
-            if (sst.CheckUseSubStaffTypeID())
+            if (gl.CheckUseGradLevID())
             {
-                sst.InsertSubStaffType();
+                gl.InsertGradLev();
                 BindData();
                 ClearData();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสประเภทบุคลากรย่อยนี้ อยู่ในระบบแล้ว !')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสระดับการศึกษาที่จบการศึกษาสูงสุดนี้ อยู่ในระบบแล้ว !')", true);
             }
         }
 
@@ -104,10 +104,10 @@ namespace WEB_PERSONAL
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
-            int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            ClassSubStaffType sst = new ClassSubStaffType();
-            sst.SUBSTAFFTYPE_ID = id;
-            sst.DeleteSubStaffType();
+            string id = GridView1.DataKeys[e.RowIndex].Value.ToString();
+            ClassGradLev gl = new ClassGradLev();
+            gl.GRAD_LEV_ID = id;
+            gl.DeleteGradLev();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
@@ -115,18 +115,16 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
+            TextBox txtGradLevIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtGradLevIDEdit");
+            TextBox txtGradLevNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtGradLevNameEdit");
 
-            TextBox txtSubStaffTypeIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffTypeIDEdit");
-            TextBox txtSubStaffTypeNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtSubStaffTypeNameEdit");
+            ClassGradLev gl = new ClassGradLev(txtGradLevIDEdit.Text
+                , txtGradLevNameEdit.Text);
 
-            ClassSubStaffType sst = new ClassSubStaffType(Convert.ToInt32(txtSubStaffTypeIDEdit.Text), txtSubStaffTypeNameEdit.Text);
-
-            sst.UpdateSubStaffType();
+            gl.UpdateGradLev();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData1();
-
-
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -134,43 +132,43 @@ namespace WEB_PERSONAL
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
-                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "SUBSTAFFTYPE_NAME") + " ใช่ไหม ?');");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "GRAD_LEV_NAME") + " ใช่ไหม ?');");
 
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {
-                    TextBox txt = (TextBox)e.Row.FindControl("txtSubStaffTypeIDEdit");
+                    TextBox txt = (TextBox)e.Row.FindControl("txtGradLevIDEdit");
                     txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 }
             }
         }
-        protected void myGridViewSubStaffType_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void myGridViewGradLev_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataSource = GetViewState();
             GridView1.DataBind();
         }
 
-        protected void btnCancelSubStaffType_Click(object sender, EventArgs e)
+        protected void btnCancelGradLev_Click(object sender, EventArgs e)
         {
             ClearData();
-            ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType("", "");
+            ClassGradLev gl = new ClassGradLev();
+            DataTable dt = gl.GetGradLev("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
         }
 
-        protected void SearchSubStaffType_Click(object sender, EventArgs e)
+        protected void btnSearchGradLev_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSearchSubStaffTypeID.Text) && string.IsNullOrEmpty(txtSearchSubStaffTypeName.Text))
+            if (string.IsNullOrEmpty(txtSearchGradLevID.Text) && string.IsNullOrEmpty(txtSearchGradLevName.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
                 return;
             }
             else
             {
-                ClassSubStaffType sst = new ClassSubStaffType();
-                DataTable dt = sst.GetSubStaffTypeSearch(txtSearchSubStaffTypeID.Text, txtSearchSubStaffTypeName.Text);
+                ClassGradLev gl = new ClassGradLev();
+                DataTable dt = gl.GetGradLevSearch(txtSearchGradLevID.Text, txtSearchGradLevName.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);
@@ -180,8 +178,8 @@ namespace WEB_PERSONAL
         protected void btnSearchRefresh_Click(object sender, EventArgs e)
         {
             ClearData();
-            ClassSubStaffType sst = new ClassSubStaffType();
-            DataTable dt = sst.GetSubStaffType("", "");
+            ClassGradLev gl = new ClassGradLev();
+            DataTable dt = gl.GetGradLev("", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

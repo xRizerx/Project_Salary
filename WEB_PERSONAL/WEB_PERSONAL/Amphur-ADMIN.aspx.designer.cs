@@ -10,7 +10,7 @@
 namespace WEB_PERSONAL {
     
     
-    public partial class TeachISCED_ADMIN {
+    public partial class Amphur_ADMIN {
         
         /// <summary>
         /// Panel1 control.
@@ -22,49 +22,49 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// txtSearchISCED_ID control.
+        /// txtSearchAmphurID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchISCED_ID;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchAmphurID;
         
         /// <summary>
-        /// txtSearchISCED_ID_OLD control.
+        /// txtSearchAmphurTH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchISCED_ID_OLD;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchAmphurTH;
         
         /// <summary>
-        /// btnSearchTeachISCED control.
+        /// txtSearchAmphurEN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchTeachISCED;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchAmphurEN;
         
         /// <summary>
-        /// txtSearchISCED_NAME_TH control.
+        /// txtSearchProvinceID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchISCED_NAME_TH;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchProvinceID;
         
         /// <summary>
-        /// txtSearchISCED_NAME_ENG control.
+        /// btnSearchAmphur control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchISCED_NAME_ENG;
+        protected global::System.Web.UI.WebControls.Button btnSearchAmphur;
         
         /// <summary>
         /// btnSearchRefresh control.
@@ -85,58 +85,76 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// txtInsertISCED_ID control.
+        /// txtInsertAmphurID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertISCED_ID;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertAmphurID;
         
         /// <summary>
-        /// txtInsertISCED_ID_OLD control.
+        /// txtInsertAmphurTH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertISCED_ID_OLD;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertAmphurTH;
         
         /// <summary>
-        /// btnSubmitTeachISCED control.
+        /// txtInsertAmphurEN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmitTeachISCED;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertAmphurEN;
         
         /// <summary>
-        /// txtInsertISCED_NAME_TH control.
+        /// txtInsertProvinceID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertISCED_NAME_TH;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertProvinceID;
         
         /// <summary>
-        /// txtInsertISCED_NAME_ENG control.
+        /// btnSubmitAmphur control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertISCED_NAME_ENG;
+        protected global::System.Web.UI.WebControls.Button btnSubmitAmphur;
         
         /// <summary>
-        /// btnCancelTeachISCED control.
+        /// btnCancelAmphur control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelTeachISCED;
+        protected global::System.Web.UI.WebControls.Button btnCancelAmphur;
+        
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// GridView1 control.

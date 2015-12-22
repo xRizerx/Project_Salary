@@ -16,6 +16,8 @@ namespace WEB_PERSONAL
             if (!IsPostBack)
             {
                 BindData();
+                txtSearchISCED_ID_OLD.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtInsertISCED_ID_OLD.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
             }
         }
 
@@ -38,7 +40,16 @@ namespace WEB_PERSONAL
         void BindData()
         {
             ClassTeachISCED ti = new ClassTeachISCED();
-            DataTable dt = ti.GetTeachISCED("", "", "", "", "", "");
+            DataTable dt = ti.GetTeachISCED("", "", "", "");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            SetViewState(dt);
+        }
+
+        void BindData1()
+        {
+            ClassTeachISCED ti = new ClassTeachISCED();
+            DataTable dt = ti.GetTeachISCEDSearch(txtSearchISCED_ID.Text, txtSearchISCED_ID_OLD.Text, txtSearchISCED_NAME_TH.Text, txtSearchISCED_NAME_ENG.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -50,14 +61,10 @@ namespace WEB_PERSONAL
             txtSearchISCED_ID_OLD.Text = "";
             txtSearchISCED_NAME_TH.Text = "";
             txtSearchISCED_NAME_ENG.Text = "";
-            txtSearchGROUP_ISCED_ID.Text = "";
-            txtSearchGROUP_ISCED_NAME.Text = "";
             txtInsertISCED_ID.Text = "";
             txtInsertISCED_ID_OLD.Text = "";
             txtInsertISCED_NAME_TH.Text = "";
             txtInsertISCED_NAME_ENG.Text = "";
-            txtInsertGROUP_ISCED_ID.Text = "";
-            txtInsertGROUP_ISCED_NAME.Text = "";
         }
 
         protected void btnSubmitTeachISCED_Click(object sender, EventArgs e)
@@ -84,23 +91,11 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อกลุ่มสาขาวิชาที่สอนภาษาอังกฤษ')", true);
                 return;
             }
-            if (string.IsNullOrEmpty(txtInsertGROUP_ISCED_ID.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสหมวดสาขาวิชาที่สอน')", true);
-                return;
-            }
-            if (string.IsNullOrEmpty(txtInsertGROUP_ISCED_NAME.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อหมวดสาขาวิชาที่สอน')", true);
-                return;
-            }
             ClassTeachISCED ti = new ClassTeachISCED();
-            ti.ISCED_ID = txtInsertISCED_ID.Text;
-            ti.ISCED_ID_OLD = Convert.ToInt32(txtInsertISCED_ID_OLD.Text);
-            ti.ISCED_NAME_TH = txtInsertISCED_NAME_TH.Text;
-            ti.ISCED_NAME_ENG = txtInsertISCED_NAME_ENG.Text;
-            ti.GROUP_ISCED_ID = Convert.ToInt32(txtInsertGROUP_ISCED_ID.Text);
-            ti.GROUP_ISCED_NAME = txtInsertGROUP_ISCED_NAME.Text;
+            ti.TEACH_ISCED_ID = txtInsertISCED_ID.Text;
+            ti.TEACH_ISCED_ID_OLD = Convert.ToInt32(txtInsertISCED_ID_OLD.Text);
+            ti.TEACH_ISCED_NAME_TH = txtInsertISCED_NAME_TH.Text;
+            ti.TEACH_ISCED_NAME_ENG = txtInsertISCED_NAME_ENG.Text;
            
             ti.InsertTeachISCED();
             BindData();
@@ -112,51 +107,58 @@ namespace WEB_PERSONAL
         protected void modEditCommand(Object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            BindData();
+            BindData1();
         }
         protected void modCancelCommand(Object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassTeachISCED ti = new ClassTeachISCED();
-            ti.ISCED_SEQ = id;
+            ti.ID = id;
             ti.DeleteTeachISCED();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
             
-            TextBox txtInsertISCED_ID = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtInsertISCED_ID");
-            TextBox txtInsertISCED_ID_OLD = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtInsertISCED_ID_OLD");
-            TextBox txtInsertISCED_NAME_TH = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtInsertISCED_NAME_TH");
-            TextBox txtInsertISCED_NAME_ENG = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtInsertISCED_NAME_ENG");
-            TextBox txtInsertGROUP_ISCED_ID = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtInsertGROUP_ISCED_ID");
-            TextBox txtInsertGROUP_ISCED_NAME = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtInsertGROUP_ISCED_NAME");
-            Label ISCED_SEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblTeachISCEDseqEdit");
+            TextBox txtTeachISCEDIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTeachISCEDIDEdit");
+            TextBox txtTeachISCEDidOldEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTeachISCEDidOldEdit");
+            TextBox txtTeachISCEDThaiEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTeachISCEDThaiEdit");
+            TextBox txtTeachISCEDEnglishEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtTeachISCEDEnglishEdit");
+            Label lblTeachISCEDseqEdit = (Label)GridView1.Rows[e.RowIndex].FindControl("lblTeachISCEDseqEdit");
 
-            ClassTeachISCED ti = new ClassTeachISCED(txtInsertISCED_ID.Text
-                , Convert.ToInt32(txtInsertISCED_ID_OLD.Text)
-                , txtInsertISCED_NAME_TH.Text
-                , txtInsertISCED_NAME_ENG.Text
-                , Convert.ToInt32(txtInsertGROUP_ISCED_ID.Text)
-                , txtInsertGROUP_ISCED_NAME.Text
-                , Convert.ToInt32(ISCED_SEQ.Text));
+            ClassTeachISCED ti = new ClassTeachISCED(txtTeachISCEDIDEdit.Text
+                , Convert.ToInt32(txtTeachISCEDidOldEdit.Text)
+                , txtTeachISCEDThaiEdit.Text
+                , txtTeachISCEDEnglishEdit.Text
+                , Convert.ToInt32(lblTeachISCEDseqEdit.Text));
 
             ti.UpdateTeachISCED();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
-            BindData();
+            BindData1();
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            DataRowView drv = e.Row.DataItem as DataRowView;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "TEACH_ISCED_NAME_TH") + " ใช่ไหม ?');");
 
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
+                    TextBox txt = (TextBox)e.Row.FindControl("txtTeachISCEDidOldEdit");
+                    txt.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                }
+            }
         }
         protected void myGridViewTeachISCED_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -169,7 +171,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassTeachISCED ti = new ClassTeachISCED();
-            DataTable dt = ti.GetTeachISCED("", "", "", "", "", "");
+            DataTable dt = ti.GetTeachISCED("", "", "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -178,7 +180,7 @@ namespace WEB_PERSONAL
         protected void btnSearchTeachISCED_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(txtSearchISCED_ID.Text) && string.IsNullOrEmpty(txtSearchISCED_ID_OLD.Text) && string.IsNullOrEmpty(txtSearchISCED_NAME_TH.Text) && string.IsNullOrEmpty(txtSearchISCED_NAME_ENG.Text) && string.IsNullOrEmpty(txtSearchGROUP_ISCED_ID.Text) && string.IsNullOrEmpty(txtSearchGROUP_ISCED_NAME.Text))
+            if (string.IsNullOrEmpty(txtSearchISCED_ID.Text) && string.IsNullOrEmpty(txtSearchISCED_ID_OLD.Text) && string.IsNullOrEmpty(txtSearchISCED_NAME_TH.Text) && string.IsNullOrEmpty(txtSearchISCED_NAME_ENG.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
 
@@ -187,7 +189,7 @@ namespace WEB_PERSONAL
             else
             {
                 ClassTeachISCED ti = new ClassTeachISCED();
-                DataTable dt = ti.GetTeachISCED(txtSearchISCED_ID.Text, txtSearchISCED_ID_OLD.Text, txtSearchISCED_NAME_TH.Text, txtSearchISCED_NAME_ENG.Text, txtSearchGROUP_ISCED_ID.Text, txtSearchGROUP_ISCED_NAME.Text);
+                DataTable dt = ti.GetTeachISCEDSearch(txtSearchISCED_ID.Text, txtSearchISCED_ID_OLD.Text, txtSearchISCED_NAME_TH.Text, txtSearchISCED_NAME_ENG.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);
@@ -198,7 +200,7 @@ namespace WEB_PERSONAL
         {
             ClearData();
             ClassTeachISCED ti = new ClassTeachISCED();
-            DataTable dt = ti.GetTeachISCED("","","","","","");
+            DataTable dt = ti.GetTeachISCED("","","","");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);

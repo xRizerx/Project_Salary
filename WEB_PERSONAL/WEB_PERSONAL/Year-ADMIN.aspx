@@ -37,7 +37,7 @@
             <fieldset>
                 <legend>Search</legend>
                 <div>
-                    ปีการศึกษา :&nbsp<asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
+                    ปีพุทธศักราช :&nbsp;<asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
                     <asp:Button ID="btnSearchYear" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchYear_Click" />
                     <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
                 </div>
@@ -52,7 +52,7 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 260px"></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">ปีการศึกษา :</td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">ปีพุทธศักราช :</td>
                             <td style="text-align: left; width: 120px;">
                                 <asp:TextBox ID="txtYearName" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
                             <td style="text-align: left;">
@@ -81,20 +81,15 @@
                             OnRowDataBound="GridView1_RowDataBound"
                             OnPageIndexChanging="myGridViewYEAR_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                             <Columns>
-                                <asp:TemplateField HeaderText="ID" Visible="false">
+                                <asp:TemplateField HeaderText="ปีพุทธศักราช" ControlStyle-Width="820" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblYearID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Year_ID") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ปีการศึกษา" ControlStyle-Width="820" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblYearNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_NAME") %>'></asp:Label>
+                                        <asp:Label ID="lblYearNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_ID") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtYearNameEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_NAME") %>'></asp:TextBox>
+                                        <asp:TextBox ID="txtYearNameEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_ID") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
+                                <asp:CommandField ShowEditButton="False" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText=" " HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
                                 <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="DeleteButton1" runat="server" CausesValidation="false" CommandName="Delete" Text="Delete"></asp:LinkButton>
@@ -110,4 +105,5 @@
             </fieldset>
         </div>
     </asp:Panel>
+     <!--<asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />-->
 </asp:Content>

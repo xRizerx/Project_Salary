@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SubStaffType-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.SubStaffType_ADMIN" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="GradLev-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.GradLev_ADMIN" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .divpan {
@@ -32,37 +31,37 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchSubStaffType">
+    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchGradLev">
         <div>
-            <fieldset>
+            <fieldset> 
                 <legend>Search</legend>
                 <div>
-                    รหัสประเภทบุคลากรย่อย :&nbsp<asp:TextBox ID="txtSearchSubStaffTypeID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
-                    ชื่อประเภทบุคลากรย่อย :&nbsp<asp:TextBox ID="txtSearchSubStaffTypeName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
-                    <asp:Button ID="btnSearchSubStaffType" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="SearchSubStaffType_Click" />
+                    รหัสระดับการศึกษาที่จบการศึกษาสูงสุด :&nbsp<asp:TextBox ID="txtSearchGradLevID" runat="server" CssClass="tb5" Width="130px" MaxLength="2"></asp:TextBox>
+                    ชื่อระดับการศึกษาที่จบการศึกษาสูงสุด :&nbsp<asp:TextBox ID="txtSearchGradLevName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                    <asp:Button ID="btnSearchGradLev" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchGradLev_Click" />
                     <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
                 </div>
             </fieldset>
         </div>
     </asp:Panel>
-    <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitSubStaffType">
+    <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitGradLev">
         <div>
             <fieldset>
                 <legend>Insert</legend>
-                <div>
+                <div>  
                     <table>
                         <tr>
-                            <td style="text-align: left; width: 35px"></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทบุคลากรย่อย :</td>
-                            <td style="text-align: left; width: 120px;">
-                                <asp:TextBox ID="txtInsertSubStaffTypeID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทบุคลากรย่อย :</td>
-                            <td style="text-align: left; width: 120px;">
-                                <asp:TextBox ID="txtInsertSubStaffTypeName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
+                            <td style="text-align: left; width: 10px"></td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสระดับการศึกษาที่จบการศึกษาสูงสุด :</td>
+                            <td style="text-align: left; width: 20px;">
+                                <asp:TextBox ID="txtInsertGradLevID" Width="130px" runat="server" CssClass="tb5" MaxLength="2"></asp:TextBox></td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อระดับการศึกษาที่จบการศึกษาสูงสุด :</td>
+                            <td style="text-align: left; width: 20px;">
+                                <asp:TextBox ID="txtInsertGradLevName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnSubmitSubStaffType" Text="OK" runat="server" CssClass="master_OAT_button" OnClick="btnSubmitSubStaffType_Click" /></td>
+                                <asp:Button ID="btnSubmitGradLev" Text="OK" runat="server" CssClass="master_OAT_button" OnClick="btnSubmitGradLev_Click" /></td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnCancelSubStaffType" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick="btnCancelSubStaffType_Click" /></td>
+                                <asp:Button ID="btnCancelGradLev" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick="btnCancelGradLev_Click" /></td>
                         </tr>
                     </table>
                 </div>
@@ -77,28 +76,28 @@
                         <asp:GridView ID="GridView1" runat="server" Style="margin-left: auto; margin-right: auto; text-align: center; width: 100%"
                             AutoGenerateColumns="false"
                             AllowPaging="true"
-                            DataKeyNames="SUBSTAFFTYPE_ID"
+                            DataKeyNames="GRAD_LEV_ID"
                             OnRowEditing="modEditCommand"
                             OnRowCancelingEdit="modCancelCommand"
                             OnRowUpdating="modUpdateCommand"
                             OnRowDeleting="modDeleteCommand"
                             OnRowDataBound="GridView1_RowDataBound"
-                            OnPageIndexChanging="myGridViewSubStaffType_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
+                            OnPageIndexChanging="myGridViewGradLev_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                             <Columns>
-                                <asp:TemplateField HeaderText="รหัสประเภทบุคลากรย่อย" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="รหัสระดับการศึกษาที่จบการศึกษาสูงสุด" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblSubStaffTypeIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_ID") %>'></asp:Label>
+                                        <asp:Label ID="lblGradLevIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_LEV_ID") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtSubStaffTypeIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_ID") %>' Enabled="False"></asp:TextBox>
+                                        <asp:TextBox ID="txtGradLevIDEdit" MaxLength="2" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_LEV_ID") %>' Enabled="False"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ชื่อประเภทบุคลากรย่อย" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblSubStaffTypeNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_NAME") %>'></asp:Label>
+                                <asp:TemplateField HeaderText="ชื่อระดับการศึกษาที่จบการศึกษาสูงสุด" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                      <ItemTemplate>
+                                        <asp:Label ID="lblGradLevNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_LEV_NAME") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtSubStaffTypeNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_NAME") %>'></asp:TextBox>
+                                        <asp:TextBox ID="txtGradLevNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_LEV_NAME") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />

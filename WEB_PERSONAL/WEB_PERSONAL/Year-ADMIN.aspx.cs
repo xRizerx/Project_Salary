@@ -65,11 +65,11 @@ namespace WEB_PERSONAL
         {
             if (string.IsNullOrEmpty(txtYearName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ปีการศึกษา')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ปีพุทธศักราช')", true);
                 return;
             }
             ClassYear y = new ClassYear();
-            y.Year_Name = txtYearName.Text;
+            y.YEAR_ID = Convert.ToInt32(txtYearName.Text);
 
             if (y.CheckUseYearName())
             {
@@ -80,7 +80,7 @@ namespace WEB_PERSONAL
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีปีการศึกษานี้ อยู่ในระบบแล้ว !')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีปีพุทธศักราชนี้ อยู่ในระบบแล้ว !')", true);
             }
         }
 
@@ -98,7 +98,7 @@ namespace WEB_PERSONAL
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             ClassYear y = new ClassYear();
-            y.Year_ID = id;
+            y.YEAR_ID = id;
             y.DeleteYear();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
@@ -107,12 +107,9 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblYearID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblYearID");
-
             TextBox txtYearNameEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtYearNameEdit");
 
-            ClassYear y = new ClassYear(Convert.ToInt32(lblYearID.Text)
-                , txtYearNameEdit.Text);
+            ClassYear y = new ClassYear(Convert.ToInt32(txtYearNameEdit.Text));
 
             y.UpdateYear();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
@@ -125,7 +122,7 @@ namespace WEB_PERSONAL
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
-                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบปีการศึกษา " + DataBinder.Eval(e.Row.DataItem, "YEAR_NAME") + " ใช่ไหม ?');");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบปีพุทธศักราช " + DataBinder.Eval(e.Row.DataItem, "YEAR_ID") + " ใช่ไหม ?');");
 
                 if ((e.Row.RowState & DataControlRowState.Edit) > 0)
                 {

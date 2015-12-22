@@ -10,7 +10,7 @@
 namespace WEB_PERSONAL {
     
     
-    public partial class TeachISCED_ADMIN {
+    public partial class GradISCED_ADMIN {
         
         /// <summary>
         /// Panel1 control.
@@ -22,49 +22,40 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// txtSearchISCED_ID control.
+        /// txtSearchGradISCEDID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchISCED_ID;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchGradISCEDID;
         
         /// <summary>
-        /// txtSearchISCED_ID_OLD control.
+        /// txtSearchGradISCEDNameTh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchISCED_ID_OLD;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchGradISCEDNameTh;
         
         /// <summary>
-        /// btnSearchTeachISCED control.
+        /// txtSearchGradISCEDNameEng control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchTeachISCED;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchGradISCEDNameEng;
         
         /// <summary>
-        /// txtSearchISCED_NAME_TH control.
+        /// btnSearchGradISCED control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchISCED_NAME_TH;
-        
-        /// <summary>
-        /// txtSearchISCED_NAME_ENG control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchISCED_NAME_ENG;
+        protected global::System.Web.UI.WebControls.Button btnSearchGradISCED;
         
         /// <summary>
         /// btnSearchRefresh control.
@@ -85,58 +76,67 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
-        /// txtInsertISCED_ID control.
+        /// txtInsertGradISCEDID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertISCED_ID;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertGradISCEDID;
         
         /// <summary>
-        /// txtInsertISCED_ID_OLD control.
+        /// txtInsertGradISCEDNameTh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertISCED_ID_OLD;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertGradISCEDNameTh;
         
         /// <summary>
-        /// btnSubmitTeachISCED control.
+        /// txtInsertGradISCEDNameEng control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmitTeachISCED;
+        protected global::System.Web.UI.WebControls.TextBox txtInsertGradISCEDNameEng;
         
         /// <summary>
-        /// txtInsertISCED_NAME_TH control.
+        /// btnSubmitGradISCED control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertISCED_NAME_TH;
+        protected global::System.Web.UI.WebControls.Button btnSubmitGradISCED;
         
         /// <summary>
-        /// txtInsertISCED_NAME_ENG control.
+        /// btnCancelGradISCED control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInsertISCED_NAME_ENG;
+        protected global::System.Web.UI.WebControls.Button btnCancelGradISCED;
         
         /// <summary>
-        /// btnCancelTeachISCED control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelTeachISCED;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// GridView1 control.

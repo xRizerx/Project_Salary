@@ -94,6 +94,8 @@
     <Content Include="About.aspx" />
     <Content Include="Access.aspx" />
     <Content Include="AdminPosition-ADMIN.aspx" />
+    <Content Include="Amphur-ADMIN.aspx" />
+    <Content Include="Branch-ADMIN.aspx" />
     <Content Include="Budget-ADMIN.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -149,7 +151,12 @@
     <Content Include="CSS\Salary.css" />
     <Content Include="CSS\Study.css" />
     <Content Include="CSS\UpdateHistory.css" />
+    <Content Include="District-ADMIN.aspx" />
     <Content Include="Entities\Virus.mp3" />
+    <Content Include="GradCountry-ADMIN.aspx" />
+    <Content Include="GradISCED-ADMIN.aspx" />
+    <Content Include="GradLev-ADMIN.aspx" />
+    <Content Include="GradProgram-ADMIN.aspx" />
     <Content Include="Image\anime_p1.png" />
     <Content Include="Image\anime_p2.png" />
     <Content Include="Image\Bar\header_bar.png" />
@@ -184,6 +191,7 @@
     <Content Include="insignia_from_add.aspx" />
     <Content Include="insignia_from_view.aspx" />
     <Content Include="insignia_maintence.aspx" />
+    <Content Include="insignia_print.aspx" />
     <Content Include="insignia_recordnote2-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.css" />
     <Content Include="Default.aspx" />
@@ -319,9 +327,11 @@
     <Content Include="Position-ADMIN.aspx" />
     <Content Include="PositionWork-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Province-ADMIN.aspx" />
     <Content Include="SalarybyID-Edit-Permanent.aspx" />
     <Content Include="Salary_Basesalary_Admin.aspx" />
     <Content Include="Profile.aspx" />
+    <Content Include="Staff-ADMIN.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
     <Content Include="Study-Report1.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
@@ -397,6 +407,20 @@
     <Compile Include="AdminPosition-ADMIN.aspx.designer.cs">
       <DependentUpon>AdminPosition-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Amphur-ADMIN.aspx.cs">
+      <DependentUpon>Amphur-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Amphur-ADMIN.aspx.designer.cs">
+      <DependentUpon>Amphur-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Branch-ADMIN.aspx.cs">
+      <DependentUpon>Branch-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Branch-ADMIN.aspx.designer.cs">
+      <DependentUpon>Branch-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Budget-ADMIN.aspx.cs">
       <DependentUpon>Budget-ADMIN.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -426,6 +450,13 @@
     <Compile Include="Department-ADMIN.aspx.designer.cs">
       <DependentUpon>Department-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="District-ADMIN.aspx.cs">
+      <DependentUpon>District-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="District-ADMIN.aspx.designer.cs">
+      <DependentUpon>District-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Tuu.cs" />
     <Compile Include="Entities\Ministry.cs" />
     <Compile Include="Entities\Personnel.cs" />
@@ -446,12 +477,33 @@
     <Compile Include="Gender-ADMIN.aspx.designer.cs">
       <DependentUpon>Gender-ADMIN.aspx</DependentUpon>
     </Compile>
-    <Compile Include="insignia_from_add.aspx.cs">
-      <DependentUpon>insignia_from_add.aspx</DependentUpon>
+    <Compile Include="GradCountry-ADMIN.aspx.cs">
+      <DependentUpon>GradCountry-ADMIN.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="insignia_from_add.aspx.designer.cs">
-      <DependentUpon>insignia_from_add.aspx</DependentUpon>
+    <Compile Include="GradCountry-ADMIN.aspx.designer.cs">
+      <DependentUpon>GradCountry-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GradISCED-ADMIN.aspx.cs">
+      <DependentUpon>GradISCED-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GradISCED-ADMIN.aspx.designer.cs">
+      <DependentUpon>GradISCED-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GradLev-ADMIN.aspx.cs">
+      <DependentUpon>GradLev-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GradLev-ADMIN.aspx.designer.cs">
+      <DependentUpon>GradLev-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GradProgram-ADMIN.aspx.cs">
+      <DependentUpon>GradProgram-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GradProgram-ADMIN.aspx.designer.cs">
+      <DependentUpon>GradProgram-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_from_view.aspx.cs">
       <DependentUpon>insignia_from_view.aspx</DependentUpon>
@@ -466,6 +518,13 @@
     </Compile>
     <Compile Include="insignia_maintence.aspx.designer.cs">
       <DependentUpon>insignia_maintence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="insignia_print.aspx.cs">
+      <DependentUpon>insignia_print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_print.aspx.designer.cs">
+      <DependentUpon>insignia_print.aspx</DependentUpon>
     </Compile>
     <Compile Include="insignia_recordnote2-ADMIN.aspx.cs">
       <DependentUpon>insignia_recordnote2-ADMIN.aspx</DependentUpon>
@@ -612,6 +671,13 @@
     <Compile Include="Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Province-ADMIN.aspx.cs">
+      <DependentUpon>Province-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Province-ADMIN.aspx.designer.cs">
+      <DependentUpon>Province-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Salary-report.aspx.cs">
       <DependentUpon>Salary-report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -674,6 +740,13 @@
     </Compile>
     <Compile Include="SEMINAR-GENERAL.aspx.designer.cs">
       <DependentUpon>SEMINAR-GENERAL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff-ADMIN.aspx.cs">
+      <DependentUpon>Staff-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff-ADMIN.aspx.designer.cs">
+      <DependentUpon>Staff-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="StaffType-ADMIN.aspx.cs">
       <DependentUpon>StaffType-ADMIN.aspx</DependentUpon>

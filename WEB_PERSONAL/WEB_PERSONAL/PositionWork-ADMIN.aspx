@@ -50,9 +50,9 @@
             <fieldset>
                 <legend>Insert</legend>
                 <div>
-                    <table>
+                    <table> 
                         <tr>
-                            <td style="text-align: left; width: 30px"></td>
+                            <td style="text-align: left; width: 45px"></td>
                             <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสตำแหน่งในสายงาน :</td>
                             <td style="text-align: left; width: 120px;">
                                 <asp:TextBox ID="txtInsertPositionWorkID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
