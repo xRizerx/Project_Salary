@@ -414,8 +414,6 @@
                             </ChartAreas>
                         </asp:Chart>
 
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-
                         <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="select leave_type_name, count(tb_leave.leave_type_id) from tb_leave, tb_leave_type where tb_leave.leave_type_id = tb_leave_type.leave_type_id group by leave_type_name"></asp:SqlDataSource>
                     </div>
 
@@ -508,6 +506,19 @@
 
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="auto-style58">
+                                            <asp:Label ID="Label48" runat="server" Text="ลบข้อมูล"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:Panel ID="Panel12" runat="server" DefaultButton="LinkButton20">
+                                                <asp:TextBox ID="TextBox21" runat="server" CssClass="master_clean_textbox" placeHolder="รหัสเอกสาร"></asp:TextBox>
+                                                <asp:LinkButton ID="LinkButton20" runat="server" CssClass="master_clean_button" OnClick="LinkButton20_Click">ลบ</asp:LinkButton>
+                                            </asp:Panel>
+                                                
+
+                                        </td>
+                                    </tr>
                                 </table>
 
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -517,11 +528,12 @@
                                         <asp:AsyncPostBackTrigger ControlID="LinkButton8" EventName="click" />
                                         <asp:AsyncPostBackTrigger ControlID="LinkButton9" EventName="click" />
                                         <asp:AsyncPostBackTrigger ControlID="LinkButton10" EventName="click" />
+                                        <asp:AsyncPostBackTrigger ControlID="LinkButton20" EventName="click" />
                                         <asp:AsyncPostBackTrigger ControlID="DropDownList7" EventName="SelectedIndexChanged" />
                                         <asp:AsyncPostBackTrigger ControlID="DropDownList4" EventName="SelectedIndexChanged" />
                                     </Triggers>
                                     <ContentTemplate>
-                                        <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="LEAVE_ID" ForeColor="#333333" GridLines="None" OnPageIndexChanged="GridView2_PageIndexChanged" OnRowDeleting="GridView2_RowDeleting">
+                                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="LEAVE_ID" ForeColor="#333333" GridLines="None" DataSourceID="SqlDataSource2">
                                             <AlternatingRowStyle BackColor="White" />
                                             <Columns>
 
@@ -537,9 +549,6 @@
                                                 <asp:BoundField DataField="B.PERSON_NAME||''||B.PERSON_LASTNAME" HeaderText="ชื่อผู้อนุมัติ" SortExpression="B.PERSON_NAME||''||B.PERSON_LASTNAME" />
                                                 <asp:BoundField DataField="TO_CHAR(TB_LEAVE.APPROVE_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" HeaderText="วันที่อนุมัติ" SortExpression="TO_CHAR(TB_LEAVE.APPROVE_DATE,'DDMONYYYY','NLS_DATE_LANGUAGE=THAI')" />
                                                 <asp:BoundField DataField="REASON" HeaderText="เหตุผล" SortExpression="REASON" />
-                                                <asp:CommandField HeaderText="ลบ" ControlStyle-CssClass="master_clean_button" DeleteText="ลบ" ShowDeleteButton="true">
-                                                    <ControlStyle CssClass="master_clean_button" />
-                                                </asp:CommandField>
                                             </Columns>
                                             <EditRowStyle BackColor="#2461BF" />
                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -564,6 +573,8 @@
                             </div>
                         </div>
                     </div>
+
+                    
                 </td>
             </tr>
         </table>

@@ -212,6 +212,7 @@ namespace WEB_PERSONAL {
             }*/
             SqlDataSource sds = new SqlDataSource("System.Data.OracleClient", "DATA SOURCE=ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm;", sql);
             sds.DeleteCommand = "DELETE TB_LEAVE WHERE LEAVE_ID = :LEAVE_ID";
+            GridView2.DataSourceID = null;
             GridView2.DataSource = sds;
             GridView2.DataBind();
         }
@@ -452,25 +453,12 @@ namespace WEB_PERSONAL {
             DropDownList7.SelectedIndex = 0;
         }
 
-        protected void GridView2_PageIndexChanged(object sender, EventArgs e) {
-            GridView2.SelectedIndex = -1;
-            Label33.Text = "";
-            TextBox2.Text = "";
-            TextBox3.Text = "";
-            Label31.Text = "";
-            TextBox8.Text = "";
-            Label32.Text = "";
-            TextBox9.Text = "";
-            DropDownList1.SelectedIndex = 0;
-            DropDownList2.SelectedIndex = 0;
-            TextBox5.Text = "";
-            TextBox6.Text = "";
-            TextBox10.Text = "";
-            Label20.Text = "";
-            TextBox15.Text = "";
-        }
-
         protected void LinkButton2_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('3'); });");
+            if (TextBox1.Text == null || TextBox1.Text == "") {
+                Util.Alert(this, "กรุณากรอกข้อมูล");
+                return;
+            }
             using (OracleConnection con = Util.OC()) {
                 using (OracleCommand command = new OracleCommand("INSERT INTO TB_LEAVE_TYPE VALUES(SEQ_LEAVE_TYPE_ID.NEXTVAL, :2)", con)) {
                     command.Parameters.AddWithValue("2", TextBox1.Text);
@@ -478,12 +466,17 @@ namespace WEB_PERSONAL {
                 }
             }
             BindAllGridView();
-            Util.RunScript(this, "$(function () { foggle('3'); });");
+            
         }
 
         protected void LinkButton1_Click1(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('3'); });");
             if (!Person.IsAdmin(Session["login_id"].ToString())) {
                 Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
+                return;
+            }
+            if (TextBox11.Text == null || TextBox11.Text == "") {
+                Util.Alert(this, "กรุณากรอกข้อมูล");
                 return;
             }
             using (OracleConnection con = Util.OC()) {
@@ -493,10 +486,15 @@ namespace WEB_PERSONAL {
                 }
             }
             BindAllGridView();
-            Util.RunScript(this, "$(function () { foggle('3'); });");
+            
         }
 
         protected void LinkButton19_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('3'); });");
+            if (TextBox20.Text == null || TextBox20.Text == "") {
+                Util.Alert(this, "กรุณากรอกข้อมูล");
+                return;
+            }
             if (DropDownList8.SelectedIndex != 0) {
                 using (OracleConnection con = Util.OC()) {
                     using (OracleCommand command = new OracleCommand("UPDATE TB_LEAVE_TYPE SET LEAVE_TYPE_NAME = :2 WHERE LEAVE_TYPE_ID = :3", con)) {
@@ -507,13 +505,14 @@ namespace WEB_PERSONAL {
                 }
             }
             BindAllGridView();
-            Util.RunScript(this, "$(function () { foggle('3'); });");
+            
         }
 
         protected void DropDownList8_SelectedIndexChanged(object sender, EventArgs e) {
             TextBox20.Text = "";
             if (DropDownList8.SelectedIndex != 0)
                 TextBox20.Text = DropDownList8.SelectedItem.Text;
+            Util.RunScript(this, "$(function () { foggle('3'); });");
         }
 
         protected void DropDownList8_DataBound(object sender, EventArgs e) {
@@ -521,15 +520,26 @@ namespace WEB_PERSONAL {
             DropDownList8.SelectedIndex = 0;
         }
 
-        protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e) {
-            if (!Person.IsAdmin(Session["login_id"].ToString())) {
-                e.Cancel = true;
-                Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
-            }
-        }
+
         private void BindAllGridView() {
             GridView2.DataBind();
             GridView3.DataBind();
+        }
+
+        protected void LinkButton20_Click(object sender, EventArgs e) {
+            Util.RunScript(this, "$(function () { foggle('5'); });");
+            if (!Person.IsAdmin(Session["login_id"].ToString())) {
+                Util.Alert(this, "คุณไม่มีสิทธิใช้งานในส่วนนี้");
+                return;
+            }
+            using(OracleConnection con = Util.OC()) {
+                using(OracleCommand com = new OracleCommand("DELETE FROM TB_LEAVE WHERE LEAVE_ID = :1", con)) {
+                    com.Parameters.AddWithValue("1", TextBox21.Text);
+                    com.ExecuteNonQuery();
+                    
+                }
+            }
+            BindAllGridView();
         }
     }
 
