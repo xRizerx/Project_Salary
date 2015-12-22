@@ -480,10 +480,14 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td style="text-align: right; margin-right: 5px;">
-                                
+                                <asp:UpdatePanel ID="UpdateButtonPlus11" runat="server">
+                                    <ContentTemplate>
                                         <asp:Button ID="ButtonPlus11" Text="+" runat="server" Width="36px" CssClass="master_OAT_button" OnClick="ButtonPlus11_Click" />
-                                   
-
+                                        </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="ButtonPlus11" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </td>
                         </tr>
                     </table>
@@ -740,7 +744,7 @@
                             <td style="text-align: left;">
                                 <asp:UpdatePanel ID="UpdatetxtList13" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtList13" runat="server" MaxLength="100" Width="580px" CssClass="tb5"></asp:TextBox>
+                                        <asp:TextBox ID="txtList13" runat="server" MaxLength="100" Width="550px" CssClass="tb5"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="txtList13" />

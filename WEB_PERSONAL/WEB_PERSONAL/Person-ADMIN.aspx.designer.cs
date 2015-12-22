@@ -445,6 +445,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtDate11;
         
         /// <summary>
+        /// UpdateButtonPlus11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdateButtonPlus11;
+        
+        /// <summary>
         /// ButtonPlus11 control.
         /// </summary>
         /// <remarks>
