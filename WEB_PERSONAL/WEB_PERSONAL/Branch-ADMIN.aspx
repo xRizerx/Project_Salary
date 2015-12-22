@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SubStaffType-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.SubStaffType_ADMIN" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Branch-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.Branch_ADMIN" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .divpan {
@@ -32,37 +31,37 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchSubStaffType">
+    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchBranch">
         <div>
             <fieldset>
                 <legend>Search</legend>
                 <div>
-                    รหัสประเภทบุคลากรย่อย :&nbsp<asp:TextBox ID="txtSearchSubStaffTypeID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
-                    ชื่อประเภทบุคลากรย่อย :&nbsp<asp:TextBox ID="txtSearchSubStaffTypeName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
-                    <asp:Button ID="btnSearchSubStaffType" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="SearchSubStaffType_Click" />
+                    รหัสหน่วยงานในมหาวิทยาลัย :&nbsp<asp:TextBox ID="txtSearchBranchID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
+                    ชื่อหน่วยงานในมหาวิทยาลัย :&nbsp<asp:TextBox ID="txtSearchBranchName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                    <asp:Button ID="btnSearchBranch" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchBranch_Click" />
                     <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
                 </div>
             </fieldset>
         </div>
     </asp:Panel>
-    <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitSubStaffType">
+    <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitBranch">
         <div>
             <fieldset>
                 <legend>Insert</legend>
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: left; width: 35px"></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทบุคลากรย่อย :</td>
+                            <td style="text-align: left; width: 13px"></td> 
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสหน่วยงานในมหาวิทยาลัย :</td>
                             <td style="text-align: left; width: 120px;">
-                                <asp:TextBox ID="txtInsertSubStaffTypeID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทบุคลากรย่อย :</td>
+                                <asp:TextBox ID="txtInsertBranchID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อหน่วยงานในมหาวิทยาลัย :</td>
                             <td style="text-align: left; width: 120px;">
-                                <asp:TextBox ID="txtInsertSubStaffTypeName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
+                                <asp:TextBox ID="txtInsertBranchName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnSubmitSubStaffType" Text="OK" runat="server" CssClass="master_OAT_button" OnClick="btnSubmitSubStaffType_Click" /></td>
+                                <asp:Button ID="btnSubmitBranch" Text="OK" runat="server" CssClass="master_OAT_button" OnClick="btnSubmitBranch_Click" /></td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnCancelSubStaffType" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick="btnCancelSubStaffType_Click" /></td>
+                                <asp:Button ID="btnCancelBranch" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick="btnCancelBranch_Click" /></td>
                         </tr>
                     </table>
                 </div>
@@ -77,28 +76,28 @@
                         <asp:GridView ID="GridView1" runat="server" Style="margin-left: auto; margin-right: auto; text-align: center; width: 100%"
                             AutoGenerateColumns="false"
                             AllowPaging="true"
-                            DataKeyNames="SUBSTAFFTYPE_ID"
+                            DataKeyNames="BRANCH_ID"
                             OnRowEditing="modEditCommand"
                             OnRowCancelingEdit="modCancelCommand"
                             OnRowUpdating="modUpdateCommand"
                             OnRowDeleting="modDeleteCommand"
                             OnRowDataBound="GridView1_RowDataBound"
-                            OnPageIndexChanging="myGridViewSubStaffType_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
+                            OnPageIndexChanging="myGridViewBranch_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                             <Columns>
-                                <asp:TemplateField HeaderText="รหัสประเภทบุคลากรย่อย" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="รหัสหน่วยงานในมหาวิทยาลัย" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblSubStaffTypeIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_ID") %>'></asp:Label>
+                                        <asp:Label ID="lblBranchIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BRANCH_ID") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtSubStaffTypeIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_ID") %>' Enabled="False"></asp:TextBox>
+                                        <asp:TextBox ID="txtBranchIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BRANCH_ID") %>' Enabled="False"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ชื่อประเภทบุคลากรย่อย" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="ชื่อหน่วยงานในมหาวิทยาลัย" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblSubStaffTypeNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_NAME") %>'></asp:Label>
+                                        <asp:Label ID="lblBranchNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BRANCH_NAME") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtSubStaffTypeNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.SUBSTAFFTYPE_NAME") %>'></asp:TextBox>
+                                        <asp:TextBox ID="txtBranchNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BRANCH_NAME") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />

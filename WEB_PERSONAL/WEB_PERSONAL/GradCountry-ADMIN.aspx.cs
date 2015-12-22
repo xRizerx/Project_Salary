@@ -7,10 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
 namespace WEB_PERSONAL
 {
-    public partial class National_ADMIN : System.Web.UI.Page
+    public partial class GradCountry_ADMIN : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,21 +24,21 @@ namespace WEB_PERSONAL
         private DataTable GetViewState()
         {
             //Gets the ViewState
-            return (DataTable)ViewState["NATION"];
+            return (DataTable)ViewState["GRADCOUNTRY"];
         }
 
         private void SetViewState(DataTable data)
         {
             //Sets the ViewState
-            ViewState["NATION"] = data;
+            ViewState["GRADCOUNTRY"] = data;
         }
 
         #endregion
 
         void BindData()
         {
-            ClassNational n = new ClassNational();
-            DataTable dt = n.GetNational("", "", "");
+            ClassGradCountry gc = new ClassGradCountry();
+            DataTable dt = gc.GetGradCountry("", "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -47,8 +46,8 @@ namespace WEB_PERSONAL
 
         void BindData1()
         {
-            ClassNational n = new ClassNational();
-            DataTable dt = n.GetNationalSearch(txtSearchNationID.Text, txtSearchNationENG.Text, txtSearchNationTHA.Text);
+            ClassGradCountry gn = new ClassGradCountry();
+            DataTable dt = gn.GetGradCountrySearch(txtSearchGradCountry2.Text, txtSearchGradCountryShort.Text, txtSearchGradCountryLong.Text);
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
@@ -56,41 +55,41 @@ namespace WEB_PERSONAL
 
         private void ClearData()
         {
-            txtSearchNationID.Text = "";
-            txtSearchNationENG.Text = "";
-            txtSearchNationTHA.Text = "";
-            txtInsertNationID.Text = "";
-            txtInsertNationENG.Text = "";
-            txtInsertNationTHA.Text = "";
+            txtSearchGradCountry2.Text = "";
+            txtSearchGradCountryShort.Text = "";
+            txtSearchGradCountryLong.Text = "";
+            txtInsertGradCountry2.Text = "";
+            txtInsertGradCountryShort.Text = "";
+            txtInsertGradCountryLong.Text = "";
         }
 
-        protected void btnSubmitNATIONAL_Click(object sender, EventArgs e)
+        protected void btnSubmitGradCountry_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtInsertNationID.Text))
+            if (string.IsNullOrEmpty(txtInsertGradCountry2.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสสัญชาติ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสประเทศ 2 ตัวอักษร(ENG)')", true);
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtInsertNationENG.Text))
+            if (string.IsNullOrEmpty(txtInsertGradCountryShort.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อสัญชาติภาษาอังกฤษ')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อย่อของประเทศ(ENG)')", true);
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtInsertNationTHA.Text))
+            if (string.IsNullOrEmpty(txtInsertGradCountryLong.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อสัญชาติภาษาไทย')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อเต็มของประเทศ(ENG)')", true);
                 return;
             }
-            ClassNational n = new ClassNational();
-            n.NATION_ID = txtInsertNationID.Text;
-            n.NATION_ENG = txtInsertNationENG.Text;
-            n.NATION_THA = txtInsertNationTHA.Text;
+            ClassGradCountry cg = new ClassGradCountry();
+            cg.GRAD_ISO2 = txtInsertGradCountry2.Text;
+            cg.GRAD_SHORT_NAME = txtInsertGradCountryShort.Text;
+            cg.GRAD_LONG_NAME = txtInsertGradCountryLong.Text;
 
-            if (n.CheckUseNationID())
+            if (cg.CheckUseGradCountryID())
             {
-                n.InsertNational();
+                cg.InsertGradCountry();
                 BindData();
                 ClearData();
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
@@ -114,9 +113,9 @@ namespace WEB_PERSONAL
         protected void modDeleteCommand(Object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            ClassNational n = new ClassNational();
-            n.NATION_SEQ = id;
-            n.DeleteNational();
+            ClassGradCountry cg = new ClassGradCountry();
+            cg.GRAD_COUNTRY_ID = id;
+            cg.DeleteGradCountry();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ลบข้อมูลเรียบร้อย')", true);
 
             GridView1.EditIndex = -1;
@@ -124,17 +123,17 @@ namespace WEB_PERSONAL
         }
         protected void modUpdateCommand(Object sender, GridViewUpdateEventArgs e)
         {
-            Label lblNationSEQ = (Label)GridView1.Rows[e.RowIndex].FindControl("lblNationSEQ");
-            TextBox txtNationIDEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtNationIDEdit");
-            TextBox txtNationENGEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtNationENGEdit");
-            TextBox txtNationTHAEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtNationTHAEdit");
+            Label lblGradCountryID = (Label)GridView1.Rows[e.RowIndex].FindControl("lblGradCountryID");
+            TextBox txtGradCountry2Edit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtGradCountry2Edit");
+            TextBox txtGradCountryShortEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtGradCountryShortEdit");
+            TextBox txtGradCountryLongEdit = (TextBox)GridView1.Rows[e.RowIndex].FindControl("txtGradCountryLongEdit");
 
-            ClassNational n = new ClassNational(Convert.ToInt32(lblNationSEQ.Text)
-                , txtNationIDEdit.Text
-                , txtNationENGEdit.Text
-                , txtNationTHAEdit.Text);
+            ClassGradCountry cg = new ClassGradCountry(Convert.ToInt32(lblGradCountryID.Text)
+                , txtGradCountry2Edit.Text
+                , txtGradCountryShortEdit.Text
+                , txtGradCountryLongEdit.Text);
 
-            n.UpdateNational();
+            cg.UpdateGradCountry();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
             GridView1.EditIndex = -1;
             BindData1();
@@ -144,30 +143,30 @@ namespace WEB_PERSONAL
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 LinkButton lb = (LinkButton)e.Row.FindControl("DeleteButton1");
-                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "NATION_ID") + " ใช่ไหม ?');");
+                lb.Attributes.Add("onclick", "return confirm('คุณต้องการจะลบ " + DataBinder.Eval(e.Row.DataItem, "GRAD_SHORT_NAME") + " ใช่ไหม ?');");
             }
         }
-        protected void myGridViewNATIONAL_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void myGridViewGradCountry_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
             GridView1.DataSource = GetViewState();
             GridView1.DataBind();
         }
 
-        protected void btnCancelNATIONAL_Click(object sender, EventArgs e)
+        protected void btnCancelGradCountry_Click(object sender, EventArgs e)
         {
             ClearData();
-            ClassNational n = new ClassNational();
-            DataTable dt = n.GetNational("", "", "");
+            ClassGradCountry cg = new ClassGradCountry();
+            DataTable dt = cg.GetGradCountry("", "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
         }
 
-        protected void btnSearchNATIONAL_Click(object sender, EventArgs e)
+        protected void btnSearchGradCountry_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(txtSearchNationID.Text) && string.IsNullOrEmpty(txtSearchNationENG.Text) && string.IsNullOrEmpty(txtSearchNationTHA.Text))
+            if (string.IsNullOrEmpty(txtSearchGradCountry2.Text) && string.IsNullOrEmpty(txtSearchGradCountryShort.Text) && string.IsNullOrEmpty(txtSearchGradCountryLong.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
 
@@ -175,8 +174,8 @@ namespace WEB_PERSONAL
             }
             else
             {
-                ClassNational n = new ClassNational();
-                DataTable dt = n.GetNationalSearch(txtSearchNationID.Text, txtSearchNationENG.Text, txtSearchNationTHA.Text);
+                ClassGradCountry cg = new ClassGradCountry();
+                DataTable dt = cg.GetGradCountrySearch(txtSearchGradCountry2.Text, txtSearchGradCountryShort.Text, txtSearchGradCountryLong.Text);
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 SetViewState(dt);
@@ -186,8 +185,8 @@ namespace WEB_PERSONAL
         protected void btnSearchRefresh_Click(object sender, EventArgs e)
         {
             ClearData();
-            ClassNational n = new ClassNational();
-            DataTable dt = n.GetNational("", "", "");
+            ClassGradCountry cg = new ClassGradCountry();
+            DataTable dt = cg.GetGradCountry("", "", "");
             GridView1.DataSource = dt;
             GridView1.DataBind();
             SetViewState(dt);
