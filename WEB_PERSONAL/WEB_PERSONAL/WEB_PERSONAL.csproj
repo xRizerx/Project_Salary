@@ -326,6 +326,7 @@
     <Content Include="Study-Report1.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TeachISCED-ADMIN.aspx" />
+    <Content Include="TestOutput.aspx" />
     <Content Include="TimeContact-ADMIN.aspx" />
     <Content Include="UNIVERSITY-ADMIN.aspx" />
     <Content Include="Year-ADMIN.aspx" />
@@ -708,6 +709,13 @@
     </Compile>
     <Compile Include="TeachISCED-ADMIN.aspx.designer.cs">
       <DependentUpon>TeachISCED-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestOutput.aspx.cs">
+      <DependentUpon>TestOutput.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestOutput.aspx.designer.cs">
+      <DependentUpon>TestOutput.aspx</DependentUpon>
     </Compile>
     <Compile Include="TimeContact-ADMIN.aspx.cs">
       <DependentUpon>TimeContact-ADMIN.aspx</DependentUpon>
