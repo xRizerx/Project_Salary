@@ -36,12 +36,13 @@ namespace WEB_PERSONAL.Entities
         public string SEMINAR_PROBLEM { get; set; }
         public string SEMINAR_COMMENT { get; set; }
         public DateTime SEMINAR_SIGNED_DATETIME { get; set; }
+        public string CITIZEN_ID { get; set; }
 
         public Seminar() { }
         public Seminar(int SEMINAR_ID, string SEMINAR_NAME, string SEMINAR_LASTNAME, string SEMINAR_POSITION, string SEMINAR_DEGREE, string SEMINAR_CAMPUS, string SEMINAR_NAMEOFPROJECT,
         string SEMINAR_PLACE, DateTime SEMINAR_DATETIME_FROM, DateTime SEMINAR_DATETIME_TO, int SEMINAR_DAY, int SEMINAR_MONTH, int SEMINAR_YEAR, int SEMINAR_BUDGET, string SEMINAR_SUPPORT_BUDGET,
         string SEMINAR_CERTIFICATE, string SEMINAR_ABSTRACT, string SEMINAR_RESULT, string SEMINAR_SHOW_1, string SEMINAR_SHOW_2, string SEMINAR_SHOW_3, string SEMINAR_SHOW_4, string SEMINAR_PROBLEM,
-        string SEMINAR_COMMENT, DateTime SEMINAR_SIGNED_DATETIME)
+        string SEMINAR_COMMENT, DateTime SEMINAR_SIGNED_DATETIME, string CITIZEN_ID)
         {
             this.SEMINAR_ID = SEMINAR_ID;
             this.SEMINAR_NAME = SEMINAR_NAME;
@@ -68,6 +69,7 @@ namespace WEB_PERSONAL.Entities
             this.SEMINAR_PROBLEM = SEMINAR_PROBLEM;
             this.SEMINAR_COMMENT = SEMINAR_COMMENT;
             this.SEMINAR_SIGNED_DATETIME = SEMINAR_SIGNED_DATETIME;
+            this.CITIZEN_ID = CITIZEN_ID;
         }
 
         public DataTable GetSEMINAR(string SEMINAR_NAME, string SEMINAR_DATETIME_FROM, string SEMINAR_DATETIME_TO)
@@ -177,7 +179,7 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_SEMINAR (seminar_name,seminar_lastname,seminar_position,seminar_degree,seminar_campus,seminar_nameofproject,seminar_place,seminar_datetime_from,seminar_datetime_to, seminar_day, seminar_month, seminar_year, seminar_budget, seminar_support_budget, seminar_certificate, seminar_abstract, seminar_result, seminar_show_1, seminar_show_2, seminar_show_3, seminar_show_4, seminar_problem, seminar_comment,SEMINAR_SIGNED_DATETIME) VALUES (:seminar_name,:seminar_lastname,:seminar_position,:seminar_degree,:seminar_campus,:seminar_nameofproject,:seminar_place,:seminar_datetime_from,:seminar_datetime_to, :seminar_day, :seminar_month, :seminar_year, :seminar_budget, :seminar_support_budget, :seminar_certificate, :seminar_abstract, :seminar_result, :seminar_show_1, :seminar_show_2, :seminar_show_3, :seminar_show_4, :seminar_problem, :seminar_comment,:SEMINAR_SIGNED_DATETIME)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_SEMINAR (seminar_name,seminar_lastname,seminar_position,seminar_degree,seminar_campus,seminar_nameofproject,seminar_place,seminar_datetime_from,seminar_datetime_to, seminar_day, seminar_month, seminar_year, seminar_budget, seminar_support_budget, seminar_certificate, seminar_abstract, seminar_result, seminar_show_1, seminar_show_2, seminar_show_3, seminar_show_4, seminar_problem, seminar_comment,SEMINAR_SIGNED_DATETIME,citizen_id) VALUES (:seminar_name,:seminar_lastname,:seminar_position,:seminar_degree,:seminar_campus,:seminar_nameofproject,:seminar_place,:seminar_datetime_from,:seminar_datetime_to, :seminar_day, :seminar_month, :seminar_year, :seminar_budget, :seminar_support_budget, :seminar_certificate, :seminar_abstract, :seminar_result, :seminar_show_1, :seminar_show_2, :seminar_show_3, :seminar_show_4, :seminar_problem, :seminar_comment,:SEMINAR_SIGNED_DATETIME,:citizen_id)", conn);
 
             try
             {
@@ -209,6 +211,7 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new OracleParameter("SEMINAR_PROBLEM", SEMINAR_PROBLEM));
                 command.Parameters.Add(new OracleParameter("SEMINAR_COMMENT", SEMINAR_COMMENT));
                 command.Parameters.Add(new OracleParameter("SEMINAR_SIGNED_DATETIME", SEMINAR_SIGNED_DATETIME));
+                command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
                 id = command.ExecuteNonQuery();
             }
             catch (Exception ex)

@@ -490,6 +490,51 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownGRAD_LEV;
         
         /// <summary>
+        /// txtGRAD_LEV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtGRAD_LEV;
+        
+        /// <summary>
+        /// UpdateButtonPlusLEV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdateButtonPlusLEV;
+        
+        /// <summary>
+        /// ButtonPlusLEV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonPlusLEV;
+        
+        /// <summary>
+        /// UpdateGridView6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdateGridView6;
+        
+        /// <summary>
+        /// GridView6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView6;
+        
+        /// <summary>
         /// UpdatePanel16 control.
         /// </summary>
         /// <remarks>
@@ -1219,22 +1264,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownType_Position14;
         
         /// <summary>
-        /// UpdatetxtDropDownDegree14 control.
+        /// UpdatetxtDegree14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatetxtDropDownDegree14;
+        protected global::System.Web.UI.UpdatePanel UpdatetxtDegree14;
         
         /// <summary>
-        /// DropDownDegree14 control.
+        /// txtDegree14 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownDegree14;
+        protected global::System.Web.UI.WebControls.TextBox txtDegree14;
         
         /// <summary>
         /// UpdatetxtSalary14 control.

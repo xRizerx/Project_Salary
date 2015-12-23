@@ -18,6 +18,25 @@
         }
 
         </style>
+    <script type="text/javascript">
+function validate()
+{
+	    var pattern = /^-?[0-9]+(.[0-9]{1,2})?$/;
+            var text = document.getElementById('TextBox22').value;
+            if (text.match(pattern)==null)
+            {
+		alert('the format is wrong');
+            }
+	    else
+	    {
+		alert('OK');
+	    }
+
+
+}
+
+
+</script>
     <link href="CSS/Salary.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -134,7 +153,7 @@
                             <asp:Label ID="Label5" runat="server" Text="จำนวนคน ณ 1 มี.ค. 58" CssClass="textmode"></asp:Label>
                         </td>
                         <td class="auto-style31">
-                            <asp:TextBox ID="TextBox31" runat="server" Width="75px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox31" runat="server" Width="75px" ReadOnly="True"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>

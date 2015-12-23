@@ -12,7 +12,7 @@
             background-color: rgba(255,255,255,0.6);
             border-radius: 5px;
         }
-
+         
         body {
             background-image: url("Image/444.png");
         }
@@ -52,7 +52,7 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: left; width: 30px"></td>
+                            <td style="text-align: left; width: 43px"></td>
                             <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทเงินจ้างงาน :</td>
                             <td style="text-align: left; width: 120px;">
                                 <asp:TextBox ID="txtInsertBudgetID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>

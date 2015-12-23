@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
         function pageLoad(sender, args) {
-            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]);
         };
     </script>
     <style type="text/CSS">
@@ -51,15 +51,6 @@
 
         .divpan {
             text-align: center;
-        }
-
-        .auto-style3 {
-            width: 266px;
-        }
-        .auto-style4 {
-            font-family: tahoma, arial, sans-serif;
-            color: #333333;
-            background-repeat: repeat-x;
         }
     </style>
     <asp:Panel runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
@@ -368,7 +359,7 @@
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">หมู่</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">หน่วยงานในมหาวิทยาลัย <span class="textred">*</span></td>
 
                         </tr>
                         <tr>
@@ -457,7 +448,7 @@
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">อำเภอ <span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ระดับการศึกษาที่จบสูงสุด <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">ระดับการศึกษาที่จบสูงสุด และสาขาที่จบสูงสุด<span class="textred">*</span></td>
 
                         </tr>
                         <tr>
@@ -474,12 +465,40 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
+                            <td style="text-align: left; width: 430px;">
                                 <asp:UpdatePanel ID="UpdatePanel24" runat="server">
                                     <ContentTemplate>
-                                 <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
+                                 <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="200px"></asp:DropDownList>
+                                        <asp:TextBox ID="txtGRAD_LEV" runat="server" MaxLength="100" Width="200px" CssClass="tb5"></asp:TextBox>
                                         </ContentTemplate>
                                 </asp:UpdatePanel>
+                                </td>
+                             <td style="text-align: right; margin-right: 5px;">
+                                <asp:UpdatePanel ID="UpdateButtonPlusLEV" runat="server">
+                                    <ContentTemplate>
+                                        <asp:Button ID="ButtonPlusLEV" Text="+" runat="server" Width="36px" CssClass="master_OAT_button" OnClick="ButtonPlusLEV_Click" />
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="ButtonPlusLEV" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+
+                        <tr>
+                            <td style="text-align: left; width: 500px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateGridView6" runat="server">
+                        <ContentTemplate>
+                            <asp:GridView ID="GridView6" runat="server" Width="450px"></asp:GridView>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="GridView6" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                                 </td>
                         </tr>
                     </table>
@@ -635,7 +654,6 @@
             <fieldset>
                 <legend>ประวัติการศึกษา</legend>
                 <div>
-                    <!-- FOR TABLE 3 ROW -->
                     <table>
                         <tr>
                             <td style="text-align: center; margin-right: 5px;">สถานศึกษา</td>
@@ -695,7 +713,7 @@
 
                     <asp:UpdatePanel ID="UpdateGridView1" runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView1" runat="server" Width="998px"></asp:GridView>
+                            <asp:GridView ID="GridView1" runat="server" Width="985px"></asp:GridView>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="GridView1" />
@@ -776,7 +794,7 @@
 
                     <asp:UpdatePanel ID="UpdateGridView2" runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView2" runat="server" Width="998px"></asp:GridView>
+                            <asp:GridView ID="GridView2" runat="server" Width="985px"></asp:GridView>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="GridView2" />
@@ -791,7 +809,6 @@
             <fieldset>
                 <legend>ประวัติการฝึกอบรม</legend>
                 <div>
-                    <!-- FOR TABLE 3 ROW -->
                     <table>
                         <tr>
                             <td style="text-align: center; margin-right: 5px;">หลักสูตรฝึกอบรม</td>
@@ -851,7 +868,7 @@
 
                     <asp:UpdatePanel ID="UpdateGridView3" runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView3" runat="server" Width="998px"></asp:GridView>
+                            <asp:GridView ID="GridView3" runat="server" Width="985px"></asp:GridView>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="GridView3" />
@@ -866,7 +883,6 @@
             <fieldset>
                 <legend>การได้รับโทษทางวินัยและการนิรโทษกรรม</legend>
                 <div>
-                    <!-- FOR TABLE 3 ROW -->
                     <table>
                         <tr>
                             <td style="text-align: center; margin-right: 5px;">พ.ศ.</td>
@@ -890,7 +906,7 @@
                             <td style="text-align: left;">
                                 <asp:UpdatePanel ID="UpdatetxtList13" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtList13" runat="server" MaxLength="100" Width="580px" CssClass="tb5"></asp:TextBox>
+                                        <asp:TextBox ID="txtList13" runat="server" MaxLength="100" Width="575px" CssClass="tb5"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="txtList13" />
@@ -923,7 +939,7 @@
 
                     <asp:UpdatePanel ID="UpdateGridView4" runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView4" runat="server" Width="998px"></asp:GridView>
+                            <asp:GridView ID="GridView4" runat="server" Width="985px"></asp:GridView>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="GridView4" />
@@ -940,7 +956,7 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: center; margin-right: 5px;" class="auto-style3">วัน เดือน ปี</td>
+                            <td style="text-align: center; margin-right: 5px;">วัน เดือน ปี</td>
                             <td style="text-align: center; margin-right: 5px;">ตำแหน่ง</td>
                             <td style="text-align: center; margin-right: 5px;">เลขที่ตำแหน่ง</td>
                             <td style="text-align: center; margin-right: 5px;">ตำแหน่งประเภท</td>
@@ -951,7 +967,7 @@
 
                         </tr>
                         <tr>
-                            <td style="text-align: left;" class="auto-style3">
+                            <td style="text-align: left;">
                                 <asp:UpdatePanel ID="UpdatetxtDate14" runat="server">
                                     <ContentTemplate>
                                         <asp:TextBox ID="txtDate14" runat="server" MaxLength="50" Width="90px" CssClass="tb5"></asp:TextBox>
@@ -984,7 +1000,7 @@
                             <td style="text-align: left; width: 50px;">
                                 <asp:UpdatePanel ID="UpdateDropDownType_Position14" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DropDownType_Position14" runat="server" CssClass="tb5" Width="57px" AutoPostBack="True" OnSelectedIndexChanged="DropDownType_Position14_SelectedIndexChanged"></asp:DropDownList>
+                                        <asp:DropDownList ID="DropDownType_Position14" runat="server" CssClass="tb5" Width="57px" AutoPostBack="True"></asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="DropDownType_Position14" />
@@ -992,12 +1008,12 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td style="text-align: left; width: 50px;">
-                                <asp:UpdatePanel ID="UpdatetxtDropDownDegree14" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtDegree14" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DropDownDegree14" runat="server" CssClass="tb5" Width="57px"></asp:DropDownList>
+                                        <asp:TextBox ID="txtDegree14" runat="server" MaxLength="100" Width="52px" CssClass="tb5"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="DropDownDegree14" />
+                                        <asp:AsyncPostBackTrigger ControlID="txtDegree14" />
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
@@ -1047,7 +1063,7 @@
 
                     <asp:UpdatePanel ID="UpdateGridView5" runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView5" runat="server" Width="998px"></asp:GridView>
+                            <asp:GridView ID="GridView5" runat="server" Width="985px"></asp:GridView>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="GridView5" />

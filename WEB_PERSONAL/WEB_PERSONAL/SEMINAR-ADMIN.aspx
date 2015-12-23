@@ -285,4 +285,195 @@
         </div>
     </asp:Panel>
 
+    <asp:Panel ID="Pane_grid" runat="server" BackColor="WhiteSmoke" Width="1024px" ScrollBars="Both" Height="250px">
+         <asp:GridView ID="GridView1" runat="server" EmptyDataText="Record not found!" ShowHeaderWhenEmpty="True" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="SEMINAR_ID" DataSourceID="Oracel_TB_Training" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="3000px" CellPadding="4" ForeColor="#333333" GridLines="None">
+             <AlternatingRowStyle BackColor="White" />
+             <Columns>
+                 <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" />
+                 <asp:TemplateField HeaderText="SEMINAR_ID" SortExpression="SEMINAR_ID" Visible="false">
+                     <EditItemTemplate>
+                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("SEMINAR_ID") %>'></asp:Label>
+                     </EditItemTemplate>
+                     <ItemTemplate>
+                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("SEMINAR_ID") %>'></asp:Label>
+                     </ItemTemplate>
+                 </asp:TemplateField>
+                 <asp:BoundField ControlStyle-Width="250px" DataField="SEMINAR_NAME" HeaderStyle-Width="250px" HeaderText="ชื่อ" ItemStyle-Width="250px" SortExpression="SEMINAR_NAME">
+                 <ControlStyle Width="250px" />
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_LASTNAME" HeaderStyle-Width="250px" HeaderText="นามสกุล" ItemStyle-Width="250px" SortExpression="SEMINAR_LASTNAME">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_POSITION" HeaderStyle-Width="250px" HeaderText="ตำแหน่ง" ItemStyle-Width="250px" SortExpression="SEMINAR_POSITION">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_DEGREE" HeaderStyle-Width="250px" HeaderText="ระดับ" ItemStyle-Width="250px" SortExpression="SEMINAR_DEGREE">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_CAMPUS" HeaderStyle-Width="250px" HeaderText="สังกัด" ItemStyle-Width="250px" SortExpression="SEMINAR_CAMPUS">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_NAMEOFPROJECT" HeaderStyle-Width="250px" HeaderText="ชื่อโครงการฝึกอบรบ/สัมมนา/ดูงาน" ItemStyle-Width="250px" SortExpression="SEMINAR_NAMEOFPROJECT">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_PLACE" HeaderStyle-Width="250px" HeaderText="สถานที่ฝึกอบรบ/สัมมนา/ดูงาน" ItemStyle-Width="250px" SortExpression="SEMINAR_PLACE">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_DATETIME_FROM" HeaderStyle-Width="250px" HeaderText="ตั้งแต่วันที่" ItemStyle-Width="250px" SortExpression="SEMINAR_DATETIME_FROM">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_DATETIME_TO" HeaderStyle-Width="250px" HeaderText="ถึงวันที่" ItemStyle-Width="250px" SortExpression="SEMINAR_DATETIME_TO">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_DAY" HeaderStyle-Width="250px" HeaderText="วัน" ItemStyle-Width="250px" SortExpression="SEMINAR_DAY">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_MONTH" HeaderStyle-Width="250px" HeaderText="เดือน" ItemStyle-Width="250px" SortExpression="SEMINAR_MONTH">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_YEAR" HeaderStyle-Width="250px" HeaderText="ปี" ItemStyle-Width="250px" SortExpression="SEMINAR_YEAR">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_BUDGET" HeaderStyle-Width="250px" HeaderText="ค่าใช้จ่ายตลอดโครงการ" ItemStyle-Width="250px" SortExpression="SEMINAR_BUDGET">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_SUPPORT_BUDGET" HeaderStyle-Width="250px" HeaderText="แหล่งงประมาณที่ได้รับการสนับสนุน" ItemStyle-Width="250px" SortExpression="SEMINAR_SUPPORT_BUDGET">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_CERTIFICATE" HeaderStyle-Width="250px" HeaderText="ประกาศณียบัตรที่ได้รับ (ถ้ามี)" ItemStyle-Width="250px" SortExpression="SEMINAR_CERTIFICATE">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_ABSTRACT" HeaderStyle-Width="250px" HeaderText="สรุปผลการฝึกอบรม/สัมมนา/ดูงาน" ItemStyle-Width="250px" SortExpression="SEMINAR_ABSTRACT">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_RESULT" HeaderStyle-Width="250px" HeaderText="ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน" ItemStyle-Width="250px" SortExpression="SEMINAR_RESULT">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_SHOW_1" HeaderStyle-Width="250px" HeaderText="ด้านการเรียนการสอน" ItemStyle-Width="250px" SortExpression="SEMINAR_SHOW_1">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_SHOW_2" HeaderStyle-Width="250px" HeaderText="ด้านการวิจัย" ItemStyle-Width="250px" SortExpression="SEMINAR_SHOW_2">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_SHOW_3" HeaderStyle-Width="250px" HeaderText="ด้านการบริการวิชาการ" ItemStyle-Width="250px" SortExpression="SEMINAR_SHOW_3">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_SHOW_4" HeaderStyle-Width="250px" HeaderText="ด้านอื่นๆ" ItemStyle-Width="250px" SortExpression="SEMINAR_SHOW_4">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_PROBLEM" HeaderStyle-Width="250px" HeaderText="ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน" ItemStyle-Width="250px" SortExpression="SEMINAR_PROBLEM">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_COMMENT" HeaderStyle-Width="250px" HeaderText="ความคิดเห็นข้อเสนอแนะอื่นๆ" ItemStyle-Width="250px" SortExpression="SEMINAR_COMMENT">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="SEMINAR_SIGNED_DATETIME" HeaderStyle-Width="250px" HeaderText="เวลาบันทึก" ItemStyle-Width="250px" SortExpression="SEMINAR_SIGNED_DATETIME">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+                 <asp:BoundField DataField="CITIZEN_ID" HeaderStyle-Width="250px" HeaderText="CITIZEN_ID" ItemStyle-Width="250px" SortExpression="CITIZEN_ID" Visible="false">
+                 <HeaderStyle Width="250px" />
+                 <ItemStyle Width="250px" />
+                 </asp:BoundField>
+             </Columns>
+             <EditRowStyle BackColor="#2461BF" />
+             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+             <RowStyle BackColor="#EFF3FB" />
+             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+             <SortedAscendingCellStyle BackColor="#F5F7FB" />
+             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+             <SortedDescendingCellStyle BackColor="#E9EBEF" />
+             <SortedDescendingHeaderStyle BackColor="#4870BE" />
+    </asp:GridView>
+    
+
+    <asp:SqlDataSource ID="Oracel_TB_Training" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" DeleteCommand="DELETE FROM &quot;TB_SEMINAR&quot; WHERE &quot;SEMINAR_ID&quot; = :SEMINAR_ID" InsertCommand="INSERT INTO &quot;TB_SEMINAR&quot; (&quot;SEMINAR_ID&quot;, &quot;SEMINAR_NAME&quot;, &quot;SEMINAR_LASTNAME&quot;, &quot;SEMINAR_POSITION&quot;, &quot;SEMINAR_DEGREE&quot;, &quot;SEMINAR_CAMPUS&quot;, &quot;SEMINAR_NAMEOFPROJECT&quot;, &quot;SEMINAR_PLACE&quot;, &quot;SEMINAR_DATETIME_FROM&quot;, &quot;SEMINAR_DATETIME_TO&quot;, &quot;SEMINAR_DAY&quot;, &quot;SEMINAR_MONTH&quot;, &quot;SEMINAR_YEAR&quot;, &quot;SEMINAR_BUDGET&quot;, &quot;SEMINAR_SUPPORT_BUDGET&quot;, &quot;SEMINAR_CERTIFICATE&quot;, &quot;SEMINAR_ABSTRACT&quot;, &quot;SEMINAR_RESULT&quot;, &quot;SEMINAR_SHOW_1&quot;, &quot;SEMINAR_SHOW_2&quot;, &quot;SEMINAR_SHOW_3&quot;, &quot;SEMINAR_SHOW_4&quot;, &quot;SEMINAR_PROBLEM&quot;, &quot;SEMINAR_COMMENT&quot;, &quot;SEMINAR_SIGNED_DATETIME&quot;, &quot;CITIZEN_ID&quot;) VALUES (:SEMINAR_ID, :SEMINAR_NAME, :SEMINAR_LASTNAME, :SEMINAR_POSITION, :SEMINAR_DEGREE, :SEMINAR_CAMPUS, :SEMINAR_NAMEOFPROJECT, :SEMINAR_PLACE, :SEMINAR_DATETIME_FROM, :SEMINAR_DATETIME_TO, :SEMINAR_DAY, :SEMINAR_MONTH, :SEMINAR_YEAR, :SEMINAR_BUDGET, :SEMINAR_SUPPORT_BUDGET, :SEMINAR_CERTIFICATE, :SEMINAR_ABSTRACT, :SEMINAR_RESULT, :SEMINAR_SHOW_1, :SEMINAR_SHOW_2, :SEMINAR_SHOW_3, :SEMINAR_SHOW_4, :SEMINAR_PROBLEM, :SEMINAR_COMMENT, :SEMINAR_SIGNED_DATETIME, :CITIZEN_ID)" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_SEMINAR&quot;" UpdateCommand="UPDATE &quot;TB_SEMINAR&quot; SET &quot;SEMINAR_NAME&quot; = :SEMINAR_NAME, &quot;SEMINAR_LASTNAME&quot; = :SEMINAR_LASTNAME, &quot;SEMINAR_POSITION&quot; = :SEMINAR_POSITION, &quot;SEMINAR_DEGREE&quot; = :SEMINAR_DEGREE, &quot;SEMINAR_CAMPUS&quot; = :SEMINAR_CAMPUS, &quot;SEMINAR_NAMEOFPROJECT&quot; = :SEMINAR_NAMEOFPROJECT, &quot;SEMINAR_PLACE&quot; = :SEMINAR_PLACE, &quot;SEMINAR_DATETIME_FROM&quot; = :SEMINAR_DATETIME_FROM, &quot;SEMINAR_DATETIME_TO&quot; = :SEMINAR_DATETIME_TO, &quot;SEMINAR_DAY&quot; = :SEMINAR_DAY, &quot;SEMINAR_MONTH&quot; = :SEMINAR_MONTH, &quot;SEMINAR_YEAR&quot; = :SEMINAR_YEAR, &quot;SEMINAR_BUDGET&quot; = :SEMINAR_BUDGET, &quot;SEMINAR_SUPPORT_BUDGET&quot; = :SEMINAR_SUPPORT_BUDGET, &quot;SEMINAR_CERTIFICATE&quot; = :SEMINAR_CERTIFICATE, &quot;SEMINAR_ABSTRACT&quot; = :SEMINAR_ABSTRACT, &quot;SEMINAR_RESULT&quot; = :SEMINAR_RESULT, &quot;SEMINAR_SHOW_1&quot; = :SEMINAR_SHOW_1, &quot;SEMINAR_SHOW_2&quot; = :SEMINAR_SHOW_2, &quot;SEMINAR_SHOW_3&quot; = :SEMINAR_SHOW_3, &quot;SEMINAR_SHOW_4&quot; = :SEMINAR_SHOW_4, &quot;SEMINAR_PROBLEM&quot; = :SEMINAR_PROBLEM, &quot;SEMINAR_COMMENT&quot; = :SEMINAR_COMMENT, &quot;SEMINAR_SIGNED_DATETIME&quot; = :SEMINAR_SIGNED_DATETIME, &quot;CITIZEN_ID&quot; = :CITIZEN_ID WHERE &quot;SEMINAR_ID&quot; = :SEMINAR_ID">
+        <DeleteParameters>
+            <asp:Parameter Name="SEMINAR_ID" Type="Decimal" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="SEMINAR_ID" Type="Decimal" />
+            <asp:Parameter Name="SEMINAR_NAME" Type="String" />
+            <asp:Parameter Name="SEMINAR_LASTNAME" Type="String" />
+            <asp:Parameter Name="SEMINAR_POSITION" Type="String" />
+            <asp:Parameter Name="SEMINAR_DEGREE" Type="String" />
+            <asp:Parameter Name="SEMINAR_CAMPUS" Type="String" />
+            <asp:Parameter Name="SEMINAR_NAMEOFPROJECT" Type="String" />
+            <asp:Parameter Name="SEMINAR_PLACE" Type="String" />
+            <asp:Parameter Name="SEMINAR_DATETIME_FROM" Type="DateTime" />
+            <asp:Parameter Name="SEMINAR_DATETIME_TO" Type="DateTime" />
+            <asp:Parameter Name="SEMINAR_DAY" Type="Decimal" />
+            <asp:Parameter Name="SEMINAR_MONTH" Type="Decimal" />
+            <asp:Parameter Name="SEMINAR_YEAR" Type="Decimal" />
+            <asp:Parameter Name="SEMINAR_BUDGET" Type="Decimal" />
+            <asp:Parameter Name="SEMINAR_SUPPORT_BUDGET" Type="String" />
+            <asp:Parameter Name="SEMINAR_CERTIFICATE" Type="String" />
+            <asp:Parameter Name="SEMINAR_ABSTRACT" Type="String" />
+            <asp:Parameter Name="SEMINAR_RESULT" Type="String" />
+            <asp:Parameter Name="SEMINAR_SHOW_1" Type="String" />
+            <asp:Parameter Name="SEMINAR_SHOW_2" Type="String" />
+            <asp:Parameter Name="SEMINAR_SHOW_3" Type="String" />
+            <asp:Parameter Name="SEMINAR_SHOW_4" Type="String" />
+            <asp:Parameter Name="SEMINAR_PROBLEM" Type="String" />
+            <asp:Parameter Name="SEMINAR_COMMENT" Type="String" />
+            <asp:Parameter Name="SEMINAR_SIGNED_DATETIME" Type="DateTime" />
+            <asp:Parameter Name="CITIZEN_ID" Type="String" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="SEMINAR_NAME" Type="String" />
+            <asp:Parameter Name="SEMINAR_LASTNAME" Type="String" />
+            <asp:Parameter Name="SEMINAR_POSITION" Type="String" />
+            <asp:Parameter Name="SEMINAR_DEGREE" Type="String" />
+            <asp:Parameter Name="SEMINAR_CAMPUS" Type="String" />
+            <asp:Parameter Name="SEMINAR_NAMEOFPROJECT" Type="String" />
+            <asp:Parameter Name="SEMINAR_PLACE" Type="String" />
+            <asp:Parameter Name="SEMINAR_DATETIME_FROM" Type="DateTime" />
+            <asp:Parameter Name="SEMINAR_DATETIME_TO" Type="DateTime" />
+            <asp:Parameter Name="SEMINAR_DAY" Type="Decimal" />
+            <asp:Parameter Name="SEMINAR_MONTH" Type="Decimal" />
+            <asp:Parameter Name="SEMINAR_YEAR" Type="Decimal" />
+            <asp:Parameter Name="SEMINAR_BUDGET" Type="Decimal" />
+            <asp:Parameter Name="SEMINAR_SUPPORT_BUDGET" Type="String" />
+            <asp:Parameter Name="SEMINAR_CERTIFICATE" Type="String" />
+            <asp:Parameter Name="SEMINAR_ABSTRACT" Type="String" />
+            <asp:Parameter Name="SEMINAR_RESULT" Type="String" />
+            <asp:Parameter Name="SEMINAR_SHOW_1" Type="String" />
+            <asp:Parameter Name="SEMINAR_SHOW_2" Type="String" />
+            <asp:Parameter Name="SEMINAR_SHOW_3" Type="String" />
+            <asp:Parameter Name="SEMINAR_SHOW_4" Type="String" />
+            <asp:Parameter Name="SEMINAR_PROBLEM" Type="String" />
+            <asp:Parameter Name="SEMINAR_COMMENT" Type="String" />
+            <asp:Parameter Name="SEMINAR_SIGNED_DATETIME" Type="DateTime" />
+            <asp:Parameter Name="CITIZEN_ID" Type="String" />
+            <asp:Parameter Name="SEMINAR_ID" Type="Decimal" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
+    </asp:Panel>
+
 </asp:Content>

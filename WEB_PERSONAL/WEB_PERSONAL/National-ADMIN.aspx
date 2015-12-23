@@ -53,7 +53,7 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: left; width: 40px"></td>
+                            <td style="text-align: left; width: 60px"></td>
                             <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสสัญชาติ :</td>
                             <td style="text-align: left; width: 50px;">
                                 <asp:TextBox ID="txtInsertNationID" runat="server" CssClass="tb5" MaxLength="2" Width="50px"></asp:TextBox></td>
