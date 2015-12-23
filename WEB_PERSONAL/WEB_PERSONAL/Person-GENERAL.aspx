@@ -368,7 +368,7 @@
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">หมู่</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">หน่วยงานในมหาวิทยาลัย <span class="textred">*</span></td>
 
                         </tr>
                         <tr>
