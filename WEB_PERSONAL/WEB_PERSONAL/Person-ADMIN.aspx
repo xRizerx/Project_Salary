@@ -7,7 +7,7 @@
         function pageLoad(sender, args) {
             $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDate11,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
             $('document').ready(function () {
-                $(".date").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+                $(".date").datepicker($.datepicker.regional["th"]);
             });
         };
     </script>
@@ -289,7 +289,6 @@
             <fieldset>
                 <legend>ประวัติการศึกษา</legend>
                 <div>
-                    <!-- FOR TABLE 3 ROW -->
                     <table>
                         <tr>
                             <td style="text-align: center; margin-right: 5px;">สถานศึกษา</td>
@@ -580,7 +579,6 @@
             <fieldset>
                 <legend>ประวัติการฝึกอบรม</legend>
                 <div>
-                    <!-- FOR TABLE 3 ROW -->
                     <table>
                         <tr>
                             <td style="text-align: center; margin-right: 5px;">หลักสูตรฝึกอบรม</td>
@@ -731,7 +729,6 @@
             <fieldset>
                 <legend>การได้รับโทษทางวินัยและการนิรโทษกรรม</legend>
                 <div>
-                    <!-- FOR TABLE 3 ROW -->
                     <table>
                         <tr>
                             <td style="text-align: center; margin-right: 5px;">พ.ศ.</td>
