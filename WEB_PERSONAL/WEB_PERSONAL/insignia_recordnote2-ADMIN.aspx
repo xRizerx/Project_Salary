@@ -109,7 +109,7 @@
                         <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt10" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
                         <td style="text-align: left; width:1px"></td>
 
-                        <td style="text-align: left;"><asp:Button ID="btnSubmitInsig2" Text="บีนทึก" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitInsig2_Click" /></td>
+                        <td style="text-align: left;"><asp:Button ID="btnSubmitInsig2" Text="บันทึก" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitInsig2_Click" /></td>
                         <td style="text-align: left;"><asp:Button ID="btnCancelInsig2" Text="ยกเลิก" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelInsig2_Click" /></td>
 
                     </tr>

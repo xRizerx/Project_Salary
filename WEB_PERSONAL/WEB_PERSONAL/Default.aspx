@@ -75,6 +75,7 @@
                                     <a href="Person-ADMIN.aspx">แก้ไขบุคลากร</a>
                                     <a href="Person-Detail.aspx">รายชื่อบุคลากร</a>
                                     <a href="SEMINAR-GENERAL.aspx">การพัฒนาบุคลากร</a>
+                                    <a href="SEMINAR-ADMIN.aspx">การแก้ไขพัฒนาบุคลากร</a>
                                 </div>
                                 <div class="master_header_under_salary">
                                     <span class="master_header_under_header">การขึ้นเงินเดือน</span>

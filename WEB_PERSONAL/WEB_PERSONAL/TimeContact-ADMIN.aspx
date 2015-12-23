@@ -37,8 +37,8 @@
             <fieldset>
                 <legend>Search</legend>
                 <div>
-                    รหัสระยะเวลาการจ้างงาน :&nbsp<asp:TextBox ID="txtSearchTimeContactID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
-                    ชื่อระยะเวลาการจ้างงาน :&nbsp<asp:TextBox ID="txtSearchTimeContactName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                    รหัสระยะเวลาการจ้าง :&nbsp<asp:TextBox ID="txtSearchTimeContactID" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
+                    ชื่อระยะเวลาการจ้าง :&nbsp<asp:TextBox ID="txtSearchTimeContactName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                     <asp:Button ID="btnSearchTimeContact" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchTimeContact_Click" />
                     <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
                 </div>
@@ -52,11 +52,11 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: left; width: 30px"></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสระยะเวลาการจ้างงาน :</td>
+                            <td style="text-align: left; width: 60px"></td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสระยะเวลาการจ้าง :</td>
                             <td style="text-align: left; width: 120px;">
                                 <asp:TextBox ID="txtInsertTimeContactID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อระยะเวลาการจ้างงาน :</td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อระยะเวลาการจ้าง :</td>
                             <td style="text-align: left; width: 120px;">
                                 <asp:TextBox ID="txtInsertTimeContactName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
                             <td style="text-align: left;">
@@ -85,7 +85,7 @@
                             OnRowDataBound="GridView1_RowDataBound"
                             OnPageIndexChanging="myGridViewTimeContact_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                             <Columns>
-                                <asp:TemplateField HeaderText="รหัสระยะเวลาการจ้างงาน" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="รหัสระยะเวลาการจ้าง" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
                                         <asp:Label ID="lblTimeContactIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TIME_CONTACT_ID") %>'></asp:Label>
                                     </ItemTemplate>
@@ -93,7 +93,7 @@
                                         <asp:TextBox ID="txtTimeContactIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TIME_CONTACT_ID") %>' Enabled="False"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ชื่อระยะเวลาการจ้างงาน" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="ชื่อระยะเวลาการจ้าง" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
                                         <asp:Label ID="lblTimeContactNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.TIME_CONTACT_NAME") %>'></asp:Label>
                                     </ItemTemplate>

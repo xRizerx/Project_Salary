@@ -37,8 +37,8 @@
             <fieldset>
                 <legend>Search</legend>
                 <div>
-                    รหัสประเภทเงินจ้างงาน :&nbsp<asp:TextBox ID="txtSearchBudgetID" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
-                    ชื่อประเภทเงินจ้างงาน :&nbsp<asp:TextBox ID="txtSearchBudgetName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                    รหัสประเภทเงินจ้าง :&nbsp;<asp:TextBox ID="txtSearchBudgetID" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                    ชื่อประเภทเงินจ้าง :&nbsp;<asp:TextBox ID="txtSearchBudgetName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                     <asp:Button ID="btnSearchBudgetName" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchBudgetName_Click" />
                     <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
                 </div>
@@ -50,13 +50,13 @@
             <fieldset>
                 <legend>Insert</legend>
                 <div>
-                    <table>
+                    <table> 
                         <tr>
-                            <td style="text-align: left; width: 43px"></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทเงินจ้างงาน :</td>
+                            <td style="text-align: left; width: 70px"></td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสประเภทเงินจ้าง :</td>
                             <td style="text-align: left; width: 120px;">
                                 <asp:TextBox ID="txtInsertBudgetID" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทเงินจ้างงาน :</td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อประเภทเงินจ้าง :</td>
                             <td style="text-align: left; width: 120px;">
                                 <asp:TextBox ID="txtInsertBudgetName" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
                             <td style="text-align: left;">
@@ -85,7 +85,7 @@
                             OnRowDataBound="GridView1_RowDataBound"
                             OnPageIndexChanging="myGridViewBudget_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                             <Columns>
-                                <asp:TemplateField HeaderText="รหัสประเภทเงินจ้างงาน" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="รหัสประเภทเงินจ้าง" ControlStyle-Width="230" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
                                         <asp:Label ID="lblBudgetIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BUDGET_ID") %>'></asp:Label>
                                     </ItemTemplate>
@@ -93,7 +93,7 @@
                                         <asp:TextBox ID="txtBudgetIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BUDGET_ID") %>' Enabled="False"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ชื่อประเภทเงินจ้างงาน" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="ชื่อประเภทเงินจ้าง" ControlStyle-Width="600" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
                                         <asp:Label ID="lblBudgetNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.BUDGET_NAME") %>'></asp:Label>
                                     </ItemTemplate>

@@ -67,12 +67,12 @@ namespace WEB_PERSONAL
         {
             if (string.IsNullOrEmpty(txtInsertBudgetID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสประเภทเงินจ้างงาน')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสประเภทเงินจ้าง')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtInsertBudgetName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อประเภทเงินจ้างงาน')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อประเภทเงินจ้าง')", true);
                 return;
             }
             ClassBudget b = new ClassBudget();
@@ -88,7 +88,7 @@ namespace WEB_PERSONAL
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสประเภทเงินจ้างงานนี้ อยู่ในระบบแล้ว !')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสประเภทเงินจ้างนี้ อยู่ในระบบแล้ว !')", true);
             }
         }
 

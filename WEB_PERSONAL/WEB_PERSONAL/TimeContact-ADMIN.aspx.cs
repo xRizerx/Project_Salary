@@ -67,12 +67,12 @@ namespace WEB_PERSONAL
         {
             if (string.IsNullOrEmpty(txtInsertTimeContactID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสระยะเวลาการจ้างงาน')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสระยะเวลาการจ้าง')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtInsertTimeContactName.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อระยะเวลาการจ้างงาน')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อระยะเวลาการจ้าง')", true);
                 return;
             }
             ClassTimeContact tc = new ClassTimeContact();
@@ -88,7 +88,7 @@ namespace WEB_PERSONAL
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสระยะเวลาการจ้างงาน อยู่ในระบบแล้ว !')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสระยะเวลาการจ้าง อยู่ในระบบแล้ว !')", true);
             }
         }
 
