@@ -101,6 +101,7 @@ namespace WEB_PERSONAL
 
                 Session["Lev"] = new DataTable();
                 ((DataTable)(Session["Lev"])).Columns.Add("ระดับการศึกษาที่จบสูงสุด");
+                ((DataTable)(Session["Lev"])).Columns.Add("สาขาที่จบสูงสุด");
                 GridView6.DataSource = ((DataTable)(Session["Lev"]));
                 GridView6.DataBind();
 
@@ -1469,6 +1470,7 @@ namespace WEB_PERSONAL
 
             Session["Lev"] = new DataTable();
             ((DataTable)(Session["Lev"])).Columns.Add("ระดับการศึกษาที่จบสูงสุด");
+            ((DataTable)(Session["Lev"])).Columns.Add("สาขาที่จบสูงสุด");
             GridView6.DataSource = ((DataTable)(Session["Lev"]));
             GridView6.DataBind();
 
@@ -1724,7 +1726,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_GRADUATE_TOP (GRAD_LEV_ID,CITIZEN_ID) VALUES (:GRAD_LEV_ID,:CITIZEN_ID)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_GRADUATE_TOP (GRAD_LEV_ID,STUDY_SHOW_MAJOR,CITIZEN_ID) VALUES (:GRAD_LEV_ID,:STUDY_SHOW_MAJOR,:CITIZEN_ID)", conn))
                     {
 
                         try
@@ -1734,6 +1736,7 @@ namespace WEB_PERSONAL
                                 conn.Open();
                             }
                             command.Parameters.Add(new OracleParameter("GRAD_LEV_ID", GridView6.Rows[i].Cells[0].Text));
+                            command.Parameters.Add(new OracleParameter("STUDY_SHOW_MAJOR", GridView6.Rows[i].Cells[1].Text));
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
                             
                             id = command.ExecuteNonQuery();
@@ -1812,6 +1815,7 @@ namespace WEB_PERSONAL
 
             Session["Lev"] = new DataTable();
             ((DataTable)(Session["Lev"])).Columns.Add("ระดับการศึกษาที่จบสูงสุด");
+            ((DataTable)(Session["Lev"])).Columns.Add("สาขาที่จบสูงสุด");
             GridView6.DataSource = ((DataTable)(Session["Lev"]));
             GridView6.DataBind();
 
@@ -1971,6 +1975,7 @@ namespace WEB_PERSONAL
 
             DataRow dr = ((DataTable)(Session["Lev"])).NewRow();
             dr[0] = DropDownGRAD_LEV.SelectedValue;
+            dr[1] = txtGRAD_LEV.Text;
 
             if (DropDownGRAD_LEV.SelectedValue == "0")
             {

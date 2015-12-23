@@ -39,32 +39,29 @@
         <div class="link_list">
             <span>จัดการข้อมูลระบบ</span>
             <div style="height: 20px;"></div>
-            <a href="AdminPosition-ADMIN.aspx">AdminPosition</a>
-            <a href="Amphur-ADMIN.aspx">Amphur</a>
-            <a href="Branch-ADMIN.aspx">Branch</a>
-            <a href="Budget-ADMIN.aspx">Budget</a>
-            <a href="Department-ADMIN.aspx">Department</a>
-            <a href="District-ADMIN.aspx">District</a>
-            <a href="Gender-ADMIN.aspx">Gender</a>
-            <a href="GradCountry-ADMIN.aspx">GradCountry</a>
-            <a href="GradISCED-ADMIN.aspx">GradISCED</a>
-            <a href="GradLev-ADMIN.aspx">GradLev</a>
-            <a href="GradProgram-ADMIN.aspx">GradProgram</a>
-            <a href="Ministry-GENERAL.aspx">Ministry</a>
-            <a href="Month-ADMIN.aspx">Month</a>
-            <a href="National-ADMIN.aspx">National</a>
-            <a href="Position-ADMIN.aspx">Position</a>
-            <a href="PositionWork-ADMIN.aspx">PositionWork</a>
-            <a href="Province-ADMIN.aspx">Province</a>
-            <a href="PositionWork-ADMIN.aspx">PositionWork</a>
-            <a href="Staff-ADMIN.aspx">Staff</a>
-            <a href="StaffType-ADMIN.aspx">StaffType</a>
-            <a href="SubStaffType-ADMIN.aspx">SubStaffType</a>
-            <a href="TeachISCED-ADMIN.aspx">TeachISCED</a>
-            <a href="TimeContact-ADMIN.aspx">TimeContact</a>
-            <a href="TitleName-ADMIN.aspx">TitleName</a>
-            <a href="UNIVERSITY-ADMIN.aspx">UNIVERSITY</a>
-            <a href="Year-ADMIN.aspx">Year</a>
+            <a href="Ministry-GENERAL.aspx">การจัดการข้อมูลกระทรวง </a>
+            <a href="TitleName-ADMIN.aspx">การจัดการข้อมูลคำนำหน้านาม </a>
+            <a href="StaffType-ADMIN.aspx">การจัดการข้อมูลประเภทข้าราชการ</a>
+            <a href="Month-ADMIN.aspx">การจัดการข้อมูลเดือน </a>
+            <a href="Year-ADMIN.aspx">การจัดการข้อมูลปี </a>
+            <a href="Staff-ADMIN.aspx">การจัดการข้อมูลตำแหน่งประเภท </a>
+            <a href="Gender-ADMIN.aspx">การจัดการข้อมูลเพศ </a>
+            <a href="Province-ADMIN.aspx">การจัดการข้อมูลจังหวัด </a>
+            <a href="Amphur-ADMIN.aspx">การจัดการข้อมูลอำเภอ </a>
+            <a href="District-ADMIN.aspx">การจัดการข้อมูลตำบล </a>
+            <a href="National-ADMIN.aspx">การจัดการข้อมูลสัญชาติ </a>
+            <a href="TimeContact-ADMIN.aspx">การจัดการข้อมูลระยะเวลาจ้าง </a>
+            <a href="Budget-ADMIN.aspx">การจัดการข้อมูลประเภทเงินจ้าง </a>
+            <a href="SubStaffType-ADMIN.aspx">การจัดการข้อมูลประเภทบุคลากรย่อย </a>
+            <a href="AdminPosition-ADMIN.aspx">การจัดการข้อมูลตำแหน่งบริหาร </a>
+            <a href="PositionWork-ADMIN.aspx">การจัดการข้อมูลตำแหน่งในสายงาน </a>
+            <a href="Branch-ADMIN.aspx">การจัดการข้อมูลหน่วยงานในมหาวิทยาลัย </a>
+            <a href="TeachISCED-ADMIN.aspx">การจัดการข้อมูลกลุ่มสาขาวิชาที่สอน </a>
+            <a href="GradLev-ADMIN.aspx">การจัดการข้อมูลระดับการศึกษาที่จบการศึกษาสูงสุด </a>
+            <a href="GradISCED-ADMIN.aspx">การจัดการข้อมูลกลุ่มสาขาวิชาที่จบสูงสุด </a>
+            <a href="GradProgram-ADMIN.aspx">การจัดการข้อมูลสาขาวิชาที่จบการศึกษาสูงสุด </a>
+            <a href="GradCountry-ADMIN.aspx">การจัดการข้อมูลประเทศที่จบการศึกษาสูงสุด </a>
+            
         </div>
 
     </div>

@@ -448,7 +448,7 @@
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">อำเภอ <span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ระดับการศึกษาที่จบสูงสุด <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">ระดับการศึกษาที่จบสูงสุด และสาขาที่จบสูงสุด<span class="textred">*</span></td>
 
                         </tr>
                         <tr>
@@ -465,10 +465,11 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
+                            <td style="text-align: left; width: 430px;">
                                 <asp:UpdatePanel ID="UpdatePanel24" runat="server">
                                     <ContentTemplate>
-                                 <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
+                                 <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="200px"></asp:DropDownList>
+                                        <asp:TextBox ID="txtGRAD_LEV" runat="server" MaxLength="100" Width="200px" CssClass="tb5"></asp:TextBox>
                                         </ContentTemplate>
                                 </asp:UpdatePanel>
                                 </td>

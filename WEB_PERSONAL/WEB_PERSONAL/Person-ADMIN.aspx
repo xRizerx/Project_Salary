@@ -462,7 +462,7 @@
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px;">อำเภอ <span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ระดับการศึกษาที่จบสูงสุด <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px;">ระดับการศึกษาที่จบสูงสุด และสาขาที่จบสูงสุด<span class="textred">*</span></td>
 
                         </tr>
                         <tr>
@@ -479,10 +479,11 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
+                            <td style="text-align: left; width: 430px;">
                                 <asp:UpdatePanel ID="UpdatePanel24" runat="server">
                                     <ContentTemplate>
-                                 <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
+                                 <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="200px"></asp:DropDownList>
+                                        <asp:TextBox ID="txtGRAD_LEV" runat="server" MaxLength="100" Width="200px" CssClass="tb5"></asp:TextBox>
                                         </ContentTemplate>
                                 </asp:UpdatePanel>
                                 </td>
@@ -506,7 +507,47 @@
                             <td style="text-align: left; width: 170px;">
                                 <asp:UpdatePanel ID="UpdateGridView6" runat="server">
                         <ContentTemplate>
-                            <asp:GridView ID="GridView6" runat="server" Width="450px"></asp:GridView>
+                            <asp:GridView ID="GridView6" runat="server" Style="margin-left: auto; margin-right: auto; text-align: center; width: 100%"
+                                AutoGenerateColumns="false"
+                                AllowPaging="true"
+                                DataKeyNames="ID"
+                                OnRowEditing="modEditCommand2"
+                                OnRowCancelingEdit="modCancelCommand2"
+                                OnRowUpdating="modUpdateCommand2"
+                                OnRowDeleting="modDeleteCommand2"
+                                OnRowDataBound="GridView2_RowDataBound2"
+                                OnPageIndexChanging="myGridViewPersonJobLisence_PageIndexChanging2" PageSize="5" BackColor="White" BorderColor="#999999">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="ID" Visible="false">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblPersonStudyLEVID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STUDY_GRADUATE_TOP_ID") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="CITIZEN_ID" Visible="false">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblPersonStudyLEVCitizenID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="ระดับการศึกษาที่จบสูงสุด" ControlStyle-Width="280" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblPersonStudyLEVNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_LEV_ID") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="txtPersonStudyLEVNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_LEV_ID") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:TemplateField HeaderText="สาขาที่จบสูงสุด" ControlStyle-Width="280" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblPersonStudyLEVMajorEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STUDY_SHOW_MAJOR") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="txtPersonStudyLEVMajorEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STUDY_SHOW_MAJOR") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    
+                                </Columns>
+                            </asp:GridView>
                         </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="GridView6" />

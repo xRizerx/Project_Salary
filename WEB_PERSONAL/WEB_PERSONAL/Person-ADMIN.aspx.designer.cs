@@ -526,6 +526,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.DropDownList DropDownGRAD_LEV;
         
         /// <summary>
+        /// txtGRAD_LEV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtGRAD_LEV;
+        
+        /// <summary>
         /// UpdateButtonPlusLEV control.
         /// </summary>
         /// <remarks>
