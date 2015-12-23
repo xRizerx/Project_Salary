@@ -60,11 +60,12 @@
                     <asp:Parameter Name="COMMENT" />
                 </UpdateParameters>
             </asp:SqlDataSource>
-            <div class="auto-style1">
                 <br />
+        </asp:Panel>
                <asp:Panel ID="Header" runat="server" Width="100%" HorizontalAlign="Center">
             <asp:Label ID="Headertext" runat="server" Text="รายละเอียดการเลื่อนเงินเดือนข้าราชการพลเรือนในสถาบันอุดมศึกษา ครั้งที่ 1 วันที่ 1 เมษายน 2558 มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก"></asp:Label>
         </asp:Panel>
+                <asp:Panel ID="Panel3" runat="server" Width="1024px" ScrollBars="Horizontal">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Font-Names="THS" Width="3000px" OnRowCreated="GridView1_RowCreated" DataKeyNames="ID" CssClass="mGrid" ShowHeaderWhenEmpty="True" EmptyDataText="ไม่พบข้อมูลในระบบ" EmptyDataRowStyle-HorizontalAlign="Center" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
@@ -139,7 +140,8 @@
                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                 </asp:GridView>
-            </div>
+        </asp:Panel>
+        <asp:Panel ID="Panel2" runat="server">
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Export To Excel" CssClass="button" />
             <br />
         </asp:Panel>
