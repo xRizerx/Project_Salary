@@ -1695,5 +1695,47 @@ namespace WEB_PERSONAL
             }
         }
 
+        protected void btnSearchPerson_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSearchPersonID.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassPersonStudyHistory p1 = new ClassPersonStudyHistory();
+                DataTable dt1 = p1.GetPersonStudyHistory("", "", "", "", "", "", txtSearchPersonID.Text);
+                GridView1.DataSource = dt1;
+                GridView1.DataBind();
+
+                ClassPersonJobLisence p2 = new ClassPersonJobLisence();
+                DataTable dt2 = p2.GetPersonJobLisence("", "", "", "", txtSearchPersonID.Text);
+                GridView2.DataSource = dt2;
+                GridView2.DataBind();
+
+                ClassPersonTraining p3 = new ClassPersonTraining();
+                DataTable dt3 = p3.GetPersonTraining("", "", "", "", "", "", txtSearchPersonID.Text);
+                GridView3.DataSource = dt3;
+                GridView3.DataBind();
+
+                ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY();
+                DataTable dt4 = p4.GetPersonDISCIPLINARY("", "", "", txtSearchPersonID.Text);
+                GridView4.DataSource = dt4;
+                GridView4.DataBind();
+
+                ClassPersonPosiSalary p5 = new ClassPersonPosiSalary();
+                DataTable dt5 = p5.GetPersonPosiSalary("", "", "", "", 0, 0, 0, "", txtSearchPersonID.Text);
+                GridView5.DataSource = dt5;
+                GridView5.DataBind();
+
+                SetViewState(dt1);
+                SetViewState(dt2);
+                SetViewState(dt3);
+                SetViewState(dt4);
+                SetViewState(dt5);
+            }
+        }
+
     }
 }
