@@ -319,6 +319,7 @@
     <Content Include="Font\THSarabun.ttf" />
     <Content Include="Person-ADMIN.aspx" />
     <Content Include="Person-Detail.aspx" />
+    <Content Include="Person-FormatPrint.aspx" />
     <Content Include="Person-GENERAL.aspx" />
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
@@ -330,6 +331,7 @@
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Province-ADMIN.aspx" />
     <Content Include="SalarybyID-Edit-Permanent.aspx" />
+    <Content Include="Salary_Salary_Admin.aspx" />
     <Content Include="Salary_Basesalary_Admin.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Staff-ADMIN.aspx" />
@@ -367,7 +369,6 @@
     <Content Include="SalarybyID-Edit.aspx" />
     <Content Include="SalaryByID-Report.aspx" />
     <Content Include="SalarybyID.aspx" />
-    <Content Include="Salary_Basesalary.aspx" />
     <Content Include="Script\jquery-1.7.1.min.js" />
     <Content Include="Script\jquery-ui-1.8.20.min.js" />
     <Content Include="Script\JSFunction.js" />
@@ -639,6 +640,13 @@
     <Compile Include="Person-Detail.aspx.designer.cs">
       <DependentUpon>Person-Detail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Person-FormatPrint.aspx.cs">
+      <DependentUpon>Person-FormatPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person-FormatPrint.aspx.designer.cs">
+      <DependentUpon>Person-FormatPrint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Person-GENERAL.aspx.cs">
       <DependentUpon>Person-GENERAL.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -721,19 +729,19 @@
     <Compile Include="SalaryByID.aspx.designer.cs">
       <DependentUpon>SalarybyID.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Salary_Salary_Admin.aspx.cs">
+      <DependentUpon>Salary_Salary_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Salary_Salary_Admin.aspx.designer.cs">
+      <DependentUpon>Salary_Salary_Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Salary_Basesalary_Admin.aspx.cs">
       <DependentUpon>Salary_Basesalary_Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Salary_Basesalary_Admin.aspx.designer.cs">
       <DependentUpon>Salary_Basesalary_Admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Salary_Basesalary.aspx.cs">
-      <DependentUpon>Salary_Basesalary.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Salary_Basesalary.aspx.designer.cs">
-      <DependentUpon>Salary_Basesalary.aspx</DependentUpon>
     </Compile>
     <Compile Include="SEMINAR-ADMIN.aspx.cs">
       <DependentUpon>SEMINAR-ADMIN.aspx</DependentUpon>

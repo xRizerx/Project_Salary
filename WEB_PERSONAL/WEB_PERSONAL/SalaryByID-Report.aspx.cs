@@ -114,7 +114,7 @@ namespace WEB_PERSONAL
                 GridViewRow HeaderGridRow = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Insert);
                 TableCell HeaderCell = new TableCell();
                 HeaderCell.Text = " ";
-                HeaderCell.ColumnSpan = 6;
+                HeaderCell.ColumnSpan = 7;
                 HeaderGridRow.Cells.Add(HeaderCell);
 
                 HeaderCell = new TableCell();

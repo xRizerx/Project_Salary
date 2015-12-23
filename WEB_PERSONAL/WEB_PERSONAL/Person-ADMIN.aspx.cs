@@ -71,8 +71,858 @@ namespace WEB_PERSONAL
                 txtCitizen.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtSalary14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtSalaryForPosition14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtDegree14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+
+                BindPROVINCEList();
+                DDLGender();
+                DDLNation();
+                DDLTimeContact();
+                DDLBudget();
+                DDLSubStaffType();
+                DDLAdminPosition();
+                DDLPositionWork();
+                DDLDepartment();
+                DDLTeachISCED();
+                DDLGradLEV();
+                DDLISCED();
+                DDLGradProg();
+                DDLGradCountry();
+                txtTELEPHONE.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
             }
+        }
+
+        private void DDLGender()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_GENDER";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGENDER.DataSource = dt;
+                        DropDownGENDER.DataValueField = "GENDER_ID";
+                        DropDownGENDER.DataTextField = "GENDER_NAME";
+                        DropDownGENDER.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGENDER.Items.Insert(0, new ListItem("--กรุณเลือก เพศ--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+
+        private void BindPROVINCEList()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_PROVINCE";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        ddlPROVINCE.DataSource = dt;
+                        ddlPROVINCE.DataValueField = "PROVINCE_ID";
+                        ddlPROVINCE.DataTextField = "PROVINCE_TH";
+                        ddlPROVINCE.DataBind();
+                        sqlConn.Close();
+
+                        ddlPROVINCE.Items.Insert(0, new ListItem("--กรุณาเลือก จังหวัด--", "0"));
+                        ddlAMPHUR.Items.Insert(0, new ListItem("--กรุณาเลือก อำเภอ--", "0"));
+                        ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือก ตำบล--", "0"));
+                        txtZIPCODE.Text = "";
+                    }
+                }
+            }
+            catch { }
+        }
+
+        protected void ddlPROVINCE_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_AMPHUR where PROVINCE_ID=:PROVINCE_ID";
+                        sqlCmd.Parameters.AddWithValue(":PROVINCE_ID", ddlPROVINCE.SelectedValue);
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        ddlAMPHUR.DataSource = dt;
+                        ddlAMPHUR.DataValueField = "AMPHUR_ID";
+                        ddlAMPHUR.DataTextField = "AMPHUR_TH";
+                        ddlAMPHUR.DataBind();
+                        sqlConn.Close();
+
+                        ddlAMPHUR.Items.Insert(0, new ListItem("--กรุณาเลือก อำเภอ--", "0"));
+                        ddlDISTRICT.Items.Clear();
+                        ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือก ตำบล--", "0"));
+                        txtZIPCODE.Text = "";
+                    }
+                }
+            }
+            catch { }
+        }
+
+        protected void ddlAMPHUR_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DISTRICT where AMPHUR_ID=:DISTRICT_ID";
+                        sqlCmd.Parameters.AddWithValue(":DISTRICT_ID", ddlAMPHUR.SelectedValue);
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        ddlDISTRICT.DataSource = dt;
+                        ddlDISTRICT.DataValueField = "DISTRICT_ID";
+                        ddlDISTRICT.DataTextField = "DISTRICT_TH";
+                        ddlDISTRICT.DataBind();
+                        sqlConn.Close();
+
+                        ddlDISTRICT.Items.Insert(0, new ListItem("--กรุณาเลือก ตำบล--", "0"));
+                        txtZIPCODE.Text = "";
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        protected void ddlDISTRICT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ZIPCODE = "select POST_CODE from TB_DISTRICT where DISTRICT_ID = " + ddlDISTRICT.SelectedValue + "";
+
+            OracleConnection conn = new OracleConnection(ConfigurationManager.ConnectionStrings["RMUTTOORCL"].ConnectionString);
+
+            conn.Open();
+
+            OracleCommand SC = new OracleCommand(ZIPCODE, conn);
+            string ZIPCODE2 = SC.ExecuteScalar().ToString();
+
+            txtZIPCODE.Text = ZIPCODE2;
+        }
+
+        private void DDLNation()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_NATIONAL";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownNATION.DataSource = dt;
+                        DropDownNATION.DataValueField = "NATION_ID";
+                        DropDownNATION.DataTextField = "NATION_THA";
+                        DropDownNATION.DataBind();
+                        sqlConn.Close();
+
+                        DropDownNATION.Items.Insert(0, new ListItem("--กรุณาเลือก สัญชาติ--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLTimeContact()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_TIME_CONTACT";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownTIME_CONTACT.DataSource = dt;
+                        DropDownTIME_CONTACT.DataValueField = "TIME_CONTACT_ID";
+                        DropDownTIME_CONTACT.DataTextField = "TIME_CONTACT_NAME";
+                        DropDownTIME_CONTACT.DataBind();
+                        sqlConn.Close();
+
+                        DropDownTIME_CONTACT.Items.Insert(0, new ListItem("--กรุณาเลือก ระยะเวลาจ้าง--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLBudget()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_BUDGET";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownBUDGET.DataSource = dt;
+                        DropDownBUDGET.DataValueField = "BUDGET_ID";
+                        DropDownBUDGET.DataTextField = "BUDGET_NAME";
+                        DropDownBUDGET.DataBind();
+                        sqlConn.Close();
+
+                        DropDownBUDGET.Items.Insert(0, new ListItem("--กรุณาเลือก ประเภทเงินจ้าง--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLSubStaffType()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_SUBSTAFFTYPE";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownSUBSTAFFTYPE.DataSource = dt;
+                        DropDownSUBSTAFFTYPE.DataValueField = "SUBSTAFFTYPE_ID";
+                        DropDownSUBSTAFFTYPE.DataTextField = "SUBSTAFFTYPE_NAME";
+                        DropDownSUBSTAFFTYPE.DataBind();
+                        sqlConn.Close();
+
+                        DropDownSUBSTAFFTYPE.Items.Insert(0, new ListItem("--กรุณาเลือก ประเภทบุคลากรย่อย--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLAdminPosition()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_ADMIN_POSITION";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownADMIN_POSITION.DataSource = dt;
+                        DropDownADMIN_POSITION.DataValueField = "ADMIN_POSITION_ID";
+                        DropDownADMIN_POSITION.DataTextField = "ADMIN_POSITION_NAME";
+                        DropDownADMIN_POSITION.DataBind();
+                        sqlConn.Close();
+
+                        DropDownADMIN_POSITION.Items.Insert(0, new ListItem("--กรุณาเลือก ตำแหน่งบริหาร--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLPositionWork()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_POSITION_WORK";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownPOSITION_WORK.DataSource = dt;
+                        DropDownPOSITION_WORK.DataValueField = "POSITION_WORK_ID";
+                        DropDownPOSITION_WORK.DataTextField = "POSITION_WORK_NAME";
+                        DropDownPOSITION_WORK.DataBind();
+                        sqlConn.Close();
+
+                        DropDownPOSITION_WORK.Items.Insert(0, new ListItem("--กรุณาเลือก ตำแหน่งในสายงาน--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLDepartment()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_BRANCH";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownBranch.DataSource = dt;
+                        DropDownBranch.DataValueField = "BRANCH_ID";
+                        DropDownBranch.DataTextField = "BRANCH_NAME";
+                        DropDownBranch.DataBind();
+                        sqlConn.Close();
+
+                        DropDownBranch.Items.Insert(0, new ListItem("--กรุณาเลือก หน่วยงานในมหาวิทยาลัย--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLTeachISCED()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_TEACH_ISCED";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownTEACH_ISCED.DataSource = dt;
+                        DropDownTEACH_ISCED.DataValueField = "TEACH_ISCED_ID";
+                        DropDownTEACH_ISCED.DataTextField = "TEACH_ISCED_NAME_TH";
+                        DropDownTEACH_ISCED.DataBind();
+                        sqlConn.Close();
+
+                        DropDownTEACH_ISCED.Items.Insert(0, new ListItem("--กรุณาเลือก กลุ่มสาขาวิชาที่สอน(ISCED)--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLGradLEV()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_GRAD_LEV";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGRAD_LEV.DataSource = dt;
+                        DropDownGRAD_LEV.DataValueField = "GRAD_LEV_ID";
+                        DropDownGRAD_LEV.DataTextField = "GRAD_LEV_NAME";
+                        DropDownGRAD_LEV.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGRAD_LEV.Items.Insert(0, new ListItem("--กรุณาเลือก ระดับการศึกษาที่จบสูงสุด--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLISCED()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_GRAD_ISCED";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGRAD_ISCED.DataSource = dt;
+                        DropDownGRAD_ISCED.DataValueField = "GRAD_ISCED_ID";
+                        DropDownGRAD_ISCED.DataTextField = "GRAD_ISCED_NAME_THAI";
+                        DropDownGRAD_ISCED.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGRAD_ISCED.Items.Insert(0, new ListItem("--กรุณาเลือก กลุ่มสาขาวิชาที่จบสูงสุด(ISCED)--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLGradProg()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_GRAD_PROGRAM";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGRAD_PROG.DataSource = dt;
+                        DropDownGRAD_PROG.DataValueField = "GRAD_PROG_ID";
+                        DropDownGRAD_PROG.DataTextField = "GRAD_PROG_NAME";
+                        DropDownGRAD_PROG.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGRAD_PROG.Items.Insert(0, new ListItem("--กรุณาเลือก สาขาวิชาที่จบสูงสุด--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLGradCountry()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_GRAD_COUNTRY order by GRAD_SHORT_NAME asc";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownGRAD_COUNTRY.DataSource = dt;
+                        DropDownGRAD_COUNTRY.DataValueField = "GRAD_COUNTRY_ID";
+                        DropDownGRAD_COUNTRY.DataTextField = "GRAD_SHORT_NAME";
+                        DropDownGRAD_COUNTRY.DataBind();
+                        sqlConn.Close();
+
+                        DropDownGRAD_COUNTRY.Items.Insert(0, new ListItem("--กรุณาเลือก ประเทศที่จบการศึกษาสูงสุด--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLMisnistry()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_MINISTRY";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownMinistry.DataSource = dt;
+                        DropDownMinistry.DataValueField = "MINISTRY_ID";
+                        DropDownMinistry.DataTextField = "MINISTRY_NAME";
+                        DropDownMinistry.DataBind();
+                        sqlConn.Close();
+
+                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLTitle()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_TITLENAME";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownTitle.DataSource = dt;
+                        DropDownTitle.DataValueField = "TITLE_ID";
+                        DropDownTitle.DataTextField = "TITLE_NAME_TH";
+                        DropDownTitle.DataBind();
+                        sqlConn.Close();
+
+                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือกคำนำหน้านาม--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLStaffType()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_STAFFTYPE";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownStaffType.DataSource = dt;
+                        DropDownStaffType.DataValueField = "STAFFTYPE_ID";
+                        DropDownStaffType.DataTextField = "STAFFTYPE_NAME";
+                        DropDownStaffType.DataBind();
+                        sqlConn.Close();
+
+                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทข้าราชการ--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLMONTH10From()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_MONTH";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownMonth10From.DataSource = dt;
+                        DropDownMonth10From.DataValueField = "MONTH_ID";
+                        DropDownMonth10From.DataTextField = "MONTH_SHORT";
+                        DropDownMonth10From.DataBind();
+                        sqlConn.Close();
+
+                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLMONTH10To()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_MONTH";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownMonth10To.DataSource = dt;
+                        DropDownMonth10To.DataValueField = "MONTH_ID";
+                        DropDownMonth10To.DataTextField = "MONTH_SHORT";
+                        DropDownMonth10To.DataBind();
+                        sqlConn.Close();
+
+                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLYEAR10From()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownYear10From.DataSource = dt;
+                        DropDownYear10From.DataValueField = "YEAR_ID";
+                        DropDownYear10From.DataTextField = "YEAR_ID";
+                        DropDownYear10From.DataBind();
+                        sqlConn.Close();
+
+                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLYEAR10To()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownYear10To.DataSource = dt;
+                        DropDownYear10To.DataValueField = "YEAR_ID";
+                        DropDownYear10To.DataTextField = "YEAR_ID";
+                        DropDownYear10To.DataBind();
+                        sqlConn.Close();
+
+                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLMONTH12From()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_MONTH";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownMonth12From.DataSource = dt;
+                        DropDownMonth12From.DataValueField = "MONTH_ID";
+                        DropDownMonth12From.DataTextField = "MONTH_SHORT";
+                        DropDownMonth12From.DataBind();
+                        sqlConn.Close();
+
+                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLMONTH12To()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_MONTH";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownMonth12To.DataSource = dt;
+                        DropDownMonth12To.DataValueField = "MONTH_ID";
+                        DropDownMonth12To.DataTextField = "MONTH_SHORT";
+                        DropDownMonth12To.DataBind();
+                        sqlConn.Close();
+
+                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLYEAR12From()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownYear12From.DataSource = dt;
+                        DropDownYear12From.DataValueField = "YEAR_ID";
+                        DropDownYear12From.DataTextField = "YEAR_ID";
+                        DropDownYear12From.DataBind();
+                        sqlConn.Close();
+
+                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLYEAR12To()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownYear12To.DataSource = dt;
+                        DropDownYear12To.DataValueField = "YEAR_ID";
+                        DropDownYear12To.DataTextField = "YEAR_ID";
+                        DropDownYear12To.DataBind();
+                        sqlConn.Close();
+
+                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLYEAR13()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownYear13.DataSource = dt;
+                        DropDownYear13.DataValueField = "YEAR_ID";
+                        DropDownYear13.DataTextField = "YEAR_ID";
+                        DropDownYear13.DataBind();
+                        sqlConn.Close();
+
+                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+        //
+        private void DDLSTAFFTYPE14()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_STAFF";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownType_Position14.DataSource = dt;
+                        DropDownType_Position14.DataValueField = "ST_ID";
+                        DropDownType_Position14.DataTextField = "ST_NAME";
+                        DropDownType_Position14.DataBind();
+                        sqlConn.Close();
+
+                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
+                    }
+                }
+            }
+            catch { }
         }
 
         #region ViewState DataTable
@@ -765,369 +1615,6 @@ namespace WEB_PERSONAL
             GridView5.DataBind();
         }
 
-        private void DDLMisnistry()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_MINISTRY";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownMinistry.DataSource = dt;
-                        DropDownMinistry.DataValueField = "MINISTRY_ID";
-                        DropDownMinistry.DataTextField = "MINISTRY_NAME";
-                        DropDownMinistry.DataBind();
-                        sqlConn.Close();
-
-                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLTitle()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_TITLENAME";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownTitle.DataSource = dt;
-                        DropDownTitle.DataValueField = "TITLE_ID";
-                        DropDownTitle.DataTextField = "TITLE_NAME_TH";
-                        DropDownTitle.DataBind();
-                        sqlConn.Close();
-
-                        DropDownTitle.Items.Insert(0, new ListItem("--กรุณาเลือกคำนำหน้านาม--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLStaffType()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_STAFFTYPE";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownStaffType.DataSource = dt;
-                        DropDownStaffType.DataValueField = "STAFFTYPE_ID";
-                        DropDownStaffType.DataTextField = "STAFFTYPE_NAME";
-                        DropDownStaffType.DataBind();
-                        sqlConn.Close();
-
-                        DropDownStaffType.Items.Insert(0, new ListItem("--กรุณาเลือกประเภทข้าราชการ--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLMONTH10From()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_MONTH";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownMonth10From.DataSource = dt;
-                        DropDownMonth10From.DataValueField = "MONTH_ID";
-                        DropDownMonth10From.DataTextField = "MONTH_SHORT";
-                        DropDownMonth10From.DataBind();
-                        sqlConn.Close();
-
-                        DropDownMonth10From.Items.Insert(0, new ListItem("--เดือน--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLMONTH10To()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_MONTH";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownMonth10To.DataSource = dt;
-                        DropDownMonth10To.DataValueField = "MONTH_ID";
-                        DropDownMonth10To.DataTextField = "MONTH_SHORT";
-                        DropDownMonth10To.DataBind();
-                        sqlConn.Close();
-
-                        DropDownMonth10To.Items.Insert(0, new ListItem("--เดือน--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLYEAR10From()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownYear10From.DataSource = dt;
-                        DropDownYear10From.DataValueField = "YEAR_ID";
-                        DropDownYear10From.DataTextField = "YEAR_ID";
-                        DropDownYear10From.DataBind();
-                        sqlConn.Close();
-
-                        DropDownYear10From.Items.Insert(0, new ListItem("--ปี--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLYEAR10To()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownYear10To.DataSource = dt;
-                        DropDownYear10To.DataValueField = "YEAR_ID";
-                        DropDownYear10To.DataTextField = "YEAR_ID";
-                        DropDownYear10To.DataBind();
-                        sqlConn.Close();
-
-                        DropDownYear10To.Items.Insert(0, new ListItem("--ปี--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLMONTH12From()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_MONTH";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownMonth12From.DataSource = dt;
-                        DropDownMonth12From.DataValueField = "MONTH_ID";
-                        DropDownMonth12From.DataTextField = "MONTH_SHORT";
-                        DropDownMonth12From.DataBind();
-                        sqlConn.Close();
-
-                        DropDownMonth12From.Items.Insert(0, new ListItem("--เดือน--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLMONTH12To()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_MONTH";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownMonth12To.DataSource = dt;
-                        DropDownMonth12To.DataValueField = "MONTH_ID";
-                        DropDownMonth12To.DataTextField = "MONTH_SHORT";
-                        DropDownMonth12To.DataBind();
-                        sqlConn.Close();
-
-                        DropDownMonth12To.Items.Insert(0, new ListItem("--เดือน--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLYEAR12From()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownYear12From.DataSource = dt;
-                        DropDownYear12From.DataValueField = "YEAR_ID";
-                        DropDownYear12From.DataTextField = "YEAR_ID";
-                        DropDownYear12From.DataBind();
-                        sqlConn.Close();
-
-                        DropDownYear12From.Items.Insert(0, new ListItem("--ปี--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLYEAR12To()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownYear12To.DataSource = dt;
-                        DropDownYear12To.DataValueField = "YEAR_ID";
-                        DropDownYear12To.DataTextField = "YEAR_ID";
-                        DropDownYear12To.DataBind();
-                        sqlConn.Close();
-
-                        DropDownYear12To.Items.Insert(0, new ListItem("--ปี--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-
-        private void DDLYEAR13()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownYear13.DataSource = dt;
-                        DropDownYear13.DataValueField = "YEAR_ID";
-                        DropDownYear13.DataTextField = "YEAR_ID";
-                        DropDownYear13.DataBind();
-                        sqlConn.Close();
-
-                        DropDownYear13.Items.Insert(0, new ListItem("--ปี--", "0"));
-
-                    }
-                }
-            }
-            catch { }
-        }
-        //
-        private void DDLSTAFFTYPE14()
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * from TB_STAFF";
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownType_Position14.DataSource = dt;
-                        DropDownType_Position14.DataValueField = "ST_ID";
-                        DropDownType_Position14.DataTextField = "ST_NAME";
-                        DropDownType_Position14.DataBind();
-                        sqlConn.Close();
-
-                        DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
-                    }
-                }
-            }
-            catch { }
-        }
-
         protected void ClearData()
         {
             DropDownMinistry.SelectedIndex = 0;
@@ -1693,6 +2180,70 @@ namespace WEB_PERSONAL
             {
                 Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนตำแหน่งและเงินเดือน>");
             }
+        }
+
+        protected void btnSearchPerson_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSearchPersonID.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก คำค้นหา')", true);
+                return;
+            }
+            else
+            {
+                ClassPersonStudyHistory p1 = new ClassPersonStudyHistory();
+                DataTable dt1 = p1.GetPersonStudyHistory("", "", "", "", "", "", txtSearchPersonID.Text);
+                GridView1.DataSource = dt1;
+                GridView1.DataBind();
+
+                ClassPersonJobLisence p2 = new ClassPersonJobLisence();
+                DataTable dt2 = p2.GetPersonJobLisence("", "", "", "", txtSearchPersonID.Text);
+                GridView2.DataSource = dt2;
+                GridView2.DataBind();
+
+                ClassPersonTraining p3 = new ClassPersonTraining();
+                DataTable dt3 = p3.GetPersonTraining("", "", "", "", "", "", txtSearchPersonID.Text);
+                GridView3.DataSource = dt3;
+                GridView3.DataBind();
+
+                ClassPersonDISCIPLINARY p4 = new ClassPersonDISCIPLINARY();
+                DataTable dt4 = p4.GetPersonDISCIPLINARY("", "", "", txtSearchPersonID.Text);
+                GridView4.DataSource = dt4;
+                GridView4.DataBind();
+
+                ClassPersonPosiSalary p5 = new ClassPersonPosiSalary();
+                DataTable dt5 = p5.GetPersonPosiSalary("", "", "", "", 0, 0, 0, "", txtSearchPersonID.Text);
+                GridView5.DataSource = dt5;
+                GridView5.DataBind();
+
+                SetViewState(dt1);
+                SetViewState(dt2);
+                SetViewState(dt3);
+                SetViewState(dt4);
+                SetViewState(dt5);
+            }
+        }
+
+        protected void ButtonPlusLEV_Click(object sender, EventArgs e)
+        {
+
+            DataRow dr = ((DataTable)(Session["Lev"])).NewRow();
+            dr[0] = DropDownGRAD_LEV.SelectedValue;
+
+            if (DropDownGRAD_LEV.SelectedValue == "0")
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาระดับการศึกษาที่จบสูงสุดให้ถูกต้อง')", true);
+                return;
+            }
+            else
+            {
+                ((DataTable)(Session["Lev"])).Rows.Add(dr);
+                GridView6.DataSource = ((DataTable)(Session["Lev"]));
+                GridView6.DataBind();
+                //ClearDataGridViewNumber11();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลระดับการศึกษาที่จบสูงสุดเรียบร้อย')", true);
+            }
+
         }
 
     }

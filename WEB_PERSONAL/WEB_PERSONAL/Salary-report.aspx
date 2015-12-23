@@ -23,7 +23,7 @@
     <div>
         <asp:Panel ID="Panel1" runat="server">
         <div class="auto-style1">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" BorderColor="Black" BorderWidth="2px" Font-Names="THS">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" BorderColor="Black" BorderWidth="2px" Font-Names="THS" ShowHeaderWhenEmpty="True" EmptyDataText="ไม่พบข้อมูลในระบบ" EmptyDataRowStyle-HorizontalAlign="Center">
                 <AlternatingRowStyle BackColor="White" BorderColor="Black" BorderWidth="2px" />
                 <Columns>
                     <asp:BoundField DataField="ROWNUM" HeaderText="ลำดับที่" SortExpression="ROW" />
@@ -57,7 +57,7 @@
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
             </asp:GridView>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM (SELECT ROWNUM,TB_BRANCH.BRANCH_NAME,TB_DPIS.COUNT_PEOPLE,TB_DPIS.SUM_SALARY,TB_DPIS.RATE_SUMSALARY,TB_DPIS.RATE_MONEY_UP,TB_DPIS.RATE_BALANCE,TB_DPIS.SUM_PRE_MONTH,TB_DPIS.ADMIN_MONEY_ADD,TB_DPIS.SUM_MONEY_UP,TB_DPIS.SUM_MONEY_TOTAL,TB_DPIS.SUM_BALANCE,TB_DPIS.&quot;COMMENT&quot; FROM TB_DPIS,TB_BRANCH WHERE TB_DPIS.BRANCH_ID = TB_BRANCH.BRANCH_ID ORDER BY TB_DPIS.DPIS_ID DESC) WHERE ROWNUM=1" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" SelectCommand="SELECT * FROM (SELECT ROWNUM,TB_BRANCH.BRANCH_NAME,TB_DPIS.COUNT_PEOPLE,TB_DPIS.SUM_SALARY,TB_DPIS.RATE_SUMSALARY,TB_DPIS.RATE_MONEY_UP,TB_DPIS.RATE_BALANCE,TB_DPIS.SUM_PRE_MONTH,TB_DPIS.ADMIN_MONEY_ADD,TB_DPIS.SUM_MONEY_UP,TB_DPIS.SUM_MONEY_TOTAL,TB_DPIS.SUM_BALANCE,nvl(TB_DPIS.&#34;COMMENT&#34;,' ')as &#34;COMMENT&#34; FROM TB_DPIS,TB_BRANCH WHERE TB_DPIS.BRANCH_ID = TB_BRANCH.BRANCH_ID ORDER BY TB_DPIS.DPIS_ID DESC) WHERE ROWNUM=1" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>"></asp:SqlDataSource>
         </asp:Panel>
     </div>
 
