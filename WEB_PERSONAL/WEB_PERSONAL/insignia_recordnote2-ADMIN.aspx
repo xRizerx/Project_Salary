@@ -47,8 +47,8 @@
                 ชื่อ :&nbsp<asp:TextBox ID="txtSearchNAME" runat="server" CssClass="tb5" Width="100px" MaxLength="100" Enabled="False"></asp:TextBox>
                 นามสกุล :&nbsp<asp:TextBox ID="txtSearchLASTNAME" runat="server" CssClass="tb5" Width="100px" MaxLength="100" Enabled="False"></asp:TextBox>
                 วันที่เริ่มบรรจุ :&nbsp<asp:TextBox ID="txtSearchDATE_INWORK" runat="server" CssClass="tb5" Width="80px" MaxLength="100" Enabled="False"></asp:TextBox>
-                <asp:Button ID="btnSearchInsig2" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchInsig2_Click" />
-                <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
+                <asp:Button ID="btnSearchInsig2" Text="ค้นหา" runat="server" CssClass="master_OAT_button" OnClick="btnSearchInsig2_Click" />
+                <asp:Button ID="btnSearchRefresh" Text="ล้าง" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
             </div>
         </fieldset>
     </div>
@@ -109,8 +109,8 @@
                         <td style="text-align: left; width: 200px;"><asp:TextBox ID="txtt10" runat="server" CssClass="tb5" MaxLength="100" Width="150px"></asp:TextBox></td>
                         <td style="text-align: left; width:1px"></td>
 
-                        <td style="text-align: left;"><asp:Button ID="btnSubmitInsig2" Text="OK" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitInsig2_Click" /></td>
-                        <td style="text-align: left;"><asp:Button ID="btnCancelInsig2" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelInsig2_Click" /></td>
+                        <td style="text-align: left;"><asp:Button ID="btnSubmitInsig2" Text="บีนทึก" runat="server" CssClass="master_OAT_button" OnClick = "btnSubmitInsig2_Click" /></td>
+                        <td style="text-align: left;"><asp:Button ID="btnCancelInsig2" Text="ยกเลิก" runat="server" CssClass="master_OAT_button" OnClick = "btnCancelInsig2_Click" /></td>
 
                     </tr>
                 </table>

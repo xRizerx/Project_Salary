@@ -15,11 +15,11 @@
 
         <div style="margin:20px">
             <asp:Label ID="Label1" runat="server" Text="ใส่รหัสบัตรประจำตัวประชาชน"></asp:Label>
-            <asp:TextBox ID="TextBox1" runat="server" Width="261px"></asp:TextBox> 
+            <asp:TextBox ID="TextBox1" runat="server" Width="164px" MaxLength="13" ToolTip="รหัสบัตรประจำตัวประชาชน" style="text-align:center"></asp:TextBox> 
             <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">ค้นหา</asp:LinkButton>
         </div>
         <div style="margin:20px">
-            <asp:Label ID="Label2" runat="server" Text="ชื่อ - สกุล"></asp:Label><asp:TextBox ID="TextBox2" runat="server" Enabled="False"></asp:TextBox>
+            <asp:Label ID="Label2" runat="server" Text="ตรวจสอบชื่อ"></asp:Label><asp:TextBox ID="TextBox2" runat="server" Enabled="False" style="text-align:center"></asp:TextBox>
         </div>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" OnRowCreated="GridView1_RowCreated" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />

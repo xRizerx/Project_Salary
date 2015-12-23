@@ -53,7 +53,7 @@ namespace WEB_PERSONAL
                 HeaderCell.ColumnSpan = 4;
                 HeaderGridRow.Cells.Add(HeaderCell);
 
-                HeaderCell = new TableCell();
+                /*HeaderCell = new TableCell();
                 HeaderCell.Text = "ใบกำกับ";
                 HeaderCell.ColumnSpan = 1;
                 HeaderGridRow.Cells.Add(HeaderCell);
@@ -61,7 +61,7 @@ namespace WEB_PERSONAL
                 HeaderCell = new TableCell();
                 HeaderCell.Text = "เหรียญตราฯ";
                 HeaderCell.ColumnSpan = 1;
-                HeaderGridRow.Cells.Add(HeaderCell);
+                HeaderGridRow.Cells.Add(HeaderCell);*/
 
                 HeaderCell = new TableCell();
                 HeaderCell.Text = "";

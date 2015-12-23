@@ -5,10 +5,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
+        <div class="auto-style1">
+            <asp:Label ID="Label1" runat="server" Text="ประวัติการรับเครื่องราชอิสริยาภรณ์" Font-Size="20pt"></asp:Label>
+        </div>
+        <div>
+
+        </div>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
             <Columns>
