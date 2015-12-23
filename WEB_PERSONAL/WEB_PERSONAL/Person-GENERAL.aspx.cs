@@ -34,6 +34,7 @@ namespace WEB_PERSONAL
                 txtCitizen.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtSalary14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
                 txtSalaryForPosition14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtDegree14.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
 
                 BindPROVINCEList();
                 DDLGender();
@@ -97,6 +98,11 @@ namespace WEB_PERSONAL
                 ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
                 GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
                 GridView5.DataBind();
+
+                Session["Lev"] = new DataTable();
+                ((DataTable)(Session["Lev"])).Columns.Add("ระดับการศึกษาที่จบสูงสุด");
+                GridView6.DataSource = ((DataTable)(Session["Lev"]));
+                GridView6.DataBind();
 
             }
         }
@@ -423,7 +429,7 @@ namespace WEB_PERSONAL
                         DropDownBranch.DataBind();
                         sqlConn.Close();
 
-                        DropDownBranch.Items.Insert(0, new ListItem("--กรุณาเลือก คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า--", "0"));
+                        DropDownBranch.Items.Insert(0, new ListItem("--กรุณาเลือก หน่วยงานในมหาวิทยาลัย--", "0"));
 
                     }
                 }
@@ -446,8 +452,8 @@ namespace WEB_PERSONAL
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownTEACH_ISCED.DataSource = dt;
-                        DropDownTEACH_ISCED.DataValueField = "ISCED_ID";
-                        DropDownTEACH_ISCED.DataTextField = "ISCED_NAME_TH";
+                        DropDownTEACH_ISCED.DataValueField = "TEACH_ISCED_ID";
+                        DropDownTEACH_ISCED.DataTextField = "TEACH_ISCED_NAME_TH";
                         DropDownTEACH_ISCED.DataBind();
                         sqlConn.Close();
 
@@ -467,15 +473,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_LEV";
+                        sqlCmd.CommandText = "select * from TB_GRAD_LEV";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownGRAD_LEV.DataSource = dt;
-                        DropDownGRAD_LEV.DataValueField = "LEV_ID";
-                        DropDownGRAD_LEV.DataTextField = "LEV_NAME";
+                        DropDownGRAD_LEV.DataValueField = "GRAD_LEV_ID";
+                        DropDownGRAD_LEV.DataTextField = "GRAD_LEV_NAME";
                         DropDownGRAD_LEV.DataBind();
                         sqlConn.Close();
 
@@ -495,15 +501,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_ISCED";
+                        sqlCmd.CommandText = "select * from TB_GRAD_ISCED";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownGRAD_ISCED.DataSource = dt;
-                        DropDownGRAD_ISCED.DataValueField = "ISCED_ID";
-                        DropDownGRAD_ISCED.DataTextField = "ISCED_NAME";
+                        DropDownGRAD_ISCED.DataValueField = "GRAD_ISCED_ID";
+                        DropDownGRAD_ISCED.DataTextField = "GRAD_ISCED_NAME_THAI";
                         DropDownGRAD_ISCED.DataBind();
                         sqlConn.Close();
 
@@ -523,7 +529,7 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_PROGRAM";
+                        sqlCmd.CommandText = "select * from TB_GRAD_PROGRAM";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
@@ -551,15 +557,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_COUNTRY order by SHORT_NAME asc";
+                        sqlCmd.CommandText = "select * from TB_GRAD_COUNTRY order by GRAD_SHORT_NAME asc";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownGRAD_COUNTRY.DataSource = dt;
-                        DropDownGRAD_COUNTRY.DataValueField = "COUNTRY_ID";
-                        DropDownGRAD_COUNTRY.DataTextField = "SHORT_NAME";
+                        DropDownGRAD_COUNTRY.DataValueField = "GRAD_COUNTRY_ID";
+                        DropDownGRAD_COUNTRY.DataTextField = "GRAD_SHORT_NAME";
                         DropDownGRAD_COUNTRY.DataBind();
                         sqlConn.Close();
 
@@ -663,14 +669,14 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.CommandText = "select * from TB_MONTH";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownMonth10From.DataSource = dt;
-                        DropDownMonth10From.DataValueField = "MONTH_SHORT";
+                        DropDownMonth10From.DataValueField = "MONTH_ID";
                         DropDownMonth10From.DataTextField = "MONTH_SHORT";
                         DropDownMonth10From.DataBind();
                         sqlConn.Close();
@@ -691,14 +697,14 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.CommandText = "select * from TB_MONTH";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownMonth10To.DataSource = dt;
-                        DropDownMonth10To.DataValueField = "MONTH_SHORT";
+                        DropDownMonth10To.DataValueField = "MONTH_ID";
                         DropDownMonth10To.DataTextField = "MONTH_SHORT";
                         DropDownMonth10To.DataBind();
                         sqlConn.Close();
@@ -719,15 +725,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear10From.DataSource = dt;
-                        DropDownYear10From.DataValueField = "YEAR_NAME";
-                        DropDownYear10From.DataTextField = "YEAR_NAME";
+                        DropDownYear10From.DataValueField = "YEAR_ID";
+                        DropDownYear10From.DataTextField = "YEAR_ID";
                         DropDownYear10From.DataBind();
                         sqlConn.Close();
 
@@ -747,15 +753,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear10To.DataSource = dt;
-                        DropDownYear10To.DataValueField = "YEAR_NAME";
-                        DropDownYear10To.DataTextField = "YEAR_NAME";
+                        DropDownYear10To.DataValueField = "YEAR_ID";
+                        DropDownYear10To.DataTextField = "YEAR_ID";
                         DropDownYear10To.DataBind();
                         sqlConn.Close();
 
@@ -775,14 +781,14 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.CommandText = "select * from TB_MONTH";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownMonth12From.DataSource = dt;
-                        DropDownMonth12From.DataValueField = "MONTH_SHORT";
+                        DropDownMonth12From.DataValueField = "MONTH_ID";
                         DropDownMonth12From.DataTextField = "MONTH_SHORT";
                         DropDownMonth12From.DataBind();
                         sqlConn.Close();
@@ -803,14 +809,14 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_DDLMONTH";
+                        sqlCmd.CommandText = "select * from TB_MONTH";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownMonth12To.DataSource = dt;
-                        DropDownMonth12To.DataValueField = "MONTH_SHORT";
+                        DropDownMonth12To.DataValueField = "MONTH_ID";
                         DropDownMonth12To.DataTextField = "MONTH_SHORT";
                         DropDownMonth12To.DataBind();
                         sqlConn.Close();
@@ -831,15 +837,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear12From.DataSource = dt;
-                        DropDownYear12From.DataValueField = "YEAR_NAME";
-                        DropDownYear12From.DataTextField = "YEAR_NAME";
+                        DropDownYear12From.DataValueField = "YEAR_ID";
+                        DropDownYear12From.DataTextField = "YEAR_ID";
                         DropDownYear12From.DataBind();
                         sqlConn.Close();
 
@@ -859,15 +865,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear12To.DataSource = dt;
-                        DropDownYear12To.DataValueField = "YEAR_NAME";
-                        DropDownYear12To.DataTextField = "YEAR_NAME";
+                        DropDownYear12To.DataValueField = "YEAR_ID";
+                        DropDownYear12To.DataTextField = "YEAR_ID";
                         DropDownYear12To.DataBind();
                         sqlConn.Close();
 
@@ -887,15 +893,15 @@ namespace WEB_PERSONAL
                 {
                     using (OracleCommand sqlCmd = new OracleCommand())
                     {
-                        sqlCmd.CommandText = "select * from TB_YEAR";
+                        sqlCmd.CommandText = "select * from TB_DATE_YEAR";
                         sqlCmd.Connection = sqlConn;
                         sqlConn.Open();
                         OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
                         DropDownYear13.DataSource = dt;
-                        DropDownYear13.DataValueField = "YEAR_NAME";
-                        DropDownYear13.DataTextField = "YEAR_NAME";
+                        DropDownYear13.DataValueField = "YEAR_ID";
+                        DropDownYear13.DataTextField = "YEAR_ID";
                         DropDownYear13.DataBind();
                         sqlConn.Close();
 
@@ -928,35 +934,6 @@ namespace WEB_PERSONAL
                         sqlConn.Close();
 
                         DropDownType_Position14.Items.Insert(0, new ListItem("--ตำแหน่งประเภท--", "0"));
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
-                    }
-                }
-            }
-            catch { }
-        }
-
-        protected void DropDownType_Position14_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                using (OracleConnection sqlConn = new OracleConnection(strConn))
-                {
-                    using (OracleCommand sqlCmd = new OracleCommand())
-                    {
-                        sqlCmd.CommandText = "select * FROM TB_POSITION_GOVERNMENT_OFFICER where ST_ID = " + DropDownType_Position14.SelectedValue + "UNION ALL select * FROM TB_POSITION_PERMANENT_EMP where ST_ID = " + DropDownType_Position14.SelectedValue;
-                        sqlCmd.Connection = sqlConn;
-                        sqlConn.Open();
-                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        DropDownDegree14.DataSource = dt;
-                        DropDownDegree14.DataValueField = "ID";
-                        DropDownDegree14.DataTextField = "NAME";
-                        DropDownDegree14.DataBind();
-                        sqlConn.Close();
-
-                        DropDownDegree14.Items.Insert(0, new ListItem("--ระดับ--", "0"));
-
                     }
                 }
             }
@@ -1028,7 +1005,7 @@ namespace WEB_PERSONAL
             txtPosition14.Text = "";
             txtNo_Position14.Text = "";
             DropDownType_Position14.SelectedIndex = 0;
-            DropDownDegree14.SelectedIndex = 0;
+            txtDegree14.Text = "";
             txtSalary14.Text = "";
             txtSalaryForPosition14.Text = "";
             txtRefDoc14.Text = "";
@@ -1310,9 +1287,9 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งประเภท<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
-            if (DropDownDegree14.SelectedIndex == 0 && GridView5.Rows.Count == 0)
+            if (string.IsNullOrEmpty(txtDegree14.Text) && GridView5.Rows.Count == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระดับ<ในส่วนตำแหน่งและเงินเดือน>')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ระดับ<ในส่วนตำแหน่งและเงินเดือน>')", true);
                 return true;
             }
             if (string.IsNullOrEmpty(txtSalary14.Text) && GridView5.Rows.Count == 0)
@@ -1489,6 +1466,11 @@ namespace WEB_PERSONAL
             ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
             GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
             GridView5.DataBind();
+
+            Session["Lev"] = new DataTable();
+            ((DataTable)(Session["Lev"])).Columns.Add("ระดับการศึกษาที่จบสูงสุด");
+            GridView6.DataSource = ((DataTable)(Session["Lev"]));
+            GridView6.DataBind();
 
         }
 
@@ -1737,6 +1719,40 @@ namespace WEB_PERSONAL
                 }
             }
 
+            for (int i = 0; i < GridView6.Rows.Count; ++i)
+            {
+                int id = 0;
+                using (OracleConnection conn = Util.OC())
+                {
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_GRADUATE_TOP (GRAD_LEV_ID,CITIZEN_ID) VALUES (:GRAD_LEV_ID,:CITIZEN_ID)", conn))
+                    {
+
+                        try
+                        {
+                            if (conn.State != ConnectionState.Open)
+                            {
+                                conn.Open();
+                            }
+                            command.Parameters.Add(new OracleParameter("GRAD_LEV_ID", GridView6.Rows[i].Cells[0].Text));
+                            command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
+                            
+                            id = command.ExecuteNonQuery();
+
+                        }
+
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                        finally
+                        {
+                            command.Dispose();
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+
             ClearData();
             ClearDataGridViewNumber10();
             ClearDataGridViewNumber11();
@@ -1793,6 +1809,11 @@ namespace WEB_PERSONAL
             ((DataTable)(Session["PositionAndSalary"])).Columns.Add("เอกสารอ้างอิง");
             GridView5.DataSource = ((DataTable)(Session["PositionAndSalary"]));
             GridView5.DataBind();
+
+            Session["Lev"] = new DataTable();
+            ((DataTable)(Session["Lev"])).Columns.Add("ระดับการศึกษาที่จบสูงสุด");
+            GridView6.DataSource = ((DataTable)(Session["Lev"]));
+            GridView6.DataBind();
 
         }
 
@@ -1922,11 +1943,11 @@ namespace WEB_PERSONAL
             dr[1] = txtPosition14.Text;
             dr[2] = txtNo_Position14.Text;
             dr[3] = DropDownType_Position14.SelectedValue;
-            dr[4] = DropDownDegree14.SelectedValue;
+            dr[4] = txtDegree14.Text;
             dr[5] = txtSalary14.Text;
             dr[6] = txtSalaryForPosition14.Text;
             dr[7] = txtRefDoc14.Text;
-            if (DropDownType_Position14.SelectedValue == "0" || DropDownDegree14.SelectedValue == "0")
+            if (DropDownType_Position14.SelectedValue == "0")
             {
                 Util.Alert(this, "กรุณาเลือก ตำแหน่งประเภทและระดับ ให้ถูกต้อง<ในส่วนตำแหน่งและเงินเดือน>");
                 return;
@@ -1943,6 +1964,28 @@ namespace WEB_PERSONAL
             {
                 Util.Alert(this, "กรุณากรอกข้อมูลให้ครบถ้วน<ในส่วนตำแหน่งและเงินเดือน>");
             }
+        }
+
+        protected void ButtonPlusLEV_Click(object sender, EventArgs e)
+        {
+
+            DataRow dr = ((DataTable)(Session["Lev"])).NewRow();
+            dr[0] = DropDownGRAD_LEV.SelectedValue;
+
+            if (DropDownGRAD_LEV.SelectedValue == "0")
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาระดับการศึกษาที่จบสูงสุดให้ถูกต้อง')", true);
+                return;
+            }
+            else
+            {
+                ((DataTable)(Session["Lev"])).Rows.Add(dr);
+                GridView6.DataSource = ((DataTable)(Session["Lev"]));
+                GridView6.DataBind();
+                //ClearDataGridViewNumber11();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลระดับการศึกษาที่จบสูงสุดเรียบร้อย')", true);
+            }
+
         }
     }
 }

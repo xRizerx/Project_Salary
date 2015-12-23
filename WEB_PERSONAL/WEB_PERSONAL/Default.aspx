@@ -102,6 +102,12 @@
                                     <a href="insignia_maintence.aspx">บัญชีรายชื่อผู้ส่งคืนเครื่องราชอิสริยาภรณ์</a>
                                 </div>
 
+                    <div class="master_header_under_admin">
+                                    <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
+                                    <a href="DataManager.aspx">จัดการข้อมูล</a>
+      
+                                </div>
+
                             </div>
                 
             </asp:Panel>

@@ -647,6 +647,10 @@ home_button:active {
     padding: 0 20px;
     width: 290px;
 }
+.master_header_under_admin span, .master_header_under_admin a {
+    padding: 0 20px;
+    width: 120px;
+}
 
 .master_header_under img {
     float:right;

@@ -151,6 +151,7 @@
     <Content Include="CSS\Salary.css" />
     <Content Include="CSS\Study.css" />
     <Content Include="CSS\UpdateHistory.css" />
+    <Content Include="DataManager.aspx" />
     <Content Include="District-ADMIN.aspx" />
     <Content Include="Entities\Virus.mp3" />
     <Content Include="GradCountry-ADMIN.aspx" />
@@ -318,6 +319,7 @@
     <Content Include="Font\THSarabun.ttf" />
     <Content Include="Person-ADMIN.aspx" />
     <Content Include="Person-Detail.aspx" />
+    <Content Include="Person-FormatPrint.aspx" />
     <Content Include="Person-GENERAL.aspx" />
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
@@ -436,6 +438,13 @@
     <Compile Include="Class\StudyHistory.cs" />
     <Compile Include="Class\TrainingHistory.cs" />
     <Compile Include="Connection\ConnectionDB.cs" />
+    <Compile Include="DataManager.aspx.cs">
+      <DependentUpon>DataManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataManager.aspx.designer.cs">
+      <DependentUpon>DataManager.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -630,6 +639,13 @@
     </Compile>
     <Compile Include="Person-Detail.aspx.designer.cs">
       <DependentUpon>Person-Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Person-FormatPrint.aspx.cs">
+      <DependentUpon>Person-FormatPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person-FormatPrint.aspx.designer.cs">
+      <DependentUpon>Person-FormatPrint.aspx</DependentUpon>
     </Compile>
     <Compile Include="Person-GENERAL.aspx.cs">
       <DependentUpon>Person-GENERAL.aspx</DependentUpon>
