@@ -318,6 +318,7 @@
     <Content Include="Font\THSarabun.ttf" />
     <Content Include="Person-ADMIN.aspx" />
     <Content Include="Person-Detail.aspx" />
+    <Content Include="Person-FormatPrint.aspx" />
     <Content Include="Person-GENERAL.aspx" />
     <Content Include="personalDataSet.xsc">
       <DependentUpon>personalDataSet.xsd</DependentUpon>
@@ -630,6 +631,13 @@
     </Compile>
     <Compile Include="Person-Detail.aspx.designer.cs">
       <DependentUpon>Person-Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Person-FormatPrint.aspx.cs">
+      <DependentUpon>Person-FormatPrint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Person-FormatPrint.aspx.designer.cs">
+      <DependentUpon>Person-FormatPrint.aspx</DependentUpon>
     </Compile>
     <Compile Include="Person-GENERAL.aspx.cs">
       <DependentUpon>Person-GENERAL.aspx</DependentUpon>
