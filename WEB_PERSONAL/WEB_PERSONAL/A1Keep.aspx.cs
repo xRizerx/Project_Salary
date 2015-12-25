@@ -11,7 +11,7 @@ using System.Configuration;
 
 namespace WEB_PERSONAL
 {
-    public partial class Person_GENERAL : System.Web.UI.Page
+    public partial class A1Keep : System.Web.UI.Page
     {
         public static string strConn = @"Data Source = ORCL_RMUTTO;USER ID=RMUTTO;PASSWORD=Zxcvbnm";
         protected void Page_Load(object sender, EventArgs e)
@@ -44,6 +44,7 @@ namespace WEB_PERSONAL
                 DDLSubStaffType();
                 DDLAdminPosition();
                 DDLPositionWork();
+                DDLDepartment();
                 DDLTeachISCED();
                 DDLGradLEV();
                 DDLISCED();
@@ -402,6 +403,34 @@ namespace WEB_PERSONAL
                         sqlConn.Close();
 
                         DropDownPOSITION_WORK.Items.Insert(0, new ListItem("--กรุณาเลือก ตำแหน่งในสายงาน--", "0"));
+
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void DDLDepartment()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_BRANCH";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownBranch.DataSource = dt;
+                        DropDownBranch.DataValueField = "BRANCH_ID";
+                        DropDownBranch.DataTextField = "BRANCH_NAME";
+                        DropDownBranch.DataBind();
+                        sqlConn.Close();
+
+                        DropDownBranch.Items.Insert(0, new ListItem("--กรุณาเลือก หน่วยงานในมหาวิทยาลัย--", "0"));
 
                     }
                 }
@@ -1000,6 +1029,7 @@ namespace WEB_PERSONAL
             DropDownSUBSTAFFTYPE.SelectedIndex = 0;
             DropDownADMIN_POSITION.SelectedIndex = 0;
             DropDownPOSITION_WORK.SelectedIndex = 0;
+            DropDownBranch.SelectedIndex = 0;
             txtSPECIAL_NAME.Text = "";
             DropDownTEACH_ISCED.SelectedIndex = 0;
             DropDownGRAD_LEV.SelectedIndex = 0;
@@ -1336,6 +1366,11 @@ namespace WEB_PERSONAL
             if (DropDownPOSITION_WORK.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งในสายงาน')", true);
+                return true;
+            }
+            if (DropDownBranch.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก คณะ/หน่วยงานที่สังกัด หรือเทียบเท่า')", true);
                 return true;
             }
             if (string.IsNullOrEmpty(txtSPECIAL_NAME.Text))
@@ -1703,7 +1738,7 @@ namespace WEB_PERSONAL
                             command.Parameters.Add(new OracleParameter("GRAD_LEV_ID", GridView6.Rows[i].Cells[0].Text));
                             command.Parameters.Add(new OracleParameter("STUDY_SHOW_MAJOR", GridView6.Rows[i].Cells[1].Text));
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
-                            
+
                             id = command.ExecuteNonQuery();
 
                         }
@@ -1940,7 +1975,7 @@ namespace WEB_PERSONAL
 
             DataRow dr = ((DataTable)(Session["Lev"])).NewRow();
             dr[0] = DropDownGRAD_LEV.SelectedValue;
-            dr[1] = txtGRAD_CURR.Text;
+            dr[1] = txtGRAD_LEV.Text;
 
             if (DropDownGRAD_LEV.SelectedValue == "0")
             {
@@ -1957,6 +1992,5 @@ namespace WEB_PERSONAL
             }
 
         }
-
     }
 }
