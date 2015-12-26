@@ -9,7 +9,7 @@ using System.Web;
 namespace WEB_PERSONAL.Entities
 {
     public class ClassTitleName
-    {
+    { 
 
         public int TITLE_ID { get; set; }
         public string TITLE_NAME_TH { get; set; }
