@@ -85,22 +85,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtFatherName;
         
         /// <summary>
-        /// UpdateDropDownFaculty control.
+        /// UpdateDropDownCampus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdateDropDownFaculty;
+        protected global::System.Web.UI.UpdatePanel UpdateDropDownCampus;
         
         /// <summary>
-        /// DropDownFaculty control.
+        /// DropDownCampus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownFaculty;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownCampus;
         
         /// <summary>
         /// UpdatetxtMOO control.
@@ -139,22 +139,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox txtFatherLastName;
         
         /// <summary>
-        /// UpdateDropDownCampus control.
+        /// UpdateDropDownFaculty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdateDropDownCampus;
+        protected global::System.Web.UI.UpdatePanel UpdateDropDownFaculty;
         
         /// <summary>
-        /// DropDownCampus control.
+        /// DropDownFaculty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownCampus;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownFaculty;
         
         /// <summary>
         /// UpdatetxtSTREET control.
@@ -1525,6 +1525,15 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.GridView GridView5;
         
         /// <summary>
+        /// PanelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelButton;
+        
+        /// <summary>
         /// btnCancelPerson control.
         /// </summary>
         /// <remarks>
@@ -1532,6 +1541,15 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelPerson;
+        
+        /// <summary>
+        /// UpdatebtnSubmitPerson control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatebtnSubmitPerson;
         
         /// <summary>
         /// btnSubmitPerson control.

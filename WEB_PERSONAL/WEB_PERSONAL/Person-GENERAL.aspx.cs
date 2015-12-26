@@ -50,6 +50,8 @@ namespace WEB_PERSONAL
                 DDLGradProg();
                 DDLGradCountry();
                 txtTELEPHONE.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                txtZIPCODE.Attributes.Add("onkeypress", "return allowOnlyNumber(this);");
+                DDLCampus();
 
                 Session["StudyHis"] = new DataTable();
                 ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
@@ -62,7 +64,7 @@ namespace WEB_PERSONAL
                 GridView1.DataBind();
 
                 Session["JobLisence"] = new DataTable();
-                ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
+                ((DataTable)(Session["JobLisence"])).Columns.Add("ชื่อใบอนุญาต");
                 ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
                 ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
                 ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
@@ -569,7 +571,7 @@ namespace WEB_PERSONAL
                         DropDownMinistry.DataBind();
                         sqlConn.Close();
 
-                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือกกระทรวง--", "0"));
+                        DropDownMinistry.Items.Insert(0, new ListItem("--กรุณาเลือก กระทรวง--", "0"));
 
                     }
                 }
@@ -912,14 +914,86 @@ namespace WEB_PERSONAL
             catch { }
         }
 
+        private void DDLCampus()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_CAMPUS";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownCampus.DataSource = dt;
+                        DropDownCampus.DataValueField = "CAMPUS_ID";
+                        DropDownCampus.DataTextField = "CAMPUS_NAME";
+                        DropDownCampus.DataBind();
+                        sqlConn.Close();
+
+                        DropDownCampus.Items.Insert(0, new ListItem("--กรุณาเลือก วิทยาเขต--", "0"));
+                        DropDownFaculty.Items.Insert(0, new ListItem("--กรุณาเลือก คณะ--", "0"));
+                    }
+                }
+            }
+            catch { }
+        }
+
+        protected void ddlCampus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_FACULTY where CAMPUS_ID=:CAMPUS_ID";
+                        sqlCmd.Parameters.AddWithValue(":CAMPUS_ID", DropDownCampus.SelectedValue);
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownFaculty.DataSource = dt;
+                        DropDownFaculty.DataValueField = "FACULTY_ID";
+                        DropDownFaculty.DataTextField = "FACULTY_NAME";
+                        DropDownFaculty.DataBind();
+                        sqlConn.Close();
+
+                        DropDownFaculty.Items.Insert(0, new ListItem("--กรุณาเลือก คณะ--", "0"));
+                    }
+                }
+            }
+            catch { }
+        }
+
         protected void ClearData()
         {
+            txtCitizen.Text = "";
+            DropDownCampus.SelectedIndex = 0;
+            DropDownFaculty.SelectedIndex = 0;
             DropDownMinistry.SelectedIndex = 0;
             txtDepart.Text = "มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก";
             DropDownTitle.SelectedIndex = 0;
-            txtCitizen.Text = "";
             txtName.Text = "";
             txtLastName.Text = "";
+            txtDateInWork.Text = "";
+            txtBirthDayNumber.Text = "";
+            txtBirthDayChar.Text = "";
+            txtHOMEADD.Text = "";
+            txtMOO.Text = "";
+            txtSTREET.Text = "";
+            ddlPROVINCE.SelectedIndex = 0;
+            ddlAMPHUR.SelectedIndex = 0;
+            ddlDISTRICT.SelectedIndex = 0;
+            txtZIPCODE.Text = "";
+            txtTELEPHONE.Text = "";
+            DropDownGENDER.SelectedIndex = 0;
+            txtAge60Number.Text = "";
+            txtAge60Char.Text = "";
             txtFatherName.Text = "";
             txtFatherLastName.Text = "";
             txtMotherName.Text = "";
@@ -928,12 +1002,23 @@ namespace WEB_PERSONAL
             txtMarriedName.Text = "";
             txtMarriedLastName.Text = "";
             txtMarriedLastNameOld.Text = "";
-            txtBirthDayNumber.Text = "";
-            txtBirthDayChar.Text = "";
-            txtDateInWork.Text = "";
+            DropDownNATION.SelectedIndex = 0;
+
             DropDownStaffType.SelectedIndex = 0;
-            txtAge60Number.Text = "";
-            txtAge60Char.Text = "";
+            DropDownTIME_CONTACT.SelectedIndex = 0;
+            DropDownBUDGET.SelectedIndex = 0;
+            DropDownSUBSTAFFTYPE.SelectedIndex = 0;
+            DropDownADMIN_POSITION.SelectedIndex = 0;
+            DropDownPOSITION_WORK.SelectedIndex = 0;
+            txtSPECIAL_NAME.Text = "";
+            DropDownTEACH_ISCED.SelectedIndex = 0;
+            DropDownGRAD_ISCED.SelectedIndex = 0;
+            DropDownGRAD_PROG.SelectedIndex = 0;
+            txtGRAD_UNIVDown.Text = "";
+            DropDownGRAD_COUNTRY.SelectedIndex = 0;
+
+            DropDownGRAD_LEV.SelectedIndex = 0;
+            txtGRAD_CURR.Text = "";
         }
 
         protected void ClearDataGridViewNumber10()
@@ -983,59 +1068,48 @@ namespace WEB_PERSONAL
             txtRefDoc14.Text = "";
         }
 
-        protected void ClearDataDown()
+        protected void ClearDataGridViewLev()
         {
-            DropDownGENDER.SelectedIndex = 0;
-            txtHOMEADD.Text = "";
-            txtMOO.Text = "";
-            txtSTREET.Text = "";
-            ddlPROVINCE.SelectedIndex = 0;
-            ddlAMPHUR.SelectedIndex = 0;
-            ddlDISTRICT.SelectedIndex = 0;
-            txtZIPCODE.Text = "";
-            txtTELEPHONE.Text = "";
-            DropDownNATION.SelectedIndex = 0;
-            DropDownTIME_CONTACT.SelectedIndex = 0;
-            DropDownBUDGET.SelectedIndex = 0;
-            DropDownSUBSTAFFTYPE.SelectedIndex = 0;
-            DropDownADMIN_POSITION.SelectedIndex = 0;
-            DropDownPOSITION_WORK.SelectedIndex = 0;
-            txtSPECIAL_NAME.Text = "";
-            DropDownTEACH_ISCED.SelectedIndex = 0;
             DropDownGRAD_LEV.SelectedIndex = 0;
             txtGRAD_CURR.Text = "";
-            DropDownGRAD_ISCED.SelectedIndex = 0;
-            DropDownGRAD_PROG.SelectedIndex = 0;
-            txtGRAD_UNIVDown.Text = "";
-            DropDownGRAD_COUNTRY.SelectedIndex = 0;
         }
 
         public bool NeedData1To9()
         {
+            if (string.IsNullOrEmpty(txtCitizen.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก เลขบัตรประจำตัวประชาชน 13 หลัก')", true);
+                return true;
+            }
+            //เสริม
+            if (txtGRAD_CURR.MaxLength <= 12)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชนให้ครบ 13 หลัก')", true);
+                return true;
+            }
+            if (DropDownCampus.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก วิทยาเขต')", true);
+                return true;
+            }
+            if (DropDownFaculty.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก คณะ')", true);
+                return true;
+            }
             if (DropDownMinistry.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กระทรวง')", true);
                 return true;
             }
-
             if (string.IsNullOrEmpty(txtDepart.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กรม')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก กรม')", true);
                 return true;
             }
             if (DropDownTitle.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก คำนำหน้านาม')", true);
-                return true;
-            }
-            if (string.IsNullOrEmpty(txtCitizen.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชน')", true);
-                return true;
-            }
-            if (txtCitizen.Text.Length < 13)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชนให้ครบ 13 หลัก')", true);
                 return true;
             }
             if (string.IsNullOrEmpty(txtName.Text))
@@ -1046,6 +1120,76 @@ namespace WEB_PERSONAL
             if (string.IsNullOrEmpty(txtLastName.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุล')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtDateInWork.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่บรรจุ')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtBirthDayNumber.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปีเกิด')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtBirthDayChar.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปีเกิด')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtHOMEADD.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก บ้านเลขที่')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtMOO.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หมู่')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtSTREET.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ถนน')", true);
+                return true;
+            }
+            if (ddlPROVINCE.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก จังหวัด')", true);
+                return true;
+            }
+            if (ddlAMPHUR.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก อำเภอ')", true);
+                return true;
+            }
+            if (ddlDISTRICT.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำบล')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtZIPCODE.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสไปรษณีย์')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtTELEPHONE.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หมายเลขโทรศัพท์ที่ทำงาน')", true);
+                return true;
+            }
+            if (DropDownGENDER.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก เพศ')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtAge60Number.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันครบเกษียณอายุ')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtAge60Char.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันครบเกษียณอายุ')", true);
                 return true;
             }
             if (string.IsNullOrEmpty(txtFatherName.Text))
@@ -1088,36 +1232,89 @@ namespace WEB_PERSONAL
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก นามสกุลเดิมคู่สมรสเดิม')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtBirthDayNumber.Text))
+            if (DropDownNATION.SelectedIndex == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปีเกิด (dd-mm-yyyy)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก สัญชาติ')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtBirthDayChar.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วัน เดือน ปีเกิด (ตัวบรรจง เต็มบรรทัด)')", true);
-                return true;
-            }
-            if (string.IsNullOrEmpty(txtDateInWork.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันที่บรรจุ (dd-mm-yyyy)')", true);
-                return true;
-            }
+            //
+            //
+            //
             if (DropDownStaffType.SelectedIndex == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเภทข้าราชการ')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtAge60Number.Text))
+            if (DropDownTIME_CONTACT.SelectedIndex == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันครบเกษียณอายุ (dd-mm-yyyy)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระยะเวลาจ้าง')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtAge60Char.Text))
+            if (DropDownBUDGET.SelectedIndex == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก วันครบเกษียณอายุ (ตัวบรรจง เต็มบรรทัด)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเภทเงินจ้าง')", true);
                 return true;
             }
+            if (DropDownSUBSTAFFTYPE.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเภทบุคลากรย่อย')", true);
+                return true;
+            }
+            if (DropDownADMIN_POSITION.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งบริหาร')", true);
+                return true;
+            }
+            if (DropDownPOSITION_WORK.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งในสายงาน')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtSPECIAL_NAME.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สาขางานที่เชี่ยวชาญ')", true);
+                return true;
+            }
+            if (DropDownTEACH_ISCED.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กลุ่มสาขาวิชาที่สอน(ISCED)')", true);
+                return true;
+            }
+            if (DropDownGRAD_ISCED.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กลุ่มสาขาวิชาที่จบสูงสุด')", true);
+                return true;
+            }
+            if (DropDownGRAD_PROG.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก สาขาวิชาที่จบสูงสุด')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtGRAD_UNIVDown.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อสถาบันที่จบการศึกษาสูงสุด')", true);
+                return true;
+            }
+            if (DropDownGRAD_COUNTRY.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเทศที่จบการศึกษาสูงสุด')", true);
+                return true;
+            }
+            //
+            //
+            //
+            if (DropDownGRAD_LEV.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระดับการศึกษาที่จบสูงสุด')", true);
+                return true;
+            }
+            if (string.IsNullOrEmpty(txtGRAD_CURR.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หลักสูตรที่จบการศึกษาสูงสุด')", true);
+                return true;
+            }
+
+
             return false;
         }
 
@@ -1281,116 +1478,15 @@ namespace WEB_PERSONAL
             return false;
         }
 
-        public bool NeedDataDown()
-        {
-            if (DropDownGENDER.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลเพศ')", true);
-                return true;
-            }
-            if (string.IsNullOrEmpty(txtHOMEADD.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก บ้านเลขที่')", true);
-                return true;
-            }
-            if (ddlPROVINCE.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลจังหวัด')", true);
-                return true;
-            }
-            if (ddlAMPHUR.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลอำเภอ')", true);
-                return true;
-            }
-            if (ddlDISTRICT.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ข้อมูลตำบล')", true);
-                return true;
-            }
-            if (string.IsNullOrEmpty(txtZIPCODE.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสไปรษณีย์')", true);
-                return true;
-            }
-            if (DropDownNATION.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก สัญชาติ')", true);
-                return true;
-            }
-            if (DropDownTIME_CONTACT.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระยะเวลาจ้าง')", true);
-                return true;
-            }
-            if (DropDownBUDGET.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเภทเงินจ้าง')", true);
-                return true;
-            }
-            if (DropDownADMIN_POSITION.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งบริหาร')", true);
-                return true;
-            }
-            if (DropDownPOSITION_WORK.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ตำแหน่งในสายงาน')", true);
-                return true;
-            }
-            if (string.IsNullOrEmpty(txtSPECIAL_NAME.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สาขางานที่เชี่ยวชาญ')", true);
-                return true;
-            }
-            if (DropDownTEACH_ISCED.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กลุ่มสาขาวิชาที่สอน(ISCED)')", true);
-                return true;
-            }
-            if (DropDownGRAD_LEV.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระดับการศึกษาที่จบสูงสุด')", true);
-                return true;
-            }
-            if (string.IsNullOrEmpty(txtGRAD_CURR.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หลักสูตรที่จบการศึกษาสูงสุด')", true);
-                return true;
-            }
-            if (DropDownGRAD_ISCED.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก กลุ่มสาขาวิชาที่จบสูงสุด(ISCED)')", true);
-                return true;
-            }
-            if (DropDownGRAD_PROG.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก สาขาวิชาที่จบสูงสุด')", true);
-                return true;
-            }
-            if (string.IsNullOrEmpty(txtGRAD_UNIVDown.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ชื่อสถาบันที่จบการศึกษาสูงสุด')", true);
-                return true;
-            }
-            if (DropDownGRAD_COUNTRY.SelectedIndex == 0)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ประเทศที่จบการศึกษาสูงสุด')", true);
-                return true;
-            }
-
-            return false;
-        }
-
         protected void btnCancelPerson_Click(object sender, EventArgs e)
         {
-            ClearData();
+            /*ClearData();
             ClearDataGridViewNumber10();
             ClearDataGridViewNumber11();
             ClearDataGridViewNumber12();
             ClearDataGridViewNumber13();
             ClearDataGridViewNumber14();
-            ClearDataDown();
+            ClearDataGridViewLev();
 
             Session["StudyHis"] = new DataTable();
             ((DataTable)(Session["StudyHis"])).Columns.Add("สถานศึกษา");
@@ -1400,7 +1496,7 @@ namespace WEB_PERSONAL
             GridView1.DataBind();
 
             Session["JobLisence"] = new DataTable();
-            ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
+            ((DataTable)(Session["JobLisence"])).Columns.Add("ชื่อใบอนุญาต");
             ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
             ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
             ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
@@ -1438,24 +1534,27 @@ namespace WEB_PERSONAL
             ((DataTable)(Session["Lev"])).Columns.Add("สาขาที่จบสูงสุด");
             GridView6.DataSource = ((DataTable)(Session["Lev"]));
             GridView6.DataBind();
-
+            */
+            Response.Redirect("Default.aspx");
         }
 
         protected void btnSubmitPerson_Click(object sender, EventArgs e)
         {
-            //if (NeedData1To9() || NeedData10() || NeedData11()|| NeedData12() || NeedData13()|| NeedData14()) { return; }
+            //if (NeedData1To9() || NeedData10() || NeedData11() || NeedData12() || NeedData13() || NeedData14()) { return; }
             if (NeedData1To9()) { return; }
-            //if (NeedDataDown()) { return; }
+
             ClassPerson P = new ClassPerson();
+            ClassPersonStudyGraduateTop P1 = new ClassPersonStudyGraduateTop();
+
             P.CITIZEN_ID = txtCitizen.Text;
+            P.TITLE_ID = Convert.ToInt32(DropDownTitle.SelectedValue);
+            P.PERSON_NAME = txtName.Text;
+            P.PERSON_LASTNAME = txtLastName.Text;
             P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
-            P.INWORK_DATE = DateTime.Parse(txtDateInWork.Text);
-            P.RETIRE_DATE = DateTime.Parse(txtAge60Number.Text);
-            P.DEPARTMENT_NAME = txtDepart.Text;
-            P.MINISTRY_ID = Convert.ToInt32(DropDownMinistry.SelectedValue);
-            P.TITLE_ID = DropDownTitle.SelectedValue;
             P.BIRTHDATE_LONG = txtBirthDayChar.Text;
+            P.RETIRE_DATE = DateTime.Parse(txtAge60Number.Text);
             P.RETIRE_DATE_LONG = txtAge60Char.Text;
+            P.INWORK_DATE = DateTime.Parse(txtDateInWork.Text);
             P.STAFFTYPE_ID = Convert.ToInt32(DropDownStaffType.SelectedValue);
             P.FATHER_NAME = txtFatherName.Text;
             P.FATHER_LASTNAME = txtFatherLastName.Text;
@@ -1465,9 +1564,31 @@ namespace WEB_PERSONAL
             P.COUPLE_NAME = txtMarriedName.Text;
             P.COUPLE_LASTNAME = txtMarriedLastName.Text;
             P.COUPLE_OLD_LASTNAME = txtMarriedLastNameOld.Text;
-            P.PERSON_LASTNAME = txtLastName.Text;
-            P.PERSON_NAME = txtName.Text;
-
+            P.MINISTRY_ID = Convert.ToInt32(DropDownMinistry.SelectedValue);
+            P.DEPARTMENT_NAME = txtDepart.Text;
+            P.GENDER_ID = Convert.ToInt32(DropDownGENDER.SelectedValue);
+            P.NATION_ID = DropDownNATION.SelectedValue;
+            P.HOMEADD = txtHOMEADD.Text;
+            P.MOO = txtMOO.Text;
+            P.STREET = txtSTREET.Text;
+            P.DISTRICT_ID = Convert.ToInt32(ddlDISTRICT.SelectedValue);
+            P.AMPHUR_ID = Convert.ToInt32(ddlAMPHUR.SelectedValue);
+            P.PROVINCE_ID = Convert.ToInt32(ddlPROVINCE.SelectedValue);
+            P.ZIPCODE_ID = Convert.ToInt32(txtZIPCODE.Text);
+            P.TELEPHONE = txtTELEPHONE.Text;
+            P.TIME_CONTACT_ID = Convert.ToInt32(DropDownTIME_CONTACT.SelectedValue);
+            P.BUDGET_ID = Convert.ToInt32(DropDownBUDGET.SelectedValue);
+            P.SUBSTAFFTYPE_ID = Convert.ToInt32(DropDownSUBSTAFFTYPE.SelectedValue);
+            P.ADMIN_POSITION_ID = DropDownADMIN_POSITION.SelectedValue;
+            P.POSITION_WORK_ID = DropDownPOSITION_WORK.SelectedValue;
+            P.SPECIAL_NAME = txtSPECIAL_NAME.Text;
+            P.TEACH_ISCED_ID = DropDownTEACH_ISCED.SelectedValue;
+            P.GRAD_ISCED_ID = DropDownGRAD_ISCED.SelectedValue;
+            P.GRAD_PROG_ID = DropDownGRAD_PROG.SelectedValue;
+            P.GRAD_UNIV = txtGRAD_UNIVDown.Text;
+            P.GRAD_COUNTRY_ID = Convert.ToInt32(DropDownGRAD_COUNTRY.SelectedValue);
+            P.FACULTY_ID = Convert.ToInt32(DropDownFaculty.SelectedValue);
+            P.CAMPUS_ID = Convert.ToInt32(DropDownCampus.SelectedValue);
             string[] splitDate1 = txtBirthDayNumber.Text.Split(' ');
             string[] splitDate2 = txtDateInWork.Text.Split(' ');
             string[] splitDate3 = txtAge60Number.Text.Split(' ');
@@ -1475,7 +1596,12 @@ namespace WEB_PERSONAL
             P.INWORK_DATE = new DateTime(Convert.ToInt32(splitDate2[2]), Util.MonthToNumber(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
             P.RETIRE_DATE = new DateTime(Convert.ToInt32(splitDate3[2]), Util.MonthToNumber(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
 
+            P1.GRAD_CURR = txtGRAD_CURR.Text;
+            P1.CITIZEN_ID = txtCitizen.Text;
+            P1.GRAD_LEV_ID = DropDownGRAD_LEV.SelectedValue;
+
             P.InsertPerson();
+            P1.InsertPersonStudyGraduateTop();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
 
             for (int i = 0; i < GridView1.Rows.Count; ++i)
@@ -1691,7 +1817,7 @@ namespace WEB_PERSONAL
                 int id = 0;
                 using (OracleConnection conn = Util.OC())
                 {
-                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_GRADUATE_TOP (GRAD_LEV_ID,STUDY_SHOW_MAJOR,CITIZEN_ID) VALUES (:GRAD_LEV_ID,:STUDY_SHOW_MAJOR,:CITIZEN_ID)", conn))
+                    using (OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_GRADUATE_TOP (GRAD_LEV_ID,GRAD_CURR,CITIZEN_ID) VALUES (:GRAD_LEV_ID,:GRAD_CURR,:CITIZEN_ID)", conn))
                     {
 
                         try
@@ -1701,9 +1827,9 @@ namespace WEB_PERSONAL
                                 conn.Open();
                             }
                             command.Parameters.Add(new OracleParameter("GRAD_LEV_ID", GridView6.Rows[i].Cells[0].Text));
-                            command.Parameters.Add(new OracleParameter("STUDY_SHOW_MAJOR", GridView6.Rows[i].Cells[1].Text));
+                            command.Parameters.Add(new OracleParameter("GRAD_CURR", GridView6.Rows[i].Cells[1].Text));
                             command.Parameters.Add(new OracleParameter("CITIZEN_ID", txtCitizen.Text));
-                            
+
                             id = command.ExecuteNonQuery();
 
                         }
@@ -1727,7 +1853,7 @@ namespace WEB_PERSONAL
             ClearDataGridViewNumber12();
             ClearDataGridViewNumber13();
             ClearDataGridViewNumber14();
-            ClearDataDown();
+            ClearDataGridViewLev();
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
 
@@ -1742,7 +1868,7 @@ namespace WEB_PERSONAL
             GridView1.DataBind();
 
             Session["JobLisence"] = new DataTable();
-            ((DataTable)(Session["JobLisence"])).Columns.Add("สถานศึกษา");
+            ((DataTable)(Session["JobLisence"])).Columns.Add("ชื่อใบอนุญาต");
             ((DataTable)(Session["JobLisence"])).Columns.Add("หน่วยงาน");
             ((DataTable)(Session["JobLisence"])).Columns.Add("เลขที่ใบอนุญาต");
             ((DataTable)(Session["JobLisence"])).Columns.Add("วันที่มีผลบังคับใช้ (วัน เดือน ปี)");
@@ -1941,22 +2067,26 @@ namespace WEB_PERSONAL
             DataRow dr = ((DataTable)(Session["Lev"])).NewRow();
             dr[0] = DropDownGRAD_LEV.SelectedValue;
             dr[1] = txtGRAD_CURR.Text;
-
             if (DropDownGRAD_LEV.SelectedValue == "0")
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาระดับการศึกษาที่จบสูงสุดให้ถูกต้อง')", true);
+                Util.Alert(this, "กรุณาเลือก ระดับการศึกษาที่จบสูงสุด ให้ถูกต้อง");
                 return;
             }
-            else
+            if (txtGRAD_CURR.Text != "")
             {
                 ((DataTable)(Session["Lev"])).Rows.Add(dr);
                 GridView6.DataSource = ((DataTable)(Session["Lev"]));
                 GridView6.DataBind();
-                //ClearDataGridViewNumber11();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลระดับการศึกษาที่จบสูงสุดเรียบร้อย')", true);
+                ClearDataGridViewLev();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลระดับการศึกษาที่จบสูงสุด และหลักสูตรที่จบการศึกษาสูงสุด เรียบร้อย')", true);
+            }
+            else
+            {
+                Util.Alert(this, "กรุณากรอกข้อมูลหลักสูตรที่จบการศึกษาสูงสุด");
             }
 
         }
+
 
     }
 }

@@ -1979,7 +1979,7 @@ namespace WEB_PERSONAL
             P.RETIRE_DATE = DateTime.Parse(txtAge60Number.Text);
             P.DEPARTMENT_NAME = txtDepart.Text;
             P.MINISTRY_ID = Convert.ToInt32(DropDownMinistry.SelectedValue);
-            P.TITLE_ID = DropDownTitle.SelectedValue;
+            P.TITLE_ID = Convert.ToInt32(DropDownTitle.SelectedValue);
             P.BIRTHDATE_LONG = txtBirthDayChar.Text;
             P.RETIRE_DATE_LONG = txtAge60Char.Text;
             P.STAFFTYPE_ID = Convert.ToInt32(DropDownStaffType.SelectedValue);

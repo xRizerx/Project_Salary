@@ -91,7 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.aspx" />
-    <Content Include="A1Keep.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Access.aspx" />
     <Content Include="AdminPosition-ADMIN.aspx" />
@@ -389,13 +388,6 @@
     </Compile>
     <Compile Include="404.aspx.designer.cs">
       <DependentUpon>404.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="A1Keep.aspx.cs">
-      <DependentUpon>A1Keep.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="A1Keep.aspx.designer.cs">
-      <DependentUpon>A1Keep.aspx</DependentUpon>
     </Compile>
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
