@@ -1082,7 +1082,7 @@ namespace WEB_PERSONAL
                 return true;
             }
             //เสริม
-            if (txtGRAD_CURR.MaxLength <= 12)
+            if (txtGRAD_CURR.Text.Length < 13)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชนให้ครบ 13 หลัก')", true);
                 return true;

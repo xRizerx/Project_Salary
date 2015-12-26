@@ -107,6 +107,57 @@ namespace WEB_PERSONAL.Entities
             this.CAMPUS_ID = CAMPUS_ID;
         }
 
+        public DataTable GetPersonSearch(string TITLE_ID, string CITIZEN_ID)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_PERSON ";
+            if (!string.IsNullOrEmpty(TITLE_ID) || !string.IsNullOrEmpty(CITIZEN_ID))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(TITLE_ID))
+                {
+                    query += " and TITLE_ID like :TITLE_ID ";
+                }
+                if (!string.IsNullOrEmpty(CITIZEN_ID))
+                {
+                    query += " and CITIZEN_ID like :CITIZEN_ID ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(TITLE_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("TITLE_ID", TITLE_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(CITIZEN_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
         public int InsertPerson()
         {
             int id = 0;
@@ -298,37 +349,39 @@ namespace WEB_PERSONAL.Entities
     public class ClassPersonStudyGraduateTop
     {
         public int STUDY_GRADUATE_TOP_ID { get; set; }
+        public string GRAD_LEV_ID { get; set; }
         public string GRAD_CURR { get; set; }
         public string CITIZEN_ID { get; set; }
-        public string GRAD_LEV_ID { get; set; }
+        
 
 
 
 
         public ClassPersonStudyGraduateTop() { }
-        public ClassPersonStudyGraduateTop(int STUDY_GRADUATE_TOP_ID, string GRAD_CURR, string CITIZEN_ID, string GRAD_LEV_ID)
+        public ClassPersonStudyGraduateTop(int STUDY_GRADUATE_TOP_ID, string GRAD_LEV_ID, string GRAD_CURR, string CITIZEN_ID)
         {
             this.STUDY_GRADUATE_TOP_ID = STUDY_GRADUATE_TOP_ID;
+            this.GRAD_LEV_ID = GRAD_LEV_ID;
             this.GRAD_CURR = GRAD_CURR;
             this.CITIZEN_ID = CITIZEN_ID;
-            this.GRAD_LEV_ID = GRAD_LEV_ID;
+            
         }
 
-        public DataTable GetPersonStudyGraduateTop(string GRAD_CURR, string GRAD_LEV_ID, string CITIZEN_ID)
+        public DataTable GetPersonStudyGraduateTop(string GRAD_LEV_ID, string GRAD_CURR, string CITIZEN_ID)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "SELECT * FROM TB_STUDY_GRADUATE_TOP ";
-            if (!string.IsNullOrEmpty(GRAD_CURR) || !string.IsNullOrEmpty(GRAD_LEV_ID) || !string.IsNullOrEmpty(CITIZEN_ID))
+            if (!string.IsNullOrEmpty(GRAD_LEV_ID) || !string.IsNullOrEmpty(GRAD_CURR) || !string.IsNullOrEmpty(CITIZEN_ID))
             {
                 query += " where 1=1 ";
-                if (!string.IsNullOrEmpty(GRAD_CURR))
-                {
-                    query += " and GRAD_CURR like :GRAD_CURR ";
-                }
                 if (!string.IsNullOrEmpty(GRAD_LEV_ID))
                 {
                     query += " and GRAD_LEV_ID like :GRAD_LEV_ID ";
+                }
+                if (!string.IsNullOrEmpty(GRAD_CURR))
+                {
+                    query += " and GRAD_CURR like :GRAD_CURR ";
                 }
                 if (!string.IsNullOrEmpty(CITIZEN_ID))
                 {
@@ -343,13 +396,13 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                if (!string.IsNullOrEmpty(GRAD_CURR))
-                {
-                    command.Parameters.Add(new OracleParameter("GRAD_CURR", "%" + GRAD_CURR + "%"));
-                }
                 if (!string.IsNullOrEmpty(GRAD_LEV_ID))
                 {
                     command.Parameters.Add(new OracleParameter("GRAD_LEV_ID", GRAD_LEV_ID + "%"));
+                }
+                if (!string.IsNullOrEmpty(GRAD_CURR))
+                {
+                    command.Parameters.Add(new OracleParameter("GRAD_CURR", "%" + GRAD_CURR + "%"));
                 }
                 if (!string.IsNullOrEmpty(CITIZEN_ID))
                 {
@@ -377,7 +430,7 @@ namespace WEB_PERSONAL.Entities
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_GRADUATE_TOP (GRAD_CURR,CITIZEN_ID,GRAD_LEV_ID) VALUES (:GRAD_CURR,:CITIZEN_ID,:GRAD_LEV_ID)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_STUDY_GRADUATE_TOP (GRAD_LEV_ID,CITIZEN_ID,GRAD_CURR) VALUES (:GRAD_LEV_ID,:CITIZEN_ID,:GRAD_CURR)", conn);
 
             try
             {
@@ -385,9 +438,9 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("GRAD_CURR", GRAD_CURR));
-                command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
                 command.Parameters.Add(new OracleParameter("GRAD_LEV_ID", GRAD_LEV_ID));
+                command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
+                command.Parameters.Add(new OracleParameter("GRAD_CURR", GRAD_CURR));
 
                 id = command.ExecuteNonQuery();
             }
@@ -408,8 +461,8 @@ namespace WEB_PERSONAL.Entities
             bool result = false;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
             string query = "Update TB_STUDY_GRADUATE_TOP Set ";
-            query += " GRAD_CURR = :GRAD_CURR ,";
-            query += " GRAD_LEV_ID = :GRAD_LEV_ID ";
+            query += " GRAD_LEV_ID = :GRAD_LEV_ID ,";
+            query += " GRAD_CURR = :GRAD_CURR ";
             query += " where STUDY_GRADUATE_TOP_ID  = :STUDY_GRADUATE_TOP_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
@@ -419,8 +472,8 @@ namespace WEB_PERSONAL.Entities
                 {
                     conn.Open();
                 }
-                command.Parameters.Add(new OracleParameter("GRAD_CURR", GRAD_CURR));
                 command.Parameters.Add(new OracleParameter("GRAD_LEV_ID", GRAD_LEV_ID));
+                command.Parameters.Add(new OracleParameter("GRAD_CURR", GRAD_CURR));
                 command.Parameters.Add(new OracleParameter("STUDY_GRADUATE_TOP_ID", STUDY_GRADUATE_TOP_ID));
                 if (command.ExecuteNonQuery() > 0)
                 {

@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
         function pageLoad(sender, args) {
-            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDate11,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
+            $("#ContentPlaceHolder1_txtBirthDayNumber,#ContentPlaceHolder1_txtDateInWork,#ContentPlaceHolder1_txtAge60Number,#ContentPlaceHolder1_txtDateEnable11,#ContentPlaceHolder1_txtDate14").datepicker($.datepicker.regional["th"]); // Set ภาษาที่เรานิยามไว้ด้านบน
             $('document').ready(function () {
                 $(".date").datepicker($.datepicker.regional["th"]);
             });
@@ -61,416 +61,195 @@
             <fieldset>
                 <legend>Search</legend>
                 <div>
-                    เลขบัตรประจำตัวประชาชน 13 หลัก :&nbsp<asp:TextBox ID="txtSearchPersonID" runat="server" CssClass="tb5" Width="230px" MaxLength="13"></asp:TextBox>
-                    <asp:Button ID="btnSearchPerson" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchPerson_Click" />
+                    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+                   
+                            เลขบัตรประจำตัวประชาชน 13 หลัก :&nbsp<asp:TextBox ID="txtSearchPersonID" runat="server" CssClass="tb5" Width="230px" MaxLength="13"></asp:TextBox>
+                            <asp:Button ID="btnSearchPerson" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchPerson_Click" />
+                        
                 </div>
             </fieldset>
         </div>
     </asp:Panel>
-    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
+    <asp:Panel ID="Panel1_1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
         <div>
             <fieldset>
-                <legend style="margin-left: auto; margin-right: auto; text-align: center;">เพิ่มข้อมูลบุคลากร</legend>
+                <legend style="margin-left: auto; margin-right: auto; text-align: center;">ข้อมูลส่วนตัว</legend>
                 <div>
-                    <asp:ScriptManager ID="ScriptManager1" runat="server" />
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">กระทรวง</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">เลขบัตรประจำตัวประชาชน</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">กรม</td>
-
+                            <td style="text-align: left; margin-right: 5px; width: 220px">บ้านเลขที่</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อบิดา</td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownMinistry" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtDepart" runat="server" MaxLength="100" Width="425px" CssClass="tb5">มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก</asp:TextBox>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">คำนำหน้านาม</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">เลขบัตรประจำตัวประชาชน</td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownTitle" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtCitizen" runat="server" MaxLength="13" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ชื่อ</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ชื่อบิดา</td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtFatherName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">นามสกุล</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">นามสกุลบิดา</td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtFatherLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">วัน เดือน ปีเกิด (dd-mm-yyyy)</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ชื่อมารดา</td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 435px;">
-                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtCitizen" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="10" Width="400px" CssClass="tb5" OnTextChanged="txtBirthDayNumber_TextChanged" AutoPostBack="True"></asp:TextBox>
-                                    </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="txtBirthDayNumber" />
-                                    </Triggers>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td style="text-align: left; width: 1px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtMotherName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">วัน เดือน ปีเกิด (ตัวบรรจง เต็มบรรทัด)</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">นามสกุลมารดา</td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-
-                                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                                    <ContentTemplate>
-                                        <asp:TextBox ID="txtBirthDayChar" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtCitizen" runat="server" MaxLength="13" Width="275px" CssClass="tb5" placeholder="รหัสประจำตัวประชาชน 13 หลัก"></asp:TextBox>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtMotherLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">วันที่บรรจุ (dd-mm-yyyy)</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">นามสกุลมารดาเดิม</td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 435px;">
-                                <asp:TextBox ID="txtDateInWork" runat="server" MaxLength="10" Width="400px" CssClass="tb5"></asp:TextBox></td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtMotherLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ประเภทข้าราชการ</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ชื่อคู่สมรส</td>
-
-                        </tr>
-                        <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:DropDownList ID="DropDownStaffType" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtMarriedName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">วันครบเกษียณอายุ (dd-mm-yyyy)</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">นามสกุลคู่สมรส</td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 435px;">
-                                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtHOMEADD" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="10" Width="400px" CssClass="tb5" OnTextChanged="txtAge60Number_TextChanged" AutoPostBack="True"></asp:TextBox>
-                                    </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="txtAge60Number" />
-                                    </Triggers>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtMarriedLastName" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">วันครบเกษียณอายุ (ตัวบรรจง เต็มบรรทัด)</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">นามสกุลเดิมคู่สมรสเดิม</td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                                    <ContentTemplate>
-                                        <asp:TextBox ID="txtAge60Char" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtHOMEADD" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="บ้านเลขที่"></asp:TextBox>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:TextBox ID="txtMarriedLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
-                        </tr>
-                    </table>
-
-                     <!-- -->
-                     <!-- -->
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">เพศ <span class="textred">*</span></td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ประเภทบุคลากรย่อย <span class="textred">*</span></td>
-
-                        </tr>
-                        <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtFatherName" runat="server">
                                     <ContentTemplate>
-                                       <asp:DropDownList ID="DropDownGENDER" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
+                                        <asp:TextBox ID="txtFatherName" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="ชื่อบิดา"></asp:TextBox>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel9" runat="server">
-                                    <ContentTemplate>
-                                <asp:DropDownList ID="DropDownSUBSTAFFTYPE" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
-                            </ContentTemplate>
-                                </asp:UpdatePanel>
-                                </td>
                         </tr>
                     </table>
 
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">สัญชาติ <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">วิทยาเขต</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ตำแหน่งบริหาร <span class="textred">*</span></td>
-
+                            <td style="text-align: left; margin-right: 5px; width: 220px">หมู่</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลบิดา</td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                                <asp:UpdatePanel ID="UpdateDropDownCampus" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DropDownNATION" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
+                                        <asp:DropDownList ID="DropDownCampus" runat="server" AutoPostBack="True" CssClass="tb5" OnSelectedIndexChanged="ddlCampus_SelectedIndexChanged" Width="283px"></asp:DropDownList>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel10" runat="server">
-                                    <ContentTemplate>
-                                 <asp:DropDownList ID="DropDownADMIN_POSITION" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
-                                        </ContentTemplate>
-                                </asp:UpdatePanel>
-                                </td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">บ้านเลขที่ <span class="textred">*</span></td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ตำแหน่งในสายงาน <span class="textred">*</span></td>
-
-                        </tr>
-                        <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel7" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtMOO" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtHOMEADD" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtMOO" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="หมู่"></asp:TextBox>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel11" runat="server">
-                                    <ContentTemplate>
-                                 <asp:DropDownList ID="DropDownPOSITION_WORK" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
-                                        </ContentTemplate>
-                                </asp:UpdatePanel>
-                                </td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">หมู่</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">หน่วยงานในมหาวิทยาลัย <span class="textred">*</span></td>
-
-                        </tr>
-                        <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel12" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtFatherLastName" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtMOO" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtFatherLastName" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="นามสกุลบิดา"></asp:TextBox>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel21" runat="server">
-                                    <ContentTemplate>
-                                 <asp:DropDownList ID="DropDownBranch" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
-                            </ContentTemplate>
-                                </asp:UpdatePanel>
-                                </td>
                         </tr>
                     </table>
 
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ถนน</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">คณะ</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">สาขางานที่เชี่ยวชาญ <span class="textred">*</span></td>
-
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ถนน</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อมารดา</td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel13" runat="server">
+                                <asp:UpdatePanel ID="UpdateDropDownFaculty" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtSTREET" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:DropDownList ID="DropDownFaculty" AutoPostBack="True" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel22" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtSTREET" runat="server">
                                     <ContentTemplate>
-                                <asp:TextBox ID="txtSPECIAL_NAME" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox>
-                                         </ContentTemplate>
+                                        <asp:TextBox ID="txtSTREET" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="ถนน"></asp:TextBox>
+                                    </ContentTemplate>
                                 </asp:UpdatePanel>
-                                </td>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtMotherName" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtMotherName" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="ชื่อมารดา"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
                         </tr>
                     </table>
 
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">จังหวัด <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">กระทรวง</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">กลุ่มสาขาวิชาที่สอน(ISCED) <span class="textred">*</span></td>
-
+                            <td style="text-align: left; margin-right: 5px; width: 220px">จังหวัด</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลมารดา</td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel14" runat="server">
+                                <asp:UpdatePanel ID="UpdateDropDownMinistry" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="ddlPROVINCE" runat="server" AutoPostBack="True" CssClass="tb5" OnSelectedIndexChanged="ddlPROVINCE_SelectedIndexChanged" Width="425px">
+                                        <asp:DropDownList ID="DropDownMinistry" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateddlPROVINCE" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="ddlPROVINCE" runat="server" AutoPostBack="True" CssClass="tb5" OnSelectedIndexChanged="ddlPROVINCE_SelectedIndexChanged" Width="283px">
                                         </asp:DropDownList>
-                                        
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ddlPROVINCE" EventName="SelectedIndexChanged" />
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel23" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtMotherLastName" runat="server">
                                     <ContentTemplate>
-                                <asp:DropDownList ID="DropDownTEACH_ISCED" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
-                             </ContentTemplate>
+                                        <asp:TextBox ID="txtMotherLastName" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="นามสกุลมารดา"></asp:TextBox>
+                                    </ContentTemplate>
                                 </asp:UpdatePanel>
-                                </td>
+                            </td>
                         </tr>
                     </table>
 
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">อำเภอ <span class="textred">*</span></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">กรม</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ระดับการศึกษาที่จบสูงสุด และสาขาที่จบสูงสุด<span class="textred">*</span></td>
-
+                            <td style="text-align: left; margin-right: 5px; width: 220px">อำเภอ</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลมารดาเดิม</td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel15" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtDepart" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="ddlAMPHUR" runat="server" AutoPostBack="True" CssClass="tb5" OnSelectedIndexChanged="ddlAMPHUR_SelectedIndexChanged" Width="425px">
+                                        <asp:TextBox ID="txtDepart" runat="server" MaxLength="100" Width="275px" CssClass="tb5">มหาวิทยาลัยเทคโนโลยีราชมงคลตะวันออก</asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateddlAMPHUR" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="ddlAMPHUR" runat="server" AutoPostBack="True" CssClass="tb5" OnSelectedIndexChanged="ddlAMPHUR_SelectedIndexChanged" Width="283px">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -478,16 +257,385 @@
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 430px;">
-                                <asp:UpdatePanel ID="UpdatePanel24" runat="server">
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtMotherLastNameOld" runat="server">
                                     <ContentTemplate>
-                                 <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="200px"></asp:DropDownList>
-                                        <asp:TextBox ID="txtGRAD_LEV" runat="server" MaxLength="100" Width="200px" CssClass="tb5"></asp:TextBox>
-                                        </ContentTemplate>
+                                        <asp:TextBox ID="txtMotherLastNameOld" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="นามสกุลมารดาเดิม"></asp:TextBox>
+                                    </ContentTemplate>
                                 </asp:UpdatePanel>
-                                </td>
-                             <td style="text-align: right; margin-right: 5px;">
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">คำนำหน้านาม</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ตำบล</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อคู่สมรส</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownTitle" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownTitle" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateddlDISTRICT" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="ddlDISTRICT" runat="server" OnSelectedIndexChanged="ddlDISTRICT_SelectedIndexChanged" Width="283px" AutoPostBack="True" CssClass="tb5"></asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="ddlDISTRICT" EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtMarriedName" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtMarriedName" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="ชื่อคู่สมรส"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อ</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">รหัสไปรษณีย์</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลคู่สมรส</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtName" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtName" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="ชื่อ"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtZIPCODE" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtZIPCODE" runat="server" MaxLength="5" Width="275px" CssClass="tb5" AutoPostBack="True" placeholder="รหัสไปรษณีย์"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtMarriedLastName" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtMarriedLastName" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="นามสกุลคู่สมรส"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุล</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">หมายเลขโทรศัพท์ที่ทำงาน</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลเดิมคู่สมรสเดิม</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtLastName" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtLastName" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="นามสกุล"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtTELEPHONE" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtTELEPHONE" runat="server" MaxLength="20" Width="275px" CssClass="tb5" AutoPostBack="True" placeholder="ตัวอย่าง(0-2456-5789) ต่อ 2240"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtMarriedLastNameOld" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtMarriedLastNameOld" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="นามสกุลคู่สมรสเดิม"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">วันที่บรรจุ</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">เพศ</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">สัญชาติ</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 290px;">
+                                <asp:UpdatePanel ID="UpdatetxtDateInWork" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtDateInWork" runat="server" MaxLength="12" Width="240px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownGENDER" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownGENDER" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList></td>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownNATION" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownNATION" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList></td>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">วัน เดือน ปีเกิด</td>
+                            <td style="text-align: left; width: 1px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">วันครบเกษียณอายุ</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 290px;">
+                                <asp:UpdatePanel ID="UpdateUpdatetxtBirthDayNumber" runat="server">
+                                    <ContentTemplate>
+                                        <asp:UpdatePanel ID="UpdatetxtBirthDayNumber" runat="server">
+                                            <ContentTemplate>
+                                                <asp:TextBox ID="txtBirthDayNumber" runat="server" AutoPostBack="True" CssClass="tb5" MaxLength="12" OnTextChanged="txtBirthDayNumber_TextChanged" Width="240px"></asp:TextBox>
+                                                <asp:TextBox ID="txtBirthDayChar" runat="server" CssClass="tb5" MaxLength="100" Width="300px"></asp:TextBox>
+                                            </ContentTemplate>
+                                            <Triggers>
+                                                <asp:AsyncPostBackTrigger ControlID="txtBirthDayNumber" />
+                                            </Triggers>
+                                        </asp:UpdatePanel>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 6px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtAge60Number" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="12" Width="240px" CssClass="tb5" OnTextChanged="txtAge60Number_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtAge60Char" runat="server" MaxLength="13" Width="300px" CssClass="tb5"></asp:TextBox>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="txtAge60Number" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </fieldset>
+        </div>
+    </asp:Panel>
+
+    <asp:Panel ID="Panel1_2" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
+        <div>
+            <fieldset>
+                <legend style="margin-left: auto; margin-right: auto; text-align: center;">การงาน</legend>
+                <div>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเภทข้าราชการ</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ตำแหน่งบริหาร</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">กลุ่มสาขาวิชาที่จบสูงสุด</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownStaffType" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownStaffType" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownADMIN_POSITION" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownADMIN_POSITION" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownGRAD_ISCED" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownGRAD_ISCED" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ระยะเวลาจ้าง</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ตำแหน่งในสายงาน</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">สาขาวิชาที่จบสูงสุด</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownTIME_CONTACT" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownTIME_CONTACT" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList></td>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownPOSITION_WORK" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownPOSITION_WORK" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownGRAD_PROG" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownGRAD_PROG" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเภทเงินจ้าง</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">สาขางานที่เชี่ยวชาญ</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อสถาบันที่จบการศึกษาสูงสุด</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownBUDGET" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownBUDGET" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList></td>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtSPECIAL_NAME" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtSPECIAL_NAME" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="ตัวอย่าง ความปลอดภัยและประสิทธิภาพของยา"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdatetxtGRAD_UNIVDown" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="txtGRAD_UNIVDown" runat="server" MaxLength="100" Width="275px" CssClass="tb5" placeholder="ชื่อสถาบันที่จบการศึกษาสูงสุด"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเภทบุคลากรย่อย</td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">กลุ่มสาขาวิชาที่สอน(ISCED) </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเทศที่จบการศึกษาสูงสุด</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownSUBSTAFFTYPE" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownSUBSTAFFTYPE" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownTEACH_ISCED" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownTEACH_ISCED" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 170px;">
+                                <asp:UpdatePanel ID="UpdateDropDownGRAD_COUNTRY" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownGRAD_COUNTRY" runat="server" CssClass="tb5" Width="283px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table>
+                        <tr>
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; margin-right: 5px; width: 285px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ระดับการศึกษาที่จบสูงสุด&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หลักสูตรที่จบการศึกษาสูงสุด</td>
+
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: left; width: 10px;"></td>
+                            <td style="text-align: left; width: 1030px;">
+                                <asp:UpdatePanel ID="UpdateDropDownGRAD_LEV" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DropDownGRAD_LEV" runat="server" CssClass="tb5" Width="440px"></asp:DropDownList>
+                                        <asp:TextBox ID="txtGRAD_CURR" runat="server" MaxLength="100" Width="440px" CssClass="tb5" placeholder="ชื่อหลักสูตร/ชื่อสาขา"></asp:TextBox>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td style="text-align: right; margin-right: 5px;">
                                 <asp:UpdatePanel ID="UpdateButtonPlusLEV" runat="server">
                                     <ContentTemplate>
                                         <asp:Button ID="ButtonPlusLEV" Text="+" runat="server" Width="36px" CssClass="master_OAT_button" OnClick="ButtonPlusLEV_Click" />
@@ -499,206 +647,67 @@
                             </td>
                         </tr>
                     </table>
-
                     <table>
 
                         <tr>
-                            <td style="text-align: left; width: 500px;"></td>
-                            <td style="text-align: left; width: 170px;">
+                            <td style="text-align: left; width: 30px;"></td>
+                            <td style="text-align: left; width: 890px;">
                                 <asp:UpdatePanel ID="UpdateGridView6" runat="server">
-                        <ContentTemplate>
-                            <asp:GridView ID="GridView6" runat="server" Style="margin-left: auto; margin-right: auto; text-align: center; width: 100%"
-                                AutoGenerateColumns="false"
-                                AllowPaging="true"
-                                DataKeyNames="ID"
-                                OnRowEditing="modEditCommand2"
-                                OnRowCancelingEdit="modCancelCommand2"
-                                OnRowUpdating="modUpdateCommand2"
-                                OnRowDeleting="modDeleteCommand2"
-                                OnRowDataBound="GridView2_RowDataBound2"
-                                OnPageIndexChanging="myGridViewPersonJobLisence_PageIndexChanging2" PageSize="5" BackColor="White" BorderColor="#999999">
-                                <Columns>
-                                    <asp:TemplateField HeaderText="ID" Visible="false">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblPersonStudyLEVID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STUDY_GRADUATE_TOP_ID") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="CITIZEN_ID" Visible="false">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblPersonStudyLEVCitizenID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="ระดับการศึกษาที่จบสูงสุด" ControlStyle-Width="280" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblPersonStudyLEVNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_LEV_ID") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="txtPersonStudyLEVNameEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_LEV_ID") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                    </asp:TemplateField>
-                                    
-                                    <asp:TemplateField HeaderText="สาขาที่จบสูงสุด" ControlStyle-Width="280" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblPersonStudyLEVMajorEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STUDY_SHOW_MAJOR") %>'></asp:Label>
-                                        </ItemTemplate>
-                                        <EditItemTemplate>
-                                            <asp:TextBox ID="txtPersonStudyLEVMajorEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STUDY_SHOW_MAJOR") %>'></asp:TextBox>
-                                        </EditItemTemplate>
-                                    </asp:TemplateField>
-                                    
-                                </Columns>
-                            </asp:GridView>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="GridView6" />
-                        </Triggers>
-                    </asp:UpdatePanel>
-                                </td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ตำบล <span class="textred">*</span></td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">หลักสูตรที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel16" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="ddlDISTRICT" runat="server" OnSelectedIndexChanged="ddlDISTRICT_SelectedIndexChanged" Width="432px" AutoPostBack="True" CssClass="tb5"></asp:DropDownList>
+                                        <asp:GridView ID="GridView6" runat="server" Style="margin-left: auto; margin-right: auto; text-align: center; width: 100%"
+                                            AutoGenerateColumns="false"
+                                            AllowPaging="true"
+                                            DataKeyNames="STUDY_GRADUATE_TOP_ID"
+                                            OnRowEditing="modEditCommand6"
+                                            OnRowCancelingEdit="modCancelCommand6"
+                                            OnRowUpdating="modUpdateCommand6"
+                                            OnRowDeleting="modDeleteCommand6"
+                                            OnRowDataBound="GridView6_RowDataBound6"
+                                            OnPageIndexChanging="myGridViewPersonStudyTop_PageIndexChanging6" PageSize="10" BackColor="White" BorderColor="#999999">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="ID" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblPersonStudyTopID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.STUDY_GRADUATE_TOP_ID") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="CITIZEN_ID" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblPersonStudyTopCitizen" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.CITIZEN_ID") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="ระดับการศึกษาที่จบสูงสุด" ControlStyle-Width="100" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblPersonStudyTopLevEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_LEV_ID") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:DropDownList ID="ddl_Lev" runat="server"></asp:DropDownList>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="หลักสูตรที่จบการศึกษาสูงสุด" ControlStyle-Width="505" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblPersonStudyTopGradCurrEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_CURR") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="txtPersonStudyTopGradCurrEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_CURR") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
+                                                <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="DeleteButton6" runat="server" CausesValidation="false" CommandName="Delete" Text="Delete"></asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
                                     </ContentTemplate>
                                     <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="ddlDISTRICT" EventName="SelectedIndexChanged" />
+                                        <asp:AsyncPostBackTrigger ControlID="GridView6" />
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel25" runat="server">
-                                    <ContentTemplate>
-                                <asp:TextBox ID="txtGRAD_CURR" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox>
-                                        </ContentTemplate>
-                                </asp:UpdatePanel>
-                                </td>
                         </tr>
                     </table>
 
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">รหัสไปรษณีย์ <span class="textred">*</span></td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">กลุ่มสาขาวิชาที่จบสูงสุด(ISCED) <span class="textred">*</span></td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel17" runat="server">
-                                    <ContentTemplate>
-                                        <asp:TextBox ID="txtZIPCODE" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                 <asp:UpdatePanel ID="UpdatePanel26" runat="server">
-                                    <ContentTemplate>
-                                 <asp:DropDownList ID="DropDownGRAD_ISCED" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
-                                        </ContentTemplate>
-                                </asp:UpdatePanel>
-                                </td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">หมายเลขโทรศัพท์ที่ทำงาน</td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">สาขาวิชาที่จบสูงสุด <span class="textred">*</span></td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel18" runat="server">
-                                    <ContentTemplate>
-                                        <asp:TextBox ID="txtTELEPHONE" runat="server" MaxLength="100" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel27" runat="server">
-                                    <ContentTemplate>
-                                 <asp:DropDownList ID="DropDownGRAD_PROG" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
-                                        </ContentTemplate>
-                                </asp:UpdatePanel>
-                                </td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ระยะเวลาจ้าง <span class="textred">*</span></td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ชื่อสถาบันที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel19" runat="server">
-                                    <ContentTemplate>
-                                        <asp:DropDownList ID="DropDownTIME_CONTACT" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel28" runat="server">
-                                    <ContentTemplate>
-                                <asp:TextBox ID="txtGRAD_UNIVDown" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox>
-                                        </ContentTemplate>
-                                </asp:UpdatePanel>
-                                </td>
-                        </tr>
-                    </table>
-
-                    <table>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ประเภทเงินจ้าง <span class="textred">*</span></td>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px;">ประเทศที่จบการศึกษาสูงสุด <span class="textred">*</span></td>
-
-                        </tr>
-                        <tr>
-                            <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                <asp:UpdatePanel ID="UpdatePanel20" runat="server">
-                                    <ContentTemplate>
-                                        <asp:DropDownList ID="DropDownBUDGET" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList></td>
-                                    </ContentTemplate>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td style="text-align: left; width: 10px;"></td>
-                            <td style="text-align: left; width: 170px;">
-                                 <asp:UpdatePanel ID="UpdatePanel29" runat="server">
-                                    <ContentTemplate>
-                                <asp:DropDownList ID="DropDownGRAD_COUNTRY" runat="server" CssClass="tb5" Width="432px"></asp:DropDownList>
-                                         </ContentTemplate>
-                                </asp:UpdatePanel>
-                                </td>
-                        </tr>
-                    </table>
                 </div>
             </fieldset>
         </div>
@@ -776,7 +785,7 @@
                                 OnRowUpdating="modUpdateCommand1"
                                 OnRowDeleting="modDeleteCommand1"
                                 OnRowDataBound="GridView1_RowDataBound1"
-                                OnPageIndexChanging="myGridViewPersonStudyHistory_PageIndexChanging1" PageSize="5" BackColor="White" BorderColor="#999999">
+                                OnPageIndexChanging="myGridViewPersonStudyHistory_PageIndexChanging1" PageSize="10" BackColor="White" BorderColor="#999999">
                                 <Columns>
                                     <asp:TemplateField HeaderText="ID" Visible="false">
                                         <ItemTemplate>
@@ -899,12 +908,12 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td style="text-align: left; width: 220px;">
-                                <asp:UpdatePanel ID="UpdatetxtDate11" runat="server">
+                                <asp:UpdatePanel ID="UpdatetxtDateEnable11" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtDate11" runat="server" MaxLength="100" Width="160" CssClass="tb5"></asp:TextBox>
+                                        <asp:TextBox ID="txtDateEnable11" runat="server" MaxLength="100" Width="160" CssClass="tb5"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="txtDate11" />
+                                        <asp:AsyncPostBackTrigger ControlID="txtDateEnable11" />
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
@@ -912,7 +921,7 @@
                                 <asp:UpdatePanel ID="UpdateButtonPlus11" runat="server">
                                     <ContentTemplate>
                                         <asp:Button ID="ButtonPlus11" Text="+" runat="server" Width="36px" CssClass="master_OAT_button" OnClick="ButtonPlus11_Click" />
-                                        </ContentTemplate>
+                                    </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ButtonPlus11" />
                                     </Triggers>
@@ -932,7 +941,7 @@
                                 OnRowUpdating="modUpdateCommand2"
                                 OnRowDeleting="modDeleteCommand2"
                                 OnRowDataBound="GridView2_RowDataBound2"
-                                OnPageIndexChanging="myGridViewPersonJobLisence_PageIndexChanging2" PageSize="5" BackColor="White" BorderColor="#999999">
+                                OnPageIndexChanging="myGridViewPersonJobLisence_PageIndexChanging2" PageSize="10" BackColor="White" BorderColor="#999999">
                                 <Columns>
                                     <asp:TemplateField HeaderText="ID" Visible="false">
                                         <ItemTemplate>
@@ -1043,10 +1052,10 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td style="text-align: right; margin-right: 5px;">
-                               <asp:UpdatePanel ID="UpdateButtonPlus12" runat="server">
+                                <asp:UpdatePanel ID="UpdateButtonPlus12" runat="server">
                                     <ContentTemplate>
                                         <asp:Button ID="ButtonPlus12" Text="+" runat="server" Width="36px" CssClass="master_OAT_button" OnClick="ButtonPlus12_Click" />
-                                 </ContentTemplate>
+                                    </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ButtonPlus12" />
                                     </Triggers>
@@ -1066,7 +1075,7 @@
                                 OnRowUpdating="modUpdateCommand3"
                                 OnRowDeleting="modDeleteCommand3"
                                 OnRowDataBound="GridView3_RowDataBound3"
-                                OnPageIndexChanging="myGridViewPersonTraining_PageIndexChanging3" PageSize="5" BackColor="White" BorderColor="#999999">
+                                OnPageIndexChanging="myGridViewPersonTraining_PageIndexChanging3" PageSize="10" BackColor="White" BorderColor="#999999">
                                 <Columns>
                                     <asp:TemplateField HeaderText="ID" Visible="false">
                                         <ItemTemplate>
@@ -1213,7 +1222,7 @@
                                 OnRowUpdating="modUpdateCommand4"
                                 OnRowDeleting="modDeleteCommand4"
                                 OnRowDataBound="GridView4_RowDataBound4"
-                                OnPageIndexChanging="myGridViewPersonDISCIPLINARY_PageIndexChanging4" PageSize="5" BackColor="White" BorderColor="#999999">
+                                OnPageIndexChanging="myGridViewPersonDISCIPLINARY_PageIndexChanging4" PageSize="10" BackColor="White" BorderColor="#999999">
                                 <Columns>
                                     <asp:TemplateField HeaderText="ID" Visible="false">
                                         <ItemTemplate>
@@ -1389,7 +1398,7 @@
                                 OnRowUpdating="modUpdateCommand5"
                                 OnRowDeleting="modDeleteCommand5"
                                 OnRowDataBound="GridView5_RowDataBound5"
-                                OnPageIndexChanging="myGridViewPersonPosiSalary_PageIndexChanging5" PageSize="5" BackColor="White" BorderColor="#999999">
+                                OnPageIndexChanging="myGridViewPersonPosiSalary_PageIndexChanging5" PageSize="10" BackColor="White" BorderColor="#999999">
                                 <Columns>
                                     <asp:TemplateField HeaderText="ID" Visible="false">
                                         <ItemTemplate>
