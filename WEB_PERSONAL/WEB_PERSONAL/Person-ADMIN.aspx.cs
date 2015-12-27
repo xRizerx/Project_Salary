@@ -76,8 +76,8 @@ namespace WEB_PERSONAL
                             }
                         }
                     }
-
                 }
+
                 DDLMisnistry();
                 DDLTitle();
                 DDLStaffType();
@@ -976,6 +976,33 @@ namespace WEB_PERSONAL
             catch { }
         }
 
+       /* private void DDLFaculty()
+        {
+            try
+            {
+                using (OracleConnection sqlConn = new OracleConnection(strConn))
+                {
+                    using (OracleCommand sqlCmd = new OracleCommand())
+                    {
+                        sqlCmd.CommandText = "select * from TB_FACULTY";
+                        sqlCmd.Connection = sqlConn;
+                        sqlConn.Open();
+                        OracleDataAdapter da = new OracleDataAdapter(sqlCmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        DropDownFaculty.DataSource = dt;
+                        DropDownFaculty.DataValueField = "FACULTY_ID";
+                        DropDownFaculty.DataTextField = "FACULTY_NAME";
+                        DropDownFaculty.DataBind();
+                        sqlConn.Close();
+
+                        DropDownFaculty.Items.Insert(0, new ListItem("--กรุณาเลือก คณะ--", "0"));
+                    }
+                }
+            }
+            catch { }
+        } */
+
         protected void ClearData()
         {
             txtCitizen.Text = "";
@@ -1088,7 +1115,7 @@ namespace WEB_PERSONAL
                 return true;
             }
             //เสริม
-            if (txtGRAD_CURR.Text.Length < 13)
+            if (txtCitizen.Text.Length < 13)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชนให้ครบ 13 หลัก')", true);
                 return true;
@@ -1309,14 +1336,9 @@ namespace WEB_PERSONAL
             //
             //
             //
-            if (DropDownGRAD_LEV.SelectedIndex == 0)
+            if (GridView6.Rows.Count == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระดับการศึกษาที่จบสูงสุด')", true);
-                return true;
-            }
-            if (string.IsNullOrEmpty(txtGRAD_CURR.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หลักสูตรที่จบการศึกษาสูงสุด')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ระดับการศึกษาที่จบสูงสุด และหลักสูตรที่จบการศึกษาสูงสุด')", true);
                 return true;
             }
 
@@ -2550,16 +2572,19 @@ namespace WEB_PERSONAL
         {
             //if (NeedData1To9() || NeedData10() || NeedData11() || NeedData12() || NeedData13() || NeedData14()) { return; }
             if (NeedData1To9()) { return; }
+
             ClassPerson P = new ClassPerson();
+            ClassPersonStudyGraduateTop P1 = new ClassPersonStudyGraduateTop();
+
             P.CITIZEN_ID = txtCitizen.Text;
-            P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
-            P.INWORK_DATE = DateTime.Parse(txtDateInWork.Text);
-            P.RETIRE_DATE = DateTime.Parse(txtAge60Number.Text);
-            P.DEPARTMENT_NAME = txtDepart.Text;
-            P.MINISTRY_ID = Convert.ToInt32(DropDownMinistry.SelectedValue);
             P.TITLE_ID = Convert.ToInt32(DropDownTitle.SelectedValue);
+            P.PERSON_NAME = txtName.Text;
+            P.PERSON_LASTNAME = txtLastName.Text;
+            P.BIRTHDATE = DateTime.Parse(txtBirthDayNumber.Text);
             P.BIRTHDATE_LONG = txtBirthDayChar.Text;
+            P.RETIRE_DATE = DateTime.Parse(txtAge60Number.Text);
             P.RETIRE_DATE_LONG = txtAge60Char.Text;
+            P.INWORK_DATE = DateTime.Parse(txtDateInWork.Text);
             P.STAFFTYPE_ID = Convert.ToInt32(DropDownStaffType.SelectedValue);
             P.FATHER_NAME = txtFatherName.Text;
             P.FATHER_LASTNAME = txtFatherLastName.Text;
@@ -2569,8 +2594,31 @@ namespace WEB_PERSONAL
             P.COUPLE_NAME = txtMarriedName.Text;
             P.COUPLE_LASTNAME = txtMarriedLastName.Text;
             P.COUPLE_OLD_LASTNAME = txtMarriedLastNameOld.Text;
-            P.PERSON_LASTNAME = txtLastName.Text;
-            P.PERSON_NAME = txtName.Text;
+            P.MINISTRY_ID = Convert.ToInt32(DropDownMinistry.SelectedValue);
+            P.DEPARTMENT_NAME = txtDepart.Text;
+            P.GENDER_ID = Convert.ToInt32(DropDownGENDER.SelectedValue);
+            P.NATION_ID = DropDownNATION.SelectedValue;
+            P.HOMEADD = txtHOMEADD.Text;
+            P.MOO = txtMOO.Text;
+            P.STREET = txtSTREET.Text;
+            P.DISTRICT_ID = Convert.ToInt32(ddlDISTRICT.SelectedValue);
+            P.AMPHUR_ID = Convert.ToInt32(ddlAMPHUR.SelectedValue);
+            P.PROVINCE_ID = Convert.ToInt32(ddlPROVINCE.SelectedValue);
+            P.ZIPCODE_ID = Convert.ToInt32(txtZIPCODE.Text);
+            P.TELEPHONE = txtTELEPHONE.Text;
+            P.TIME_CONTACT_ID = Convert.ToInt32(DropDownTIME_CONTACT.SelectedValue);
+            P.BUDGET_ID = Convert.ToInt32(DropDownBUDGET.SelectedValue);
+            P.SUBSTAFFTYPE_ID = Convert.ToInt32(DropDownSUBSTAFFTYPE.SelectedValue);
+            P.ADMIN_POSITION_ID = DropDownADMIN_POSITION.SelectedValue;
+            P.POSITION_WORK_ID = DropDownPOSITION_WORK.SelectedValue;
+            P.SPECIAL_NAME = txtSPECIAL_NAME.Text;
+            P.TEACH_ISCED_ID = DropDownTEACH_ISCED.SelectedValue;
+            P.GRAD_ISCED_ID = DropDownGRAD_ISCED.SelectedValue;
+            P.GRAD_PROG_ID = DropDownGRAD_PROG.SelectedValue;
+            P.GRAD_UNIV = txtGRAD_UNIVDown.Text;
+            P.GRAD_COUNTRY_ID = Convert.ToInt32(DropDownGRAD_COUNTRY.SelectedValue);
+            P.FACULTY_ID = Convert.ToInt32(DropDownFaculty.SelectedValue);
+            P.CAMPUS_ID = Convert.ToInt32(DropDownCampus.SelectedValue);
 
             string[] splitDate1 = txtBirthDayNumber.Text.Split(' ');
             string[] splitDate2 = txtDateInWork.Text.Split(' ');
@@ -2591,10 +2639,13 @@ namespace WEB_PERSONAL
             P.INWORK_DATE = new DateTime(Convert.ToInt32(splitDate2[2]), Util.MonthToNumber(splitDate2[1]), Convert.ToInt32(splitDate2[0]));
             P.RETIRE_DATE = new DateTime(Convert.ToInt32(splitDate3[2]), Util.MonthToNumber(splitDate3[1]), Convert.ToInt32(splitDate3[0]));
 
+            P1.GRAD_CURR = txtGRAD_CURR.Text;
+            P1.CITIZEN_ID = txtCitizen.Text;
+            P1.GRAD_LEV_ID = DropDownGRAD_LEV.SelectedValue;
+
             P.UpdatePerson();
+            P1.UpdatePersonStudyGraduateTop();
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('อัพเดทข้อมูลเรียบร้อย')", true);
-
-
 
         }
         protected void txtBirthDayNumber_TextChanged(object sender, EventArgs e)
@@ -2893,6 +2944,63 @@ namespace WEB_PERSONAL
                 GridView6.DataBind();
                 SetViewState(dt6);
             }
+
+            /*using (OracleConnection conn = Util.OC())
+            {
+                using (OracleCommand cmd = new OracleCommand("select CITIZEN_ID,TITLE_ID,PERSON_NAME,PERSON_LASTNAME,TO_CHAR(BIRTHDATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),BIRTHDATE_LONG,TO_CHAR(RETIRE_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),RETIRE_DATE_LONG,TO_CHAR(INWORK_DATE,'dd MON yyyy','NLS_DATE_LANGUAGE = THAI'),STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,MINISTRY_ID,DEPARTMENT_NAME,GENDER_ID,NATION_ID,HOMEADD,MOO,STREET,DISTRICT_ID,AMPHUR_ID,PROVINCE_ID,ZIPCODE_ID,TELEPHONE,TIME_CONTACT_ID,BUDGET_ID,SUBSTAFFTYPE_ID,ADMIN_POSITION_ID,POSITION_WORK_ID,SPECIAL_NAME,TEACH_ISCED_ID,GRAD_ISCED_ID,GRAD_PROG_ID,GRAD_UNIV,GRAD_COUNTRY_ID,FACULTY_ID,CAMPUS_ID from tb_person where citizen_id = '" + txtSearchPersonID.Text + "'", conn))
+
+                {
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            txtCitizen.Text = reader.GetString(0);
+                            DropDownTitle.SelectedValue = reader.IsDBNull(1) ? "0" : reader.GetInt32(1).ToString();
+                            txtName.Text = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                            txtLastName.Text = reader.IsDBNull(3) ? "" : reader.GetString(3);
+                            txtBirthDayNumber.Text = reader.IsDBNull(4) ? "" : reader.GetString(4);
+                            txtBirthDayChar.Text = reader.IsDBNull(5) ? "" : reader.GetString(5);
+                            txtAge60Number.Text = reader.IsDBNull(6) ? "" : reader.GetString(6);
+                            txtAge60Char.Text = reader.IsDBNull(7) ? "" : reader.GetString(7);
+                            txtDateInWork.Text = reader.IsDBNull(8) ? "" : reader.GetString(8);
+                            DropDownStaffType.SelectedValue = reader.IsDBNull(9) ? "0" : reader.GetInt32(9).ToString();
+                            txtFatherName.Text = reader.IsDBNull(10) ? "" : reader.GetString(10);
+                            txtFatherLastName.Text = reader.IsDBNull(11) ? "" : reader.GetString(11);
+                            txtMotherName.Text = reader.IsDBNull(12) ? "" : reader.GetString(12);
+                            txtMotherLastName.Text = reader.IsDBNull(13) ? "" : reader.GetString(13);
+                            txtMotherLastNameOld.Text = reader.IsDBNull(14) ? "" : reader.GetString(14);
+                            txtMarriedName.Text = reader.IsDBNull(15) ? "" : reader.GetString(15);
+                            txtMarriedLastName.Text = reader.IsDBNull(16) ? "" : reader.GetString(16);
+                            txtMarriedLastNameOld.Text = reader.IsDBNull(17) ? "" : reader.GetString(17);
+                            DropDownMinistry.SelectedValue = reader.IsDBNull(18) ? "0" : reader.GetInt32(18).ToString();
+                            txtDepart.Text = reader.IsDBNull(19) ? "" : reader.GetString(19);
+                            DropDownGENDER.SelectedValue = reader.IsDBNull(20) ? "0" : reader.GetInt32(20).ToString();
+                            DropDownNATION.SelectedValue = reader.IsDBNull(21) ? "0" : reader.GetString(21).ToString();
+                            txtHOMEADD.Text = reader.IsDBNull(22) ? "" : reader.GetString(22);
+                            txtMOO.Text = reader.IsDBNull(23) ? "" : reader.GetString(23);
+                            txtSTREET.Text = reader.IsDBNull(24) ? "" : reader.GetString(24);
+                            ddlDISTRICT.SelectedValue = reader.IsDBNull(25) ? "0" : reader.GetInt32(25).ToString();
+                            ddlAMPHUR.SelectedValue = reader.IsDBNull(26) ? "0" : reader.GetInt32(26).ToString();
+                            ddlPROVINCE.SelectedValue = reader.IsDBNull(27) ? "0" : reader.GetInt32(27).ToString();
+                            txtZIPCODE.Text = reader.IsDBNull(28) ? "" : reader.GetInt32(28).ToString();
+                            txtTELEPHONE.Text = reader.IsDBNull(29) ? "" : reader.GetString(29);
+                            DropDownTIME_CONTACT.SelectedValue = reader.IsDBNull(30) ? "0" : reader.GetInt32(30).ToString();
+                            DropDownBUDGET.SelectedValue = reader.IsDBNull(31) ? "0" : reader.GetInt32(31).ToString();
+                            DropDownSUBSTAFFTYPE.SelectedValue = reader.IsDBNull(32) ? "0" : reader.GetInt32(32).ToString();
+                            DropDownADMIN_POSITION.SelectedValue = reader.IsDBNull(33) ? "0" : reader.GetString(33).ToString();
+                            DropDownPOSITION_WORK.SelectedValue = reader.IsDBNull(34) ? "0" : reader.GetString(34).ToString();
+                            txtSPECIAL_NAME.Text = reader.IsDBNull(35) ? "" : reader.GetString(35);
+                            DropDownTEACH_ISCED.SelectedValue = reader.IsDBNull(36) ? "0" : reader.GetString(36).ToString();
+                            DropDownGRAD_ISCED.SelectedValue = reader.IsDBNull(37) ? "0" : reader.GetString(37).ToString();
+                            DropDownGRAD_PROG.SelectedValue = reader.IsDBNull(38) ? "0" : reader.GetString(38).ToString();
+                            txtGRAD_UNIVDown.Text = reader.IsDBNull(39) ? "" : reader.GetString(39);
+                            DropDownGRAD_COUNTRY.SelectedValue = reader.IsDBNull(40) ? "0" : reader.GetInt32(40).ToString();
+                            DropDownFaculty.SelectedValue = reader.IsDBNull(41) ? "0" : reader.GetInt32(41).ToString();
+                            DropDownCampus.SelectedValue = reader.IsDBNull(42) ? "0" : reader.GetInt32(42).ToString();
+                        }
+                    }
+                }
+            }*/
 
         }
 

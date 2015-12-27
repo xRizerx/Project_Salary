@@ -1082,7 +1082,7 @@ namespace WEB_PERSONAL
                 return true;
             }
             //เสริม
-            if (txtGRAD_CURR.Text.Length < 13)
+            if (txtCitizen.Text.Length < 13)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก รหัสบัตรประชาชนให้ครบ 13 หลัก')", true);
                 return true;
@@ -1303,28 +1303,23 @@ namespace WEB_PERSONAL
             //
             //
             //
-            if (DropDownGRAD_LEV.SelectedIndex == 0)
+            if (GridView6.Rows.Count == 0)
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือก ระดับการศึกษาที่จบสูงสุด')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก ระดับการศึกษาที่จบสูงสุด และหลักสูตรที่จบการศึกษาสูงสุด')", true);
                 return true;
             }
-            if (string.IsNullOrEmpty(txtGRAD_CURR.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก หลักสูตรที่จบการศึกษาสูงสุด')", true);
-                return true;
-            }
-
 
             return false;
         }
 
         public bool NeedData10()
         {
-            if (GridView1.Rows.Count == 0)
+          /*  if (GridView1.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณากรอก สถานศึกษา<ในส่วนประวัติการศึกษา>')", true);
                 return true;
             }
+            */
             if (DropDownMonth10From.SelectedIndex == 0 && GridView1.Rows.Count == 0)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาเลือกให้ครบ ตั้งแต่ - ถึง (เดือน ปี)<ในส่วนประวัติการศึกษา>')", true);
@@ -2067,12 +2062,12 @@ namespace WEB_PERSONAL
             DataRow dr = ((DataTable)(Session["Lev"])).NewRow();
             dr[0] = DropDownGRAD_LEV.SelectedValue;
             dr[1] = txtGRAD_CURR.Text;
-            if (DropDownGRAD_LEV.SelectedValue == "0")
+            if (DropDownGRAD_LEV.SelectedValue == "0" && GridView6.Rows.Count == 0)
             {
                 Util.Alert(this, "กรุณาเลือก ระดับการศึกษาที่จบสูงสุด ให้ถูกต้อง");
                 return;
             }
-            if (txtGRAD_CURR.Text != "")
+            if (txtGRAD_CURR.Text != "" && GridView6.Rows.Count == 0)
             {
                 ((DataTable)(Session["Lev"])).Rows.Add(dr);
                 GridView6.DataSource = ((DataTable)(Session["Lev"]));

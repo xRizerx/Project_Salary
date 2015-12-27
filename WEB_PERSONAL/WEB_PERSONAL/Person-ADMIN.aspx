@@ -1180,7 +1180,7 @@
                             <td style="text-align: left;">
                                 <asp:UpdatePanel ID="UpdatetxtList13" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtList13" runat="server" MaxLength="100" Width="585px" CssClass="tb5"></asp:TextBox>
+                                        <asp:TextBox ID="txtList13" runat="server" MaxLength="100" Width="575px" CssClass="tb5"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="txtList13" />
