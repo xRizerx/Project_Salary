@@ -9,7 +9,7 @@ using System.Web;
 namespace WEB_PERSONAL.Entities
 {
     public class ClassTitleName
-    { 
+    {
 
         public int TITLE_ID { get; set; }
         public string TITLE_NAME_TH { get; set; }
@@ -5352,7 +5352,7 @@ namespace WEB_PERSONAL.Entities
             this.PROVINCE_ID = PROVINCE_ID;
         }
 
-        public DataTable GetAmphur(string AMPHUR_ID, string AMPHUR_TH, string AMPHUR_EN,string PROVINCE_ID)
+        public DataTable GetAmphur(string AMPHUR_ID, string AMPHUR_TH, string AMPHUR_EN, string PROVINCE_ID)
         {
             DataTable dt = new DataTable();
             OracleConnection conn = ConnectionDB.GetOracleConnection();
@@ -5966,5 +5966,425 @@ namespace WEB_PERSONAL.Entities
         }
     }
 
+    public class ClassCampus
+    {
+
+        public int CAMPUS_ID { get; set; }
+        public string CAMPUS_NAME { get; set; }
+
+        public ClassCampus() { }
+        public ClassCampus(int CAMPUS_ID, string CAMPUS_NAME)
+        {
+            this.CAMPUS_ID = CAMPUS_ID;
+            this.CAMPUS_NAME = CAMPUS_NAME;
+        }
+
+        public DataTable GetCampus(string CAMPUS_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_CAMPUS ";
+            if (!string.IsNullOrEmpty(CAMPUS_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(CAMPUS_NAME))
+                {
+                    query += " and CAMPUS_NAME like :CAMPUS_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(CAMPUS_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("CAMPUS_NAME", "%" + CAMPUS_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetCampusSearch(string CAMPUS_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_CAMPUS ";
+            if (!string.IsNullOrEmpty(CAMPUS_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(CAMPUS_NAME))
+                {
+                    query += " and CAMPUS_NAME like :CAMPUS_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(CAMPUS_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("CAMPUS_NAME", "%" + CAMPUS_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertCampus()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_CAMPUS (CAMPUS_NAME) VALUES (:CAMPUS_NAME)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("CAMPUS_NAME", CAMPUS_NAME));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateCampus()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_CAMPUS Set ";
+            query += " CAMPUS_NAME = :CAMPUS_NAME";
+            query += " where CAMPUS_ID = :CAMPUS_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("CAMPUS_ID", CAMPUS_ID));
+                command.Parameters.Add(new OracleParameter("CAMPUS_NAME", CAMPUS_NAME));
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteCampus()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_CAMPUS where CAMPUS_ID = :CAMPUS_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("CAMPUS_ID", CAMPUS_ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
+
+    public class ClassFaculty
+    {
+        public int FACULTY_ID { get; set; }
+        public string FACULTY_NAME { get; set; }
+        public string FACULTY_SHORT { get; set; }
+        public int CAMPUS_ID { get; set; }
+
+
+        public ClassFaculty() { }
+        public ClassFaculty(int FACULTY_ID, string FACULTY_NAME, string FACULTY_SHORT, int CAMPUS_ID)
+        {
+            this.FACULTY_ID = FACULTY_ID;
+            this.FACULTY_NAME = FACULTY_NAME;
+            this.FACULTY_SHORT = FACULTY_SHORT;
+            this.CAMPUS_ID = CAMPUS_ID;
+        }
+
+        public DataTable GetFaculty(string FACULTY_NAME, string FACULTY_SHORT, string CAMPUS_ID)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_FACULTY ";
+            if (!string.IsNullOrEmpty(FACULTY_NAME) || !string.IsNullOrEmpty(FACULTY_SHORT) || !string.IsNullOrEmpty(CAMPUS_ID))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(FACULTY_NAME))
+                {
+                    query += " and FACULTY_NAME like :FACULTY_NAME ";
+                }
+                if (!string.IsNullOrEmpty(FACULTY_SHORT))
+                {
+                    query += " and FACULTY_SHORT like :FACULTY_SHORT ";
+                }
+                if (!string.IsNullOrEmpty(CAMPUS_ID))
+                {
+                    query += " and CAMPUS_ID like :CAMPUS_ID ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(FACULTY_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("FACULTY_NAME", "%" + FACULTY_NAME + "%"));
+                }
+                if (!string.IsNullOrEmpty(FACULTY_SHORT))
+                {
+                    command.Parameters.Add(new OracleParameter("FACULTY_SHORT", "%" + FACULTY_SHORT + "%"));
+                }
+                if (!string.IsNullOrEmpty(CAMPUS_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("CAMPUS_ID", CAMPUS_ID + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetFacultySearch(string FACULTY_NAME, string FACULTY_SHORT, string CAMPUS_ID)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_FACULTY ";
+            if (!string.IsNullOrEmpty(FACULTY_NAME) || !string.IsNullOrEmpty(FACULTY_SHORT) || !string.IsNullOrEmpty(CAMPUS_ID))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(FACULTY_NAME))
+                {
+                    query += " and FACULTY_NAME like :FACULTY_NAME ";
+                }
+                if (!string.IsNullOrEmpty(FACULTY_SHORT))
+                {
+                    query += " and FACULTY_SHORT like :FACULTY_SHORT ";
+                }
+                if (!string.IsNullOrEmpty(CAMPUS_ID))
+                {
+                    query += " and CAMPUS_ID like :CAMPUS_ID ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                if (!string.IsNullOrEmpty(FACULTY_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("FACULTY_NAME", "%" + FACULTY_NAME + "%"));
+                }
+                if (!string.IsNullOrEmpty(FACULTY_SHORT))
+                {
+                    command.Parameters.Add(new OracleParameter("FACULTY_SHORT", "%" + FACULTY_SHORT + "%"));
+                }
+                if (!string.IsNullOrEmpty(CAMPUS_ID))
+                {
+                    command.Parameters.Add(new OracleParameter("CAMPUS_ID", CAMPUS_ID + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertFaculty()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_FACULTY (FACULTY_NAME,FACULTY_SHORT,CAMPUS_ID) VALUES (:FACULTY_NAME,:FACULTY_SHORT,:CAMPUS_ID)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("FACULTY_NAME", FACULTY_NAME));
+                command.Parameters.Add(new OracleParameter("FACULTY_SHORT", FACULTY_SHORT));
+                command.Parameters.Add(new OracleParameter("CAMPUS_ID", CAMPUS_ID));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateFaculty()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_FACULTY Set ";
+            query += " FACULTY_NAME = :FACULTY_NAME,";
+            query += " FACULTY_SHORT = :FACULTY_SHORT,";
+            query += " CAMPUS_ID = :CAMPUS_ID";
+            query += " where FACULTY_ID = :FACULTY_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("FACULTY_NAME", FACULTY_NAME));
+                command.Parameters.Add(new OracleParameter("FACULTY_SHORT", FACULTY_SHORT));
+                command.Parameters.Add(new OracleParameter("CAMPUS_ID", CAMPUS_ID));
+                command.Parameters.Add(new OracleParameter("FACULTY_ID", FACULTY_ID));
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteFaculty()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_FACULTY where FACULTY_ID = :FACULTY_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("FACULTY_ID", FACULTY_ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+
+    }
 
 }

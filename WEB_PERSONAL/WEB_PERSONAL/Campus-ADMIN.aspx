@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Year-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.Year_ADMIN" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Campus-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.Campus_ADMIN" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .divpan {
@@ -32,19 +31,19 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchYear">
+    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchCampus">
         <div>
             <fieldset>
                 <legend>Search</legend>
                 <div>
-                    ปีพุทธศักราช :&nbsp;<asp:TextBox ID="txtSearchTH" runat="server" CssClass="tb5" Width="230px" MaxLength="4"></asp:TextBox>
-                    <asp:Button ID="btnSearchYear" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchYear_Click" />
+                    ชื่อวิทยาเขต :&nbsp;<asp:TextBox ID="txtSearchName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
+                    <asp:Button ID="btnSearchCampus" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchCampus_Click" />
                     <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
                 </div>
             </fieldset>
         </div>
     </asp:Panel>
-    <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitYEAR">
+    <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitCampus">
         <div>
             <fieldset>
                 <legend>Insert</legend>
@@ -52,20 +51,20 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 260px"></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">ปีพุทธศักราช :</td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อวิทยาเขต :</td>
                             <td style="text-align: left; width: 120px;">
-                                <asp:TextBox ID="txtYearName" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
+                                <asp:TextBox ID="txtInsertName" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnSubmitYEAR" Text="OK" runat="server" CssClass="master_OAT_button" OnClick="btnSubmitYEAR_Click" /></td>
+                                <asp:Button ID="btnSubmitCampus" Text="OK" runat="server" CssClass="master_OAT_button" OnClick="btnSubmitCampus_Click" /></td>
                             <td style="text-align: left;">
-                                <asp:Button ID="btnCancelYEAR" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick="btnCancelYEAR_Click" /></td>
+                                <asp:Button ID="btnCancelCampus" Text="Cancel" runat="server" CssClass="master_OAT_button" OnClick="btnCancelCampus_Click" /></td>
                         </tr>
                     </table>
                 </div>
             </fieldset>
         </div>
         <div>
-            <fieldset>
+            <fieldset> 
                 <legend>Data</legend>
                 <asp:ScriptManager ID="ScriptManager1" runat="server" />
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -73,23 +72,28 @@
                         <asp:GridView ID="GridView1" runat="server" Style="margin-left: auto; margin-right: auto; text-align: center; width: 100%"
                             AutoGenerateColumns="false"
                             AllowPaging="true"
-                            DataKeyNames="YEAR_ID"
+                            DataKeyNames="Campus_ID"
                             OnRowEditing="modEditCommand"
                             OnRowCancelingEdit="modCancelCommand"
                             OnRowUpdating="modUpdateCommand"
                             OnRowDeleting="modDeleteCommand"
                             OnRowDataBound="GridView1_RowDataBound"
-                            OnPageIndexChanging="myGridViewYEAR_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
+                            OnPageIndexChanging="myGridViewCampus_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                             <Columns>
-                                <asp:TemplateField HeaderText="ปีพุทธศักราช" ControlStyle-Width="820" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="ID" Visible="false">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblYearNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_ID") %>'></asp:Label>
+                                        <asp:Label ID="lblCampusID" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Campus_ID") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="ชื่อวิทยาเขต" ControlStyle-Width="820" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblCampusNameEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Campus_NAME") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="txtYearNameEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.YEAR_ID") %>'></asp:TextBox>
+                                        <asp:TextBox ID="txtCampusNameEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Campus_NAME") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ShowEditButton="False" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText=" " HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
+                                <asp:CommandField ShowEditButton="True" CancelText="Cancel" DeleteText="Delete" EditText="Edit" UpdateText="Update" HeaderText="แก้ไข" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua" />
                                 <asp:TemplateField HeaderText="ลบ" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="DeleteButton1" runat="server" CausesValidation="false" CommandName="Delete" Text="Delete"></asp:LinkButton>
@@ -106,3 +110,4 @@
         </div>
     </asp:Panel>
 </asp:Content>
+

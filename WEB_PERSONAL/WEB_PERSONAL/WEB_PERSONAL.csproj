@@ -97,6 +97,7 @@
     <Content Include="Amphur-ADMIN.aspx" />
     <Content Include="Branch-ADMIN.aspx" />
     <Content Include="Budget-ADMIN.aspx" />
+    <Content Include="Campus-ADMIN.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -154,6 +155,7 @@
     <Content Include="DataManager.aspx" />
     <Content Include="District-ADMIN.aspx" />
     <Content Include="Entities\Virus.mp3" />
+    <Content Include="Faculty-ADMIN.aspx" />
     <Content Include="GradCountry-ADMIN.aspx" />
     <Content Include="GradISCED-ADMIN.aspx" />
     <Content Include="GradLev-ADMIN.aspx" />
@@ -431,6 +433,13 @@
     <Compile Include="Budget-ADMIN.aspx.designer.cs">
       <DependentUpon>Budget-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Campus-ADMIN.aspx.cs">
+      <DependentUpon>Campus-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Campus-ADMIN.aspx.designer.cs">
+      <DependentUpon>Campus-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Class\BaseSalary.cs" />
     <Compile Include="Class\DisciplinaryAndAmnesty.cs" />
     <Compile Include="Class\JobLicense.cs" />
@@ -479,6 +488,13 @@
     </Compile>
     <Compile Include="Error-Member.aspx.designer.cs">
       <DependentUpon>Error-Member.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Faculty-ADMIN.aspx.cs">
+      <DependentUpon>Faculty-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Faculty-ADMIN.aspx.designer.cs">
+      <DependentUpon>Faculty-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Gender-ADMIN.aspx.cs">
       <DependentUpon>Gender-ADMIN.aspx</DependentUpon>
