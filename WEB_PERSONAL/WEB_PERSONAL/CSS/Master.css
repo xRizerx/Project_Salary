@@ -574,7 +574,7 @@ home_button:active {
     font-weight: bold;
 
     display: inline-block;
-    width: 200px;
+    width: 140px;
     /*background-color: #00b3ff;
     background-color: #c0c0c0;
     background-color: #00a2e8;*/
@@ -633,7 +633,7 @@ home_button:active {
 }
 .master_header_under_person span, .master_header_under_person a {
     padding: 0 20px;
-    width: 110px;
+    width: 140px;
 }
 .master_header_under_salary span, .master_header_under_salary a {
     padding: 0 20px;
