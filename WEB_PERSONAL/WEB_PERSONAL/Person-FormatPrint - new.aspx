@@ -141,7 +141,7 @@
                             <td style="text-align: left; width: 435px;">
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="10" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
+                                        <asp:TextBox ID="txtBirthDayNumber" runat="server" MaxLength="12" Width="425px" CssClass="tb5" AutoPostBack="True"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="txtBirthDayNumber" />
@@ -189,7 +189,7 @@
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; width: 435px;">
-                                <asp:TextBox ID="txtDateInWork" runat="server" MaxLength="10" Width="425px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtDateInWork" runat="server" MaxLength="12" Width="425px" CssClass="tb5"></asp:TextBox></td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: left; width: 170px;">
                                 <asp:TextBox ID="txtMotherLastNameOld" runat="server" MaxLength="100" Width="425px" CssClass="tb5"></asp:TextBox></td>
@@ -227,7 +227,7 @@
                             <td style="text-align: left; width: 435px;">
                                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                     <ContentTemplate>
-                                        <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="10" Width="425px" CssClass="tb5" AutoPostBack="True" CausesValidation="False"></asp:TextBox>
+                                        <asp:TextBox ID="txtAge60Number" runat="server" MaxLength="12" Width="425px" CssClass="tb5" AutoPostBack="True" CausesValidation="False"></asp:TextBox>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="txtAge60Number" />
