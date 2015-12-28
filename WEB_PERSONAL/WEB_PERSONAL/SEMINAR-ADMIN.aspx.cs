@@ -71,5 +71,15 @@ namespace WEB_PERSONAL
         {
 
         }
+
+        protected void btnSearchSeminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSearchRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

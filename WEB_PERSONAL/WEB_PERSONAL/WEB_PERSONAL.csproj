@@ -310,7 +310,7 @@
     <Content Include="insignia_user.aspx" />
     <Content Include="Leave.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Ministry-GENERAL.aspx" />
+    <Content Include="Ministry-ADMIN.aspx" />
     <Content Include="Month-ADMIN.aspx" />
     <Content Include="National-ADMIN.aspx" />
     <Content Include="packages.config" />
@@ -622,12 +622,12 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Ministry-GENERAL.aspx.cs">
-      <DependentUpon>Ministry-GENERAL.aspx</DependentUpon>
+    <Compile Include="Ministry-ADMIN.aspx.cs">
+      <DependentUpon>Ministry-ADMIN.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Ministry-GENERAL.aspx.designer.cs">
-      <DependentUpon>Ministry-GENERAL.aspx</DependentUpon>
+    <Compile Include="Ministry-ADMIN.aspx.designer.cs">
+      <DependentUpon>Ministry-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Month-ADMIN.aspx.cs">
       <DependentUpon>Month-ADMIN.aspx</DependentUpon>

@@ -105,7 +105,7 @@
 
                     <div class="master_header_under_admin">
                                     <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
-                                    <a href="DataManager.aspx">จัดการข้อมูล</a>
+                                    <a href="DataManager.aspx">จัดการข้อมูล Drop-down List</a>
       
                                 </div>
 

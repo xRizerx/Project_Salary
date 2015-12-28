@@ -37,11 +37,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="main">
         <div class="link_list">
-            <span>จัดการข้อมูลระบบ</span>
+            <span>จัดการข้อมูล Drop-down List</span>
             <div style="height: 20px;"></div>
-            <a href="Ministry-GENERAL.aspx">การจัดการข้อมูลกระทรวง </a>
+            <a href="Ministry-ADMIN.aspx">การจัดการข้อมูลกระทรวง </a>
             <a href="TitleName-ADMIN.aspx">การจัดการข้อมูลคำนำหน้านาม </a>
-            <a href="StaffType-ADMIN.aspx">การจัดการข้อมูลประเภทข้าราชการ</a>
+            <a href="StaffType-ADMIN.aspx">การจัดการข้อมูลประเภทข้าราชการ </a>
             <a href="Month-ADMIN.aspx">การจัดการข้อมูลเดือน </a>
             <a href="Year-ADMIN.aspx">การจัดการข้อมูลปี </a>
             <a href="Staff-ADMIN.aspx">การจัดการข้อมูลตำแหน่งประเภท </a>
@@ -55,12 +55,13 @@
             <a href="SubStaffType-ADMIN.aspx">การจัดการข้อมูลประเภทบุคลากรย่อย </a>
             <a href="AdminPosition-ADMIN.aspx">การจัดการข้อมูลตำแหน่งบริหาร </a>
             <a href="PositionWork-ADMIN.aspx">การจัดการข้อมูลตำแหน่งในสายงาน </a>
-            <a href="Branch-ADMIN.aspx">การจัดการข้อมูลหน่วยงานในมหาวิทยาลัย </a>
             <a href="TeachISCED-ADMIN.aspx">การจัดการข้อมูลกลุ่มสาขาวิชาที่สอน </a>
             <a href="GradLev-ADMIN.aspx">การจัดการข้อมูลระดับการศึกษาที่จบการศึกษาสูงสุด </a>
             <a href="GradISCED-ADMIN.aspx">การจัดการข้อมูลกลุ่มสาขาวิชาที่จบสูงสุด </a>
             <a href="GradProgram-ADMIN.aspx">การจัดการข้อมูลสาขาวิชาที่จบการศึกษาสูงสุด </a>
             <a href="GradCountry-ADMIN.aspx">การจัดการข้อมูลประเทศที่จบการศึกษาสูงสุด </a>
+            <a href="Campus-ADMIN.aspx">การจัดการข้อมูลวิทยาเขต </a>
+            <a href="Faculty-ADMIN.aspx">การจัดการข้อมูลคณะ </a>
             
         </div>
 

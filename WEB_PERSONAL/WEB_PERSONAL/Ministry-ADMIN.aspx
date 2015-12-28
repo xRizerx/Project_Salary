@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Ministry-GENERAL.aspx.cs" Inherits="WEB_PERSONAL.Ministry_GENERAL" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Ministry-ADMIN.aspx.cs" Inherits="WEB_PERSONAL.Ministry_GENERAL" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
