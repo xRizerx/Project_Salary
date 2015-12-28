@@ -51,7 +51,7 @@
     <asp:Panel runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
         <div>
             <fieldset>
-                <legend style="margin-left: auto; margin-right: auto; text-align: center;">เพิ่มข้อมูลบุคลากร</legend>
+                <legend</legend>
                 <div>
                     <asp:ScriptManager ID="ScriptManager1" runat="server" />
                     <table>
@@ -270,7 +270,7 @@
     <asp:Panel ID="Panel2" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
         <div>
             <fieldset>
-                <legend>ประวัติการศึกษา</legend>
+                <legend>๑๐. ประวัติการศึกษา</legend>
                 <div>
                     <!-- FOR TABLE 3 ROW -->
 
@@ -368,7 +368,7 @@
     <asp:Panel ID="Panel3" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
         <div>
             <fieldset>
-                <legend>ใบอนุญาตประกอบวิชาชีพ</legend>
+                <legend>๑๑. ใบอนุญาตประกอบวิชาชีพ</legend>
                 <div>
 
                     <asp:UpdatePanel ID="UpdateGridView2" runat="server">
@@ -419,7 +419,7 @@
                                         <ControlStyle Width="160px" />
                                         <HeaderStyle BackColor="#0099FF" ForeColor="Aqua" />
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="วันที่มีผลบังคับใช้ (วัน เดือน ปี)" ItemStyle-Width="120" ControlStyle-Width="100" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                    <asp:TemplateField HeaderText="วันที่มีผลบังคับใช้   (วัน เดือน ปี)" ItemStyle-Width="120" ControlStyle-Width="100" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                         <ItemTemplate>
                                             <asp:Label ID="lblPersonJobLisenceDDATEEdit" runat="server" Text='<%# Convert.ToDateTime(DataBinder.Eval(Container.DataItem, "DDATE")).ToString("dd MMM yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US")) %>'></asp:Label>
                                         </ItemTemplate>
@@ -445,7 +445,7 @@
     <asp:Panel ID="Panel4" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
         <div>
             <fieldset>
-                <legend>ประวัติการฝึกอบรม</legend>
+                <legend>๑๒. ประวัติการฝึกอบรม</legend>
                 <div>
                     <!-- FOR TABLE 3 ROW -->
 
@@ -542,7 +542,7 @@
     <asp:Panel ID="Panel5" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
         <div>
             <fieldset>
-                <legend>การได้รับโทษทางวินัยและการนิรโทษกรรม</legend>
+                <legend>๑๓. การได้รับโทษทางวินัยและการนิรโทษกรรม</legend>
                 <div>
                     <!-- FOR TABLE 3 ROW -->
 
@@ -609,7 +609,7 @@
     <asp:Panel ID="Panel6" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua">
         <div>
             <fieldset>
-                <legend>ตำแหน่งและเงินเดือน</legend>
+                <legend>๑๔. ตำแหน่งและเงินเดือน</legend>
                 <div>
 
                     <asp:UpdatePanel ID="UpdateGridView5" runat="server">
