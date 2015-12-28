@@ -59,7 +59,7 @@
     <asp:Panel ID="Panel0" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchPerson">
         <div>
             <fieldset>
-                <legend>Search</legend>
+                <legend>ค้นหา</legend>
                 <div>
                     <asp:ScriptManager ID="ScriptManager1" runat="server" />
                    

@@ -34,7 +34,7 @@
     <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchGradPROG">
         <div>
             <fieldset> 
-                <legend>Search</legend>
+                <legend>ค้นหาข้อมูล</legend>
                 <div>
                     รหัสสาขาวิชาที่จบการศึกษาสูงสุด :&nbsp<asp:TextBox ID="txtSearchGradPROGID" runat="server" CssClass="tb5" Width="130px" MaxLength="4"></asp:TextBox>
                     ชื่อสาขาวิชาที่จบการศึกษาสูงสุด :&nbsp<asp:TextBox ID="txtSearchGradPROGName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
@@ -47,7 +47,7 @@
     <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitGradPROG">
         <div>
             <fieldset>
-                <legend>Insert</legend>
+                <legend>เพิ่มข้อมูล</legend>
                 <div>  
                     <table>
                         <tr>
@@ -69,7 +69,7 @@
         </div>
         <div>
             <fieldset>
-                <legend>Data</legend>
+                <legend>ข้อมูล</legend>
                 <asp:ScriptManager ID="ScriptManager1" runat="server" />
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>

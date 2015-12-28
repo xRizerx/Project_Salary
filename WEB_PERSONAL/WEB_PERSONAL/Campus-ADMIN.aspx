@@ -34,7 +34,7 @@
     <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchCampus">
         <div>
             <fieldset>
-                <legend>Search</legend>
+                <legend>ค้นหาข้อมูล</legend>
                 <div>
                     ชื่อวิทยาเขต :&nbsp;<asp:TextBox ID="txtSearchName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
                     <asp:Button ID="btnSearchCampus" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchCampus_Click" />
@@ -46,7 +46,7 @@
     <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitCampus">
         <div>
             <fieldset>
-                <legend>Insert</legend>
+                <legend>เพิ่มข้อมูล</legend>
                 <div>
                     <table>
                         <tr>
@@ -65,7 +65,7 @@
         </div>
         <div>
             <fieldset> 
-                <legend>Data</legend>
+                <legend>ข้อมูล</legend>
                 <asp:ScriptManager ID="ScriptManager1" runat="server" />
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>

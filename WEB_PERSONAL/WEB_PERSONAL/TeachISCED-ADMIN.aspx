@@ -47,7 +47,7 @@
     <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchTeachISCED">
         <div>
             <fieldset>
-                <legend>Search</legend>
+                <legend>ค้นหาข้อมูล</legend>
                 <div>
                     <table>
                         <tr>
@@ -84,7 +84,7 @@
     <asp:Panel ID="Panel2" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitTeachISCED">
         <div>
             <fieldset>
-                <legend>Insert</legend>
+                <legend>เพิ่มข้อมูล</legend>
                 <div>
                     <table>
                         <tr>
@@ -119,7 +119,7 @@
         </div>
         <div>
             <fieldset>
-                <legend>Data</legend>
+                <legend>ข้อมูล</legend>
                 
                         <asp:GridView ID="GridView1" runat="server" Style="margin-left: auto; margin-right: auto; text-align: center; width: 100%"
                             AutoGenerateColumns="false"

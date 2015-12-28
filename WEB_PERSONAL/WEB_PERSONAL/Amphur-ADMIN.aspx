@@ -34,7 +34,7 @@
     <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchAmphur">
         <div>
             <fieldset>
-                <legend>Search</legend>
+                <legend>ค้นหาข้อมูล</legend>
                 <div>
                     รหัสอำเภอ :&nbsp<asp:TextBox ID="txtSearchAmphurID" runat="server" CssClass="tb5" Width="50px" MaxLength="3"></asp:TextBox>
                     ชื่ออำเภอภาษาไทย :&nbsp<asp:TextBox ID="txtSearchAmphurTH" runat="server" CssClass="tb5" Width="150px" MaxLength="100"></asp:TextBox>
@@ -49,7 +49,7 @@
     <asp:Panel ID="Panel2" runat="server" ScrollBars="Horizontal" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitAmphur">
         <div>
             <fieldset>
-                <legend>Insert</legend>
+                <legend>เพิ่มข้อมูล</legend>
                 <div>
                     <table>
                         <tr>
@@ -77,7 +77,7 @@
         </div>
         <div>
             <fieldset>
-                <legend>Data</legend>
+                <legend>ข้อมูล</legend>
                 <asp:ScriptManager ID="ScriptManager1" runat="server" />
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>

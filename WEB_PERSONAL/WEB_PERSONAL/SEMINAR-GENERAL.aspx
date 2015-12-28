@@ -75,7 +75,7 @@
                         <tr>
                             <td style="text-align: right; margin-right: 5px;">สังกัด<span class="textred">*</span> :&nbsp;</td>
                             <td style="text-align: left;">
-                                <asp:TextBox ID="txtCampus" runat="server" MaxLength="100" Width="625px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtCampus" runat="server" MaxLength="100" Width="625px" CssClass="tb5" Placeholder="สังกัด"></asp:TextBox></td>
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: right; margin-right: 5px;">มหาวิทยาลัยเทคโนยีราชมงคลตะวันออก</td>
                         </tr>
@@ -85,7 +85,7 @@
                             <td style="text-align: right; margin-right: 5px;">2. </td>
                             <td style="text-align: right; margin-right: 5px;">ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน<span class="textred">*</span> :&nbsp;</td>
                             <td style="text-align: left;">
-                                <asp:TextBox ID="txtNameOfProject" runat="server" MaxLength="100" Width="691px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtNameOfProject" runat="server" MaxLength="100" Width="691px" CssClass="tb5" Placeholder="ชื่อโครงการฝึกอบรม/สัมมนา/ดูงาน"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -93,7 +93,7 @@
                             <td style="text-align: right; margin-right: 5px;">3. </td>
                             <td style="text-align: right; margin-right: 5px;">สถานที่ฝึกอบรม/สัมมนา/ดูงาน<span class="textred">*</span> :&nbsp;</td>
                             <td style="text-align: left;">
-                                <asp:TextBox ID="txtPlace" runat="server" MaxLength="100" Width="718px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtPlace" runat="server" MaxLength="100" Width="718px" CssClass="tb5" Placeholder="สถานที่ฝึกอบรม/สัมมนา/ดูงาน"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -158,7 +158,7 @@
                             <td style="text-align: left; width: 10px;"></td>
                             <td style="text-align: right; margin-right: 5px;">ค่าใช้จ่ายตลอดโครงการ<span class="textred">*</span> :&nbsp;</td>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtBudget" runat="server" MaxLength="100" Width="360px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtBudget" runat="server" MaxLength="100" Width="360px" CssClass="tb5" Placeholder="ค่าใช้จ่ายตลอดโครงการ"></asp:TextBox></td>
                             <td style="text-align: right; margin-right: 5px;">บาท </td>
                         </tr>
                     </table>
@@ -166,7 +166,7 @@
                         <tr>
                             <td style="text-align: right; margin-right: 5px;">แหล่งงบประมาณที่ได้รับการสนับสนุน<span class="textred">*</span></td>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtSupportBudget" runat="server" MaxLength="100" Width="718px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtSupportBudget" runat="server" MaxLength="100" Width="718px" CssClass="tb5" Placeholder="แหล่งงบประมาณที่ได้รับการสนับสนุน"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -200,7 +200,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtAbstract" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtAbstract" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5" Placeholder="สรุปผลการฝึกอบรม/สัมมนา/ดูงาน"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -210,7 +210,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtResult" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtResult" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5" Placeholder="ผลที่ได้รับจากการฝึกอบรม/สัมมนา/ดูงาน"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -222,7 +222,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtShow1" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtShow1" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5" Placeholder="ด้านการเรียนการสอน"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -231,7 +231,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtShow2" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtShow2" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5" Placeholder="ด้านการวิจัย"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -240,7 +240,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtShow3" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtShow3" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5" Placeholder="ด้านการบริการวิชาการ"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -249,7 +249,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtShow4" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtShow4" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5" Placeholder="ด้านอื่นๆ"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -258,7 +258,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtProblem" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtProblem" runat="server" MaxLength="1000" Height="100px" Width="955px" TextMode="MultiLine" CssClass="tb5" Placeholder="ปัญหาอุปสรรคในการฝึกอบรม/สัมมนา/ดูงาน"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
@@ -267,7 +267,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 50px;">
-                                <asp:TextBox ID="txtComment" runat="server" MaxLength="1000" TextMode="MultiLine" Height="100px" Width="955px" CssClass="tb5"></asp:TextBox></td>
+                                <asp:TextBox ID="txtComment" runat="server" MaxLength="1000" TextMode="MultiLine" Height="100px" Width="955px" CssClass="tb5" Placeholder="ความคิดเห็น/ข้อเสนอแนะอื่นๆ"></asp:TextBox></td>
                         </tr>
                     </table>
                     <table>
