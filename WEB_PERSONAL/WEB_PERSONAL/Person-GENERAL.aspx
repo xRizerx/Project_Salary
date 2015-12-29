@@ -62,11 +62,11 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">เลขบัตรประจำตัวประชาชน</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">เลขบัตรประจำตัวประชาชน<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">บ้านเลขที่</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">บ้านเลขที่<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อบิดา</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อบิดา<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -99,11 +99,11 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">วิทยาเขต</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">วิทยาเขต<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px; width: 220px">หมู่</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลบิดา</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลบิดา<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -136,11 +136,11 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">คณะ</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">คณะ<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px; width: 220px">ถนน</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อมารดา</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อมารดา<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -173,11 +173,11 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">กระทรวง</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">กระทรวง<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">จังหวัด</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">จังหวัด<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลมารดา</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลมารดา<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -216,7 +216,7 @@
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px; width: 220px">กรม</td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">อำเภอ</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">อำเภอ<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลมารดาเดิม</td>
                         </tr>
@@ -255,9 +255,9 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">คำนำหน้านาม</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">คำนำหน้านาม<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ตำบล</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ตำบล<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อคู่สมรส</td>
                         </tr>
@@ -295,9 +295,9 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อ</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อ<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">รหัสไปรษณีย์</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">รหัสไปรษณีย์<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุลคู่สมรส</td>
                         </tr>
@@ -332,7 +332,7 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุล</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">นามสกุล<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
                             <td style="text-align: left; margin-right: 5px; width: 220px">หมายเลขโทรศัพท์ที่ทำงาน</td>
                             <td style="text-align: left; width: 30px;"></td>
@@ -369,11 +369,11 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">วันที่บรรจุ</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">วันที่บรรจุ<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">เพศ</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">เพศ<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">สัญชาติ</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">สัญชาติ<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -406,9 +406,9 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">วัน เดือน ปีเกิด</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">วัน เดือน ปีเกิด<span class="textred">*</span></td>
                             <td style="text-align: left; width: 1px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">วันครบเกษียณอายุ</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">วันครบเกษียณอายุ<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -457,11 +457,11 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเภทข้าราชการ</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเภทข้าราชการ<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ตำแหน่งบริหาร</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ตำแหน่งบริหาร<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">กลุ่มสาขาวิชาที่จบสูงสุด</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">กลุ่มสาขาวิชาที่จบสูงสุด<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -494,11 +494,11 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ระยะเวลาจ้าง</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ระยะเวลาจ้าง<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ตำแหน่งในสายงาน</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ตำแหน่งในสายงาน<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">สาขาวิชาที่จบสูงสุด</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">สาขาวิชาที่จบสูงสุด<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -531,11 +531,11 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเภทเงินจ้าง</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเภทเงินจ้าง<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">สาขางานที่เชี่ยวชาญ</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">สาขางานที่เชี่ยวชาญ<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อสถาบันที่จบการศึกษาสูงสุด</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ชื่อสถาบันที่จบการศึกษาสูงสุด<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -568,11 +568,11 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเภทบุคลากรย่อย</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเภทบุคลากรย่อย<span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">กลุ่มสาขาวิชาที่สอน(ISCED) </td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">กลุ่มสาขาวิชาที่สอน(ISCED) <span class="textred">*</span></td>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเทศที่จบการศึกษาสูงสุด</td>
+                            <td style="text-align: left; margin-right: 5px; width: 220px">ประเทศที่จบการศึกษาสูงสุด<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
@@ -605,7 +605,7 @@
                     <table>
                         <tr>
                             <td style="text-align: left; width: 30px;"></td>
-                            <td style="text-align: left; margin-right: 5px; width: 285px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ระดับการศึกษาที่จบสูงสุด&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หลักสูตรที่จบการศึกษาสูงสุด</td>
+                            <td style="text-align: left; margin-right: 5px; width: 285px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ระดับการศึกษาที่จบสูงสุด<span class="textred">*</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หลักสูตรที่จบการศึกษาสูงสุด<span class="textred">*</span></td>
 
                         </tr>
 
@@ -660,11 +660,11 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: center; margin-right: 5px;">สถานศึกษา</td>
+                            <td style="text-align: center; margin-right: 5px;">สถานศึกษา<span class="textred">*</span></td>
                             <td style="text-align: left; width: 1px;"></td>
-                            <td style="text-align: center; margin-right: 5px; width: 500px">ตั้งแต่ - ถึง (เดือน ปี)</td>
+                            <td style="text-align: center; margin-right: 5px; width: 500px">ตั้งแต่ - ถึง (เดือน ปี)<span class="textred">*</span></td>
                             <td style="text-align: left; width: 1px;"></td>
-                            <td style="text-align: center; margin-right: 5px;">วุฒิ(สาาขาาวิชาเอก)</td>
+                            <td style="text-align: center; margin-right: 5px;">วุฒิ(สาาขาาวิชาเอก)<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 170px;">
@@ -735,10 +735,10 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: center; margin-right: 5px;">ชื่อใบอนุญาต</td>
-                            <td style="text-align: center; margin-right: 5px;">หน่วยงาน</td>
-                            <td style="text-align: center; margin-right: 5px;">เลขที่ใบอนุญาต</td>
-                            <td style="text-align: center; margin-right: 5px;">วันที่มีผลบังคับใช้ (วัน เดือน ปี)</td>
+                            <td style="text-align: center; margin-right: 5px;">ชื่อใบอนุญาต<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">หน่วยงาน<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">เลขที่ใบอนุญาต<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">วันที่มีผลบังคับใช้ (วัน เดือน ปี)<span class="textred">*</span></td>
 
                         </tr>
                         <tr>
@@ -815,11 +815,11 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: center; margin-right: 5px;">หลักสูตรฝึกอบรม</td>
+                            <td style="text-align: center; margin-right: 5px;">หลักสูตรฝึกอบรม<span class="textred">*</span></td>
                             <td style="text-align: left; width: 1px;"></td>
-                            <td style="text-align: center; margin-right: 5px; width: 500px">ตั้งแต่ - ถึง (เดือน ปี)</td>
+                            <td style="text-align: center; margin-right: 5px; width: 500px">ตั้งแต่ - ถึง (เดือน ปี)<span class="textred">*</span></td>
                             <td style="text-align: left; width: 1px;"></td>
-                            <td style="text-align: center; margin-right: 5px;">หน่วยงานที่จัดฝึกอบรม</td>
+                            <td style="text-align: center; margin-right: 5px;">หน่วยงานที่จัดฝึกอบรม<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 170px;">
@@ -889,11 +889,11 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: center; margin-right: 5px;">พ.ศ.</td>
+                            <td style="text-align: center; margin-right: 5px;">พ.ศ.<span class="textred">*</span></td>
                             <td style="text-align: left; width: 1px;"></td>
-                            <td style="text-align: center; margin-right: 5px; width: 500px">รายการ</td>
+                            <td style="text-align: center; margin-right: 5px; width: 500px">รายการ<span class="textred">*</span></td>
                             <td style="text-align: left; width: 1px;"></td>
-                            <td style="text-align: center; margin-right: 5px;">เอกสารอ้างอิง</td>
+                            <td style="text-align: center; margin-right: 5px;">เอกสารอ้างอิง<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 100px;">
@@ -960,14 +960,14 @@
                 <div>
                     <table>
                         <tr>
-                            <td style="text-align: center; margin-right: 5px;">วัน เดือน ปี</td>
-                            <td style="text-align: center; margin-right: 5px;">ตำแหน่ง</td>
-                            <td style="text-align: center; margin-right: 5px;">เลขที่ตำแหน่ง</td>
-                            <td style="text-align: center; margin-right: 5px;">ตำแหน่งประเภท</td>
-                            <td style="text-align: center; margin-right: 5px;">ระดับ</td>
-                            <td style="text-align: center; margin-right: 5px;">เงินเดือน</td>
-                            <td style="text-align: center; margin-right: 5px;">เงินประจำตำแหน่ง</td>
-                            <td style="text-align: center; margin-right: 5px;">เอกสารอ้างอิง</td>
+                            <td style="text-align: center; margin-right: 5px;">วัน เดือน ปี<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">ตำแหน่ง<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">เลขที่ตำแหน่ง<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">ตำแหน่งประเภท<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">ระดับ<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">เงินเดือน<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">เงินประจำตำแหน่ง<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">เอกสารอ้างอิง<span class="textred">*</span></td>
 
                         </tr>
                         <tr>
