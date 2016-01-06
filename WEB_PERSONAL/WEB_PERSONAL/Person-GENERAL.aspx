@@ -664,7 +664,7 @@
                             <td style="text-align: left; width: 1px;"></td>
                             <td style="text-align: center; margin-right: 5px; width: 500px">ตั้งแต่ - ถึง (เดือน ปี)<span class="textred">*</span></td>
                             <td style="text-align: left; width: 1px;"></td>
-                            <td style="text-align: center; margin-right: 5px;">วุฒิ(สาาขาาวิชาเอก)<span class="textred">*</span></td>
+                            <td style="text-align: center; margin-right: 5px;">วุฒิ(สาขาวิชาเอก)<span class="textred">*</span></td>
                         </tr>
                         <tr>
                             <td style="text-align: left; width: 170px;">
