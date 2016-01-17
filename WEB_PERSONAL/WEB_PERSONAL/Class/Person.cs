@@ -208,7 +208,7 @@ namespace WEB_PERSONAL.Class {
                 }
 
                 try {
-                    using (OracleCommand command = new OracleCommand("SELECT NVL(TITLE_ID, -1), NVL(PERSON_NAME, '-'), NVL(PERSON_LASTNAME, '-'), NVL(GENDER_ID, -1), NVL(SYSTEM_STATUS_ID, -1), NVL(STAFFTYPE_ID, -1), NVL(MINISTRY_ID, -1), NVL(DEPARTMENT_NAME, '-'), NVL(TO_CHAR(BIRTHDATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(TO_CHAR(INWORK_DATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(TO_CHAR(RETIRE_DATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(FATHER_NAME, '-'), NVL(FATHER_LASTNAME, '-'), NVL(MOTHER_NAME, '-'), NVL(MOTHER_LASTNAME, '-'), NVL(MOTHER_OLD_LASTNAME, '-'), NVL(COUPLE_NAME, '-'), NVL(COUPLE_LASTNAME, '-'), NVL(COUPLE_OLD_LASTNAME, '-'), NVL(ADMIN_POSITION_ID, '-'), NVL(POSITION_WORK_ID, '-'), NVL(NATION_ID, '-'), NVL(HOMEADD, '-'), NVL(MOO, '-'), NVL(STREET, '-'), NVL(DISTRICT_ID, -1), NVL(AMPHUR_ID, -1), NVL(PROVINCE_ID, -1), NVL(ZIPCODE_ID, -1), NVL(TELEPHONE, '-'), NVL(TIME_CONTACT_ID, -1), NVL(BUDGET_ID, -1), NVL(SUBSTAFFTYPE_ID, -1), NVL(SPECIAL_NAME, '-'), NVL(TEACH_ISCED_ID, '-'), NVL(GRAD_LEV_ID, '-'), NVL(GRAD_CURR, '-'), NVL(GRAD_ISCED_ID, '-'), NVL(GRAD_PROG_ID, '-'), NVL(GRAD_UNIV, '-'), NVL(GRAD_COUNTRY_ID, -1), NVL(BRANCH_ID, -1), NVL(RANK_ID, -1), NVL(FACULTY_ID, '-'), NVL(START_POSITION_WORK_ID, '-') FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
+                    using (OracleCommand command = new OracleCommand("SELECT NVL(TITLE_ID, -1), NVL(PERSON_NAME, '-'), NVL(PERSON_LASTNAME, '-'), NVL(GENDER_ID, -1), NVL(SYSTEM_STATUS_ID, -1), NVL(STAFFTYPE_ID, -1), NVL(MINISTRY_ID, -1), NVL(DEPARTMENT_NAME, '-'), NVL(TO_CHAR(BIRTHDATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(TO_CHAR(INWORK_DATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(TO_CHAR(RETIRE_DATE, 'DD MON YYYY', 'NLS_DATE_LANGUAGE = THAI'), '-'), NVL(FATHER_NAME, '-'), NVL(FATHER_LASTNAME, '-'), NVL(MOTHER_NAME, '-'), NVL(MOTHER_LASTNAME, '-'), NVL(MOTHER_OLD_LASTNAME, '-'), NVL(COUPLE_NAME, '-'), NVL(COUPLE_LASTNAME, '-'), NVL(COUPLE_OLD_LASTNAME, '-'), NVL(ADMIN_POSITION_ID, '-'), NVL(POSITION_WORK_ID, '-'), NVL(NATION_ID, '-'), NVL(HOMEADD, '-'), NVL(MOO, '-'), NVL(STREET, '-'), NVL(DISTRICT_ID, -1), NVL(AMPHUR_ID, -1), NVL(PROVINCE_ID, -1), NVL(ZIPCODE_ID, -1), NVL(TELEPHONE, '-'), NVL(TIME_CONTACT_ID, -1), NVL(BUDGET_ID, -1), NVL(SUBSTAFFTYPE_ID, -1), NVL(SPECIAL_NAME, '-'), NVL(TEACH_ISCED_ID, '-'), NVL(GRAD_ISCED_ID, '-'), NVL(GRAD_PROG_ID, '-'), NVL(GRAD_UNIV, '-'), NVL(GRAD_COUNTRY_ID, -1), NVL(BRANCH_ID, -1), NVL(RANK_ID, -1), NVL(FACULTY_ID, -1), NVL(START_POSITION_WORK_ID, '-') FROM TB_PERSON WHERE CITIZEN_ID = :1", con)) {
                         command.Parameters.AddWithValue("1", citizen_id);
                         using (OracleDataReader reader = command.ExecuteReader()) {
                             if (reader.HasRows) {
@@ -248,16 +248,16 @@ namespace WEB_PERSONAL.Class {
                                 sub_staff_type_id = reader.GetInt32(32);
                                 special_name = reader.GetString(33);
                                 teach_isced_id = reader.GetString(34);
-                                grad_lev_id = reader.GetString(35);
-                                grad_curr = reader.GetString(36);
-                                grad_isced_id = reader.GetString(37);
-                                grad_prog_id = reader.GetString(38);
-                                grad_univ = reader.GetString(39);
-                                grad_country_id = reader.GetInt32(40);
-                                branch_id = reader.GetInt32(41);
-                                rank_id = reader.GetInt32(42);
-                                faculty_id = reader.GetString(43);
-                                start_position_work_id = reader.GetString(44);
+                               // grad_lev_id = reader.GetString(35);
+                                //grad_curr = reader.GetString(36);
+                                grad_isced_id = reader.GetString(35);
+                                grad_prog_id = reader.GetString(36);
+                                grad_univ = reader.GetString(37);
+                                grad_country_id = reader.GetInt32(38);
+                                branch_id = reader.GetInt32(39);
+                                rank_id = reader.GetInt32(40);
+                                faculty_id = reader.GetString(41);
+                                start_position_work_id = reader.GetString(42);
                             }
                         }
                     }
