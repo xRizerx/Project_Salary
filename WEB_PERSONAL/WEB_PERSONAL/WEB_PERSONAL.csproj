@@ -533,6 +533,13 @@
     <Compile Include="GradProgram-ADMIN.aspx.designer.cs">
       <DependentUpon>GradProgram-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="insignia_from_add.aspx.cs">
+      <DependentUpon>insignia_from_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="insignia_from_add.aspx.designer.cs">
+      <DependentUpon>insignia_from_add.aspx</DependentUpon>
+    </Compile>
     <Compile Include="insignia_from_view.aspx.cs">
       <DependentUpon>insignia_from_view.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
