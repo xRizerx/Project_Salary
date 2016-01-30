@@ -9,32 +9,59 @@ namespace WEB_PERSONAL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["login_system_status_id"].ToString() == "1")
+            if (Session["login_system_status_id"].ToString() != "1")
             {
-                
+                Response.Redirect("Default.aspx");
             }
-            else
-            {
-                Response.Redirect("Error-Member.aspx");
-            }
+            
         }
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             using (OracleConnection conn  = Util.OC())
             {
-                String sql = "INSERT INTO TB_BASESALARY VALUES (SEQ_BASESALARY_ID.NEXTVAL,:1,:2,:3,:4,:5)";
-                sql = String.Format(sql, DropDownList1.SelectedValue, TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text);
-                using (OracleCommand command = new OracleCommand(sql, conn))
+                try
                 {
-                    command.Parameters.AddWithValue("1", DropDownList1.SelectedValue);
-                    command.Parameters.AddWithValue("2", TextBox1.Text);
-                    command.Parameters.AddWithValue("3", TextBox2.Text);
-                    command.Parameters.AddWithValue("4", TextBox3.Text);
-                    command.Parameters.AddWithValue("5", TextBox4.Text);
-                    command.ExecuteNonQuery();
-                    Util.Alert(this,"Insert Successful.");
+                    if (LinkButton2.Text == "เพิ่มข้อมูลฐานเงินเดือน")
+                    {
+                        DropDownList1.Enabled = true;
+                        String sql = "INSERT INTO TB_BASESALARY VALUES (SEQ_BASESALARY_ID.NEXTVAL,:1,:2,:3,:4,:5)";
+                        sql = String.Format(sql, DropDownList1.SelectedValue, TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text);
+                        using (OracleCommand command = new OracleCommand(sql, conn))
+                        {
+                            command.Parameters.AddWithValue("1", DropDownList1.SelectedValue);
+                            command.Parameters.AddWithValue("2", TextBox1.Text);
+                            command.Parameters.AddWithValue("3", TextBox2.Text);
+                            command.Parameters.AddWithValue("4", TextBox3.Text);
+                            command.Parameters.AddWithValue("5", TextBox4.Text);
+                            command.ExecuteNonQuery();
+                            Session.Remove("base_id");
+                        }
+                        Util.Alert(this, "Insert Successful.");
+                    }
+                    else
+                    {
+                        String sql = "UPDATE TB_BASESALARY SET POSITION_ID=:1,MAXSALARY=:2,MINSALARY=:3,MAXLOWSALARY=:4,MINLOWSALARY=:5 WHERE ID = :0";
+                        sql = String.Format(sql, DropDownList1.SelectedValue, TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text);
+                        using (OracleCommand command = new OracleCommand(sql, conn))
+                        {
+                            command.Parameters.AddWithValue("0", Session["base_id"].ToString());
+                            command.Parameters.AddWithValue("1", DropDownList1.SelectedValue);
+                            command.Parameters.AddWithValue("2", TextBox1.Text);
+                            command.Parameters.AddWithValue("3", TextBox2.Text);
+                            command.Parameters.AddWithValue("4", TextBox3.Text);
+                            command.Parameters.AddWithValue("5", TextBox4.Text);
+                            command.ExecuteNonQuery();
+                            Session.Remove("base_id");
+                        }
+                        Util.Alert(this, "Update Successful.");
+                    }
                 }
+                catch
+                {
+
+                }
+                
             }
             Response.Redirect(Request.Url.ToString());
         }
@@ -42,44 +69,99 @@ namespace WEB_PERSONAL
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = GridView1.SelectedRow;
-            TextBox9.Text = row.Cells[1].Text;
-            DropDownList2.ClearSelection();
-            DropDownList2.Items.FindByText(row.Cells[2].Text).Selected = true;
-            TextBox5.Text = row.Cells[3].Text;
-            TextBox6.Text = row.Cells[4].Text;
-            TextBox7.Text = row.Cells[5].Text;
-            TextBox8.Text = row.Cells[6].Text;
-        }
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            using (OracleConnection conn = Util.OC())
-            {
-                String sql = "UPDATE TB_BASESALARY SET POSITION_ID=:1,MAXSALARY=:2,MINSALARY=:3,MAXLOWSALARY=:4,MINLOWSALARY=:5 WHERE ID = :0";
-                sql = String.Format(sql, DropDownList2.SelectedValue, TextBox5.Text, TextBox6.Text, TextBox7.Text, TextBox8.Text);
-                using (OracleCommand command = new OracleCommand(sql, conn))
-                {
-                    command.Parameters.AddWithValue("0", TextBox9.Text);
-                    command.Parameters.AddWithValue("1", DropDownList2.SelectedValue);
-                    command.Parameters.AddWithValue("2", TextBox5.Text);
-                    command.Parameters.AddWithValue("3", TextBox6.Text);
-                    command.Parameters.AddWithValue("4", TextBox7.Text);
-                    command.Parameters.AddWithValue("5", TextBox8.Text);
-                    command.ExecuteNonQuery();
-                    Util.Alert(this, "Update Successful.");
-                }
-            }
-            Response.Redirect(Request.Url.ToString());
+            DropDownList1.ClearSelection();
+            DropDownList1.Items.FindByText(row.Cells[2].Text).Selected = true;
+            Session["base_id"] = row.Cells[1].Text;
+            TextBox1.Text = row.Cells[3].Text;
+            TextBox2.Text = row.Cells[4].Text;
+            TextBox3.Text = row.Cells[5].Text;
+            TextBox4.Text = row.Cells[6].Text;
+            LinkButton2.Text = "อัพเดทฐานเงินเดือน";
+            DropDownList1.Enabled = false;
         }
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
         }
-
-        protected void ImageButton1_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+        //------------------Permanent Emp------------------------------------
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Response.Redirect("https://www.google.co.th");
+            GridViewRow row = GridView2.SelectedRow;
+
+            Session["Per_EMP_ID"] = row.Cells[1].Text;
+            TextBox5.Text = row.Cells[2].Text;
+            TextBox6.Text = row.Cells[3].Text;
+            TextBox7.Text = row.Cells[4].Text;
+            TextBox8.Text = row.Cells[5].Text;
+            LinkButton2.Text = "อัพเดทฐานเงินเดือน";
         }
 
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["Per_EMP"] = DropDownList2.SelectedValue;
+        }
+        protected void LinkButton2x_Click(object sender, EventArgs e)
+        {
+            using (OracleConnection conn = Util.OC())
+            {
+                try
+                {
+                    if (LinkButton2.Text == "เพิ่มข้อมูลฐานเงินเดือน")
+                    {
+                        DropDownList1.Enabled = true;
+                        String sql = "INSERT INTO TB_BASESALARY_PERMANENT_EMP VALUES (SEQ_BASE_PER.NEXTVAL,:1,:2,:3,:4,:5)";
+                        sql = String.Format(sql, TextBox5.Text, TextBox6.Text, TextBox7.Text, TextBox8.Text, Session["Per_EMP"].ToString());
+                        using (OracleCommand command = new OracleCommand(sql, conn))
+                        {
+                            command.Parameters.AddWithValue("1", TextBox5.Text);
+                            command.Parameters.AddWithValue("2", TextBox6.Text);
+                            command.Parameters.AddWithValue("3", TextBox7.Text);
+                            command.Parameters.AddWithValue("4", TextBox8.Text);
+                            command.Parameters.AddWithValue("5", Session["Per_EMP"].ToString());
+                            command.ExecuteNonQuery();
+                            Session.Remove("Per_EMP");
+                            Session.Remove("Per_EMP_ID");
+                        }
+                        Util.Alert(this, "Insert Successful.");
+                    }
+                    else
+                    {
+                        String sql = "UPDATE TB_BASESALARY SET \"LEVEL\"=:1,PERMONTH=:2,PERDAY=:3,PERHOUR=:4,STAFF_GROUP=:5 WHERE ID = :0";
+                        sql = String.Format(sql, TextBox5.Text, TextBox6.Text, TextBox7.Text, TextBox8.Text, Session["Per_EMP"].ToString());
+                        using (OracleCommand command = new OracleCommand(sql, conn))
+                        {
+                            command.Parameters.AddWithValue("0", Session["Per_EMP_ID"].ToString());
+                            command.Parameters.AddWithValue("1", TextBox5.Text);
+                            command.Parameters.AddWithValue("2", TextBox6.Text);
+                            command.Parameters.AddWithValue("3", TextBox7.Text);
+                            command.Parameters.AddWithValue("4", TextBox8.Text);
+                            command.Parameters.AddWithValue("5", Session["Per_EMP"].ToString());
+                            command.ExecuteNonQuery();
+                            Session.Remove("Per_EMP");
+                            Session.Remove("Per_EMP_ID");
+                        }
+                        Util.Alert(this, "Update Successful.");
+                    }
+                }
+                catch
+                {
+
+                }
+
+            }
+            Response.Redirect(Request.Url.ToString());
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Panel_Gov_Base.Visible = true;
+            Panel_Per_EMP.Visible = false;
+        }
+        protected void LinkButton4_Click(object sender, EventArgs e)
+        {
+            Panel_Gov_Base.Visible = false;
+            Panel_Per_EMP.Visible = true;
+        }
     }
 }

@@ -143,7 +143,15 @@
         settings = 'width=' + w + ',height=' + h + ',top=' + TopPosition + ',left=' + LeftPosition + ',scrollbars=' + scroll + ',location=no,directories=no,status=yes,menubar=no,toolbar=no,resizable=no';
         win = window.open(mypage, myname, settings);
     }
-    // -->
+        // -->
+    function minlength(){
+        var textbox1 = document.getElementById("TextBox1");
+        if (textbox1.value.length == 13) {
+        }
+        else {
+            alert("อนุญาตสำหรับรหัสบัตรประชาชนเท่านั้น")
+        }
+    }
     </script>
     <link href="CSS/Salary.css" rel="stylesheet" />
 
@@ -171,7 +179,7 @@
                                     <asp:Label ID="Label8" runat="server" Text="กรุณาป้อนรหัสบัตรประชาชน"></asp:Label>
                                 </asp:TableCell>
                                 <asp:TableCell>
-                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="master_default_textbox" Height="24px" MaxLength="13" Width="100px"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" CssClass="master_default_textbox" Height="24px" MaxLength="13" Width="100px" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell>
                                     <asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui_edit" OnClick="Button1_Click">ค้นหา</asp:LinkButton>
@@ -251,7 +259,8 @@
                             <asp:Label ID="Label20" runat="server" Text="เงินเดือนก่อนเลื่อน (ณ 1 มี.ค. 58)"></asp:Label>
                         </td>
                         <td class="auto-style6">
-                            <asp:TextBox ID="TextBox2" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            
+                            <asp:TextBox ID="TextBox2" runat="server" CssClass="master_default_textbox" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
                         </td>
                         <td class="auto-style7">
                             <asp:Label ID="Label21" runat="server" Text="เงินเดือนสูงสุดแต่ละประเภท"></asp:Label>
@@ -319,13 +328,13 @@
                             <asp:Label ID="Label36" runat="server" Text="คะแนนผลประเมิน"></asp:Label>
                         </td>
                         <td class="auto-style6">
-                            <asp:TextBox ID="TextBox4" runat="server" CssClass="master_default_textbox"></asp:TextBox>
+                            <asp:TextBox ID="TextBox4" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
                         </td>
                         <td class="auto-style7">
                             <asp:Label ID="Label37" runat="server" Text="ระดับการประเมิน"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:TextBox ID="TextBox5" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
+                            <asp:TextBox ID="TextBox5" runat="server" CssClass="master_default_textbox"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>

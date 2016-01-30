@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Salary_Basesalary_Admin.aspx.cs" Inherits="WEB_PERSONAL.Salary_Basesalary_Admin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Salary_Basesalary_Admin.aspx.cs" Inherits="WEB_PERSONAL.Salary_Basesalary_Admin" MaintainScrollPositionOnPostback="true" %>
 
 <!DOCTYPE html>
 
@@ -123,6 +123,9 @@
             background-image: url("/Image/btx1.jpg");
             background-size: 100%;
         }
+        .auto-style1 {
+            width: 100%;
+        }
     </style>
     <link href="CSS/Master.css" rel="stylesheet" />
 </head>
@@ -133,11 +136,6 @@
                 <asp:TableRow>
                     <asp:TableCell>
                         <asp:LinkButton ID="LinkButton3" runat="server" OnClick="LinkButton3_Click" CssClass="button_ui">กลับเมนูหลัก</asp:LinkButton>
-                    </asp:TableCell>
-                    <asp:TableCell>
-                         <audio controls autoplay>
-                            <source src="Entities/Virus.mp3" type="audio/mp3" />
-                         </audio> 
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
@@ -151,13 +149,15 @@
                     <div class="bgtest">
                         <asp:Label ID="Label2" runat="server" Text="ระบบฐานเงินเดือน"></asp:Label>
                     </div>
+                    <asp:Panel ID="Panel_Control_Base" runat="server" Height="100px">
+                        <br /><asp:LinkButton ID="LinkButton1" runat="server" CssClass="Linkbtn" OnClick="LinkButton1_Click" >ฐานเงินเดือนข้าราชการพลเรือน</asp:LinkButton><span>          </span><asp:LinkButton ID="LinkButton4" runat="server" CssClass="Linkbtn" OnClick="LinkButton4_Click">ฐานเงินเดือนลูกจ้างประจำ</asp:LinkButton><br /></asp:Panel>
                     <div class="master_default_div_sec_in">
-                        <table style="width: 100%;">
+                        <table class="auto-style1">
                             <tr>
                                 <td>
-                                    <asp:Panel ID="Panel1" runat="server" DefaultButton="LinkButton2">
+                                    <asp:Panel ID="Panel_Gov_Base" runat="server" DefaultButton="LinkButton2">
                                         <div class="master_default_div_sec_header">
-                                            <asp:Label ID="Label1" runat="server" Text="เพิ่มฐานเงินเดือน"></asp:Label>
+                                            <asp:Label ID="Label1" runat="server" Text="จัดการฐานเงินเดือนข้าราชการพลเรือน"></asp:Label>
                                         </div>
                                         <div class="master_default_div_sec_in">
                                             <asp:Table ID="Table1" runat="server" Height="300px">
@@ -166,8 +166,7 @@
                                                         <asp:Label ID="Labeli3" runat="server" Text="ตำแหน่ง"></asp:Label>
                                                     </asp:TableCell>
                                                     <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SQL_TB_POSITION" DataTextField="NAME" DataValueField="ID">
-                                                        </asp:DropDownList>
+                                                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SQL_TB_POSITION" DataTextField="NAME" DataValueField="ID"></asp:DropDownList>
                                                     </asp:TableCell>
                                                 </asp:TableRow>
                                                 <asp:TableRow>
@@ -175,8 +174,7 @@
                                                         <asp:Label ID="Label4" runat="server" Text="เงินเดือนสูงสุด"></asp:Label>
                                                     </asp:TableCell>
                                                     <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                                                    </asp:TableCell>
+                                                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></asp:TableCell>
                                                 </asp:TableRow>
                                                 <asp:TableRow>
                                                     <asp:TableCell runat="server" HorizontalAlign="Left">
@@ -211,80 +209,7 @@
                                                 </asp:TableFooterRow>
                                             </asp:Table>
                                         </div>
-                                    </asp:Panel>
-                                </td>
-                                <td>
-                                    <asp:Panel ID="Panel2" runat="server" DefaultButton="LinkButton1">
-                                        <div class="master_default_div_sec_header">
-                                            <asp:Label ID="Label3" runat="server" Text="แก้ไขฐานเงินเดือน"></asp:Label>
-                                        </div>
-                                        <div class="master_default_div_sec_in">
-                                            <asp:Table ID="Table2" runat="server" Height="300px">
-                                                <asp:TableRow runat="server">
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label13" runat="server" Text="ID"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox9" runat="server" ReadOnly="True" BackColor="Gray" ForeColor="White"></asp:TextBox>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableRow runat="server">
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label8" runat="server" Text="ตำแหน่ง"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SQL_TB_POSITION" DataTextField="NAME" DataValueField="ID">
-                                                        </asp:DropDownList>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableRow runat="server">
-                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label9" runat="server" Text="เงินเดือนสูงสุด"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableRow runat="server">
-                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label10" runat="server" Text="เงินเดือนต่ำสุด"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableRow runat="server">
-                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label11" runat="server" Text="เงินเดือนล่างสูงสุด"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableRow runat="server">
-                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label12" runat="server" Text="เงินเดือนล่างต่ำสุด"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableFooterRow>
-                                                    <asp:TableCell runat="server" Width="250px" ColumnSpan="2">
-                                                        <br />
-                                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="Linkbtn" OnClick="LinkButton1_Click">แก้ไขข้อมูลฐานเงินเดือน</asp:LinkButton>
-                                                        <br />
-                                                        <br />
-                                                    </asp:TableCell>
-                                                </asp:TableFooterRow>
-                                            </asp:Table>
-                                        </div>
-                                    </asp:Panel>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <asp:SqlDataSource ID="SQL_TB_POSITION" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;ID&quot;, &quot;NAME&quot; FROM &quot;TB_POSITION&quot;" UpdateCommand="UPDATE TB_POSITION SET NAME = :1, ST_ID = :2">
+                                        <asp:SqlDataSource ID="SQL_TB_POSITION" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;ID&quot;, &quot;NAME&quot; FROM &quot;TB_POSITION&quot;" UpdateCommand="UPDATE TB_POSITION SET NAME = :1, ST_ID = :2">
                             <UpdateParameters>
                                 <asp:Parameter Name="1" />
                                 <asp:Parameter Name="2" />
@@ -313,7 +238,7 @@
                         </asp:SqlDataSource>
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="mGrid" DataKeyNames="ID" AllowPaging="True" DataMember="DefaultView" ShowFooter="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                             <Columns>
-                                <asp:CommandField EditText="แก้ไข" UpdateText="อัพเดท" CancelText="ยกเลิก" InsertText="เพิ่ม" NewText="สร้างใหม่" ShowDeleteButton="True" DeleteText="ลบ" SelectText="เลือก" ControlStyle-ForeColor="White" ShowSelectButton="True" HeaderText="เครื่องมือการจัดการ" ItemStyle-HorizontalAlign="Center">
+                                <asp:CommandField EditText="แก้ไข" UpdateText="อัพเดท" CancelText="ยกเลิก" InsertText="เพิ่ม" NewText="สร้างใหม่" ShowDeleteButton="False" DeleteText="ลบ" SelectText="เลือก" ControlStyle-ForeColor="White" ShowSelectButton="True" HeaderText="เครื่องมือการจัดการ" ItemStyle-HorizontalAlign="Center">
                                     <ControlStyle ForeColor="White" />
                                 </asp:CommandField>
                                 <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
@@ -325,6 +250,110 @@
 
                             </Columns>
                         </asp:GridView>
+                                    </asp:Panel>                   
+                                </td>
+                            </tr>
+                        </table>
+                        <!--- Page 2 Permanent_EMP ---->
+                        <asp:Panel ID="Panel_Per_EMP" runat="server" DefaultButton="LinkButton2" Visible="false">
+                                        <div class="master_default_div_sec_header">
+                                            <asp:Label ID="Label3" runat="server" Text="จัดการฐานเงินเดือนลูกจ้างประจำ"></asp:Label>
+                                        </div>
+                                        <div class="master_default_div_sec_in">
+                                            <asp:Table ID="Table2" runat="server" Height="300px">
+                                                <asp:TableRow runat="server">
+                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
+                                                        <asp:Label ID="Label8" runat="server" Text="กลุ่มบัญชี"></asp:Label>
+                                                    </asp:TableCell>
+                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
+                                                        <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true">
+                                                            <asp:ListItem Text="-เลือกกลุ่มบัญชี-" Value="-1"></asp:ListItem>
+                                                            <asp:ListItem Text="-1-" Value="1"></asp:ListItem>
+                                                            <asp:ListItem Text="-2-" Value="2"></asp:ListItem>
+                                                            <asp:ListItem Text="-3-" Value="3"></asp:ListItem>
+                                                            <asp:ListItem Text="-4-" Value="4"></asp:ListItem>
+                                                        </asp:DropDownList><span style="color:red;">*</span>
+                                                    </asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
+                                                        <asp:Label ID="Label9" runat="server" Text="ระดับ"></asp:Label>
+                                                    </asp:TableCell>
+                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
+                                                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                                                    </asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
+                                                        <asp:Label ID="Label10" runat="server" Text="รายได้ต่อเดือน"></asp:Label>
+                                                    </asp:TableCell>
+                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
+                                                        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                                                    </asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
+                                                        <asp:Label ID="Label11" runat="server" Text="รายได้ต่อวัน"></asp:Label>
+                                                    </asp:TableCell>
+                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
+                                                        <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                                                    </asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableRow>
+                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
+                                                        <asp:Label ID="Label12" runat="server" Text="รายได้ต่อชั่วโมง"></asp:Label>
+                                                    </asp:TableCell>
+                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
+                                                        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                                                    </asp:TableCell>
+                                                </asp:TableRow>
+                                                <asp:TableFooterRow>
+                                                    <asp:TableCell runat="server" Width="250px" ColumnSpan="2">
+                                                        <br />
+                                                        <asp:LinkButton ID="LinkButton5" runat="server" CssClass="Linkbtn" OnClick="LinkButton2x_Click">เพิ่มข้อมูลฐานเงินเดือน</asp:LinkButton>
+                                                        <br />
+                                                    </asp:TableCell>
+                                                </asp:TableFooterRow>
+                                            </asp:Table>
+                                        </div>
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" DeleteCommand="DELETE FROM &quot;TB_BASESALARY&quot; WHERE &quot;ID&quot; = :ID" InsertCommand="INSERT INTO &quot;TB_BASESALARY&quot; (&quot;ID&quot;, &quot;POSITION_ID&quot;, &quot;MAXSALARY&quot;, &quot;MINSALARY&quot;, &quot;MAXLOWSALARY&quot;, &quot;MINLOWSALARY&quot;) VALUES (:ID, :LEVEL, :PERMONTH, :PERDAY, :PERHOUR)" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT ID,&quot;LEVEL&quot;, PERMONTH, PERDAY, PERHOUR FROM TB_BASESALARY_PERMANENT_EMP WHERE STAFF_GROUP=:S_GROUP" UpdateCommand="UPDATE &quot;TB_BASESALARY&quot; SET &quot;LEVEL&quot; = :LEVEL, &quot;PERMONTH&quot; = :PERMONTH, &quot;PERDAY&quot; = :PERDAY, &quot;PERHOUR&quot; = :PERHOUR WHERE &quot;ID&quot; = :ID">
+                            <DeleteParameters>
+                                <asp:Parameter Name="ID" Type="Decimal" />
+                            </DeleteParameters>
+                            <InsertParameters>
+                                <asp:Parameter Name="STAFF_GROUP" Type="Decimal" />
+                                <asp:Parameter Name="PERMONTH" Type="Double" />
+                                <asp:Parameter Name="PERDAY" Type="Double" />
+                                <asp:Parameter Name="PERHOUR" Type="Double" />
+                                <asp:Parameter Name="ID" />
+                                <asp:Parameter Name="LEVEL" />
+                            </InsertParameters>
+                            <SelectParameters>
+                                <asp:SessionParameter Name="S_GROUP" SessionField="Per_EMP" />
+                            </SelectParameters>
+                            <UpdateParameters>
+                                <asp:Parameter Name="PERMONTH" Type="Double" />
+                                <asp:Parameter Name="PERDAY" Type="Double" />
+                                <asp:Parameter Name="PERHOUR" Type="Double" />
+                                <asp:Parameter Name="ID" />
+                                <asp:Parameter Name="LEVEL" />
+                            </UpdateParameters>
+                        </asp:SqlDataSource>
+                        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource3" CssClass="mGrid" DataKeyNames="ID" AllowPaging="True" DataMember="DefaultView" ShowFooter="True" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+                            <Columns>
+                                <asp:CommandField EditText="แก้ไข" UpdateText="อัพเดท" CancelText="ยกเลิก" InsertText="เพิ่ม" NewText="สร้างใหม่" ShowDeleteButton="False" DeleteText="ลบ" SelectText="เลือก" ControlStyle-ForeColor="White" ShowSelectButton="True" HeaderText="เครื่องมือการจัดการ" ItemStyle-HorizontalAlign="Center">
+                                    <ControlStyle ForeColor="White" />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:CommandField>
+                                <asp:BoundField DataField="ID" HeaderText="ลำดับที่ [ID]" ReadOnly="True" SortExpression="ID" />
+                                <asp:BoundField DataField="LEVEL" HeaderText="ระดับ" />
+                                <asp:BoundField DataField="PERMONTH" HeaderText="รายได้ต่อเดือน" SortExpression="PERMONTH" />
+                                <asp:BoundField DataField="PERDAY" HeaderText="รายได้ต่อวัน" SortExpression="PERDAY" />
+                                <asp:BoundField DataField="PERHOUR" HeaderText="รายได้ต่อชั่วโมง" SortExpression="PERHOUR" />
+
+                            </Columns>
+                        </asp:GridView>
+                                    </asp:Panel> 
                     </div>
                 </div>
             </asp:Panel>
