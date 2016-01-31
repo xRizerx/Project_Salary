@@ -333,6 +333,7 @@
     <Content Include="PositionWork-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Province-ADMIN.aspx" />
+    <Content Include="Religion-ADMIN.aspx" />
     <Content Include="SalarybyID-Edit-Permanent.aspx" />
     <Content Include="Salary_Salary_Admin.aspx" />
     <Content Include="Salary_Basesalary_Admin.aspx" />
@@ -341,6 +342,7 @@
     <Content Include="Seminar-ADMIN - new.aspx" />
     <Content Include="Staff-ADMIN.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
+    <Content Include="StatusWork-ADMIN.aspx" />
     <Content Include="Study-Report1.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TeachISCED-ADMIN.aspx" />
@@ -727,6 +729,13 @@
     <Compile Include="Province-ADMIN.aspx.designer.cs">
       <DependentUpon>Province-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Religion-ADMIN.aspx.cs">
+      <DependentUpon>Religion-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Religion-ADMIN.aspx.designer.cs">
+      <DependentUpon>Religion-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Salary-report.aspx.cs">
       <DependentUpon>Salary-report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -817,6 +826,13 @@
     </Compile>
     <Compile Include="StaffType-ADMIN.aspx.designer.cs">
       <DependentUpon>StaffType-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatusWork-ADMIN.aspx.cs">
+      <DependentUpon>StatusWork-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatusWork-ADMIN.aspx.designer.cs">
+      <DependentUpon>StatusWork-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Study-IN.aspx.cs">
       <DependentUpon>Study-IN.aspx</DependentUpon>
