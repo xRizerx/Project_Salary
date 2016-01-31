@@ -523,7 +523,7 @@
     <asp:Panel ID="Panel1_2" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSubmitPerson">
         <div>
             <fieldset>
-                <legend style="margin-left: auto; margin-right: auto; text-align: center;">ข้อมูลการงาน</legend>
+                <legend style="margin-left: auto; margin-right: auto; text-align: center;">ข้อมูลตำแหน่ง</legend>
                 <div>
 
                     <table>
