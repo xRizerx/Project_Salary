@@ -58,13 +58,40 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Panel1 control.
+        /// Panel_Control_Base control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel Panel_Control_Base;
+        
+        /// <summary>
+        /// LinkButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        
+        /// <summary>
+        /// LinkButton4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
+        
+        /// <summary>
+        /// Panel_Gov_Base control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_Gov_Base;
         
         /// <summary>
         /// Label1 control.
@@ -184,13 +211,40 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
         
         /// <summary>
-        /// Panel2 control.
+        /// SQL_TB_POSITION control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
+        protected global::System.Web.UI.WebControls.SqlDataSource SQL_TB_POSITION;
+        
+        /// <summary>
+        /// SqlDataSource2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// Panel_Per_EMP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_Per_EMP;
         
         /// <summary>
         /// Label3 control.
@@ -209,24 +263,6 @@ namespace WEB_PERSONAL {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table Table2;
-        
-        /// <summary>
-        /// Label13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label13;
-        
-        /// <summary>
-        /// TextBox9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
         
         /// <summary>
         /// Label8 control.
@@ -319,39 +355,30 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox8;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// LinkButton5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton5;
         
         /// <summary>
-        /// SQL_TB_POSITION control.
+        /// SqlDataSource3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SQL_TB_POSITION;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
         
         /// <summary>
-        /// SqlDataSource2 control.
+        /// GridView2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView GridView2;
     }
 }

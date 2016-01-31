@@ -150,12 +150,9 @@
                         <asp:Label ID="Label2" runat="server" Text="ระบบจัดการเงินเดือน"></asp:Label>
                     </div>
                     <div class="master_default_div_sec_in">
-                        <table style="width: 100%;">
-                            <tr>
-                                <td>
                                     <asp:Panel ID="Panel1" runat="server" DefaultButton="LinkButton2">
                                         <div class="master_default_div_sec_header">
-                                            <asp:Label ID="Label1" runat="server" Text="เพิ่มฐานเงินเดือน"></asp:Label>
+                                            <asp:Label ID="Label1" runat="server" Text="จัดการเงินเดือน"></asp:Label>
                                         </div>
                                         <div class="master_default_div_sec_in">
                                             <asp:Table ID="Table1" runat="server" Height="300px">
@@ -201,96 +198,6 @@
                                             </asp:Table>
                                         </div>
                                     </asp:Panel>
-                                </td>
-                                <td>
-                                    <asp:Panel ID="Panel2" runat="server" DefaultButton="LinkButton1">
-                                        <div class="master_default_div_sec_header">
-                                            <asp:Label ID="Label3" runat="server" Text="แก้ไขฐานเงินเดือน"></asp:Label>
-                                        </div>
-                                        <div class="master_default_div_sec_in">
-                                            <asp:Table ID="Table2" runat="server" Height="300px">
-                                                <asp:TableRow>
-                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label8" runat="server" Text="ชื่อ"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableRow>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label9" runat="server" Text="นามสกุล"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableRow>
-                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label10" runat="server" Text="ตำแหน่ง"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableRow>
-                                                    <asp:TableCell runat="server" Width="200px" HorizontalAlign="Left">
-                                                        <asp:Label ID="Label11" runat="server" Text="เงินเดือน"></asp:Label>
-                                                    </asp:TableCell>
-                                                    <asp:TableCell runat="server" HorizontalAlign="Left">
-                                                        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
-                                                    </asp:TableCell>
-                                                </asp:TableRow>
-                                                <asp:TableFooterRow>
-                                                    <asp:TableCell runat="server" Width="300px" ColumnSpan="2">
-                                                        <br />
-                                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="Linkbtn" OnClick="LinkButton2_Click">แก้ไขข้อมูลเงินเดือน</asp:LinkButton>
-                                                        <br />
-                                                    </asp:TableCell>
-                                                </asp:TableFooterRow>
-                                            </asp:Table>
-                                        </div>
-                                    </asp:Panel>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <asp:SqlDataSource ID="SQL_TB_POSITION" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;ID&quot;, &quot;NAME&quot; FROM &quot;TB_POSITION&quot;" UpdateCommand="UPDATE TB_POSITION SET NAME = :1, ST_ID = :2">
-                            <UpdateParameters>
-                                <asp:Parameter Name="1" />
-                                <asp:Parameter Name="2" />
-                            </UpdateParameters>
-                        </asp:SqlDataSource>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" DeleteCommand="DELETE FROM &quot;TB_POSITION_AND_SALARY&quot; WHERE &quot;ID&quot; = :ID" InsertCommand="INSERT INTO &quot;TB_POSITION_ADN_SALARY&quot; (&quot;ID&quot;, &quot;POSITION_ID&quot;, &quot;MAXSALARY&quot;, &quot;MINSALARY&quot;, &quot;MAXLOWSALARY&quot;, &quot;MINLOWSALARY&quot;) VALUES (:ID, :POSITION_ID, :MAXSALARY, :MINSALARY, :MAXLOWSALARY, :MINLOWSALARY)" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT TB_PERSON.CITIZEN_ID, TB_PERSON.PERSON_NAME, TB_PERSON.PERSON_LASTNAME, TB_POSITION.NAME, TB_POSITION_AND_SALARY.SALARY FROM TB_POSITION_AND_SALARY, TB_PERSON, TB_POSITION WHERE TB_POSITION_AND_SALARY.CITIZEN_ID = TB_PERSON.CITIZEN_ID AND TB_POSITION_AND_SALARY.POSITION_ID = TB_POSITION.ID ORDER BY TB_PERSON.CITIZEN_ID ASC" UpdateCommand="UPDATE &quot;TB_BASESALARY&quot; SET &quot;POSITION_ID&quot;=:NAME, &quot;MAXSALARY&quot; = :MAXSALARY, &quot;MINSALARY&quot; = :MINSALARY, &quot;MAXLOWSALARY&quot; = :MAXLOWSALARY, &quot;MINLOWSALARY&quot; = :MINLOWSALARY WHERE &quot;ID&quot; = :ID">
-                            <DeleteParameters>
-                                <asp:Parameter Name="ID" Type="Decimal" />
-                            </DeleteParameters>
-                            <InsertParameters>
-                                <asp:Parameter Name="ID" Type="Decimal" />
-                                <asp:Parameter Name="POSITION_ID" Type="String" />
-                                <asp:Parameter Name="MAXSALARY" Type="Decimal" />
-                                <asp:Parameter Name="MINSALARY" Type="Decimal" />
-                                <asp:Parameter Name="MAXLOWSALARY" Type="Decimal" />
-                                <asp:Parameter Name="MINLOWSALARY" Type="Decimal" />
-                            </InsertParameters>
-                            <UpdateParameters>
-                                <asp:Parameter Name="NAME" />
-                                <asp:Parameter Name="MAXSALARY" Type="Decimal" />
-                                <asp:Parameter Name="MINSALARY" Type="Decimal" />
-                                <asp:Parameter Name="MAXLOWSALARY" Type="Decimal" />
-                                <asp:Parameter Name="MINLOWSALARY" Type="Decimal" />
-                                <asp:Parameter Name="ID" />
-                            </UpdateParameters>
-                        </asp:SqlDataSource>
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CssClass="mGrid" DataKeyNames="CITIZEN_ID" AllowPaging="True" DataMember="DefaultView" ShowFooter="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" ShowHeaderWhenEmpty="True" EmptyDataText="ไม่พบข้อมูลในระบบ" EmptyDataRowStyle-HorizontalAlign="Center">
-                            <Columns>
-                                <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" DeleteText="ลบ" SelectText="เลือก" ></asp:CommandField>
-                                <asp:BoundField DataField="TB_PERSON.CITIZEN_ID" HeaderText="รหัสบัตรประชาชน" ReadOnly="True" SortExpression="TB_PERSON.CITIZEN_ID" />
-                                <asp:BoundField DataField="TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME" HeaderText="ชื่อ - นามสกุล" SortExpression="TB_PERSON.PERSON_NAME || ' ' || TB_PERSON.PERSON_LASTNAME" />
-                                <asp:BoundField DataField="TB_POSITION.NAME" HeaderText="ตำแหน่ง" SortExpression="TB_POSITION.NAME" />
-                                <asp:BoundField DataField="TB_POSITION_AND_SALARY.SALARY" HeaderText="เงินเดือน" SortExpression="TB_POSITION_AND_SALARY.SALARY" />
-                            </Columns>
-                        </asp:GridView>
                     </div>
                 </div>
             </asp:Panel>

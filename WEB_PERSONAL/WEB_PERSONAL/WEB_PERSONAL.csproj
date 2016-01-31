@@ -90,6 +90,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1Test.aspx" />
     <Content Include="404.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Access.aspx" />
@@ -98,6 +99,7 @@
     <Content Include="Branch-ADMIN.aspx" />
     <Content Include="Budget-ADMIN.aspx" />
     <Content Include="Campus-ADMIN.aspx" />
+    <Content Include="CitizenDetails.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -309,6 +311,7 @@
     <Content Include="insignia_citizen.aspx" />
     <Content Include="insignia_user.aspx" />
     <Content Include="Leave.aspx" />
+    <Content Include="ListPerson-ADMIN.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Ministry-ADMIN.aspx" />
     <Content Include="Month-ADMIN.aspx" />
@@ -333,6 +336,7 @@
     <Content Include="PositionWork-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Province-ADMIN.aspx" />
+    <Content Include="Religion-ADMIN.aspx" />
     <Content Include="SalarybyID-Edit-Permanent.aspx" />
     <Content Include="Salary_Salary_Admin.aspx" />
     <Content Include="Salary_Basesalary_Admin.aspx" />
@@ -341,6 +345,7 @@
     <Content Include="Seminar-ADMIN - new.aspx" />
     <Content Include="Staff-ADMIN.aspx" />
     <Content Include="StaffType-ADMIN.aspx" />
+    <Content Include="StatusWork-ADMIN.aspx" />
     <Content Include="Study-Report1.aspx" />
     <Content Include="SubStaffType-ADMIN.aspx" />
     <Content Include="TeachISCED-ADMIN.aspx" />
@@ -386,6 +391,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1Test.aspx.cs">
+      <DependentUpon>1Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="1Test.aspx.designer.cs">
+      <DependentUpon>1Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="404.aspx.cs">
       <DependentUpon>404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -441,6 +453,13 @@
     </Compile>
     <Compile Include="Campus-ADMIN.aspx.designer.cs">
       <DependentUpon>Campus-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CitizenDetails.aspx.cs">
+      <DependentUpon>CitizenDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CitizenDetails.aspx.designer.cs">
+      <DependentUpon>CitizenDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Class\BaseSalary.cs" />
     <Compile Include="Class\DisciplinaryAndAmnesty.cs" />
@@ -617,6 +636,13 @@
     <Compile Include="Leave.aspx.designer.cs">
       <DependentUpon>Leave.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ListPerson-ADMIN.aspx.cs">
+      <DependentUpon>ListPerson-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListPerson-ADMIN.aspx.designer.cs">
+      <DependentUpon>ListPerson-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -727,6 +753,13 @@
     <Compile Include="Province-ADMIN.aspx.designer.cs">
       <DependentUpon>Province-ADMIN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Religion-ADMIN.aspx.cs">
+      <DependentUpon>Religion-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Religion-ADMIN.aspx.designer.cs">
+      <DependentUpon>Religion-ADMIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Salary-report.aspx.cs">
       <DependentUpon>Salary-report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -817,6 +850,13 @@
     </Compile>
     <Compile Include="StaffType-ADMIN.aspx.designer.cs">
       <DependentUpon>StaffType-ADMIN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StatusWork-ADMIN.aspx.cs">
+      <DependentUpon>StatusWork-ADMIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StatusWork-ADMIN.aspx.designer.cs">
+      <DependentUpon>StatusWork-ADMIN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Study-IN.aspx.cs">
       <DependentUpon>Study-IN.aspx</DependentUpon>

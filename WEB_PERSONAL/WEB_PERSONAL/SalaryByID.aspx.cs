@@ -643,5 +643,27 @@ namespace WEB_PERSONAL
         {
             Response.Redirect("Salary_Salary_Admin.aspx");
         }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (TextBox2.Text.Length >= 2)
+            {
+                int acceptednumber = Convert.ToInt32(TextBox2.Text);
+                if (acceptednumber < 0)
+                {
+                    TextBox2.Text = "";
+                    Util.Alert(this,"values are not allowed");
+                }
+                else
+                {
+                    TextBox2.Text = TextBox2.Text;
+                }
+            }
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
