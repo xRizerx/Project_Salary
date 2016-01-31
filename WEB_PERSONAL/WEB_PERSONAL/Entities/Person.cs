@@ -161,6 +161,47 @@ namespace WEB_PERSONAL.Entities
 
             return dt;
         }
+        public DataTable GetListPersonSearch(string PERSON_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_PERSON ";
+            if (!string.IsNullOrEmpty(PERSON_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(PERSON_NAME))
+                {
+                    query += " and PERSON_NAME like :PERSON_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(PERSON_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("PERSON_NAME", PERSON_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
 
         public int InsertPerson()
         {

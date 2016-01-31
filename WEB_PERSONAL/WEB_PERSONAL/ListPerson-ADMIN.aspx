@@ -43,13 +43,13 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchTitle">
+    <asp:Panel ID="Panel1" runat="server" CssClass="divpan" BackColor="White" ForeColor="#6699FF" BorderColor="Aqua" DefaultButton="btnSearchListPerson">
         <div>
             <fieldset>
                 <legend>ค้นหาข้อมูล</legend>
                 <div>
                     ชื่อบุคลากร :&nbsp<asp:TextBox ID="txtSearchName" runat="server" CssClass="tb5" Width="230px" MaxLength="100"></asp:TextBox>
-                    <asp:Button ID="btnSearchTitle" Text="Search" runat="server" CssClass="master_OAT_button"  />
+                    <asp:Button ID="btnSearchListPerson" Text="Search" runat="server" CssClass="master_OAT_button"  />
                     <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button"  />
                 </div>
             </fieldset>
@@ -59,17 +59,22 @@
         <div>
             <fieldset>
                 <legend>ข้อมูล</legend>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="CITIZEN_ID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" Width="982px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="CITIZEN_ID" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" Width="982px" PageSize="20">
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ลำดับที่" SortExpression="ID" />
                         <asp:BoundField DataField="PERSON_NAME" HeaderText="ชื่อ" SortExpression="PERSON_NAME" />
                         <asp:BoundField DataField="PERSON_LASTNAME" HeaderText="นามสกุล" SortExpression="PERSON_LASTNAME" />
-                        <asp:HyperLinkField DataNavigateUrlFields="Citizen_ID" DataNavigateUrlFormatString="CitizenDetails.aspx?CID={0}" DataTextField="Citizen_ID" HeaderText="รหัสบัตรประชาชน" />
+                        <asp:HyperLinkField DataNavigateUrlFields="Citizen_ID" DataNavigateUrlFormatString="CitizenDetails.aspx?CID={0}" DataTextField="Citizen_ID" HeaderText="รหัสบัตรประชาชน" SortExpression="CITIZEN_ID"/>
                     </Columns>
                 </asp:GridView>
 
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;ID&quot;, &quot;CITIZEN_ID&quot;, &quot;PERSON_NAME&quot;, &quot;PERSON_LASTNAME&quot; FROM &quot;TB_PERSON&quot;"></asp:SqlDataSource>
 
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT &quot;ID&quot;, &quot;PERSON_NAME&quot;, &quot;PERSON_LASTNAME&quot;, &quot;CITIZEN_ID&quot; FROM &quot;TB_PERSON&quot; WHERE (&quot;CITIZEN_ID&quot; = :CITIZEN_ID)">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="txtSearchName" Name="CITIZEN_ID" PropertyName="Text" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
             </fieldset>
         </div>
     </asp:Panel>
