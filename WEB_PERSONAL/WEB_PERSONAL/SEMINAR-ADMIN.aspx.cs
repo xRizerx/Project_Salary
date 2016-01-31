@@ -19,6 +19,7 @@ namespace WEB_PERSONAL
         protected void btnCancelSeminar_Click(object sender, EventArgs e)
         {
             //ClearData();
+            Response.Redirect("Default.aspx");
         }
 
 

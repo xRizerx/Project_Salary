@@ -91,7 +91,7 @@ namespace WEB_PERSONAL
                                 {
                                     reader.Read();
                                     {
-                                        TextBox10.Text = reader.GetString(0);
+                                        TextBox11.Text = reader.GetString(0);
                                     }
                                 }
                             }

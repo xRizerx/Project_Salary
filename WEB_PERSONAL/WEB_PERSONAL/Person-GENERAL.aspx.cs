@@ -1595,9 +1595,23 @@ namespace WEB_PERSONAL
             P1.CITIZEN_ID = txtCitizen.Text;
             P1.GRAD_LEV_ID = DropDownGRAD_LEV.SelectedValue;
 
-            P.InsertPerson();
-            P1.InsertPersonStudyGraduateTop();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+            if (P.CheckUseCITIZEN_ID())
+            {
+                P.InsertPerson();
+                P1.InsertPersonStudyGraduateTop();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
+                ClearData();
+                ClearDataGridViewNumber10();
+                ClearDataGridViewNumber11();
+                ClearDataGridViewNumber12();
+                ClearDataGridViewNumber13();
+                ClearDataGridViewNumber14();
+                ClearDataGridViewLev();
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสบัตรประชาชนนี้ อยู่ในระบบแล้ว !')", true);
+            }
 
             for (int i = 0; i < GridView1.Rows.Count; ++i)
             {
@@ -1842,13 +1856,7 @@ namespace WEB_PERSONAL
                 }
             }
 
-            ClearData();
-            ClearDataGridViewNumber10();
-            ClearDataGridViewNumber11();
-            ClearDataGridViewNumber12();
-            ClearDataGridViewNumber13();
-            ClearDataGridViewNumber14();
-            ClearDataGridViewLev();
+           
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('เพิ่มข้อมูลเรียบร้อย')", true);
 

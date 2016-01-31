@@ -40,22 +40,22 @@ namespace WEB_PERSONAL
 
         protected void DropDownList1_DataBound(object sender, EventArgs e)
         {
-            DropDownList1.Items.Insert(0, new ListItem(" --- กรุณาเลือก ---"));
+            DDL_Vitakad.Items.Insert(0, new ListItem(" --- กรุณาเลือก ---"));
         }
 
         protected void DropDownList2_DataBound(object sender, EventArgs e)
         {
-            DropDownList2.Items.Insert(0, new ListItem(" --- กรุณาเลือก ---"));
+            DDL_Branch.Items.Insert(0, new ListItem(" --- กรุณาเลือก ---"));
         }
 
         protected void DropDownList3_DataBound(object sender, EventArgs e)
         {
-            DropDownList3.Items.Insert(0, new ListItem(" --- กรุณาเลือก ---"));
+            DDL_Year.Items.Insert(0, new ListItem(" --- กรุณาเลือก ---"));
         }
 
         protected void DropDownList4_DataBound(object sender, EventArgs e)
         {
-            DropDownList4.Items.Insert(0, new ListItem(" --- กรุณาเลือก ---"));
+            DDL_insigclass.Items.Insert(0, new ListItem(" --- กรุณาเลือก ---"));
         }
 
         protected void Button4_Click(object sender, EventArgs e)
@@ -64,38 +64,39 @@ namespace WEB_PERSONAL
             Label61.Text = "";
             Label62.Text = "";
 
-            if (DropDownList1.SelectedIndex == 0)
+            if (DDL_Vitakad.SelectedIndex == 0)
             {
                 Label59.Text = "*";
             }
-            if (DropDownList3.SelectedIndex == 0)
+            if (DDL_Year.SelectedIndex == 0)
             {
                 Label61.Text = "*";
             }
-            if (DropDownList4.SelectedIndex == 0)
+            if (DDL_insigclass.SelectedIndex == 0)
             {
                 Label62.Text = "*";
             }
         }
 
-        protected void LinkButton11_Click(object sender, EventArgs e)
-        {
-            Person p = new Person(TextBox42.Text);
-            if (p.Exist)
-            {
-                Util.Alert(this, p.NameAndLastname);
-            }
-            else
-            {
-                Util.Alert(this, "ไม่พบราชชื่อ");
-            }
-            
-        }
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
             Response.Redirect("insignia_from_add.aspx");
         }
+
+        protected void DDL_insigclass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(DDL_insigclass.SelectedValue != "99")
+            {
+                Panel_show_detail.Visible = true;
+            }
+        }
+
+        protected void LinkButton11_Click(object sender, EventArgs e)
+        {
+          
+        }
+
     }
 }
 

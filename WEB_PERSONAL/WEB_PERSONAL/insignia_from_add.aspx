@@ -19,18 +19,8 @@
             text-align: center;
         }
 
-        .auto-style8 {
-            width: 320px;
-            font-size: 28px;
-            color:#FFFFFF;
-        }
-
         .auto-style9 {
             width: 287px;
-        }
-
-        .auto-style16 {
-            height: 29px;
         }
 
         .auto-style22 {
@@ -136,6 +126,9 @@
             width: 303px;
             height: 26px;
         }
+        .Linkbtn{
+            text-decoration:none;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -198,76 +191,71 @@
                             <td class="auto-style1">&nbsp;</td>
                         </tr>
                     </table>
-                    <table style="width: 100%;">
-                        <tr>
-                            <td class="auto-style8">
-                                รหัสผู้ขอเครื่องราชฯ</td>
-                            <td>
-                                <asp:TextBox ID="TextBox42" runat="server" CssClass="master_default_textbox" Width="269px"></asp:TextBox>
-                                &nbsp;<asp:LinkButton ID="LinkButton11" runat="server" OnClick="LinkButton11_Click" CssClass="master_tuu_button">ตรวจสอบ</asp:LinkButton>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style8">
-                                ชื่อหน่วยงานที่ขอพระราชทาน
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="master_default_textbox" DataSourceID="SqlDataSource1" DataTextField="FACULTY_NAME" DataValueField="FACULTY_ID" OnDataBound="DropDownList1_DataBound" Width="269px">
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="select * from tb_faculty"></asp:SqlDataSource>
-                                <asp:Label ID="Label59" runat="server" ForeColor="Red"></asp:Label>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style8">
-                                มาช่วยราชการจากที่ใด (ถ้ามี)
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="DropDownList2" runat="server" CssClass="master_default_textbox" DataSourceID="SqlDataSource2" DataTextField="NAME_COMM" DataValueField="ID_COMM" OnDataBound="DropDownList2_DataBound" Width="269px">
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;AA_COMMAND&quot;"></asp:SqlDataSource>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style8">
-                                เครื่องราชฯ ที่ขอพระราชทาน ประจำปี
-                            </td>
-                            <td class="auto-style16">
-                                <asp:DropDownList ID="DropDownList3" runat="server" CssClass="master_default_textbox" DataSourceID="SqlDataSource3" DataTextField="YEAR_ID" DataValueField="YEAR_ID" OnDataBound="DropDownList3_DataBound" Width="269px">
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_DATE_YEAR&quot;"></asp:SqlDataSource>
-                                <asp:Label ID="Label61" runat="server" ForeColor="Red"></asp:Label>
-                            </td>
-                            <td class="auto-style16"></td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style8">
-                                คือชั้น
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="DropDownList4" runat="server" CssClass="master_default_textbox" DataSourceID="SqlDataSource4" DataTextField="NAME_GRADEINSIGNIA_THA" DataValueField="ID_GRADEINSIGNIA" OnDataBound="DropDownList4_DataBound" Width="269px">
-                                </asp:DropDownList>
-                                <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_GRADEINSIGNIA&quot;"></asp:SqlDataSource>
+                    <asp:Panel ID="Panel_Insignia" runat="server">
 
-                                <asp:Label ID="Label62" runat="server" ForeColor="Red"></asp:Label>
-
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style8">
-                                ชั้นนี้เป็นการขอพระราชทาน
-                            </td>
-                            <td>
-                                <asp:RadioButton ID="RadioButton5" runat="server" Text="ไม่ซ้ำ" Checked="True" />
-                                &nbsp;<asp:RadioButton ID="RadioButton6" runat="server" Text="ซ้ำ กับปีที่แล้วมา" Enabled="False" />
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    </table>
+                        <table style="width:100%;">
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label59" runat="server" Text="วิทยาเขต"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDL_Vitakad" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="CAMPUS_NAME" DataValueField="CAMPUS_ID">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_CAMPUS&quot;"></asp:SqlDataSource>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label60" runat="server" Text="หน่วยงาน/คณะ"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDL_Branch" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="BRANCH_NAME" DataValueField="BRANCH_ID">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_BRANCH&quot;"></asp:SqlDataSource>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label61" runat="server" Text="เครื่องราชพระราชทานปี"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDL_Year" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="YEAR_ID" DataValueField="YEAR_ID">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_DATE_YEAR&quot;"></asp:SqlDataSource>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label62" runat="server" Text="ชั้นเครื่องราช"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="DDL_insigclass" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource4" DataTextField="NAME_GRADEINSIGNIA_THA" DataValueField="ID_GRADEINSIGNIA" OnSelectedIndexChanged="DDL_insigclass_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RMUTTOORCL %>" ProviderName="<%$ ConnectionStrings:RMUTTOORCL.ProviderName %>" SelectCommand="SELECT * FROM &quot;TB_GRADEINSIGNIA&quot;"></asp:SqlDataSource>
+                                </td>
+                            </tr>
+                        </table>
+                        <asp:Panel ID="Panel_show_detail" runat="server" Visible="false">
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GRADEINSIGNIA" DataSourceID="SqlDataSource4">
+                                <Columns>
+                                    <asp:BoundField DataField="ID_GRADEINSIGNIA" HeaderText="ID_GRADEINSIGNIA" ReadOnly="True" SortExpression="ID_GRADEINSIGNIA" />
+                                    <asp:TemplateField HeaderText="NAME_GRADEINSIGNIA_THA" SortExpression="NAME_GRADEINSIGNIA_THA">
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("NAME_GRADEINSIGNIA_THA") %>'></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="LinkButton11" runat="server" Font-Bold="False" OnClick="LinkButton11_Click" Text='<%# Eval("NAME_GRADEINSIGNIA_THA") %>' CssClass="Linkbtn"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="ABBREVIATIONS_THA" HeaderText="ABBREVIATIONS_THA" SortExpression="ABBREVIATIONS_THA" />
+                                    <asp:BoundField DataField="NAME_GRADEINSIGNIA_ENG" HeaderText="NAME_GRADEINSIGNIA_ENG" SortExpression="NAME_GRADEINSIGNIA_ENG" />
+                                    <asp:BoundField DataField="ID_CLANINSIGNIA" HeaderText="ID_CLANINSIGNIA" SortExpression="ID_CLANINSIGNIA" />
+                                </Columns>
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="SqlDataSource5" runat="server"></asp:SqlDataSource>
+                        </asp:Panel>
+                    </asp:Panel>
+                    
                     <table style="width: 100%;">
                         <tr>
                             <td class="auto-style64">
