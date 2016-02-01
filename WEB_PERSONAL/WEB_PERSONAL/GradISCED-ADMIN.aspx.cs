@@ -69,17 +69,17 @@ namespace WEB_PERSONAL
         {
             if (string.IsNullOrEmpty(txtInsertGradISCEDID.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสสาขาวิชาที่จบการศึกษาสูงสุด')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ รหัสกลุ่มสาขาวิชาที่จบสูงสุด')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtInsertGradISCEDNameTh.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อสาขาวิชาที่จบการศึกษาสูงสุด(TH)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อกลุ่มสาขาวิชาที่จบสูงสุด(TH)')", true);
                 return;
             }
             if (string.IsNullOrEmpty(txtInsertGradISCEDNameEng.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อสาขาวิชาที่จบการศึกษาสูงสุด(ENG)')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('กรุณาใส่ ชื่อกลุ่มสาขาวิชาที่จบสูงสุด(ENG)')", true);
                 return;
             }
             ClassGradISCED gi = new ClassGradISCED();
@@ -96,7 +96,7 @@ namespace WEB_PERSONAL
             }
             else
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสสาขาวิชาที่จบการศึกษาสูงสุดนี้ อยู่ในระบบแล้ว !')", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('มีรหัสกลุ่มสาขาวิชาที่จบสูงสุดนี้ อยู่ในระบบแล้ว !')", true);
             }
         }
 

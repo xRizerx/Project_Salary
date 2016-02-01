@@ -64,11 +64,11 @@
                 <tr>
                     <td style="text-align: left; width: 3px; height: 1px; width:400px"></td>
                      <td style="text-align: left; width: 50px;">
-                        <asp:Button ID="btnCancelSeminar" Text="ยกเลิก" runat="server" OnClick="btnCancelSeminar_Click" Width="140px" CssClass="master_OAT_button" /></td>   
+                        <asp:Button ID="btnCancelSeminar" Text="Cancel" runat="server" OnClick="btnCancelSeminar_Click" Width="140px" CssClass="master_OAT_button" /></td>   
                     <td style="text-align: right; margin-right: 5px;">
                         <asp:UpdatePanel ID="UpdatebtnSubmitPerson" runat="server">
                             <ContentTemplate>
-                                <asp:Button ID="btnSubmitSeminar" Text="บันทึกข้อมูล" runat="server" OnClick="btnSubmitSeminar_Click" Width="140px" CssClass="master_OAT_button" />
+                                <asp:Button ID="btnSubmitSeminar" Text="OK" runat="server" OnClick="btnSubmitSeminar_Click" Width="140px" CssClass="master_OAT_button" />
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </td>
