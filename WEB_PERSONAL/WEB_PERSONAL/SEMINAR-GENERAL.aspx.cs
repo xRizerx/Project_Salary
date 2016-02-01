@@ -184,7 +184,7 @@ namespace WEB_PERSONAL
         }
         protected void btnSubmitSeminar_Click(object sender, EventArgs e)
         {
-            // if (NeedData()) { return; };
+            if (NeedData()) { return; };
 
             Seminar S = new Seminar();
             S.SEMINAR_NAME = txtName.Text;
