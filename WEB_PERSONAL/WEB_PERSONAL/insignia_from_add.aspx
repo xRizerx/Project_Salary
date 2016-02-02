@@ -161,7 +161,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td class="auto-style2">
-                                <asp:Label ID="Label7" runat="server" CssClass="auto-style4" Text="บันทึกรายชื่อผู้ขอพระราชทานเครื่องราชอิสริยาภรณ์" Font-Size="24pt"></asp:Label>
+                                <asp:Label ID="Label7" runat="server" CssClass="auto-style4" Text="รายชื่อผู้มีสิทธิ์รับเครื่องราชอิสริยาภรณ์" Font-Size="24pt"></asp:Label>
                             </td>
                             <td>&nbsp;</td>
                         </tr>
@@ -266,10 +266,10 @@
                         </tr>
                     </table>
                     
-                    <asp:CheckBox ID="CheckBox6" runat="server" Text="กรณีขอครั้งแรก / เปลี่ยนชื่อ" AutoPostBack="True" OnCheckedChanged="CheckBox6_CheckedChanged" CssClass="back_T" />
+                    <!--<asp:CheckBox ID="CheckBox6" runat="server" Text="กรณีขอครั้งแรก / เปลี่ยนชื่อ" AutoPostBack="True" OnCheckedChanged="CheckBox6_CheckedChanged" CssClass="back_T" />-->
             <div id="Other" runat="server">
                  <!-- กรอบหวะข้อ และ เนื้อหา ส่วนที่ 2-->
-            <div class="master_default_div_sec" id="TUUbg2">
+            <!--<div class="master_default_div_sec" id="TUUbg2">
                 <div class="master_default_div_sec_header">
                     <asp:Label ID="Label1" runat="server" Text="หากมีการเปลี่ยนแปลงคำนำหน้าชื่อ/ชื่อ/นามสกุล ให้ระบุคำนำหน้าชื่อ/ชื่อ/นามสกุล เดิมด้วย"></asp:Label>
                 </div>
@@ -317,10 +317,10 @@
             </table>
 
                 </div>
-            </div>
+            </div>-->
 
             <!-- กรอบหัวข้อ และ เนื้อหา ส่วนที่ 3-->
-            <div class ="master_default_div_sec" id ="TUUbg3">
+            <!--<div class ="master_default_div_sec" id ="TUUbg3">
                 <div class ="master_default_div_sec_header">
 
                 </div>
@@ -488,7 +488,7 @@
             <div style="text-align:center">
                 <asp:LinkButton ID="LinkButton3" runat="server" CssClass="master_tuu_button" OnClick="LinkButton3_Click" >ยกเลิก</asp:LinkButton>
                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="master_tuu_button" OnClick="Button4_Click">บันทึก</asp:LinkButton>
-            </div>
+            </div>-->
 
            
         </asp:Panel>
