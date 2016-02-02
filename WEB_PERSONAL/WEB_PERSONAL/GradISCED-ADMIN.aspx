@@ -36,9 +36,9 @@
             <fieldset> 
                 <legend>ค้นหาข้อมูล</legend>
                 <div>
-                    รหัสสาขาวิชาที่จบการศึกษาสูงสุด :&nbsp<asp:TextBox ID="txtSearchGradISCEDID" runat="server" CssClass="tb5" Width="50px" MaxLength="4"></asp:TextBox>
-                    ชื่อสาขาวิชาที่จบการศึกษาสูงสุด(TH) :&nbsp<asp:TextBox ID="txtSearchGradISCEDNameTh" runat="server" CssClass="tb5" Width="115px" MaxLength="100"></asp:TextBox>
-                    ชื่อสาขาวิชาที่จบการศึกษาสูงสุด(ENG) :&nbsp<asp:TextBox ID="txtSearchGradISCEDNameEng" runat="server" CssClass="tb5" Width="115px" MaxLength="100"></asp:TextBox>
+                    รหัสกลุ่มสาขาวิชาที่จบสูงสุด :&nbsp;<asp:TextBox ID="txtSearchGradISCEDID" runat="server" CssClass="tb5" Width="50px" MaxLength="4"></asp:TextBox>
+                    ชื่อกลุ่มสาขาวิชาที่จบสูงสุด(TH) :&nbsp;<asp:TextBox ID="txtSearchGradISCEDNameTh" runat="server" CssClass="tb5" Width="115px" MaxLength="100"></asp:TextBox>
+                    ชื่อกลุ่มสาขาวิชาที่จบสูงสุด(ENG) :&nbsp;<asp:TextBox ID="txtSearchGradISCEDNameEng" runat="server" CssClass="tb5" Width="115px" MaxLength="100"></asp:TextBox>
                     <asp:Button ID="btnSearchGradISCED" Text="Search" runat="server" CssClass="master_OAT_button" OnClick="btnSearchGradISCED_Click" />
                     <asp:Button ID="btnSearchRefresh" Text="Refresh" runat="server" CssClass="master_OAT_button" OnClick="btnSearchRefresh_Click" />
                 </div>
@@ -52,14 +52,14 @@
                 <div> 
                     <table>
                         <tr>
-                            <td style="text-align: left; width: 10px"></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสสาขาวิชาที่จบการศึกษาสูงสุด :</td>
+                            <td style="text-align: left; width: 33px"></td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">รหัสกลุ่มสาขาวิชาที่จบสูงสุด :</td>
                             <td style="text-align: left; width: 20px;">
                                 <asp:TextBox ID="txtInsertGradISCEDID" Width="50px" runat="server" CssClass="tb5" MaxLength="4"></asp:TextBox></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อสาขาวิชาที่จบการศึกษาสูงสุด(TH) :</td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อกลุ่มสาขาวิชาที่จบสูงสุด(TH) :</td>
                             <td style="text-align: left; width: 20px;">
                                 <asp:TextBox ID="txtInsertGradISCEDNameTh" Width="115px" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
-                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อสาขาวิชาที่จบการศึกษาสูงสุด(ENG) :</td>
+                            <td style="margin-left: auto; margin-right: auto; text-align: center">ชื่อกลุ่มสาขาวิชาที่จบสูงสุด(ENG) :</td>
                             <td style="text-align: left; width: 20px;">
                                 <asp:TextBox ID="txtInsertGradISCEDNameEng" Width="115px" runat="server" CssClass="tb5" MaxLength="100"></asp:TextBox></td>
                             <td style="text-align: left;">
@@ -88,7 +88,7 @@
                             OnRowDataBound="GridView1_RowDataBound"
                             OnPageIndexChanging="myGridViewGradISCED_PageIndexChanging" PageSize="15" BackColor="White" BorderColor="#999999">
                             <Columns>
-                                <asp:TemplateField HeaderText="รหัสสาขาวิชาที่จบการศึกษาสูงสุด" ControlStyle-Width="100" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="รหัสกลุ่มสาขาวิชาที่จบสูงสุด" ControlStyle-Width="100" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                     <ItemTemplate>
                                         <asp:Label ID="lblGradISCEDIDEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_ISCED_ID") %>'></asp:Label>
                                     </ItemTemplate>
@@ -96,7 +96,7 @@
                                         <asp:TextBox ID="txtGradISCEDIDEdit" MaxLength="4" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_ISCED_ID") %>' Enabled="False"></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ชื่อสาขาวิชาที่จบการศึกษาสูงสุด(TH)" ControlStyle-Width="350" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="ชื่อกลุ่มสาขาวิชาที่จบสูงสุด(TH)" ControlStyle-Width="350" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                       <ItemTemplate>
                                         <asp:Label ID="lblGradISCEDNameThEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_ISCED_NAME_THAI") %>'></asp:Label>
                                     </ItemTemplate>
@@ -104,7 +104,7 @@
                                         <asp:TextBox ID="txtGradISCEDNameThEdit" MaxLength="100" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_ISCED_NAME_THAI") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="ชื่อสาขาวิชาที่จบการศึกษาสูงสุด(ENG)" ControlStyle-Width="350" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
+                                <asp:TemplateField HeaderText="ชื่อกลุ่มสาขาวิชาที่จบสูงสุด(ENG)" ControlStyle-Width="350" HeaderStyle-BackColor="#0099FF" HeaderStyle-ForeColor="Aqua">
                                       <ItemTemplate>
                                         <asp:Label ID="lblGradISCEDNameEngEdit" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.GRAD_ISCED_NAME_ENG") %>'></asp:Label>
                                     </ItemTemplate>

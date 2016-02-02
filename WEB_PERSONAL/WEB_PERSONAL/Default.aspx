@@ -73,7 +73,7 @@
                                     <span class="master_header_under_header">บุคลากร</span>
                                     <a href="Person-GENERAL.aspx">เพิ่มบุคลากร</a>
                                     <a href="Person-ADMIN.aspx">แก้ไขบุคลากร</a>
-                                    <a href="Person-Detail.aspx">รายชื่อบุคลากร</a>
+                                    <a href="ListPerson-ADMIN.aspx">รายชื่อบุคลากร</a>
                                     <a href="SEMINAR-GENERAL.aspx">การเพิ่มพัฒนาบุคลากร</a>
                                     <a href="SEMINAR-ADMIN.aspx">การแก้ไขพัฒนาบุคลากร</a>
                                     <a href="SearchForLinkPrint.aspx">ออกรายงานบุคลากร</a>
