@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Data.OracleClient;
 using System.Globalization;
 using WEB_PERSONAL.Class;
+using System.Text.RegularExpressions;
 
 namespace WEB_PERSONAL
 {
@@ -44,41 +45,51 @@ namespace WEB_PERSONAL
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Person person = new Person(Session["login_id"].ToString());
-            BaseSalary salary = new BaseSalary(person.PositionID);
-            Label11.Text = person.Name;
-            Label3.Text = person.Name;
-            Label13.Text = person.Lastname;
-            Label4.Text = person.Lastname;
-            Label61.Text = person.StaffTypeName;
-            Label6.Text = person.StaffTypeName;
-            Label17.Text = person.PositionName;
-            Label10.Text = person.PositionName;
-            TextBox2.Text = person.SalaryYear.ToString();
-            Label64.Text = person.SalaryYear.ToString();
-            Label66.Text = person.SalaryYear.ToString();
-            Label68.Text = person.SalaryYear.ToString();
-            Label22.Text = "" + salary.MaxSalary;
-            Session["STAFFTYPE_STATUS"] = Label61.Text;
-            Label19.Text = person.AdminPositionName;
-            Label15.Text = person.PositionWorkName;
-            Session["citizen_id"] = TextBox1.Text;
-            if (Session["STAFFTYPE_STATUS"] != null)
-            {
-                if (Session["STAFFTYPE_STATUS"].ToString() == "ข้าราชการ")
-                {
-                    Panel_Government_Officer.Visible = true;
-                    Panel_Oracle_Control.Visible = true;
-                    Edit_page.Attributes["href"] = "SalarybyID-Edit.aspx";
-                }
-                if (Session["STAFFTYPE_STATUS"].ToString() == "ลูกจ้างประจำ")
-                {
-                    Panel_Permanent_Emp.Visible = true;
-                    Panel_Oracle_Control.Visible = true;
-                    Edit_page.Attributes["href"] = "SalarybyID-Edit-Permanent.aspx";
+            Regex reg = new Regex(@"^\d+$");
 
+            if (TextBox1.Text.Length == 13 && reg.IsMatch(TextBox1.Text))
+            {
+                Person person = new Person(Session["login_id"].ToString());
+                BaseSalary salary = new BaseSalary(person.PositionID);
+                Label11.Text = person.Name;
+                Label3.Text = person.Name;
+                Label13.Text = person.Lastname;
+                Label4.Text = person.Lastname;
+                Label61.Text = person.StaffTypeName;
+                Label6.Text = person.StaffTypeName;
+                Label17.Text = person.PositionName;
+                Label10.Text = person.PositionName;
+                TextBox2.Text = person.SalaryYear.ToString();
+                Label64.Text = person.SalaryYear.ToString();
+                Label66.Text = person.SalaryYear.ToString();
+                Label68.Text = person.SalaryYear.ToString();
+                Label22.Text = "" + salary.MaxSalary;
+                Session["STAFFTYPE_STATUS"] = Label61.Text;
+                Label19.Text = person.AdminPositionName;
+                Label15.Text = person.PositionWorkName;
+                Session["citizen_id"] = TextBox1.Text;
+                if (Session["STAFFTYPE_STATUS"] != null)
+                {
+                    if (Session["STAFFTYPE_STATUS"].ToString() == "ข้าราชการ")
+                    {
+                        Panel_Government_Officer.Visible = true;
+                        Panel_Oracle_Control.Visible = true;
+                        Edit_page.Attributes["href"] = "SalarybyID-Edit.aspx";
+                    }
+                    if (Session["STAFFTYPE_STATUS"].ToString() == "ลูกจ้างประจำ")
+                    {
+                        Panel_Permanent_Emp.Visible = true;
+                        Panel_Oracle_Control.Visible = true;
+                        Edit_page.Attributes["href"] = "SalarybyID-Edit-Permanent.aspx";
+
+                    }
                 }
             }
+            else
+            {
+                Util.Alert(this, "กรุณากรอกรหัสบัตรประชาชนให้ครบถ้วน");
+            }
+            
 
         }
 
@@ -282,7 +293,7 @@ namespace WEB_PERSONAL
                     }
                     /* ร้อยละที่ได้เลื่อน */
                     Double Rateup = Convert.ToDouble(TextBox6.Text);
-                    Double Rateup2 = Convert.ToDouble(TextBox7.Text);
+                    Double Rateup2 = Convert.ToDouble(DropDownList4.SelectedValue); //Convert.ToDouble(TextBox7.Text);
                     Label42.Text = "" + (rate + Rateup + Rateup2);
                     /* จำนวนเงินที่คำนวณได้แบบไม่ปัดเศษ รวมได้เลื่อนทั้งสิ้น */
                     Double Ratesum = Convert.ToDouble(Label42.Text);
@@ -659,11 +670,6 @@ namespace WEB_PERSONAL
                     TextBox2.Text = TextBox2.Text;
                 }
             }
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

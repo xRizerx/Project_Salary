@@ -179,7 +179,7 @@
                                     <asp:Label ID="Label8" runat="server" Text="กรุณาป้อนรหัสบัตรประชาชน"></asp:Label>
                                 </asp:TableCell>
                                 <asp:TableCell>
-                                <asp:TextBox ID="TextBox1" runat="server" CssClass="master_default_textbox" Height="24px" MaxLength="13" Width="100px" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" CssClass="master_default_textbox" Height="24px" MaxLength="13" Width="100px"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell>
                                     <asp:LinkButton ID="LinkButton3" runat="server" CssClass="button_ui_edit" OnClick="Button1_Click">ค้นหา</asp:LinkButton>
@@ -364,7 +364,11 @@
                             <asp:Label ID="Label39" runat="server" Text="ร้อยละที่ได้เลื่อน (อธิการบดีเพิ่มให้)"></asp:Label>
                         </td>
                         <td class="auto-style14">
-                            <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข"></asp:TextBox>
+                            <asp:TextBox ID="TextBox7" runat="server" CssClass="master_default_textbox" placeHolder="ระบุเป็นตัวเลข" Visible="False"></asp:TextBox>
+                            <asp:DropDownList ID="DropDownList4" runat="server" Width="150px" CssClass="master_default_dropdown">
+                                <asp:ListItem>0.1</asp:ListItem>
+                                <asp:ListItem>0.2</asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
