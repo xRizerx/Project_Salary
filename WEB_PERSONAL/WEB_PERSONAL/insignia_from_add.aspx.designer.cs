@@ -58,40 +58,13 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label10;
         
         /// <summary>
-        /// TextBox42 control.
+        /// Panel_Insignia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox42;
-        
-        /// <summary>
-        /// LinkButton11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton11;
-        
-        /// <summary>
-        /// DropDownList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
-        /// <summary>
-        /// SqlDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.Panel Panel_Insignia;
         
         /// <summary>
         /// Label59 control.
@@ -103,13 +76,40 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.Label Label59;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// DDL_Vitakad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList DDL_Vitakad;
+        
+        /// <summary>
+        /// SqlDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        
+        /// <summary>
+        /// Label60 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label60;
+        
+        /// <summary>
+        /// DDL_Branch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDL_Branch;
         
         /// <summary>
         /// SqlDataSource2 control.
@@ -121,13 +121,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
         
         /// <summary>
-        /// DropDownList3 control.
+        /// Label61 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.Label Label61;
+        
+        /// <summary>
+        /// DDL_Year control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDL_Year;
         
         /// <summary>
         /// SqlDataSource3 control.
@@ -139,22 +148,22 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
         
         /// <summary>
-        /// Label61 control.
+        /// Label62 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label61;
+        protected global::System.Web.UI.WebControls.Label Label62;
         
         /// <summary>
-        /// DropDownList4 control.
+        /// DDL_insigclass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.DropDownList DDL_insigclass;
         
         /// <summary>
         /// SqlDataSource4 control.
@@ -166,31 +175,31 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource4;
         
         /// <summary>
-        /// Label62 control.
+        /// Panel_show_detail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label62;
+        protected global::System.Web.UI.WebControls.Panel Panel_show_detail;
         
         /// <summary>
-        /// RadioButton5 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton5;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// RadioButton6 control.
+        /// SqlDataSource5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadioButton6;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource5;
         
         /// <summary>
         /// CheckBox6 control.

@@ -6383,8 +6383,449 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+    }
 
+    public class ClassStatusWork
+    {
 
+        public int STATUS_ID { get; set; }
+        public string STATUS_WORK { get; set; }
+
+        public ClassStatusWork() { }
+        public ClassStatusWork(int STATUS_ID, string STATUS_WORK)
+        {
+            this.STATUS_ID = STATUS_ID;
+            this.STATUS_WORK = STATUS_WORK;
+        }
+
+        public DataTable GetStatusWork(string STATUS_WORK)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_STATUS_WORK ";
+            if (!string.IsNullOrEmpty(STATUS_WORK))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(STATUS_WORK))
+                {
+                    query += " and STATUS_WORK like :STATUS_WORK ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(STATUS_WORK))
+                {
+                    command.Parameters.Add(new OracleParameter("STATUS_WORK", STATUS_WORK + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetStatusWorkSearch(string STATUS_WORK)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_STATUS_WORK ";
+            if (!string.IsNullOrEmpty(STATUS_WORK))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(STATUS_WORK))
+                {
+                    query += " and STATUS_WORK like :STATUS_WORK ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(STATUS_WORK))
+                {
+                    command.Parameters.Add(new OracleParameter("STATUS_WORK", STATUS_WORK + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertStatusWork()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_STATUS_WORK (STATUS_WORK) VALUES (:STATUS_WORK)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("STATUS_WORK", STATUS_WORK));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateStatusWork()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_STATUS_WORK Set ";
+            query += " STATUS_WORK = :STATUS_WORK";
+            query += " where STATUS_ID = :STATUS_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("STATUS_ID", STATUS_ID));
+                command.Parameters.Add(new OracleParameter("STATUS_WORK", STATUS_WORK));
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteStatusWork()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_STATUS_WORK where STATUS_ID = :STATUS_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("STATUS_ID", STATUS_ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+        public bool CheckUseStatusWorkID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(STATUS_ID) FROM TB_STATUS_WORK WHERE STATUS_ID = :STATUS_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("STATUS_ID", STATUS_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+    }
+    public class ClassReligion
+    {
+
+        public int RELIGION_ID { get; set; }
+        public string RELIGION_NAME { get; set; }
+
+        public ClassReligion() { }
+        public ClassReligion(int RELIGION_ID, string RELIGION_NAME)
+        {
+            this.RELIGION_ID = RELIGION_ID;
+            this.RELIGION_NAME = RELIGION_NAME;
+        }
+
+        public DataTable GetReligion(string RELIGION_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_RELIGION ";
+            if (!string.IsNullOrEmpty(RELIGION_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(RELIGION_NAME))
+                {
+                    query += " and RELIGION_NAME like :RELIGION_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(RELIGION_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("RELIGION_NAME", RELIGION_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable GetReligionSearch(string RELIGION_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_RELIGION ";
+            if (!string.IsNullOrEmpty(RELIGION_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(RELIGION_NAME))
+                {
+                    query += " and RELIGION_NAME like :RELIGION_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(RELIGION_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("RELIGION_NAME", RELIGION_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public int InsertReligion()
+        {
+            int id = 0;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("INSERT INTO TB_RELIGION (RELIGION_NAME) VALUES (:RELIGION_NAME)", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("RELIGION_NAME", RELIGION_NAME));
+                id = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return id;
+        }
+
+        public bool UpdateReligion()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "Update TB_RELIGION Set ";
+            query += " RELIGION_NAME = :RELIGION_NAME";
+            query += " where RELIGION_ID = :RELIGION_ID";
+
+            OracleCommand command = new OracleCommand(query, conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("RELIGION_ID", RELIGION_ID));
+                command.Parameters.Add(new OracleParameter("RELIGION_NAME", RELIGION_NAME));
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+            }
+            return result;
+        }
+
+        public bool DeleteReligion()
+        {
+            bool result = false;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            OracleCommand command = new OracleCommand("Delete TB_RELIGION where RELIGION_ID = :RELIGION_ID", conn);
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                command.Parameters.Add(new OracleParameter("RELIGION_ID", RELIGION_ID));
+                if (command.ExecuteNonQuery() >= 0)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
+
+        public bool CheckUseReligionID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(RELIGION_ID) FROM TB_RELIGION WHERE RELIGION_ID = :RELIGION_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("RELIGION_ID", RELIGION_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
 
 }

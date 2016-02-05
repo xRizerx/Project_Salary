@@ -54,12 +54,14 @@ namespace WEB_PERSONAL.Entities
         public int GRAD_COUNTRY_ID { get; set; }
         public int FACULTY_ID { get; set; }
         public int CAMPUS_ID { get; set; }
+        public int STATUS_ID { get; set; }
+        public int RELIGION_ID { get; set; }
 
         public ClassPerson() { }
         public ClassPerson(int ID, string CITIZEN_ID, int TITLE_ID, string PERSON_NAME, string PERSON_LASTNAME, DateTime BIRTHDATE, string BIRTHDATE_LONG, DateTime RETIRE_DATE, string RETIRE_DATE_LONG, DateTime INWORK_DATE, int STAFFTYPE_ID,
             string FATHER_NAME, string FATHER_LASTNAME, string MOTHER_NAME, string MOTHER_LASTNAME, string MOTHER_OLD_LASTNAME, string COUPLE_NAME, string COUPLE_LASTNAME, string COUPLE_OLD_LASTNAME, int MINISTRY_ID, string DEPARTMENT_NAME,
             int GENDER_ID, string NATION_ID, string HOMEADD, string MOO, string STREET, int DISTRICT_ID, int AMPHUR_ID, int PROVINCE_ID, int ZIPCODE_ID, string TELEPHONE, int TIME_CONTACT_ID, int BUDGET_ID, int SUBSTAFFTYPE_ID, string ADMIN_POSITION_ID,
-            string POSITION_WORK_ID, string SPECIAL_NAME, string TEACH_ISCED_ID, string GRAD_ISCED_ID, string GRAD_PROG_ID, string GRAD_UNIV, int GRAD_COUNTRY_ID, int FACULTY_ID, int CAMPUS_ID)
+            string POSITION_WORK_ID, string SPECIAL_NAME, string TEACH_ISCED_ID, string GRAD_ISCED_ID, string GRAD_PROG_ID, string GRAD_UNIV, int GRAD_COUNTRY_ID, int FACULTY_ID, int CAMPUS_ID, int STATUS_ID, int RELIGION_ID)
         {
             this.ID = ID;
             this.CITIZEN_ID = CITIZEN_ID;
@@ -105,6 +107,8 @@ namespace WEB_PERSONAL.Entities
             this.GRAD_COUNTRY_ID = GRAD_COUNTRY_ID;
             this.FACULTY_ID = FACULTY_ID;
             this.CAMPUS_ID = CAMPUS_ID;
+            this.STATUS_ID = STATUS_ID;
+            this.RELIGION_ID = RELIGION_ID;
         }
 
         public DataTable GetPersonSearch(string TITLE_ID, string CITIZEN_ID)
@@ -157,12 +161,53 @@ namespace WEB_PERSONAL.Entities
 
             return dt;
         }
+        public DataTable GetListPersonSearch(string PERSON_NAME)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+            string query = "SELECT * FROM TB_PERSON ";
+            if (!string.IsNullOrEmpty(PERSON_NAME))
+            {
+                query += " where 1=1 ";
+                if (!string.IsNullOrEmpty(PERSON_NAME))
+                {
+                    query += " and PERSON_NAME like :PERSON_NAME ";
+                }
+            }
+            OracleCommand command = new OracleCommand(query, conn);
+            // Create the command
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                if (!string.IsNullOrEmpty(PERSON_NAME))
+                {
+                    command.Parameters.Add(new OracleParameter("PERSON_NAME", PERSON_NAME + "%"));
+                }
+                OracleDataAdapter sd = new OracleDataAdapter(command);
+                sd.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+
+            return dt;
+        }
 
         public int InsertPerson()
         {
             int id = 0;
             OracleConnection conn = ConnectionDB.GetOracleConnection();
-            OracleCommand command = new OracleCommand("INSERT INTO TB_PERSON (CITIZEN_ID,TITLE_ID,PERSON_NAME,PERSON_LASTNAME,BIRTHDATE,BIRTHDATE_LONG,RETIRE_DATE,RETIRE_DATE_LONG,INWORK_DATE,STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,MINISTRY_ID,DEPARTMENT_NAME,GENDER_ID,NATION_ID,HOMEADD,MOO,STREET,DISTRICT_ID,AMPHUR_ID,PROVINCE_ID,ZIPCODE_ID,TELEPHONE,TIME_CONTACT_ID,BUDGET_ID,SUBSTAFFTYPE_ID,ADMIN_POSITION_ID,POSITION_WORK_ID,SPECIAL_NAME,TEACH_ISCED_ID,GRAD_ISCED_ID,GRAD_PROG_ID,GRAD_UNIV,GRAD_COUNTRY_ID,FACULTY_ID,CAMPUS_ID) VALUES (:CITIZEN_ID,:TITLE_ID,:PERSON_NAME,:PERSON_LASTNAME,:BIRTHDATE,:BIRTHDATE_LONG,:RETIRE_DATE,:RETIRE_DATE_LONG,:INWORK_DATE,:STAFFTYPE_ID,:FATHER_NAME,:FATHER_LASTNAME,:MOTHER_NAME,:MOTHER_LASTNAME,:MOTHER_OLD_LASTNAME,:COUPLE_NAME,:COUPLE_LASTNAME,:COUPLE_OLD_LASTNAME,:MINISTRY_ID,:DEPARTMENT_NAME,:GENDER_ID,:NATION_ID,:HOMEADD,:MOO,:STREET,:DISTRICT_ID,:AMPHUR_ID,:PROVINCE_ID,:ZIPCODE_ID,:TELEPHONE,:TIME_CONTACT_ID,:BUDGET_ID,:SUBSTAFFTYPE_ID,:ADMIN_POSITION_ID,:POSITION_WORK_ID,:SPECIAL_NAME,:TEACH_ISCED_ID,:GRAD_ISCED_ID,:GRAD_PROG_ID,:GRAD_UNIV,:GRAD_COUNTRY_ID,:FACULTY_ID,:CAMPUS_ID)", conn);
+            OracleCommand command = new OracleCommand("INSERT INTO TB_PERSON (CITIZEN_ID,TITLE_ID,PERSON_NAME,PERSON_LASTNAME,BIRTHDATE,BIRTHDATE_LONG,RETIRE_DATE,RETIRE_DATE_LONG,INWORK_DATE,STAFFTYPE_ID,FATHER_NAME,FATHER_LASTNAME,MOTHER_NAME,MOTHER_LASTNAME,MOTHER_OLD_LASTNAME,COUPLE_NAME,COUPLE_LASTNAME,COUPLE_OLD_LASTNAME,MINISTRY_ID,DEPARTMENT_NAME,GENDER_ID,NATION_ID,HOMEADD,MOO,STREET,DISTRICT_ID,AMPHUR_ID,PROVINCE_ID,ZIPCODE_ID,TELEPHONE,TIME_CONTACT_ID,BUDGET_ID,SUBSTAFFTYPE_ID,ADMIN_POSITION_ID,POSITION_WORK_ID,SPECIAL_NAME,TEACH_ISCED_ID,GRAD_ISCED_ID,GRAD_PROG_ID,GRAD_UNIV,GRAD_COUNTRY_ID,FACULTY_ID,CAMPUS_ID,STATUS_ID,RELIGION_ID) VALUES (:CITIZEN_ID,:TITLE_ID,:PERSON_NAME,:PERSON_LASTNAME,:BIRTHDATE,:BIRTHDATE_LONG,:RETIRE_DATE,:RETIRE_DATE_LONG,:INWORK_DATE,:STAFFTYPE_ID,:FATHER_NAME,:FATHER_LASTNAME,:MOTHER_NAME,:MOTHER_LASTNAME,:MOTHER_OLD_LASTNAME,:COUPLE_NAME,:COUPLE_LASTNAME,:COUPLE_OLD_LASTNAME,:MINISTRY_ID,:DEPARTMENT_NAME,:GENDER_ID,:NATION_ID,:HOMEADD,:MOO,:STREET,:DISTRICT_ID,:AMPHUR_ID,:PROVINCE_ID,:ZIPCODE_ID,:TELEPHONE,:TIME_CONTACT_ID,:BUDGET_ID,:SUBSTAFFTYPE_ID,:ADMIN_POSITION_ID,:POSITION_WORK_ID,:SPECIAL_NAME,:TEACH_ISCED_ID,:GRAD_ISCED_ID,:GRAD_PROG_ID,:GRAD_UNIV,:GRAD_COUNTRY_ID,:FACULTY_ID,:CAMPUS_ID,:STATUS_ID,:RELIGION_ID)", conn);
 
             try
             {
@@ -214,6 +259,8 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new OracleParameter("GRAD_COUNTRY_ID", GRAD_COUNTRY_ID));
                 command.Parameters.Add(new OracleParameter("FACULTY_ID", FACULTY_ID));
                 command.Parameters.Add(new OracleParameter("CAMPUS_ID", CAMPUS_ID));
+                command.Parameters.Add(new OracleParameter("STATUS_ID", STATUS_ID));
+                command.Parameters.Add(new OracleParameter("RELIGION_ID", RELIGION_ID));
 
                 id = command.ExecuteNonQuery();
             }
@@ -275,7 +322,9 @@ namespace WEB_PERSONAL.Entities
             query += " GRAD_UNIV = :GRAD_UNIV ,";
             query += " GRAD_COUNTRY_ID = :GRAD_COUNTRY_ID ,";
             query += " FACULTY_ID = :FACULTY_ID ,";
-            query += " CAMPUS_ID = :CAMPUS_ID ";
+            query += " CAMPUS_ID = :CAMPUS_ID ,";
+            query += " STATUS_ID = :STATUS_ID ,";
+            query += " RELIGION_ID = :RELIGION_ID ";
             query += " where CITIZEN_ID  = :CITIZEN_ID";
 
             OracleCommand command = new OracleCommand(query, conn);
@@ -328,6 +377,9 @@ namespace WEB_PERSONAL.Entities
                 command.Parameters.Add(new OracleParameter("FACULTY_ID", FACULTY_ID));
                 command.Parameters.Add(new OracleParameter("CAMPUS_ID", CAMPUS_ID));
                 command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
+                command.Parameters.Add(new OracleParameter("STATUS_ID", STATUS_ID));
+                command.Parameters.Add(new OracleParameter("RELIGION_ID", RELIGION_ID));
+
                 if (command.ExecuteNonQuery() > 0)
                 {
                     result = true;
@@ -344,7 +396,43 @@ namespace WEB_PERSONAL.Entities
             }
             return result;
         }
+
+        public bool CheckUseCITIZEN_ID()
+        {
+            bool result = true;
+            OracleConnection conn = ConnectionDB.GetOracleConnection();
+
+            // Create the command
+            OracleCommand command = new OracleCommand("SELECT count(CITIZEN_ID) FROM TB_PERSON WHERE CITIZEN_ID = :CITIZEN_ID ", conn);
+
+            // Add the parameters.
+            command.Parameters.Add(new OracleParameter("CITIZEN_ID", CITIZEN_ID));
+            try
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                int count = (int)(decimal)command.ExecuteScalar();
+                if (count >= 1)
+                {
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                conn.Close();
+            }
+            return result;
+        }
     }
+}
 
     public class ClassPersonStudyGraduateTop
     {
@@ -353,10 +441,6 @@ namespace WEB_PERSONAL.Entities
         public string GRAD_CURR { get; set; }
         public string CITIZEN_ID { get; set; }
         
-
-
-
-
         public ClassPersonStudyGraduateTop() { }
         public ClassPersonStudyGraduateTop(int STUDY_GRADUATE_TOP_ID, string GRAD_LEV_ID, string GRAD_CURR, string CITIZEN_ID)
         {
@@ -1619,4 +1703,4 @@ namespace WEB_PERSONAL.Entities
             return result;
         }
     }
-}
+
