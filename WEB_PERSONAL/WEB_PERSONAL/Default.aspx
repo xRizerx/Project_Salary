@@ -69,7 +69,7 @@
                                     <a href="Default.aspx">หน้าหลัก</a>
                                     <a href="About.aspx">เกี่ยวกับ</a>
                                 </div>
-                                <div class="master_header_under_person">
+                                <!--<div class="master_header_under_person">
                                     <span class="master_header_under_header">บุคลากร</span>
                                     <a href="Person-GENERAL.aspx">เพิ่มบุคลากร</a>
                                     <a href="Person-ADMIN.aspx">แก้ไขบุคลากร</a>
@@ -78,13 +78,13 @@
                                     <a href="SEMINAR-ADMIN.aspx">การแก้ไขพัฒนาบุคลากร</a>
                                     <a href="SearchForLinkPrint.aspx">ออกรายงานบุคลากร</a>
                                     <a href="SearchForLinkPrint.aspx">ออกรายงานพัฒนาบุคลากร</a>
-                                </div>
+                                </div>-->
                                 <div class="master_header_under_salary">
                                     <span class="master_header_under_header">การขึ้นเงินเดือน</span>
-                                    <a href="Salary.aspx">DPIS</a>
+                                    <a href="Promote_form.aspx">การเลื่อนขั้นทางวิชาการ</a>
                                     <a href="SalarybyID.aspx">การขึ้นเงินเดือนรายบุคคล</a>
                                 </div>
-                                <div class="master_header_under_leave">
+                                <!--<div class="master_header_under_leave">
                                     <span class="master_header_under_header">การลา | มาสาย | ศึกษาต่อ</span>
                                     <a href="Leave.aspx">การลา</a>
                                     <a href="Late.aspx">การเข้างาน (มาสาย)</a>
@@ -109,7 +109,7 @@
                                     <span class="master_header_under_header">สำหรับผู้ดูแลระบบ</span>
                                     <a href="DataManager.aspx">จัดการข้อมูล Drop-down List</a>
       
-                                </div>
+                                </div>-->
 
                             </div>
                 
