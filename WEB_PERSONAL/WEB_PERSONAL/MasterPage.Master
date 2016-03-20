@@ -210,7 +210,7 @@
                                     <a href="SearchForLinkPrint.aspx">ออกรายงานพัฒนาบุคลากร</a>
                                 </div>-->
                                 <div class="master_header_under_salary">
-                                    <span class="master_header_under_header">การขึ้นเงินเดือน</span>
+                                    <span class="master_header_under_header">การขึ้นเงินเดือน [ทดสอบ]</span>
                                     <a href="Promote_form.aspx">การเลื่อนขั้นทางวิชาการ</a>
                                     <a href="SalarybyID.aspx">การขึ้นเงินเดือนรายบุคคล</a>
                                 </div>
