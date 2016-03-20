@@ -43,15 +43,7 @@ namespace WEB_PERSONAL {
                 Response.Redirect("Access.aspx");
                 return;
             } else {
-                Session.Timeout = 3600;
-                if ((DateTime.Now - (DateTime)Session["login_date_time"]).TotalSeconds > Int32.Parse(Session["login_total_second"].ToString())) {
-                    Session["login_date_time"] = null;
-                    Logout();
 
-                    Session["redirect_to"] = Request.Url.ToString();
-                    Response.Redirect("Access.aspx");
-                    return;
-                }
                 Person person = ((Person)Session["login_person"]);
 
                 /*Label7.Text = Session["login_id"].ToString();*/

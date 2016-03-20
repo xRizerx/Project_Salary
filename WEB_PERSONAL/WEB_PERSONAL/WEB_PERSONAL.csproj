@@ -335,6 +335,7 @@
     <Content Include="Position-ADMIN.aspx" />
     <Content Include="PositionWork-ADMIN.aspx" />
     <Content Include="jquery.mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Promote_Form.aspx" />
     <Content Include="Province-ADMIN.aspx" />
     <Content Include="Religion-ADMIN.aspx" />
     <Content Include="SalarybyID-Edit-Permanent.aspx" />
@@ -745,6 +746,13 @@
     </Compile>
     <Compile Include="Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Promote_Form.aspx.cs">
+      <DependentUpon>Promote_Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Promote_Form.aspx.designer.cs">
+      <DependentUpon>Promote_Form.aspx</DependentUpon>
     </Compile>
     <Compile Include="Province-ADMIN.aspx.cs">
       <DependentUpon>Province-ADMIN.aspx</DependentUpon>

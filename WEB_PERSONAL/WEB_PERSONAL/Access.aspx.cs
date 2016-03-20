@@ -41,8 +41,6 @@ namespace WEB_PERSONAL {
                             Session["login_system_status"] = reader.GetString(1);
                             Session["login_name"] = reader.GetString(2);
                             Session["login_lastname"] = reader.GetString(3);
-                            Session["login_date_time"] = DateTime.Now;
-                            Session["login_total_second"] = DropDownList1X.SelectedValue;
                             if (Session["redirect_to"] == null) {
                                 Response.Redirect("Default.aspx");
                             } else {

@@ -103,24 +103,6 @@ namespace WEB_PERSONAL {
         protected global::System.Web.UI.WebControls.TextBox TextBox2X;
         
         /// <summary>
-        /// Label15X control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label15X;
-        
-        /// <summary>
-        /// DropDownList1X control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1X;
-        
-        /// <summary>
         /// LinkButton1X control.
         /// </summary>
         /// <remarks>
